@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II</title>
+  <meta name="description" content="Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II" />
+  
+  
+  
+
+<meta name="author" content="Alvaro J. Flórez" />
+
+
+<meta name="date" content="2022-04-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelos-polinomiales.html"/>
+
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de clase MLGII</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html"><i class="fa fa-check"></i><b>1</b> Variables indicadoras (o dummies)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#ejemplos"><i class="fa fa-check"></i><b>1.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.1.1</b> Datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#datos-de-la-onu"><i class="fa fa-check"></i><b>1.1.2</b> Datos de la ONU</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#variables-indicadoras"><i class="fa fa-check"></i><b>1.2</b> Variables indicadoras</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
+<li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html"><i class="fa fa-check"></i><b>2</b> Modelos polinomiales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#ejemplos-1"><i class="fa fa-check"></i><b>2.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#pasteles"><i class="fa fa-check"></i><b>2.1.1</b> Pasteles</a></li>
+<li class="chapter" data-level="2.1.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#datos-de-boston"><i class="fa fa-check"></i><b>2.1.2</b> Datos de Boston</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#modelos-polinomiales-1"><i class="fa fa-check"></i><b>2.2</b> Modelos polinomiales</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>2.2.1</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="2.2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#pasteles-1"><i class="fa fa-check"></i><b>2.2.2</b> Pasteles</a></li>
+<li class="chapter" data-level="2.2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#datos-de-boston-1"><i class="fa fa-check"></i><b>2.2.3</b> Datos de Boston</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#regresión-por-segmentos"><i class="fa fa-check"></i><b>2.3</b> Regresión por segmentos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#ejemplo"><i class="fa fa-check"></i><b>2.3.1</b> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multicolinealidad.html"><a href="multicolinealidad.html"><i class="fa fa-check"></i><b>3</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#ejemplos-2"><i class="fa fa-check"></i><b>3.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#cemento"><i class="fa fa-check"></i><b>3.1.1</b> Cemento</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#grasa-corporal"><i class="fa fa-check"></i><b>3.1.2</b> Grasa corporal</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#multicolinealidad-1"><i class="fa fa-check"></i><b>3.2</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#causas-de-la-multicolinealidad"><i class="fa fa-check"></i><b>3.2.1</b> Causas de la multicolinealidad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#detección-de-multicolinealidad"><i class="fa fa-check"></i><b>3.3</b> Detección de multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#factores-de-inflación-de-varianza"><i class="fa fa-check"></i><b>3.3.1</b> Factores de inflación de varianza</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-propios-de-boldsymbol-zboldsymbol-z"><i class="fa fa-check"></i><b>3.3.2</b> Valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-singulares-de-boldsymbol-z"><i class="fa fa-check"></i><b>3.3.3</b> Valores singulares de <span class="math inline">\(\boldsymbol Z\)</span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#proporciones-de-descomposición-de-varianza"><i class="fa fa-check"></i><b>3.3.4</b> Proporciones de descomposición de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento"><i class="fa fa-check"></i><b>3.4</b> Datos de cemento</a></li>
+<li class="chapter" data-level="3.5" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-grasa-corporal"><i class="fa fa-check"></i><b>3.5</b> Datos de grasa corporal</a></li>
+<li class="chapter" data-level="3.6" data-path="multicolinealidad.html"><a href="multicolinealidad.html#solución-al-problema-de-multicolinealidad"><i class="fa fa-check"></i><b>3.6</b> Solución al problema de multicolinealidad</a></li>
+<li class="chapter" data-level="3.7" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-de-ridge"><i class="fa fa-check"></i><b>3.7</b> Estimador de ridge</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-1"><i class="fa fa-check"></i><b>3.7.1</b> Datos de cemento</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notas de clase: Modelo lineal general II</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multicolinealidad" class="section level1" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Multicolinealidad</h1>
+<div id="ejemplos-2" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Ejemplos</h2>
+<div id="cemento" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Cemento</h3>
+<p>Los datos <code>data(cement)</code> en la librería <code>MASS</code> corresponden a un experimento sobre calor emanado en el fraguado de diferentes combinaciones químicas de cemento. Se tiene una muestra de <span class="math inline">\(13\)</span> fraguados de cemento Portlan. En cada muestra, se midió con precisión los porcentajes de los cuatro ingredientes químicos principales (covariables). Mientras el cemento fraguaba, también se midió la cantidad de calor desprendido (cals/gm, variable respuesta).</p>
+<p>Los cuatro ingredientes químicos son:</p>
+<ul>
+<li><strong><code>x1</code></strong> aluminato tricálcico (%).</li>
+<li><strong><code>x2</code></strong> silicato tricálcico (%).</li>
+<li><strong><code>x3</code></strong> tetra-aluminio ferrita de calcio (%).</li>
+<li><strong><code>x4</code></strong> silicato dicálcico (%).</li>
+</ul>
+<p>En la Figura <a href="#fig:CementFig"><strong>??</strong></a> podemos observar que hay relaciones lineales positivas entre la variable respuesta, y las covariables aluminato tricálcico y silicato tricálcico. Mientras que la relación con la variable silicato dicálcico es negativa. También podemos notar que hay una relación negativa fuerte en las covariables aluminato tricálcico y tetra-aluminio ferrita de calcio, y entre silicato tricálcico y silicato dicálcico.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="multicolinealidad.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb34-2"><a href="multicolinealidad.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cement)</span>
+<span id="cb34-3"><a href="multicolinealidad.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cement[,<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)])</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:CementFigure"></span>
+<img src="MLG2_files/figure-html/CementFigure-1.png" alt="\label{fig:CementFig} Datos de cemento. Diagrama de dispersión." width="576" />
+<p class="caption">
+Figure 3.1:  Datos de cemento. Diagrama de dispersión.
+</p>
+</div>
+<p>Para estos datos, se propone el siguiente modelo:
+<span class="math display">\[
+y_{i} = \beta_{0} + x_{1i}\beta_{1} + x_{2i}\beta_{2} + x_{3i}\beta_{3} + x_{4i}\beta_{4} + \varepsilon_{i}.
+\]</span>
+Los resultados del ajuste son:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="multicolinealidad.html#cb35-1" aria-hidden="true" tabindex="-1"></a>mod.cement <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1<span class="sc">+</span>x2<span class="sc">+</span>x3<span class="sc">+</span>x4,<span class="at">data=</span>cement)</span>
+<span id="cb35-2"><a href="multicolinealidad.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.cement)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x1 + x2 + x3 + x4, data = cement)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.1750 -1.6709  0.2508  1.3783  3.9254 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  62.4054    70.0710   0.891   0.3991  
+## x1            1.5511     0.7448   2.083   0.0708 .
+## x2            0.5102     0.7238   0.705   0.5009  
+## x3            0.1019     0.7547   0.135   0.8959  
+## x4           -0.1441     0.7091  -0.203   0.8441  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.446 on 8 degrees of freedom
+## Multiple R-squared:  0.9824, Adjusted R-squared:  0.9736 
+## F-statistic: 111.5 on 4 and 8 DF,  p-value: 4.756e-07</code></pre>
+<p>Note que el ajuste es bueno, el <span class="math inline">\(98.2\)</span>% de la variabilidad de la cantidad de calor desprendido durante la fraguado es explicada por el modelo. Sin embargo, los resultados de las pruebas de hipótesis individuales sobre los coeficientes muestran que no son significantes.</p>
+</div>
+<div id="grasa-corporal" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Grasa corporal</h3>
+<p>Se tiene una muestra de <span class="math inline">\(20\)</span> mujeres saludables con edades entre <span class="math inline">\(25\)</span> y <span class="math inline">\(34\)</span> años (<code>data(bodyfat)</code> en la librería <code>isdals</code>). La medición del porcentaje de grasa corporal es caro y engorroso, por lo tanto se quiere buscar un modelo que proporcione predicciones fiables. Como variables de este modelo se utiliza:</p>
+<ul>
+<li><strong><code>Triceps</code>:</strong> pliegue cutáneo del tríceps (cm).</li>
+<li><strong><code>Thigh</code>:</strong> circunferencia del muslo (cm).</li>
+<li><strong><code>Midarm</code>:</strong> circunferencia del brazo medio (cm).</li>
+</ul>
+<p>La Figura @(fig:bodyfatFig) muestra la relación entre variables. Podemos observar que hay una relación fuerte del % de masa corporal con las covariables Triceps y Thigh. Además hay también una relación lineal fuerte entre esas dos covariables.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="multicolinealidad.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(isdals)</span>
+<span id="cb37-2"><a href="multicolinealidad.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bodyfat)</span>
+<span id="cb37-3"><a href="multicolinealidad.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bodyfat)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:bodyfatFigure"></span>
+<img src="MLG2_files/figure-html/bodyfatFigure-1.png" alt="\label{fig:bodyfatFig} Datos de grasa corporal. Diagrama de dispersión." width="576" />
+<p class="caption">
+Figure 3.2:  Datos de grasa corporal. Diagrama de dispersión.
+</p>
+</div>
+<p>El modelo propuesto es:
+<span class="math display">\[
+\mbox{Fat}_{i} = \beta_{0} + \mbox{Triceps}_{i}\beta_{1} + \mbox{Thigh}_{i}\beta_{2} + \mbox{Midarm}_{i}\beta_{3} + \varepsilon_{i}.
+\]</span>
+El ajuste del modelo es el siguiente:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="multicolinealidad.html#cb38-1" aria-hidden="true" tabindex="-1"></a>mod.bodyfat <span class="ot">=</span> <span class="fu">lm</span>(Fat <span class="sc">~</span> Triceps<span class="sc">+</span>Thigh<span class="sc">+</span>Midarm,<span class="at">data=</span>bodyfat)</span>
+<span id="cb38-2"><a href="multicolinealidad.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.bodyfat)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Fat ~ Triceps + Thigh + Midarm, data = bodyfat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.7263 -1.6111  0.3923  1.4656  4.1277 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  117.085     99.782   1.173    0.258
+## Triceps        4.334      3.016   1.437    0.170
+## Thigh         -2.857      2.582  -1.106    0.285
+## Midarm        -2.186      1.595  -1.370    0.190
+## 
+## Residual standard error: 2.48 on 16 degrees of freedom
+## Multiple R-squared:  0.8014, Adjusted R-squared:  0.7641 
+## F-statistic: 21.52 on 3 and 16 DF,  p-value: 7.343e-06</code></pre>
+<p>Asi como en el caso anterior, observamos que el modelo explica gran parte de la variabilidad del % de grasa corporal. Sin embargo, los valores <span class="math inline">\(p\)</span> de las pruebas individuales sobre los coeficientes son altos.</p>
+</div>
+</div>
+<div id="multicolinealidad-1" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Multicolinealidad</h2>
+<p>El estimador de <span class="math inline">\(\boldsymbol \beta\)</span> es <span class="math inline">\(\widehat{\boldsymbol \beta}= (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y\)</span>. Además, <span class="math inline">\(V(\widehat{\boldsymbol \beta}) = \sigma^{2}(\boldsymbol X&#39;\boldsymbol X)^{-1}\)</span>. Por lo tanto requiere que <span class="math inline">\(\boldsymbol X\)</span> sea de rango completo. Es decir, que hayan columnas que sean linealmente dependientes. En algunos casos, las columnas de <span class="math inline">\(\boldsymbol X\)</span> son casi linealmente dependientes o colineales,lo que lleva a que <span class="math inline">\(\boldsymbol X&#39;\boldsymbol X\)</span> se casi singular, lo que provoca problemas a la hora de hacer inferencias.</p>
+<p>Sea <span class="math inline">\(\boldsymbol x_j\)</span> la <span class="math inline">\(j\)</span>-ésima columna de la matriz <span class="math inline">\(\boldsymbol X\)</span>, por lo tanto <span class="math inline">\(\boldsymbol X= (\boldsymbol 1,\boldsymbol x_{1},\ldots,\boldsymbol x_{p-1})\)</span>. Los vectores <span class="math inline">\(\boldsymbol x_{1},\boldsymbol x_{2},\ldots,\boldsymbol x_{p-1}\)</span> son linealmente dependientes si hay conjunto de constantes <span class="math inline">\(a_{1},a_{2},\ldots, a_{p-1}\)</span> no todas igual a cero, tal que:
+<span class="math display">\[
+\sum_{j=1}^{p-1}a_{j}\boldsymbol x_{j} = c, \mbox{ donde }c\mbox{ es una constante.}
+\]</span>
+Si esto se cumple para un subconjunto de <span class="math inline">\(\boldsymbol X\)</span>, el rango de la matriz <span class="math inline">\(\boldsymbol X&#39;\boldsymbol X\)</span> es menor que <span class="math inline">\(p\)</span>, y por lo tanto, <span class="math inline">\((\boldsymbol X&#39;\boldsymbol X)^{-1}\)</span> no existe.</p>
+<p>Si la relación es aproximada <span class="math inline">\((\sum_{j=1}^{p-1}a_{j}\boldsymbol x_{j} \approx c)\)</span>, existe el problema de multicolinealidad.</p>
+<p>Vamos a ilustrar el efecto de la multicolinealidad con un ejemplo sencillo considerando un modelo lineal con dos covariables:
+<span class="math display">\[
+\boldsymbol y^{*} = \boldsymbol Z\boldsymbol \beta+ \boldsymbol \varepsilon,
+\]</span>
+donde <span class="math inline">\(\boldsymbol Z\)</span> es la matriz de covariables escaladas con longitud unitaria, esto es:
+<span class="math display">\[
+y_{i}^{*} = \frac{y_{i}-\bar{y}}{\sqrt{SST}}, \mbox{ y } z_{ij} = \frac{x_{ij} - \bar{x}_{j}}{\sqrt{s_{jj}}},
+\]</span>
+donde <span class="math inline">\(s_{jj} = \sum_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}\)</span>. De esta forma la matriz <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span> es la matriz de correlación de las covariables,
+<span class="math display">\[
+\boldsymbol Z&#39;\boldsymbol Z= \begin{pmatrix}
+1 &amp; \rho_{12} \\ \rho_{12} &amp; 1
+\end{pmatrix},
+\]</span>
+y <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol y\)</span> es el vector de correlaciones entre <span class="math inline">\(y\)</span> y las dos covariables:
+<span class="math display">\[
+\boldsymbol Z&#39;\boldsymbol y^{*} = \begin{pmatrix}
+\rho_{y1} \\ \rho_{y2}
+\end{pmatrix}.
+\]</span>
+Por lo que el estimador por MCO de <span class="math inline">\(\boldsymbol b\)</span> es:
+<span class="math display">\[
+\widehat{\boldsymbol b}= \begin{pmatrix}
+1 &amp; \rho_{12} \\ \rho_{12} &amp; 1
+\end{pmatrix}^{-1}\begin{pmatrix}
+\rho_{y1} \\ \rho_{y2}
+\end{pmatrix} = \begin{pmatrix}
+\frac{1}{1-r_{12}^{2}} &amp; \frac{-r_{12}}{1-r_{12}^{2}} \\ \frac{-r_{12}}{1-r_{12}^{2}} &amp; \frac{1}{1-r_{12}^{2}} \end{pmatrix} \begin{pmatrix}
+r_{1y} \\ r_{2y}
+\end{pmatrix}.
+\]</span>
+Particularmente, tenemos:
+<span class="math display">\[
+\widehat{b}_{1} = \frac{r_{1y}-r_{12}r_{2y}}{1-r_{12}^{2}} \mbox{ y } \widehat{b}_{2} = \frac{r_{2y}-r_{12}r_{1y}}{1-r_{12}^{2}}.
+\]</span>
+Además, la matriz de varianzas-covarianzas de <span class="math inline">\(\widehat{\boldsymbol b}\)</span> es:
+<span class="math display">\[\begin{equation}
+V(\widehat{\boldsymbol b}) = \sigma^{2} \begin{pmatrix}
+\frac{1}{1-r_{12}^{2}} &amp; \frac{-r_{12}}{1-r_{12}^{2}} \\ \frac{-r_{12}}{1-r_{12}^{2}} &amp; \frac{1}{1-r_{12}^{2}} \end{pmatrix}.
+\label{eq:varbb}
+\end{equation}\]</span>
+En @(eq:varbb) podemos observar que la varianza de los coeficientes <span class="math inline">\(\widehat{\boldsymbol b}\)</span> tienden a infinito cuando <span class="math inline">\(|r_{12}|\rightarrow 1\)</span>. Mientras que se hace mínima cuando las covariables están incorrelacionadas <span class="math inline">\((r_{12}=0)\)</span>. Es decir, una fuerte correlación entre <span class="math inline">\(x_1\)</span> y <span class="math inline">\(x_2\)</span> da como resultado grandes varianzas y covarianzas para <span class="math inline">\(\widehat{\boldsymbol b}\)</span>.</p>
+<p>Por esta razón es preferible tener covariables que sean ortogonales. Puesto que así se garantiza la menor varianza para <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span>. Sin embargo, las covariables son díficiles de controlar en estudios observacionales.</p>
+<p>Ahora consideremos un modelo con <span class="math inline">\(p-1\)</span> covariables,
+<span class="math display">\[
+y_{i}^{*} = b_{1}z_{i1} + b_{2}z_{i2} + \ldots + b_{p-1}z_{i,p-1} + \varepsilon_{i}.
+\]</span>
+Las ecuaciones normales son:
+<span class="math display">\[
+\begin{pmatrix}
+1 &amp; r_{12} &amp; r_{13} &amp; \ldots &amp; r_{1,p-1}  \\ r_{12} &amp; 1 &amp; r_{23} &amp; \ldots &amp; r_{2,p-1} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+r_{1,p-1} &amp; r_{2,p-1} &amp; r_{3,p-1} &amp; \ldots &amp; 1
+\end{pmatrix} \begin{pmatrix}
+b_{1} \\ b_{2} \\ \vdots \\ b_{k}
+\end{pmatrix} = \begin{pmatrix}
+r_{y1} \\ r_{y2} \\ \vdots \\ r_{y,p-1}
+\end{pmatrix}.
+\]</span>
+Por lo que el estimador de <span class="math inline">\(\boldsymbol b\)</span> es:
+<span class="math display">\[
+\widehat{\boldsymbol b}= \boldsymbol R^{-1}\boldsymbol Z&#39;\boldsymbol y^{*}, \mbox{donde }\boldsymbol R= \boldsymbol Z&#39;\boldsymbol Z.
+\]</span>
+Se puede demostrar que los elementos de la diagonal de la matriz <span class="math inline">\(\boldsymbol R^{-1}\)</span> son:
+<span class="math display">\[
+\{\boldsymbol R^{-1}\}_{jj} = \frac{1}{1-R^{2}_{j}}, j=1,\ldots,p-1,
+\]</span>
+donde <span class="math inline">\(R^{2}_{j}\)</span> es el coeficiente de determinación de la regresión de <span class="math inline">\(z_{j}\)</span> en función de las <span class="math inline">\((p-2)\)</span> covariables restantes. Es decir, coeficiente de determinacón del siguiente ajuste:
+<span class="math display">\[
+z_{ij} = z_{i1}\alpha_1 + z_{i2}\alpha_2 + \ldots + z_{i,j-1}\alpha_{j-1} + z_{i,j+1}\alpha_{j+1} + \ldots + z_{i,p-1}\alpha_{p-1} + \varepsilon_i.
+\]</span></p>
+<p>Por lo que la varianza del estimador de <span class="math inline">\(\boldsymbol b\)</span> es:
+<span class="math display">\[
+V(\widehat{b}_{j}) = \frac{\sigma^{2}}{1-R^{2}_{j}}.
+\]</span>
+Por lo que, si <span class="math inline">\(z_j\)</span> se puede expresar como una combinación lineal aproximada de las demás covariables, la varianza del estimador de <span class="math inline">\(b_j\)</span> Si <span class="math inline">\(R^{2}_{j} \rightarrow 1\)</span>, entonces <span class="math inline">\(V(\widehat{b}_{j})\rightarrow \infty\)</span>.</p>
+<p>La multicolinealidad también produce que los estimadores <span class="math inline">\(\widehat{b}_{j}\)</span>, para <span class="math inline">\(j=1,\ldots,p\)</span>, sean muy grandes en valor absoluto. Considere:
+<span class="math display">\[
+L_{1}^{2} = (\widehat{\boldsymbol b}- \boldsymbol b)&#39;(\widehat{\boldsymbol b}- \boldsymbol b) = \sum_{j=1}^{k}(\widehat{b}_{j}-b_{j})^{2}.
+\]</span>
+El valor esperado de <span class="math inline">\(L_{1}^{2}\)</span> es:
+<span class="math display">\[
+E(L_{1}^{2}) = \sum_{j=1}^{p-1}E(\widehat{b}_{j}-b_{j})^{2} = \sum_{j=1}^{k}\sigma^{2}\mbox{tr}\boldsymbol R^{-1}
+\]</span>
+Dado que la traza de una matriz es igual a la suma de sus valores propios, tenemos que:
+<span class="math display">\[
+E(L_{1}^{2}) = \sigma^{2}\sum_{j=1}^{p-1}1/\lambda_{j},
+\]</span>
+donde <span class="math inline">\(\lambda_{j} &gt; 0\)</span>, para <span class="math inline">\(j=1,\ldots,p-1\)</span>, son los valores propios de <span class="math inline">\(\boldsymbol R\)</span>. Por lo tanto, si <span class="math inline">\(\boldsymbol R\)</span> está mal condicionada debido a la multicolinealidad, al menos un <span class="math inline">\(\lambda_{j}\)</span> será muy pequeño.</p>
+<p>Cabe notar que, la multicolinealidad no viola ningún supuesto sobre los errores. Por lo tanto los estimadores por MCO siguen siendo BLUE. Pero, en presencia de multicolinealidad:</p>
+<ul>
+<li><p>Las varianzas de los coeficientes <span class="math inline">\((\widehat{\beta}_{j})\)</span> se incrementan. Lo que reduce los valores <span class="math inline">\(t\)</span> asociados.</p></li>
+<li><p>Los <span class="math inline">\(\widehat{\beta}_{j}\)</span> son sensibles a las especificaciones. Estos pueden cambiar drásticamente cuando se agregan o eliminan covariables.</p></li>
+<li><p>El ajuste general del modelo, y por lo tanto los pronósticos y las predicciones, no se verá afectado en gran medida. Pero los intervalos de confianza que se calculen pueden ser muy amplios.</p></li>
+</ul>
+<div id="causas-de-la-multicolinealidad" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Causas de la multicolinealidad</h3>
+<p>La multicolinealidad se puede deber a múltiples razones, entre las que están:</p>
+<ul>
+<li><p>Con frecuencia se presentan problemas donde intervienen procesos de producción o químicos, donde los regresores son los componentes de un producto y ésos suman una constante.</p></li>
+<li><p>Variables que son componentes de un sistema pueden mostrar dependencias casi lineales debido a las limitaciones biológicas, físicas o químicas del sistema.</p></li>
+<li><p>Variables que tienen una tendencia común y evolucionan de forma muy parecida en el tiempo.</p></li>
+<li><p>Inclusión de variables irrelevantes en el modelo. La información que contienen estas variables ya estarían incluidas en otras y no aportan a la explicación de la variabilidad de la variable respuesta.</p></li>
+</ul>
+<p>Por ejemplo, en los datos del cemento, tenemos que el problema de multicolinealidad se presenta porque:
+<span class="math display">\[
+x_{i1} + x_{i2} + x_{i3} + x_{i4} \approx \mbox{constante}.   
+\]</span>
+En los datos de grasa corporal, el problema es causado por la alta correlación entre el pliegue cutáneo del triceps <span class="math inline">\((X_{1})\)</span> y la circunferencia del muslo <span class="math inline">\((X_{2})\)</span>.</p>
+</div>
+</div>
+<div id="detección-de-multicolinealidad" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Detección de multicolinealidad</h2>
+<p>Dado que la multicolinealidad provoca una inflación de la varianza, un indicio de este problema esta en que aunque el modelo presenta un buen ajuste (un <span class="math inline">\(R^2\)</span> por ejemplo), las estimaciones de coeficientes asociados a covariables releventas tienen valores <span class="math inline">\(t\)</span> pequeños. Además, al eliminar covariables, las estimacioes cambian considerablemente.</p>
+<p>Los métodos mas usados para detectar multicolinealidad son:</p>
+<ul>
+<li><p>la matriz de correlación de las covariables.</p></li>
+<li><p>los factores de inflación de varianza.</p></li>
+<li><p>los índices de condiciones de <span class="math inline">\(\boldsymbol R\)</span> o <span class="math inline">\(\boldsymbol Z\)</span>.</p></li>
+</ul>
+<div id="factores-de-inflación-de-varianza" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Factores de inflación de varianza</h3>
+<p>Dado que <span class="math inline">\(V(\widehat{\boldsymbol b}) = \sigma^2\boldsymbol R^{-1}\)</span>, la diagonal de <span class="math inline">\(\boldsymbol R^{-1}\)</span> es un buen indicador de multicolinealidad:
+<span class="math display">\[
+\{\boldsymbol R^{-1}\}_{jj} = (1-R_{j}^{2})^{-1},
+\]</span>
+donde <span class="math inline">\(R_{j}^{2}\)</span> es el coeficiente de determinación de ajustar un modelo de <span class="math inline">\(x_{j}\)</span> en función de las demás covariables. Si <span class="math inline">\(x_{j}\)</span> es casi ortogonal a las demás covariables, <span class="math inline">\(R^{2}_{j}\)</span> es pequeño, y por lo tanto, <span class="math inline">\(\{\boldsymbol R^{-1}\}_{jj}\)</span> cercano a <span class="math inline">\(1\)</span>. Mientras que, si <span class="math inline">\(x_{j}\)</span> es casi linealmente dependiente a las demás covariables, entonces <span class="math inline">\(R^{2}_{j}\)</span> es cercano a <span class="math inline">\(1\)</span> y <span class="math inline">\(\{\boldsymbol R^{-1}\}_{jj}\)</span> grande.</p>
+<p>Es decir, <span class="math inline">\(\{\boldsymbol R^{-1}\}_{jj}\)</span> puede ser visto como un factor de cuanto se incrementa <span class="math inline">\(V(\widehat{b}_{j})\)</span> debido a la colinealidad entre las covariables. De aquí el nombre de factor de inflación de varianza (VIF). Generalmente, uno o mas valores grandes de VIF (<span class="math inline">\(5\)</span> o <span class="math inline">\(10\)</span>) es un indicador de problemas de multicolinealidad.</p>
+</div>
+<div id="valores-propios-de-boldsymbol-zboldsymbol-z" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span></h3>
+<p>Dado que <span class="math inline">\(\boldsymbol R= \boldsymbol Z&#39;\boldsymbol Z\)</span> es una matriz simétrica y positiva semi-definida, entonces se puede descomponer:
+<span class="math display">\[
+\boldsymbol R= \boldsymbol T\boldsymbol \Lambda\boldsymbol T&#39;,
+\]</span>
+donde <span class="math inline">\(\boldsymbol T= (\boldsymbol t_{1},\ldots,\boldsymbol t_{k})\)</span> es una matriz ortogonal de vectores propios, y <span class="math inline">\(\boldsymbol \Lambda\)</span> una matriz diagonal con los valores propios <span class="math inline">\(\lambda_{j}\)</span>, para <span class="math inline">\(j=1,\ldots,p-1\)</span>, en la diagonal principal. Por lo tanto,
+<span class="math display">\[
+V(\widehat{\boldsymbol \beta}) = \sigma^{2}\boldsymbol T\boldsymbol \Lambda^{-1}\boldsymbol T&#39;.
+\]</span>
+Entonces,
+<span class="math display">\[
+V(\widehat{b}_{l}) = \sigma^{2}\sum_{j=1}^{p-1}\frac{t_{lj}^{2}}{\lambda_{j}}.
+\]</span>
+De la expresión anterior,
+<span class="math display">\[
+VIF_{j} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\lambda_{j}},
+\]</span>
+Por lo tanto, uno o más valores propios pequeños pueden inflar la varianza de <span class="math inline">\(\widehat{b}_{j}\)</span>. De aquí salen los indicadores llamados índices de condición y número de condición.</p>
+<p>El índice de condición está definido como:
+<span class="math display">\[
+\eta_{j} = \frac{\lambda_{\mbox{max}}}{\lambda_{j}}.
+\]</span>
+El número de condición está definido como el máximo índice de condición. Un número de condición mayor de 100 es un indicador de multicolinealidad.</p>
+</div>
+<div id="valores-singulares-de-boldsymbol-z" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Valores singulares de <span class="math inline">\(\boldsymbol Z\)</span></h3>
+<p>El número de condición también se puede calcular a partir de la descomposición en valores singulares (SVD) de la matriz de covariables <span class="math inline">\(\boldsymbol Z\)</span>. Esto es:
+<span class="math display">\[
+\boldsymbol Z=\boldsymbol U\boldsymbol D\boldsymbol T&#39;,
+\]</span>
+donde <span class="math inline">\(\boldsymbol U\)</span> y <span class="math inline">\(\boldsymbol T\)</span> son matrices <span class="math inline">\((n\times p)\)</span> y <span class="math inline">\((p\times p)\)</span>, respectivamente, que <span class="math inline">\(\boldsymbol U\boldsymbol U= \boldsymbol I\)</span> y <span class="math inline">\(\boldsymbol T&#39;\boldsymbol T= \boldsymbol I\)</span>, y <span class="math inline">\(\boldsymbol D\)</span> es una matriz diagonal con elementos <span class="math inline">\(\mu_{j}\)</span>, <span class="math inline">\(j=1,\ldots,p\)</span>, llamados valores singulares.
+Hay una relación entre los valoes singulares de <span class="math inline">\(\boldsymbol Z\)</span> y los valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span>:
+<span class="math display">\[
+\boldsymbol Z&#39;\boldsymbol Z= (\boldsymbol U\boldsymbol D\boldsymbol T&#39;)&#39;\boldsymbol U\boldsymbol D\boldsymbol T&#39; = \boldsymbol T\boldsymbol D^2\boldsymbol T&#39; = \boldsymbol T\boldsymbol \Lambda\boldsymbol T&#39;.
+\]</span>
+El índice de condición de <span class="math inline">\(\boldsymbol Z\)</span> está definido como:
+<span class="math display">\[
+\kappa_{j} = \frac{\mu_{\mbox{max}}}{\mu_{j}}.
+\]</span>
+El número de condición de <span class="math inline">\(\boldsymbol Z\)</span> está definido como el máximo <span class="math inline">\(\kappa_{j}\)</span>. Un número de condición mayor de 10,15 o 30 es un indicador de problemas de multicolinealidad.</p>
+<p>Note que <span class="math inline">\(\kappa_{j} = \sqrt{\eta_{j}}\)</span>. Por lo que el punto de corte de <span class="math inline">\(10\)</span> para el número de condición de <span class="math inline">\(\boldsymbol Z\)</span> es equivalente al número de condición de <span class="math inline">\(100\)</span> para el número de condición de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span>.</p>
+</div>
+<div id="proporciones-de-descomposición-de-varianza" class="section level3" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Proporciones de descomposición de varianza</h3>
+<p>Hay una relación entre el VIF, los valores propios y los valores singulares. Esta es:
+<span class="math display">\[
+VIF_{j} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\lambda_{j}} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\mu_{j}^2}.
+\]</span>
+De aquí salen los indicadores llamados proporciones de descomposición de varianza. Estos se calculan de la siguiente forma:
+<span class="math display">\[
+\pi_{ij} = \frac{t_{ij}^2 / \mu_{i}^2 }{VIF_{j}}, j = 1,\ldots, p-1.
+\]</span>
+Si se agrupan los <span class="math inline">\(\pi_{ij}\)</span> en una matriz <span class="math inline">\((p \times p)\)</span> <span class="math inline">\(\boldsymbol \pi\)</span>, la columna <span class="math inline">\(j\)</span> son proporciones de la varianza de <span class="math inline">\(\widehat{\boldsymbol b}\)</span>. Valores <span class="math inline">\(\pi_{ij}\)</span> mayores de 0.5 indican problemas de multicolinealidad.</p>
+</div>
+</div>
+<div id="datos-de-cemento" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Datos de cemento</h2>
+<p>Los VIF para el modelo ajustado para los datos de cemento son los siguientes:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="multicolinealidad.html#cb40-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(mod.cement)</span></code></pre></div>
+<pre><code>##        x1        x2        x3        x4 
+##  38.49621 254.42317  46.86839 282.51286</code></pre>
+<p>Aquí vemos que todos los VIFs son muy altos, mostrando que hay problemas graves de multicolinealidad.</p>
+<p>Para calcular los índices de condición (a partir de los valores singulares de <span class="math inline">\(\boldsymbol Z\)</span>) y las proporciones de descomposición de varianza se utiliza la función <code>colldiag()</code> de la librería <code>perturb</code>:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="multicolinealidad.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(perturb)</span>
+<span id="cb42-2"><a href="multicolinealidad.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colldiag</span>(mod.cement,<span class="at">scale =</span> <span class="cn">TRUE</span>,<span class="at">center =</span> <span class="cn">TRUE</span>,<span class="at">add.intercept =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Condition
+## Index    Variance Decomposition Proportions
+##           x1    x2    x3    x4   
+## 1   1.000 0.003 0.001 0.001 0.000
+## 2   1.191 0.004 0.000 0.005 0.000
+## 3   3.461 0.064 0.002 0.046 0.001
+## 4  37.106 0.930 0.997 0.947 0.998</code></pre>
+<p>El número de condición <span class="math inline">\((37.106)\)</span> es muy alto reafirmando el problema de multicolinealidad. Además, también se puede observar que varias de las proporciones de descomposición de varianza son mayores de <span class="math inline">\(0.5\)</span>.</p>
+</div>
+<div id="datos-de-grasa-corporal" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Datos de grasa corporal</h2>
+<p>Para el modelo ajustado a losdatos de grasa corporal, los VIFs son:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="multicolinealidad.html#cb44-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(mod.bodyfat)</span></code></pre></div>
+<pre><code>##  Triceps    Thigh   Midarm 
+## 708.8429 564.3434 104.6060</code></pre>
+<p>Además, los índices de condición y las proporciones de descomposición de varianza son:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="multicolinealidad.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(perturb)</span>
+<span id="cb46-2"><a href="multicolinealidad.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colldiag</span>(mod.bodyfat,<span class="at">scale =</span> <span class="cn">TRUE</span>,<span class="at">center =</span> <span class="cn">TRUE</span>,<span class="at">add.intercept =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## Condition
+## Index    Variance Decomposition Proportions
+##           Triceps Thigh Midarm
+## 1   1.000 0.000   0.000 0.001 
+## 2   1.488 0.000   0.000 0.008 
+## 3  53.329 1.000   0.999 0.991</code></pre>
+<p>Todos estos indicadores muestran que hay problemas de multicolinealidad.</p>
+</div>
+<div id="solución-al-problema-de-multicolinealidad" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Solución al problema de multicolinealidad</h2>
+<p>Una forma sencilla de resolver los problemas de multicolinealidad son:</p>
+<ul>
+<li><p>la recolección de datos adicionales: si se tiene control sobre las covariables, es posible tomar más observaciones para romper con la casi dependencia en <span class="math inline">\(\boldsymbol X\)</span>. Pero esto en muchas casos es díficl por la naturaleza de las covariables. Por ejemplo, sería imposible buscar personas con circunferencia del muslo grande y pliegue cutáneo del tríceps bajo (o viceversa).</p></li>
+<li><p>la re-especificación del modelo: se pueden eliminar del modelo las covariables que me generan el problema de multicolinealidad y que pueden tener poco aporte explicativo dentro del modelo.</p></li>
+</ul>
+<p>Por ejemplo, en los datos de la grasa corporal podemos eliminar la variable asociada al muslo (o al tríceps, pues ambas proporcionan la misma información). Si quitamos esta covariable:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="multicolinealidad.html#cb48-1" aria-hidden="true" tabindex="-1"></a>mod.bodyfat0 <span class="ot">=</span> <span class="fu">lm</span>(Fat <span class="sc">~</span> Triceps<span class="sc">+</span>Midarm,<span class="at">data=</span>bodyfat)</span>
+<span id="cb48-2"><a href="multicolinealidad.html#cb48-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(mod.bodyfat0)</span></code></pre></div>
+<pre><code>##  Triceps   Midarm 
+## 1.265118 1.265118</code></pre>
+<p>los VIFs disminuyen considerablemente. Además, no hay una reducción notable del <span class="math inline">\(R^2\)</span>. Con las tres covariables temenos que <span class="math inline">\(R^{2}=0.801\)</span>. Mientras que al remover <code>Thigh</code>, tenemos que <span class="math inline">\(R^{2} = 0.786\)</span></p>
+<p>Considerando que el estimador por MCO es el mejor estimador lineal insesgado de <span class="math inline">\(\boldsymbol \beta\)</span>, podemos relajar la condición de insesgamiento y buscar estimadores que aunque sean sesgados tengan menor varianza que los estimadores por MCO.</p>
+<p>Dos de estas alternativas son:</p>
+<ul>
+<li><p>Estimador de ridge.</p></li>
+<li><p>Estimadores por componentes principales.</p></li>
+</ul>
+</div>
+<div id="estimador-de-ridge" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Estimador de ridge</h2>
+<p>El estimador de ridge tiene como objetivo minimizar la siguiente suma de cuadrados penalizada:
+<span class="math display">\[\begin{equation}
+\begin{split}
+S_{R}(\boldsymbol b) &amp;= \sum_{i=1}^{n}(y_{i} - \boldsymbol z_{i}&#39;\boldsymbol b)^{2} + k \sum_{j=1}^{p-1}\boldsymbol b_{j}^2 \\
+&amp;= (\boldsymbol y- \boldsymbol Z\boldsymbol b)&#39;(\boldsymbol y- \boldsymbol Z\boldsymbol b) + k ||\boldsymbol b||_{2}^{2},
+\end{split}
+\nonumber
+\end{equation}\]</span>
+con <span class="math inline">\(k \geq 0\)</span> (el cual es seleccionado por el investigador). Lo que lleva a las siguientes ecuaciones normales:
+<span class="math display">\[
+(\boldsymbol R+ k \boldsymbol I)\widehat{\boldsymbol b}_{R} = \boldsymbol Z&#39;\boldsymbol y.
+\]</span>
+La solución de las ecuaciones normales lleva al estimador ridge:
+<span class="math display">\[
+\widehat{\boldsymbol b}_{R} = (\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol Z&#39;\boldsymbol y.
+\]</span>
+Note que, incluso si <span class="math inline">\(\boldsymbol R\)</span> es no es invertible, un <span class="math inline">\(k &gt; 0\)</span> resuelve el problema. Además, la solución depende de <span class="math inline">\(k\)</span> (por cada <span class="math inline">\(k\)</span>, hay una estimación diferente).</p>
+<p><span class="math inline">\(k\)</span> es un parámetro de contracción:</p>
+<ul>
+<li>si <span class="math inline">\(k \rightarrow 0\)</span>, encontramos que <span class="math inline">\(\widehat{\boldsymbol b}_{R} \rightarrow \widehat{\boldsymbol b}\)</span>.</li>
+<li>si <span class="math inline">\(k \rightarrow \infty\)</span>, encontramos que <span class="math inline">\(\widehat{\boldsymbol b}_{R} \rightarrow \boldsymbol 0\)</span> (excepto el intercepto).</li>
+</ul>
+<p>Ahora veamos las propiedades del estimador de ridge. El valor esperado de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es:
+<span class="math display">\[
+E(\widehat{\boldsymbol b}_{R}) = (\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol R\boldsymbol b.
+\]</span>
+De aquí vemos que <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es sesgado, y aumenta con <span class="math inline">\(k\)</span> (por lo que este parámetro también es llamado de sesgo). La varianza de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es:
+<span class="math display">\[
+V(\widehat{\boldsymbol b}_{R}) = \sigma^{2}(\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol R(\boldsymbol R+ k \boldsymbol I)^{-1}.
+\]</span>
+A partir de las cantidades anteriores se puede determinar el error cuadrático medio (ECM) de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span>:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &amp;= \sigma^{2}\mbox{tr}[(\boldsymbol R+ k\boldsymbol I)^{-1}\boldsymbol R(\boldsymbol R+ k\boldsymbol I)^{-1}] + k^{2}\boldsymbol b&#39;(\boldsymbol R+ k\boldsymbol I)^{-2}\boldsymbol b\\
+&amp;=\sigma^{2}\sum_{i=1}^{p-1}\frac{\lambda_{j}}{(\lambda_{j}+ k)^2} + k^{2} \boldsymbol b&#39;(\boldsymbol R+ k\boldsymbol I)^{-2}\boldsymbol b,
+\end{split}
+\nonumber
+\end{equation}\]</span>
+donde <span class="math inline">\(\lambda_{1},\ldots,\lambda_{k}\)</span> son los valores propios de <span class="math inline">\(\boldsymbol R\)</span>.</p>
+<p>Finalmente, la suma de cuadrados de los residuos usando <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es:
+<span class="math display">\[
+SS_{\mbox{res}}= (\boldsymbol y- \boldsymbol X\widehat{\boldsymbol b})&#39;(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol b}) + (\widehat{\boldsymbol b}_{R}-\widehat{\boldsymbol b})&#39;\boldsymbol R(\widehat{\boldsymbol b}_{R}-\widehat{\boldsymbol b}).
+\]</span>
+A partir de estos resultados, vemos que: (1) Si <span class="math inline">\(k\)</span> crece, disminuye la varianza, pero aumenta el sesgo. (2) Si <span class="math inline">\(k\)</span> disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un <span class="math inline">\(R^{2}\)</span> mas pequeño que el estimador por MCO. Además, <span class="math inline">\(R^2\)</span> disminuye con <span class="math inline">\(k\)</span>. Sin embargo, la regresión ridge proporciona estimaciones de <span class="math inline">\(\boldsymbol b\)</span> más estables.</p>
+<p>La idea de la regresión de ridge es encontrar un valor de <span class="math inline">\(k\)</span> tal que <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>. En la Figura <a href="#fig:ECMrepresentacion"><strong>??</strong></a> podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta <span class="math inline">\(k\)</span>, el sesgo incrementa y la varianza disminuye. También, hay una región de <span class="math inline">\(k\)</span> donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de <span class="math inline">\(k\)</span> que minimiza el ECM, o por lo menos algún valor en la región donde <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="multicolinealidad.html#cb50-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.3</span>,<span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb50-2"><a href="multicolinealidad.html#cb50-2" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">=</span> <span class="fl">0.25</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">20</span><span class="sc">*</span>(x<span class="fl">-0.001</span>)))</span>
+<span id="cb50-3"><a href="multicolinealidad.html#cb50-3" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">=</span> sesgo <span class="sc">-</span> <span class="fu">min</span>(sesgo) </span>
+<span id="cb50-4"><a href="multicolinealidad.html#cb50-4" aria-hidden="true" tabindex="-1"></a>vari <span class="ot">=</span> <span class="fl">0.06</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">70</span><span class="sc">*</span>x)<span class="sc">+</span> <span class="fl">0.0025</span></span>
+<span id="cb50-5"><a href="multicolinealidad.html#cb50-5" aria-hidden="true" tabindex="-1"></a>ecm <span class="ot">=</span>sesgo<span class="sc">+</span>vari</span>
+<span id="cb50-6"><a href="multicolinealidad.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,sesgo,<span class="at">type =</span> <span class="st">&#39;l&#39;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.2</span>),<span class="at">ylim=</span><span class="fu">range</span>(<span class="fu">c</span>(sesgo,vari,ecm)),<span class="at">lty=</span><span class="dv">2</span>, <span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>,<span class="at">yaxt=</span><span class="st">&#39;n&#39;</span>,</span>
+<span id="cb50-7"><a href="multicolinealidad.html#cb50-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;k&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Sesgo, varianza y MSE&#39;</span>)</span>
+<span id="cb50-8"><a href="multicolinealidad.html#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,vari,<span class="at">lty=</span><span class="dv">3</span>)</span>
+<span id="cb50-9"><a href="multicolinealidad.html#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,ecm,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb50-10"><a href="multicolinealidad.html#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">max</span>(vari),<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb50-11"><a href="multicolinealidad.html#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(x[ecm<span class="sc">==</span><span class="fu">min</span>(ecm)],x[ecm<span class="sc">==</span><span class="fu">min</span>(ecm)]),<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="fu">min</span>(ecm)),<span class="at">col=</span><span class="dv">4</span>)</span>
+<span id="cb50-12"><a href="multicolinealidad.html#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,x[ecm<span class="sc">==</span><span class="fu">min</span>(ecm)]),<span class="fu">c</span>(<span class="fu">min</span>(ecm),<span class="fu">min</span>(ecm)),<span class="at">col=</span><span class="dv">4</span>)</span>
+<span id="cb50-13"><a href="multicolinealidad.html#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,x[ecm<span class="sc">==</span><span class="fu">min</span>(ecm)],<span class="st">&#39;k óptimo&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:ECMRidge"></span>
+<img src="MLG2_files/figure-html/ECMRidge-1.png" alt="\label{fig:ECMrepresentacion} Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO." width="576" />
+<p class="caption">
+Figure 3.3:  Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO.
+</p>
+</div>
+<p>Algunos métodos de selección de <span class="math inline">\(k\)</span> son:</p>
+<ul>
+<li><p>Traza de ridge <span class="math inline">\(k\)</span>: el efecto de <span class="math inline">\(k\)</span> sobre las estimaciones de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es mas fuerte para valores bajos. De igual forma, si <span class="math inline">\(k\)</span> es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar <span class="math inline">\(k\)</span> hasta que parezca que su influencia sobre <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> se atenúe.</p></li>
+<li><p>Validación cruzada (CV): sea <span class="math inline">\(\widehat{y}_{(i),k}\)</span> la estimación de <span class="math inline">\(E(y_i)\)</span> por medio del estimador de ridge con el parámetro <span class="math inline">\(k\)</span> y usando una muestra excluyendo la i-ésima observación. La validación cruzada está definida como:
+<span class="math display">\[
+CV(k) = \sum_{i=1}^{n} (y_i - \widehat{y}_{(i),k})^2.
+\]</span>
+Por lo que la selección de <span class="math inline">\(k\)</span> es:
+<span class="math display">\[
+k_{CV} = \arg \min_{k} CV(k).
+\]</span></p></li>
+</ul>
+<div id="datos-de-cemento-1" class="section level3" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Datos de cemento</h3>
+<p>Para ajustar el modelo usando el estimador de ridge podemos usar la función <code>lmridge</code> del paquete <code>lmridge</code>. Primero, ajustamos el modelo usando diferentes valores de <span class="math inline">\(k\)</span>:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="multicolinealidad.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmridge)</span>
+<span id="cb51-2"><a href="multicolinealidad.html#cb51-2" aria-hidden="true" tabindex="-1"></a>K <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.3</span>,<span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb51-3"><a href="multicolinealidad.html#cb51-3" aria-hidden="true" tabindex="-1"></a>ridge.cement <span class="ot">=</span> <span class="fu">lmridge</span>(y<span class="sc">~</span>., <span class="at">data=</span>cement,<span class="at">K=</span>K,<span class="at">scaling=</span><span class="st">&#39;sc&#39;</span>)</span></code></pre></div>
+<p>En el objeto <code>ridge.cement</code> tenemos las estimaciones por el estimador de ridge para <span class="math inline">\(100\)</span> valores de <span class="math inline">\(k\)</span> entre <span class="math inline">\(0\)</span> y <span class="math inline">\(0.3\)</span>. Para observar como cambian las estimaciones para los diferentes valores de <span class="math inline">\(k\)</span> podemos graficar la traza de ridge así (en términos de las covariables en su escala orginal):</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="multicolinealidad.html#cb52-1" aria-hidden="true" tabindex="-1"></a>EstRidge.cement <span class="ot">=</span> <span class="fu">coef</span>(ridge.cement)</span>
+<span id="cb52-2"><a href="multicolinealidad.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(K,EstRidge.cement[,<span class="dv">2</span>],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">ylim=</span><span class="fu">range</span>(EstRidge.cement[,<span class="sc">-</span><span class="dv">1</span>]),<span class="at">lwd=</span><span class="dv">2</span>,</span>
+<span id="cb52-3"><a href="multicolinealidad.html#cb52-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;Estimaciones de los coeficientes&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;k&#39;</span>)</span>
+<span id="cb52-4"><a href="multicolinealidad.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(K,EstRidge.cement[,<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb52-5"><a href="multicolinealidad.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(K,EstRidge.cement[,<span class="dv">4</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb52-6"><a href="multicolinealidad.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(K,EstRidge.cement[,<span class="dv">5</span>],<span class="at">col=</span><span class="dv">4</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb52-7"><a href="multicolinealidad.html#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:cementridge2"></span>
+<img src="MLG2_files/figure-html/cementridge2-1.png" alt="\label{fig:CementTrazaRidge} Datos de cemento. Traza de ridge. Coeficiente asociado a ``X1`` (negro), coeficiente asociado a ``X2`` (rojo), coeficiente asociado a ``X3`` (verde) y coeficiente asociado a ``X4`` (azul)" width="576" />
+<p class="caption">
+Figure 3.4:  Datos de cemento. Traza de ridge. Coeficiente asociado a <code>X1</code> (negro), coeficiente asociado a <code>X2</code> (rojo), coeficiente asociado a <code>X3</code> (verde) y coeficiente asociado a <code>X4</code> (azul)
+</p>
+</div>
+<p>En la Figura <a href="#fig:CementTrazaRidge"><strong>??</strong></a> podemos observar que, cuando incrementamos <span class="math inline">\(k\)</span>, las estimaciones cambian rápidamente y luego parecen estabilizarse cuando <span class="math inline">\(k\)</span> es grande. Además hay un cambio de signo para el coeficiente asociado a <code>X3</code>. También puede usarse <code>plot(mod.r)</code> (traza de ridge para las estimaciones de los coeficientes asociados a las covariables escaladas).</p>
+<p>La selección del <span class="math inline">\(k\)</span> óptimo por medio de validación cruzada (CV) se hace de la siguiente manera:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="multicolinealidad.html#cb53-1" aria-hidden="true" tabindex="-1"></a>Criterios.cement <span class="ot">=</span> <span class="fu">kest</span>(ridge.cement)</span>
+<span id="cb53-2"><a href="multicolinealidad.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(K,Criterios.cement<span class="sc">$</span>CV,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;K&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;validación cruzada&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:cementridge3"></span>
+<img src="MLG2_files/figure-html/cementridge3-1.png" alt="\label{fig:CementCVridge} Datos de cemento. Validación cruzada." width="576" />
+<p class="caption">
+Figure 3.5:  Datos de cemento. Validación cruzada.
+</p>
+</div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="multicolinealidad.html#cb54-1" aria-hidden="true" tabindex="-1"></a>K[Criterios.cement<span class="sc">$</span>CV<span class="sc">==</span><span class="fu">min</span>(Criterios.cement<span class="sc">$</span>CV)]</span></code></pre></div>
+<pre><code>## [1] 0.009090909</code></pre>
+<p>Aquí podemos ver que el valorde <span class="math inline">\(k\)</span> que minimiza la validación cruzada es <span class="math inline">\(0.009\)</span>. El valor óptimo de <span class="math inline">\(k\)</span> por medio de otros criterios son:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="multicolinealidad.html#cb56-1" aria-hidden="true" tabindex="-1"></a>Criterios.cement</span></code></pre></div>
+<pre><code>## Ridge k from different Authors
+## 
+##                               k values
+## Thisted (1976):                0.00581
+## Dwividi &amp; Srivastava (1978):   0.00291
+## LW (lm.ridge)                  0.05183
+## LW (1976)                      0.00797
+## HKB (1975)                     0.01162
+## Kibria (2003) (AM)             0.28218
+## Minimum GCV at                 0.02424
+## Minimum CV at                  0.00909
+## Kibria 2003 (GM):              0.07733
+## Kibria 2003 (MED):             0.01718
+## Muniz et al. 2009 (KM2):      14.84574
+## Muniz et al. 2009 (KM3):       5.32606
+## Muniz et al. 2009 (KM4):       3.59606
+## Muniz et al. 2009 (KM5):       0.27808
+## Muniz et al. 2009 (KM6):       7.80532
+## Mansson et al. 2012 (KMN8):   14.98071
+## Mansson et al. 2012 (KMN9):    0.49624
+## Mansson et al. 2012 (KMN10):   6.63342
+## Mansson et al. 2012 (KMN11):   0.15075
+## Mansson et al. 2012 (KMN12):   8.06268
+## Dorugade et al. 2010:          0.00000
+## Dorugade et al. 2014:          0.00000</code></pre>
+<p>La estimación con <span class="math inline">\(K=0.0101\)</span> se puede obtener usando la función <code>lmridge</code> usando <span class="math inline">\(K=0.0101\)</span> como argumento:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="multicolinealidad.html#cb58-1" aria-hidden="true" tabindex="-1"></a>ridge.cement2 <span class="ot">=</span> <span class="fu">lmridge</span>(y<span class="sc">~</span>., <span class="at">data=</span>cement,<span class="at">K=</span><span class="fl">0.0101</span>,<span class="at">scaling=</span><span class="st">&#39;sc&#39;</span>)</span>
+<span id="cb58-2"><a href="multicolinealidad.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ridge.cement2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lmridge.default(formula = y ~ ., data = cement, K = 0.0101, scaling = &quot;sc&quot;)
+## 
+## 
+## Coefficients: for Ridge parameter K= 0.0101 
+##            Estimate Estimate (Sc) StdErr (Sc) t-value (Sc) Pr(&gt;|t|)    
+## Intercept   82.7052     -267.6034    306.3344      -0.8736   0.4052    
+## x1           1.3146       26.7886      3.9606       6.7637   0.0001 ***
+## x2           0.3059       16.4871      5.2766       3.1246   0.0124 *  
+## x3          -0.1295       -2.8734      3.9360      -0.7300   0.4841    
+## x4          -0.3432      -19.8985      5.4000      -3.6849   0.0051 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Ridge Summary
+##        R2    adj-R2  DF ridge         F       AIC       BIC 
+##   0.97180   0.96240   3.07629 133.92403  23.27712  58.35941 
+## Ridge minimum MSE= 392.3519 at K= 0.0101 
+## P-value for F-test ( 3.07629 , 9.74488 ) = 3.013147e-08 
+## -------------------------------------------------------------------</code></pre>
+<p>Vemos algunas diferencias con las estimaciones por MCO. Hay un cambio de signo en la estimación del coeficiente asociado a <code>x3</code>. Si embargo, no hay mucha diferencia en las estimaciones de los otros coeficientes. También podemos observar que las covariables <code>x1</code>, <code>x2</code> y <code>x3</code> ahora tienen un aporte significativo. Como era de esperarse, hay una disminución del <span class="math inline">\(R^{2}\)</span>, sin embargo es muy leve.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelos-polinomiales.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/03-Multicolinealidad.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/03-Multicolinealidad.Rmd",
+"text": null
+},
+"download": ["MLG2.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
