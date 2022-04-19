@@ -391,7 +391,7 @@ lines(x11,c(y11[1],y11[1]))
 lines(c(x11[2],x11[2]),y11)
 text(x11[2],mean(y11),expression(beta[1]+beta[3]),pos=4)
 ```
-En este caso se asume que $t$ es conocido. Si este valor se asume como desconocido, debe estimarse a partir de los datos como un parámetro adicional. Sin embargo, se tendría que recurrir a un método estimación para modelos no-lineales.
+Aquí asumimos que $t$ es conocido. Si este valor se asume como desconocido, debe estimarse a partir de los datos como un parámetro adicional. Sin embargo, se tendría que recurrir a un método estimación para modelos no-lineales.
 
 ### Ejemplo
 
