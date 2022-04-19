@@ -60,11 +60,12 @@ $$
 
 describe la relación lineal entre $y$ y $x_1$. Si las relación entre las variables presentan curvaturas, se puede considerar un modelo polinómico de la forma:
 $$
-y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}x_{i}^{2} + \ldots + + \beta_{d}x_{i}^{d} + \varepsilon_i.
+y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}x_{i}^{2} + \ldots + + \beta_{k}x_{i}^{k} + \varepsilon_i.
 $$
-Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros $\bbeta$. En la Figura \@ref(fig:Polinomios)  se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3).
+Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros $\bbeta$. En la Figura \@ref(fig:Polinomios)  se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3). Aquí vemos que este tipo de modelos son muy versatiles. Caulquier función suave se puede ajustar meidante un polinomio de grado suficientemente alto. Por esta razón, los modelos polinomicos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.
 
-```{r Rectas2,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:Polinomios} Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (linea verde)."}
+
+```{r Polinomios,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (linea verde)."}
 
 x= seq(-1,1,length.out = 100)
 y1 = polfun(x,c(0,1))
@@ -77,15 +78,14 @@ lines(x,y2,col=2,lwd=2)
 lines(x,y3,col=3,lwd=2)
 ```
 
-Como se observa en la Figura \@ref(fig:Polinomios), este tipo de modelos son muy versatiles. Caulquier función suave se puede ajustar meidante un polinomio de grado suficientemente alto. Por esta razón, los modelos polinomicos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.
 
 En el caso que se tengan dos covariables, un modelo de orden 2 se expresa de la forma:
 $$
 y_{i} = \beta_{0} + \beta_{1}x_{1i} + \beta_{2}x_{2i} + \beta_{3}x_{1i}^2 + \beta_{4}x_{2i}^2 + \beta_{5}x_{1i}x_{2i} + \varepsilon_i.
 $$
-En las Figuras \@ref(fig:Poli1)-\@ref(fig:Poli3) muestran el valor esperado de $Y$ en un modelo lineal (asumiendo $\beta_3=\beta_4=\beta_5=0$), cuadrático y con interacción (asumiendo $\beta_3=\beta_4=0$).
+En las Figuras \@ref(fig:modPoli1)-\@ref(fig:modPoli3) muestran el valor esperado de $Y$ en un modelo lineal (asumiendo $\beta_3=\beta_4=\beta_5=0$), cuadrático y con interacción (asumiendo $\beta_3=\beta_4=0$).
 
-```{r modPoli1,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "\\label{fig:Poli1} Valor esperado de $Y$ en un modelo lineal (izquierda) y gráfico de contorno (derecha)."}
+```{r modPoli1,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Valor esperado de $Y$ en un modelo lineal (izquierda) y gráfico de contorno (derecha)."}
 par(mfrow=c(1,2))
 x <- seq(-10, 10, length= 30)
 y <- x
@@ -98,7 +98,7 @@ contour(x, y, z,xlab='covariable 1',ylab='covariable 2')
 El número de parámetros incrementa rápidamente con el número de covariables. Con $k$ covariables, tenemos: un intercepto, $k$ términos lineales, $k$
 términos cuadráticos, y $k(k - 1)/2$ interacciones. Por esta razón, en muchos casos, no se toman en cuentas las interacción cuando el número de covariables es grande.
 
-```{r modPoli2,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "\\label{fig:Poli2} Valor esperado de $Y$ en un modelo cuadrático (izquierda) y gráfico de contorno (derecha)."}
+```{r modPoli2,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Valor esperado de $Y$ en un modelo cuadrático (izquierda) y gráfico de contorno (derecha)."}
 par(mfrow=c(1,2))
 x <- seq(-10, 10, length= 30)
 y <- x
@@ -108,7 +108,7 @@ contour(x, y, z)
 ```
 
 
-```{r modPoli3,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "\\label{fig:Poli3} Valor esperado de $Y$ en un modelo lineal con interacción (izquierda) y gráfico de contorno (derecha)."}
+```{r modPoli3,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Valor esperado de $Y$ en un modelo lineal con interacción (izquierda) y gráfico de contorno (derecha)."}
 par(mfrow=c(1,2))
 x <- seq(-10, 10, length= 30)
 y <- x
@@ -117,7 +117,7 @@ persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue")
 contour(x, y, z)
 ```
 
-Hay aspectos que se deben tener en la práctica cuando se implmenta un modelo polinomial: 
+Hay aspectos que se deben tener en la práctica cuando se implementa un modelo polinomial: 
 
 - **Selección del orden:** La idea es mantener el orden del polinomio bajo. Si embargo, si es muy bajo no logra capturar la curvatura presente en los datos. En caso que el orden sea grande, el modelo es innecesariamente más complejo y puede haber problemas de multicolinealidad.
 
@@ -128,7 +128,7 @@ La selección del orden puede hacerse de dos formas. (1) ** Hacia delante**: emp
 
 - **Extrapolación**: La extrapolación con modelos polinomiales puede ser muy peligrosa. Por ejemplo en la Figura \@ref(fig:extrapolacion) podemos ajustar un modelo de orden dos a los datos (linea negra). Si hacemos una predicción fuera del rango de los datos, el valor esperado predicho sigue el comportamiento cuadrático propuesto. Sin embargo, el valor esperado de $Y$ puede seguir un comportamiento diferente (linea roja discontinua). Lo que lleva a tener una predicción sesgada. 
 
-```{r Extrapolacion,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:extrapolacion} Problema de extrapolación."}
+```{r extrapolacion,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Problema de extrapolación."}
 x= seq(0,9,length.out=100)
 y = 2 + 2*x - 0.25*x^2
 
@@ -233,9 +233,9 @@ lines(X02.2$X2c+mean(cakes$X2),predX2.1,col=2,lwd=2)
 legend('bottomright',c('X1=35','X1=33'),col=1:2,lty=1)
 ```
 
-En la Figura \@ref(fig:predCakes) (izquierda) vemos que, cuando la temperatura es de 350 grados Fahrenheit, el máximo de palatabilidad que se obtiene en un tiempo entre 36 y 37 minutos. Sin embargo, cuando la temperatura se incrementa a 360, la máxima palatibilidad que se puede lograr es menor. Además, se obtiene en un tiempo también menor. El efecto de la interacción también se puede observar en la Figura \@ref(fig:predCakes) (derecha), pero ahora fijando el tiempo de horneado y variando la temperatura. El gráfico de contornos (Figura \@ref(fig:predCakes2)) muestra que la máxima palatabilidad se observa cuando la temperatura está alrededor de 355 y el tiempo de horneado está entre 35 y 36 minutos.
+En la Figura \@ref(fig:predCakes) (izquierda) vemos que, cuando la temperatura es de 350 grados Fahrenheit, el máximo de palatabilidad que se obtiene en un tiempo entre 36 y 37 minutos. Sin embargo, cuando la temperatura se incrementa a 360, la máxima palatibilidad que se puede lograr es menor. Además, se obtiene en un tiempo también menor. El efecto de la interacción también se puede observar en la Figura \@ref(fig:predCakes2) (derecha), pero ahora fijando el tiempo de horneado y variando la temperatura. El gráfico de contornos (Figura \@ref(fig:predCakes2)) muestra que la máxima palatabilidad se observa cuando la temperatura está alrededor de 355 y el tiempo de horneado está entre 35 y 36 minutos.
 
-```{r PredCakes2,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:predCakes2} Datos de pasteles. Gráfica de contornos."}
+```{r predCakes2,echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Gráfica de contornos."}
 X1 = seq(32, 38, length.out = 50)
 X2 = seq(335, 365, length= 50)
 
@@ -264,7 +264,7 @@ IC95 = round(predict(modc.cakes,data.frame(X1c=maxX1 - mean(cakes$X1),
 
 Para determinar en que combinación de tiempo (X1) y temperatura de horneado (X2) se obtiene la máxima palatabilidad. Por lo tanto, debemos resolver la siguiente ecuación:
 \[
-\frac{\partial E(Y)}{\partial \bx}  = \frac{\partial}{\partial \bx}\beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \beta_{3}x_{1}^2 + \beta_{4}x_{2}^{2} + \beta_{5}x_{1}x_{2} = \bZERO,
+\frac{\partial E(Y)}{\partial \bx}  = \frac{\partial}{\partial \bx} \left( \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \beta_{3}x_{1}^2 + \beta_{4}x_{2}^{2} + \beta_{5}x_{1}x_{2} \right) = \bZERO,
 \]
 verificando que se obtiene un máximo.
 
@@ -274,9 +274,9 @@ Resolviendo la ecuación anterior, el máximo valor esperado de palatabilidad $(
 ### Datos de Boston
 ```{r BostonFit0, echo=F, warning=FALSE,message = FALSE}
 Boston$disc = Boston$dis - mean(Boston$dis)
-mod1.Boston = lm(nox~disc,data=Boston)
-mod2.Boston = lm(nox~disc+I(disc^2),data=Boston)
-mod3.Boston = lm(nox~disc+I(disc^2)+I(disc^3),data=Boston)
+mod1.Boston = lm(I(nox^-1.5)~disc,data=Boston)
+mod2.Boston = lm(I(nox^-1.5)~disc+I(disc^2),data=Boston)
+mod3.Boston = lm(I(nox^-1.5)~disc+I(disc^2)+I(disc^3),data=Boston)
 
 
 R2.3 = round(summary(mod3.Boston)$r.squared,3)
@@ -284,17 +284,17 @@ R2.2 = round(summary(mod2.Boston)$r.squared,3)
 ```
 Para los datos de contaminación se puede proponer el siguiente modelo:
 \[
-\log \mbox{NOx}_{i} = \beta_{0} + \beta_{1}\mbox{dis}_{i} + \beta_{2}\mbox{dis}_{i}^{2} + \beta_{3}\mbox{dis}_{i}^{3} + \varepsilon_{i}.
+\mbox{NOx}_{i}^{-1.5} = \beta_{0} + \beta_{1}\mbox{dis}_{i} + \beta_{2}\mbox{dis}_{i}^{2} + \beta_{3}\mbox{dis}_{i}^{3} + \varepsilon_{i}.
 \]
-El ajuste del modelo es el siguiente:
+La potencia en la variable respuesta se seleccionó usando el método de Box-Cox. El ajuste del modelo es el siguiente:
 ```{r BostonFit, echo=T, warning=FALSE,message = FALSE}
 Boston$disc = Boston$dis - mean(Boston$dis)
-mod3.Boston = lm(nox~disc+I(disc^2)+I(disc^3),data=Boston)
+mod3.Boston = lm(I(nox)^{-1}~disc+I(disc^2)+I(disc^3),data=Boston)
 summary(mod3.Boston)
 ```
 En la Figura \@ref{figPredBoston} muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del $`r R2.3*100`$\% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de $`r R2.2`$. Sin embargo, se puede observar que este ajuste es un poco deficiente cuando las distancias son muy grandes (mayores a 11).
 
-```{r PredBoston,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:figPredBoston} Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)."}
+```{r figPredBoston,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)."}
 x = seq(1,13,length.out=100)
 
 pred1 = predict(mod1.Boston,list(disc=x-mean(Boston$dis)))
@@ -320,9 +320,11 @@ $$
 \end{cases}
 \nonumber
 $$
-Por lo tanto, si $x_{i} \leq t$, $E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}$. Mientras que, si $x_{i} > t$, tenemos que $E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{1}t) + (\beta_{1} + \beta_{3})x_{i}$. Este modelo esta representado graficamente en la Figura \@ref{RegSegmentos}. Cuando $\beta_2 \neq 0$, el modelo presenta una discontinuidad en $t$. Mientras que, cuando $\beta_2 = 0$, el modelo presenta un cambio de pendiente en el punto $t$. Además, $\beta_3$ indica el cambio de pendiente. 
+Por lo tanto, si $x_{i} \leq t$, $E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}$. Mientras que, si $x_{i} > t$, tenemos que $E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{1}t) + (\beta_{1} + \beta_{3})x_{i}$. 
 
-```{r RegSegmentos,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "\\label{fig:RegSegmentos1} Modelo de regresión por segmentos. Modelo con discontinuidad en $t$ (izquierda). Modelo con cambio de pendiente en $t$ (derecha)."}
+Este modelo esta representado graficamente en la Figura \@ref(RegSegmentos). Cuando $\beta_2 \neq 0$, el modelo presenta una discontinuidad en $t$. Mientras que, cuando $\beta_2 = 0$, el modelo presenta un cambio de pendiente en el punto $t$. Además, $\beta_3$ indica el cambio de pendiente. 
+
+```{r RegSegmentos,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Modelo de regresión por segmentos. Modelo con discontinuidad en $t$ (izquierda). Modelo con cambio de pendiente en $t$ (derecha)."}
 par(mfrow=c(1,2))
 b0 = 0.1
 b1 = 0.5
@@ -393,12 +395,12 @@ En este caso se asume que $t$ es conocido. Si este valor se asume como desconoci
 
 ### Ejemplo
 
-```{r LotesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:LotesFig} Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).",warning=FALSE,message = FALSE}
+```{r LotesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).",warning=FALSE,message = FALSE}
 library(MPV)
 data(p7.11)
 plot(p7.11,ylab='costo de producción por unidad (USD)',xlab='Unidades por lote')
 ```
-Considere la base de datos `p7.11` de la librería `MPV`. Aquí se quiere modelar la relación entre el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades). Este relación se puede observar en la Figura \@ref(fig:LotesFig). Se puede observar que la relación entre las variables es lineal. Sin embargo, se aprecia un posible cambio de pendiente en el punto $x=200$. Por esta razón se propone el siguiente modelo:
+Considere la base de datos `p7.11` de la librería `MPV`. Aquí se quiere modelar la relación entre el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades). Este relación se puede observar en la Figura \@ref(fig:LotesFigure). Se puede observar que la relación entre las variables es lineal. Sin embargo, se aprecia un posible cambio de pendiente en el punto $x=200$. Por esta razón se propone el siguiente modelo:
 $$
 y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}(x_{i}-200)_{+}^{1} + \varepsilon_{i}.
 $$
@@ -410,9 +412,9 @@ p7.11$x2[p7.11$x < 200] = 0
 mod.lotes = lm(y~.,data=p7.11)
 summary(mod.lotes)
 ```
-A partir del ajuste podemos concluir que, por cada unidad que incrementa el lote, el costo de producción disminuye en $0.05$USD. Si embargo, si el tamaño del lote es mayor a $200$, el costo de producción disminuye solamente $0.01$USD cuando el lote aumenta en un artículo. Gráficamente, el ajuste se puede observar en la Figura \@ref(fig:LotesFig2).
+A partir del ajuste podemos concluir que, por cada unidad que incrementa el lote, el costo de producción disminuye en $0.05$USD. Si embargo, si el tamaño del lote es mayor a $200$, el costo de producción disminuye solamente $0.01$USD cuando el lote aumenta en un artículo. Gráficamente, el ajuste se puede observar en la Figura \@ref(fig:LotesFigure2).
 
-```{r LotesFigure2, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:LotesFig2} Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).",warning=FALSE,message = FALSE}
+```{r LotesFigure2, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).",warning=FALSE,message = FALSE}
 b.lotes = mod.lotes$coefficients
 plot(p7.11$x,p7.11$y,ylab='costo de producción por unidad (USD)',xlab='unidades por lote')
 x = c(100,200)
