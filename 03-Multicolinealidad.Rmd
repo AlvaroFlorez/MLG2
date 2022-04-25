@@ -24,9 +24,9 @@ Los cuatro ingredientes químicos son:
 - **`x3`** tetra-aluminio ferrita de calcio (\%).
 - **`x4`** silicato dicálcico (\%). 
 
-En la Figura \@ref(fig:CementFig) podemos observar que hay relaciones lineales positivas entre la variable respuesta, y las covariables aluminato tricálcico y silicato tricálcico. Mientras que la relación con la variable silicato dicálcico es negativa. También podemos notar que hay una relación negativa fuerte en las covariables aluminato tricálcico y tetra-aluminio ferrita de calcio, y entre silicato tricálcico y silicato dicálcico.
+En la Figura \@ref(fig:CementFigure) podemos observar que hay relaciones lineales positivas entre la variable respuesta, y las covariables aluminato tricálcico y silicato tricálcico. Mientras que la relación con la variable silicato dicálcico es negativa. También podemos notar que hay una relación negativa fuerte en las covariables aluminato tricálcico y tetra-aluminio ferrita de calcio, y entre silicato tricálcico y silicato dicálcico.
 
-```{r CementFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:CementFig} Datos de cemento. Diagrama de dispersión.",warning=FALSE,message = FALSE}
+```{r CementFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de cemento. Diagrama de dispersión.",warning=FALSE,message = FALSE}
 library(MASS)
 data(cement)
 plot(cement[,c(5,1:4)])
@@ -49,9 +49,9 @@ Se tiene una muestra de $20$ mujeres saludables con edades entre $25$ y $34$ añ
 - **`Thigh`:** circunferencia del muslo (cm).
 - **`Midarm`:** circunferencia del brazo medio (cm).
 
-La Figura \@(fig:bodyfatFig) muestra la relación entre variables. Podemos observar que hay una relación fuerte del \% de masa corporal con las covariables Triceps y Thigh. Además hay también una relación lineal fuerte entre esas dos covariables.
+La Figura \@(fig:bodyfatFigure) muestra la relación entre variables. Podemos observar que hay una relación fuerte del \% de masa corporal con las covariables Triceps y Thigh. Además hay también una relación lineal fuerte entre esas dos covariables.
 
-```{r bodyfatFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:bodyfatFig} Datos de grasa corporal. Diagrama de dispersión.",warning=FALSE,message = FALSE}
+```{r bodyfatFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de grasa corporal. Diagrama de dispersión.",warning=FALSE,message = FALSE}
 library(isdals)
 data(bodyfat)
 plot(bodyfat)
@@ -117,9 +117,9 @@ Además, la matriz de varianzas-covarianzas de $\hatbb$ es:
 \begin{equation}
 V(\hatbb) = \sigma^{2} \begin{pmatrix}
 \frac{1}{1-r_{12}^{2}} & \frac{-r_{12}}{1-r_{12}^{2}} \\ \frac{-r_{12}}{1-r_{12}^{2}} & \frac{1}{1-r_{12}^{2}} \end{pmatrix}.
-\label{eq:varbb}
+(\#eq:varbb)
 \end{equation}
-En \@(eq:varbb) podemos observar que la varianza de los coeficientes $\hatbb$ tienden a infinito cuando $|r_{12}|\rightarrow 1$. Mientras que se hace mínima cuando las covariables están incorrelacionadas $(r_{12}=0)$. Es decir, una fuerte correlación entre $x_1$ y $x_2$ da como resultado grandes varianzas y covarianzas para $\hatbb$. 
+En \@ref(eq:varbb) podemos observar que la varianza de los coeficientes $\hatbb$ tienden a infinito cuando $|r_{12}|\rightarrow 1$. Mientras que se hace mínima cuando las covariables están incorrelacionadas $(r_{12}=0)$. Es decir, una fuerte correlación entre $x_1$ y $x_2$ da como resultado grandes varianzas y covarianzas para $\hatbb$. 
 
 Por esta razón es preferible tener covariables que sean ortogonales. Puesto que así se garantiza la menor varianza para $\hatbbeta$. Sin embargo, las covariables son díficiles de controlar en estudios observacionales. 
 
@@ -381,7 +381,7 @@ A partir de estos resultados, vemos que: (1) Si $k$ crece, disminuye la varianza
 La idea de la regresión de ridge es encontrar un valor de $k$ tal que  $\mbox{ECM}(\hatbb_{R}) < V(\hatbb)$. En la Figura \@ref(fig:ECMrepresentacion) podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta $k$, el sesgo incrementa y la varianza disminuye. También, hay una región de $k$ donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de $k$ que minimiza el ECM, o por lo menos algún valor en la región donde $\mbox{ECM}(\hatbb_{R}) < V(\hatbb)$.
 
 
-```{r ECMRidge, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:ECMrepresentacion} Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO.",warning=FALSE,message = FALSE}
+```{r ECMrepresentacion, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO.",warning=FALSE,message = FALSE}
 x= seq(from=0,to=0.3,length.out = 100)
 sesgo = 0.25/(1+exp(-20*(x-0.001)))
 sesgo = sesgo - min(sesgo) 
@@ -417,7 +417,7 @@ K = seq(from=0,to=0.3,length.out = 100)
 ridge.cement = lmridge(y~., data=cement,K=K,scaling='sc')
 ```
 En el objeto ``ridge.cement`` tenemos las estimaciones por el estimador de ridge para $100$ valores de $k$ entre $0$ y $0.3$. Para observar como cambian las estimaciones para los diferentes valores de $k$ podemos graficar la traza de ridge así (en términos de las covariables en su escala orginal):
-```{r cementridge2,echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:CementTrazaRidge} Datos de cemento. Traza de ridge. Coeficiente asociado a ``X1`` (negro), coeficiente asociado a ``X2`` (rojo), coeficiente asociado a ``X3`` (verde) y coeficiente asociado a ``X4`` (azul)",warning=FALSE,message = FALSE}
+```{r CementTrazaRidge,echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de cemento. Traza de ridge. Coeficiente asociado a ``X1`` (negro), coeficiente asociado a ``X2`` (rojo), coeficiente asociado a ``X3`` (verde) y coeficiente asociado a ``X4`` (azul)",warning=FALSE,message = FALSE}
 EstRidge.cement = coef(ridge.cement)
 plot(K,EstRidge.cement[,2],type='l',ylim=range(EstRidge.cement[,-1]),lwd=2,
      ylab='Estimaciones de los coeficientes',xlab='k')

@@ -1,6 +1,7 @@
 fig:AtletesFigure
 fig:UN11Figure
 tab:dosIndica
+eq:modInter
 fig:Rectas1
 fig:AtletesAjuste
 fig:AtletesAjuste2
@@ -20,8 +21,9 @@ fig:LotesFigure
 fig:LotesFigure2
 fig:CementFigure
 fig:bodyfatFigure
-fig:ECMRidge
-fig:cementridge2
+eq:varbb
+fig:ECMrepresentacion
+fig:CementTrazaRidge
 fig:cementridge3
 variables-indicadoras-o-dummies
 ejemplos
