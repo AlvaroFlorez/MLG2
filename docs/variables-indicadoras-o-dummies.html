@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-04-25" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -194,6 +194,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-de-ridge"><i class="fa fa-check"></i><b>3.7</b> Estimador de ridge</a>
 <ul>
 <li class="chapter" data-level="3.7.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-1"><i class="fa fa-check"></i><b>3.7.1</b> Datos de cemento</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-por-componentes-principales"><i class="fa fa-check"></i><b>3.8</b> Estimador por componentes principales</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-2"><i class="fa fa-check"></i><b>3.8.1</b> Datos de cemento</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -419,9 +423,8 @@ donde <span class="math inline">\(\varepsilon_{i} \sim N(0, \sigma^{2})\)</span>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="variables-indicadoras-o-dummies.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span>
 <span id="cb10-2"><a href="variables-indicadoras-o-dummies.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
 <span id="cb10-3"><a href="variables-indicadoras-o-dummies.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">4</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb10-4"><a href="variables-indicadoras-o-dummies.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="variables-indicadoras-o-dummies.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb10-6"><a href="variables-indicadoras-o-dummies.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<span id="cb10-4"><a href="variables-indicadoras-o-dummies.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb10-5"><a href="variables-indicadoras-o-dummies.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:AtletesAjuste2"></span>
 <img src="MLG2_files/figure-html/AtletesAjuste2-1.png" alt="Datos de atletas. Ajuste del modelo general (línea solida) y el modelo líneas paralelas (línea discontinua) para la homoglobina en función  del índice de masa corporal y sexo. Líneas negra para hombres y líneas roja para mujeres." width="576" />
 <p class="caption">

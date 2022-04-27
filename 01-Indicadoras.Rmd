@@ -2,7 +2,7 @@
 ```{r preamble1, include=FALSE}
 library(MASS)
 library(alr4)
-data(ais)
+data(ais,package='alr4')
 data(UN11)
 n= nrow(UN11)
 Names = rownames(UN11)
@@ -58,7 +58,6 @@ En caso que la covariable categórica tenga $k$ categorías, se tienen que crear
 tb1 = data.frame(
   cat = c('OECD','otro','África'),
   u1 = c(0,1,0),u2=c(0,0,1))
-
 colnames(tb1) = c('Categoría','$u_{1}$', '$u_{2}$')
 knitr::kable(tb1, escape = FALSE,caption ='Variables indicadoras para la variable ``group`` de los datos de la ONU', booktabs = TRUE)
 ```
@@ -89,7 +88,6 @@ abline(a=0.9,b=-0.7,lwd=2)
 abline(a=0.8,b=-0.4,lwd=2,col=2)
 text(0.3,0.8,pos=4,bquote(E(Y)~'='~beta[0]~'+'~beta[1]~X[1]),cex=0.8,col=1)
 text(0.4,0.7,pos=4,bquote(E(Y)~'='~beta[0]~'+'~beta[2]~'+'~'('~beta[1]~'+'~beta[3]~')'~X[1]),cex=0.8,col=2)
-
 plot(NULL,NULL,ylim=c(0,1),xlim=c(0,1),xlab='covariable = X',ylab = 'variable respuesta = Y')
 abline(a=0.9,b=-0.7,lwd=2)
 abline(a=0.7,b=-0.7,lwd=2,col=2)
@@ -156,7 +154,6 @@ La estimación del efecto asociado al sexo indica la diferencia media del nivel 
 plot(Hg~BMI,data=ais,col=ais$Sex+1,ylab='Hg (g/dl)',xlab='BMI')
 abline(a=mod.ais$coefficients[1],b=mod.ais$coefficients[3],lwd=2)
 abline(a=mod.ais$coefficients[1]+mod.ais$coefficients[2],b=mod.ais$coefficients[3]+mod.ais$coefficients[4],col=2,lwd=2)
-
 abline(a=mod.ais.lp$coefficients[1],b=mod.ais.lp$coefficients[3],lwd=2,lty=2)
 abline(a=mod.ais.lp$coefficients[1]+mod.ais.lp$coefficients[2],b=mod.ais.lp$coefficients[3],col=2,lwd=2,lty=2)
 ```

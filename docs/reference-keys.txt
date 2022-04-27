@@ -25,6 +25,7 @@ eq:varbb
 fig:ECMrepresentacion
 fig:CementTrazaRidge
 fig:cementridge3
+eq:varBPC
 variables-indicadoras-o-dummies
 ejemplos
 datos-de-atletas-australianos
@@ -59,3 +60,5 @@ datos-de-grasa-corporal
 solución-al-problema-de-multicolinealidad
 estimador-de-ridge
 datos-de-cemento-1
+estimador-por-componentes-principales
+datos-de-cemento-2

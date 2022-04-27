@@ -36,7 +36,7 @@ Con los datos `cakes` de la libreria `alr4` se tienen dos objetivos. Primero, ev
 
 Como variable respuesta (`Y`) se tiene el promedio de calificación de la palatabilidad de cuatro pasteles horneados. Mientras que las covariables son: el tiempo de horneado (`X1`, en minutos) y la temperatura (`X2`, en grados Fahrenheit)
 
-```{r CakesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:CakesFig} Datos de pasteles. Diagrama de dispersión.",warning=FALSE,message = FALSE}
+```{r CakesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Diagrama de dispersión.",warning=FALSE,message = FALSE}
 library(alr4)
 data(cakes)
 plot(cakes[,-1])
@@ -46,7 +46,7 @@ plot(cakes[,-1])
 ### Datos de Boston
 La base de datos `Boston` de la libreria `MASS` contiene información sobre 506 suburbios del area metropolitana de Boston. El objetivo del estudio es evaluar la relación del precio de las viviendas y la concentración de contaminación ambienta. En esta sección evaluaremos la relación entre la concentración anual de óxido de nitrógeno ($y$, en partes por diez millones) y la distancia a cinco centros de empleo.
 
-```{r BostonFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "\\label{fig:BostonFig} Datos de Boston. Relación entre el óxido de nitrógeno y la distancia a centros de empleo.",warning=FALSE,message = FALSE}
+```{r BostonFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de Boston. Relación entre el óxido de nitrógeno y la distancia a centros de empleo.",warning=FALSE,message = FALSE}
 library(MASS)
 data(Boston)
 plot(nox~dis,data=Boston,ylab='NOx',xlab='distancia a centros de empleo')
@@ -206,7 +206,7 @@ En este caso, los VIF decrecieron considerablemente con respecto al modelo con l
 
 En la figura \@ref(fig:predCakes) podemos observar el valor esperado estimado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado.
 
-```{r PredCakes,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "\\label{fig:predCakes} Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. "}
+```{r PredCakes,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. "}
 par(mfrow=c(1,2))
 X01.1 = data.frame(X1c = seq(32,38,length.out = 100)-mean(cakes$X1),
                    X2c = 360 - mean(cakes$X2))

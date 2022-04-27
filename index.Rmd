@@ -24,8 +24,10 @@ header-includes:
   - \newcommand{\be}{\boldsymbol e}
   - \newcommand{\bH}{\boldsymbol H}
   - \newcommand{\bI}{\boldsymbol I}
+  - \newcommand{\bl}{\boldsymbol l}
   - \newcommand{\bL}{\boldsymbol L}
   - \newcommand{\bM}{\boldsymbol M}
+  - \newcommand{\bp}{\boldsymbol p}
   - \newcommand{\bP}{\boldsymbol P}
   - \newcommand{\br}{\boldsymbol r}
   - \newcommand{\bR}{\boldsymbol R}
@@ -44,6 +46,10 @@ header-includes:
   - \newcommand{\haty}{\widehat{y}}
   - \newcommand{\hatby}{\widehat{\by}}
   
+  - \newcommand{\hatalpha}{\widehat{\alpha}}
+  - \newcommand{\balpha}{\boldsymbol \alpha}
+  - \newcommand{\hatbalpha}{\widehat{\balpha}}
+    
   - \newcommand{\bbeta}{\boldsymbol \beta}
   - \newcommand{\hatbeta}{\widehat{\beta}}
   - \newcommand{\hatbbeta}{\widehat{\bbeta}}

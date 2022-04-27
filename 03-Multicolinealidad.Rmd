@@ -4,7 +4,7 @@ library(MASS)
 library(alr4)
 library(isdals)
 
-data(cement)
+data(cement,package = 'MPV')
 mod.cement = lm(y ~ x1+x2+x3+x4,data=cement)
 s.mod.cement = summary(mod.cement)
 
@@ -27,8 +27,7 @@ Los cuatro ingredientes químicos son:
 En la Figura \@ref(fig:CementFigure) podemos observar que hay relaciones lineales positivas entre la variable respuesta, y las covariables aluminato tricálcico y silicato tricálcico. Mientras que la relación con la variable silicato dicálcico es negativa. También podemos notar que hay una relación negativa fuerte en las covariables aluminato tricálcico y tetra-aluminio ferrita de calcio, y entre silicato tricálcico y silicato dicálcico.
 
 ```{r CementFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de cemento. Diagrama de dispersión.",warning=FALSE,message = FALSE}
-library(MASS)
-data(cement)
+data(cement,package = 'MASS')
 plot(cement[,c(5,1:4)])
 ```
 Para estos datos, se propone el siguiente modelo:
@@ -82,28 +81,28 @@ Vamos a ilustrar el efecto de la multicolinealidad con un ejemplo sencillo consi
 $$
 \by^{*} = \bZ\bbeta + \bvarepsi,
 $$
-donde $\bZ$ es la matriz de covariables escaladas con longitud unitaria, esto es:
+donde $\bZ$ es la matriz de covariables escaladas con longitud unitaria. Esto es:
 $$
 y_{i}^{*} = \frac{y_{i}-\bar{y}}{\sqrt{SST}}, \mbox{ y } z_{ij} = \frac{x_{ij} - \bar{x}_{j}}{\sqrt{s_{jj}}},
 $$
-donde $s_{jj} = \sum_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}$. De esta forma la matriz $\bZ'\bZ$ es la matriz de correlación de las covariables, 
+donde $s_{jj} = \sum_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}$. De esta forma $\bZ'\bZ$ es la matriz de correlación de las covariables, 
 $$
 \bZ'\bZ = \begin{pmatrix}
-1 & \rho_{12} \\ \rho_{12} & 1
+1 & r_{12} \\ r_{12} & 1
 \end{pmatrix},
 $$
 y $\bZ'\by$ es el vector de correlaciones entre $y$ y las dos covariables:
 $$
 \bZ'\by^{*} = \begin{pmatrix}
-\rho_{y1} \\ \rho_{y2}
+r_{y1} \\ r_{y2}
 \end{pmatrix}.
 $$
 Por lo que el estimador por MCO de $\bb$ es:
 $$
 \hatbb = \begin{pmatrix}
-1 & \rho_{12} \\ \rho_{12} & 1
+1 & r_{12} \\ r_{12} & 1
 \end{pmatrix}^{-1}\begin{pmatrix}
-\rho_{y1} \\ \rho_{y2}
+r_{y1} \\ r_{y2}
 \end{pmatrix} = \begin{pmatrix}
 \frac{1}{1-r_{12}^{2}} & \frac{-r_{12}}{1-r_{12}^{2}} \\ \frac{-r_{12}}{1-r_{12}^{2}} & \frac{1}{1-r_{12}^{2}} \end{pmatrix} \begin{pmatrix}
 r_{1y} \\ r_{2y}
@@ -134,7 +133,7 @@ $$
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 r_{1,p-1} & r_{2,p-1} & r_{3,p-1} & \ldots & 1
 \end{pmatrix} \begin{pmatrix}
-b_{1} \\ b_{2} \\ \vdots \\ b_{k}
+b_{1} \\ b_{2} \\ \vdots \\ b_{p-1}
 \end{pmatrix} = \begin{pmatrix}
 r_{y1} \\ r_{y2} \\ \vdots \\ r_{y,p-1}
 \end{pmatrix}.
@@ -158,18 +157,18 @@ V(\hatb_{j}) = \frac{\sigma^{2}}{1-R^{2}_{j}}.
 $$
 Por lo que, si $z_j$ se puede expresar como una combinación lineal aproximada de las demás covariables, la varianza del estimador de $b_j$ Si $R^{2}_{j} \rightarrow 1$, entonces $V(\hatb_{j})\rightarrow \infty$.
 
-La multicolinealidad también produce que los estimadores $\hatb_{j}$, para $j=1,\ldots,p$, sean muy grandes en valor absoluto. Considere: 
+La multicolinealidad también produce que los estimadores $\hatb_{j}$, para $j=1,\ldots,p-1$, sean muy grandes en valor absoluto. Considere: 
 $$
-L_{1}^{2} = (\hatbb - \bb)'(\hatbb - \bb) = \sum_{j=1}^{k}(\hatb_{j}-b_{j})^{2}.
+L_{1}^{2} = (\hatbb - \bb)'(\hatbb - \bb) = \sum_{j=1}^{p}(\hatb_{j}-b_{j})^{2}.
 $$ 
 El valor esperado de $L_{1}^{2}$ es:
 $$
-E(L_{1}^{2}) = \sum_{j=1}^{p-1}E(\hatb_{j}-b_{j})^{2} = \sum_{j=1}^{k}\sigma^{2}\tr\bR^{-1}
+E(L_{1}^{2}) = \sum_{j=1}^{p-1}E(\hatb_{j}-b_{j})^{2} = \sum_{j=1}^{p-1}\sigma^{2}\tr\bR^{-1}
 $$
 Dado que la traza de una matriz es igual a la suma de sus valores propios, tenemos que:
-\[
+$$
 E(L_{1}^{2}) = \sigma^{2}\sum_{j=1}^{p-1}1/\lambda_{j},
-\]
+$$
 donde $\lambda_{j} > 0$, para $j=1,\ldots,p-1$, son los valores propios de $\bR$. Por lo tanto, si $\bR$ está mal condicionada debido a la multicolinealidad, al menos un $\lambda_{j}$ será muy pequeño.
 
 Cabe notar que, la multicolinealidad no viola ningún supuesto sobre los errores. Por lo tanto los estimadores por MCO siguen siendo BLUE. Pero, en presencia de multicolinealidad:
@@ -228,11 +227,11 @@ V(\hatbbeta) = \sigma^{2}\bT \bLambda^{-1}\bT'.
 $$
 Entonces, 
 $$
-V(\hatb_{l}) = \sigma^{2}\sum_{j=1}^{p-1}\frac{t_{lj}^{2}}{\lambda_{j}}.
+V(\hatb_{j}) = \sigma^{2}\sum_{k=1}^{p-1}\frac{t_{jk}^{2}}{\lambda_{k}}.
 $$
 De la expresión anterior,
 $$
-VIF_{j} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\lambda_{j}},
+VIF_{j} = \sum_{j=1}^{p-1}\frac{t_{ij}^{2}}{\lambda_{j}},
 $$
 Por lo tanto, uno o más valores propios pequeños pueden inflar la varianza de $\hatb_{j}$. De aquí salen los indicadores llamados índices de condición y número de condición.
 
@@ -247,7 +246,8 @@ El número de condición también se puede calcular a partir de la descomposici�
 $$
 \bZ =\bU\bD\bT',
 $$
-donde $\bU$ y $\bT$ son matrices $(n\times p)$ y $(p\times p)$, respectivamente, que $\bU\bU = \bI$ y $\bT'\bT = \bI$, y $\bD$ es una matriz diagonal con elementos $\mu_{j}$, $j=1,\ldots,p$, llamados valores singulares. 
+donde $\bU$ y $\bT$ son matrices $n\times (p-1)$ y $(p-1)\times (p-1)$, respectivamente, $\bU\bU = \bI$ y $\bT'\bT = \bI$, y $\bD$ es una matriz diagonal con elementos $\mu_{j}$, $j=1,\ldots,p-1$, llamados valores singulares. 
+
 Hay una relación entre los valoes singulares de $\bZ$ y los valores propios de $\bZ'\bZ$:
 $$
 \bZ'\bZ = (\bU\bD\bT')'\bU\bD\bT' = \bT\bD^2\bT' = \bT\bLambda\bT'.
@@ -263,13 +263,13 @@ Note que $\kappa_{j} = \sqrt{\eta_{j}}$. Por lo que el punto de corte de $10$ pa
 ### Proporciones de descomposición de varianza
 Hay una relación entre el VIF, los valores propios y los valores singulares. Esta es:
 $$
-VIF_{j} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\lambda_{j}} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\mu_{j}^2}.
+VIF_{j} = \sum_{j=1}^{p-1}\frac{t_{ij}^{2}}{\lambda_{j}} = \sum_{j=1}^{p-1}\frac{t_{ij}^{2}}{\mu_{j}^2}.
 $$
 De aquí salen los indicadores llamados proporciones de descomposición de varianza. Estos se calculan de la siguiente forma:
 $$
 \pi_{ij} = \frac{t_{ij}^2 / \mu_{i}^2 }{VIF_{j}}, j = 1,\ldots, p-1.
 $$
-Si se agrupan los $\pi_{ij}$ en una matriz $(p \times p)$ $\bpi$, la columna $j$ son proporciones de la varianza de $\hatbb$. Valores $\pi_{ij}$ mayores de 0.5 indican problemas de multicolinealidad.  
+Si se agrupan los $\pi_{ij}$ en una matriz $(p-1) \times (p-1)$ $\bpi$, la columna $j$ son proporciones de la varianza de $\hatbb$. Valores $\pi_{ij}$ mayores de 0.5 indican problemas de multicolinealidad.  
 
 ## Datos de cemento
 Los VIF para el modelo ajustado para los datos de cemento son los siguientes:
@@ -444,3 +444,95 @@ ridge.cement2 = lmridge(y~., data=cement,K=0.0101,scaling='sc')
 summary(ridge.cement2)
 ```
 Vemos algunas diferencias con las estimaciones por MCO. Hay un cambio de signo en la estimación del coeficiente asociado a ``x3``. Si embargo, no hay mucha diferencia en las estimaciones de los otros coeficientes. También podemos observar que las covariables ``x1``, ``x2`` y ``x3`` ahora tienen un aporte significativo. Como era de esperarse, hay una disminución del $R^{2}$, sin embargo es muy leve.
+
+## Estimador por componentes principales
+Considere el modelo en su forma canónica:
+$$
+\by^{*} = \bZ\bT\balpha + \bvarepsi,
+$$
+donde $\balpha = \bT'\bb$, $(\bZ\bT)'\bZ\bT=\bLambda$, $\bLambda$ es una matriz diagonal de valores propios $(\lambda_1,\ldots,\lambda_p)$ de $\bZ'\bZ$, y $\bT = (\bt_{1},\ldots,\bt_{p-1})$ es la matriz ortogonal de vectores propios asociados $\bLambda$.
+
+Las columnas de $\bP = \bZ\bT = (\bp_{1},\ldots,\bp_{p-1})$ son un conjunto de regresores ortogonales(llamados componentes principales):
+$$
+\bp_{k} = \sum_{j=1}^{p-1} t_{kj}\bz_{j}.
+$$
+El estimador de $\balpha$ por MCO es:
+$$
+\hatbalpha = (\bP'\bP)^{-1}\bP'\by^{*} = \bLambda^{-1}\bP'\by^{*},
+$$
+y la varianza de $\hatbalpha$ es:
+$$
+V(\hatbalpha) = \sigma^{2}(\bP'\bP)^{-1} = \sigma^{2}\bLambda^{-1}.
+$$
+De aquí podemos ver que valores propios de $\bZ'\bZ$ están asociados con la varianza de los coeficientes de regresión. Si $\lambda_j=1$ (para $j=1,\ldots,p$), las covariables originales son ortogonales. Mientras que valores propios cercanos a cero indican problemas de multicolinealidad dado que inflan la varianza de $\hatbalpha$. 
+
+Además, Note que para $\hatbb = \bT\hatbalpha$, tenemos:
+$$
+V(\hatbb) = V(\bT\hatbalpha) =\sigma^{2}\bT\bLambda^{-1}\bT' = \sigma^{2} \sum_{j=1}^{p-1}\lambda_{j}^{-1}\bt_{j}\bt_{j}',
+$$
+lo que implica que $V(\hatb_{k}) = \sigma^{2} \sum_{j=1}^{p-1}t_{kj}^{2}/\lambda_{j}$; la varianza de $\hatb_j$ es una combinación lineal de los valores propios.
+
+Para combatir el problema de multicolinealidad, la idea de la regresión por componentes principales es usar un subconjunto de $\bP$ como regresores (en vez de todos los compontes). Para esto, eliminamos los componentes principales $(\bp_{r+1},\ldots,\bp_{p-1})$ asociados a los valores propios cercanos a cero $(\lambda_{r+1},\ldots,\lambda_{p-1})$. Aquí estamos asumiendo que los valores propios están ordenados de mayor a menor, $\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_p$ (como lo hace `R`). Esto es,
+$$
+\hatbalpha_{PC} = \bL \hatbalpha = \begin{pmatrix} \bI_{r} & \bZERO \\ \bZERO & \bZERO \end{pmatrix} \hatbalpha.
+$$
+Por lo tanto $\hatbalpha_{PC} = (\overbrace{\hatalpha_{1},\hatalpha_{2},\ldots, \hatalpha_{r}}^{r},\overbrace{0, \ldots,0}^{p-1-r})'$. 
+
+En términos de $\bb$, 
+\[
+\hatbb_{PC} = \bT\hatbalpha_{PC} = \bT\bL\bLambda^{-1}\bT'\bZ'\by^{*}.
+\]
+Además,
+\[
+V(\hatbb_{PC}) = \sigma^{2} \bT\bL\bLambda^{-1}\bL'\bT' = \sigma^{2}\sum_{j=1}^{r} \lambda_{j}^{-1}\bt_{j}\bt_{j}'.
+\]
+lo que implica que $V(\hatb_{PC,j}) = \sigma^{2} \sum_{k=1}^{r}t_{jk}^{2}/\lambda_{k}$.
+
+El sesgo de $\hatbb_{PC}$ está definido como:
+$$
+E(\bT\hatbalpha_{PC}) - \bT\balpha = -\sum_{k=r+1}^{p-1}\alpha_k\bt_{k}.
+$$
+Mientras que la varianza de $\hatbb_{PC}$ es:
+\begin{equation}
+V(\bT\hatbalpha_{PC}) = \bT \left[ \sigma^{2}\bL \bLambda^{-1} \bL \right] \bT^{-1} = \sigma^{2} \sum_{k=1}^{r}\lambda_k^{-1}\bt_{k}\bt_{k}' \leq \sigma^{2} \sum_{k=1}^{p-1}\lambda_k^{-1}\bt_{k}\bt_{k}' = \sigma^{2}(\bZ'\bZ)^{-1}.
+(\#eq:varBPC)
+\end{equation}
+Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de $\hatbb_{PC}$.
+
+Note en \@ref(eq:varBPC) que la diferencia en varianzas con respecto al estimador de MCO de $\bb$:
+$$
+\sigma^{2}\sum_{k=r+1}^{p-1}\lambda_k^{-1} \bt_{k}\bt_{k}',
+$$
+será mayor si las componentes principales excluidas están asociadas a valores propios pequeños.
+
+### Datos de cemento
+Antes de ajustar el modelo vamos a escalar las variables
+```{r cementRCP,echo=T, warning=FALSE,message = FALSE}
+escalar <- function(x) {(x-mean(x)) / sqrt(sum((x-mean(x))^2))}
+X = as.matrix(cement[,1:4])
+y.e = escalar(cement$y)
+Z = apply(cement[,1:4],2,escalar)
+```
+A partir de las variables escaladas podemos calcular los vectores y valores propios:
+```{r cementRCP2,echo=T, warning=FALSE,message = FALSE}
+T.mat = eigen(t(Z)%*%Z)$vectors
+lambda = eigen(t(Z)%*%Z)$values
+lambda
+```
+Aquí podemos observar que un valor propio es cercano a cero, por lo que lo podemos eliminarlo para remediar el problema de multicolinealidad:
+```{r cementRCP3,echo=T, warning=FALSE,message = FALSE}
+P = Z%*%T.mat
+PCR.cement = lm(y.e~P[,-4]-1)
+summary(PCR.cement)
+```
+Las estimaciones de los coeficientes $(\bb)$ para las variables escaladas:
+```{r cementRCP4,echo=T, warning=FALSE,message = FALSE}
+beta.CP =T.mat%*%c(PCR.cement$coefficients,0)
+beta.CP
+```
+La matriz de varianza de $\bb_{PC}$ es:
+```{r cementRCP5,echo=T, warning=FALSE,message = FALSE}
+sigma2.pc = sum(PCR.cement$residuals^2)/(13-3)
+Var.b = sigma2.pc*T.mat%*%diag(c(lambda[1:3],0))%*%t(T.mat)
+Var.b
+```

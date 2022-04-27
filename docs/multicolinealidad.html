@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-04-25" />
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -195,6 +195,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.7.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-1"><i class="fa fa-check"></i><b>3.7.1</b> Datos de cemento</a></li>
 </ul></li>
+<li class="chapter" data-level="3.8" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-por-componentes-principales"><i class="fa fa-check"></i><b>3.8</b> Estimador por componentes principales</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-2"><i class="fa fa-check"></i><b>3.8.1</b> Datos de cemento</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -231,9 +235,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong><code>x4</code></strong> silicato dicálcico (%).</li>
 </ul>
 <p>En la Figura <a href="multicolinealidad.html#fig:CementFigure">3.1</a> podemos observar que hay relaciones lineales positivas entre la variable respuesta, y las covariables aluminato tricálcico y silicato tricálcico. Mientras que la relación con la variable silicato dicálcico es negativa. También podemos notar que hay una relación negativa fuerte en las covariables aluminato tricálcico y tetra-aluminio ferrita de calcio, y entre silicato tricálcico y silicato dicálcico.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="multicolinealidad.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb36-2"><a href="multicolinealidad.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cement)</span>
-<span id="cb36-3"><a href="multicolinealidad.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cement[,<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="multicolinealidad.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cement,<span class="at">package =</span> <span class="st">&#39;MASS&#39;</span>)</span>
+<span id="cb36-2"><a href="multicolinealidad.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cement[,<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)])</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:CementFigure"></span>
 <img src="MLG2_files/figure-html/CementFigure-1.png" alt="Datos de cemento. Diagrama de dispersión." width="576" />
 <p class="caption">
@@ -329,28 +332,28 @@ Si esto se cumple para un subconjunto de <span class="math inline">\(\boldsymbol
 <span class="math display">\[
 \boldsymbol y^{*} = \boldsymbol Z\boldsymbol \beta+ \boldsymbol \varepsilon,
 \]</span>
-donde <span class="math inline">\(\boldsymbol Z\)</span> es la matriz de covariables escaladas con longitud unitaria, esto es:
+donde <span class="math inline">\(\boldsymbol Z\)</span> es la matriz de covariables escaladas con longitud unitaria. Esto es:
 <span class="math display">\[
 y_{i}^{*} = \frac{y_{i}-\bar{y}}{\sqrt{SST}}, \mbox{ y } z_{ij} = \frac{x_{ij} - \bar{x}_{j}}{\sqrt{s_{jj}}},
 \]</span>
-donde <span class="math inline">\(s_{jj} = \sum_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}\)</span>. De esta forma la matriz <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span> es la matriz de correlación de las covariables,
+donde <span class="math inline">\(s_{jj} = \sum_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}\)</span>. De esta forma <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span> es la matriz de correlación de las covariables,
 <span class="math display">\[
 \boldsymbol Z&#39;\boldsymbol Z= \begin{pmatrix}
-1 &amp; \rho_{12} \\ \rho_{12} &amp; 1
+1 &amp; r_{12} \\ r_{12} &amp; 1
 \end{pmatrix},
 \]</span>
 y <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol y\)</span> es el vector de correlaciones entre <span class="math inline">\(y\)</span> y las dos covariables:
 <span class="math display">\[
 \boldsymbol Z&#39;\boldsymbol y^{*} = \begin{pmatrix}
-\rho_{y1} \\ \rho_{y2}
+r_{y1} \\ r_{y2}
 \end{pmatrix}.
 \]</span>
 Por lo que el estimador por MCO de <span class="math inline">\(\boldsymbol b\)</span> es:
 <span class="math display">\[
 \widehat{\boldsymbol b}= \begin{pmatrix}
-1 &amp; \rho_{12} \\ \rho_{12} &amp; 1
+1 &amp; r_{12} \\ r_{12} &amp; 1
 \end{pmatrix}^{-1}\begin{pmatrix}
-\rho_{y1} \\ \rho_{y2}
+r_{y1} \\ r_{y2}
 \end{pmatrix} = \begin{pmatrix}
 \frac{1}{1-r_{12}^{2}} &amp; \frac{-r_{12}}{1-r_{12}^{2}} \\ \frac{-r_{12}}{1-r_{12}^{2}} &amp; \frac{1}{1-r_{12}^{2}} \end{pmatrix} \begin{pmatrix}
 r_{1y} \\ r_{2y}
@@ -379,7 +382,7 @@ Las ecuaciones normales son:
 \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
 r_{1,p-1} &amp; r_{2,p-1} &amp; r_{3,p-1} &amp; \ldots &amp; 1
 \end{pmatrix} \begin{pmatrix}
-b_{1} \\ b_{2} \\ \vdots \\ b_{k}
+b_{1} \\ b_{2} \\ \vdots \\ b_{p-1}
 \end{pmatrix} = \begin{pmatrix}
 r_{y1} \\ r_{y2} \\ \vdots \\ r_{y,p-1}
 \end{pmatrix}.
@@ -401,13 +404,13 @@ z_{ij} = z_{i1}\alpha_1 + z_{i2}\alpha_2 + \ldots + z_{i,j-1}\alpha_{j-1} + z_{i
 V(\widehat{b}_{j}) = \frac{\sigma^{2}}{1-R^{2}_{j}}.
 \]</span>
 Por lo que, si <span class="math inline">\(z_j\)</span> se puede expresar como una combinación lineal aproximada de las demás covariables, la varianza del estimador de <span class="math inline">\(b_j\)</span> Si <span class="math inline">\(R^{2}_{j} \rightarrow 1\)</span>, entonces <span class="math inline">\(V(\widehat{b}_{j})\rightarrow \infty\)</span>.</p>
-<p>La multicolinealidad también produce que los estimadores <span class="math inline">\(\widehat{b}_{j}\)</span>, para <span class="math inline">\(j=1,\ldots,p\)</span>, sean muy grandes en valor absoluto. Considere:
+<p>La multicolinealidad también produce que los estimadores <span class="math inline">\(\widehat{b}_{j}\)</span>, para <span class="math inline">\(j=1,\ldots,p-1\)</span>, sean muy grandes en valor absoluto. Considere:
 <span class="math display">\[
-L_{1}^{2} = (\widehat{\boldsymbol b}- \boldsymbol b)&#39;(\widehat{\boldsymbol b}- \boldsymbol b) = \sum_{j=1}^{k}(\widehat{b}_{j}-b_{j})^{2}.
+L_{1}^{2} = (\widehat{\boldsymbol b}- \boldsymbol b)&#39;(\widehat{\boldsymbol b}- \boldsymbol b) = \sum_{j=1}^{p}(\widehat{b}_{j}-b_{j})^{2}.
 \]</span>
 El valor esperado de <span class="math inline">\(L_{1}^{2}\)</span> es:
 <span class="math display">\[
-E(L_{1}^{2}) = \sum_{j=1}^{p-1}E(\widehat{b}_{j}-b_{j})^{2} = \sum_{j=1}^{k}\sigma^{2}\mbox{tr}\boldsymbol R^{-1}
+E(L_{1}^{2}) = \sum_{j=1}^{p-1}E(\widehat{b}_{j}-b_{j})^{2} = \sum_{j=1}^{p-1}\sigma^{2}\mbox{tr}\boldsymbol R^{-1}
 \]</span>
 Dado que la traza de una matriz es igual a la suma de sus valores propios, tenemos que:
 <span class="math display">\[
@@ -466,11 +469,11 @@ V(\widehat{\boldsymbol \beta}) = \sigma^{2}\boldsymbol T\boldsymbol \Lambda^{-1}
 \]</span>
 Entonces,
 <span class="math display">\[
-V(\widehat{b}_{l}) = \sigma^{2}\sum_{j=1}^{p-1}\frac{t_{lj}^{2}}{\lambda_{j}}.
+V(\widehat{b}_{j}) = \sigma^{2}\sum_{k=1}^{p-1}\frac{t_{jk}^{2}}{\lambda_{k}}.
 \]</span>
 De la expresión anterior,
 <span class="math display">\[
-VIF_{j} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\lambda_{j}},
+VIF_{j} = \sum_{j=1}^{p-1}\frac{t_{ij}^{2}}{\lambda_{j}},
 \]</span>
 Por lo tanto, uno o más valores propios pequeños pueden inflar la varianza de <span class="math inline">\(\widehat{b}_{j}\)</span>. De aquí salen los indicadores llamados índices de condición y número de condición.</p>
 <p>El índice de condición está definido como:
@@ -485,8 +488,8 @@ El número de condición está definido como el máximo índice de condición. U
 <span class="math display">\[
 \boldsymbol Z=\boldsymbol U\boldsymbol D\boldsymbol T&#39;,
 \]</span>
-donde <span class="math inline">\(\boldsymbol U\)</span> y <span class="math inline">\(\boldsymbol T\)</span> son matrices <span class="math inline">\((n\times p)\)</span> y <span class="math inline">\((p\times p)\)</span>, respectivamente, que <span class="math inline">\(\boldsymbol U\boldsymbol U= \boldsymbol I\)</span> y <span class="math inline">\(\boldsymbol T&#39;\boldsymbol T= \boldsymbol I\)</span>, y <span class="math inline">\(\boldsymbol D\)</span> es una matriz diagonal con elementos <span class="math inline">\(\mu_{j}\)</span>, <span class="math inline">\(j=1,\ldots,p\)</span>, llamados valores singulares.
-Hay una relación entre los valoes singulares de <span class="math inline">\(\boldsymbol Z\)</span> y los valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span>:
+donde <span class="math inline">\(\boldsymbol U\)</span> y <span class="math inline">\(\boldsymbol T\)</span> son matrices <span class="math inline">\(n\times (p-1)\)</span> y <span class="math inline">\((p-1)\times (p-1)\)</span>, respectivamente, <span class="math inline">\(\boldsymbol U\boldsymbol U= \boldsymbol I\)</span> y <span class="math inline">\(\boldsymbol T&#39;\boldsymbol T= \boldsymbol I\)</span>, y <span class="math inline">\(\boldsymbol D\)</span> es una matriz diagonal con elementos <span class="math inline">\(\mu_{j}\)</span>, <span class="math inline">\(j=1,\ldots,p-1\)</span>, llamados valores singulares.</p>
+<p>Hay una relación entre los valoes singulares de <span class="math inline">\(\boldsymbol Z\)</span> y los valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span>:
 <span class="math display">\[
 \boldsymbol Z&#39;\boldsymbol Z= (\boldsymbol U\boldsymbol D\boldsymbol T&#39;)&#39;\boldsymbol U\boldsymbol D\boldsymbol T&#39; = \boldsymbol T\boldsymbol D^2\boldsymbol T&#39; = \boldsymbol T\boldsymbol \Lambda\boldsymbol T&#39;.
 \]</span>
@@ -501,13 +504,13 @@ El número de condición de <span class="math inline">\(\boldsymbol Z\)</span> e
 <h3><span class="header-section-number">3.3.4</span> Proporciones de descomposición de varianza</h3>
 <p>Hay una relación entre el VIF, los valores propios y los valores singulares. Esta es:
 <span class="math display">\[
-VIF_{j} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\lambda_{j}} = \sum_{j=1}^{k}\frac{t_{ij}^{2}}{\mu_{j}^2}.
+VIF_{j} = \sum_{j=1}^{p-1}\frac{t_{ij}^{2}}{\lambda_{j}} = \sum_{j=1}^{p-1}\frac{t_{ij}^{2}}{\mu_{j}^2}.
 \]</span>
 De aquí salen los indicadores llamados proporciones de descomposición de varianza. Estos se calculan de la siguiente forma:
 <span class="math display">\[
 \pi_{ij} = \frac{t_{ij}^2 / \mu_{i}^2 }{VIF_{j}}, j = 1,\ldots, p-1.
 \]</span>
-Si se agrupan los <span class="math inline">\(\pi_{ij}\)</span> en una matriz <span class="math inline">\((p \times p)\)</span> <span class="math inline">\(\boldsymbol \pi\)</span>, la columna <span class="math inline">\(j\)</span> son proporciones de la varianza de <span class="math inline">\(\widehat{\boldsymbol b}\)</span>. Valores <span class="math inline">\(\pi_{ij}\)</span> mayores de 0.5 indican problemas de multicolinealidad.</p>
+Si se agrupan los <span class="math inline">\(\pi_{ij}\)</span> en una matriz <span class="math inline">\((p-1) \times (p-1)\)</span> <span class="math inline">\(\boldsymbol \pi\)</span>, la columna <span class="math inline">\(j\)</span> son proporciones de la varianza de <span class="math inline">\(\widehat{\boldsymbol b}\)</span>. Valores <span class="math inline">\(\pi_{ij}\)</span> mayores de 0.5 indican problemas de multicolinealidad.</p>
 </div>
 </div>
 <div id="datos-de-cemento" class="section level2" number="3.4">
@@ -728,6 +731,114 @@ Figure 3.5:  Datos de cemento. Validación cruzada.
 ## P-value for F-test ( 3.07629 , 9.74488 ) = 3.013147e-08 
 ## -------------------------------------------------------------------</code></pre>
 <p>Vemos algunas diferencias con las estimaciones por MCO. Hay un cambio de signo en la estimación del coeficiente asociado a <code>x3</code>. Si embargo, no hay mucha diferencia en las estimaciones de los otros coeficientes. También podemos observar que las covariables <code>x1</code>, <code>x2</code> y <code>x3</code> ahora tienen un aporte significativo. Como era de esperarse, hay una disminución del <span class="math inline">\(R^{2}\)</span>, sin embargo es muy leve.</p>
+</div>
+</div>
+<div id="estimador-por-componentes-principales" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Estimador por componentes principales</h2>
+<p>Considere el modelo en su forma canónica:
+<span class="math display">\[
+\boldsymbol y^{*} = \boldsymbol Z\boldsymbol T\boldsymbol \alpha+ \boldsymbol \varepsilon,
+\]</span>
+donde <span class="math inline">\(\boldsymbol \alpha= \boldsymbol T&#39;\boldsymbol b\)</span>, <span class="math inline">\((\boldsymbol Z\boldsymbol T)&#39;\boldsymbol Z\boldsymbol T=\boldsymbol \Lambda\)</span>, <span class="math inline">\(\boldsymbol \Lambda\)</span> es una matriz diagonal de valores propios <span class="math inline">\((\lambda_1,\ldots,\lambda_p)\)</span> de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span>, y <span class="math inline">\(\boldsymbol T= (\boldsymbol t_{1},\ldots,\boldsymbol t_{p-1})\)</span> es la matriz ortogonal de vectores propios asociados <span class="math inline">\(\boldsymbol \Lambda\)</span>.</p>
+<p>Las columnas de <span class="math inline">\(\boldsymbol P= \boldsymbol Z\boldsymbol T= (\boldsymbol p_{1},\ldots,\boldsymbol p_{p-1})\)</span> son un conjunto de regresores ortogonales(llamados componentes principales):
+<span class="math display">\[
+\boldsymbol p_{k} = \sum_{j=1}^{p-1} t_{kj}\boldsymbol z_{j}.
+\]</span>
+El estimador de <span class="math inline">\(\boldsymbol \alpha\)</span> por MCO es:
+<span class="math display">\[
+\widehat{\boldsymbol \alpha}= (\boldsymbol P&#39;\boldsymbol P)^{-1}\boldsymbol P&#39;\boldsymbol y^{*} = \boldsymbol \Lambda^{-1}\boldsymbol P&#39;\boldsymbol y^{*},
+\]</span>
+y la varianza de <span class="math inline">\(\widehat{\boldsymbol \alpha}\)</span> es:
+<span class="math display">\[
+V(\widehat{\boldsymbol \alpha}) = \sigma^{2}(\boldsymbol P&#39;\boldsymbol P)^{-1} = \sigma^{2}\boldsymbol \Lambda^{-1}.
+\]</span>
+De aquí podemos ver que valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span> están asociados con la varianza de los coeficientes de regresión. Si <span class="math inline">\(\lambda_j=1\)</span> (para <span class="math inline">\(j=1,\ldots,p\)</span>), las covariables originales son ortogonales. Mientras que valores propios cercanos a cero indican problemas de multicolinealidad dado que inflan la varianza de <span class="math inline">\(\widehat{\boldsymbol \alpha}\)</span>.</p>
+<p>Además, Note que para <span class="math inline">\(\widehat{\boldsymbol b}= \boldsymbol T\widehat{\boldsymbol \alpha}\)</span>, tenemos:
+<span class="math display">\[
+V(\widehat{\boldsymbol b}) = V(\boldsymbol T\widehat{\boldsymbol \alpha}) =\sigma^{2}\boldsymbol T\boldsymbol \Lambda^{-1}\boldsymbol T&#39; = \sigma^{2} \sum_{j=1}^{p-1}\lambda_{j}^{-1}\boldsymbol t_{j}\boldsymbol t_{j}&#39;,
+\]</span>
+lo que implica que <span class="math inline">\(V(\widehat{b}_{k}) = \sigma^{2} \sum_{j=1}^{p-1}t_{kj}^{2}/\lambda_{j}\)</span>; la varianza de <span class="math inline">\(\widehat{b}_j\)</span> es una combinación lineal de los valores propios.</p>
+<p>Para combatir el problema de multicolinealidad, la idea de la regresión por componentes principales es usar un subconjunto de <span class="math inline">\(\boldsymbol P\)</span> como regresores (en vez de todos los compontes). Para esto, eliminamos los componentes principales <span class="math inline">\((\boldsymbol p_{r+1},\ldots,\boldsymbol p_{p-1})\)</span> asociados a los valores propios cercanos a cero <span class="math inline">\((\lambda_{r+1},\ldots,\lambda_{p-1})\)</span>. Aquí estamos asumiendo que los valores propios están ordenados de mayor a menor, <span class="math inline">\(\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_p\)</span> (como lo hace <code>R</code>). Esto es,
+<span class="math display">\[
+\widehat{\boldsymbol \alpha}_{PC} = \boldsymbol L\widehat{\boldsymbol \alpha}= \begin{pmatrix} \boldsymbol I_{r} &amp; \boldsymbol 0\\ \boldsymbol 0&amp; \boldsymbol 0\end{pmatrix} \widehat{\boldsymbol \alpha}.
+\]</span>
+Por lo tanto <span class="math inline">\(\widehat{\boldsymbol \alpha}_{PC} = (\overbrace{\widehat{\alpha}_{1},\widehat{\alpha}_{2},\ldots, \widehat{\alpha}_{r}}^{r},\overbrace{0, \ldots,0}^{p-1-r})&#39;\)</span>.</p>
+<p>En términos de <span class="math inline">\(\boldsymbol b\)</span>,
+<span class="math display">\[
+\widehat{\boldsymbol b}_{PC} = \boldsymbol T\widehat{\boldsymbol \alpha}_{PC} = \boldsymbol T\boldsymbol L\boldsymbol \Lambda^{-1}\boldsymbol T&#39;\boldsymbol Z&#39;\boldsymbol y^{*}.
+\]</span>
+Además,
+<span class="math display">\[
+V(\widehat{\boldsymbol b}_{PC}) = \sigma^{2} \boldsymbol T\boldsymbol L\boldsymbol \Lambda^{-1}\boldsymbol L&#39;\boldsymbol T&#39; = \sigma^{2}\sum_{j=1}^{r} \lambda_{j}^{-1}\boldsymbol t_{j}\boldsymbol t_{j}&#39;.
+\]</span>
+lo que implica que <span class="math inline">\(V(\widehat{b}_{PC,j}) = \sigma^{2} \sum_{k=1}^{r}t_{jk}^{2}/\lambda_{k}\)</span>.</p>
+<p>El sesgo de <span class="math inline">\(\widehat{\boldsymbol b}_{PC}\)</span> está definido como:
+<span class="math display">\[
+E(\boldsymbol T\widehat{\boldsymbol \alpha}_{PC}) - \boldsymbol T\boldsymbol \alpha= -\sum_{k=r+1}^{p-1}\alpha_k\boldsymbol t_{k}.
+\]</span>
+Mientras que la varianza de <span class="math inline">\(\widehat{\boldsymbol b}_{PC}\)</span> es:
+<span class="math display" id="eq:varBPC">\[\begin{equation}
+V(\boldsymbol T\widehat{\boldsymbol \alpha}_{PC}) = \boldsymbol T\left[ \sigma^{2}\boldsymbol L\boldsymbol \Lambda^{-1} \boldsymbol L\right] \boldsymbol T^{-1} = \sigma^{2} \sum_{k=1}^{r}\lambda_k^{-1}\boldsymbol t_{k}\boldsymbol t_{k}&#39; \leq \sigma^{2} \sum_{k=1}^{p-1}\lambda_k^{-1}\boldsymbol t_{k}\boldsymbol t_{k}&#39; = \sigma^{2}(\boldsymbol Z&#39;\boldsymbol Z)^{-1}.
+\tag{3.2}
+\end{equation}\]</span>
+Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de <span class="math inline">\(\widehat{\boldsymbol b}_{PC}\)</span>.</p>
+<p>Note en <a href="multicolinealidad.html#eq:varBPC">(3.2)</a> que la diferencia en varianzas con respecto al estimador de MCO de <span class="math inline">\(\boldsymbol b\)</span>:
+<span class="math display">\[
+\sigma^{2}\sum_{k=r+1}^{p-1}\lambda_k^{-1} \boldsymbol t_{k}\boldsymbol t_{k}&#39;,
+\]</span>
+será mayor si las componentes principales excluidas están asociadas a valores propios pequeños.</p>
+<div id="datos-de-cemento-2" class="section level3" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Datos de cemento</h3>
+<p>Antes de ajustar el modelo vamos a escalar las variables</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="multicolinealidad.html#cb62-1" aria-hidden="true" tabindex="-1"></a>escalar <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {(x<span class="sc">-</span><span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))}</span>
+<span id="cb62-2"><a href="multicolinealidad.html#cb62-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">as.matrix</span>(cement[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
+<span id="cb62-3"><a href="multicolinealidad.html#cb62-3" aria-hidden="true" tabindex="-1"></a>y.e <span class="ot">=</span> <span class="fu">escalar</span>(cement<span class="sc">$</span>y)</span>
+<span id="cb62-4"><a href="multicolinealidad.html#cb62-4" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">=</span> <span class="fu">apply</span>(cement[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],<span class="dv">2</span>,escalar)</span></code></pre></div>
+<p>A partir de las variables escaladas podemos calcular los vectores y valores propios:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="multicolinealidad.html#cb63-1" aria-hidden="true" tabindex="-1"></a>T.mat <span class="ot">=</span> <span class="fu">eigen</span>(<span class="fu">t</span>(Z)<span class="sc">%*%</span>Z)<span class="sc">$</span>vectors</span>
+<span id="cb63-2"><a href="multicolinealidad.html#cb63-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fu">eigen</span>(<span class="fu">t</span>(Z)<span class="sc">%*%</span>Z)<span class="sc">$</span>values</span>
+<span id="cb63-3"><a href="multicolinealidad.html#cb63-3" aria-hidden="true" tabindex="-1"></a>lambda</span></code></pre></div>
+<pre><code>## [1] 2.235704035 1.576066070 0.186606149 0.001623746</code></pre>
+<p>Aquí podemos observar que un valor propio es cercano a cero, por lo que lo podemos eliminarlo para remediar el problema de multicolinealidad:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="multicolinealidad.html#cb65-1" aria-hidden="true" tabindex="-1"></a>P <span class="ot">=</span> Z<span class="sc">%*%</span>T.mat</span>
+<span id="cb65-2"><a href="multicolinealidad.html#cb65-2" aria-hidden="true" tabindex="-1"></a>PCR.cement <span class="ot">=</span> <span class="fu">lm</span>(y.e<span class="sc">~</span>P[,<span class="sc">-</span><span class="dv">4</span>]<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb65-3"><a href="multicolinealidad.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PCR.cement)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y.e ~ P[, -4] - 1)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.058393 -0.036851  0.006961  0.022836  0.073963 
+## 
+## Coefficients:
+##           Estimate Std. Error t value Pr(&gt;|t|)    
+## P[, -4]1 -0.656958   0.028271 -23.238 4.93e-10 ***
+## P[, -4]2 -0.008309   0.033671  -0.247   0.8101    
+## P[, -4]3  0.302770   0.097856   3.094   0.0114 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.04227 on 10 degrees of freedom
+## Multiple R-squared:  0.9821, Adjusted R-squared:  0.9768 
+## F-statistic: 183.2 on 3 and 10 DF,  p-value: 4.895e-09</code></pre>
+<p>Las estimaciones de los coeficientes <span class="math inline">\((\boldsymbol b)\)</span> para las variables escaladas:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="multicolinealidad.html#cb67-1" aria-hidden="true" tabindex="-1"></a>beta.CP <span class="ot">=</span>T.mat<span class="sc">%*%</span><span class="fu">c</span>(PCR.cement<span class="sc">$</span>coefficients,<span class="dv">0</span>)</span>
+<span id="cb67-2"><a href="multicolinealidad.html#cb67-2" aria-hidden="true" tabindex="-1"></a>beta.CP</span></code></pre></div>
+<pre><code>##             [,1]
+## [1,]  0.51297502
+## [2,]  0.27868114
+## [3,] -0.06078483
+## [4,] -0.42288461</code></pre>
+<p>La matriz de varianza de <span class="math inline">\(\boldsymbol b_{PC}\)</span> es:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="multicolinealidad.html#cb69-1" aria-hidden="true" tabindex="-1"></a>sigma2.pc <span class="ot">=</span> <span class="fu">sum</span>(PCR.cement<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">13-3</span>)</span>
+<span id="cb69-2"><a href="multicolinealidad.html#cb69-2" aria-hidden="true" tabindex="-1"></a>Var.b <span class="ot">=</span> sigma2.pc<span class="sc">*</span>T.mat<span class="sc">%*%</span><span class="fu">diag</span>(<span class="fu">c</span>(lambda[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],<span class="dv">0</span>))<span class="sc">%*%</span><span class="fu">t</span>(T.mat)</span>
+<span id="cb69-3"><a href="multicolinealidad.html#cb69-3" aria-hidden="true" tabindex="-1"></a>Var.b</span></code></pre></div>
+<pre><code>##               [,1]          [,2]          [,3]          [,4]
+## [1,]  0.0017867184  0.0004079968 -1.472822e-03 -4.390560e-04
+## [2,]  0.0004079968  0.0017856921 -2.493103e-04 -1.739821e-03
+## [3,] -0.0014728217 -0.0002493103  1.786678e-03  5.225215e-05
+## [4,] -0.0004390560 -0.0017398208  5.225215e-05  1.785558e-03</code></pre>
 
 </div>
 </div>
