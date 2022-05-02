@@ -532,7 +532,7 @@ beta.CP
 ```
 La matriz de varianza de $\bb_{PC}$ es:
 ```{r cementRCP5,echo=T, warning=FALSE,message = FALSE}
-sigma2.pc = sum(PCR.cement$residuals^2)/(13-3)
-Var.b = sigma2.pc*T.mat%*%diag(c(lambda[1:3],0))%*%t(T.mat)
+sigma2.pc = sum(PCR.cement$residuals^2)/(13-4)
+Var.b = sigma2.pc*T.mat%*%diag(c(1/lambda[1:3],0))%*%t(T.mat)
 Var.b
 ```
