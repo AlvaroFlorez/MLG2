@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II</title>
+  <meta name="description" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
+  
+  
+  
+
+<meta name="author" content="Alvaro J. Flórez" />
+
+
+<meta name="date" content="2022-05-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="multicolinealidad.html"/>
+
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de clase MLGII</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html"><i class="fa fa-check"></i><b>1</b> Variables indicadoras (o dummies)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#ejemplos"><i class="fa fa-check"></i><b>1.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.1.1</b> Datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#datos-de-la-onu"><i class="fa fa-check"></i><b>1.1.2</b> Datos de la ONU</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#variables-indicadoras"><i class="fa fa-check"></i><b>1.2</b> Variables indicadoras</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
+<li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html"><i class="fa fa-check"></i><b>2</b> Modelos polinomiales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#ejemplos-1"><i class="fa fa-check"></i><b>2.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#pasteles"><i class="fa fa-check"></i><b>2.1.1</b> Pasteles</a></li>
+<li class="chapter" data-level="2.1.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#datos-de-boston"><i class="fa fa-check"></i><b>2.1.2</b> Datos de Boston</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#modelos-polinomiales-1"><i class="fa fa-check"></i><b>2.2</b> Modelos polinomiales</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>2.2.1</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="2.2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#pasteles-1"><i class="fa fa-check"></i><b>2.2.2</b> Pasteles</a></li>
+<li class="chapter" data-level="2.2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#datos-de-boston-1"><i class="fa fa-check"></i><b>2.2.3</b> Datos de Boston</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#regresión-por-segmentos"><i class="fa fa-check"></i><b>2.3</b> Regresión por segmentos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#ejemplo"><i class="fa fa-check"></i><b>2.3.1</b> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multicolinealidad.html"><a href="multicolinealidad.html"><i class="fa fa-check"></i><b>3</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#ejemplos-2"><i class="fa fa-check"></i><b>3.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#cemento"><i class="fa fa-check"></i><b>3.1.1</b> Cemento</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#grasa-corporal"><i class="fa fa-check"></i><b>3.1.2</b> Grasa corporal</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#multicolinealidad-1"><i class="fa fa-check"></i><b>3.2</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#causas-de-la-multicolinealidad"><i class="fa fa-check"></i><b>3.2.1</b> Causas de la multicolinealidad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#detección-de-multicolinealidad"><i class="fa fa-check"></i><b>3.3</b> Detección de multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#factores-de-inflación-de-varianza"><i class="fa fa-check"></i><b>3.3.1</b> Factores de inflación de varianza</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-propios-de-boldsymbol-zboldsymbol-z"><i class="fa fa-check"></i><b>3.3.2</b> Valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-singulares-de-boldsymbol-z"><i class="fa fa-check"></i><b>3.3.3</b> Valores singulares de <span class="math inline">\(\boldsymbol Z\)</span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#proporciones-de-descomposición-de-varianza"><i class="fa fa-check"></i><b>3.3.4</b> Proporciones de descomposición de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento"><i class="fa fa-check"></i><b>3.4</b> Datos de cemento</a></li>
+<li class="chapter" data-level="3.5" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-grasa-corporal"><i class="fa fa-check"></i><b>3.5</b> Datos de grasa corporal</a></li>
+<li class="chapter" data-level="3.6" data-path="multicolinealidad.html"><a href="multicolinealidad.html#solución-al-problema-de-multicolinealidad"><i class="fa fa-check"></i><b>3.6</b> Solución al problema de multicolinealidad</a></li>
+<li class="chapter" data-level="3.7" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-de-ridge"><i class="fa fa-check"></i><b>3.7</b> Estimador de ridge</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-1"><i class="fa fa-check"></i><b>3.7.1</b> Datos de cemento</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-por-componentes-principales"><i class="fa fa-check"></i><b>3.8</b> Estimador por componentes principales</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-2"><i class="fa fa-check"></i><b>3.8.1</b> Datos de cemento</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="selección-de-variables.html"><a href="selección-de-variables.html"><i class="fa fa-check"></i><b>4</b> Selección de variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplos-3"><i class="fa fa-check"></i><b>4.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#unidad-quirúrgica"><i class="fa fa-check"></i><b>4.1.1</b> Unidad quirúrgica</a></li>
+<li class="chapter" data-level="4.1.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#grasa-corporal-1"><i class="fa fa-check"></i><b>4.1.2</b> Grasa corporal</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#problema-de-selección-de-variables"><i class="fa fa-check"></i><b>4.2</b> Problema de selección de variables</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#qué-pasa-si-ignoramos-covariables-importantes"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué pasa si ignoramos covariables importantes?</a></li>
+<li class="chapter" data-level="4.2.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#que-pasa-si-incluimos-covariables-irrelevantes"><i class="fa fa-check"></i><b>4.2.2</b> ¿Que pasa si incluimos covariables irrelevantes?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#métodos-para-la-selección-de-variables"><i class="fa fa-check"></i><b>4.3</b> Métodos para la selección de variables</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinación"><i class="fa fa-check"></i><b>4.3.1</b> Coeficiente de determinación</a></li>
+<li class="chapter" data-level="4.3.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinación-ajustado"><i class="fa fa-check"></i><b>4.3.2</b> Coeficiente de determinación ajustado</a></li>
+<li class="chapter" data-level="4.3.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#c_p-de-mallows"><i class="fa fa-check"></i><b>4.3.3</b> C<span class="math inline">\(_p\)</span> de Mallows</a></li>
+<li class="chapter" data-level="4.3.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#estadístico-press"><i class="fa fa-check"></i><b>4.3.4</b> Estadístico PRESS</a></li>
+<li class="chapter" data-level="4.3.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#criterios-de-información"><i class="fa fa-check"></i><b>4.3.5</b> Criterios de información</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#comparación-de-los-modelos"><i class="fa fa-check"></i><b>4.4</b> Comparación de los modelos</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notas de clase: Modelo lineal general II</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="selección-de-variables" class="section level1" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Selección de variables</h1>
+<div id="ejemplos-3" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Ejemplos</h2>
+<div id="unidad-quirúrgica" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Unidad quirúrgica</h3>
+<p>Una unidad quirúrgica de un hospital está interesada en predecir la supervivencia de los pacientes sometidos a un tipo particular de operación hepática. Se dispuso de una selección aleatoria de <span class="math inline">\(108\)</span> pacientes para el análisis. De cada registro del paciente, se extrajo la siguiente información de la evaluación preoperatoria:</p>
+<ul>
+<li><p><code>bcs</code>: coagulación sanguínea.</p></li>
+<li><p><code>pindex</code>: índice de pronóstico.</p></li>
+<li><p><code>enzyme</code>: función enzimática.</p></li>
+<li><p><code>liver_test</code>: función hepática.</p></li>
+<li><p><code>age</code>: edad.</p></li>
+<li><p><code>gender</code>: genero (0 = masculino, 1 = femenino).</p></li>
+<li><p><code>alc_mod</code>: historial de consumo de alcohol (0 = Ninguno, 1 = Moderado).</p></li>
+<li><p><code>alc_heavy</code>: &amp; historial de consumo de alcohol (0 = Ninguno, 1 = Fuerte).</p></li>
+<li><p><code>y</code>: tiempo de supervivencia.</p></li>
+</ul>
+<p>El objetivo del estudio es determinar los factores que influyen sobre el tiempo de supervivencia (que se determinó posteriormente) en función de las demás variables.</p>
+<p>El modelo propuesto es el siguiente:
+<span class="math display">\[
+\log y_{i} =\beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} + \mbox{gender}_{i}\beta_{6}+ \mbox{alc\_mod}_{i}\beta_{7} + \mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}
+\]</span></p>
+<p>El ajuste del modelo es:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="selección-de-variables.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
+<span id="cb71-2"><a href="selección-de-variables.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(surgical)</span>
+<span id="cb71-3"><a href="selección-de-variables.html#cb71-3" aria-hidden="true" tabindex="-1"></a>mod.completo <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>.,<span class="at">data=</span>surgical)</span>
+<span id="cb71-4"><a href="selección-de-variables.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.completo)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(y) ~ ., data = surgical)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.35555 -0.13849 -0.05179  0.14912  0.46349 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  4.050949   0.251741  16.092  &lt; 2e-16 ***
+## bcs          0.068551   0.025420   2.697  0.00982 ** 
+## pindex       0.013459   0.001947   6.913 1.37e-08 ***
+## enzyme_test  0.014948   0.001809   8.261 1.44e-10 ***
+## liver_test   0.007931   0.046706   0.170  0.86592    
+## age         -0.003567   0.002751  -1.296  0.20145    
+## gender       0.084151   0.060746   1.385  0.17279    
+## alc_mod      0.057313   0.067480   0.849  0.40019    
+## alc_heavy    0.388190   0.088374   4.393 6.73e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.2093 on 45 degrees of freedom
+## Multiple R-squared:  0.8461, Adjusted R-squared:  0.8187 
+## F-statistic: 30.93 on 8 and 45 DF,  p-value: 7.823e-16</code></pre>
+</div>
+<div id="grasa-corporal-1" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Grasa corporal</h3>
+<p>La medición de la grasa corporal es un proceso complejo. Dado que los músculos y los huesos son más densos, el calculo de % de grasa corporal se basa, entre otros aspectos, en la medición de la densidad corporal la cuál requiere sumergir a las personas en el agua.</p>
+<p>Por esta razón se quiere buscar un método más sencillo para determinar el % de grasa corporal. Para esto, se registraron la edad, el peso, la altura y <span class="math inline">\(10\)</span> medidas de la circunferencia corporal de <span class="math inline">\(252\)</span> hombres. De igual forma, a cada uno de estos hombres se les midió el % de grasa corporal de forma precisa (usando la ecuación de Brozek, medición a partir de la densidad).</p>
+<p>Cómo variable respuesta se utiliza la medición por el método de Brozek, y las posibles covariables son:</p>
+<ul>
+<li><p><code>age</code>: edad (en años).</p></li>
+<li><p><code>weight</code>: peso (en libras).</p></li>
+<li><p><code>height</code>: altura (en pulgadas).</p></li>
+<li><p><code>neck</code>: circunferencia del cuello (en centímetros).</p></li>
+<li><p><code>chest</code>: circunferencia del pecho (en centímetros).</p></li>
+<li><p><code>abdom</code>: circunferencia del abdomen (en centímetros).</p></li>
+<li><p><code>hip</code>: circunferencia de la cadera (en centímetros).</p></li>
+<li><p><code>thigh</code>:circunferencia del muslo (en centímetros).</p></li>
+<li><p><code>knee</code>:circunferencia de la rodilla (en centímetros).</p></li>
+<li><p><code>ankle</code>:circunferencia del tobillo (en centímetros).</p></li>
+<li><p><code>biceps</code>: circunferencia del bíceps extendido (en centímetros).</p></li>
+<li><p><code>forearm</code>: circunferencia del antebrazo (en centímetros).</p></li>
+<li><p>``wrist```: circunferencia de la muñeca (en centímetros).</p></li>
+</ul>
+<p>El modelo propuesto es el siguiente:
+<span class="math display">\[
+\mbox{brozek}_i = \beta_{0} + \mbox{age}_i\beta_1+ \mbox{weight}_i\beta_2 + \ldots + \mbox{wrist}_i\beta_{13}  + \varepsilon_i.
+\]</span>
+El ajuste del modelo es:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="selección-de-variables.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(faraway)</span>
+<span id="cb73-2"><a href="selección-de-variables.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(fat)</span>
+<span id="cb73-3"><a href="selección-de-variables.html#cb73-3" aria-hidden="true" tabindex="-1"></a>mod.fat <span class="ot">&lt;-</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> height <span class="sc">+</span> neck <span class="sc">+</span> chest <span class="sc">+</span> abdom <span class="sc">+</span></span>
+<span id="cb73-4"><a href="selección-de-variables.html#cb73-4" aria-hidden="true" tabindex="-1"></a>             hip <span class="sc">+</span> thigh <span class="sc">+</span> knee <span class="sc">+</span> ankle <span class="sc">+</span> biceps <span class="sc">+</span> forearm <span class="sc">+</span> wrist, <span class="at">data=</span>fat)</span>
+<span id="cb73-5"><a href="selección-de-variables.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.fat)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = brozek ~ age + weight + height + neck + chest + 
+##     abdom + hip + thigh + knee + ankle + biceps + forearm + wrist, 
+##     data = fat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -10.264  -2.572  -0.097   2.898   9.327 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -15.29255   16.06992  -0.952  0.34225    
+## age           0.05679    0.02996   1.895  0.05929 .  
+## weight       -0.08031    0.04958  -1.620  0.10660    
+## height       -0.06460    0.08893  -0.726  0.46830    
+## neck         -0.43754    0.21533  -2.032  0.04327 *  
+## chest        -0.02360    0.09184  -0.257  0.79740    
+## abdom         0.88543    0.08008  11.057  &lt; 2e-16 ***
+## hip          -0.19842    0.13516  -1.468  0.14341    
+## thigh         0.23190    0.13372   1.734  0.08418 .  
+## knee         -0.01168    0.22414  -0.052  0.95850    
+## ankle         0.16354    0.20514   0.797  0.42614    
+## biceps        0.15280    0.15851   0.964  0.33605    
+## forearm       0.43049    0.18445   2.334  0.02044 *  
+## wrist        -1.47654    0.49552  -2.980  0.00318 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.988 on 238 degrees of freedom
+## Multiple R-squared:  0.749,  Adjusted R-squared:  0.7353 
+## F-statistic: 54.63 on 13 and 238 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div id="problema-de-selección-de-variables" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Problema de selección de variables</h2>
+<p>En problemas de regresión se tiene un conjunto grande de potenciales covariables. Si ajustamos un modelo considerandolas todas podemos estar incluyendo covariables que son irrelevante. Por el otro lado, si no las incluimos todas es posible que estemos omitiendo covariables importantes. En ambos casos hay consecuencias negativas.</p>
+<p>Para illustrar esto, considere el siguiente modelo:
+<span class="math display">\[\begin{equation}
+\begin{split}
+y_{i} &amp;= \beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
+&amp;= \beta_{0} + \sum_{j=1}^{r}\beta_{j}x_{ij} + \sum_{j=r+1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
+&amp;= \boldsymbol x_{1i}&#39;\boldsymbol \beta_1 + \boldsymbol x_{2i}&#39;\boldsymbol \beta_2 + \varepsilon_i,
+\end{split}
+\label{eq:modelogral}
+\end{equation}\]</span>
+donde <span class="math inline">\(\boldsymbol x_{1i} = (1,x_{1i},x_{2i},\ldots,x_{ri})\)</span>, <span class="math inline">\(\boldsymbol x_{2i} = (x_{r+1,i},x_{r+2,i},\ldots,x_{p-1,i})\)</span>, <span class="math inline">\(\boldsymbol \beta_1 = (\beta_0,\beta_1,\beta_2,\ldots,\beta_r)&#39;\)</span>, <span class="math inline">\(\boldsymbol \beta_2 = (\beta_{r+1},\beta_{r+2},\ldots,\beta_{p-1})&#39;\)</span>, y <span class="math inline">\(\varepsilon_i \sim N(0,\sigma^{2})\)</span>. Es decir, se hace una partición de las covariables y los coeficientes de regressión en dos componentes.</p>
+<p>En forma matricial, el modelo es:
+<span class="math display">\[
+\boldsymbol y= \boldsymbol X_{1}\boldsymbol \beta_{1} + \boldsymbol X_{2}\boldsymbol \beta_{2}+ \boldsymbol \varepsilon,
+\]</span>
+donde <span class="math inline">\(\boldsymbol X_{1}\)</span> es una matriz <span class="math inline">\(n \times r\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{1i}\)</span> y <span class="math inline">\(\boldsymbol X_{2}\)</span> es una matriz <span class="math inline">\(n \times (p-r-1)\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{2i}\)</span>.</p>
+<div id="qué-pasa-si-ignoramos-covariables-importantes" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> ¿Qué pasa si ignoramos covariables importantes?</h3>
+<p>Ahora, considere que el modelo de regresión real es <a href="#eq:modelogral">(<strong>??</strong>)</a>, pero decidimos estimar:
+<span class="math display">\[
+y_{i} = \boldsymbol x_{1i}&#39;\boldsymbol \beta_1 + \varepsilon_i.
+\]</span>
+Por lo tanto, estamos omitiendo las covariables <span class="math inline">\(\boldsymbol x_{2i}\)</span> del modelo (puesto que <span class="math inline">\(\boldsymbol \beta_2 \neq 0\)</span>).</p>
+<p>Por lo tanto, el estimador por MCO de <span class="math inline">\(\boldsymbol \beta_1\)</span> es:
+<span class="math display">\[
+\widehat{\boldsymbol \beta}_{1} = (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}\boldsymbol y.
+\]</span>
+De aquí tenemos que <span class="math inline">\(E(\widehat{\boldsymbol \beta}_{1}) = \boldsymbol \beta_{1} + (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}&#39;\boldsymbol X_{2}\boldsymbol \beta_{2}\)</span>. Es decir que <span class="math inline">\(\widehat{\boldsymbol \beta}_{1}\)</span> es un estimador sesgado, a menos que <span class="math inline">\(\boldsymbol X_{1}&#39;\boldsymbol X_{2} = \boldsymbol 0\)</span> (las columnas de <span class="math inline">\(X_{1}\)</span> son ortogonales a las columnas de <span class="math inline">\(X_{2}\)</span>).</p>
+<p>De igual forma, las predicciones también serán sesgadas. La predicción en el punto <span class="math inline">\(\boldsymbol x_{01}\)</span> es:
+<span class="math display">\[
+\widehat{y}_{0} = \boldsymbol x_{01}&#39;\widehat{\boldsymbol \beta}_{1}.
+\]</span>
+Su valor esperado es:
+<span class="math display">\[
+E(\widehat{y}_{0}) = \boldsymbol x_{01}&#39;\boldsymbol \beta_{1} + \boldsymbol x_{01}&#39;(\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}&#39;\boldsymbol X_{2}\boldsymbol \beta_{2} \neq \boldsymbol x_{01}&#39;\beta_{1} + \boldsymbol x_{02}&#39;\beta_{2}.
+\]</span>
+Por lo tanto, si omitimos variables relevantes obtenemos sesgo en las estimaciones.</p>
+</div>
+<div id="que-pasa-si-incluimos-covariables-irrelevantes" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> ¿Que pasa si incluimos covariables irrelevantes?</h3>
+<p>Ahora, consideremos el caso en que <span class="math inline">\(\boldsymbol \beta_2=0\)</span>, es decir, las covariables <span class="math inline">\(\boldsymbol x_{2}\)</span> no tienen un aporte significativo en el modelo. Pero decidimos estimar el modelo completo.</p>
+<p>En este caso, el estimador de <span class="math inline">\(\boldsymbol \beta\)</span> es:
+<span class="math display">\[
+\widehat{\boldsymbol \beta}= (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol y= \begin{pmatrix}
+\boldsymbol X_{1}&#39;\boldsymbol X_{1} &amp; \boldsymbol X_{1}\boldsymbol X_{2} \\ \boldsymbol X_{2}&#39;\boldsymbol X_{1} &amp; \boldsymbol X_{2}&#39;\boldsymbol X_{2}
+\end{pmatrix}^{-1} \begin{pmatrix}
+\boldsymbol X_{1}&#39; \\ \boldsymbol X_{2}&#39;
+\end{pmatrix}\boldsymbol y.
+\]</span>
+El Valor esperado de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span> es:
+<span class="math display">\[\begin{equation}
+\begin{split}
+E(\widehat{\boldsymbol \beta}) =&amp; (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;E(\boldsymbol y) = (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol X_{1}\boldsymbol \beta_1 \\
+ = &amp; (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;(\boldsymbol X_{1} \ \boldsymbol X_{2}) \begin{pmatrix}
+ \boldsymbol \beta_1 \\ \boldsymbol 0
+ \end{pmatrix} = \begin{pmatrix}
+ \boldsymbol \beta_1 \\ \boldsymbol 0
+ \end{pmatrix}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+Es decir que <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span> es un estimador insesgado.</p>
+<p>La varianza de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</span> es:
+<span class="math display">\[\begin{equation}
+\begin{split}
+V(\widehat{\boldsymbol \beta}) =&amp; \sigma^{2}(\boldsymbol X&#39;\boldsymbol X)^{-1} = \sigma^{2}\begin{pmatrix}
+\boldsymbol X_{1}&#39;\boldsymbol X_{1} &amp; \boldsymbol X_{1}\boldsymbol X_{2} \\ \boldsymbol X_{2}&#39;\boldsymbol X_{1} &amp; \boldsymbol X_{2}&#39;\boldsymbol X_{2}
+\end{pmatrix}^{-1} \\
+=&amp; \sigma^{2} \begin{pmatrix}
+(\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1} + \boldsymbol L\boldsymbol M\boldsymbol L&amp; - \boldsymbol L\boldsymbol M\\
+-\boldsymbol M\boldsymbol L&#39; &amp; \boldsymbol M
+\end{pmatrix},
+\end{split}
+\nonumber
+\end{equation}\]</span>
+donde <span class="math inline">\(\boldsymbol L= (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}&#39;\boldsymbol X_{2}\)</span> y <span class="math inline">\(\boldsymbol M= \boldsymbol X_{2}&#39;(\boldsymbol I- \boldsymbol H_{1})\boldsymbol X_{2}\)</span>. Particularmente, para <span class="math inline">\(\widehat{\boldsymbol \beta}_1\)</span> tenemos que:
+<span class="math display">\[
+V(\widehat{\boldsymbol \beta}_{1}) = \sigma^{2} \left[ (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1} + \boldsymbol L\boldsymbol M\boldsymbol L\right].
+\]</span>
+Dado que <span class="math inline">\(\boldsymbol M\)</span> (y por lo tanto <span class="math inline">\(\boldsymbol L\boldsymbol M\boldsymbol L\)</span>) es positiva-definida, la varianza de <span class="math inline">\(\widehat{\boldsymbol \beta}_{1}\)</span> se infla al incluir las covariables irrelevantes al modelo. La única excepción es cuando <span class="math inline">\(\boldsymbol X_{1}\)</span> y <span class="math inline">\(\boldsymbol X_{2}\)</span> son ortogonales (<span class="math inline">\(\boldsymbol X_{1}&#39;\boldsymbol X_{2} = \boldsymbol 0\)</span>).</p>
+<p>De igual forma, las predicciones en el punto <span class="math inline">\(\boldsymbol x_{0}&#39; = (\boldsymbol x_{01}&#39; \ \boldsymbol x_{02}&#39;)\)</span> son insesgadas:
+<span class="math display">\[
+E(\widehat{y}_{0}) = E(\boldsymbol x_{0}&#39;\widehat{\boldsymbol \beta}) = (\boldsymbol x_{01}&#39; \ \boldsymbol x_{02}&#39;)\begin{pmatrix}
+\boldsymbol \beta_{1} \\ \boldsymbol 0
+\end{pmatrix} = \boldsymbol x_{01}&#39;\boldsymbol \beta_{1}.
+\]</span>
+Pero su varianza también se infla debido a incluir las covariables irrelevantes:
+<span class="math display">\[
+V(\widehat{y}_{0}) = \sigma^{2} \boldsymbol x_{0}&#39;(\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol x_{0}.
+\]</span></p>
+<p>En conclusión:</p>
+<ul>
+<li><p>Cuando omitimos covariables relevantes, obtenemos sesgos en las estimaciones.</p></li>
+<li><p>Cuando incluimos covariables irrelevantes, se inflan las varianzas de las estimaciones. Adicionalmente, incluir más covariables puede llevar a problemas de multicolinealidad.</p></li>
+</ul>
+</div>
+</div>
+<div id="métodos-para-la-selección-de-variables" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Métodos para la selección de variables</h2>
+<p>Si tenemos <span class="math inline">\((p-1)\)</span> covariables, entonces tenemos <span class="math inline">\((p-1)^2\)</span> potenciales modelos. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.</p>
+<p>Existen varios criterios para determinar que modelo es ``mejor’’ que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:</p>
+<ul>
+<li>Coeficiente de determinación (<span class="math inline">\(R^{2}\)</span> y <span class="math inline">\(R^{2}_{adj}\)</span>).</li>
+<li>Estadístico <span class="math inline">\(C_{p}\)</span> de Mallows.</li>
+<li>Estadístico PRESS y el <span class="math inline">\(R^{2}\)</span> de predicción.</li>
+<li>Criterios de información (AIC y BIC).</li>
+</ul>
+<div id="coeficiente-de-determinación" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Coeficiente de determinación</h3>
+<p>Esté indicador está definido como:
+<span class="math display">\[
+R^{2} = \frac{SS_{\mbox{reg}}}{SS_{\mbox{T}}} = 1 - \frac{SS_{\mbox{res}}}{SS_{\mbox{T}}}.
+\]</span>
+El <span class="math inline">\(R^{2}\)</span> cuantifica la cantidad de variabilidad de la variable respuesta que es explicada por el modelo. Se tiene que <span class="math inline">\(0 \leq R^{2} \leq 1\)</span>. Valores más cercanos a <span class="math inline">\(1\)</span> implican que el modelo explica gran parte de la variabilidad de <span class="math inline">\(y\)</span>.</p>
+<p>Hay que tener en cuenta que el <span class="math inline">\(R^{2}\)</span> siempre crece a medida que se adicionan más covariables al modelo. Por lo tanto, se puede puede agregar regresores hasta el punto en que una covariable adicional no propociona un aumento considerable en el <span class="math inline">\(R^{2}\)</span>.</p>
+</div>
+<div id="coeficiente-de-determinación-ajustado" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Coeficiente de determinación ajustado</h3>
+<p>Para evitar el incoviente del <span class="math inline">\(R^{2}\)</span>, se puede utlizar el el coeficiente de determinación ajustado definido como:
+<span class="math display">\[
+R^{2}_{adj} = 1 - \frac{n-1}{n-p}\frac{SS_{\mbox{res}}}{SS_{\mbox{T}}} = 1- \frac{MS_{\mbox{res}}}{SS_{\mbox{T}}/(n-1)} = 1- \frac{n-1}{n-p}(1-R^{2}).
+\]</span>
+El <span class="math inline">\(R^{2}_{adj}\)</span> no necesariamente aumenta al adicionar nuevos términos al modelo. Este solo aumenta si hay una disminución del <span class="math inline">\(MS_{\mbox{res}}\)</span>.</p>
+</div>
+<div id="c_p-de-mallows" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> C<span class="math inline">\(_p\)</span> de Mallows</h3>
+<p>Mallows propone un criterio basado en el error cuadrático medio (ECM) de <span class="math inline">\(\widehat{y}_i\)</span>, esto es:
+<span class="math display">\[
+E[\widehat{y}_{i}- E(y_{i})]^2 = [E(y_{i}) - E(\widehat{y}_{i})]^2 + V(\widehat{y}_{i}),
+\]</span>
+donde <span class="math inline">\(E(y_{i})\)</span> es el valor esperado de la respuesta (‘modelo real’), y <span class="math inline">\(E(\widehat{y}_{i})\)</span> es el valor esperado de la respuesta basado en el modelo propuesto (basado en <span class="math inline">\(p\)</span> covariables).</p>
+<p>El ECM total estandarizado está definido como:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\Gamma_{p} =&amp; \frac{1}{\sigma^{2}}\left\{\sum_{i=1}^{n}[E(y_{i}) - E(\widehat{y}_{i})]^2 + \sum_{i=1}^{n}  V(\widehat{y}_{i}) \right\} \\
+=&amp;  \frac{1}{\sigma^{2}}\left\{SS_{B}(p)  + \sum_{i=1}^{n}  V(\widehat{y}_{i}) \right\} = \frac{1}{\sigma^{2}}\left\{SS_{B}(p)  + p\sigma^{2} \right\} \\
+=&amp; \frac{1}{\sigma^{2}}\left\{ E[SS_{\mbox{res}}(p)] - (n-p)\sigma^{2} + p\sigma^{2} \right\} \\ =&amp; \frac{E[SS_{\mbox{res}}(p)]}{\sigma^{2}} - n + 2p.
+\end{split}
+\nonumber
+\end{equation}\]</span></p>
+<p>Reemplazando <span class="math inline">\(E[SS_{\mbox{res}}(p)]\)</span> por <span class="math inline">\(SS_{\mbox{res}}(p)\)</span>, y asumiendo que <span class="math inline">\(MS_{\mbox{reg}}(p^{*})\)</span> (calculado usando el modelo completo) es un buen estimador de <span class="math inline">\(\sigma^{2}\)</span>:
+<span class="math display">\[
+C_{p} = \frac{SS_{\mbox{res}}(p)}{MS_{\mbox{reg}}(p^{*})} - n + 2p.
+\]</span>
+Por lo tanto, para el modelo completo <span class="math inline">\(C_{p} = p^{*}\)</span>. Si <span class="math inline">\(E[SS_{\mbox{res}}(p)] = (n-p)\sigma^{2}\)</span> (asumiendo que <span class="math inline">\(SS_{B}(p)=0\)</span>), tenemos que:
+<span class="math display">\[
+E[C_{p}| \mbox{Sesgo}=0] = \frac{(n-p)\sigma^{2}}{\sigma^{2}} - n +2p = p.
+\]</span>
+Si el modelo propuesto es insesgado se espera que el <span class="math inline">\(C_p\)</span> esté cercano a <span class="math inline">\(p\)</span>. Aunque se espera que el <span class="math inline">\(C_p=p\)</span>, es deseable que <span class="math inline">\(C_p &lt; p\)</span>. Por lo tanto, modelos con valores pequeños de <span class="math inline">\(C_p\)</span> son mejores.</p>
+</div>
+<div id="estadístico-press" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Estadístico PRESS</h3>
+<p>El estadístico PRESS (prediction error sum of squares) está definido como:
+<span class="math display">\[
+\mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \widehat{y}_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{\epsilon_{i}}{1-h_{ii}} \right)^{2}.
+\]</span>
+Para comparar modelos, menor valor del PRESS indica que el modelo es mejor para hacer predicciones.</p>
+<p>A partir del PRESS se puede calcular el <span class="math inline">\(R^{2}\)</span> de predicción:
+<span class="math display">\[
+R^{2}_{pred} = 1 - \frac{PRESS}{SST}.
+\]</span>
+Basado en este criterio, mayor es el valor de <span class="math inline">\(R^{2}_{pred}\)</span> mejor es el modelo para hacer predicciones. La ventaja del PRESS y <span class="math inline">\(R_{pred}^{2}\)</span> es que evitan el sobreajuste dado que se calculan utilizando observaciones no incluidas en la estimación del modelo.</p>
+</div>
+<div id="criterios-de-información" class="section level3" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Criterios de información</h3>
+<p>La idea es comparar modelos estimados teniendo en cuenta la bondad de ajuste del modelo (verosimilitud, <span class="math inline">\(L\)</span>) y su complejidad (número de parámetros). El criterio de información de Akaike está definido como:
+<span class="math display">\[
+\mbox{AIC} = -2\log (L) + 2p.
+\]</span>
+El criterio de información bayesiano (o de Schwarz - SBC):
+<span class="math display">\[
+\mbox{BIC} = -2\log (L) + p\log n.
+\]</span>
+Es preferible modelos con valores menores de AIC o BIC. Dado que la penalización del BIC es mayor (si <span class="math inline">\(n &gt; 7\)</span>), este indicador tiende a preferir modelos con menor número de covariables.</p>
+<p>Recordemos que la log-verosimilitud es:
+<span class="math display">\[
+\log L(\boldsymbol \beta,\sigma^{2}) = - \frac{n}{2}\log (2\pi) - n\log(\sigma) - \frac{1}{2\sigma^{2}}(\boldsymbol y- \boldsymbol X\boldsymbol \beta)&#39;(\boldsymbol y-\boldsymbol X\boldsymbol \beta).
+\]</span>
+El estimador por máxima verosimilitud de <span class="math inline">\(\sigma^{2}\)</span> es <span class="math inline">\(\widehat{\sigma}=SS_{\mbox{res}}/n\)</span>. Por lo tanto, el máximo valor de la log-verosimilitud es:
+<span class="math display">\[
+\log L(\widehat{\boldsymbol \beta},\widehat{\sigma}^{2}) = -\frac{n}{2}\log (2\pi) - \frac{n}{2}\log\widehat{\sigma}^{2} - \frac{1}{2\widehat{\sigma}^{2}}SS_{\mbox{res}}= -\frac{n}{2}\log (SS_{\mbox{res}}/n) + \mbox{constante}.
+\]</span>
+Por lo tanto:
+<span class="math display">\[
+AIC \propto n\log(SS_{\mbox{res}}/n) + 2p \mbox{ y } BIC \propto n\log(SS_{\mbox{res}}/n) + p\log n.
+\]</span>
+Hay varias adaptaciones de estos criterios de información definiendo diferentes penalizaciones.</p>
+</div>
+</div>
+<div id="comparación-de-los-modelos" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Comparación de los modelos</h2>
+<div id="todos-los-posibles-modelos" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Todos los posibles modelos</h3>
+<p>Con la función <code>ols_step_all_possible()</code> de la librería <code>olsrr</code> es posible ajustar todos posibles modelos y determinar el mejor bajo diferentes criterios. Otra alternativa es la función <code>regsubsets()</code> de la librería <code>leaps</code>. Está función es más rápida (se basa en un algoritmo más eficiente), pero no es user-friendly.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="multicolinealidad.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/04-SeleccionVariables.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/04-SeleccionVariables.Rmd",
+"text": null
+},
+"download": ["MLG2.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

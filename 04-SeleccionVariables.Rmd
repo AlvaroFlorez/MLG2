@@ -1,0 +1,290 @@
+# Selección de variables
+```{r preamble4, include=FALSE}
+library(glmnet)
+library(olsrr)
+```
+
+## Ejemplos
+### Unidad quirúrgica
+Una unidad quirúrgica de un hospital está interesada en predecir la supervivencia de los pacientes sometidos a un tipo particular de operación hepática. Se dispuso de una selección aleatoria de $108$ pacientes para el análisis. De cada registro del paciente, se extrajo la siguiente información de la evaluación preoperatoria:
+
+- ``bcs``: coagulación sanguínea.
+
+- ``pindex``: índice de pronóstico.
+
+- ``enzyme``: función enzimática.
+
+- ``liver_test``: función hepática.
+
+- ``age``: edad.
+
+- ``gender``: genero (0 = masculino, 1 = femenino).
+
+- ``alc_mod``: historial de consumo de alcohol (0 = Ninguno, 1 = Moderado).
+
+- ``alc_heavy``: & historial de consumo de alcohol (0 = Ninguno, 1 = Fuerte).
+
+- ``y``: tiempo de supervivencia.
+
+El objetivo del estudio es determinar los factores que influyen sobre el tiempo de supervivencia (que se determinó posteriormente) en función de las demás variables. 
+
+El modelo propuesto es el siguiente:
+$$
+\log y_{i} =\beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} + \mbox{gender}_{i}\beta_{6}+ \mbox{alc\_mod}_{i}\beta_{7} + \mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}
+$$
+
+El ajuste del modelo es:
+```{r surgicalFit, echo=T, warning=FALSE,message = FALSE}
+library(olsrr)
+data(surgical)
+mod.completo = lm(log(y)~.,data=surgical)
+summary(mod.completo)
+```
+
+
+### Grasa corporal
+La medición de la grasa corporal es un proceso complejo. Dado que los músculos y los huesos son más densos, el calculo de \% de grasa corporal se basa, entre otros aspectos, en la medición de la densidad corporal la cuál requiere sumergir a las personas en el agua.
+
+Por esta razón se quiere buscar un método más sencillo para determinar el \% de grasa corporal. Para esto, se registraron la edad, el peso, la altura y $10$ medidas de la circunferencia corporal de $252$ hombres. De igual forma, a cada uno de estos hombres se les midió el \% de grasa corporal de forma precisa (usando la ecuación de Brozek, medición a partir de la densidad).
+
+Cómo variable respuesta se utiliza la medición por el método de Brozek, y las posibles covariables son:
+
+- ``age``: edad (en años).
+
+- ``weight``: peso (en libras).
+
+- ``height``: altura (en pulgadas).
+
+- ``neck``: circunferencia del cuello (en centímetros).
+
+- ``chest``: circunferencia del pecho (en centímetros).
+
+- ``abdom``: circunferencia del abdomen (en centímetros).
+
+- ``hip``: circunferencia de la cadera (en centímetros).
+
+- ``thigh``:circunferencia del muslo (en centímetros).
+
+- ``knee``:circunferencia de la rodilla (en centímetros).
+
+- ``ankle``:circunferencia del tobillo (en centímetros).
+
+- ``biceps``: circunferencia del bíceps extendido (en centímetros).
+
+- ``forearm``: circunferencia del antebrazo (en centímetros).
+
+- ``wrist```: circunferencia de la muñeca (en centímetros).
+
+El modelo propuesto es el siguiente:
+$$
+\mbox{brozek}_i = \beta_{0} + \mbox{age}_i\beta_1+ \mbox{weight}_i\beta_2 + \ldots + \mbox{wrist}_i\beta_{13}  + \varepsilon_i.
+$$
+El ajuste del modelo es:
+```{r fatFit, echo=T, warning=FALSE,message = FALSE}
+library(faraway)
+data(fat)
+mod.fat <- lm(brozek ~ age + weight + height + neck + chest + abdom +
+             hip + thigh + knee + ankle + biceps + forearm + wrist, data=fat)
+summary(mod.fat)
+```
+
+## Problema de selección de variables
+En problemas de regresión se tiene un conjunto grande de potenciales covariables. Si ajustamos un modelo considerandolas todas podemos estar incluyendo covariables que son irrelevante. Por el otro lado, si no las incluimos todas es posible que estemos omitiendo covariables importantes. En ambos casos hay consecuencias negativas.
+
+Para illustrar esto, considere el siguiente modelo:
+\begin{equation}
+\begin{split}
+y_{i} &= \beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
+&= \beta_{0} + \sum_{j=1}^{r}\beta_{j}x_{ij} + \sum_{j=r+1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
+&= \bx_{1i}'\bbeta_1 + \bx_{2i}'\bbeta_2 + \varepsilon_i,
+\end{split}
+\label{eq:modelogral}
+\end{equation}
+donde $\bx_{1i} = (1,x_{1i},x_{2i},\ldots,x_{ri})$, $\bx_{2i} = (x_{r+1,i},x_{r+2,i},\ldots,x_{p-1,i})$, $\bbeta_1 = (\beta_0,\beta_1,\beta_2,\ldots,\beta_r)'$, $\bbeta_2 = (\beta_{r+1},\beta_{r+2},\ldots,\beta_{p-1})'$, y $\varepsilon_i \sim N(0,\sigma^{2})$. Es decir, se hace una partición de las covariables y los coeficientes de regressión en dos componentes. 
+
+En forma matricial, el modelo es:
+\[
+\by = \bX_{1}\bbeta_{1} + \bX_{2}\bbeta_{2}+ \bvarepsi,
+\]
+donde $\bX_{1}$ es una matriz $n \times r$ con la $i$-ésima fila igual a $\bx_{1i}$ y $\bX_{2}$ es una matriz $n \times (p-r-1)$ con la $i$-ésima fila igual a $\bx_{2i}$.
+
+### ¿Qué pasa si ignoramos covariables importantes?
+Ahora, considere que el modelo de regresión real es \@ref(eq:modelogral), pero decidimos estimar:
+$$
+y_{i} = \bx_{1i}'\bbeta_1 + \varepsilon_i.
+$$
+Por lo tanto, estamos omitiendo las covariables $\bx_{2i}$ del modelo (puesto que $\bbeta_2 \neq 0$).
+
+Por lo tanto, el estimador por MCO de $\bbeta_1$ es: 
+$$
+\hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}\by.
+$$
+De aquí tenemos que $E(\hatbbeta_{1}) = \bbeta_{1} + (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2}$. Es decir que $\hatbbeta_{1}$ es un estimador sesgado, a menos que  $\bX_{1}'\bX_{2} = \bZERO$ (las columnas de $X_{1}$ son ortogonales a las columnas de $X_{2}$). 
+
+De igual forma, las predicciones también serán sesgadas. La predicción en el punto $\bx_{01}$ es:
+$$
+\haty_{0} = \bx_{01}'\hatbbeta_{1}.
+$$
+Su valor esperado es:
+$$
+E(\haty_{0}) = \bx_{01}'\bbeta_{1} + \bx_{01}'(\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2} \neq \bx_{01}'\beta_{1} + \bx_{02}'\beta_{2}.
+$$
+Por lo tanto, si omitimos variables relevantes obtenemos sesgo en las estimaciones.
+
+### ¿Que pasa si incluimos covariables irrelevantes?
+Ahora, consideremos el caso en que $\bbeta_2=0$, es decir, las covariables $\bx_{2}$ no tienen un aporte significativo en el modelo. Pero decidimos estimar el modelo completo.
+
+En este caso, el estimador de $\bbeta$ es:
+$$
+\hatbbeta = (\bX'\bX)^{-1}\bX'\by = \begin{pmatrix}
+\bX_{1}'\bX_{1} & \bX_{1}\bX_{2} \\ \bX_{2}'\bX_{1} & \bX_{2}'\bX_{2}
+\end{pmatrix}^{-1} \begin{pmatrix}
+\bX_{1}' \\ \bX_{2}'
+\end{pmatrix}\by.
+$$
+El Valor esperado de $\hatbbeta$ es:
+\begin{equation}
+\begin{split}
+E(\hatbbeta) =& (\bX'\bX)^{-1}\bX'E(\by) = (\bX'\bX)^{-1}\bX'\bX_{1}\bbeta_1 \\
+ = & (\bX'\bX)^{-1}\bX'(\bX_{1} \ \bX_{2}) \begin{pmatrix}
+ \bbeta_1 \\ \bZERO
+ \end{pmatrix} = \begin{pmatrix}
+ \bbeta_1 \\ \bZERO
+ \end{pmatrix}.
+\end{split}
+\nonumber
+\end{equation}
+Es decir que $\hatbbeta$ es un estimador insesgado. 
+
+La varianza de $\hatbbeta$ es:
+\begin{equation}
+\begin{split}
+V(\hatbbeta) =& \sigma^{2}(\bX'\bX)^{-1} = \sigma^{2}\begin{pmatrix}
+\bX_{1}'\bX_{1} & \bX_{1}\bX_{2} \\ \bX_{2}'\bX_{1} & \bX_{2}'\bX_{2}
+\end{pmatrix}^{-1} \\
+=& \sigma^{2} \begin{pmatrix}
+(\bX_{1}'\bX_{1})^{-1} + \bL\bM\bL & - \bL\bM \\
+-\bM\bL' & \bM
+\end{pmatrix},
+\end{split}
+\nonumber
+\end{equation}
+donde $\bL= (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}$ y $\bM = \bX_{2}'(\bI - \bH_{1})\bX_{2}$. Particularmente, para $\hatbbeta_1$ tenemos que:
+$$
+V(\hatbbeta_{1}) = \sigma^{2} \left[ (\bX_{1}'\bX_{1})^{-1} + \bL\bM\bL \right].
+$$
+Dado que $\bM$ (y por lo tanto $\bL\bM\bL$) es positiva-definida, la varianza de $\hatbbeta_{1}$ se infla al incluir las covariables irrelevantes al modelo. La única excepción es cuando $\bX_{1}$ y $\bX_{2}$ son ortogonales ($\bX_{1}'\bX_{2} = \bZERO$).
+
+De igual forma, las predicciones en el punto $\bx_{0}' = (\bx_{01}' \ \bx_{02}')$ son insesgadas:
+$$
+E(\haty_{0}) = E(\bx_{0}'\hatbbeta) = (\bx_{01}' \ \bx_{02}')\begin{pmatrix}
+\bbeta_{1} \\ \bZERO
+\end{pmatrix} = \bx_{01}'\bbeta_{1}.
+$$
+Pero su varianza también se infla debido a incluir las covariables irrelevantes:
+$$
+V(\haty_{0}) = \sigma^{2} \bx_{0}'(\bX'\bX)^{-1}\bx_{0}.
+$$
+
+En conclusión:
+
+- Cuando omitimos covariables relevantes, obtenemos sesgos en las estimaciones.
+
+- Cuando incluimos covariables irrelevantes, se inflan las varianzas de las estimaciones. Adicionalmente, incluir más covariables puede llevar a problemas de multicolinealidad.
+
+
+## Métodos para la selección de variables
+Si tenemos $(p-1)$ covariables, entonces tenemos $(p-1)^2$ potenciales modelos. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
+
+Existen varios criterios para determinar que modelo es ``mejor'' que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:
+
+- Coeficiente de determinación ($R^{2}$ y $R^{2}_{adj}$).
+- Estadístico $C_{p}$ de Mallows.
+- Estadístico PRESS y el $R^{2}$ de predicción.
+- Criterios de información (AIC y BIC).
+
+### Coeficiente de determinación
+Esté indicador está definido como:
+\[
+R^{2} = \frac{\Sreg}{\Stotal} = 1 - \frac{\Sres}{\Stotal}.
+\]
+El $R^{2}$ cuantifica la cantidad de variabilidad de la variable respuesta que es explicada por el modelo. Se tiene que $0 \leq R^{2} \leq 1$. Valores más cercanos a $1$ implican que el modelo explica gran parte de la variabilidad de $y$. 
+
+Hay que tener en cuenta que el $R^{2}$ siempre crece a medida que se adicionan más covariables al modelo. Por lo tanto, se puede puede agregar regresores hasta el punto en que una covariable adicional no propociona un aumento considerable en el $R^{2}$.
+
+### Coeficiente de determinación ajustado
+Para evitar el incoviente del $R^{2}$, se puede utlizar el el coeficiente de determinación ajustado definido como:
+\[
+R^{2}_{adj} = 1 - \frac{n-1}{n-p}\frac{\Sres}{\Stotal} = 1- \frac{\MSres}{\Stotal/(n-1)} = 1- \frac{n-1}{n-p}(1-R^{2}).
+\]
+El $R^{2}_{adj}$ no necesariamente aumenta al adicionar nuevos términos al modelo. Este solo aumenta si hay una disminución del $\MSres$.
+
+### C$_p$ de Mallows
+Mallows propone un criterio basado en el error cuadrático medio (ECM) de $\haty_i$, esto es:
+$$
+E[\haty_{i}- E(y_{i})]^2 = [E(y_{i}) - E(\haty_{i})]^2 + V(\haty_{i}),
+$$
+donde $E(y_{i})$ es el valor esperado de la respuesta ('modelo real'), y $E(\haty_{i})$ es el valor esperado de la respuesta basado en el modelo propuesto (basado en $p$ covariables).
+
+El ECM total estandarizado está definido como:
+\begin{equation}
+\begin{split}
+\Gamma_{p} =& \frac{1}{\sigma^{2}}\left\{\sum_{i=1}^{n}[E(y_{i}) - E(\haty_{i})]^2 + \sum_{i=1}^{n}  V(\haty_{i}) \right\} \\
+=&  \frac{1}{\sigma^{2}}\left\{SS_{B}(p)  + \sum_{i=1}^{n}  V(\haty_{i}) \right\} = \frac{1}{\sigma^{2}}\left\{SS_{B}(p)  + p\sigma^{2} \right\} \\
+=& \frac{1}{\sigma^{2}}\left\{ E[\Sres(p)] - (n-p)\sigma^{2} + p\sigma^{2} \right\} \\ =& \frac{E[\Sres(p)]}{\sigma^{2}} - n + 2p.
+\end{split}
+\nonumber
+\end{equation}
+
+Reemplazando $E[\Sres(p)]$ por $\Sres(p)$, y asumiendo que $\MSreg(p^{*})$ (calculado usando el modelo completo) es un buen estimador de $\sigma^{2}$:
+\[
+C_{p} = \frac{\Sres(p)}{\MSreg(p^{*})} - n + 2p.
+\]
+Por lo tanto, para el modelo completo $C_{p} = p^{*}$. Si $E[\Sres(p)] = (n-p)\sigma^{2}$ (asumiendo que $SS_{B}(p)=0$), tenemos que:
+\[
+E[C_{p}| \mbox{Sesgo}=0] = \frac{(n-p)\sigma^{2}}{\sigma^{2}} - n +2p = p.
+\]
+Si el modelo propuesto es insesgado se espera que el $C_p$ esté cercano a $p$. Aunque se espera que el $C_p=p$, es deseable que $C_p < p$. Por lo tanto, modelos con valores pequeños de $C_p$ son mejores. 
+
+### Estadístico PRESS
+El estadístico PRESS (prediction error sum of squares) está definido como: 
+$$
+\mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \haty_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{\epsilon_{i}}{1-h_{ii}} \right)^{2}.
+$$
+Para comparar modelos, menor valor del PRESS indica que el modelo es mejor para hacer predicciones.
+
+A partir del PRESS se puede calcular el $R^{2}$ de predicción:
+$$
+R^{2}_{pred} = 1 - \frac{PRESS}{SST}.
+$$
+Basado en este criterio, mayor es el valor de $R^{2}_{pred}$ mejor es el modelo para hacer predicciones. La ventaja del PRESS y $R_{pred}^{2}$ es que evitan el sobreajuste dado que se calculan utilizando observaciones no incluidas en la estimación del modelo.
+
+### Criterios de información
+La idea es comparar modelos estimados teniendo en cuenta la bondad de ajuste del modelo (verosimilitud, $L$) y su complejidad (número de parámetros). El criterio de información de Akaike está definido como:
+$$
+\mbox{AIC} = -2\log (L) + 2p.
+$$
+El criterio de información bayesiano (o de Schwarz - SBC):
+$$
+\mbox{BIC} = -2\log (L) + p\log n.
+$$
+Es preferible modelos con valores menores de AIC o BIC. Dado que la penalización del BIC es mayor (si $n > 7$), este indicador tiende a preferir modelos con menor número de covariables.
+
+Recordemos que la log-verosimilitud es:
+$$
+\log L(\bbeta,\sigma^{2}) = - \frac{n}{2}\log (2\pi) - n\log(\sigma) - \frac{1}{2\sigma^{2}}(\by - \bX\bbeta)'(\by-\bX\bbeta).
+$$
+El estimador por máxima verosimilitud de $\sigma^{2}$ es $\hatsigma=\Sres/n$. Por lo tanto, el máximo valor de la log-verosimilitud es:
+$$
+\log L(\hatbbeta,\hatsigma^{2}) = -\frac{n}{2}\log (2\pi) - \frac{n}{2}\log\hatsigma^{2} - \frac{1}{2\hatsigma^{2}}\Sres = -\frac{n}{2}\log (\Sres/n) + \mbox{constante}.
+$$
+Por lo tanto:
+$$
+AIC \propto n\log(\Sres/n) + 2p \mbox{ y } BIC \propto n\log(\Sres/n) + p\log n.
+$$
+Hay varias adaptaciones de estos criterios de información definiendo diferentes penalizaciones.
+
+## Comparación de los modelos
+### Todos los posibles modelos
+Con la función ``ols_step_all_possible()`` de la librería ``olsrr`` es posible ajustar todos posibles modelos y determinar el mejor bajo diferentes criterios. Otra alternativa es la función ``regsubsets()`` de la librería ``leaps``. Está función es más rápida (se basa en un algoritmo más eficiente), pero no es user-friendly.
+
