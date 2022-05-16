@@ -588,7 +588,7 @@ Hay varias adaptaciones de estos criterios de información definiendo diferentes
 ## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815
 ## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940 7.028837 -7.497389 10.403468</code></pre>
 <p>Con este críterio se escoge el mismo modelo que con el <span class="math inline">\(R^{2}_{adj}\)</span>. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad.</p>
-<p>En la Figura <a href="#surgicalFitAllPlot"><strong>??</strong></a> muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^2_{pred}\)</span>.</p>
+<p>En la Figura <a href="#fig:surgicalFitAllPlot"><strong>??</strong></a> muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^{2}_{pred}\)</span>.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="selección-de-variables.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(surgical.all.mods)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:surgicalFitAllPlot-1"></span>
 <img src="MLG2_files/figure-html/surgicalFitAllPlot-1.png" alt="Valores de los criterios de selección calculados para cada uno de todos los posibles modelos." width="672" />
@@ -647,7 +647,7 @@ Figure 4.2: Valores de los criterios de selección calculados para cada uno de t
 <p>Para el proceso de selección, la mejor opción es evaluar todos los posibles modelos. Sin embargo, en la presencia de muchas posibles covariables este proceso puede requerir una carga computacional muy alta. Por esta razón, se han desarrollado varios algoritmos para evaluar solo un subconjunto de modelos agregando o eliminando covariables una a la vez.</p>
 <div id="selección-hacia-delante-forward-selection" class="section level4" number="4.4.2.1">
 <h4><span class="header-section-number">4.4.2.1</span> Selección hacia delante (forward selection)</h4>
-<p>Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ‘’óptimo’’ se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).</p>
+<p>Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ``óptimo’’ se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).</p>
 <p>La primera covariable se escoge luego de ajustar los <span class="math inline">\((p-1)\)</span> modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.</p>
 <p>Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes <span class="math inline">\((p-2)\)</span> regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccinando la tercer covariable de la misma forma.</p>
 <p>El algoritmo continua seleccionando covariables hasta que se satisface un criterio de parada (por ejemplo, hasta que el AIC aumente).</p>
@@ -677,7 +677,7 @@ En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> p
 <span class="math display">\[\begin{equation}
 \begin{split}
 \log y_{i} =&amp; \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
-&amp;\mbox{gender}_{i}\mbox{pindex}_{i}\beta_{6} + \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{7} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}.
+&amp;\mbox{gender}_{i}\mbox{pindex}_{i}\beta_{6} + \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{7} + \mbox{bcs}_{i}\mbox{alc_heavy}_{i}\beta_{8} + \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
@@ -709,7 +709,7 @@ En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> p
 <span class="math display">\[\begin{equation}
 \begin{split}
 \log y_{i} =&amp; \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{gender}_{i}\beta_{4} + \mbox{liver}_{i}\beta_{5} + \\
-&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc\_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc\_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
+&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}\]</span>
@@ -736,11 +736,11 @@ Con este algoritmo no se considera la edad del paciente pero si la función hep�
 <p><span class="math display">\[\begin{equation}
 \begin{split}
 \log y_{i} =&amp; \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
-&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{7} + \varepsilon_{i}.
+&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{bcs}_{i}\mbox{alc_heavy}_{i}\beta_{7} + \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
-<p>Dado que los algoritmos hacen la busqueda del modelo ‘’óptimo’’ evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.</p>
+<p>Dado que los algoritmos hacen la busqueda del modelo ``óptimo’’ evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.</p>
 
 </div>
 </div>

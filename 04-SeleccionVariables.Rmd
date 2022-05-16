@@ -314,7 +314,7 @@ as.data.frame(surgical.all.mods)[AIC.order[1:5],c(2:8,10)]
 ```
 Con este críterio se escoge el mismo modelo que con el $R^{2}_{adj}$. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad. 
 
-En la Figura \@ref(surgicalFitAllPlot) muestra los $R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,C$_p$, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o $R^2_{pred}$.
+En la Figura \@ref(fig:surgicalFitAllPlot) muestra los $R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,C$_p$, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o $R^{2}_{pred}$.
 
 ```{r surgicalFitAllPlot, echo=T, fig.height = 5, fig.width = 7,fig.align = "center",fig.cap = "Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.",warning=FALSE,message = FALSE}
 plot(surgical.all.mods)
@@ -333,7 +333,7 @@ Para el proceso de selección, la mejor opción es evaluar todos los posibles mo
 
 
 #### Selección hacia delante (forward selection)
-Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ''óptimo'' se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).
+Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ``óptimo'' se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).
 
 La primera covariable se escoge luego de ajustar los $(p-1)$ modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.
 
@@ -368,7 +368,7 @@ Con el argumento ``details = T`` se puede ver la selección con más detalle. Us
 \begin{equation}
 \begin{split}
 \log y_{i} =& \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
-&\mbox{gender}_{i}\mbox{pindex}_{i}\beta_{6} + \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{7} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}.
+&\mbox{gender}_{i}\mbox{pindex}_{i}\beta_{6} + \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{7} + \mbox{bcs}_{i}\mbox{alc_heavy}_{i}\beta_{8} + \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}
@@ -382,7 +382,7 @@ Por lo tanto, el modelo seleccionado es:
 \begin{equation}
 \begin{split}
 \log y_{i} =& \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{gender}_{i}\beta_{4} + \mbox{liver}_{i}\beta_{5} + \\
-& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc\_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc\_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
+& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}
@@ -398,10 +398,10 @@ Note que este método sigue los mismos pasos que la selección hacia delante has
 \begin{equation}
 \begin{split}
 \log y_{i} =& \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
-& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{7} + \varepsilon_{i}.
+& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{bcs}_{i}\mbox{alc_heavy}_{i}\beta_{7} + \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}
 
-Dado que los algoritmos hacen la busqueda del modelo ''óptimo'' evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.
+Dado que los algoritmos hacen la busqueda del modelo ``óptimo'' evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.
 
