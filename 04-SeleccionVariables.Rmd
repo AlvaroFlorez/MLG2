@@ -29,16 +29,19 @@ Una unidad quirúrgica de un hospital está interesada en predecir la superviven
 El objetivo del estudio es determinar los factores que influyen sobre el tiempo de supervivencia (que se determinó posteriormente) en función de las demás variables. 
 
 El modelo propuesto es el siguiente:
-$$
-\log y_{i} =\beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} + \mbox{gender}_{i}\beta_{6}+ \mbox{alc\_mod}_{i}\beta_{7} + \mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}
-$$
+\begin{equation}
+\begin{split}
+\log y_{i} =& \beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} +  \mbox{gender}_{i}\beta_{6}+ \\ & \mbox{alc_mod}_{i}\beta_{7} + \mbox{alc_heavy}_{i}\beta_{8} + \varepsilon_{i}
+\end{split}
+\nonumber
+\end{equation}
 
 El ajuste del modelo es:
 ```{r surgicalFit, echo=T, warning=FALSE,message = FALSE}
 library(olsrr)
 data(surgical)
-mod.completo = lm(log(y)~.,data=surgical)
-summary(mod.completo)
+mod.surgical.completo = lm(log(y)~.,data=surgical)
+summary(mod.surgical.completo)
 ```
 
 
@@ -115,9 +118,9 @@ y_{i} = \bx_{1i}'\bbeta_1 + \varepsilon_i.
 $$
 Por lo tanto, estamos omitiendo las covariables $\bx_{2i}$ del modelo (puesto que $\bbeta_2 \neq 0$).
 
-Por lo tanto, el estimador por MCO de $\bbeta_1$ es: 
+El estimador por MCO de $\bbeta_1$ es: 
 $$
-\hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}\by.
+\hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by.
 $$
 De aquí tenemos que $E(\hatbbeta_{1}) = \bbeta_{1} + (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2}$. Es decir que $\hatbbeta_{1}$ es un estimador sesgado, a menos que  $\bX_{1}'\bX_{2} = \bZERO$ (las columnas de $X_{1}$ son ortogonales a las columnas de $X_{2}$). 
 
@@ -205,18 +208,18 @@ Existen varios criterios para determinar que modelo es ``mejor'' que otro y este
 
 ### Coeficiente de determinación
 Esté indicador está definido como:
-\[
+$$
 R^{2} = \frac{\Sreg}{\Stotal} = 1 - \frac{\Sres}{\Stotal}.
-\]
+$$
 El $R^{2}$ cuantifica la cantidad de variabilidad de la variable respuesta que es explicada por el modelo. Se tiene que $0 \leq R^{2} \leq 1$. Valores más cercanos a $1$ implican que el modelo explica gran parte de la variabilidad de $y$. 
 
 Hay que tener en cuenta que el $R^{2}$ siempre crece a medida que se adicionan más covariables al modelo. Por lo tanto, se puede puede agregar regresores hasta el punto en que una covariable adicional no propociona un aumento considerable en el $R^{2}$.
 
 ### Coeficiente de determinación ajustado
 Para evitar el incoviente del $R^{2}$, se puede utlizar el el coeficiente de determinación ajustado definido como:
-\[
+$$
 R^{2}_{adj} = 1 - \frac{n-1}{n-p}\frac{\Sres}{\Stotal} = 1- \frac{\MSres}{\Stotal/(n-1)} = 1- \frac{n-1}{n-p}(1-R^{2}).
-\]
+$$
 El $R^{2}_{adj}$ no necesariamente aumenta al adicionar nuevos términos al modelo. Este solo aumenta si hay una disminución del $\MSres$.
 
 ### C$_p$ de Mallows
@@ -236,9 +239,9 @@ El ECM total estandarizado está definido como:
 \nonumber
 \end{equation}
 
-Reemplazando $E[\Sres(p)]$ por $\Sres(p)$, y asumiendo que $\MSreg(p^{*})$ (calculado usando el modelo completo) es un buen estimador de $\sigma^{2}$:
+Reemplazando $E[\Sres(p)]$ por $\Sres(p)$, y asumiendo que $\MSres(p^{*})$ (calculado usando el modelo completo) es un buen estimador de $\sigma^{2}$:
 \[
-C_{p} = \frac{\Sres(p)}{\MSreg(p^{*})} - n + 2p.
+C_{p} = \frac{\Sres(p)}{\MSres(p^{*})} - n + 2p.
 \]
 Por lo tanto, para el modelo completo $C_{p} = p^{*}$. Si $E[\Sres(p)] = (n-p)\sigma^{2}$ (asumiendo que $SS_{B}(p)=0$), tenemos que:
 \[
@@ -287,4 +290,118 @@ Hay varias adaptaciones de estos criterios de información definiendo diferentes
 ## Comparación de los modelos
 ### Todos los posibles modelos
 Con la función ``ols_step_all_possible()`` de la librería ``olsrr`` es posible ajustar todos posibles modelos y determinar el mejor bajo diferentes criterios. Otra alternativa es la función ``regsubsets()`` de la librería ``leaps``. Está función es más rápida (se basa en un algoritmo más eficiente), pero no es user-friendly.
+
+#### Datos de unidad quirúrgica
+A través de la función ``ols_step_all_possible`` podemos ajustar los $255$ modelos que se pueden ajustar usando las ocho posibles covariables:
+
+```{r surgicalFitAll, echo=T, warning=FALSE,message = FALSE}
+surgical.all.mods=ols_step_all_possible(mod.surgical.completo)
+```
+Además de ajustar los modelos, se calculan varios criterios ($R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,AIC,BIC,...) para cada uno de ellos.
+
+Puesto que son muchos modelos, podemos organizar los resultados de tal forma que obtengamos los mejores modelos basándonos en cada uno de los criterios. Por ejemplo, los 5 mejores ajustes según el $R^{2}_{adj}$ son:
+
+```{r surgicalFitAll2, echo=T, warning=FALSE,message = FALSE}
+R2adj.order = order(surgical.all.mods$adjr,decreasing = T)
+as.data.frame(surgical.all.mods)[R2adj.order[1:5],c(2:8,10)]
+```
+Entonces, basándonos en el $R^{2}_{adj}$ el mejor ajuste se obtiene con el modelo considerando las covariables ``bcs``, ``pindex``, ``enzyme_test``, ``age``, ``gender``, y ``alc_heavy``. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables ``gender`` obtenemos un modelo con un $R_^{2}_{pred}$ más alto.
+
+Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son: 
+```{r surgicalFitAll3, echo=T, warning=FALSE,message = FALSE}
+AIC.order = order(surgical.all.mods$aic,decreasing = F)
+as.data.frame(surgical.all.mods)[AIC.order[1:5],c(2:8,10)]
+```
+Con este críterio se escoge el mismo modelo que con el $R^{2}_{adj}$. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad. 
+
+En la Figura \@ref(surgicalFitAllPlot) muestra los $R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,C$_p$, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o $R^2_{pred}$.
+
+```{r surgicalFitAllPlot, echo=T, fig.height = 5, fig.width = 7,fig.align = "center",fig.cap = "Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.",warning=FALSE,message = FALSE}
+plot(surgical.all.mods)
+```
+
+Teniendo en cuenta esto, con la función ``ols_step_best_subset()`` selecciona el mejor modelo para cada subconjunto de número de covariables basándose en los diferentes criterios:
+
+```{r surgicalFitAll4, echo=T, warning=FALSE,message = FALSE}
+ols_step_best_subset(mod.surgical.completo)
+```
+
+A partir de estos resultados, y con la ayuda de expertos en el tema, se puede hacer una selección del mejor modelo para hacer las predicciónes.
+
+### Algorítmos de selección
+Para el proceso de selección, la mejor opción es evaluar todos los posibles modelos. Sin embargo, en la presencia de muchas posibles covariables este proceso puede requerir una carga computacional muy alta. Por esta razón, se han desarrollado varios algoritmos para evaluar solo un subconjunto de modelos agregando o eliminando covariables una a la vez.
+
+
+#### Selección hacia delante (forward selection)
+Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ''óptimo'' se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).
+
+La primera covariable se escoge luego de ajustar los $(p-1)$ modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.
+
+Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes $(p-2)$ regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccinando la tercer covariable de la misma forma. 
+
+El algoritmo continua seleccionando covariables hasta que se satisface un criterio de parada (por ejemplo, hasta que el AIC aumente).
+
+#### Selección hacia atrás (backward selection)
+Con este algoritmo se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).
+
+#### Selección por segmentos (stepwise selection)
+Aquí se siguen los mismos pasos que la selección hacia delante. Pero en cada paso se evalúan de nuevo los candidatos que ya habían ingresado en el modelo. Por lo tanto, una covariable que ya esté en el modelo puede ser eliminada en algún paso posterior.
+
+
+#### Unidad quirúrgica
+Consideremos el modelo anterior adicionando las interacciones de las covariables continuas con las categóricas:
+\begin{equation}
+\begin{split}
+\log y_{i} =& \beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} +  \mbox{gender}_{i}\beta_{6}+ \mbox{alc_mod}_{i}\beta_{7} + \\ &  \mbox{alc_heavy}_{i}\beta_{8} \mbox{bcs}_{i}\mbox{gender}_{i}\beta_{9} + \mbox{pindex}_{i}\mbox{gender}_{i}\beta_{10} + \mbox{enzyme}_{i}\mbox{gender}_{i}\beta_{11} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{12}  + \\ & \mbox{age}_{i}\mbox{gender}_{i}\beta_{13} + \mbox{bcs}_{i}\mbox{alc_mod}_{i}\beta_{14} + \mbox{pindex}_{i}\mbox{alc_mod}_{i}\beta_{15} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{16} +  \\ & \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{17} + \mbox{age}_{i}\mbox{alc_mod}_{i}\beta_{18} + \mbox{bcs}_{i}\mbox{alc_heavy}_{i}\beta_{19} + \mbox{pindex}_{i}\mbox{alc_heavy}_{i}\beta_{20} + \\ & \mbox{enzyme}_{i}\mbox{alc_heavy}_{i}\beta_{21} + \mbox{liver}_{i}\mbox{alc_heavy}_{i}\beta_{22} + \mbox{age}_{i}\mbox{alc_heavy}_{i}\beta_{23} + \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}
+En este caso tenemos $2^{23}=8'388,608$ posibles modelos. Lo que hace que sea difícil ajustarlos todos (aunque es posible usando la librería ``leaps``). Por lo tanto, vamos a utilizar los algortimos de selección.
+
+**Selección hacia delante**. Podemos utilizar la función ``ols_step_forward_aic`` de la librería ``olsrr``:
+
+```{r surgicalForward, echo=T, warning=FALSE,message = FALSE}
+mod.surgical.completo2 = lm(log(y)~bcs*gender+pindex*gender+enzyme_test*gender+liver_test*gender+age*gender+ bcs*alc_mod+pindex*alc_mod+enzyme_test*alc_mod+liver_test*alc_mod+age*alc_mod+bcs*alc_heavy+pindex*alc_heavy+enzyme_test*alc_heavy+liver_test*alc_heavy+age*alc_heavy,data=surgical)
+res =ols_step_forward_aic(mod.surgical.completo2,details = F)
+```
+Con el argumento ``details = T`` se puede ver la selección con más detalle. Usando este algoritmo el modelo óptimo es:
+\begin{equation}
+\begin{split}
+\log y_{i} =& \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
+&\mbox{gender}_{i}\mbox{pindex}_{i}\beta_{6} + \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{7} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}
+
+**Selección hacia atrás**. Podemos utilizar la función ``ols_step_backward_aic`` de la librería ``olsrr``:
+
+```{r surgicalBackward, echo=T, warning=FALSE,message = FALSE}
+ols_step_backward_aic(mod.surgical.completo2,details = F)
+```
+Por lo tanto, el modelo seleccionado es:
+\begin{equation}
+\begin{split}
+\log y_{i} =& \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{gender}_{i}\beta_{4} + \mbox{liver}_{i}\beta_{5} + \\
+& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc\_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc\_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}
+Con este algoritmo no se considera la edad del paciente pero si la función hepática y otras interacciones.
+
+**Selección por segmentos**. Aquí tenemos la función ``ols_step_both_aic`` de la librería ``olsrr``:
+
+```{r surgicalBoth, echo=T, warning=FALSE,message = FALSE}
+ols_step_both_aic(mod.surgical.completo2,details = F)
+```
+Note que este método sigue los mismos pasos que la selección hacia delante hasta el paso 8 donde se elimina la interacción entre el índice de pronostico y el genero. Por lo que aquí obtenemos el siguiente modelo:
+
+\begin{equation}
+\begin{split}
+\log y_{i} =& \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
+& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{7} + \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}
+
+Dado que los algoritmos hacen la busqueda del modelo ''óptimo'' evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.
 

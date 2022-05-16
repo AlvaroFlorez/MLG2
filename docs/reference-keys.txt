@@ -26,6 +26,8 @@ fig:ECMrepresentacion
 fig:CementTrazaRidge
 fig:cementridge3
 eq:varBPC
+fig:surgicalFitAllPlot-1
+fig:surgicalFitAllPlot-2
 variables-indicadoras-o-dummies
 ejemplos
 datos-de-atletas-australianos
@@ -77,3 +79,9 @@ estadístico-press
 criterios-de-información
 comparación-de-los-modelos
 todos-los-posibles-modelos
+datos-de-unidad-quirúrgica
+algorítmos-de-selección
+selección-hacia-delante-forward-selection
+selección-hacia-atrás-backward-selection
+selección-por-segmentos-stepwise-selection
+unidad-quirúrgica-1

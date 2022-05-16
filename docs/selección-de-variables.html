@@ -24,7 +24,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-05-09" />
+<meta name="date" content="2022-05-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -223,6 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#comparación-de-los-modelos"><i class="fa fa-check"></i><b>4.4</b> Comparación de los modelos</a>
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
+<li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algorítmos-de-selección"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -265,14 +266,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>El objetivo del estudio es determinar los factores que influyen sobre el tiempo de supervivencia (que se determinó posteriormente) en función de las demás variables.</p>
 <p>El modelo propuesto es el siguiente:
-<span class="math display">\[
-\log y_{i} =\beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} + \mbox{gender}_{i}\beta_{6}+ \mbox{alc\_mod}_{i}\beta_{7} + \mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}
-\]</span></p>
+<span class="math display">\[\begin{equation}
+\begin{split}
+\log y_{i} =&amp; \beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} +  \mbox{gender}_{i}\beta_{6}+ \\ &amp; \mbox{alc_mod}_{i}\beta_{7} + \mbox{alc_heavy}_{i}\beta_{8} + \varepsilon_{i}
+\end{split}
+\nonumber
+\end{equation}\]</span></p>
 <p>El ajuste del modelo es:</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="selección-de-variables.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
 <span id="cb71-2"><a href="selección-de-variables.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(surgical)</span>
-<span id="cb71-3"><a href="selección-de-variables.html#cb71-3" aria-hidden="true" tabindex="-1"></a>mod.completo <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>.,<span class="at">data=</span>surgical)</span>
-<span id="cb71-4"><a href="selección-de-variables.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.completo)</span></code></pre></div>
+<span id="cb71-3"><a href="selección-de-variables.html#cb71-3" aria-hidden="true" tabindex="-1"></a>mod.surgical.completo <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>.,<span class="at">data=</span>surgical)</span>
+<span id="cb71-4"><a href="selección-de-variables.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.surgical.completo)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(y) ~ ., data = surgical)
@@ -388,9 +392,9 @@ donde <span class="math inline">\(\boldsymbol X_{1}\)</span> es una matriz <span
 y_{i} = \boldsymbol x_{1i}&#39;\boldsymbol \beta_1 + \varepsilon_i.
 \]</span>
 Por lo tanto, estamos omitiendo las covariables <span class="math inline">\(\boldsymbol x_{2i}\)</span> del modelo (puesto que <span class="math inline">\(\boldsymbol \beta_2 \neq 0\)</span>).</p>
-<p>Por lo tanto, el estimador por MCO de <span class="math inline">\(\boldsymbol \beta_1\)</span> es:
+<p>El estimador por MCO de <span class="math inline">\(\boldsymbol \beta_1\)</span> es:
 <span class="math display">\[
-\widehat{\boldsymbol \beta}_{1} = (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}\boldsymbol y.
+\widehat{\boldsymbol \beta}_{1} = (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}&#39;\boldsymbol y.
 \]</span>
 De aquí tenemos que <span class="math inline">\(E(\widehat{\boldsymbol \beta}_{1}) = \boldsymbol \beta_{1} + (\boldsymbol X_{1}&#39;\boldsymbol X_{1})^{-1}\boldsymbol X_{1}&#39;\boldsymbol X_{2}\boldsymbol \beta_{2}\)</span>. Es decir que <span class="math inline">\(\widehat{\boldsymbol \beta}_{1}\)</span> es un estimador sesgado, a menos que <span class="math inline">\(\boldsymbol X_{1}&#39;\boldsymbol X_{2} = \boldsymbol 0\)</span> (las columnas de <span class="math inline">\(X_{1}\)</span> son ortogonales a las columnas de <span class="math inline">\(X_{2}\)</span>).</p>
 <p>De igual forma, las predicciones también serán sesgadas. La predicción en el punto <span class="math inline">\(\boldsymbol x_{01}\)</span> es:
@@ -505,9 +509,9 @@ donde <span class="math inline">\(E(y_{i})\)</span> es el valor esperado de la r
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
-<p>Reemplazando <span class="math inline">\(E[SS_{\mbox{res}}(p)]\)</span> por <span class="math inline">\(SS_{\mbox{res}}(p)\)</span>, y asumiendo que <span class="math inline">\(MS_{\mbox{reg}}(p^{*})\)</span> (calculado usando el modelo completo) es un buen estimador de <span class="math inline">\(\sigma^{2}\)</span>:
+<p>Reemplazando <span class="math inline">\(E[SS_{\mbox{res}}(p)]\)</span> por <span class="math inline">\(SS_{\mbox{res}}(p)\)</span>, y asumiendo que <span class="math inline">\(MS_{\mbox{res}}(p^{*})\)</span> (calculado usando el modelo completo) es un buen estimador de <span class="math inline">\(\sigma^{2}\)</span>:
 <span class="math display">\[
-C_{p} = \frac{SS_{\mbox{res}}(p)}{MS_{\mbox{reg}}(p^{*})} - n + 2p.
+C_{p} = \frac{SS_{\mbox{res}}(p)}{MS_{\mbox{res}}(p^{*})} - n + 2p.
 \]</span>
 Por lo tanto, para el modelo completo <span class="math inline">\(C_{p} = p^{*}\)</span>. Si <span class="math inline">\(E[SS_{\mbox{res}}(p)] = (n-p)\sigma^{2}\)</span> (asumiendo que <span class="math inline">\(SS_{B}(p)=0\)</span>), tenemos que:
 <span class="math display">\[
@@ -559,7 +563,186 @@ Hay varias adaptaciones de estos criterios de información definiendo diferentes
 <div id="todos-los-posibles-modelos" class="section level3" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Todos los posibles modelos</h3>
 <p>Con la función <code>ols_step_all_possible()</code> de la librería <code>olsrr</code> es posible ajustar todos posibles modelos y determinar el mejor bajo diferentes criterios. Otra alternativa es la función <code>regsubsets()</code> de la librería <code>leaps</code>. Está función es más rápida (se basa en un algoritmo más eficiente), pero no es user-friendly.</p>
+<div id="datos-de-unidad-quirúrgica" class="section level4" number="4.4.1.1">
+<h4><span class="header-section-number">4.4.1.1</span> Datos de unidad quirúrgica</h4>
+<p>A través de la función <code>ols_step_all_possible</code> podemos ajustar los <span class="math inline">\(255\)</span> modelos que se pueden ajustar usando las ocho posibles covariables:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="selección-de-variables.html#cb75-1" aria-hidden="true" tabindex="-1"></a>surgical.all.mods<span class="ot">=</span><span class="fu">ols_step_all_possible</span>(mod.surgical.completo)</span></code></pre></div>
+<p>Además de ajustar los modelos, se calculan varios criterios (<span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,AIC,BIC,…) para cada uno de ellos.</p>
+<p>Puesto que son muchos modelos, podemos organizar los resultados de tal forma que obtengamos los mejores modelos basándonos en cada uno de los criterios. Por ejemplo, los 5 mejores ajustes según el <span class="math inline">\(R^{2}_{adj}\)</span> son:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="selección-de-variables.html#cb76-1" aria-hidden="true" tabindex="-1"></a>R2adj.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>adjr,<span class="at">decreasing =</span> T)</span>
+<span id="cb76-2"><a href="selección-de-variables.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[R2adj.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
+<pre><code>##     n                                             predictors   rsquare      adjr   predrsq       cp       aic       sbc
+## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037 5.772458 -8.612898  7.298974
+## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940 7.028837 -7.497389 10.403468
+## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597 5.528174 -8.580332  5.342556
+## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412 0.8198474 0.7749807 7.721367 -6.673207 11.227649
+## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815</code></pre>
+<p>Entonces, basándonos en el <span class="math inline">\(R^{2}_{adj}\)</span> el mejor ajuste se obtiene con el modelo considerando las covariables <code>bcs</code>, <code>pindex</code>, <code>enzyme_test</code>, <code>age</code>, <code>gender</code>, y <code>alc_heavy</code>. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables <code>gender</code> obtenemos un modelo con un <span class="math inline">\(R_^{2}_{pred}\)</span> más alto.</p>
+<p>Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="selección-de-variables.html#cb78-1" aria-hidden="true" tabindex="-1"></a>AIC.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>aic,<span class="at">decreasing =</span> F)</span>
+<span id="cb78-2"><a href="selección-de-variables.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[AIC.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
+<pre><code>##     n                                          predictors   rsquare      adjr   predrsq       cp       aic       sbc
+## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037 5.772458 -8.612898  7.298974
+## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597 5.528174 -8.580332  5.342556
+## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345 0.7862922 5.733992 -8.130569  3.803335
+## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815
+## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940 7.028837 -7.497389 10.403468</code></pre>
+<p>Con este críterio se escoge el mismo modelo que con el <span class="math inline">\(R^{2}_{adj}\)</span>. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad.</p>
+<p>En la Figura <a href="#surgicalFitAllPlot"><strong>??</strong></a> muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^2_{pred}\)</span>.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="selección-de-variables.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(surgical.all.mods)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:surgicalFitAllPlot-1"></span>
+<img src="MLG2_files/figure-html/surgicalFitAllPlot-1.png" alt="Valores de los criterios de selección calculados para cada uno de todos los posibles modelos." width="672" />
+<p class="caption">
+Figure 4.1: Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:surgicalFitAllPlot-2"></span>
+<img src="MLG2_files/figure-html/surgicalFitAllPlot-2.png" alt="Valores de los criterios de selección calculados para cada uno de todos los posibles modelos." width="672" />
+<p class="caption">
+Figure 4.2: Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.
+</p>
+</div>
+<p>Teniendo en cuenta esto, con la función <code>ols_step_best_subset()</code> selecciona el mejor modelo para cada subconjunto de número de covariables basándose en los diferentes criterios:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="selección-de-variables.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_best_subset</span>(mod.surgical.completo)</span></code></pre></div>
+<pre><code>##                            Best Subsets Regression                           
+## -----------------------------------------------------------------------------
+## Model Index    Predictors
+## -----------------------------------------------------------------------------
+##      1         enzyme_test                                                    
+##      2         pindex enzyme_test                                             
+##      3         pindex enzyme_test alc_heavy                                   
+##      4         bcs pindex enzyme_test alc_heavy                               
+##      5         bcs pindex enzyme_test gender alc_heavy                        
+##      6         bcs pindex enzyme_test age gender alc_heavy                    
+##      7         bcs pindex enzyme_test age gender alc_mod alc_heavy            
+##      8         bcs pindex enzyme_test liver_test age gender alc_mod alc_heavy 
+## -----------------------------------------------------------------------------
+## 
+##                                                    Subsets Regression Summary                                                   
+## --------------------------------------------------------------------------------------------------------------------------------
+##                        Adj.        Pred                                                                                          
+## Model    R-Square    R-Square    R-Square      C(p)        AIC        SBIC         SBC       MSEP      FPE       HSP       APC  
+## --------------------------------------------------------------------------------------------------------------------------------
+##   1        0.4273      0.4162      0.3496    117.4783    51.4343    -105.4395    57.4013    7.6160    0.1463    0.0028    0.6168 
+##   2        0.6632      0.6500      0.6044     50.4918    24.7668    -131.5971    32.7228    4.5684    0.0893    0.0017    0.3765 
+##   3        0.7780      0.7647      0.7291     18.9015     4.2432    -150.4023    14.1881    3.0718    0.0610    0.0012    0.2575 
+##   4        0.8299      0.8160      0.7863      5.7340    -8.1306    -160.5329     3.8033    2.4030    0.0486     9e-04    0.2048 
+##   5        0.8375      0.8205      0.7828      5.5282    -8.5803    -160.2288     5.3426    2.3453    0.0482     9e-04    0.2032 
+##   6        0.8435      0.8235      0.7836      5.7725    -8.6129    -159.4064     7.2990    2.3077    0.0482     9e-04    0.2032 
+##   7        0.8460      0.8226      0.7807      7.0288    -7.4974    -157.6344    10.4035    2.3207    0.0492    0.0010    0.2076 
+##   8        0.8461      0.8187      0.7711      9.0000    -5.5320    -155.2573    14.3579    2.3719    0.0511    0.0010    0.2154 
+## --------------------------------------------------------------------------------------------------------------------------------
+## AIC: Akaike Information Criteria 
+##  SBIC: Sawa&#39;s Bayesian Information Criteria 
+##  SBC: Schwarz Bayesian Criteria 
+##  MSEP: Estimated error of prediction, assuming multivariate normality 
+##  FPE: Final Prediction Error 
+##  HSP: Hocking&#39;s Sp 
+##  APC: Amemiya Prediction Criteria</code></pre>
+<p>A partir de estos resultados, y con la ayuda de expertos en el tema, se puede hacer una selección del mejor modelo para hacer las predicciónes.</p>
+</div>
+</div>
+<div id="algorítmos-de-selección" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Algorítmos de selección</h3>
+<p>Para el proceso de selección, la mejor opción es evaluar todos los posibles modelos. Sin embargo, en la presencia de muchas posibles covariables este proceso puede requerir una carga computacional muy alta. Por esta razón, se han desarrollado varios algoritmos para evaluar solo un subconjunto de modelos agregando o eliminando covariables una a la vez.</p>
+<div id="selección-hacia-delante-forward-selection" class="section level4" number="4.4.2.1">
+<h4><span class="header-section-number">4.4.2.1</span> Selección hacia delante (forward selection)</h4>
+<p>Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ‘’óptimo’’ se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).</p>
+<p>La primera covariable se escoge luego de ajustar los <span class="math inline">\((p-1)\)</span> modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.</p>
+<p>Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes <span class="math inline">\((p-2)\)</span> regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccinando la tercer covariable de la misma forma.</p>
+<p>El algoritmo continua seleccionando covariables hasta que se satisface un criterio de parada (por ejemplo, hasta que el AIC aumente).</p>
+</div>
+<div id="selección-hacia-atrás-backward-selection" class="section level4" number="4.4.2.2">
+<h4><span class="header-section-number">4.4.2.2</span> Selección hacia atrás (backward selection)</h4>
+<p>Con este algoritmo se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).</p>
+</div>
+<div id="selección-por-segmentos-stepwise-selection" class="section level4" number="4.4.2.3">
+<h4><span class="header-section-number">4.4.2.3</span> Selección por segmentos (stepwise selection)</h4>
+<p>Aquí se siguen los mismos pasos que la selección hacia delante. Pero en cada paso se evalúan de nuevo los candidatos que ya habían ingresado en el modelo. Por lo tanto, una covariable que ya esté en el modelo puede ser eliminada en algún paso posterior.</p>
+</div>
+<div id="unidad-quirúrgica-1" class="section level4" number="4.4.2.4">
+<h4><span class="header-section-number">4.4.2.4</span> Unidad quirúrgica</h4>
+<p>Consideremos el modelo anterior adicionando las interacciones de las covariables continuas con las categóricas:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\log y_{i} =&amp; \beta_{0}+\mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2}+ \mbox{enzyme}_{i}\beta_{3} +  \mbox{liver}_{i}\beta_{4} + \mbox{age}_{i}\beta_{5} +  \mbox{gender}_{i}\beta_{6}+ \mbox{alc_mod}_{i}\beta_{7} + \\ &amp;  \mbox{alc_heavy}_{i}\beta_{8} \mbox{bcs}_{i}\mbox{gender}_{i}\beta_{9} + \mbox{pindex}_{i}\mbox{gender}_{i}\beta_{10} + \mbox{enzyme}_{i}\mbox{gender}_{i}\beta_{11} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{12}  + \\ &amp; \mbox{age}_{i}\mbox{gender}_{i}\beta_{13} + \mbox{bcs}_{i}\mbox{alc_mod}_{i}\beta_{14} + \mbox{pindex}_{i}\mbox{alc_mod}_{i}\beta_{15} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{16} +  \\ &amp; \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{17} + \mbox{age}_{i}\mbox{alc_mod}_{i}\beta_{18} + \mbox{bcs}_{i}\mbox{alc_heavy}_{i}\beta_{19} + \mbox{pindex}_{i}\mbox{alc_heavy}_{i}\beta_{20} + \\ &amp; \mbox{enzyme}_{i}\mbox{alc_heavy}_{i}\beta_{21} + \mbox{liver}_{i}\mbox{alc_heavy}_{i}\beta_{22} + \mbox{age}_{i}\mbox{alc_heavy}_{i}\beta_{23} + \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> posibles modelos. Lo que hace que sea difícil ajustarlos todos (aunque es posible usando la librería <code>leaps</code>). Por lo tanto, vamos a utilizar los algortimos de selección.</p>
+<p><strong>Selección hacia delante</strong>. Podemos utilizar la función <code>ols_step_forward_aic</code> de la librería <code>olsrr</code>:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="selección-de-variables.html#cb83-1" aria-hidden="true" tabindex="-1"></a>mod.surgical.completo2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>bcs<span class="sc">*</span>gender<span class="sc">+</span>pindex<span class="sc">*</span>gender<span class="sc">+</span>enzyme_test<span class="sc">*</span>gender<span class="sc">+</span>liver_test<span class="sc">*</span>gender<span class="sc">+</span>age<span class="sc">*</span>gender<span class="sc">+</span> bcs<span class="sc">*</span>alc_mod<span class="sc">+</span>pindex<span class="sc">*</span>alc_mod<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_mod<span class="sc">+</span>liver_test<span class="sc">*</span>alc_mod<span class="sc">+</span>age<span class="sc">*</span>alc_mod<span class="sc">+</span>bcs<span class="sc">*</span>alc_heavy<span class="sc">+</span>pindex<span class="sc">*</span>alc_heavy<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>liver_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>age<span class="sc">*</span>alc_heavy,<span class="at">data=</span>surgical)</span>
+<span id="cb83-2"><a href="selección-de-variables.html#cb83-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">=</span><span class="fu">ols_step_forward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<p>Con el argumento <code>details = T</code> se puede ver la selección con más detalle. Usando este algoritmo el modelo óptimo es:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\log y_{i} =&amp; \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
+&amp;\mbox{gender}_{i}\mbox{pindex}_{i}\beta_{6} + \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{7} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{8} + \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}\]</span></p>
+<p><strong>Selección hacia atrás</strong>. Podemos utilizar la función <code>ols_step_backward_aic</code> de la librería <code>olsrr</code>:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="selección-de-variables.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_backward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<pre><code>## 
+## 
+##                         Backward Elimination Summary                         
+## ---------------------------------------------------------------------------
+## Variable                   AIC       RSS     Sum Sq     R-Sq      Adj. R-Sq 
+## ---------------------------------------------------------------------------
+## Full Model                -9.135    1.058    11.747    0.91740      0.85408 
+## age:alc_heavy            -11.134    1.058    11.747    0.91740      0.85878 
+## alc_heavy                -13.133    1.058    11.747    0.91740      0.86319 
+## bcs:alc_mod              -15.057    1.059    11.745    0.91728      0.86715 
+## age:alc_mod              -16.852    1.063    11.741    0.91697      0.87057 
+## gender:pindex            -18.639    1.067    11.737    0.91664      0.87377 
+## alc_mod                  -19.980    1.080    11.724    0.91562      0.87577 
+## enzyme_test:alc_heavy    -20.698    1.106    11.698    0.91359      0.87622 
+## liver_test:alc_heavy     -20.988    1.142    11.662    0.91081      0.87560 
+## pindex:alc_heavy         -22.223    1.158    11.646    0.90954      0.87706 
+## pindex:alc_mod           -22.957    1.186    11.619    0.90739      0.87729 
+## bcs:gender               -22.981    1.230    11.575    0.90394      0.87583 
+## gender:age               -23.038    1.275    11.529    0.90042      0.87434 
+## gender:liver_test        -23.549    1.311    11.494    0.89764      0.87383 
+## age                      -23.745    1.355    11.449    0.89416      0.87251 
+## ---------------------------------------------------------------------------</code></pre>
+<p>Por lo tanto, el modelo seleccionado es:
+<span class="math display">\[\begin{equation}
+\begin{split}
+\log y_{i} =&amp; \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{gender}_{i}\beta_{4} + \mbox{liver}_{i}\beta_{5} + \\
+&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc\_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc\_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}\]</span>
+Con este algoritmo no se considera la edad del paciente pero si la función hepática y otras interacciones.</p>
+<p><strong>Selección por segmentos</strong>. Aquí tenemos la función <code>ols_step_both_aic</code> de la librería <code>olsrr</code>:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="selección-de-variables.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_both_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<pre><code>## 
+## 
+##                                    Stepwise Summary                                   
+## ------------------------------------------------------------------------------------
+## Variable               Method       AIC       RSS     Sum Sq     R-Sq      Adj. R-Sq 
+## ------------------------------------------------------------------------------------
+## enzyme_test           addition     51.434    7.334     5.471    0.42725      0.41624 
+## pindex                addition     24.767    4.313     8.492    0.66318      0.64997 
+## bcs:alc_heavy         addition     -3.014    2.485    10.320    0.80596      0.79432 
+## bcs                   addition     -9.430    2.126    10.678    0.83396      0.82041 
+## gender:pindex         addition    -10.781    1.998    10.806    0.84395      0.82770 
+## gender:enzyme_test    addition    -19.676    1.633    11.171    0.87246      0.85618 
+## gender                addition    -23.040    1.479    11.326    0.88452      0.86695 
+## gender:pindex         removal     -23.631    1.518    11.287    0.88147      0.86634 
+## age                   addition    -25.088    1.424    11.381    0.88882      0.87190 
+## ------------------------------------------------------------------------------------</code></pre>
+<p>Note que este método sigue los mismos pasos que la selección hacia delante hasta el paso 8 donde se elimina la interacción entre el índice de pronostico y el genero. Por lo que aquí obtenemos el siguiente modelo:</p>
+<p><span class="math display">\[\begin{equation}
+\begin{split}
+\log y_{i} =&amp; \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{age}_{i}\beta_{4} + \mbox{gender}_{i}\beta_{5} + \\
+&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{bcs}_{i}\mbox{alc\_heavy}_{i}\beta_{7} + \varepsilon_{i}.
+\end{split}
+\nonumber
+\end{equation}\]</span></p>
+<p>Dado que los algoritmos hacen la busqueda del modelo ‘’óptimo’’ evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.</p>
 
+</div>
 </div>
 </div>
 </div>
