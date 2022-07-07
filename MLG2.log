@@ -1,0 +1,1071 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.2.20)  7 JUL 2022 13:01
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./MLG2.tex
+(MLG2.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2021-11-22> (C:\Users\John\AppData\Local\Programs\MiKTeX\
+tex/latex/base\article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count183
+\c@section=\count184
+\c@subsection=\count185
+\c@subsubsection=\count186
+\c@paragraph=\count187
+\c@subparagraph=\count188
+\c@figure=\count189
+\c@table=\count190
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip49
+For additional information on amsmath, use the `?' option.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen139
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen140
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count191
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count192
+\leftroot@=\count193
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count194
+\DOTSCASE@=\count195
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen141
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count196
+\c@MaxMatrixCols=\count197
+\dotsspace@=\muskip16
+\c@parentequation=\count198
+\dspbrk@lvl=\count199
+\tag@help=\toks17
+\row@=\count266
+\column@=\count267
+\maxfields@=\count268
+\andhelp@=\toks18
+\eqnshift@=\dimen142
+\alignsep@=\dimen143
+\tagshift@=\dimen144
+\tagwidth@=\dimen145
+\totwidth@=\dimen146
+\lineht@=\dimen147
+\@envbody=\toks19
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks21
+\inpenc@posthook=\toks22
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.st
+y
+Package: microtype 2022/06/23 v3.0f Micro-typographical refinements (RS)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count269
+)
+\MT@toks=\toks24
+\MT@tempbox=\box52
+\MT@count=\count270
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1045.
+LaTeX Info: Redefining \leftprotrusion on input line 1046.
+LaTeX Info: Redefining \rightprotrusion on input line 1056.
+LaTeX Info: Redefining \textls on input line 1234.
+\MT@outer@kern=\dimen148
+LaTeX Info: Redefining \textmicrotypecontext on input line 1858.
+\MT@listname@count=\count271
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdft
+ex.def
+File: microtype-pdftex.def 2022/06/23 v3.0f Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 900.
+LaTeX Info: Redefining \lslig on input line 900.
+\MT@outer@space=\skip52
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+File: microtype.cfg 2022/06/23 v3.0f microtype main configuration file (RS)
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
+Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.st
+y
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
+Package: xurl 2022/01/09 v 0.10 modify URL breaks
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
+Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.
+sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.st
+y
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinek
+eys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.st
+y
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro.
+sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen149
+\Hy@linkcounter=\count272
+\Hy@pagecounter=\count273
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-langpa
+tches.def
+File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
+nguages
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.st
+y
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count274
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4073.
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count275
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen150
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.
+sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count276
+\Field@Width=\dimen151
+\Fld@charsize=\dimen152
+Package hyperref Info: Hyper figures OFF on input line 6076.
+Package hyperref Info: Link nesting OFF on input line 6081.
+Package hyperref Info: Hyper index ON on input line 6084.
+Package hyperref Info: backreferencing OFF on input line 6091.
+Package hyperref Info: Link coloring OFF on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6101.
+Package hyperref Info: PDF/A mode OFF on input line 6106.
+LaTeX Info: Redefining \ref on input line 6146.
+LaTeX Info: Redefining \pageref on input line 6150.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count277
+\c@Item=\count278
+\c@Hfootnote=\count279
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count280
+\c@bookmark@seq@number=\count281
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfile
+check.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniqueco
+unter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip53
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.de
+f
+File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
+\BKM@id=\count282
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count283
+\Gm@cntv=\count284
+\c@Gm@tempcnt=\count285
+\Gm@bindingoffset=\dimen153
+\Gm@wd@mp=\dimen154
+\Gm@odd@mp=\dimen155
+\Gm@even@mp=\dimen156
+\Gm@layoutwidth=\dimen157
+\Gm@layoutheight=\dimen158
+\Gm@layouthoffset=\dimen159
+\Gm@layoutvoffset=\dimen160
+\Gm@dimlist=\toks25
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) 
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvrb.sty
+Package: fancyvrb 2022/06/06 4.5 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count286
+\FV@InFile=\read2
+\FV@TabBox=\box53
+\c@FancyVerbLine=\count287
+\FV@StepNumber=\count288
+\FV@OutFile=\write3
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip54
+\fb@frw=\dimen161
+\fb@frh=\dimen162
+\FrameRule=\dimen163
+\FrameSep=\dimen164
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count289
+\LTcapwidth=\dimen165
+\LT@head=\box54
+\LT@firsthead=\box55
+\LT@foot=\box56
+\LT@lastfoot=\box57
+\LT@gbox=\box58
+\LT@cols=\count290
+\LT@rows=\count291
+\c@LT@tables=\count292
+\c@LT@chunks=\count293
+\LT@p@ftn=\toks26
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen166
+\lightrulewidth=\dimen167
+\cmidrulewidth=\dimen168
+\belowrulesep=\dimen169
+\belowbottomsep=\dimen170
+\aboverulesep=\dimen171
+\abovetopsep=\dimen172
+\cmidrulesep=\dimen173
+\cmidrulekern=\dimen174
+\defaultaddspace=\dimen175
+\@cmidla=\count294
+\@cmidlb=\count295
+\@aboverulesep=\dimen176
+\@belowrulesep=\dimen177
+\@thisruleclass=\count296
+\@lastruleclass=\count297
+\@thisrulewidth=\dimen178
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen179
+\ar@mcellbox=\box59
+\extrarowheight=\dimen180
+\NC@list=\toks27
+\extratabsurround=\skip59
+\backup@length=\skip60
+\ar@cellbox=\box60
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count298
+\calc@Bcount=\count299
+\calc@Adimen=\dimen181
+\calc@Bdimen=\dimen182
+\calc@Askip=\skip61
+\calc@Bskip=\skip62
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count300
+\calc@Cskip=\skip63
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/footnotehyper\footnotehy
+per.sty
+Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
+\FNH@notes=\box61
+\FNH@width=\dimen183
+\FNH@toks=\toks28
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cf
+g
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen184
+\Gin@req@width=\dimen185
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen186
+\captionmargin=\dimen187
+\caption@leftmargin=\dimen188
+\caption@rightmargin=\dimen189
+\caption@width=\dimen190
+\caption@indent=\dimen191
+\caption@parindent=\dimen192
+\caption@hangindent=\dimen193
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count301
+\c@continuedfloat=\count302
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip64
+\bibsep=\skip65
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count303
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
+Package: siunitx 2022-06-22 v3.1.4 A comprehensive (SI) units package
+\l__siunitx_angle_tmp_dim=\dimen194
+\l__siunitx_angle_marker_box=\box62
+\l__siunitx_angle_unit_box=\box63
+\l__siunitx_compound_count_int=\count304
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/translations\translation
+s.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
+)
+\l__siunitx_number_exponent_fixed_int=\count305
+\l__siunitx_number_min_decimal_int=\count306
+\l__siunitx_number_min_integer_int=\count307
+\l__siunitx_number_round_precision_int=\count308
+\l__siunitx_number_group_first_int=\count309
+\l__siunitx_number_group_size_int=\count310
+\l__siunitx_number_group_minimum_int=\count311
+\l__siunitx_table_tmp_box=\box64
+\l__siunitx_table_tmp_dim=\dimen195
+\l__siunitx_table_column_width_dim=\dimen196
+\l__siunitx_table_integer_box=\box65
+\l__siunitx_table_decimal_box=\box66
+\l__siunitx_table_before_box=\box67
+\l__siunitx_table_after_box=\box68
+\l__siunitx_table_before_dim=\dimen197
+\l__siunitx_table_carry_dim=\dimen198
+\l__siunitx_unit_tmp_int=\count312
+\l__siunitx_unit_position_int=\count313
+\l__siunitx_unit_total_int=\count314
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3ke
+ys2e.sty (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.
+sty
+Package: expl3 2021-11-22 L3 programming layer (loader) 
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdft
+ex.def
+File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count315
+\l__pdf_internal_box=\box69
+))
+Package: l3keys2e 2021-11-12 LaTeX2e option processing using LaTeX3 keys
+)) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.s
+ty
+Package: mathtools 2022/02/07 v1.28a mathematical typesetting tools
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count316
+\l_MT_multwidth_dim=\dimen199
+\origjot=\skip66
+\l_MT_shortvdotswithinadjustabove_dim=\dimen256
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen257
+\l_MT_above_intertext_sep=\dimen258
+\l_MT_below_intertext_sep=\dimen259
+\l_MT_above_shortintertext_sep=\dimen260
+\l_MT_below_shortintertext_sep=\dimen261
+\xmathstrut@box=\box70
+\xmathstrut@dim=\dimen262
+)
+Package translations Info: No language package found. I am going to use `englis
+h' as default language. on input line 193.
+No file MLG2.aux.
+\openout1 = `MLG2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 193.
+LaTeX Font Info:    ... okay on input line 193.
+LaTeX Info: Redefining \microtypecontext on input line 193.
+Package microtype Info: Applying patch `item' on input line 193.
+Package microtype Info: Applying patch `toc' on input line 193.
+Package microtype Info: Applying patch `eqnum' on input line 193.
+Package microtype Info: Applying patch `footnote' on input line 193.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 193.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mki
+i
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count317
+\scratchdimen=\dimen263
+\scratchbox=\box71
+\nofMPsegments=\count318
+\nofMParguments=\count319
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count320
+\MPscratchDim=\dimen264
+\MPnumerator=\count321
+\makeMPintoPDFobject=\count322
+\everyMPtoPDFconversion=\toks30
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-ba
+se.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cf
+g
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring OFF on input line 193.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitl
+estring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count323
+)
+LaTeX Info: Redefining \ref on input line 193.
+LaTeX Info: Redefining \pageref on input line 193.
+LaTeX Info: Redefining \nameref on input line 193.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=455.24408pt
+* \textheight=640.187pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-28.45274pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\trans
+lations-basic-dictionary-english.trsl
+File: translations-basic-dictionary-english.trsl (english translation file `tra
+nslations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `english'. on input line 193.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+95.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+95.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+195.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+195.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 195.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 195.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 195.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 195
+.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 195
+.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+\tf@toc=\write4
+\openout4 = `MLG2.toc'.
+
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+30.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
+54.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 254.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 254.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 254.
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+260.
+(C:\Users\John\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+<MLG2_files/figure-latex/AtletesFigure-1.pdf, id=3, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/AtletesFigure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/AtletesFigure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/AtletesFigure-1.pdf  used on i
+nput line 268.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+LaTeX Warning: Reference `fig:AtletesFigure' on page 1 undefined on input line 
+275.
+
+
+LaTeX Warning: Reference `fig:AtletesFigure' on page 1 undefined on input line 
+275.
+
+[1
+
+{C:/Users/John/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2 <./MLG2_fi
+les/figure-latex/AtletesFigure-1.pdf>]
+<MLG2_files/figure-latex/UN11Figure-1.pdf, id=45, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/UN11Figure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/UN11Figure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/UN11Figure-1.pdf  used on inpu
+t line 307.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+LaTeX Warning: Reference `fig:UN11Figure' on page 3 undefined on input line 314
+.
+
+[3 <./MLG2_files/figure-latex/UN11Figure-1.pdf>]
+
+LaTeX Warning: Reference `tab:dosIndica' on page 4 undefined on input line 328.
+
+
+
+LaTeX Warning: Reference `eq:modInter' on page 4 undefined on input line 363.
+
+
+LaTeX Warning: Reference `fig:Rectas1' on page 4 undefined on input line 363.
+
+
+LaTeX Warning: Reference `fig:Rectas1' on page 4 undefined on input line 363.
+
+<MLG2_files/figure-latex/Rectas1-1.pdf, id=59, 650.43pt x 289.08pt>
+File: MLG2_files/figure-latex/Rectas1-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/Rectas1-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/Rectas1-1.pdf  used on input l
+ine 367.
+(pdftex.def)             Requested size: 455.2582pt x 202.33696pt.
+[4]
+
+LaTeX Warning: Reference `fig:AtletesAjuste' on page 5 undefined on input line 
+427.
+
+[5 <./MLG2_files/figure-latex/Rectas1-1.pdf>]
+<MLG2_files/figure-latex/AtletesAjuste-1.pdf, id=88, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/AtletesAjuste-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/AtletesAjuste-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/AtletesAjuste-1.pdf  used on i
+nput line 439.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[6 <./MLG2_files/figure-latex/AtletesAjuste-1.pdf>]
+
+LaTeX Warning: Reference `fig:AtletesAjuste2' on page 7 undefined on input line
+ 510.
+
+<MLG2_files/figure-latex/AtletesAjuste2-1.pdf, id=99, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/AtletesAjuste2-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/AtletesAjuste2-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/AtletesAjuste2-1.pdf  used on 
+input line 524.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.535 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.535 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.535 \begin{equation}
+                      
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.2}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.535 \begin{equation}
+                       [7] [8 <./MLG2_files/figure-latex/AtletesAjuste2-1.pdf>]
+
+LaTeX Warning: Reference `fig:MCOUN11Figure' on page 9 undefined on input line 
+600.
+
+<MLG2_files/figure-latex/MCOUN11Figure-1.pdf, id=117, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/MCOUN11Figure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/MCOUN11Figure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/MCOUN11Figure-1.pdf  used on i
+nput line 614.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[9] [10 <./MLG2_files/figure-latex/MCOUN11Figure-1.pdf>] [11]
+<MLG2_files/figure-latex/CakesFigure-1.pdf, id=137, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/CakesFigure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/CakesFigure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/CakesFigure-1.pdf  used on inp
+ut line 726.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[12 <./MLG2_files/figure-latex/CakesFigure-1.pdf>]
+<MLG2_files/figure-latex/BostonFigure-1.pdf, id=156, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/BostonFigure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/BostonFigure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/BostonFigure-1.pdf  used on in
+put line 748.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+LaTeX Warning: Reference `fig:Polinomios' on page 13 undefined on input line 76
+7.
+
+<MLG2_files/figure-latex/Polinomios-1.pdf, id=157, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/Polinomios-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/Polinomios-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/Polinomios-1.pdf  used on inpu
+t line 771.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+LaTeX Warning: Reference `fig:modPoli1' on page 13 undefined on input line 782.
+
+
+
+LaTeX Warning: Reference `fig:modPoli3' on page 13 undefined on input line 782.
+
+
+<MLG2_files/figure-latex/modPoli1-1.pdf, id=158, 650.43pt x 289.08pt>
+File: MLG2_files/figure-latex/modPoli1-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/modPoli1-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/modPoli1-1.pdf  used on input 
+line 786.
+(pdftex.def)             Requested size: 455.2582pt x 202.33696pt.
+[13 <./MLG2_files/figure-latex/BostonFigure-1.pdf>]
+<MLG2_files/figure-latex/modPoli2-1.pdf, id=172, 650.43pt x 289.08pt>
+File: MLG2_files/figure-latex/modPoli2-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/modPoli2-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/modPoli2-1.pdf  used on input 
+line 798.
+(pdftex.def)             Requested size: 455.2582pt x 202.33696pt.
+<MLG2_files/figure-latex/modPoli3-1.pdf, id=173, 650.43pt x 289.08pt>
+File: MLG2_files/figure-latex/modPoli3-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/modPoli3-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/modPoli3-1.pdf  used on input 
+line 807.
+(pdftex.def)             Requested size: 455.2582pt x 202.33696pt.
+
+LaTeX Warning: Reference `fig:extrapolacion' on page 14 undefined on input line
+ 829.
+
+<MLG2_files/figure-latex/extrapolacion-1.pdf, id=174, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/extrapolacion-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/extrapolacion-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/extrapolacion-1.pdf  used on i
+nput line 834.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[14 <./MLG2_files/figure-latex/Polinomios-1.pdf>] [15 <./MLG2_files/figure-late
+x/modPoli1-1.pdf> <./MLG2_files/figure-latex/modPoli2-1.pdf>] [16 <./MLG2_files
+/figure-latex/modPoli3-1.pdf> <./MLG2_files/figure-latex/extrapolacion-1.pdf>] 
+[17]
+
+LaTeX Warning: Reference `fig:predCakes' on page 18 undefined on input line 973
+.
+
+<MLG2_files/figure-latex/PredCakes-1.pdf, id=226, 650.43pt x 289.08pt>
+File: MLG2_files/figure-latex/PredCakes-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/PredCakes-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/PredCakes-1.pdf  used on input
+ line 977.
+(pdftex.def)             Requested size: 455.2582pt x 202.33696pt.
+
+LaTeX Warning: Reference `fig:predCakes' on page 18 undefined on input line 984
+.
+
+
+LaTeX Warning: Reference `fig:predCakes2' on page 18 undefined on input line 98
+4.
+
+
+LaTeX Warning: Reference `fig:predCakes2' on page 18 undefined on input line 98
+4.
+
+[18]
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 991.
+<MLG2_files/figure-latex/predCakes2-1.pdf, id=231, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/predCakes2-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/predCakes2-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/predCakes2-1.pdf  used on inpu
+t line 1002.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[19 <./MLG2_files/figure-latex/PredCakes-1.pdf>] [20 <./MLG2_files/figure-latex
+/predCakes2-1.pdf>]
+<MLG2_files/figure-latex/figPredBoston-1.pdf, id=257, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/figPredBoston-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/figPredBoston-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/figPredBoston-1.pdf  used on i
+nput line 1063.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+LaTeX Warning: Reference `RegSegmentos' on page 21 undefined on input line 1087
+.
+
+<MLG2_files/figure-latex/RegSegmentos-1.pdf, id=258, 650.43pt x 289.08pt>
+File: MLG2_files/figure-latex/RegSegmentos-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/RegSegmentos-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/RegSegmentos-1.pdf  used on in
+put line 1091.
+(pdftex.def)             Requested size: 455.2582pt x 202.33696pt.
+[21 <./MLG2_files/figure-latex/figPredBoston-1.pdf>]
+<MLG2_files/figure-latex/LotesFigure-1.pdf, id=272, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/LotesFigure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/LotesFigure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/LotesFigure-1.pdf  used on inp
+ut line 1113.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+LaTeX Warning: Reference `fig:LotesFigure' on page 22 undefined on input line 1
+120.
+
+[22 <./MLG2_files/figure-latex/RegSegmentos-1.pdf>] [23 <./MLG2_files/figure-la
+tex/LotesFigure-1.pdf>]
+
+LaTeX Warning: Reference `fig:LotesFigure2' on page 24 undefined on input line 
+1157.
+
+<MLG2_files/figure-latex/LotesFigure2-1.pdf, id=295, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/LotesFigure2-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/LotesFigure2-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/LotesFigure2-1.pdf  used on in
+put line 1173.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[24 <./MLG2_files/figure-latex/LotesFigure2-1.pdf>]
+
+LaTeX Warning: Reference `fig:CementFigure' on page 25 undefined on input line 
+1205.
+
+<MLG2_files/figure-latex/CementFigure-1.pdf, id=307, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/CementFigure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/CementFigure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/CementFigure-1.pdf  used on in
+put line 1216.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[25 <./MLG2_files/figure-latex/CementFigure-1.pdf>]
+<MLG2_files/figure-latex/bodyfatFigure-1.pdf, id=324, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/bodyfatFigure-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/bodyfatFigure-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/bodyfatFigure-1.pdf  used on i
+nput line 1289.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[26] [27 <./MLG2_files/figure-latex/bodyfatFigure-1.pdf>]
+
+LaTeX Warning: Reference `eq:varbb' on page 28 undefined on input line 1386.
+
+[28] [29] [30] [31] [32] [33]
+
+LaTeX Warning: Reference `fig:ECMrepresentacion' on page 34 undefined on input 
+line 1729.
+
+<MLG2_files/figure-latex/ECMrepresentacion-1.pdf, id=391, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/ECMrepresentacion-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/ECMrepresentacion-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/ECMrepresentacion-1.pdf  used 
+on input line 1751.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[34
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.3}
+) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1779 \begin{Shaded}
+                     ] [35 <./MLG2_files/figure-latex/ECMrepresentacion-1.pdf>]
+<MLG2_files/figure-latex/CementTrazaRidge-1.pdf, id=408, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/CementTrazaRidge-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/CementTrazaRidge-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/CementTrazaRidge-1.pdf  used o
+n input line 1803.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+
+LaTeX Warning: Reference `fig:CementTrazaRidge' on page 36 undefined on input l
+ine 1810.
+
+<MLG2_files/figure-latex/cementridge3-1.pdf, id=409, 433.62pt x 289.08pt>
+File: MLG2_files/figure-latex/cementridge3-1.pdf Graphic file (type pdf)
+<use MLG2_files/figure-latex/cementridge3-1.pdf>
+Package pdftex.def Info: MLG2_files/figure-latex/cementridge3-1.pdf  used on in
+put line 1823.
+(pdftex.def)             Requested size: 433.63878pt x 289.09251pt.
+[36 <./MLG2_files/figure-latex/CementTrazaRidge-1.pdf>] [37 <./MLG2_files/figur
+e-latex/cementridge3-1.pdf>] [38]
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.3}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1961 \begin{equation}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.3}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1961 \begin{equation}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.3}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1961 \begin{equation}
+                       
+pdfTeX warning (ext4): destination with the same identifier (name{equation.3.3}
+) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1961 \begin{equation}
+                       
+
+LaTeX Warning: Reference `eq:varBPC' on page 39 undefined on input line 1967.
+
+[39]
+Underfull \vbox (badness 10000) detected at line 2058
+ []
+
+[40]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.2106 \end{split}
+                   
+Here is how much of TeX's memory you used:
+ 20625 strings out of 478659
+ 396273 string characters out of 2846394
+ 686776 words of memory out of 3000000
+ 38075 multiletter control sequences out of 15000+600000
+ 473026 words of font info for 172 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 74i,21n,79p,1003b,972s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+!  ==> Fatal error occurred, no output PDF file produced!
+
+! pdflatex: major issue: So far, you have not checked for MiKTeX updates.

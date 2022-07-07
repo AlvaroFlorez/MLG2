@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-05-16" />
+<meta name="date" content="2022-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="multicolinealidad.html"/>
 
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,9 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -246,12 +245,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="selección-de-variables" class="section level1" number="4">
-<h1><span class="header-section-number">Capítulo 4</span> Selección de variables</h1>
-<div id="ejemplos-3" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Ejemplos</h2>
-<div id="unidad-quirúrgica" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Unidad quirúrgica</h3>
+<div id="selección-de-variables" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Selección de variables<a href="selección-de-variables.html#selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="ejemplos-3" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Ejemplos<a href="selección-de-variables.html#ejemplos-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="unidad-quirúrgica" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Unidad quirúrgica<a href="selección-de-variables.html#unidad-quirúrgica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una unidad quirúrgica de un hospital está interesada en predecir la supervivencia de los pacientes sometidos a un tipo particular de operación hepática. Se dispuso de una selección aleatoria de <span class="math inline">\(108\)</span> pacientes para el análisis. De cada registro del paciente, se extrajo la siguiente información de la evaluación preoperatoria:</p>
 <ul>
 <li><p><code>bcs</code>: coagulación sanguínea.</p></li>
@@ -273,10 +272,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \nonumber
 \end{equation}\]</span></p>
 <p>El ajuste del modelo es:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="selección-de-variables.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
-<span id="cb71-2"><a href="selección-de-variables.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(surgical)</span>
-<span id="cb71-3"><a href="selección-de-variables.html#cb71-3" aria-hidden="true" tabindex="-1"></a>mod.surgical.completo <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>.,<span class="at">data=</span>surgical)</span>
-<span id="cb71-4"><a href="selección-de-variables.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.surgical.completo)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="selección-de-variables.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
+<span id="cb1-2"><a href="selección-de-variables.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(surgical)</span>
+<span id="cb1-3"><a href="selección-de-variables.html#cb1-3" aria-hidden="true" tabindex="-1"></a>mod.surgical.completo <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>.,<span class="at">data=</span>surgical)</span>
+<span id="cb1-4"><a href="selección-de-variables.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.surgical.completo)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(y) ~ ., data = surgical)
@@ -303,8 +302,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.8461, Adjusted R-squared:  0.8187 
 ## F-statistic: 30.93 on 8 and 45 DF,  p-value: 7.823e-16</code></pre>
 </div>
-<div id="grasa-corporal-1" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Grasa corporal</h3>
+<div id="grasa-corporal-1" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Grasa corporal<a href="selección-de-variables.html#grasa-corporal-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La medición de la grasa corporal es un proceso complejo. Dado que los músculos y los huesos son más densos, el calculo de % de grasa corporal se basa, entre otros aspectos, en la medición de la densidad corporal la cuál requiere sumergir a las personas en el agua.</p>
 <p>Por esta razón se quiere buscar un método más sencillo para determinar el % de grasa corporal. Para esto, se registraron la edad, el peso, la altura y <span class="math inline">\(10\)</span> medidas de la circunferencia corporal de <span class="math inline">\(252\)</span> hombres. De igual forma, a cada uno de estos hombres se les midió el % de grasa corporal de forma precisa (usando la ecuación de Brozek, medición a partir de la densidad).</p>
 <p>Cómo variable respuesta se utiliza la medición por el método de Brozek, y las posibles covariables son:</p>
@@ -328,11 +327,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \mbox{brozek}_i = \beta_{0} + \mbox{age}_i\beta_1+ \mbox{weight}_i\beta_2 + \ldots + \mbox{wrist}_i\beta_{13}  + \varepsilon_i.
 \]</span>
 El ajuste del modelo es:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="selección-de-variables.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(faraway)</span>
-<span id="cb73-2"><a href="selección-de-variables.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(fat)</span>
-<span id="cb73-3"><a href="selección-de-variables.html#cb73-3" aria-hidden="true" tabindex="-1"></a>mod.fat <span class="ot">&lt;-</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> height <span class="sc">+</span> neck <span class="sc">+</span> chest <span class="sc">+</span> abdom <span class="sc">+</span></span>
-<span id="cb73-4"><a href="selección-de-variables.html#cb73-4" aria-hidden="true" tabindex="-1"></a>             hip <span class="sc">+</span> thigh <span class="sc">+</span> knee <span class="sc">+</span> ankle <span class="sc">+</span> biceps <span class="sc">+</span> forearm <span class="sc">+</span> wrist, <span class="at">data=</span>fat)</span>
-<span id="cb73-5"><a href="selección-de-variables.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.fat)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="selección-de-variables.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(faraway)</span>
+<span id="cb3-2"><a href="selección-de-variables.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(fat)</span>
+<span id="cb3-3"><a href="selección-de-variables.html#cb3-3" aria-hidden="true" tabindex="-1"></a>mod.fat <span class="ot">&lt;-</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> height <span class="sc">+</span> neck <span class="sc">+</span> chest <span class="sc">+</span> abdom <span class="sc">+</span></span>
+<span id="cb3-4"><a href="selección-de-variables.html#cb3-4" aria-hidden="true" tabindex="-1"></a>             hip <span class="sc">+</span> thigh <span class="sc">+</span> knee <span class="sc">+</span> ankle <span class="sc">+</span> biceps <span class="sc">+</span> forearm <span class="sc">+</span> wrist, <span class="at">data=</span>fat)</span>
+<span id="cb3-5"><a href="selección-de-variables.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.fat)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = brozek ~ age + weight + height + neck + chest + 
@@ -367,8 +366,8 @@ El ajuste del modelo es:</p>
 ## F-statistic: 54.63 on 13 and 238 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<div id="problema-de-selección-de-variables" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Problema de selección de variables</h2>
+<div id="problema-de-selección-de-variables" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Problema de selección de variables<a href="selección-de-variables.html#problema-de-selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En problemas de regresión se tiene un conjunto grande de potenciales covariables. Si ajustamos un modelo considerandolas todas podemos estar incluyendo covariables que son irrelevante. Por el otro lado, si no las incluimos todas es posible que estemos omitiendo covariables importantes. En ambos casos hay consecuencias negativas.</p>
 <p>Para illustrar esto, considere el siguiente modelo:
 <span class="math display">\[\begin{equation}
@@ -385,8 +384,8 @@ donde <span class="math inline">\(\boldsymbol x_{1i} = (1,x_{1i},x_{2i},\ldots,x
 \boldsymbol y= \boldsymbol X_{1}\boldsymbol \beta_{1} + \boldsymbol X_{2}\boldsymbol \beta_{2}+ \boldsymbol \varepsilon,
 \]</span>
 donde <span class="math inline">\(\boldsymbol X_{1}\)</span> es una matriz <span class="math inline">\(n \times r\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{1i}\)</span> y <span class="math inline">\(\boldsymbol X_{2}\)</span> es una matriz <span class="math inline">\(n \times (p-r-1)\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{2i}\)</span>.</p>
-<div id="qué-pasa-si-ignoramos-covariables-importantes" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> ¿Qué pasa si ignoramos covariables importantes?</h3>
+<div id="qué-pasa-si-ignoramos-covariables-importantes" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> ¿Qué pasa si ignoramos covariables importantes?<a href="selección-de-variables.html#qué-pasa-si-ignoramos-covariables-importantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ahora, considere que el modelo de regresión real es <a href="#eq:modelogral">(<strong>??</strong>)</a>, pero decidimos estimar:
 <span class="math display">\[
 y_{i} = \boldsymbol x_{1i}&#39;\boldsymbol \beta_1 + \varepsilon_i.
@@ -407,8 +406,8 @@ E(\widehat{y}_{0}) = \boldsymbol x_{01}&#39;\boldsymbol \beta_{1} + \boldsymbol 
 \]</span>
 Por lo tanto, si omitimos variables relevantes obtenemos sesgo en las estimaciones.</p>
 </div>
-<div id="que-pasa-si-incluimos-covariables-irrelevantes" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> ¿Que pasa si incluimos covariables irrelevantes?</h3>
+<div id="que-pasa-si-incluimos-covariables-irrelevantes" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> ¿Que pasa si incluimos covariables irrelevantes?<a href="selección-de-variables.html#que-pasa-si-incluimos-covariables-irrelevantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ahora, consideremos el caso en que <span class="math inline">\(\boldsymbol \beta_2=0\)</span>, es decir, las covariables <span class="math inline">\(\boldsymbol x_{2}\)</span> no tienen un aporte significativo en el modelo. Pero decidimos estimar el modelo completo.</p>
 <p>En este caso, el estimador de <span class="math inline">\(\boldsymbol \beta\)</span> es:
 <span class="math display">\[
@@ -466,8 +465,8 @@ V(\widehat{y}_{0}) = \sigma^{2} \boldsymbol x_{0}&#39;(\boldsymbol X&#39;\boldsy
 </ul>
 </div>
 </div>
-<div id="métodos-para-la-selección-de-variables" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Métodos para la selección de variables</h2>
+<div id="métodos-para-la-selección-de-variables" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Métodos para la selección de variables<a href="selección-de-variables.html#métodos-para-la-selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Si tenemos <span class="math inline">\((p-1)\)</span> covariables, entonces tenemos <span class="math inline">\((p-1)^2\)</span> potenciales modelos. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.</p>
 <p>Existen varios criterios para determinar que modelo es ``mejor’’ que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:</p>
 <ul>
@@ -476,8 +475,8 @@ V(\widehat{y}_{0}) = \sigma^{2} \boldsymbol x_{0}&#39;(\boldsymbol X&#39;\boldsy
 <li>Estadístico PRESS y el <span class="math inline">\(R^{2}\)</span> de predicción.</li>
 <li>Criterios de información (AIC y BIC).</li>
 </ul>
-<div id="coeficiente-de-determinación" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Coeficiente de determinación</h3>
+<div id="coeficiente-de-determinación" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Coeficiente de determinación<a href="selección-de-variables.html#coeficiente-de-determinación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Esté indicador está definido como:
 <span class="math display">\[
 R^{2} = \frac{SS_{\mbox{reg}}}{SS_{\mbox{T}}} = 1 - \frac{SS_{\mbox{res}}}{SS_{\mbox{T}}}.
@@ -485,16 +484,16 @@ R^{2} = \frac{SS_{\mbox{reg}}}{SS_{\mbox{T}}} = 1 - \frac{SS_{\mbox{res}}}{SS_{\
 El <span class="math inline">\(R^{2}\)</span> cuantifica la cantidad de variabilidad de la variable respuesta que es explicada por el modelo. Se tiene que <span class="math inline">\(0 \leq R^{2} \leq 1\)</span>. Valores más cercanos a <span class="math inline">\(1\)</span> implican que el modelo explica gran parte de la variabilidad de <span class="math inline">\(y\)</span>.</p>
 <p>Hay que tener en cuenta que el <span class="math inline">\(R^{2}\)</span> siempre crece a medida que se adicionan más covariables al modelo. Por lo tanto, se puede puede agregar regresores hasta el punto en que una covariable adicional no propociona un aumento considerable en el <span class="math inline">\(R^{2}\)</span>.</p>
 </div>
-<div id="coeficiente-de-determinación-ajustado" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Coeficiente de determinación ajustado</h3>
+<div id="coeficiente-de-determinación-ajustado" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Coeficiente de determinación ajustado<a href="selección-de-variables.html#coeficiente-de-determinación-ajustado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para evitar el incoviente del <span class="math inline">\(R^{2}\)</span>, se puede utlizar el el coeficiente de determinación ajustado definido como:
 <span class="math display">\[
 R^{2}_{adj} = 1 - \frac{n-1}{n-p}\frac{SS_{\mbox{res}}}{SS_{\mbox{T}}} = 1- \frac{MS_{\mbox{res}}}{SS_{\mbox{T}}/(n-1)} = 1- \frac{n-1}{n-p}(1-R^{2}).
 \]</span>
 El <span class="math inline">\(R^{2}_{adj}\)</span> no necesariamente aumenta al adicionar nuevos términos al modelo. Este solo aumenta si hay una disminución del <span class="math inline">\(MS_{\mbox{res}}\)</span>.</p>
 </div>
-<div id="c_p-de-mallows" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> C<span class="math inline">\(_p\)</span> de Mallows</h3>
+<div id="c_p-de-mallows" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> C<span class="math inline">\(_p\)</span> de Mallows<a href="selección-de-variables.html#c_p-de-mallows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mallows propone un criterio basado en el error cuadrático medio (ECM) de <span class="math inline">\(\widehat{y}_i\)</span>, esto es:
 <span class="math display">\[
 E[\widehat{y}_{i}- E(y_{i})]^2 = [E(y_{i}) - E(\widehat{y}_{i})]^2 + V(\widehat{y}_{i}),
@@ -519,8 +518,8 @@ E[C_{p}| \mbox{Sesgo}=0] = \frac{(n-p)\sigma^{2}}{\sigma^{2}} - n +2p = p.
 \]</span>
 Si el modelo propuesto es insesgado se espera que el <span class="math inline">\(C_p\)</span> esté cercano a <span class="math inline">\(p\)</span>. Aunque se espera que el <span class="math inline">\(C_p=p\)</span>, es deseable que <span class="math inline">\(C_p &lt; p\)</span>. Por lo tanto, modelos con valores pequeños de <span class="math inline">\(C_p\)</span> son mejores.</p>
 </div>
-<div id="estadístico-press" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Estadístico PRESS</h3>
+<div id="estadístico-press" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Estadístico PRESS<a href="selección-de-variables.html#estadístico-press" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El estadístico PRESS (prediction error sum of squares) está definido como:
 <span class="math display">\[
 \mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \widehat{y}_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{\epsilon_{i}}{1-h_{ii}} \right)^{2}.
@@ -532,8 +531,8 @@ R^{2}_{pred} = 1 - \frac{PRESS}{SST}.
 \]</span>
 Basado en este criterio, mayor es el valor de <span class="math inline">\(R^{2}_{pred}\)</span> mejor es el modelo para hacer predicciones. La ventaja del PRESS y <span class="math inline">\(R_{pred}^{2}\)</span> es que evitan el sobreajuste dado que se calculan utilizando observaciones no incluidas en la estimación del modelo.</p>
 </div>
-<div id="criterios-de-información" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Criterios de información</h3>
+<div id="criterios-de-información" class="section level3 hasAnchor" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Criterios de información<a href="selección-de-variables.html#criterios-de-información" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La idea es comparar modelos estimados teniendo en cuenta la bondad de ajuste del modelo (verosimilitud, <span class="math inline">\(L\)</span>) y su complejidad (número de parámetros). El criterio de información de Akaike está definido como:
 <span class="math display">\[
 \mbox{AIC} = -2\log (L) + 2p.
@@ -558,52 +557,64 @@ AIC \propto n\log(SS_{\mbox{res}}/n) + 2p \mbox{ y } BIC \propto n\log(SS_{\mbox
 Hay varias adaptaciones de estos criterios de información definiendo diferentes penalizaciones.</p>
 </div>
 </div>
-<div id="comparación-de-los-modelos" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Comparación de los modelos</h2>
-<div id="todos-los-posibles-modelos" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Todos los posibles modelos</h3>
+<div id="comparación-de-los-modelos" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Comparación de los modelos<a href="selección-de-variables.html#comparación-de-los-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="todos-los-posibles-modelos" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Todos los posibles modelos<a href="selección-de-variables.html#todos-los-posibles-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con la función <code>ols_step_all_possible()</code> de la librería <code>olsrr</code> es posible ajustar todos posibles modelos y determinar el mejor bajo diferentes criterios. Otra alternativa es la función <code>regsubsets()</code> de la librería <code>leaps</code>. Está función es más rápida (se basa en un algoritmo más eficiente), pero no es user-friendly.</p>
-<div id="datos-de-unidad-quirúrgica" class="section level4" number="4.4.1.1">
-<h4><span class="header-section-number">4.4.1.1</span> Datos de unidad quirúrgica</h4>
+<div id="datos-de-unidad-quirúrgica" class="section level4 hasAnchor" number="4.4.1.1">
+<h4><span class="header-section-number">4.4.1.1</span> Datos de unidad quirúrgica<a href="selección-de-variables.html#datos-de-unidad-quirúrgica" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A través de la función <code>ols_step_all_possible</code> podemos ajustar los <span class="math inline">\(255\)</span> modelos que se pueden ajustar usando las ocho posibles covariables:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="selección-de-variables.html#cb75-1" aria-hidden="true" tabindex="-1"></a>surgical.all.mods<span class="ot">=</span><span class="fu">ols_step_all_possible</span>(mod.surgical.completo)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="selección-de-variables.html#cb5-1" aria-hidden="true" tabindex="-1"></a>surgical.all.mods<span class="ot">=</span><span class="fu">ols_step_all_possible</span>(mod.surgical.completo)</span></code></pre></div>
 <p>Además de ajustar los modelos, se calculan varios criterios (<span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,AIC,BIC,…) para cada uno de ellos.</p>
 <p>Puesto que son muchos modelos, podemos organizar los resultados de tal forma que obtengamos los mejores modelos basándonos en cada uno de los criterios. Por ejemplo, los 5 mejores ajustes según el <span class="math inline">\(R^{2}_{adj}\)</span> son:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="selección-de-variables.html#cb76-1" aria-hidden="true" tabindex="-1"></a>R2adj.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>adjr,<span class="at">decreasing =</span> T)</span>
-<span id="cb76-2"><a href="selección-de-variables.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[R2adj.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                             predictors   rsquare      adjr   predrsq       cp       aic       sbc
-## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037 5.772458 -8.612898  7.298974
-## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940 7.028837 -7.497389 10.403468
-## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597 5.528174 -8.580332  5.342556
-## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412 0.8198474 0.7749807 7.721367 -6.673207 11.227649
-## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="selección-de-variables.html#cb6-1" aria-hidden="true" tabindex="-1"></a>R2adj.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>adjr,<span class="at">decreasing =</span> T)</span>
+<span id="cb6-2"><a href="selección-de-variables.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[R2adj.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
+<pre><code>##     n                                             predictors   rsquare
+## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664
+## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095
+## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622
+## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412
+## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522
+##          adjr   predrsq       cp       aic       sbc
+## 226 0.8234834 0.7836037 5.772458 -8.612898  7.298974
+## 251 0.8225761 0.7806940 7.028837 -7.497389 10.403468
+## 171 0.8205312 0.7827597 5.528174 -8.580332  5.342556
+## 248 0.8198474 0.7749807 7.721367 -6.673207 11.227649
+## 169 0.8187535 0.7862369 5.998959 -8.048073  5.874815</code></pre>
 <p>Entonces, basándonos en el <span class="math inline">\(R^{2}_{adj}\)</span> el mejor ajuste se obtiene con el modelo considerando las covariables <code>bcs</code>, <code>pindex</code>, <code>enzyme_test</code>, <code>age</code>, <code>gender</code>, y <code>alc_heavy</code>. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables <code>gender</code> obtenemos un modelo con un <span class="math inline">\(R_^{2}_{pred}\)</span> más alto.</p>
 <p>Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="selección-de-variables.html#cb78-1" aria-hidden="true" tabindex="-1"></a>AIC.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>aic,<span class="at">decreasing =</span> F)</span>
-<span id="cb78-2"><a href="selección-de-variables.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[AIC.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                          predictors   rsquare      adjr   predrsq       cp       aic       sbc
-## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037 5.772458 -8.612898  7.298974
-## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597 5.528174 -8.580332  5.342556
-## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345 0.7862922 5.733992 -8.130569  3.803335
-## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815
-## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940 7.028837 -7.497389 10.403468</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="selección-de-variables.html#cb8-1" aria-hidden="true" tabindex="-1"></a>AIC.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>aic,<span class="at">decreasing =</span> F)</span>
+<span id="cb8-2"><a href="selección-de-variables.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[AIC.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
+<pre><code>##     n                                          predictors   rsquare      adjr
+## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834
+## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312
+## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345
+## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535
+## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761
+##       predrsq       cp       aic       sbc
+## 226 0.7836037 5.772458 -8.612898  7.298974
+## 171 0.7827597 5.528174 -8.580332  5.342556
+## 97  0.7862922 5.733992 -8.130569  3.803335
+## 169 0.7862369 5.998959 -8.048073  5.874815
+## 251 0.7806940 7.028837 -7.497389 10.403468</code></pre>
 <p>Con este críterio se escoge el mismo modelo que con el <span class="math inline">\(R^{2}_{adj}\)</span>. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad.</p>
 <p>En la Figura <a href="#fig:surgicalFitAllPlot"><strong>??</strong></a> muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^{2}_{pred}\)</span>.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="selección-de-variables.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(surgical.all.mods)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:surgicalFitAllPlot-1"></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="selección-de-variables.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(surgical.all.mods)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:surgicalFitAllPlot-1"></span>
 <img src="MLG2_files/figure-html/surgicalFitAllPlot-1.png" alt="Valores de los criterios de selección calculados para cada uno de todos los posibles modelos." width="672" />
 <p class="caption">
 Figure 4.1: Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:surgicalFitAllPlot-2"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:surgicalFitAllPlot-2"></span>
 <img src="MLG2_files/figure-html/surgicalFitAllPlot-2.png" alt="Valores de los criterios de selección calculados para cada uno de todos los posibles modelos." width="672" />
 <p class="caption">
 Figure 4.2: Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.
 </p>
 </div>
 <p>Teniendo en cuenta esto, con la función <code>ols_step_best_subset()</code> selecciona el mejor modelo para cada subconjunto de número de covariables basándose en los diferentes criterios:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="selección-de-variables.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_best_subset</span>(mod.surgical.completo)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="selección-de-variables.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_best_subset</span>(mod.surgical.completo)</span></code></pre></div>
 <pre><code>##                            Best Subsets Regression                           
 ## -----------------------------------------------------------------------------
 ## Model Index    Predictors
@@ -642,26 +653,26 @@ Figure 4.2: Valores de los criterios de selección calculados para cada uno de t
 <p>A partir de estos resultados, y con la ayuda de expertos en el tema, se puede hacer una selección del mejor modelo para hacer las predicciónes.</p>
 </div>
 </div>
-<div id="algorítmos-de-selección" class="section level3" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Algorítmos de selección</h3>
+<div id="algorítmos-de-selección" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Algorítmos de selección<a href="selección-de-variables.html#algorítmos-de-selección" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para el proceso de selección, la mejor opción es evaluar todos los posibles modelos. Sin embargo, en la presencia de muchas posibles covariables este proceso puede requerir una carga computacional muy alta. Por esta razón, se han desarrollado varios algoritmos para evaluar solo un subconjunto de modelos agregando o eliminando covariables una a la vez.</p>
-<div id="selección-hacia-delante-forward-selection" class="section level4" number="4.4.2.1">
-<h4><span class="header-section-number">4.4.2.1</span> Selección hacia delante (forward selection)</h4>
+<div id="selección-hacia-delante-forward-selection" class="section level4 hasAnchor" number="4.4.2.1">
+<h4><span class="header-section-number">4.4.2.1</span> Selección hacia delante (forward selection)<a href="selección-de-variables.html#selección-hacia-delante-forward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ``óptimo’’ se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).</p>
 <p>La primera covariable se escoge luego de ajustar los <span class="math inline">\((p-1)\)</span> modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.</p>
 <p>Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes <span class="math inline">\((p-2)\)</span> regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccinando la tercer covariable de la misma forma.</p>
 <p>El algoritmo continua seleccionando covariables hasta que se satisface un criterio de parada (por ejemplo, hasta que el AIC aumente).</p>
 </div>
-<div id="selección-hacia-atrás-backward-selection" class="section level4" number="4.4.2.2">
-<h4><span class="header-section-number">4.4.2.2</span> Selección hacia atrás (backward selection)</h4>
+<div id="selección-hacia-atrás-backward-selection" class="section level4 hasAnchor" number="4.4.2.2">
+<h4><span class="header-section-number">4.4.2.2</span> Selección hacia atrás (backward selection)<a href="selección-de-variables.html#selección-hacia-atrás-backward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Con este algoritmo se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).</p>
 </div>
-<div id="selección-por-segmentos-stepwise-selection" class="section level4" number="4.4.2.3">
-<h4><span class="header-section-number">4.4.2.3</span> Selección por segmentos (stepwise selection)</h4>
+<div id="selección-por-segmentos-stepwise-selection" class="section level4 hasAnchor" number="4.4.2.3">
+<h4><span class="header-section-number">4.4.2.3</span> Selección por segmentos (stepwise selection)<a href="selección-de-variables.html#selección-por-segmentos-stepwise-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Aquí se siguen los mismos pasos que la selección hacia delante. Pero en cada paso se evalúan de nuevo los candidatos que ya habían ingresado en el modelo. Por lo tanto, una covariable que ya esté en el modelo puede ser eliminada en algún paso posterior.</p>
 </div>
-<div id="unidad-quirúrgica-1" class="section level4" number="4.4.2.4">
-<h4><span class="header-section-number">4.4.2.4</span> Unidad quirúrgica</h4>
+<div id="unidad-quirúrgica-1" class="section level4 hasAnchor" number="4.4.2.4">
+<h4><span class="header-section-number">4.4.2.4</span> Unidad quirúrgica<a href="selección-de-variables.html#unidad-quirúrgica-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Consideremos el modelo anterior adicionando las interacciones de las covariables continuas con las categóricas:
 <span class="math display">\[\begin{equation}
 \begin{split}
@@ -671,8 +682,8 @@ Figure 4.2: Valores de los criterios de selección calculados para cada uno de t
 \end{equation}\]</span>
 En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> posibles modelos. Lo que hace que sea difícil ajustarlos todos (aunque es posible usando la librería <code>leaps</code>). Por lo tanto, vamos a utilizar los algortimos de selección.</p>
 <p><strong>Selección hacia delante</strong>. Podemos utilizar la función <code>ols_step_forward_aic</code> de la librería <code>olsrr</code>:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="selección-de-variables.html#cb83-1" aria-hidden="true" tabindex="-1"></a>mod.surgical.completo2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>bcs<span class="sc">*</span>gender<span class="sc">+</span>pindex<span class="sc">*</span>gender<span class="sc">+</span>enzyme_test<span class="sc">*</span>gender<span class="sc">+</span>liver_test<span class="sc">*</span>gender<span class="sc">+</span>age<span class="sc">*</span>gender<span class="sc">+</span> bcs<span class="sc">*</span>alc_mod<span class="sc">+</span>pindex<span class="sc">*</span>alc_mod<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_mod<span class="sc">+</span>liver_test<span class="sc">*</span>alc_mod<span class="sc">+</span>age<span class="sc">*</span>alc_mod<span class="sc">+</span>bcs<span class="sc">*</span>alc_heavy<span class="sc">+</span>pindex<span class="sc">*</span>alc_heavy<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>liver_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>age<span class="sc">*</span>alc_heavy,<span class="at">data=</span>surgical)</span>
-<span id="cb83-2"><a href="selección-de-variables.html#cb83-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">=</span><span class="fu">ols_step_forward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="selección-de-variables.html#cb13-1" aria-hidden="true" tabindex="-1"></a>mod.surgical.completo2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>bcs<span class="sc">*</span>gender<span class="sc">+</span>pindex<span class="sc">*</span>gender<span class="sc">+</span>enzyme_test<span class="sc">*</span>gender<span class="sc">+</span>liver_test<span class="sc">*</span>gender<span class="sc">+</span>age<span class="sc">*</span>gender<span class="sc">+</span> bcs<span class="sc">*</span>alc_mod<span class="sc">+</span>pindex<span class="sc">*</span>alc_mod<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_mod<span class="sc">+</span>liver_test<span class="sc">*</span>alc_mod<span class="sc">+</span>age<span class="sc">*</span>alc_mod<span class="sc">+</span>bcs<span class="sc">*</span>alc_heavy<span class="sc">+</span>pindex<span class="sc">*</span>alc_heavy<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>liver_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>age<span class="sc">*</span>alc_heavy,<span class="at">data=</span>surgical)</span>
+<span id="cb13-2"><a href="selección-de-variables.html#cb13-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">=</span><span class="fu">ols_step_forward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
 <p>Con el argumento <code>details = T</code> se puede ver la selección con más detalle. Usando este algoritmo el modelo óptimo es:
 <span class="math display">\[\begin{equation}
 \begin{split}
@@ -682,7 +693,7 @@ En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> p
 \nonumber
 \end{equation}\]</span></p>
 <p><strong>Selección hacia atrás</strong>. Podemos utilizar la función <code>ols_step_backward_aic</code> de la librería <code>olsrr</code>:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="selección-de-variables.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_backward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="selección-de-variables.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_backward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
 <pre><code>## 
 ## 
 ##                         Backward Elimination Summary                         
@@ -715,7 +726,7 @@ En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> p
 \end{equation}\]</span>
 Con este algoritmo no se considera la edad del paciente pero si la función hepática y otras interacciones.</p>
 <p><strong>Selección por segmentos</strong>. Aquí tenemos la función <code>ols_step_both_aic</code> de la librería <code>olsrr</code>:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="selección-de-variables.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_both_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="selección-de-variables.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_both_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
 <pre><code>## 
 ## 
 ##                                    Stepwise Summary                                   
@@ -756,7 +767,6 @@ Con este algoritmo no se considera la edad del paciente pero si la función hep�
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -796,6 +806,10 @@ gitbook.start({
 "text": null
 },
 "download": ["MLG2.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
