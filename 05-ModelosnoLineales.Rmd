@@ -1,0 +1,186 @@
+# Modelos no lineales
+```{r preamble5, include=FALSE}
+library(alr4)
+library(nlstools)
+data(turk0)
+```
+## Ejemplos
+### Crecimiento de pavos
+Datos: ```turk0``` de la librería ```alr4```
+
+Objetivo: evaluar la metionina como suplemento alimenticio para
+pavos.
+
+Se alimentó a 60 corrales de pavos con una dieta similar,
+complementada con una dosis de metionina diferente. Luego de un
+tiempo, se observó el peso ganado por corral.
+
+Las variables son:
+
+- **```A```:** Cantidad de suplemento de metionina ( % de la dieta).
+- **```Gain```:**  Peso medio ganado por corral (gramos) después de 3 semanas.
+
+```{r plotpavos, include=TRUE,fig.cap ="Nube de puntos"}
+plot(Gain~A,data=turk0,xlab='cantidad de metionina (% dieta)',ylab='Peso ganado (gramos)')
+
+```
+Para estos datos se puede proponer el siguiente modelo:
+\[
+E(Gain|A)=\theta_{1}+\theta_{2}[1-exp(-\theta_{3}A)]
+\]
+
+- Si $A=0$, entonces $E(Gain|A)=\theta_{1}$ (peso ganado sin suplemento).
+- Si $\theta_{3}>0$, $\theta_{1}+\theta_{2}$ es la asíntota (máximo peso que se puede
+ganar).
+- $\theta_{2}$ es el máximo crecimiento adicional debido al suplemento.
+- $\theta_{3}$ representa la tasa de crecimiento. A valores de θ3 mas
+grandes, el crecimiento esperado se acerca a su máximo más
+rápidamente.
+
+### Puromicina
+Datos: ```Puromycin.```
+Objetivo: evaluar la velocidad de una reacción enzimática de células
+tratadas con Puromicina.
+
+Se midió la reacción enzimática (qué tan rápido ésta cataliza la reacción que 
+convierte un sustrato en producto) de 23 encimas (12 tratadas con Puromicina).
+
+Las variables son:
+
+- ```conc``` :concentración de sustrato (ppm).
+- ```rate```:velocidad de reacción instantáneas (conteo/min2)
+- ```state```:tratado y no tratado.
+
+```{r plotpurom, include=TRUE, fig.cap = "Encimas tratadas (puntos negros) - Encimas no tratadas (puntos rojos)"}
+plot(Puromycin$conc,Puromycin$rate,col=Puromycin$state,
+     xlab='concentración de sustrato (ppm)',
+     ylab='velocidad de reacción')
+```
+Encimas tratadas (puntos negros) - Encimas no tratadas (puntos rojos)
+
+Modelo Michaelis-Menten (bioquímica):
+
+\[
+y_{i}=\frac{x_{1}\theta_{1}}{\theta_{2}+x_{1}}+\epsilon_{i}.
+\]
+"falta insertar grafica"
+
+Por lo que para estos datos se puede proponer el modelo:
+
+\[
+rate_{i}=\frac{conc_{i}\theta_{1}+state_{i}conc_{i}\theta_{3}}
+{\theta_{2}+state_{i}\theta_{3}+conc_{i}}+\epsilon_{i}.
+\]
+
+Por lo que se tiene una curva diferente para las enzimas tratadas y
+no tratadas:
+
+- Para enzimas no tratadas:
+
+\[
+E(rate_{i}|state=0)=\frac{conc_{i}\theta_{1}}{\theta_{2}+conc_{i}}.
+\]
+
+-Para enzimas tratadas:
+\[
+E(rate_{i}|state=1)=\frac{conc_{i}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+conc_{i}}.
+\]
+
+## Modelos no lineales
+En modelos de regresión asumimos que:
+
+\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}.
+\]
+
+En el caso de **modelos lineales:**
+\[
+m(x_{i},\theta)=\Psi_{j}(x_{i},\psi)^{'}\beta.
+\]
+
+donde $\Psi(\cdot)$ es una función de unos parámetros constantes $\psi$
+(es decir, puedo asumir transformaciones sobre las covariables).
+$\Psi_{j}(x_{i},\psi)=x_{i}$, tenemos:
+
+\[
+m(x_{i},\theta)=\beta_{0}+x_{1i}\beta_{1}+x_{2i}\beta_{2}+...+x_{p-1,i}\beta_{p-1}.
+\]
+
+Los modelos:
+\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}=\theta_{1}+\theta_{1}[1+exp(-\theta_{4}x_{i})]+\epsilon_{i},
+\]
+y
+
+\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\epsilon_{i},
+\]
+
+son modelo no-lineal (no es una combinación lineal de los
+parámetros).
+
+Si hacen los mismos supuestos sobre los errores, esto es:
+\[
+\epsilon\sim N(\bZERO,\sigma^2 \bI)
+\]
+
+se tiene que:
+
+- $E(y|x_{i})=m(\bx_{i},\btheta)$
+- $E(y|x_{i})=\sigma^2$
+
+## Modelos no-lineales linealizables    
+Modelo de regresión exponencial:
+\[
+E(y)=\theta_{0}+\theta_{1}exp(\theta_{2}+x_{i}\theta_{3})
+\]
+
+Si $\theta_{0}=0$, el modelo es linealizable:
+\[
+logy_{i}=(log\theta_{1}+\theta_{2})+x_{i}\theta_{3}+\epsilon_{i}^*
+\]
+Sin embargo, hay que tener cuidado con el efecto de las
+transformaciones sobre los residuos.
+
+### Estimación de los parámetros
+
+La estimación de $\btheta$ se hace minimizando la suma de cuadrados de
+los residuos:
+
+\[
+S(\btheta)=\sum_{i=1}^n[y_{i}-m(\bx_{i},\btheta)]^2
+\]
+
+Para encontrar el mínimo, $(1)$ calculamos la derivada de $S(\btheta)$ con respecto a $\btheta$:
+
+\[
+\frac{\partial S(\btheta)}{\partial\btheta}=-2\sum_{i=1}^n[y_{i}-m(\bx_{i},\btheta)][\frac{\partial m(\bx_{i},\btheta)}{\partial\btheta}]
+\]
+
+$(2)$ igualamos a $0$, y $(3)$ resolvemos la ecuación para $\btheta$.
+
+En la mayoría de los casos, $\frac{\partial S(\btheta)}{\partial\btheta}$ es una función no-lineal $\btheta$.
+
+Por lo tanto, no es posible encontrar una solución analítica y
+necesitamos encontrar la solución **iterativamente**.
+
+
+"insertar grafico 12.1"
+
+### Notación
+
+- $\theta_{j}^{(t)}$: estimación de $\theta_{j}$ en la iteración $t$ ($\theta_{j}^{(0)}$ valores iniciales).
+
+- Vector score (gradiente):
+
+
+$$
+u(\btheta)=\frac{\partial S(\btheta)}{\partial\btheta}=\begin{pmatrix} 
+\frac{\partial S(\btheta)}{\partial\btheta} \\ 
+\frac{\partial S(\btheta)}{\partial\btheta} \\
+\vdots \\
+\frac{\partial S(\btheta)}{\partial\btheta} \\
+\end{pmatrix}
+\quad
+u(\hat{\btheta})=u(\btheta)|_{\btheta=\hat{\btheta}}
+$$

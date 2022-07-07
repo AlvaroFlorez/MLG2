@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Notas de clase: Modelo lineal general II</title>
-  <meta name="description" content="Page not found | Notas de clase: Modelo lineal general II" />
+  <title>Capítulo 5 Modelos no lineales | Notas de clase: Modelo lineal general II</title>
+  <meta name="description" content="Capítulo 5 Modelos no lineales | Notas de clase: Modelo lineal general II" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Notas de clase: Modelo lineal general II" />
+  <meta property="og:title" content="Capítulo 5 Modelos no lineales | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Notas de clase: Modelo lineal general II" />
+  <meta name="twitter:title" content="Capítulo 5 Modelos no lineales | Notas de clase: Modelo lineal general II" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="selección-de-variables.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -260,18 +260,182 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="modelos-no-lineales" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Modelos no lineales<a href="modelos-no-lineales.html#modelos-no-lineales" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="ejemplos-4" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Ejemplos<a href="modelos-no-lineales.html#ejemplos-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="crecimiento-de-pavos" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Crecimiento de pavos<a href="modelos-no-lineales.html#crecimiento-de-pavos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Datos: <code>turk0</code> de la librería <code>alr4</code></p>
+<p>Objetivo: evaluar la metionina como suplemento alimenticio para
+pavos.</p>
+<p>Se alimentó a 60 corrales de pavos con una dieta similar,
+complementada con una dosis de metionina diferente. Luego de un
+tiempo, se observó el peso ganado por corral.</p>
+<p>Las variables son:</p>
+<ul>
+<li><strong><code>A</code>:</strong> Cantidad de suplemento de metionina ( % de la dieta).</li>
+<li><strong><code>Gain</code>:</strong> Peso medio ganado por corral (gramos) después de 3 semanas.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-no-lineales.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado (gramos)&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:plotpavos"></span>
+<img src="MLG2_files/figure-html/plotpavos-1.png" alt="Nube de puntos" width="672" />
+<p class="caption">
+Figure 5.1: Nube de puntos
+</p>
+</div>
+<p>Para estos datos se puede proponer el siguiente modelo:
+<span class="math display">\[
+E(Gain|A)=\theta_{1}+\theta_{2}[1-exp(-\theta_{3}A)]
+\]</span></p>
+<ul>
+<li>Si <span class="math inline">\(A=0\)</span>, entonces <span class="math inline">\(E(Gain|A)=\theta_{1}\)</span> (peso ganado sin suplemento).</li>
+<li>Si <span class="math inline">\(\theta_{3}&gt;0\)</span>, <span class="math inline">\(\theta_{1}+\theta_{2}\)</span> es la asíntota (máximo peso que se puede
+ganar).</li>
+<li><span class="math inline">\(\theta_{2}\)</span> es el máximo crecimiento adicional debido al suplemento.</li>
+<li><span class="math inline">\(\theta_{3}\)</span> representa la tasa de crecimiento. A valores de θ3 mas
+grandes, el crecimiento esperado se acerca a su máximo más
+rápidamente.</li>
+</ul>
+</div>
+<div id="puromicina" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Puromicina<a href="modelos-no-lineales.html#puromicina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Datos: <code>Puromycin.</code>
+Objetivo: evaluar la velocidad de una reacción enzimática de células
+tratadas con Puromicina.</p>
+<p>Se midió la reacción enzimática (qué tan rápido ésta cataliza la reacción que
+convierte un sustrato en producto) de 23 encimas (12 tratadas con Puromicina).</p>
+<p>Las variables son:</p>
+<ul>
+<li><code>conc</code> :concentración de sustrato (ppm).</li>
+<li><code>rate</code>:velocidad de reacción instantáneas (conteo/min2)</li>
+<li><code>state</code>:tratado y no tratado.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-no-lineales.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state,</span>
+<span id="cb2-2"><a href="modelos-no-lineales.html#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;concentración de sustrato (ppm)&#39;</span>,</span>
+<span id="cb2-3"><a href="modelos-no-lineales.html#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;velocidad de reacción&#39;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:plotpurom"></span>
+<img src="MLG2_files/figure-html/plotpurom-1.png" alt="Encimas tratadas (puntos negros) - Encimas no tratadas (puntos rojos)" width="672" />
+<p class="caption">
+Figure 5.2: Encimas tratadas (puntos negros) - Encimas no tratadas (puntos rojos)
+</p>
+</div>
+<p>Encimas tratadas (puntos negros) - Encimas no tratadas (puntos rojos)</p>
+<p>Modelo Michaelis-Menten (bioquímica):</p>
+<p><span class="math display">\[
+y_{i}=\frac{x_{1}\theta_{1}}{\theta_{2}+x_{1}}+\epsilon_{i}.
+\]</span>
+“falta insertar grafica”</p>
+<p>Por lo que para estos datos se puede proponer el modelo:</p>
+<p><span class="math display">\[
+rate_{i}=\frac{conc_{i}\theta_{1}+state_{i}conc_{i}\theta_{3}}
+{\theta_{2}+state_{i}\theta_{3}+conc_{i}}+\epsilon_{i}.
+\]</span></p>
+<p>Por lo que se tiene una curva diferente para las enzimas tratadas y
+no tratadas:</p>
+<ul>
+<li>Para enzimas no tratadas:</li>
+</ul>
+<p><span class="math display">\[
+E(rate_{i}|state=0)=\frac{conc_{i}\theta_{1}}{\theta_{2}+conc_{i}}.
+\]</span></p>
+<p>-Para enzimas tratadas:
+<span class="math display">\[
+E(rate_{i}|state=1)=\frac{conc_{i}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+conc_{i}}.
+\]</span></p>
+</div>
+</div>
+<div id="modelos-no-lineales-1" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Modelos no lineales<a href="modelos-no-lineales.html#modelos-no-lineales-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En modelos de regresión asumimos que:</p>
+<p><span class="math display">\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}.
+\]</span></p>
+<p>En el caso de <strong>modelos lineales:</strong>
+<span class="math display">\[
+m(x_{i},\theta)=\Psi_{j}(x_{i},\psi)^{&#39;}\beta.
+\]</span></p>
+<p>donde <span class="math inline">\(\Psi(\cdot)\)</span> es una función de unos parámetros constantes <span class="math inline">\(\psi\)</span>
+(es decir, puedo asumir transformaciones sobre las covariables).
+<span class="math inline">\(\Psi_{j}(x_{i},\psi)=x_{i}\)</span>, tenemos:</p>
+<p><span class="math display">\[
+m(x_{i},\theta)=\beta_{0}+x_{1i}\beta_{1}+x_{2i}\beta_{2}+...+x_{p-1,i}\beta_{p-1}.
+\]</span></p>
+<p>Los modelos:
+<span class="math display">\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}=\theta_{1}+\theta_{1}[1+exp(-\theta_{4}x_{i})]+\epsilon_{i},
+\]</span>
+y</p>
+<p><span class="math display">\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\epsilon_{i},
+\]</span></p>
+<p>son modelo no-lineal (no es una combinación lineal de los
+parámetros).</p>
+<p>Si hacen los mismos supuestos sobre los errores, esto es:
+<span class="math display">\[
+\epsilon\sim N(\boldsymbol 0,\sigma^2 \boldsymbol I)
+\]</span></p>
+<p>se tiene que:</p>
+<ul>
+<li><span class="math inline">\(E(y|x_{i})=m(\boldsymbol x_{i},\boldsymbol \theta)\)</span></li>
+<li><span class="math inline">\(E(y|x_{i})=\sigma^2\)</span></li>
+</ul>
+</div>
+<div id="modelos-no-lineales-linealizables" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Modelos no-lineales linealizables<a href="modelos-no-lineales.html#modelos-no-lineales-linealizables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Modelo de regresión exponencial:
+<span class="math display">\[
+E(y)=\theta_{0}+\theta_{1}exp(\theta_{2}+x_{i}\theta_{3})
+\]</span></p>
+<p>Si <span class="math inline">\(\theta_{0}=0\)</span>, el modelo es linealizable:
+<span class="math display">\[
+logy_{i}=(log\theta_{1}+\theta_{2})+x_{i}\theta_{3}+\epsilon_{i}^*
+\]</span>
+Sin embargo, hay que tener cuidado con el efecto de las
+transformaciones sobre los residuos.</p>
+<div id="estimación-de-los-parámetros" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Estimación de los parámetros<a href="modelos-no-lineales.html#estimación-de-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estimación de <span class="math inline">\(\boldsymbol \theta\)</span> se hace minimizando la suma de cuadrados de
+los residuos:</p>
+<p><span class="math display">\[
+S(\boldsymbol \theta)=\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)]^2
+\]</span></p>
+<p>Para encontrar el mínimo, <span class="math inline">\((1)\)</span> calculamos la derivada de <span class="math inline">\(S(\boldsymbol \theta)\)</span> con respecto a <span class="math inline">\(\boldsymbol \theta\)</span>:</p>
+<p><span class="math display">\[
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}=-2\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)][\frac{\partial m(\boldsymbol x_{i},\boldsymbol \theta)}{\partial\boldsymbol \theta}]
+\]</span></p>
+<p><span class="math inline">\((2)\)</span> igualamos a <span class="math inline">\(0\)</span>, y <span class="math inline">\((3)\)</span> resolvemos la ecuación para <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
+<p>En la mayoría de los casos, <span class="math inline">\(\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}\)</span> es una función no-lineal <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
+<p>Por lo tanto, no es posible encontrar una solución analítica y
+necesitamos encontrar la solución <strong>iterativamente</strong>.</p>
+<p>“insertar grafico 12.1”</p>
+</div>
+<div id="notación" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Notación<a href="modelos-no-lineales.html#notación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><span class="math inline">\(\theta_{j}^{(t)}\)</span>: estimación de <span class="math inline">\(\theta_{j}\)</span> en la iteración <span class="math inline">\(t\)</span> (<span class="math inline">\(\theta_{j}^{(0)}\)</span> valores iniciales).</p></li>
+<li><p>Vector score (gradiente):</p></li>
+</ul>
+<p><span class="math display">\[
+u(\boldsymbol \theta)=\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}=\begin{pmatrix} 
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta} \\ 
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta} \\
+\vdots \\
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta} \\
+\end{pmatrix}
+\quad
+u(\hat{\boldsymbol \theta})=u(\boldsymbol \theta)|_{\boldsymbol \theta=\hat{\boldsymbol \theta}}
+\]</span></p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="selección-de-variables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -303,7 +467,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/%s",
+"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/05-ModelosnoLineales.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -311,7 +475,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/%s",
+"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/05-ModelosnoLineales.Rmd",
 "text": null
 },
 "download": ["MLG2.pdf"],

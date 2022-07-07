@@ -223,6 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
 <li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algorítmos-de-selección"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
+<li class="chapter" data-level="4.4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.4.3</b> Regresión de LASSO</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -752,6 +753,93 @@ Con este algoritmo no se considera la edad del paciente pero si la función hep�
 \nonumber
 \end{equation}\]</span></p>
 <p>Dado que los algoritmos hacen la busqueda del modelo ``óptimo’’ evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.</p>
+</div>
+</div>
+<div id="regresión-de-lasso" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Regresión de LASSO<a href="selección-de-variables.html#regresión-de-lasso" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El estimador LASSO (Least Absolute Selection and Shrinkage
+Operator) minimiza la siguiente expresión:</p>
+<p><span class="math display">\[\begin{equation}
+\begin{split}
+S_{lasso}(\beta)=&amp; \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2}+
+\lambda\sum_{j=1}^{p-1}|\beta_{j}|                            
+\end{split}
+\nonumber
+\end{equation}\]</span></p>
+<p>La penalización sobre <span class="math inline">\(\sum_{j=1}^{p-1}|\beta_{j}|\)</span> tiene como efecto forzar a que los
+coeficientes tiendan a cero.</p>
+<p>A medida que se incrementa, mayor es la penalización y más
+coeficientes tomarán el valor de cero (excluimos covariables que no
+son relevantes).</p>
+<p>Al igual que en la regresión ridge, se recomienda escalar las
+covariables</p>
+<div id="métodos-de-regularización" class="section level4 hasAnchor" number="4.4.3.1">
+<h4><span class="header-section-number">4.4.3.1</span> Métodos de regularización<a href="selección-de-variables.html#métodos-de-regularización" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>De forma de equivalente, <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span> minimiza:</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
+\sum_{j=1}^{p-1}|\beta_{j}\|leq t.
+\]</span></p>
+<p>Mientras que, en la regresión de ridge,<span class="math inline">\(\widehat{\boldsymbol \beta}_{ridge}\)</span> minimiza:</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
+\sum_{j=1}^{p-1}\beta_{j}^2\leq t.
+\]</span></p>
+<p>Cuando <span class="math inline">\(\lambda \rightarrow 0\)</span> , entonces <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO} \rightarrow \widehat{\boldsymbol \beta}\)</span>, y cuando
+<span class="math inline">\(\lambda \rightarrow \infty\)</span>, entonces <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO} \rightarrow 0\)</span>.</p>
+<p>También, cuando <span class="math inline">\(\lambda \rightarrow \infty\)</span>, la varianza de <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span> disminuye, pero el sesgo aumenta.</p>
+<p>No hay una estimación analítica para <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span>, pero hay algoritmos
+eficientes para su estimación.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="selección-de-variables.html#cb18-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(mod.fat)[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb18-2"><a href="selección-de-variables.html#cb18-2" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
+<span id="cb18-3"><a href="selección-de-variables.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod,<span class="at">xvar=</span><span class="st">&#39;lambda&#39;</span>,<span class="at">label=</span>T,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb18-4"><a href="selección-de-variables.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="MLG2_files/figure-html/Vgrasalasso-1.png" width="672" /></p>
+</div>
+<div id="validación-cruzada" class="section level4 hasAnchor" number="4.4.3.2">
+<h4><span class="header-section-number">4.4.3.2</span> Validación cruzada<a href="selección-de-variables.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La validación cruzada se utiliza para evaluar y comparar modelos.</p>
+<p>Consiste en dividir la muestra en dos grupos:</p>
+<ul>
+<li><strong>Entrenamiento:</strong> se usa para ajusta el modelo.</li>
+<li><strong>Validación:</strong> se utiliza para validar el modelo.</li>
+</ul>
+<p>Para no perder información, en la validación cruzada se divide la
+muestra en dos (o más) partes y se hace la validación en cada una.</p>
+<p>División de la muestra de forma aleatoria en <span class="math inline">\(k = 5\)</span> grupos <span class="math inline">\((k-fold)\)</span></p>
+<p>Para cada división,<span class="math inline">\(k = 1, . . . , K\)</span> , y para cada valor de <span class="math inline">\(\lambda\)</span>, se estima
+el modelo basado en la <strong>muestra de entrenamiento</strong>.</p>
+<p>Mientras que con cada <strong>muestra de validación</strong>, y para cada valor de
+<span class="math inline">\(\lambda\)</span>, se utiliza para calcular el error cuadrático medio:</p>
+<p><span class="math display">\[
+EMC_{k}(\lambda) = \sum_{i=1}^{n_k} \frac{[y_{i}^{(k)}-x_{i}^{(k)}\widehat{\boldsymbol \beta}_{lasso}^{(k)}(\lambda)]^2}{n}               
+\]</span></p>
+<p>donde <span class="math inline">\(y_{i}^{(k)}\)</span> son las observaciones de la muestra de validación <span class="math inline">\(k\)</span>, y <span class="math inline">\(\widehat{\boldsymbol \beta}_{lasso}^{(k)}(\lambda)\)</span> es la estimación utilizando la muestra de entrenamiento <span class="math inline">\(k\)</span>.</p>
+<p>Para cada <span class="math inline">\(\lambda\)</span>, se calcula la validación cruzada como:</p>
+<p><span class="math display">\[
+CV(\lambda) = \frac{1}{K}\sum_{i=1}^{K}EMC_{k}(\lambda)              
+\]</span>
+y la desviación estándar:</p>
+<p><span class="math display">\[
+SD(\lambda) = \sqrt{\sum_{i=1}^{K} \frac{[EMC_{k}(\lambda)-CV(\lambda)]^2}{K-1}}              
+\]</span>
+Luego, selección el <span class="math inline">\(\lambda\)</span> que minimiza <span class="math inline">\(CV(\lambda)\)</span>:
+<span class="math display">\[
+\hat{\lambda}_{cv}=arg\quad mín_{\lambda}-CV(\lambda)
+\]</span></p>
+<p>También, se puede aplicar la regla de una desviación estánda:</p>
+<p><span class="math display">\[
+\hat{\lambda}_{cv1sd}=máx \{\lambda:CV(\hat{\lambda})&lt;CV(\hat{\lambda}_{cv})+SD(\hat{\lambda}_{cv})\}
+\]</span></p>
+</div>
+<div id="ejemplo-grasa-corporal" class="section level4 hasAnchor" number="4.4.3.3">
+<h4><span class="header-section-number">4.4.3.3</span> Ejemplo grasa corporal<a href="selección-de-variables.html#ejemplo-grasa-corporal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Validación cruzada con <span class="math inline">\(k=10\)</span>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="selección-de-variables.html#cb19-1" aria-hidden="true" tabindex="-1"></a>lasso.cv <span class="ot">&lt;-</span><span class="fu">cv.glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">nfolds =</span> <span class="dv">252</span>, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
+<span id="cb19-2"><a href="selección-de-variables.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.cv)</span></code></pre></div>
+<p><img src="MLG2_files/figure-html/kgrasa-1.png" width="672" />
+Las covariables seleccionadas (regla una desviación estándar):</p>
+<p>age height abdom wrist</p>
 
 </div>
 </div>

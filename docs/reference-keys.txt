@@ -57,3 +57,17 @@ selección-hacia-delante-forward-selection
 selección-hacia-atrás-backward-selection
 selección-por-segmentos-stepwise-selection
 unidad-quirúrgica-1
+regresión-de-lasso
+métodos-de-regularización
+validación-cruzada
+ejemplo-grasa-corporal
+fig:plotpavos
+fig:plotpurom
+modelos-no-lineales
+ejemplos-4
+crecimiento-de-pavos
+puromicina
+modelos-no-lineales-1
+modelos-no-lineales-linealizables
+estimación-de-los-parámetros
+notación
