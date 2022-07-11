@@ -305,7 +305,7 @@ Puesto que son muchos modelos, podemos organizar los resultados de tal forma que
 R2adj.order = order(surgical.all.mods$adjr,decreasing = T)
 as.data.frame(surgical.all.mods)[R2adj.order[1:5],c(2:8,10)]
 ```
-Entonces, basándonos en el $R^{2}_{adj}$ el mejor ajuste se obtiene con el modelo considerando las covariables ``bcs``, ``pindex``, ``enzyme_test``, ``age``, ``gender``, y ``alc_heavy``. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables ``gender`` obtenemos un modelo con un $R_^{2}_{pred}$ más alto.
+Entonces, basándonos en el $R^{2}_{adj}$ el mejor ajuste se obtiene con el modelo considerando las covariables ``bcs``, ``pindex``, ``enzyme_test``, ``age``, ``gender``, y ``alc_heavy``. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables ``gender`` obtenemos un modelo con un $R^{2}_{pred}$ más alto.
 
 Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son: 
 ```{r surgicalFitAll3, echo=T, warning=FALSE,message = FALSE}

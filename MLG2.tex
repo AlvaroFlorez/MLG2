@@ -188,7 +188,7 @@
 
 \title{Notas de clase: Modelo lineal general II}
 \author{Alvaro J. Flórez}
-\date{2022-07-07}
+\date{2022-07-11}
 
 \begin{document}
 \maketitle
@@ -2503,7 +2503,7 @@ Puesto que son muchos modelos, podemos organizar los resultados de tal forma que
 ## 169 0.8187535 0.7862369 5.998959 -8.048073  5.874815
 \end{verbatim}
 
-Entonces, basándonos en el \(R^{2}_{adj}\) el mejor ajuste se obtiene con el modelo considerando las covariables \texttt{bcs}, \texttt{pindex}, \texttt{enzyme\_test}, \texttt{age}, \texttt{gender}, y \texttt{alc\_heavy}. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables \texttt{gender} obtenemos un modelo con un \(R_^{2}_{pred}\) más alto.
+Entonces, basándonos en el \(R^{2}_{adj}\) el mejor ajuste se obtiene con el modelo considerando las covariables \texttt{bcs}, \texttt{pindex}, \texttt{enzyme\_test}, \texttt{age}, \texttt{gender}, y \texttt{alc\_heavy}. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables \texttt{gender} obtenemos un modelo con un \(R^{2}_{pred}\) más alto.
 
 Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son:
 
@@ -2741,6 +2741,724 @@ Note que este método sigue los mismos pasos que la selección hacia delante has
 \end{equation}
 
 Dado que los algoritmos hacen la busqueda del modelo ``óptimo'\,' evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.
+
+\hypertarget{regresiuxf3n-de-lasso}{%
+\subsubsection{Regresión de LASSO}\label{regresiuxf3n-de-lasso}}
+
+El estimador LASSO (Least Absolute Selection and Shrinkage
+Operator) minimiza la siguiente expresión:
+
+\begin{equation}
+\begin{split}
+S_{lasso}(\beta)=& \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2}+
+\lambda\sum_{j=1}^{p-1}|\beta_{j}|                            
+\end{split}
+\nonumber
+\end{equation}
+
+La penalización sobre \(\sum_{j=1}^{p-1}|\beta_{j}|\) tiene como efecto forzar a que los
+coeficientes tiendan a cero.
+
+A medida que \lambda se incrementa, mayor es la penalización y más
+coeficientes tomarán el valor de cero (excluimos covariables que no
+son relevantes).
+
+Al igual que en la regresión ridge, se recomienda escalar las
+covariables
+
+\hypertarget{muxe9todos-de-regularizaciuxf3n}{%
+\paragraph{Métodos de regularización}\label{muxe9todos-de-regularizaciuxf3n}}
+
+De forma de equivalente, \(\widehat{\boldsymbol \beta}_{LASSO}\) minimiza:
+
+\[
+\sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
+\sum_{j=1}^{p-1}|\beta_{j}\|leq t.
+\]
+
+Mientras que, en la regresión de ridge,\(\widehat{\boldsymbol \beta}_{ridge}\) minimiza:
+
+\[
+\sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
+\sum_{j=1}^{p-1}\beta_{j}^2\leq t.
+\]
+
+Cuando \(\lambda \rightarrow 0\) , entonces \(\widehat{\boldsymbol \beta}_{LASSO} \rightarrow \widehat{\boldsymbol \beta}\), y cuando
+\(\lambda \rightarrow \infty\), entonces \(\widehat{\boldsymbol \beta}_{LASSO} \rightarrow 0\).
+
+También, cuando \(\lambda \rightarrow \infty\), la varianza de \(\widehat{\boldsymbol \beta}_{LASSO}\) disminuye, pero el sesgo aumenta.
+
+No hay una estimación analítica para \(\widehat{\boldsymbol \beta}_{LASSO}\), pero hay algoritmos
+eficientes para su estimación.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OtherTok{=} \FunctionTok{model.matrix}\NormalTok{(mod.fat)[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{lasso.mod }\OtherTok{\textless{}{-}} \FunctionTok{glmnet}\NormalTok{(X, fat}\SpecialCharTok{$}\NormalTok{brozek, }\AttributeTok{alpha =} \DecValTok{1}\NormalTok{,}\AttributeTok{nlambda =} \DecValTok{100}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(lasso.mod,}\AttributeTok{xvar=}\StringTok{\textquotesingle{}lambda\textquotesingle{}}\NormalTok{,}\AttributeTok{label=}\NormalTok{T,}\AttributeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{,}\AttributeTok{lty=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MLG2_files/figure-latex/Vgrasalasso-1.pdf}
+
+\hypertarget{validaciuxf3n-cruzada}{%
+\paragraph{Validación cruzada}\label{validaciuxf3n-cruzada}}
+
+La validación cruzada se utiliza para evaluar y comparar modelos.
+
+Consiste en dividir la muestra en dos grupos:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Entrenamiento:} se usa para ajusta el modelo.
+\item
+  \textbf{Validación:} se utiliza para validar el modelo.
+\end{itemize}
+
+Para no perder información, en la validación cruzada se divide la
+muestra en dos (o más) partes y se hace la validación en cada una.
+
+División de la muestra de forma aleatoria en \(k = 5\) grupos \((k-fold)\)
+
+Para cada división,\(k = 1, . . . , K\) , y para cada valor de \(\lambda\), se estima
+el modelo basado en la \textbf{muestra de entrenamiento}.
+
+Mientras que con cada \textbf{muestra de validación}, y para cada valor de
+\(\lambda\), se utiliza para calcular el error cuadrático medio:
+
+\[
+EMC_{k}(\lambda) = \sum_{i=1}^{n_k} \frac{[y_{i}^{(k)}-x_{i}^{(k)}\widehat{\boldsymbol \beta}_{lasso}^{(k)}(\lambda)]^2}{n}               
+\]
+
+donde \(y_{i}^{(k)}\) son las observaciones de la muestra de validación \(k\), y \(\widehat{\boldsymbol \beta}_{lasso}^{(k)}(\lambda)\) es la estimación utilizando la muestra de entrenamiento \(k\).
+
+Para cada \(\lambda\), se calcula la validación cruzada como:
+
+\[
+CV(\lambda) = \frac{1}{K}\sum_{i=1}^{K}EMC_{k}(\lambda)              
+\]
+y la desviación estándar:
+
+\[
+SD(\lambda) = \sqrt{\sum_{i=1}^{K} \frac{[EMC_{k}(\lambda)-CV(\lambda)]^2}{K-1}}              
+\]
+Luego, selección el \(\lambda\) que minimiza \(CV(\lambda)\):
+\[
+\hat{\lambda}_{cv}=arg\quad mín_{\lambda}-CV(\lambda)
+\]
+
+También, se puede aplicar la regla de una desviación estánda:
+
+\[
+\hat{\lambda}_{cv1sd}=máx \{\lambda:CV(\hat{\lambda})<CV(\hat{\lambda}_{cv})+SD(\hat{\lambda}_{cv})\}
+\]
+
+\hypertarget{ejemplo-grasa-corporal}{%
+\paragraph{Ejemplo grasa corporal}\label{ejemplo-grasa-corporal}}
+
+Validación cruzada con \(k=10\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lasso.cv }\OtherTok{\textless{}{-}}\FunctionTok{cv.glmnet}\NormalTok{(X, fat}\SpecialCharTok{$}\NormalTok{brozek, }\AttributeTok{nfolds =} \DecValTok{252}\NormalTok{, }\AttributeTok{alpha =} \DecValTok{1}\NormalTok{,}\AttributeTok{nlambda =} \DecValTok{100}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(lasso.cv)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MLG2_files/figure-latex/kgrasa-1.pdf}
+Las covariables seleccionadas (regla una desviación estándar):
+
+age height abdom wrist
+
+\hypertarget{modelos-no-lineales}{%
+\section{Modelos no lineales}\label{modelos-no-lineales}}
+
+\hypertarget{ejemplos-4}{%
+\subsection{Ejemplos}\label{ejemplos-4}}
+
+\hypertarget{crecimiento-de-pavos}{%
+\subsubsection{Crecimiento de pavos}\label{crecimiento-de-pavos}}
+
+Datos: \texttt{turk0} de la librería \texttt{alr4}
+
+Objetivo: evaluar la metionina como suplemento alimenticio para
+pavos.
+
+Se alimentó a 60 corrales de pavos con una dieta similar,
+complementada con una dosis de metionina diferente. Luego de un
+tiempo, se observó el peso ganado por corral.
+
+Las variables son:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{A}:} Cantidad de suplemento de metionina ( \% de la dieta).
+\item
+  \textbf{\texttt{Gain}:} Peso medio ganado por corral (gramos) después de 3 semanas.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Gain}\SpecialCharTok{\textasciitilde{}}\NormalTok{A,}\AttributeTok{data=}\NormalTok{turk0,}\AttributeTok{xlab=}\StringTok{\textquotesingle{}cantidad de metionina (\% dieta)\textquotesingle{}}\NormalTok{,}\AttributeTok{ylab=}\StringTok{\textquotesingle{}Peso ganado (gramos)\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MLG2_files/figure-latex/plotpavos-1.pdf}
+Para estos datos se puede proponer el siguiente modelo:
+\[
+E(Gain|A)=\theta_{1}+\theta_{2}[1-exp(-\theta_{3}A)]
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Si \(A=0\), entonces \(E(Gain|A)=\theta_{1}\) (peso ganado sin suplemento).
+\item
+  Si \(\theta_{3}>0\), \(\theta_{1}+\theta_{2}\) es la asíntota (máximo peso que se puede
+  ganar).
+\item
+  \(\theta_{2}\) es el máximo crecimiento adicional debido al suplemento.
+\item
+  \(\theta_{3}\) representa la tasa de crecimiento. A valores de θ3 mas
+  grandes, el crecimiento esperado se acerca a su máximo más
+  rápidamente.
+\end{itemize}
+
+\hypertarget{puromicina}{%
+\subsubsection{Puromicina}\label{puromicina}}
+
+Datos: \texttt{Puromycin.}
+Objetivo: evaluar la velocidad de una reacción enzimática de células
+tratadas con Puromicina.
+
+Se midió la reacción enzimática (qué tan rápido ésta cataliza la reacción que
+convierte un sustrato en producto) de 23 encimas (12 tratadas con Puromicina).
+
+Las variables son:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{conc} :concentración de sustrato (ppm).
+\item
+  \texttt{rate}:velocidad de reacción instantáneas (conteo/min2)
+\item
+  \texttt{state}:tratado y no tratado.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Puromycin}\SpecialCharTok{$}\NormalTok{conc,Puromycin}\SpecialCharTok{$}\NormalTok{rate,}\AttributeTok{col=}\NormalTok{Puromycin}\SpecialCharTok{$}\NormalTok{state,}
+     \AttributeTok{xlab=}\StringTok{\textquotesingle{}concentración de sustrato (ppm)\textquotesingle{}}\NormalTok{,}
+     \AttributeTok{ylab=}\StringTok{\textquotesingle{}velocidad de reacción\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{MLG2_files/figure-latex/plotpurom-1.pdf}
+Encimas tratadas (puntos negros) - Encimas no tratadas (puntos rojos)
+
+Modelo Michaelis-Menten (bioquímica):
+
+\[
+y_{i}=\frac{x_{1}\theta_{1}}{\theta_{2}+x_{1}}+\epsilon_{i}.
+\]
+``falta insertar grafica''
+
+Por lo que para estos datos se puede proponer el modelo:
+
+\[
+rate_{i}=\frac{conc_{i}\theta_{1}+state_{i}conc_{i}\theta_{3}}
+{\theta_{2}+state_{i}\theta_{3}+conc_{i}}+\epsilon_{i}.
+\]
+
+Por lo que se tiene una curva diferente para las enzimas tratadas y
+no tratadas:
+
+\begin{itemize}
+\tightlist
+\item
+  Para enzimas no tratadas:
+\end{itemize}
+
+\[
+E(rate_{i}|state=0)=\frac{conc_{i}\theta_{1}}{\theta_{2}+conc_{i}}.
+\]
+
+-Para enzimas tratadas:
+\[
+E(rate_{i}|state=1)=\frac{conc_{i}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+conc_{i}}.
+\]
+
+\hypertarget{modelos-no-lineales-1}{%
+\subsection{Modelos no lineales}\label{modelos-no-lineales-1}}
+
+En modelos de regresión asumimos que:
+
+\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}.
+\]
+
+En el caso de \textbf{modelos lineales:}
+\[
+m(x_{i},\theta)=\Psi_{j}(x_{i},\psi)^{'}\beta.
+\]
+
+donde \(\Psi(\cdot)\) es una función de unos parámetros constantes \(\psi\)
+(es decir, puedo asumir transformaciones sobre las covariables).
+\(\Psi_{j}(x_{i},\psi)=x_{i}\), tenemos:
+
+\[
+m(x_{i},\theta)=\beta_{0}+x_{1i}\beta_{1}+x_{2i}\beta_{2}+...+x_{p-1,i}\beta_{p-1}.
+\]
+
+Los modelos:
+\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}=\theta_{1}+\theta_{1}[1+exp(-\theta_{4}x_{i})]+\epsilon_{i},
+\]
+y
+
+\[
+y_{i}=m(x_{i},\theta)+\epsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\epsilon_{i},
+\]
+
+son modelo no-lineal (no es una combinación lineal de los
+parámetros).
+
+Si hacen los mismos supuestos sobre los errores, esto es:
+\[
+\epsilon\sim N(\boldsymbol 0,\sigma^2 \boldsymbol I)
+\]
+
+se tiene que:
+
+\begin{itemize}
+\tightlist
+\item
+  \(E(y|x_{i})=m(\boldsymbol x_{i},\boldsymbol \theta)\)
+\item
+  \(E(y|x_{i})=\sigma^2\)
+\end{itemize}
+
+\hypertarget{modelos-no-lineales-linealizables}{%
+\subsection{Modelos no-lineales linealizables}\label{modelos-no-lineales-linealizables}}
+
+Modelo de regresión exponencial:
+\[
+E(y)=\theta_{0}+\theta_{1}exp(\theta_{2}+x_{i}\theta_{3})
+\]
+
+Si \(\theta_{0}=0\), el modelo es linealizable:
+\[
+logy_{i}=(log\theta_{1}+\theta_{2})+x_{i}\theta_{3}+\epsilon_{i}^*
+\]
+Sin embargo, hay que tener cuidado con el efecto de las
+transformaciones sobre los residuos.
+
+\hypertarget{estimaciuxf3n-de-los-paruxe1metros}{%
+\subsubsection{Estimación de los parámetros}\label{estimaciuxf3n-de-los-paruxe1metros}}
+
+La estimación de \(\boldsymbol \theta\) se hace minimizando la suma de cuadrados de
+los residuos:
+
+\[
+S(\boldsymbol \theta)=\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)]^2
+\]
+
+Para encontrar el mínimo, \((1)\) calculamos la derivada de \(S(\boldsymbol \theta)\) con respecto a \(\boldsymbol \theta\):
+
+\[
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}=-2\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)][\frac{\partial m(\boldsymbol x_{i},\boldsymbol \theta)}{\partial\boldsymbol \theta}]
+\]
+
+\((2)\) igualamos a \(0\), y \((3)\) resolvemos la ecuación para \(\boldsymbol \theta\).
+
+En la mayoría de los casos, \(\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}\) es una función no-lineal \(\boldsymbol \theta\).
+
+Por lo tanto, no es posible encontrar una solución analítica y
+necesitamos encontrar la solución \textbf{iterativamente}.
+
+``insertar grafico 12.1''
+
+\hypertarget{notaciuxf3n}{%
+\subsubsection{Notación}\label{notaciuxf3n}}
+
+\begin{itemize}
+\item
+  \(\theta_{j}^{(t)}\): estimación de \(\theta_{j}\) en la iteración \(t\) (\(\theta_{j}^{(0)}\) valores iniciales).
+\item
+  Vector score (gradiente):
+\end{itemize}
+
+\[
+u(\boldsymbol \theta)=\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}=\begin{pmatrix} 
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta} \\ 
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta} \\
+\vdots \\
+\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta} \\
+\end{pmatrix}
+\quad
+u(\hat{\boldsymbol \theta})=u(\boldsymbol \theta)|_{\boldsymbol \theta=\hat{\boldsymbol \theta}}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Matriz Hessiana (Jacobiano):
+\end{itemize}
+
+\[
+\boldsymbol H(\boldsymbol \theta)=  \frac{\partial^2 S(\boldsymbol \theta)}{\partial\boldsymbol \theta^{'} \partial\boldsymbol \theta}=\begin{pmatrix} \frac{\partial^2 S(\boldsymbol \theta)}{\partial^2 \boldsymbol \theta_{1}} & \frac{\partial^2 S(\boldsymbol \theta)}{\partial \boldsymbol \theta_{1} \partial \boldsymbol \theta_{2} } & \dots & \frac{\partial^2 S(\boldsymbol \theta)}{\partial \boldsymbol \theta_{1} \partial \boldsymbol \theta_{p}} \\
+\frac{\partial^2 S(\boldsymbol \theta)}{\partial \boldsymbol \theta_{2} \partial \boldsymbol \theta_{1}} & \frac{\partial^2 S(\boldsymbol \theta)}{\partial^2 \boldsymbol \theta_{2}} & \dots & \frac{\partial^2 S(\boldsymbol \theta)}{\partial \boldsymbol \theta_{2} \partial \boldsymbol \theta_{p}}\\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2 S(\boldsymbol \theta)}{\partial \boldsymbol \theta_{p} \partial \boldsymbol \theta_{1}} & \frac{\partial^2 S(\boldsymbol \theta)}{\partial \boldsymbol \theta_{p} \partial \boldsymbol \theta_{2}} & \dots & \frac{\partial^2 S(\boldsymbol \theta)}{\partial^2 \boldsymbol \theta_{p}}
+\end{pmatrix} \quad \quad \quad \boldsymbol H(\hat{\boldsymbol \theta})=\boldsymbol H(\boldsymbol \theta)|_{\boldsymbol \theta=\hat{\boldsymbol \theta}}
+\]
+
+\hypertarget{expansiuxf3n-de-series-de-tylor}{%
+\subsubsection{Expansión de series de Tylor}\label{expansiuxf3n-de-series-de-tylor}}
+
+Una función \(f(\theta)\) puede expandirse como una serie de Taylor:
+
+\[
+f(\theta)=\sum_{n=0}^\infty \frac{1}{n!}(\theta-\theta^*)^n \frac{\partial^nf(\theta^*)}{\partial\theta^n}
+\]
+
+Una aproximación de la función \(f(\theta)\) en los valores alrededor del punto \(\theta^*\) se puede hacer usando la series de Taylor con solo las dos primeras
+derivadas (orden 2):
+
+\[
+f(\theta)\approx f(\theta^*)+(\theta-\theta^*) \frac{\partial f(\theta^*)}{\partial\theta}+\frac{1}{2}(\theta-\theta^*)^2\frac{\partial^2 f(\theta^*)}{\partial\theta^2}
+\]
+
+En caso de \(\boldsymbol \theta\) (vector), entonces:
+
+\[
+f(\boldsymbol \theta)\approx f(\boldsymbol \theta^*)+(\boldsymbol \theta-\boldsymbol \theta^*)^{'}u(\boldsymbol \theta^*)+\frac{1}{2}(\boldsymbol \theta-\boldsymbol \theta^*)^{'}H(\boldsymbol \theta^*)(\boldsymbol \theta-\boldsymbol \theta^*),
+\]
+
+\hypertarget{muxe9todos-iterativos-de-estimaciuxf3n}{%
+\subsubsection{Métodos iterativos de estimación}\label{muxe9todos-iterativos-de-estimaciuxf3n}}
+
+Algunos métodos iterativos de estimación son:
+
+\begin{itemize}
+\tightlist
+\item
+  Gauss-Newton (approx. series de Taylor a la función de la
+  media).
+\end{itemize}
+
+-Newton-Raphson (approx. series de Taylor a la función score).
+
+\hypertarget{algoritmo-de-gauss-newton}{%
+\paragraph{Algoritmo de Gauss-Newton}\label{algoritmo-de-gauss-newton}}
+
+La idea es aproximar \(m(x_{i},\boldsymbol \theta^*)\) usando series de Taylor de orden 1 alrededor de \(\boldsymbol \theta^*\):
+
+\[
+m(x_{i},\boldsymbol \theta)\approx m(x_{i},\boldsymbol \theta^*)+(\boldsymbol \theta-\boldsymbol \theta^*)^{'}u_{i}(\boldsymbol \theta^*)
+\]
+
+Lo que lleva a una aproximación de la suma de cuadrados de los residuos:
+
+\begin{equation}
+\begin{split}
+S(\boldsymbol \theta)&=\sum_{i=1}^n[y_{i}-m(x_{i},\boldsymbol \theta)]^2 \approx \sum_{i=1}^n[y_{i}-m(x_{i},\boldsymbol \theta^*)+(\boldsymbol \theta-\boldsymbol \theta^*)^{'}u_{i}(\boldsymbol \theta^*)]^2 \\
+&= \sum_{i=1}^n[\hat e_{i}^*+(\boldsymbol \theta-\boldsymbol \theta^*)^{'}u_{i}(\boldsymbol \theta^*)]^2,
+\end{split}
+\end{equation}
+
+Esta aproximación de \(S(\boldsymbol \theta)\) es equivalente a una suma de cuadrados de un modelo lineal con \(\hat e_{i}^*\) (residuos de trabajo) como variable respuesta y \(u_{i}(\boldsymbol \theta^*)\) como covariables.
+
+Por lo tanto, la solución es:
+
+\[
+(\hat{\boldsymbol \theta}-\boldsymbol \theta^*)=[U(\boldsymbol \theta^*)^{'}U(\boldsymbol \theta^*)]^{-1}
+  U(\boldsymbol \theta^*)^{'} \hat{e_{i}^*}
+\]
+
+\begin{equation}
+\hat{\boldsymbol \theta}=\boldsymbol \theta^*+[U(\boldsymbol \theta^*)^{'}U(\boldsymbol \theta^*)]^{-1}U(\boldsymbol \theta^*)^{'} \hat{e_{i}^*}
+\label{eq:AlgorGN}
+\end{equation}
+
+donde:
+
+\begin{itemize}
+\item
+  \(\hat{e_{i}^*}=(\hat{e_{1}^*},...,\hat{e_{n}^*})^{'}\)
+\item
+  \(U(\boldsymbol \theta^*)\) es una matriz con la fila \(i\) igual a \(u_{i}(\boldsymbol \theta^*)\).
+\end{itemize}
+
+A partir de estas ecuaciones se propone el \textbf{algoritmo de
+Gauss-Newton}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Seleccione unos valores iniciales \(\boldsymbol \theta_{0}\) y calcule \(S(\boldsymbol \theta_{0})\).
+\item
+  Establezca el contador de iteraciones en \(k=0\)
+\item
+  Calcule \(U(\boldsymbol \theta^{(j)}\) y \(\hat{e}^{(j)}\) y encuentre \(\boldsymbol \theta^{(j+1)}\) usando \eqref{eq:AlgorGN}:
+\end{enumerate}
+
+\begin{equation}
+\begin{split}
+& \boldsymbol \theta^{(j+1)}=\boldsymbol \theta^{(j)}+[U(\boldsymbol \theta^{(j)})^{'}U(\boldsymbol \theta^{(j)})]^{-1}U(\boldsymbol \theta^{(j)})^{'} \hat{e}^{(j)} \\
+& \text{y calcule} \quad S(\boldsymbol \theta^{(j+1)}).
+\end{split}
+\end{equation}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Pare si \(\delta=|S(\boldsymbol \theta^{(j)})-S(\boldsymbol \theta^{(j+1)})|\) es suficientemente pequeño (convergente). De otra forma, \(j=j+1\) y vaya al paso 3.
+\end{enumerate}
+
+Si \(j\) es muy grande (muchas iteraciones), se dice que hay divergencia.
+
+El algoritmo de Gauss-Newton estima los parámetros de un problema
+de regresión no lineal mediante una secuencia de cálculos de mínimos cuadrados lineales aproximados.
+
+La estimación de \(\sigma^2\) es:
+
+\[
+\hat{\sigma}^2=\frac{1}{n-p}\sum_{i=1}^n[y_{i}-m(x_{i},\hat{\boldsymbol \theta)}]^2,
+\]
+
+donde \(p\) es la dimensión de \(\boldsymbol \theta\).
+
+\hypertarget{estimaciuxf3n-de-los-paruxe1metros-1}{%
+\subsubsection{Estimación de los parámetros}\label{estimaciuxf3n-de-los-paruxe1metros-1}}
+
+\textbf{¿Cómo selecciono los valores iniciales?}
+
+El ajuste de un modelo no-lineal requiere buenos valores iniciales
+(cercanos a los valores de parámetros).
+
+los valores iniciales se pueden obtener a través:
+
+\begin{itemize}
+\item
+  Conocimiento previo.
+\item
+  Significado físico de los coecientes.
+\item
+  Evaluación gráfica.
+\item
+  Linearización de los datos.
+\end{itemize}
+
+Dado que la solución del algoritmo puede caer en un máximo local, es recomendable ejecutar el algoritmo para diferentes valores iniciales.
+
+\hypertarget{crecimiento-de-pavos---valores-iniciales}{%
+\paragraph{Crecimiento de pavos - Valores iniciales}\label{crecimiento-de-pavos---valores-iniciales}}
+
+En el caso del peso de los pavos:
+
+\begin{itemize}
+\item
+  \(\theta_{1}^0=620\) (pesi ganado sin suplemento)
+\item
+  \(\theta_{2}^0+\theta_{1}^0=800\) (Asíntota). Por lo tanto \(\theta_{2}^0=180\)
+\item
+  \(\theta_{3}^0\) se puede obtener a partir de resolver la ecuación para un punto posible:
+\end{itemize}
+
+\[
+750=620+180[1-exp(-\theta_{3}^00.16)]
+\]
+
+Resolviendo la ecuación \(\theta_{3}^0\approx8\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod }\OtherTok{=} \FunctionTok{nls}\NormalTok{(Gain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ th1 }\SpecialCharTok{+}\NormalTok{ th2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{th3}\SpecialCharTok{*}\NormalTok{A)),}\AttributeTok{data =}\NormalTok{ turk0,}
+          \AttributeTok{start =} \FunctionTok{list}\NormalTok{(}\AttributeTok{th1=}\DecValTok{620}\NormalTok{,}\AttributeTok{th2=}\DecValTok{180}\NormalTok{,}\AttributeTok{th3=}\DecValTok{8}\NormalTok{),}\AttributeTok{trace=}\NormalTok{F)}
+
+\FunctionTok{plot}\NormalTok{(Gain}\SpecialCharTok{\textasciitilde{}}\NormalTok{A,}\AttributeTok{data=}\NormalTok{turk0,}\AttributeTok{xlab=}\StringTok{\textquotesingle{}cantidad de metionina (\% dieta)\textquotesingle{}}\NormalTok{,}\AttributeTok{ylab=}\StringTok{\textquotesingle{}Peso ganado (gramos)\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{th }\OtherTok{=} \FunctionTok{coef}\NormalTok{(mod)}
+\NormalTok{x }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\AttributeTok{length.out=}\DecValTok{100}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(x, th[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{+}\NormalTok{th[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{th[}\DecValTok{3}\NormalTok{]}\SpecialCharTok{*}\NormalTok{x)),}\AttributeTok{col=}\DecValTok{2}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{MLG2_files/figure-latex/plotpavoscrec-1} 
+
+}
+
+\caption{Datos crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina.}\label{fig:plotpavoscrec}
+\end{figure}
+
+\[
+E(Gain|A)=622.958 + 178.252 [1 - exp(-7.122A)]    
+\]
+
+\hypertarget{inferencia-sobre-los-paruxe1metros}{%
+\paragraph{Inferencia sobre los parámetros}\label{inferencia-sobre-los-paruxe1metros}}
+
+si \(\epsilon \sim N(\boldsymbol 0,\sigma^2 \boldsymbol I)\), tenemos que asintóticamente \((n \to \infty)\):
+
+\[
+\hat{\boldsymbol \theta}\sim N(\boldsymbol \theta^*,\sigma^2[U(\boldsymbol \theta^*)U(\boldsymbol \theta^*)^{'}]^{-1}).
+\]
+
+Dado que automáticamente \(\boldsymbol \theta^* \to \boldsymbol \theta\), \(\hat{\boldsymbol \theta}\) es un estimador insesgado
+de \(\boldsymbol \theta\).
+
+Hay que hacer énfasis que estas son propiedades para muestras
+grandes, para muestras pequeñas, estas propiedades pueden ser
+inadecuadas.
+
+A partir de las propiedades de muestras grandes se pueden hacer
+inferencias sobre los coeficientes \(\boldsymbol \theta\). Por ejemplo:
+
+\textbf{Pruebas de hipótesis:} \(\qquad H_{0}:\theta_{j}=\theta_{0}, \qquad H_{1}:\theta_{j}\ne\theta_{0}\)
+
+\[
+t_{0}:\frac{\hat{\theta_{j}}-\theta_{0}}{\sqrt{V(\hat{\theta_{j}})}}, \quad \text{donde} \quad t_{0} \sim t_{n-p}
+\]
+\textbf{Intervalos de confianza:}IC del \((1-\alpha)\)\% para \(\theta_{j}\):
+
+\[
+\hat{\theta_{j}}\pm t_{|1-\alpha/2,n-p}\sqrt{V(\hat{\theta_{j}})} 
+\]
+
+\textbf{Intervalos de confianza:} IC del \((1-\alpha)\)\% para \(E(Y|x_{0})\):
+
+Sea \(\boldsymbol \theta=(\boldsymbol \theta_{1}^{'},\boldsymbol \theta_{2}^{'})^{'}.\)
+
+Hipótesis:
+\[
+H_{0}:\boldsymbol \theta_{2}=\boldsymbol 0\qquad H_{1}:\boldsymbol \theta_{2}\ne\boldsymbol 0
+\]
+
+Estadístico de prueba:
+
+\[
+F_{0}=\frac{[SS_{res}(\boldsymbol \theta)-SS_{res}(\boldsymbol \theta_{1})]/r}{MS_{res}(\boldsymbol \theta)}\sim F_{r,n-p}.
+\]
+
+\hypertarget{crecimiento-de-pavos-estimaciuxf3n}{%
+\paragraph{Crecimiento de pavos-Estimación}\label{crecimiento-de-pavos-estimaciuxf3n}}
+
+Modelo estimado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(mod)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Formula: Gain ~ th1 + th2 * (1 - exp(-th3 * A))
+## 
+## Parameters:
+##     Estimate Std. Error t value Pr(>|t|)    
+## th1  622.958      5.901  105.57  < 2e-16 ***
+## th2  178.252     11.636   15.32 2.74e-16 ***
+## th3    7.122      1.205    5.91 1.41e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 19.66 on 32 degrees of freedom
+## 
+## Number of iterations to convergence: 4 
+## Achieved convergence tolerance: 6.736e-06
+\end{verbatim}
+
+Es posible considerar otros modelos de crecimiento. Por ejemplo:
+
+\begin{itemize}
+\tightlist
+\item
+  Modelo 2 (modelo logístico):
+\end{itemize}
+
+\[
+y_{i}=\frac{\theta_{1}}{1+\theta_{2}exp(-\theta_{3}x_{i})}+\epsilon_{i}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Modelo 3 modelo Weibull:
+\end{itemize}
+
+\[
+y_{i}=\theta_{1}+\theta_{2}[1-exp(-\theta_{3}x_{i}^{\theta_{4}})]+\epsilon_{i}
+\]
+
+La comparación se puede hacer por criterios de información (AIC o
+BIC)
+
+``Insertar grafica y tabla comparando los tres modelos''
+
+\hypertarget{puromicina-estimaciuxf3n}{%
+\paragraph{Puromicina-Estimación}\label{puromicina-estimaciuxf3n}}
+
+Los valores iniciales del modelo Michaelis-Menten se puede hacer por linealización.
+
+``Insertar graficas puromicina y puromicina linealizada''
+
+A través del ajuste por MCO:
+
+\[
+\frac{1}{y_{i}}=\beta_{0}+\frac{1}{conc_{i}\beta_{1}}+\epsilon_{i}
+\]
+
+Se puede obtener valores iniciales.
+
+Luego de ajustar el modelo:
+
+\[
+\theta_{1}^{(0)}=\frac{1}{\hat{\beta}_{0}}=167.408 \qquad \theta_{2}^{(0)}=\frac{\hat{\beta}_{1}}{\hat{\beta}_{0}}=0.039
+\]
+
+Inicialmente, se podría asumir \(\beta_{3}=\beta_{4}=0.\)
+
+Modelo estimado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Puromycin}\SpecialCharTok{$}\NormalTok{state2 }\OtherTok{=} \FunctionTok{as.double}\NormalTok{(Puromycin}\SpecialCharTok{$}\NormalTok{state }\SpecialCharTok{==} \StringTok{\textquotesingle{}treated\textquotesingle{}}\NormalTok{)}
+\NormalTok{mod }\OtherTok{=} \FunctionTok{nls}\NormalTok{(rate }\SpecialCharTok{\textasciitilde{}}\NormalTok{ (th1}\SpecialCharTok{*}\NormalTok{conc }\SpecialCharTok{+}\NormalTok{ th3}\SpecialCharTok{*}\NormalTok{conc}\SpecialCharTok{*}\NormalTok{state2)}\SpecialCharTok{/}\NormalTok{(th2}\SpecialCharTok{+}\NormalTok{th4}\SpecialCharTok{*}\NormalTok{state2}\SpecialCharTok{+}\NormalTok{conc),}\AttributeTok{data =}\NormalTok{ Puromycin,}
+          \AttributeTok{start =} \FunctionTok{list}\NormalTok{(}\AttributeTok{th1=}\DecValTok{168}\NormalTok{,}\AttributeTok{th2=}\FloatTok{0.4}\NormalTok{,}\AttributeTok{th3=}\DecValTok{0}\NormalTok{,}\AttributeTok{th4=}\DecValTok{0}\NormalTok{),}\AttributeTok{trace=}\NormalTok{F )}
+\FunctionTok{summary}\NormalTok{(mod)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Formula: rate ~ (th1 * conc + th3 * conc * state2)/(th2 + th4 * state2 + 
+##     conc)
+## 
+## Parameters:
+##      Estimate Std. Error t value Pr(>|t|)    
+## th1 1.603e+02  6.896e+00  23.242 2.04e-15 ***
+## th2 4.771e-02  8.281e-03   5.761 1.50e-05 ***
+## th3 5.240e+01  9.551e+00   5.487 2.71e-05 ***
+## th4 1.641e-02  1.143e-02   1.436    0.167    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.4 on 19 degrees of freedom
+## 
+## Number of iterations to convergence: 7 
+## Achieved convergence tolerance: 3.018e-06
+\end{verbatim}
 
   \bibliography{ModeloLineal.bib}
 

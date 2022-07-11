@@ -2,7 +2,9 @@
 ```{r preamble5, include=FALSE}
 library(alr4)
 library(nlstools)
+library(car)
 data(turk0)
+data(Puromycin)
 ```
 ## Ejemplos
 ### Crecimiento de pavos
@@ -184,3 +186,435 @@ u(\btheta)=\frac{\partial S(\btheta)}{\partial\btheta}=\begin{pmatrix}
 \quad
 u(\hat{\btheta})=u(\btheta)|_{\btheta=\hat{\btheta}}
 $$
+
+- Matriz Hessiana (Jacobiano):
+
+$$
+\bH(\btheta)=  \frac{\partial^2 S(\btheta)}{\partial\btheta^{'} \partial\btheta}=\begin{pmatrix} \frac{\partial^2 S(\btheta)}{\partial^2 \btheta_{1}} & \frac{\partial^2 S(\btheta)}{\partial \btheta_{1} \partial \btheta_{2} } & \dots & \frac{\partial^2 S(\btheta)}{\partial \btheta_{1} \partial \btheta_{p}} \\
+\frac{\partial^2 S(\btheta)}{\partial \btheta_{2} \partial \btheta_{1}} & \frac{\partial^2 S(\btheta)}{\partial^2 \btheta_{2}} & \dots & \frac{\partial^2 S(\btheta)}{\partial \btheta_{2} \partial \btheta_{p}}\\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2 S(\btheta)}{\partial \btheta_{p} \partial \btheta_{1}} & \frac{\partial^2 S(\btheta)}{\partial \btheta_{p} \partial \btheta_{2}} & \dots & \frac{\partial^2 S(\btheta)}{\partial^2 \btheta_{p}}
+\end{pmatrix} \quad \quad \quad \bH(\hat{\btheta})=\bH(\btheta)|_{\btheta=\hat{\btheta}}
+$$
+
+### Expansión de series de Tylor
+
+Una función $f(\theta)$ puede expandirse como una serie de Taylor:
+
+$$
+f(\theta)=\sum_{n=0}^\infty \frac{1}{n!}(\theta-\theta^*)^n \frac{\partial^nf(\theta^*)}{\partial\theta^n}
+$$
+
+Una aproximación de la función $f(\theta)$ en los valores alrededor del punto $\theta^*$ se puede hacer usando la series de Taylor con solo las dos primeras
+derivadas (orden 2):
+
+$$
+f(\theta)\approx f(\theta^*)+(\theta-\theta^*) \frac{\partial f(\theta^*)}{\partial\theta}+\frac{1}{2}(\theta-\theta^*)^2\frac{\partial^2 f(\theta^*)}{\partial\theta^2}
+$$
+
+En caso de $\btheta$ (vector), entonces:
+
+$$
+f(\btheta)\approx f(\btheta^*)+(\btheta-\btheta^*)^{'}u(\btheta^*)+\frac{1}{2}(\btheta-\btheta^*)^{'}H(\btheta^*)(\btheta-\btheta^*),
+$$
+
+### Métodos iterativos de estimación
+Algunos métodos iterativos de estimación son:
+
+- Gauss-Newton (approx. series de Taylor a la función de la
+media).
+
+-Newton-Raphson (approx. series de Taylor a la función score).
+
+#### Algoritmo de Gauss-Newton
+La idea es aproximar $m(x_{i},\btheta^*)$ usando series de Taylor de orden 1 alrededor de $\btheta^*$:
+
+$$
+m(x_{i},\btheta)\approx m(x_{i},\btheta^*)+(\btheta-\btheta^*)^{'}u_{i}(\btheta^*)
+$$
+
+Lo que lleva a una aproximación de la suma de cuadrados de los residuos:
+
+\begin{equation}
+\begin{split}
+S(\btheta)&=\sum_{i=1}^n[y_{i}-m(x_{i},\btheta)]^2 \approx \sum_{i=1}^n[y_{i}-m(x_{i},\btheta^*)+(\btheta-\btheta^*)^{'}u_{i}(\btheta^*)]^2 \\
+&= \sum_{i=1}^n[\hat e_{i}^*+(\btheta-\btheta^*)^{'}u_{i}(\btheta^*)]^2,
+\end{split}
+\end{equation}
+
+Esta aproximación de $S(\btheta)$ es equivalente a una suma de cuadrados de un modelo lineal con $\hat e_{i}^*$ (residuos de trabajo) como variable respuesta y $u_{i}(\btheta^*)$ como covariables.
+
+Por lo tanto, la solución es:
+
+
+$$
+(\hat{\btheta}-\btheta^*)=[U(\btheta^*)^{'}U(\btheta^*)]^{-1}
+  U(\btheta^*)^{'} \hat{e_{i}^*}
+$$
+
+\begin{equation}
+\hat{\btheta}=\btheta^*+[U(\btheta^*)^{'}U(\btheta^*)]^{-1}U(\btheta^*)^{'} \hat{e_{i}^*}
+(\#eq:AlgorGN)
+\end{equation}
+
+donde:
+
+- $\hat{e_{i}^*}=(\hat{e_{1}^*},...,\hat{e_{n}^*})^{'}$
+
+- $U(\btheta^*)$ es una matriz con la fila $i$ igual a $u_{i}(\btheta^*)$.
+
+A partir de estas ecuaciones se propone el **algoritmo de
+Gauss-Newton**.
+
+1. Seleccione unos valores iniciales $\btheta_{0}$  y calcule $S(\btheta_{0})$.
+2. Establezca el contador de iteraciones en $k=0$
+3. Calcule $U(\btheta^{(j)})$ y $\hat{e}^{(j)}$ y encuentre $\btheta^{(j+1)}$ usando \@ref(eq:AlgorGN):
+
+\begin{equation}
+\begin{split}
+& \btheta^{(j+1)}=\btheta^{(j)}+[U(\btheta^{(j)})^{'}U(\btheta^{(j)})]^{-1}U(\btheta^{(j)})^{'} \hat{e}^{(j)} \\
+& \text{y calcule} \quad S(\btheta^{(j+1)}).
+\end{split}
+\end{equation}
+   
+
+4. Pare si $\delta=|S(\btheta^{(j)})-S(\btheta^{(j+1)})|$ es suficientemente pequeño (convergente). De otra forma, $j=j+1$ y vaya al paso 3.
+
+Si $j$ es muy grande (muchas iteraciones), se dice que hay divergencia.
+
+El algoritmo de Gauss-Newton estima los parámetros de un problema
+de regresión no lineal mediante una secuencia de cálculos de mínimos cuadrados lineales aproximados.
+
+La estimación de $\sigma^2$ es:
+
+$$
+\hat{\sigma}^2=\frac{1}{n-p}\sum_{i=1}^n[y_{i}-m(x_{i},\hat{\btheta)}]^2,
+$$
+
+donde $p$ es la dimensión de $\btheta$.
+
+### Estimación de los parámetros
+
+**¿Cómo selecciono los valores iniciales?**
+
+El ajuste de un modelo no-lineal requiere buenos valores iniciales
+(cercanos a los valores de parámetros).
+
+los valores iniciales se pueden obtener a través:
+
+- Conocimiento previo.
+
+- Significado físico de los coecientes.
+
+- Evaluación gráfica.
+
+- Linearización de los datos.
+
+Dado que la solución del algoritmo puede caer en un máximo local, es recomendable ejecutar el algoritmo para diferentes valores iniciales.
+
+#### Crecimiento de pavos - Valores iniciales
+
+En el caso del peso de los pavos:
+
+- $\theta_{1}^0=620$ (pesi ganado sin suplemento)
+
+- $\theta_{2}^0+\theta_{1}^0=800$ (Asíntota). Por lo tanto $\theta_{2}^0=180$ 
+
+- $\theta_{3}^0$ se puede obtener a partir de resolver la ecuación para un punto posible:
+
+$$
+750=620+180[1-exp(-\theta_{3}^00.16)]
+$$
+
+Resolviendo la ecuación $\theta_{3}^0\approx8$.
+
+```{r plotpavoscrec, echo=T, include=T,fig.align = "center", fig.cap = "Datos crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina.",warning=FALSE,message = FALSE}
+
+mod = nls(Gain ~ th1 + th2*(1-exp(-th3*A)),data = turk0,
+          start = list(th1=620,th2=180,th3=8),trace=F)
+
+plot(Gain~A,data=turk0,xlab='cantidad de metionina (% dieta)',ylab='Peso ganado (gramos)')
+
+th = coef(mod)
+x = seq(0,0.5,length.out=100)
+lines(x, th[1]+th[2]*(1-exp(-th[3]*x)),col=2, lwd = 2)
+```
+$$
+E(Gain|A)=622.958 + 178.252 [1 - exp(-7.122A)]    
+$$
+
+#### Inferencia sobre los parámetros
+
+si $\epsilon \sim N(\bZERO,\sigma^2 \bI)$, tenemos que asintóticamente $(n \to \infty)$:
+
+$$
+\hat{\btheta}\sim N(\btheta^*,\sigma^2[U(\btheta^*)U(\btheta^*)^{'}]^{-1}).
+$$
+
+Dado que automáticamente $\btheta^* \to \btheta$, $\hat{\btheta}$  es un estimador insesgado
+de $\btheta$.
+
+Hay que hacer énfasis que estas son propiedades para muestras
+grandes, para muestras pequeñas, estas propiedades pueden ser
+inadecuadas.
+
+A partir de las propiedades de muestras grandes se pueden hacer
+inferencias sobre los coeficientes $\btheta$. Por ejemplo:
+
+**Pruebas de hipótesis:** $\qquad H_{0}:\theta_{j}=\theta_{0}, \qquad H_{1}:\theta_{j}\ne\theta_{0}$
+
+$$
+t_{0}:\frac{\hat{\theta_{j}}-\theta_{0}}{\sqrt{V(\hat{\theta_{j}})}}, \quad \text{donde} \quad t_{0} \sim t_{n-p}
+$$
+**Intervalos de confianza:**IC del $(1-\alpha)$% para $\theta_{j}$:
+
+$$
+\hat{\theta_{j}}\pm t_{|1-\alpha/2,n-p}\sqrt{V(\hat{\theta_{j}})} 
+$$
+
+**Intervalos de confianza:** IC del $(1-\alpha)$% para $E(Y|x_{0})$:
+
+Sea $\btheta=(\btheta_{1}^{'},\btheta_{2}^{'})^{'}.$
+
+Hipótesis:
+$$
+H_{0}:\btheta_{2}=\bZERO \qquad H_{1}:\btheta_{2}\ne\bZERO 
+$$
+
+Estadístico de prueba:
+
+$$
+F_{0}=\frac{[SS_{res}(\btheta)-SS_{res}(\btheta_{1})]/r}{MS_{res}(\btheta)}\sim F_{r,n-p}.
+$$
+
+#### Crecimiento de pavos-Estimación
+Modelo estimado:
+
+```{r tablapavos,include=TRUE}
+summary(mod)
+
+```
+
+Es posible considerar otros modelos de crecimiento. Por ejemplo:
+
+- Modelo 2 (modelo logístico):
+
+$$
+y_{i}=\frac{\theta_{1}}{1+\theta_{2}exp(-\theta_{3}x_{i})}+\epsilon_{i}
+$$
+
+- Modelo 3 modelo Weibull:
+
+$$
+y_{i}=\theta_{1}+\theta_{2}[1-exp(-\theta_{3}x_{i}^{\theta_{4}})]+\epsilon_{i}
+$$
+
+La comparación se puede hacer por criterios de información (AIC o
+BIC)
+
+```{r tresmodelospavos, include=TRUE}
+
+plot(Gain~A,data=turk0,xlab='cantidad de metionina (% dieta)',ylab='Peso ganado (gramos)')
+
+mod2 = nls(Gain ~ th1/(1+th2*exp(-th3*A)),data = turk0,
+           start = list(th1=620,th2=0.25,th3=8) )
+
+mod3 = nls(Gain ~ th1 + th2*(1-exp(-th3*A^th4)),data = turk0,
+           start = list(th1=800,th2=180,th3=8,th4=1) )
+           
+th2 = coef(mod2)         
+th3 = coef(mod3)
+lines(x, th[1]+th[2]*(1-exp(-th[3]*x)),col=2, lwd = 2)
+lines(x, th2[1]/(1+th2[2]*exp(-th2[3]*x)),col=3, lwd = 2)
+lines(x, th3[1]+th3[2]*(1-exp(-th3[3]*x^th3[4])),col=4, lwd = 2)
+
+AIC(mod)
+AIC(mod2)
+AIC(mod3)
+
+```
+
+#### Puromicina-Estimación
+
+Los valores iniciales del modelo Michaelis-Menten se puede hacer por linealización.
+
+```{r linealpuromicina, include=TRUE} 
+par(mfrow=c(1,2))
+plot(Puromycin$conc,Puromycin$rate,col=Puromycin$state, xlab='concentración de sustrato (ppm)', ylab='velocidad de reacción')
+
+
+plot(1/Puromycin$conc,1/Puromycin$rate,col=Puromycin$state, xlab='concentración de sustrato (ppm)', ylab='velocidad de reacción')
+```
+
+A través del ajuste por MCO:
+
+$$
+\frac{1}{y_{i}}=\beta_{0}+\frac{1}{conc_{i}\beta_{1}}+\epsilon_{i}
+$$
+
+Se puede obtener valores iniciales.
+
+Luego de ajustar el modelo:
+
+$$
+\theta_{1}^{(0)}=\frac{1}{\hat{\beta}_{0}}=167.408 \qquad \theta_{2}^{(0)}=\frac{\hat{\beta}_{1}}{\hat{\beta}_{0}}=0.039
+$$
+
+Inicialmente, se podría asumir $\beta_{3}=\beta_{4}=0.$
+
+Modelo estimado:
+
+```{r tablapuromicina, include=TRUE}
+
+Puromycin$state2 = as.double(Puromycin$state == 'treated')
+mod.puromicyn = nls(rate ~ (th1*conc + th3*conc*state2)/(th2+th4*state2+conc),data = Puromycin,
+          start = list(th1=168,th2=0.4,th3=0,th4=0),trace=F )
+summary(mod.puromicyn )
+
+```
+
+- La tasa de crecimiento máxima es diferente si la enzima es
+tratada o no.
+
+
+- El punto donde se logra la mitad del máximo es el mismo.
+
+```{r puromicinaplotl, include=TRUE}
+x = seq(0,1.5,length.out=200)
+thP= coef(mod.puromicyn)
+plot(Puromycin$conc,Puromycin$rate,col=Puromycin$state,
+     xlab='concentración de sustrato (ppm)',
+     ylab='velocidad de reacción')
+
+lines(x, thP[1]*x/(thP[2]+x),col=2)
+lines(x, (thP[1]+thP[3])*x/(thP[2]+thP[4]+x))
+
+```
+
+### Método de Bootstrap
+
+Las inferencias basadas para muestras grande pueden ser inexactas
+y/o engañosas en muestras pequeñas.
+
+En esos casos, se puede hacer inferencias usando remuestreo
+(bootstrap).
+
+El bootstrap es una técnica para calcular intervalos de confianza
+and pruebas de hipótesis cuando el cumplimiento de los supuestos
+asumidos están en duda.
+
+Se quiere calcular un intervalo de confianza para la mediana (o
+cualquier otro parámetro) de $Y$. Para esto tomamos una muestra
+independiente $\by=(y_{1},...,y_{n})$.
+
+Pasos del boostrap:
+
+1. Obtener una muestra aleatoria con remuestreo de $\by:\by=(y_{1}^{*},...,y_{n}^{*})$.
+2. Calcular la mediana usando la muestra el paso 1 $(Me_{1})$.
+3. Repita los pasos 1 y 2 un número grande de veces $(B)$.
+4. un intervalo de confianza del 95% basado en percentiles muestrales 2.5% y 97.5 %.
+
+#### Bootstrap en regresión
+
+Método residual resampling:
+
+1. Con la muestra dada: $(x_{i},y_{i}),i=1,...,n$ ajustar el modelo y obtener los resifuos: $e_{i}=y_{i}-x_{i}^{'}\hat{\beta}.$
+
+2. Obtener una muestra aleatoria con reemplazo de los residuos $e^*=(e_{1}^*,...,e_{n}^*)$.
+
+3.Crear una variable respuesta bootstrap con $y_{i}^*=x_{i}^{'}\hat{\beta}+e_{1}^*$ y estimar $\hat{\beta}^*$. 
+
+4. Repetir los pasos 1-3 un número grande de veces $(B)$ y obtener
+el intervalo de confianza para $\beta_{j}$ usando los percentiles*.
+
+$*$Hay muchas modificaciones y extensiones para calcular los intervalos de confianza.
+
+```{r bootpuro}
+set.seed(310)
+mod.boot = Boot(mod.puromicyn,method='residual',R=1000)
+
+```
+```{r bootgraf, include=TRUE}
+pairs(mod.boot$t,labels=c(expression(hat(theta)[1]),expression(hat(theta)[2]),expression(hat(theta)[3]),
+                          expression(hat(theta)[4])))
+```
+**Estimaciones por bootstrap** 
+Linea roja: estimación por mínimos
+cuadrados. Lineas rojas: percentil 2.5, media y percentil 97.5.
+
+```{r bootgrafconf, include=TRUE}
+par(mfrow=c(1,4))
+hist(mod.boot$t[,1],breaks = 20,xlab=expression(hat(theta)[1]),main = '')
+abline(v=coef(mod.puromicyn)[1],lty=2,lwd=2)
+abline(v=mean(mod.boot$t[,1]),lty=2,lwd=2,col=2)
+abline(v=quantile(mod.boot$t[,1],c(0.025,0.975),na.rm = T),lty=2,lwd=2,col=2)
+
+hist(mod.boot$t[,2],breaks = 20,xlab=expression(hat(theta)[2]),main = '')
+abline(v=coef(mod.puromicyn)[2],lty=2,lwd=2)
+abline(v=mean(mod.boot$t[,2]),lty=2,lwd=2,col=2)
+abline(v=quantile(mod.boot$t[,2],c(0.025,0.975),na.rm = T),lty=2,lwd=2,col=2)
+
+hist(mod.boot$t[,3],breaks = 20,xlab=expression(theta[3]),main = '')
+abline(v=coef(mod.puromicyn)[3],lty=2,lwd=2)
+abline(v=mean(mod.boot$t[,3]),lty=2,lwd=2,col=2)
+abline(v=quantile(mod.boot$t[,3],c(0.025,0.975),na.rm = T),lty=2,lwd=2,col=2)
+
+hist(mod.boot$t[,4],breaks = 20,xlab=expression(theta[4]),main = '')
+abline(v=coef(mod.puromicyn)[4],lty=2,lwd=2)
+abline(v=mean(mod.boot$t[,4]),lty=2,lwd=2,col=2)
+abline(v=quantile(mod.boot$t[,4],c(0.025,0.975),na.rm = T),lty=2,lwd=2,col=2)
+
+```
+
+Intervalos del 95% de confianza usando bootstrap (corrección de
+sesgo):
+```{r bootgrafintC, include=TRUE}
+quantile(mod.boot$t[,1],c(0.025,0.975),na.rm = T)
+quantile(mod.boot$t[,2],c(0.025,0.975),na.rm = T)
+quantile(mod.boot$t[,3],c(0.025,0.975),na.rm = T)
+quantile(mod.boot$t[,4],c(0.025,0.975),na.rm = T)
+```
+
+
+**Puromicina - bootstrap** \\
+Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual.
+
+```{r bootgrafpred, include=TRUE}
+fit.rate= function(theta,x){
+  cbind(theta[1]*x/(theta[2]+x),
+        (theta[1]+theta[3])*x/(theta[2]+theta[4]+x))
+}
+x= seq(from=0,to=1.1,length.out = 100)
+
+plot(NULL,NULL,xlim=c(0,1.1),ylim=c(0,210),xlab='concentración de sustrato (ppm)',
+     ylab='velocidad de reacción')
+Fit = mapply(function(i){
+  pred = fit.rate(mod.boot$t[i,],x)
+  lines(x,pred[,1],col='lightgray')
+  lines(x,pred[,2],col='gray')
+},i=1:999)
+lines(x, thP[1]*x/(thP[2]+x),col=2)
+lines(x, (thP[1]+thP[3])*x/(thP[2]+thP[4]+x))
+points(Puromycin$conc,Puromycin$rate,col=Puromycin$state)
+
+```
+
+#### Algunas consideraciones
+
+* Lo ideal es que el algoritmo llegue a la solución en pocas
+iteraciones (esto pasa si la aproximación lineal es adecuada).
+
+*Siempre es bueno evaluar la solución con diferentes puntos
+iniciales. Es posible que caigamos en un máximo local.
+
+*Si el tamaño de muestra no es grande, las propiedades
+asintóticas pueden no ser adecuadas. Por lo tanto, es mas
+conveniente usar bootstrap para hacer inferencias.
+
+
+
+
+
+
+
+
