@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Notas de clase: Modelo lineal general II</title>
-  <meta name="description" content="Page not found | Notas de clase: Modelo lineal general II" />
+  <title>Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II</title>
+  <meta name="description" content="Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Notas de clase: Modelo lineal general II" />
+  <meta property="og:title" content="Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Notas de clase: Modelo lineal general II" />
+  <meta name="twitter:title" content="Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
+<link rel="prev" href="modelos-no-lineales.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -283,18 +283,316 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="modelo-lineal-generalizado" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> Modelo lineal generalizado<a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introducción-1" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Introducción<a href="modelo-lineal-generalizado.html#introducción-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="modelos-lineales" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Modelos lineales<a href="modelo-lineal-generalizado.html#modelos-lineales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Modelo lineal:</p>
+<p><span class="math display">\[
+y_{i}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta+\epsilon, \quad \text{donde}\quad \epsilon \sim N(\boldsymbol 0,\sigma^2\boldsymbol I)
+\]</span></p>
+<p>Lo que implica que <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=\boldsymbol x_{i}\boldsymbol \beta\)</span> y <span class="math inline">\(V(y_{i}|\boldsymbol x_{i})=\sigma^2\)</span></p>
+<p>En algunos casos es difícil que se cumplan esas propiedades (incluso luego de hacer transformaciones).</p>
+<p>Si la variable respuesta <span class="math inline">\(Y\)</span> solo puede tomar dos valores <span class="math inline">\((y_{i}\in\{0,1\})\)</span> no podríamos representar <span class="math inline">\(E(y|\boldsymbol x)\)</span> como una función lineal.</p>
+<p>Los modelos lineales generalizados (GLM) son una clase de
+modelos que permite modelar variables aleatorias con distribución
+de probabilidad diferentes a la normal.</p>
+</div>
+<div id="mortalidad-de-escarabajos" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Número de escarabajos muertos después de cinco horas de
+exposición a disulfuro de carbono gaseoso <span class="math inline">\((CS2mgl^{-1})\)</span> en diversas concentraciones:</p>
+<table>
+<caption><span id="tab:TmortEsc">Table 6.1: </span>Datos mortalidad de escarabajos</caption>
+<thead>
+<tr class="header">
+<th align="right">logdose</th>
+<th align="right">n</th>
+<th align="right">dead</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1.6907</td>
+<td align="right">59</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="right">1.7242</td>
+<td align="right">60</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="right">1.7552</td>
+<td align="right">62</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="right">1.7842</td>
+<td align="right">56</td>
+<td align="right">28</td>
+</tr>
+<tr class="odd">
+<td align="right">1.8113</td>
+<td align="right">63</td>
+<td align="right">52</td>
+</tr>
+<tr class="even">
+<td align="right">1.8369</td>
+<td align="right">59</td>
+<td align="right">53</td>
+</tr>
+<tr class="odd">
+<td align="right">1.8610</td>
+<td align="right">62</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td align="right">1.8839</td>
+<td align="right">60</td>
+<td align="right">60</td>
+</tr>
+</tbody>
+</table>
+<p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="modelo-lineal-generalizado.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<p><img src="MLG2_files/figure-html/grafMortEsc-1.png" width="672" /></p>
+</div>
+<div id="modelo-logístico" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Modelo logístico<a href="modelo-lineal-generalizado.html#modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Definiendo <span class="math inline">\(y_{i}=\sum_{i=1}^ny_{ij}/n_{i}\)</span> (la proporción de éxitos en ni ensayos independientes), tenemos que:</p>
+<p><span class="math display">\[
+n_{i}y_{i}\sim binomial(n_{i},\pi_{i}), \quad i=1,...,n, \quad \text{donde} \quad \pi_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
+\]</span></p>
+<p>Entonces: <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=\pi_{i}\)</span> y <span class="math inline">\(V(y_{i}|\boldsymbol x_{i})=\pi_{i}(1-\pi_{i})/n_{i}\)</span>.</p>
+<p>El modelo ligístico es un GLM y asume que:</p>
+<p><span class="math display">\[
+\pi_{i}=g^{-1}(\boldsymbol x_{i},\boldsymbol \beta)=\frac{exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}{1+exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}=\frac{1}{1+exp(-\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}
+\]</span></p>
+<p>Por lo que: <span class="math inline">\(g(\pi_{i})=log(\frac{\pi_{i}}{1-\pi_{i}})=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span> <strong>(función logit).</strong></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logfun"></span>
+<img src="MLG2_files/figure-html/logfun-1.png" alt="Función logística" width="672" />
+<p class="caption">
+Figure 6.1: Función logística
+</p>
+</div>
+</div>
+<div id="ataques-de-epilepsia" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> ataques de epilepsia<a href="modelo-lineal-generalizado.html#ataques-de-epilepsia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ensayo clínico para evaluar el impacto de progabida sobre las crisis
+epilépticas (<code>data(epilepsy)</code> de la librería <code>HSAUR2</code>).</p>
+<p>Datos:</p>
+<ul>
+<li><p><code>age</code>: edad del paciente.</p></li>
+<li><p><code>base</code>: número de ataques epilépticos (x 8 semanas) antes del
+ensayo.</p></li>
+<li><p><code>treatment</code>: tratamiento (placebo, progabida).</p></li>
+<li><p><code>seizure.rate</code>(variable respuesta): número de ataques epilépticos (x dos semanas) luego de 8 semanas.</p></li>
+</ul>
+<p>“insertar graficos de epilepsia”</p>
+<div id="modelo-poisson" class="section level4 hasAnchor" number="6.1.4.1">
+<h4><span class="header-section-number">6.1.4.1</span> Modelo poisson<a href="modelo-lineal-generalizado.html#modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Aquí podemos suponer que:</p>
+<p><span class="math display">\[
+y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
+\]</span></p>
+<p>Entonces:<span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=V(y_{i}|\boldsymbol x_{i})=\lambda_{i}).\)</span></p>
+<p>El modelo Pooisson es un GLM y asume que:</p>
+<p><span class="math display">\[
+\lambda_{i}=g^{-1}(\boldsymbol x_{i},\boldsymbol \beta)=exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta).
+\]</span></p>
+<p>Por lo que: <span class="math inline">\(g(\lambda_{i}=log\lambda_{i}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span> <strong>(función log)</strong>.</p>
+</div>
+</div>
+</div>
+<div id="modelo-lineal-generalizado-glm" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Modelo lineal generalizado (GLM)<a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un modelo lineal generalizado (GLM) tiene tres componentes:</p>
+<ul>
+<li><p><strong>Componente aleatorio:</strong> variable respuesta <span class="math inline">\(Y\)</span> y su distribución de probabilidad.</p></li>
+<li><p><strong>Predictor lineal:</strong></p></li>
+</ul>
+<p><span class="math display">\[
+\eta=\boldsymbol x^{&#39;}\boldsymbol \beta,
+\]</span></p>
+<p>donde <span class="math inline">\(\boldsymbol \beta\)</span> es un vector de parámetros y <span class="math inline">\(\boldsymbol x\)</span> un vector de
+covariables.</p>
+<ul>
+<li><strong>Función de enlace:</strong> una función g que conecta <span class="math inline">\(E(Y)\)</span> con el predictor lineal,</li>
+</ul>
+<p><span class="math display">\[
+g[E(Y|\boldsymbol x)]=\boldsymbol x^{&#39;}\boldsymbol \beta
+\]</span></p>
+<div id="componente-aleatorio" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Componente aleatorio<a href="modelo-lineal-generalizado.html#componente-aleatorio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Observaciones independientes <span class="math inline">\((y_{i},...,y_{n})\)</span> de una variable aleatoria <span class="math inline">\(Y\)</span> cuya distribución de probabilidad pertenece a la <strong>familia exponencial.</strong></p>
+<p>Restringir un GLM a la familia exponencial permite tener expresiones generales para:</p>
+<ul>
+<li><p>La función de verosimilitud y funciones score.</p></li>
+<li><p>distribución asintótica de los estimadores de los parámetros del modelo</p></li>
+<li><p>Algoritmo para ajustar el modelo.</p></li>
+</ul>
+</div>
+<div id="predictor-lineal" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Predictor lineal<a href="modelo-lineal-generalizado.html#predictor-lineal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para cada observación <span class="math inline">\(i\)</span>,</p>
+<p><span class="math display">\[
+\boldsymbol x_{i}=(1,x_{i1},...,x_{i(p-1)})^{&#39;},
+\]</span></p>
+<p>donde <span class="math inline">\(x_{ij}\)</span> es la observación <span class="math inline">\(i\)</span> de la covariable <span class="math inline">\(j,\quad j=1,...,p-1\)</span>.</p>
+<p>Predictor lineal es una combinación lineal de las covariables:</p>
+<p><span class="math display">\[
+\eta_{i}=\beta_{0}+\sum_{j=1}^{p-1}\beta_{j}x_{ij}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta
+\]</span></p>
+<p>Un GLM asume que las covariables no son aleatorias.</p>
+</div>
+<div id="función-de-enlace" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Función de enlace<a href="modelo-lineal-generalizado.html#función-de-enlace" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea:</p>
+<p><span class="math display">\[
+E(Y|\boldsymbol x_{i})=\mu_{i}, \quad i=1,...,n.
+\]</span></p>
+<p>En algunas distribuciones,<span class="math inline">\(\mu_{i}\)</span> está acotada en un intervalo. Por ejemplo, en la distribución binomial, <span class="math inline">\(0\leq \pi_{i}\leq 1\)</span>, o en la Poisson, <span class="math inline">\(\lambda_{i}&gt;0\)</span>.</p>
+<p>El GLM conecta <span class="math inline">\(\mu_{i}\)</span> con <span class="math inline">\(\eta_{i}\)</span>:</p>
+<p><span class="math display">\[
+\mu_{i}=g^{-1}(\eta_{i})=g^{-1}(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)
+\]</span></p>
+<p>La función <span class="math inline">\(g(\cdot)\)</span> es monótona y diferenciable.</p>
+<p><span class="math inline">\(g(\cdot)\)</span> esta determinada generalmente por la distribución que se asume para <span class="math inline">\(Y\)</span>.</p>
+</div>
+<div id="ejemplos-de-glm" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Ejemplos de GLM<a href="modelo-lineal-generalizado.html#ejemplos-de-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Algunos ejemplos de GLM:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tipo de respuesta</th>
+<th align="left">Distribución</th>
+<th align="left">función de enlace</th>
+<th align="left">Modelo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Continuo</td>
+<td align="left">Normal</td>
+<td align="left">Identidad</td>
+<td align="left">Modelo lineal</td>
+</tr>
+<tr class="even">
+<td align="left">Binaria</td>
+<td align="left">Bernoulli</td>
+<td align="left">Logit</td>
+<td align="left">Modelo logístico</td>
+</tr>
+<tr class="odd">
+<td align="left">Conteo</td>
+<td align="left">Poisson</td>
+<td align="left">Log</td>
+<td align="left">Modelo Poisson</td>
+</tr>
+</tbody>
+</table>
+<p>Otros ejemplos son <strong>beta</strong> , <strong>gamma</strong>, <strong>exponencial</strong>, …</p>
+<p>hay extensiones del GLM para distribuciones:</p>
+<ul>
+<li><p><strong>binomial negativa</strong> para conteo con sobredispersión.</p></li>
+<li><p><strong>beta-binomial</strong> para ensayos Bernoulli correlacionados (sobredispersión).</p></li>
+<li><p><strong>multinomial</strong> para variables nominales (ordinales) con más de
+dos categorías</p></li>
+<li><p><strong>Weibull</strong> para tiempos de falla.</p></li>
+</ul>
+</div>
+<div id="ajuste-de-un-glm" class="section level3 hasAnchor" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> Ajuste de un GLM<a href="modelo-lineal-generalizado.html#ajuste-de-un-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El proceso de ajustar un GLM incluye:</p>
+<ul>
+<li><p><strong>Especificación del modelo</strong>.Definición del componente
+aleatorio, predictor lineal y función de enlace.</p></li>
+<li><p><strong>Estimación de los parámetros</strong> del modelo.</p></li>
+<li><p><strong>Evaluación del modelo</strong>. ¿El modelo describe bien los datos?</p></li>
+<li><p><strong>Inferencia</strong>. Intervalos de confianza, pruebas de hipótesis e
+interpretación de los resultados.</p></li>
+</ul>
+</div>
+<div id="familia-exponencial" class="section level3 hasAnchor" number="6.2.6">
+<h3><span class="header-section-number">6.2.6</span> Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La distribución de probabilidad de una variable aleatoria Y pertenece
+a la <strong>familia exponencial</strong> si la función de densidad (o masa) de Y toma esta forma:</p>
+<p><span class="math display">\[
+f(y;\theta,\phi)exp\{[y\theta-b(\theta)]/a(\phi)+c(y,\phi)\}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\theta\)</span> es el parámetro natural.</li>
+<li><span class="math inline">\(\phi&gt;0\)</span> parámetro de dispersión.</li>
+</ul>
+<p>Además se tiene que:</p>
+<p><span class="math display">\[
+E[Y]=b^{&#39;}(\theta) \quad \text{y} \quad V[Y]=b^{&#39;&#39;}(\theta)a(\phi).
+\]</span></p>
+<div id="ejemplo-1" class="section level4 hasAnchor" number="6.2.6.1">
+<h4><span class="header-section-number">6.2.6.1</span> Ejemplo<a href="modelo-lineal-generalizado.html#ejemplo-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La distribución Poisson:</p>
+<p><span class="math display">\[
+f(y;\mu)=\frac{\mu^yexp(-\mu)}{y!}, \quad \theta&gt;0.
+\]</span></p>
+<p>se puede re-escribir como:</p>
+<p><span class="math display">\[
+f(y;\mu)=exp(-\mu+ylog\mu-logy!).
+\]</span></p>
+<p>Por lo tanto:</p>
+<ul>
+<li><p><span class="math inline">\(\theta=log\mu, \quad b(\theta)=exp(\theta)\)</span>.</p></li>
+<li><p><span class="math inline">\(a(\phi)=1\)</span> y <span class="math inline">\(c(y,\phi)=-lny!\)</span>.</p></li>
+</ul>
+<p>La distribución normal:</p>
+<p><span class="math display">\[
+f(y;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma}}exp[-\frac{()}{}]
+\]</span></p>
+<p>Se puede re-escribir como:</p>
+<p><span class="math display">\[
+f(y;\mu,\sigma^2)=exp[\frac{y\mu-\frac{1}{2}\mu^2}{\sigma^2}-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}]
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><p><span class="math inline">\(\theta=\mu, \quad b(\theta)=\frac{1}{2}\theta^2\)</span>.</p></li>
+<li><p><span class="math inline">\(a(\phi)=\sigma^2\)</span> y <span class="math inline">\(c(y,\phi)=-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}\)</span>.</p></li>
+</ul>
+<p>La distribución binomial:</p>
+<p><span class="math display">\[
+f(y;\pi)=\left(\begin{array}{c}n\\y\end{array}\right)\pi^y(1-\pi)^{n-y}.
+\]</span></p>
+<p>se puede re-escribir como:</p>
+<p><span class="math display">\[
+f(y;\pi)=exp\{y[log\pi-log(1-\pi)]+nlog(1-\pi)+log\left(\begin{array}{c}n\\y\end{array}\right)\}
+\]</span>
+donde:</p>
+<ul>
+<li><p><span class="math inline">\(\theta=log(\frac{\pi}{1-\pi}), \quad b(\theta)=-nlog[1+exp(\theta)]\)</span>.</p></li>
+<li><p><span class="math inline">\(c(\phi)=1\)</span> y <span class="math inline">\(d(y,\phi)=log\left(\begin{array}{c}n\\y\end{array}\right)\)</span>.</p></li>
+</ul>
+</div>
+<div id="familia-exponencial-1" class="section level4 hasAnchor" number="6.2.6.2">
+<h4><span class="header-section-number">6.2.6.2</span> Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>|Distribución|<span class="math inline">\(\theta\)</span>|<span class="math inline">\(a(\phi)\)</span>|<span class="math inline">\(b(\theta)\)</span>|<span class="math inline">\(c(y,\phi)\)</span>|
+|:———–|:——-|:—– –|:———-|:———-|
+|Normal |<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|
+|Binomial|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|
+|Poisson |<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|</p>
+
+</div>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
+<a href="modelos-no-lineales.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -326,7 +624,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/%s",
+"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/06-ModeloGeneralizado.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -334,7 +632,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/%s",
+"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/06-ModeloGeneralizado.Rmd",
 "text": null
 },
 "download": ["MLG2.pdf"],
