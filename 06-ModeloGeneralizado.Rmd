@@ -288,11 +288,99 @@ donde:
 
 #### Familia exponencial
 
-|Distribución|$\theta$|$a(\phi)$|$b(\theta)$|$c(y,\phi)$|
-|:-----------|:-------|:----- --|:----------|:----------|
-|Normal  |$a$|$a$|$a$|$a$|
-|Binomial|$a$|$a$|$a$|$a$|
-|Poisson |$a$|$a$|$a$|$a$|
+
+```{r, echo=FALSE, include=TRUE, results="asis"}
+library(knitr)
+
+mathy.df <- data.frame(b4=c("Normal","Binomial", "Poisson"), 
+                       b0=c("$\\mu$","$log(\\frac{\\pi}{1-\\pi})$","$log(\\lambda)$"), 
+B1=c("$\\sigma^2$","$\\frac{1}{n}$","$1$"),
+B2 = c("$\\frac{1}{2}\\mu^2$","$log(1+exp\\beta)$","$exp\\lambda$"),
+B3 = c("$-\\frac{1}{2}log(2\\pi\\sigma^2)-\\frac{y^2}{2\\sigma^2}$","$log\\left(\\begin{array}{c}n \\\\ y\\end{array}\\right)$","$-log(y!)$"))
+
+colnames(mathy.df) <- c("Distribución", "$\\beta$", "$a(\\phi)$","$b(\\beta)$","$c(y,\\phi)$")
+
+kable(mathy.df, escape=FALSE)
+```
+Relación media-varianza:
+
+```{r, echo=FALSE, include=TRUE, results="asis"}
+library(knitr)
+
+mathy.df <- data.frame(site = c("Normal","Binomial", "Poisson"), 
+                       b0 = c("$\\sigma^2$", "$\\mu(1-\\mu)/n$","$\\mu$"))
+
+colnames(mathy.df) <- c("Distribución", "$v(\\mu)$")
+
+kable(mathy.df, escape=FALSE)
+```
+#### Estimador de máxima verosimilitud
+
+**Modelo** $Y\sim f(y,\btheta)$.
+
+Estamos interesados en estimar $\btheta$.
+
+Para ello tomamos una muestra independiente $(y_{1},y_{2},...,y_{n}).$
+
+Si las observaciones son independientes, la **función de verosimilitud** es:
+
+$$
+L(\btheta)=\prod_{i=1}^nf(y_{i};\btheta).
+$$
+
+La función de log-verosimilitud:
+
+$$
+ \cl(\btheta)=\sum_{i=1}^nlnf(y_{i},\btheta).
+$$
+
+El objetivo es encontrar el $\hat{\btheta}$ que maximiza $L(\btheta)$ (o $\cl(\btheta)$).
+
+$\hat{\btheta}$ se obtiene calculando las derivadas de $\cl(\btheta)$ con respecto a cada elemento de $\btheta$ y resolviendo las **ecuaciones score**:
+
+$$
+U(\btheta)=\frac{\partial\cl(\btheta)}{\partial\btheta}=\bZERO.
+$$
+
+s necesario verificar si la solución corresponde a un máximo de $\cl(\btheta)$. 
+Se requiere que la matriz de segundas derivadas **(matriz Hessiana)**:
+
+$$
+H(\btheta)=\frac{\partial^2\cl(\btheta)}{\partial\btheta\partial\btheta^{'}},
+$$
+
+evaluada en $\btheta=\hat{\btheta}$, sea negativa definida.
+
+#### Propiedades asintóticas de los MLEs
+
+$\hat{\btheta}$ es asintóticamente $(n\to \infty)$ insesgado. Esto es, $E(\hat{\btheta})=\btheta$.
+
+La varianza asintótica $(n\to \infty)$ de $\hat{\btheta}$ se calcula como la inversa de **la matriz de información**:
+
+$$
+v(\hat{\btheta})=I(\btheta)^{-1},\quad \text{donde} \quad I(\btheta)=-E[H(\btheta)]
+$$
+ **Teorema de Cramer-Rao:** La varianza de cualquier estimador es insesgado de un parámetro $\btheta$ debe:
+ 
+ 
+ $$
+ V(\hat{\btheta})\geq-E[H(\btheta)]^{-1}.
+ $$
+ 
+ Por lo cual, es MLE es eficiente.
+ 
+ Otras propiedades importantes:
+ 
+ * **Asintoticamente normal:**$\hat{\btheta}\sim N[\btheta,I(\btheta)^{-1}]$
+ 
+ * **Invarianza:**si $\hat{\btheta}$ es el MLE de $\btheta$, entonces $g(\hat{\btheta})$ es el MLE de $g(\btheta)$
+ 
+ 
+ 
+ 
+
+
+
 
 
 

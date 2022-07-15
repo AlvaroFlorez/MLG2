@@ -130,3 +130,5 @@ ajuste-de-un-glm
 familia-exponencial
 ejemplo-1
 familia-exponencial-1
+estimador-de-máxima-verosimilitud
+propiedades-asintóticas-de-los-mles

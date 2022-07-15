@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-07-12" />
+<meta name="date" content="2022-07-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -577,11 +577,113 @@ donde:</p>
 </div>
 <div id="familia-exponencial-1" class="section level4 hasAnchor" number="6.2.6.2">
 <h4><span class="header-section-number">6.2.6.2</span> Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>|Distribución|<span class="math inline">\(\theta\)</span>|<span class="math inline">\(a(\phi)\)</span>|<span class="math inline">\(b(\theta)\)</span>|<span class="math inline">\(c(y,\phi)\)</span>|
-|:———–|:——-|:—– –|:———-|:———-|
-|Normal |<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|
-|Binomial|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|
-|Poisson |<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|<span class="math inline">\(a\)</span>|</p>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="20%" />
+<col width="11%" />
+<col width="15%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Distribución</th>
+<th align="left"><span class="math inline">\(\beta\)</span></th>
+<th align="left"><span class="math inline">\(a(\phi)\)</span></th>
+<th align="left"><span class="math inline">\(b(\beta)\)</span></th>
+<th align="left"><span class="math inline">\(c(y,\phi)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Normal</td>
+<td align="left"><span class="math inline">\(\mu\)</span></td>
+<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
+<td align="left"><span class="math inline">\(\frac{1}{2}\mu^2\)</span></td>
+<td align="left"><span class="math inline">\(-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Binomial</td>
+<td align="left"><span class="math inline">\(log(\frac{\pi}{1-\pi})\)</span></td>
+<td align="left"><span class="math inline">\(\frac{1}{n}\)</span></td>
+<td align="left"><span class="math inline">\(log(1+exp\beta)\)</span></td>
+<td align="left"><span class="math inline">\(log\left(\begin{array}{c}n \\ y\end{array}\right)\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Poisson</td>
+<td align="left"><span class="math inline">\(log(\lambda)\)</span></td>
+<td align="left"><span class="math inline">\(1\)</span></td>
+<td align="left"><span class="math inline">\(exp\lambda\)</span></td>
+<td align="left"><span class="math inline">\(-log(y!)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Relación media-varianza:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Distribución</th>
+<th align="left"><span class="math inline">\(v(\mu)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Normal</td>
+<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Binomial</td>
+<td align="left"><span class="math inline">\(\mu(1-\mu)/n\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Poisson</td>
+<td align="left"><span class="math inline">\(\mu\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estimador-de-máxima-verosimilitud" class="section level4 hasAnchor" number="6.2.6.3">
+<h4><span class="header-section-number">6.2.6.3</span> Estimador de máxima verosimilitud<a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Modelo</strong> <span class="math inline">\(Y\sim f(y,\boldsymbol \theta)\)</span>.</p>
+<p>Estamos interesados en estimar <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
+<p>Para ello tomamos una muestra independiente <span class="math inline">\((y_{1},y_{2},...,y_{n}).\)</span></p>
+<p>Si las observaciones son independientes, la <strong>función de verosimilitud</strong> es:</p>
+<p><span class="math display">\[
+L(\boldsymbol \theta)=\prod_{i=1}^nf(y_{i};\boldsymbol \theta).
+\]</span></p>
+<p>La función de log-verosimilitud:</p>
+<p><span class="math display">\[
+ ℓ(\boldsymbol \theta)=\sum_{i=1}^nlnf(y_{i},\boldsymbol \theta).
+\]</span></p>
+<p>El objetivo es encontrar el <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> que maximiza <span class="math inline">\(L(\boldsymbol \theta)\)</span> (o <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span>).</p>
+<p><span class="math inline">\(\hat{\boldsymbol \theta}\)</span> se obtiene calculando las derivadas de <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span> con respecto a cada elemento de <span class="math inline">\(\boldsymbol \theta\)</span> y resolviendo las <strong>ecuaciones score</strong>:</p>
+<p><span class="math display">\[
+U(\boldsymbol \theta)=\frac{\partial ℓ(\boldsymbol \theta)}{\partial\boldsymbol \theta}=\boldsymbol 0.
+\]</span></p>
+<p>s necesario verificar si la solución corresponde a un máximo de <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span>.
+Se requiere que la matriz de segundas derivadas <strong>(matriz Hessiana)</strong>:</p>
+<p><span class="math display">\[
+H(\boldsymbol \theta)=\frac{\partial^2ℓ(\boldsymbol \theta)}{\partial\boldsymbol \theta\partial\boldsymbol \theta^{&#39;}},
+\]</span></p>
+<p>evaluada en <span class="math inline">\(\boldsymbol \theta=\hat{\boldsymbol \theta}\)</span>, sea negativa definida.</p>
+</div>
+<div id="propiedades-asintóticas-de-los-mles" class="section level4 hasAnchor" number="6.2.6.4">
+<h4><span class="header-section-number">6.2.6.4</span> Propiedades asintóticas de los MLEs<a href="modelo-lineal-generalizado.html#propiedades-asintóticas-de-los-mles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math inline">\(\hat{\boldsymbol \theta}\)</span> es asintóticamente <span class="math inline">\((n\to \infty)\)</span> insesgado. Esto es, <span class="math inline">\(E(\hat{\boldsymbol \theta})=\boldsymbol \theta\)</span>.</p>
+<p>La varianza asintótica <span class="math inline">\((n\to \infty)\)</span> de <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> se calcula como la inversa de <strong>la matriz de información</strong>:</p>
+<p><span class="math display">\[
+v(\hat{\boldsymbol \theta})=I(\boldsymbol \theta)^{-1},\quad \text{donde} \quad I(\boldsymbol \theta)=-E[H(\boldsymbol \theta)]
+\]</span>
+<strong>Teorema de Cramer-Rao:</strong> La varianza de cualquier estimador es insesgado de un parámetro <span class="math inline">\(\boldsymbol \theta\)</span> debe:</p>
+<p><span class="math display">\[
+ V(\hat{\boldsymbol \theta})\geq-E[H(\boldsymbol \theta)]^{-1}.
+ \]</span></p>
+<p>Por lo cual, es MLE es eficiente.</p>
+<p>Otras propiedades importantes:</p>
+<ul>
+<li><p><strong>Asintoticamente normal:</strong><span class="math inline">\(\hat{\boldsymbol \theta}\sim N[\boldsymbol \theta,I(\boldsymbol \theta)^{-1}]\)</span></p></li>
+<li><p><strong>Invarianza:</strong>si <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> es el MLE de <span class="math inline">\(\boldsymbol \theta\)</span>, entonces <span class="math inline">\(g(\hat{\boldsymbol \theta})\)</span> es el MLE de <span class="math inline">\(g(\boldsymbol \theta)\)</span></p></li>
+</ul>
 
 </div>
 </div>

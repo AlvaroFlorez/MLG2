@@ -10,6 +10,7 @@ biblio-style: apalike
 link-citations: yes
 
 header-includes:
+  - \newcommand{\cl}{ℓ}
   - \newcommand{\bx}{\boldsymbol x}
   - \newcommand{\bX}{\boldsymbol X}
   - \newcommand{\bZERO}{\boldsymbol 0}
