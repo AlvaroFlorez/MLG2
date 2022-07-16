@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-07-15" />
+<meta name="date" content="2022-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -262,6 +262,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.2.5</b> Ajuste de un GLM</a></li>
 <li class="chapter" data-level="6.2.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.2.6</b> Familia exponencial</a></li>
 </ul></li>
+<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#glm"><i class="fa fa-check"></i><b>6.3</b> GLM</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>6.3.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.3.2</b> Ataques epilépticos</a></li>
+<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mle-de-boldsymbol-beta"><i class="fa fa-check"></i><b>6.3.3</b> MLE de <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.3.4</b> interpretación de parámetros - modelo logístico</a></li>
+<li class="chapter" data-level="6.3.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson"><i class="fa fa-check"></i><b>6.3.5</b> Interpretación de parámetros - modelo Poisson</a></li>
+<li class="chapter" data-level="6.3.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.3.6</b> Pruebas de hipótesis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>6.4</b> intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalo-de-confianza-para-la-media"><i class="fa fa-check"></i><b>6.4.1</b> Intervalo de confianza para la media</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#devianza"><i class="fa fa-check"></i><b>6.5</b> Devianza</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.5.1</b> El estadístico chi-cuadrado de Pearson</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.6</b> Bondad de ajuste</a></li>
+<li class="chapter" data-level="6.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pseudo-r2"><i class="fa fa-check"></i><b>6.7</b> Pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.8" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.8</b> Selección de variables</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -286,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Notas de clase: Modelo lineal general II</h1>
 <p class="author"><em>Alvaro J. Flórez</em></p>
-<p class="date"><em>2022-07-15</em></p>
+<p class="date"><em>2022-07-16</em></p>
 </div>
 <div id="introducción" class="section level1 unnumbered hasAnchor">
 <h1>Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>

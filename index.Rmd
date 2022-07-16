@@ -10,6 +10,8 @@ biblio-style: apalike
 link-citations: yes
 
 header-includes:
+  - \newcommand{\bpsi}{\boldsymbol \psi}
+  - \newcommand{\bmu}{\boldsymbol \mu}
   - \newcommand{\cl}{ℓ}
   - \newcommand{\bx}{\boldsymbol x}
   - \newcommand{\bX}{\boldsymbol X}
@@ -44,6 +46,9 @@ header-includes:
   - \newcommand{\bz}{\boldsymbol z}
   - \newcommand{\tildey}{\widetilde{y}}
   - \newcommand{\tildeby}{\widetilde{\by}}
+  - \newcommand{\tildetheta}{\widetilde{\theta}}
+  - \newcommand{\tildemu}{\widetilde{\mu}}
+  
   - \newcommand{\haty}{\widehat{y}}
   - \newcommand{\hatby}{\widehat{\by}}
   

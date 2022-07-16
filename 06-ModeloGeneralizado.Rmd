@@ -373,11 +373,553 @@ $$
  
  * **Asintoticamente normal:**$\hat{\btheta}\sim N[\btheta,I(\btheta)^{-1}]$
  
- * **Invarianza:**si $\hat{\btheta}$ es el MLE de $\btheta$, entonces $g(\hat{\btheta})$ es el MLE de $g(\btheta)$
+ * **Invarianza:**si $\hat{\btheta}$ es el MLE de $\btheta$, entonces $g(\hat{\btheta})$ es el  MLE de $g(\btheta)$
  
+#### Métodos iterativos de maximización
+
+**Algoritmo de Newton-Raphson:**
+
+Considere una expansión de series de Taylor de orden 1 para la función
+score, alrededor de $\btheta=\btheta^{(t)}$:
+
+$$
+U(\btheta)\approx U(\btheta^{(t)})+H(\btheta^{(t)})+(\btheta-\btheta^{(t)})
+$$
+
+Igualando a cero:
+
+$$
+ U(\btheta^{(t)})+H(\btheta^{(t)})+(\btheta-\btheta^{(t)})=0
+$$
  
- 
- 
+Ahora encontramos la solución para $\hat{\btheta^{(t+1)}}$:
+
+$$
+\btheta^{(t+1)}=\btheta^{t}-H(\btheta^{t})^{-1}U(\btheta^{t}).
+$$
+
+Podemos reemplazar $H(\btheta)$ por $I(\btheta)$ **(algoritmo Fisher's scoring)**.
+
+## GLM 
+
+El modelo lineal generalizado (GLM) asume que:
+
+$$
+f(y_{i};\theta_{i},\phi)=exp\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)} +c(y_{i},\phi)\},
+$$
+
+donde $\phi>0$. Además, $E(y_{i})=b'(\theta_{i})$ y $V(y_{i})=b''(\theta_{i})a(\phi).$
+
+El **predictor lineal** $\eta_{i}=\bx'_{i}\bbeta$ se relaciona con $\mu_{i}$ a través la **función de enlace:**
+
+$$
+\eta_{i}=g(\mu_{i}).
+$$
+
+La función de enlace $g(\cdot)$  que transforma $\mu_{i}$ en el parámetro natural $\theta_{i}$ es llamada **función de enlace canónica.**
+
+
+**Distribución normal:** $\eta_{i}=\mu_{i}$ (identidad), por lo tanto:
+
+$$
+\mu_{i}=\eta_{i}
+$$
+
+**Distribución Poisson:**$\eta_{i}=log\mu_{i}$ (logarítmica), por lo tanto:
+
+$$
+\mu_{i}=exp(\eta_{i})
+$$
+
+**Distribución binomial:**$\eta_{i}=log(\frac{\pi_{i}}{1-\pi_{i}})$ (logit), por lo tanto: 
+
+$$
+\pi_{i}=\frac{exp(\eta_{i})}{1+exp(\eta_{i})}
+$$
+
+### Mortalidad de escarabajos
+
+**Variable respuesta** $y_{i}=\sum_{j=1}^{n_{i}}y_{ij}/n{i}$: proporción de escarabajos muertos.
+
+**Distribución de probabilidad** binomial:
+
+$$
+f(n_{i}y_{i};\pi_{i})= \begin{pmatrix} n_{i}\\y_{i} \end{pmatrix}\pi_{i}^{y_{i}}(1-\pi_{i})^{(n_{i}-y_{i})}.
+$$
+
+**Función de enlace:**
+
+$$
+log(\frac{\pi_{i}}{1-\pi_{i}})=\beta_{0}+\beta_{1}log\text{dosis}_{i}.
+$$
+
+### Ataques epilépticos
+
+**Variable respuesta** $y_{i}$: número de ataques epilépticos.
+
+**Distribución de probabilidad** Poisson:
+
+$$
+f(y_{i};\lambda_{i})=\frac{\lambda_{i}^{y_{i}}exp(-\lambda_{i})}{y_{i}!}.
+$$
+
+**Función de enlace:**
+
+$$
+log\lambda_{i}=\beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i}
+$$
+
+### MLE de $\bbeta$
+
+Función de log-verosimilitud:
+
+$$
+\cl(\bbeta)=\sum_{i=1}^{n}\cl_{i}(\bbeta)=\sum_{i=1}^{n}logf(y_{i};\theta_{i},\phi)=\sum_{i=1}^{n}\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)}+c(y_{i},\phi)\}
+$$
+
+En un GLM tenemos que $\eta_{i}=\bx_{i}'\bbeta=g(\mu_{i})$.
+
+Las funciones score están definidas como:
+
+$$
+U(\beta_{j})=\sum_{i=1}^{n}\frac{(y_{i}-\mu_{i})x_{ij}}{V(y_{i})}\frac{\partial\mu_{i}}{\partial\eta_{i}}=0, \quad \text{para} \quad j=0,...,k.
+$$
+
+Dado que las funciones score son no-lineales, es necesario estimar $\bbeta$ iterativamente usando el algoritmo de Newton-Raphson.
+
+En forma matricial, tenemos:
+
+Función score:$U(\bbeta)=\bX'\bD\bV^{-1}(\by-\bmu)$,
+
+Función Hessiana: $H(\bbeta)=\bI(\bbeta)=\bX'\bW\bX$
+
+donde:
+
+* $\bV$ es una matriz diagonal con valores $v_{ii}=V(y_{i})$ en la diagonal.
+
+* $\bD$ es una matriz diagonal con valores $d_{ii}=\frac{\partial\mu_{i}}{\partial\eta_{i}}$.
+
+* $\bW$ es una matriz diagonal con  $w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})}$.
+
+
+#### Estimador de máxima verosimilitud
+
+Utilizando el algoritmo de Newton-Raphson (Fisher's scoring):
+
+$$
+\bbeta^{(t+1)}=\bbeta^{(t)}+[\bI(\bbeta^{(t)})]^{-1}U(\bbeta^{(t)}).
+$$
+
+Equivalentemente, utilizando el **método de mínimos cuadrados iterativamente reponderados:**
+
+$$
+\bbeta^{(t+1)}=(\bX'\bW^{(t)}\bX)^{-1}\bX'\bW^{(t)}z^{(t)}
+$$
+
+donde, los elementos de $z^{(t)}$ son:
+
+$$
+z_{i}^{(t)}=\bx_{i}'\bbeta^{(t)}+(y_{i}-\mu_{i}^{(t)})\frac{\partial\eta_{i}^{(t)}}{\partial \mu_{i}^{(t)}}.
+$$
+
+Distribución asintótica del MLE $(n \to \infty)$:
+
+$$
+\hat{\bbeta}\sim N[\bbeta,(\bX'\bW\bX)^{-1}],
+$$
+
+donde $\bW$ es una matriz diagonal con:
+
+$$
+w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})}.
+$$
+
+Note que los valores de $\bW$ dependen de la función dde elace g $\partial\mu_{i}/\partial\eta_{i}=g'( \mu_{i})$.
+
+#### Mortalidad de escarabajos
+
+Modelo estimado:
+
+$$
+\hat{\pi}_{i}=\frac{exp(-60.717+34.27log\text{dosis})}{1+exp(-60.717+34.27log\text{dosis})}
+$$
+```{r grafescarMedia}
+modBin = glm(cbind(dead,n-dead)~logdose,family=binomial)
+pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))
+pred = predict(modBin,pred.x,type='response')
+
+plot(logdose,dead/n,xlab='log dosis',ylab='proporción de escarabajos muertos',ylim=c(0,1))
+lines(pred.x$logdose,pred,col=2,lwd=2)
+
+```
+
+### interpretación de parámetros - modelo logístico
+
+En el caso de la mortalidad de escarabajos, un **odds** está definido como:
+
+$$
+\text{odd}(\text{morir}|x)=\frac{P(Y=1|x)}{P(Y=0|x_{i})}=exp(\beta_{0}+x\beta_{1})
+$$
+
+Mientras que un **odds ratio** está definido como:
+
+$$
+\text{OR}=\frac{\text{odd}(\text{morir}|x=a+1)}{\text{odd}(\text{morir}|x=a)}=\frac{exp(\beta_{0}+(a+1)\beta_{1})}{exp(\beta_0+a\beta_1)}=exp(\beta_1).
+$$
+
+Por lo tanto, por cada cambio unitario en $x$ los odds (`chances') de
+morir incrementan por un factor de $exp(\beta_1)$.
+
+Por un cambio en$x$ de $a$ a $a+\delta$, $OR=e^{\delta\beta_1}$.
+
+#### Ataques epilépticos
+
+Modelo estimado:
+
+$$
+\hat{\lambda}_i=exp(1.245-0.363\text{treat}_i+0.021\text{base}_i+0.0008\text{base}_i\text{treat}_i)
+$$
+
+"insertar gráfico de la diapositiva 41"
+
+### Interpretación de parámetros - modelo Poisson
+
+En el modelo Poisson, tenemos que: $E(Y|x)=exp(\beta_0+x\beta_1)$
+
+$$
+\beta_1=log[\frac{E(Y|x=a+1)}{E(Y|x=a)}]
+$$
+
+Por lo tanto,
+
+$$
+exp(\beta_1)=\frac{E(Y|x=a+1)}{E(Y|x=a)}.
+$$
+
+Entonces, $exp(\beta_1)$ es una tasa de crecimiento del valor esperado de $Y$ por un incremento de $x$ de una unidad.
+
+
+#### Algunas consideraciones
+
+Para GLM con función de enlace canónica:
+
+* Matriz hessiana = matriz de información
+
+* Por lo tanto los algoritmos Newton-Raphson y Fisher's scoring
+son equivalentes
+
+* La función de log-verosimilitud es concava.
+
+* Por lo tanto, no hay posibilidad de múltiples máximos.
+
+### Pruebas de hipótesis
+
+Al igual que en los modelos lineales, uno puede estar interesado en
+realizar pruebas hipótesis sobre los coeficientes del modelo:
+
+$$
+\qquad H_0:\bbeta_0=\bZERO \qquad H_1:\bbeta_0 \ne \bZERO
+$$
+
+Para esto podemos utilizar:
+
+* Método del score (multiplicadores de Lagrange).
+
+* Método de Wald.
+
+* Método de razón de verosimilitud.
+
+**Modelo completo:**$\boldsymbol\eta=\bX_1\bbeta_1+\bX_2\bbeta_2$.
+
+**Modelo restringido:**$\boldsymbol\eta_0=\bX_1\bbeta_1+\bX_2\bbeta_2^0.$
+
+En este caso, quiero probar:
+
+$$
+\qquad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2 \ne \bbeta_2^0
+$$
+donde $\bbeta_2$ es de dimensión $q$ y $\bbeta_2^0$ es de dimensión $p-q$
+
+#### Prueba del score
+
+**Hipótesis:**
+
+$$
+\qquad H_0:\beta_2=\beta_2^0 \qquad \beta_2\ne\beta_2^0 
+$$
+
+Asintóticamente,$U(\bbeta)\sim N[\bZERO,\bI(\beta)]$, entonces:
+
+$$
+U(\bbeta)'\bI(\beta)^{-1}U(\bbeta)\sim \chi^2.
+$$
+
+**Estadístico de prueba:**
+
+$$
+U_2(\hat{\beta}^0)'\{V[U_2(\hat{\beta}^0)]\}^{-1}U_2(\hat{\beta}^0)\sim \chi^2_{p-q},
+$$
+donde $\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)'.$
+
+#### Prueba de wald
+
+**Hipótesis:**
+
+$$
+\qquad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2 \ne \bbeta_2^0
+
+$$
+
+Asintóticamente, $\hat{\bbeta}\sim N[\bbeta,\bI(\bbeta)^{-1}]$. por lo tanto:
+
+$$
+(\hat{\bbeta}-\bbeta)'\bI(\bbeta)(\hat{\bbeta}-\bbeta)\sim\chi^2.
+$$
+
+**Estadístico de prueba:**
+
+$$
+(\hat{\bbeta}_2-\bbeta_2^0)'[V(\hat{\bbeta}_2)]^{-1}(\hat{\bbeta}_2-\bbeta_2^0)\sim \chi^2_{p-q}.
+$$
+
+#### Prueba de razón de verosimilitud
+
+**Hipótesis:**
+
+$$
+\quad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2\ne\bbeta_2^0
+$$
+
+Asintóticamente (y usando aprox. series Taylor de orden 1):
+
+$$
+2[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)]\sim\chi^2.
+$$
+
+**Estadístico de prueba:**
+
+$$
+2[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)]
+$$
+
+donde $\hat{\bbeta}^0=(\hat{\bbeta}_1,\bbeta_2^0)'.$
+
+"grafico diapositiva 47"
+
+#### Ejemplo ataques epilépticos
+
+"Tabla"
+
+Prueba de hipótesis:
+$$
+\qquad H_0:\beta_1=\beta_3=0
+$$
+
+"Tabla"
+
+
+## intervalos de confianza
+
+A partir de los estadísticos de prueba anteriores se pueden encontrar intervalos de confianza para $\hat{\bbeta}$. Por ejemplo usando el estadístico de Wald:
+
+$$
+\hat{\beta}\pm z_{\alpha/2}SE(\hat{\beta})
+$$
+
+Otra alternativa es a partir de los perfiles de log-verosimilitud, el IC está definido a partir de los valores de $\beta_0$ que satisfacen:
+
+$$
+-2[\cl(\beta_0,\hat{\psi}(\beta_0))-\cl(\hat{\bbeta,\hat{\bpsi}})]<\chi^2_1,
+$$
+
+donde $\psi$ son los demás parámetros del modelo.
+
+### Intervalo de confianza para la media
+
+Dado que $\hat{\eta_0}=\bx_0'\hat{\bbeta}$ ,por lo tanto (asintóticamente):
+
+$$
+\hat{\eta_0}\sim N[\bx_0'\bbeta,\bx_0'\bI(\bbeta)^{-1}\bx_0].
+$$
+
+Entonces un intervalo de confianza para $\hat{\eta_0}$ es:
+
+$$
+\hat{\eta_0}\pm z_{\alpha/2}\sqrt{\bx_0'I(\bbeta)^{-1}\bx_0}
+$$
+
+Para encontrar el intervalo de confianza para $\mu_i$, se hace la transformación $g^{-1}$ a los límites de confianza.
+
+#### Ejemplo mortalidad de escarabajos
+
+```{r grafintervalosescarabajos, include=TRUE}
+summary(modBin)
+
+pred.link = predict(modBin,newdata = pred.x,type='link',se.fit = T)
+
+lim.sup = ilogit(pred.link$fit + qnorm(0.975)*pred.link$se.fit)
+lim.inf = ilogit(pred.link$fit - qnorm(0.975)*pred.link$se.fit)
+
+plot(logdose,dead/n,xlab='log dosis',ylab='proporción de escarabajos muertos',ylim=c(0,1))
+lines(pred.x$logdose,pred)
+
+lines(pred.x$logdose,lim.sup, col=2)
+lines(pred.x$logdose,lim.inf, col=2)
+
+```
+
+#### Ataques epilépticos
+
+```{r grafintervalosepilep, include=TRUE}
+
+
+```
+"falta gráfica y tabla"
+
+
+## Devianza
+
+Considere un GLM con observaciones $\by_i=(y_1,...,y_n)$.
+
+Sea $\cl(\bmu)$ la log-verosimilitud (expresada en función de $\bmu$).
+
+Por lo tanto, $\cl(\bmu)$ es la log-verosimilitud evaluada en el MLE.
+
+La máxima verosimilitud que se puede alcanzar corresponde a $\cl(\by)$ (un modelo con ajuste perfecto $y_i=\mu_i$).
+
+A este modelo, se le conoce como el **modelo saturado.**
+
+La idea es comparar el modelo propuesto contra el modelo saturado:
+
+$$
+D=-2[\ell(\hat{\bmu})-\ell(\by)]
+$$
+
+Donde:
+
+* $\ell(\by)=\sum_{i=1}^n[y_i\tildetheta_i-b(\tildetheta_i)]/a(\phi)$.
+
+*  $\ell(\hat{\bmu})=\sum_{i=1}^n[y_i\tildetheta_i-b(\tildetheta_i)]/a(\phi)$. "*es y_i o mu_i?"
+
+$\tildetheta_i$ corresponde a la estimación de $\theta_i$ en el modelo saturado $(\tildemu_i=y_i)$
+
+Si el ajuste es pobre, se espera que $D$ sea grande.
+
+**Modelo binomial:**
+
+$$
+D=2\sum_{i=1}^n[y_ilog(\frac{y_i}{\hat{\mu}_i})+(n_i-y_i)log(\frac{n_i-y_i}{n_i-\hat{\mu}_i})],
+$$
+
+donde $\hat{\mu}_i=n_i\hat{\pi}_i.$
+
+**Modelo Poisson:**
+
+$$
+D=2\sum_{i=1}^ny_ilog(\frac{y_i}{\hat{\mu}_i}), \quad \text{donde} \quad \hat{\mu}_i=\hat{\lambda}_i.
+$$
+
+**Modelo normal:**
+
+$$
+D=2\sum_{i=1}^n(y_i-\hat{\mu}_i)^2.
+$$
+
+
+### El estadístico chi-cuadrado de Pearson
+
+El estadístico chi-cuadrado de Pearson:
+
+$$
+X^2=\sum_{i=1}^n\frac{(y_i-\hat{\mu}_i)^2}{v(\hat{\mu}_i)}.
+$$
+
+Para el modelo Binomial, tenemos que:
+
+$$
+X^2=\sum_{i=1}^n\frac{(y_i-n_i\hat{\pi}_i)^2}{n_i\hat{\pi}_i(1-\hat{\pi})}.
+$$
+
+y para el modelo Poisson:
+
+$$
+X^2=\sum_{i=1}^n\frac{(y_i-\hat{\mu}_i)^2}{\hat{\mu}_i}.
+$$
+
+## Bondad de ajuste
+
+Tanto $D$ como $X^2$ se pueden utilizar para evaluar la bondad del ajuste.
+
+$H_0$ indica que el modelo ajusta bien a los datos, y $H_1$  lo contrario. Por ejemplo, en el caso de un modelo logístico:
+
+$$
+H_0:logit(\pi_i)=\beta_0+\sum_{i=1}^k\beta_kx_{ik}
+$$
+
+Si $H_0$ es cierta, entonces $D$ y $X_2$ siguen una distribución $\chi_2$ con $(n - p)$ grados de libertadad*.
+
+*La aproximación es buena para datos agrupados.
+
+**Mortalidad de escarabajos**
+
+Los valores de la devianza y el $\chi^2$ de Pearson:
+
+```{r devianzaescarabajos, include=TRUE}
+# devianza
+D = deviance(modBin)
+1-pchisq(D,6) # valor p
+# chi-cuadrado de Pearson
+X2 = sum(residuals(modBin,type='pearson')^2)
+1-pchisq(X2,6) # valor p
+```
+
+```{r, echo=FALSE, include=TRUE, results="asis"}
+library(knitr)
+
+mathy.df <- data.frame(b4=c("Devianza","$X^2$"), 
+                       b0=c(6,6),                    B1=c(11.232,10.026),B2 = c(0.0814,0.1235))
+
+colnames(mathy.df) <- c("", "est","gl","valor-p")
+
+kable(mathy.df, escape=FALSE)
+```
+## Pseudo $R^2$
+
+El pseudo $R^2$ está definido como:
+
+$$
+\qquad \text{pseudo}R^2=\frac{\ell_M-\ell_0}{\ell_S-\ell_0}
+$$
+
+donde:
+
+* $\ell_M$: log-versimilitud del modelo ajustado (evaluada en $\hat{\beta}$.
+
+* $\ell_0$: log-versimilitud del modelo nulo (solo con intercepto).
+
+* $\ell_S$: log-versimilitud del modelo saturado.
+
+El pseudo $R^2$ se encuentra entre 0 y 1. Se utiliza para comparar modelos.
+
+## Selección de variables
+
+La selección de variables se puede realizar de la misma forma que en los LMs basándose en indicadores como el AIC y BIC (o alguna modificación de ellos).
+
+**AIC:**
+
+$$
+\text{AIC}=-2\ell_M+2p.
+$$
+
+**BIC:**
+
+$$
+\text{BIC}=-2\ell_M+plog(n).
+$$
+
+
+
+
 
 
 
