@@ -157,3 +157,14 @@ el-estadístico-chi-cuadrado-de-pearson
 bondad-de-ajuste
 pseudo-r2
 selección-de-variables-1
+modelo-logístico-1
+casos-de-estudio
+mortalidad-de-escarabajos-3
+datos-de-escarabajos
+bajo-peso-al-nacer
+estudio-de-teratología
+datos-agrupados-o-datos-no-agrupados
+datos-agrupados
+datos-no-agrupados
+modelo-logístico-2
+funciones-de-enlace-alternativas

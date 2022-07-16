@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Notas de clase: Modelo lineal general II</title>
-  <meta name="description" content="Notas de clase: Modelo lineal general II" />
+  <title>Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II</title>
+  <meta name="description" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Notas de clase: Modelo lineal general II" />
+  <meta property="og:title" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Notas de clase: Modelo lineal general II" />
+  <meta name="twitter:title" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="modelo-lineal-generalizado.html"/>
 
-<link rel="next" href="variables-indicadoras-o-dummies.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -322,42 +322,196 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Notas de clase: Modelo lineal general II</h1>
-<p class="author"><em>Alvaro J. Flórez</em></p>
-<p class="date"><em>2022-07-16</em></p>
+<div id="modelo-logístico-1" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Capítulo 7</span> Modelo logístico<a href="modelo-logístico-1.html#modelo-logístico-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="casos-de-estudio" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Casos de estudio<a href="modelo-logístico-1.html#casos-de-estudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mortalidad-de-escarabajos-3" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Mortalidad de escarabajos<a href="modelo-logístico-1.html#mortalidad-de-escarabajos-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Número de escarabajos muertos después de cinco horas de
+exposición a disulfuro de carbono gaseoso <span class="math inline">\((CS2mgl^{-1})\)</span> en diversas concentraciones</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">log.dosis</th>
+<th align="left">Escarabajos Total</th>
+<th align="left">Escarabajos Muertos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.6907</td>
+<td align="left">59</td>
+<td align="left">6</td>
+</tr>
+<tr class="even">
+<td align="left">1.7242</td>
+<td align="left">60</td>
+<td align="left">13</td>
+</tr>
+<tr class="odd">
+<td align="left">1.7552</td>
+<td align="left">62</td>
+<td align="left">18</td>
+</tr>
+<tr class="even">
+<td align="left">1.7842</td>
+<td align="left">56</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">1.8113</td>
+<td align="left">63</td>
+<td align="left">52</td>
+</tr>
+<tr class="even">
+<td align="left">1.8369</td>
+<td align="left">59</td>
+<td align="left">53</td>
+</tr>
+<tr class="odd">
+<td align="left">1.8610</td>
+<td align="left">62</td>
+<td align="left">61</td>
+</tr>
+<tr class="even">
+<td align="left">1.8839</td>
+<td align="left">60</td>
+<td align="left">60</td>
+</tr>
+</tbody>
+</table>
+<p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
 </div>
-<div id="introducción" class="section level1 unnumbered hasAnchor">
-<h1>Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Estas son las notas de clase del curso Modelo Lineal General II. Los temas que se tratan son:</p>
-<ol style="list-style-type: decimal">
-<li>Variables indicadoras.</li>
-<li>Modelos polinomiales.</li>
-<li>Multicolinealidad.</li>
-<li>Selección de variables.</li>
-<li>Introducción a modelos no lineales.</li>
-<li>Introducción al modelo lineal generalizado (modelo logístico - modelo Poisson).</li>
-<li>Introducción al modelo lineal mixto</li>
-</ol>
-<p>Tenga en cuenta que el propósito de estas notas de clase no es reemplazar los textos guías. Para el estudio más detallado de los temas revisados, se recomiendan las siguientes lecturas:</p>
+<div id="datos-de-escarabajos" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> datos de escarabajos<a href="modelo-logístico-1.html#datos-de-escarabajos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="modelo-logístico-1.html#cb128-1" aria-hidden="true" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
+<span id="cb128-2"><a href="modelo-logístico-1.html#cb128-2" aria-hidden="true" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) <span class="co"># numbers dead</span></span>
+<span id="cb128-3"><a href="modelo-logístico-1.html#cb128-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) <span class="co"># binomial sample sizes</span></span>
+<span id="cb128-4"><a href="modelo-logístico-1.html#cb128-4" aria-hidden="true" tabindex="-1"></a>Datos<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span>
+<span id="cb128-5"><a href="modelo-logístico-1.html#cb128-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-6"><a href="modelo-logístico-1.html#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<p><img src="MLG2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><strong>Variable respuesta <span class="math inline">\(y_i=\sum_{j=1}^{n_i}y_{ij}/n_{i}\)</span>:</strong> proporción de escarabajos muertos.</p>
+<p><strong>Distribución de probabilidad:</strong> binomial:</p>
+<p><span class="math display">\[
+f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
+\]</span></p>
+<p><strong>Función de enlace:</strong></p>
+<p><span class="math display">\[
+log \begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1log\text{dosis}_i.
+\]</span></p>
+</div>
+<div id="bajo-peso-al-nacer" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Bajo peso al nacer<a href="modelo-logístico-1.html#bajo-peso-al-nacer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se busca identificar factores de riesgo asociados con el nacimiento de niños con bajo peso (&lt; 2:5 kgs). datos: <code>data(birthwt,package= 'MASS'</code>)</p>
+<p><strong>Muestra:</strong>189 madres atendidas en una clínica.</p>
+<p><strong>Variable respuesta:</strong> Bajo peso al nacer (1 si peso &lt;2.5 kgs, 0 si peso$$2.5 kgs).</p>
+<p>Posibles covariables:</p>
 <ul>
-<li><em>Introduction to Linear Regression Analysis</em>, Fifth Ed., 2012, by Montgomery, D. C., Peck, E. A. and Vining, G. G. <strong>(Texto guía)</strong></li>
-<li><em>Applied Regression Analysis</em>, Third Ed., 1998, by Draper, N. R. and Smith, H., Wiley.</li>
-<li><em>Theory and Applications of the Linear Models</em>, 2000, by Graybill, F. A., Duxbury.</li>
-<li><em>Applied Linear Statistical Models</em>, Fifth Ed., 2005, by Kutner, M. H, Nachtsheim, C. J., Neter, J. and Li, W., McGraw-Hill.</li>
-<li><em>Análisis de Regresión. Introducción Teórica y Práctica basada en R</em>, 2011, by F. Tusell.</li>
-<li><em>Applied Linear Regression</em>, Fourth Ed., 2014, by S. Weisberg.</li>
-<li><em>Applied Regression Analysis &amp; Generalized Linear Models</em>, 2016, by J. Fox.</li>
+<li><p><code>age</code>: edad de la madre (años).</p></li>
+<li><p><code>lwt</code>: peso de la madre antes del embarazo (libras).</p></li>
+<li><p><code>smoke</code>: estado de tabaquismo durante el embarazo (0 no, 1 si).</p></li>
+<li><p><code>ptl</code>: historia de parto prematuro (número de casos).</p></li>
 </ul>
+<p><strong>Variable respuesta <span class="math inline">\(y_i\)</span>:</strong> bajo peso al nacer (0: no, 1: si)</p>
+<p><strong>Distribución de probabilidad:</strong> Bernoulli:</p>
+<p><span class="math display">\[
+f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{(1-y_i)}.
+\]</span></p>
+<p><strong>Función de enlace:</strong></p>
+<p><span class="math display">\[
+log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}_i+\beta_2\text{lwt}_i+\beta_3\text{smoke}_i+\beta_4\text{ptl}_i.
+\]</span></p>
+</div>
+<div id="estudio-de-teratología" class="section level3 hasAnchor" number="7.1.4">
+<h3><span class="header-section-number">7.1.4</span> Estudio de teratología<a href="modelo-logístico-1.html#estudio-de-teratología" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se quiere investigar los efectos de agentes químicos en el desarrollo fetal de ratas. datos: <code>data(lirat,package = 'VGAM')</code>.</p>
+<p><strong>Muestra:</strong> 58 ratas hembras con dietas deficientes en hierro.</p>
+<p><strong>Variable respuesta:</strong> proporción de fetos muertos.</p>
+<p>Posibles covariables:</p>
+<ul>
+<li><p><code>grp</code>: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro)</p></li>
+<li><p><code>hb</code>: nivel de hemoglobina.</p></li>
+</ul>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="modelo-logístico-1.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb129-2"><a href="modelo-logístico-1.html#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb129-3"><a href="modelo-logístico-1.html#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
+<span id="cb129-4"><a href="modelo-logístico-1.html#cb129-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
+<span id="cb129-5"><a href="modelo-logístico-1.html#cb129-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
+<span id="cb129-6"><a href="modelo-logístico-1.html#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
+<p><img src="MLG2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><strong>Variable respuesta <span class="math inline">\(y_i=\sum_{j=1}^{n_i}y_{ij}/n_i\)</span>:</strong> proporción de fetos muertos por hembra.</p>
+<p><strong>Distribución de probabilidad:</strong>binomial:</p>
+<p><span class="math display">\[
+f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
+\]</span></p>
+<p><strong>Función de enlace:</strong></p>
+<p><span class="math display">\[
+log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp}_{i1}+\beta_2\text{grp}_{i2}+\beta_3\text{grp}_{i3}+\beta_4\text{hb}_i.
+\]</span></p>
+</div>
+</div>
+<div id="datos-agrupados-o-datos-no-agrupados" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Datos agrupados o datos no agrupados<a href="modelo-logístico-1.html#datos-agrupados-o-datos-no-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Datos agrupados:</strong> Hay <span class="math inline">\(n_i\)</span> observaciones que tienen los mismos valores de las covariables <span class="math inline">\(x_i\)</span>.</p>
+<p><strong>Datos no agrupados:</strong> Hay <span class="math inline">\(n_i=1\)</span> (o muy pocas) observaciones por cada <span class="math inline">\(x_i\)</span>.</p>
+<p>Las propiedades asintóticas de las inferencias para los datos no agrupados aplican cuando <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>Mientras que para datos agrupados, aplican cuando <span class="math inline">\(\sum_{i=1}^nn_i\to\infty\)</span>.</p>
+<div id="datos-agrupados" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Datos agrupados<a href="modelo-logístico-1.html#datos-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para datos agrupados, <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> sirven para evaluar si el ajuste del modelo es bueno o no.</p>
+<p><span class="math inline">\(H_0\)</span> indica que el modelo se ajusta bien a los datos, <span class="math inline">\(H_1\)</span> lo contrario.</p>
+<p>Si <span class="math inline">\(H_0\)</span> es cierta (y <span class="math inline">\(\sum_{i=1}^nn_i\to\infty\)</span>), entonces <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> siguen una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((n-p)\)</span> grados de libertad.</p>
+</div>
+<div id="datos-no-agrupados" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Datos no agrupados<a href="modelo-logístico-1.html#datos-no-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las distribuciones límite para <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> no aplican para datos no agrupados.</p>
+<p>Tampoco para datos agrupados con <span class="math inline">\(n\)</span> grande y con algunos <span class="math inline">\(n_i\)</span> muy pequeños.</p>
+<p>Se puede aproximar <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> agrupando <span class="math inline">\((\boldsymbol x_i,\hat{\boldsymbol y})\)</span> por particiones del espacio de covariables o por particiones de <span class="math inline">\(\hat{\pi}\)</span>.</p>
+<p>La falta de ajuste se puede hacer comparando el modelo propuesto contra modelos más generales.</p>
+</div>
+</div>
+<div id="modelo-logístico-2" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Modelo logístico<a href="modelo-logístico-1.html#modelo-logístico-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Modelo:</p>
+<p><span class="math display">\[
+n_iy_i\sim\text{binomial}(n_i,\pi_i),\quad \text{donde} \quad \pi_i=g(\boldsymbol x_i\boldsymbol \beta).
+\]</span></p>
+<p>Entonces: <span class="math inline">\(E(y_i|\boldsymbol x_i)=\pi_i\)</span> y <span class="math inline">\(V(y_i|\boldsymbol x_i)=\pi_i(1-\pi_i)/n_i\)</span>.</p>
+<p>Función de enlace logit: <span class="math inline">\(log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\boldsymbol x_i\boldsymbol \beta\)</span>.</p>
+<p>Lo que implica que:</p>
+<p><span class="math display">\[
+\pi_i=g^{-1}(\boldsymbol x_i,\boldsymbol \beta)=\frac{exp(\boldsymbol x_i&#39;\boldsymbol \beta)}{1+exp(\boldsymbol x_i&#39;\boldsymbol \beta)}=\frac{1}{1+exp(-\boldsymbol x_i&#39;\boldsymbol \beta)} 
+\]</span></p>
+<p>Aunque podemos utilizar otras funciones de enlace.</p>
+<div id="funciones-de-enlace-alternativas" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Funciones de enlace alternativas<a href="modelo-logístico-1.html#funciones-de-enlace-alternativas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Probit:</strong></p>
+<p><span class="math display">\[
+\Phi(\pi_i)=\boldsymbol x&#39;_i\boldsymbol \beta\quad \pi_i=\Phi(\boldsymbol x&#39;_i\boldsymbol \beta),
+\]</span></p>
+<p>donde <span class="math inline">\(\Phi(\cdot)\)</span> es función acumulativa de la distribución normal estándar.</p>
+<p><strong>Log-log complementaria:</strong></p>
+<p><span class="math display">\[
+\pi_i=1-exp[-exp(\boldsymbol x&#39;_i\boldsymbol \beta)] \quad log[-log(1-\pi_i)]=\boldsymbol x&#39;_i\boldsymbol \beta.
+\]</span></p>
+<p><strong>Log-log:</strong></p>
+<p><span class="math display">\[
+\pi_i=exp[-exp(\boldsymbol x&#39;_i\boldsymbol \beta)] \quad -log[-log(\pi_i)]=\boldsymbol x&#39;_i\boldsymbol \beta.
+\]</span></p>
+<p>“insertar grafico escarabajos funciones de enlace”</p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="modelo-lineal-generalizado.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="variables-indicadoras-o-dummies.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -388,7 +542,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/index.Rmd",
+"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/07-ModeloLogistico.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -396,7 +550,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/index.Rmd",
+"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/07-ModeloLogistico.Rmd",
 "text": null
 },
 "download": ["MLG2.pdf"],
