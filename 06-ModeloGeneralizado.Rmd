@@ -286,7 +286,7 @@ donde:
 * $c(\phi)=1$ y $d(y,\phi)=log\left(\begin{array}{c}n\\y\end{array}\right)$.
 
 
-#### Familia exponencial
+  #### Familia exponencial
 
 
 ```{r, echo=FALSE, include=TRUE, results="asis"}

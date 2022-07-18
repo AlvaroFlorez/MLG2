@@ -168,3 +168,11 @@ datos-agrupados
 datos-no-agrupados
 modelo-logístico-2
 funciones-de-enlace-alternativas
+tab:unnamed-chunk-5
+curva-característica-operativa-del-receptorroc
+ejemplo-mortalidad-de-escarabajos-1
+bajo-peso-al-nacer-1
+sobredispersión
+distribución-beta-binomial
+modelo-beta-binomial
+estudio-de-teratología-1
