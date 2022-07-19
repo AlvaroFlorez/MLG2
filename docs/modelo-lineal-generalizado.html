@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-07-16" />
+<meta name="date" content="2022-07-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -300,6 +302,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-logístico-2"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
 <ul>
 <li class="chapter" data-level="7.3.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#ejemplo-mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.4.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
+<li class="chapter" data-level="7.6" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html"><i class="fa fa-check"></i><b>8</b> Modelo para conteos</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
+<li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#datos-de-cáncer-de-pulmón"><i class="fa fa-check"></i><b>8.1.2</b> Datos de cáncer de pulmón</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-1"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-conteo-con-offset"><i class="fa fa-check"></i><b>8.2.1</b> Modelo de conteo con offset</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#distribución-binomial-negativa"><i class="fa fa-check"></i><b>8.3</b> Distribución binomial negativa</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-binomial-negativo-poisson-gamma"><i class="fa fa-check"></i><b>8.3.1</b> Modelo binomial negativo (Poisson-gamma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-con-ceros-infiados"><i class="fa fa-check"></i><b>8.4</b> Modelo Poisson con ceros infiados</a></li>
+<li class="chapter" data-level="8.5" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-hurdle"><i class="fa fa-check"></i><b>8.5</b> Modelo Hurdle</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.5.1</b> Número de cangrejos satélites</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -611,11 +644,9 @@ f(y;\pi)=exp\{y[log\pi-log(1-\pi)]+nlog(1-\pi)+log\left(\begin{array}{c}n\\y\end
 donde:</p>
 <ul>
 <li><p><span class="math inline">\(\theta=log(\frac{\pi}{1-\pi}), \quad b(\theta)=-nlog[1+exp(\theta)]\)</span>.</p></li>
-<li><p><span class="math inline">\(c(\phi)=1\)</span> y <span class="math inline">\(d(y,\phi)=log\left(\begin{array}{c}n\\y\end{array}\right)\)</span>.</p></li>
+<li><p><span class="math inline">\(c(\phi)=1\)</span> y <span class="math inline">\(d(y,\phi)=log\left(\begin{array}{c}n\\y\end{array}\right)\)</span>.</p>
+<h4 id="familia-exponencial-1" class="hasAnchor">Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial-1" class="anchor-section" aria-label="Anchor link to header"></a></h4></li>
 </ul>
-</div>
-<div id="familia-exponencial-1" class="section level4 hasAnchor" number="6.2.6.2">
-<h4><span class="header-section-number">6.2.6.2</span> Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <table>
 <colgroup>
 <col width="10%" />
@@ -681,8 +712,8 @@ donde:</p>
 </tbody>
 </table>
 </div>
-<div id="estimador-de-máxima-verosimilitud" class="section level4 hasAnchor" number="6.2.6.3">
-<h4><span class="header-section-number">6.2.6.3</span> Estimador de máxima verosimilitud<a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="estimador-de-máxima-verosimilitud" class="section level4 hasAnchor" number="6.2.6.2">
+<h4><span class="header-section-number">6.2.6.2</span> Estimador de máxima verosimilitud<a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Modelo</strong> <span class="math inline">\(Y\sim f(y,\boldsymbol \theta)\)</span>.</p>
 <p>Estamos interesados en estimar <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
 <p>Para ello tomamos una muestra independiente <span class="math inline">\((y_{1},y_{2},...,y_{n}).\)</span></p>
@@ -706,8 +737,8 @@ H(\boldsymbol \theta)=\frac{\partial^2ℓ(\boldsymbol \theta)}{\partial\boldsymb
 \]</span></p>
 <p>evaluada en <span class="math inline">\(\boldsymbol \theta=\hat{\boldsymbol \theta}\)</span>, sea negativa definida.</p>
 </div>
-<div id="propiedades-asintóticas-de-los-mles" class="section level4 hasAnchor" number="6.2.6.4">
-<h4><span class="header-section-number">6.2.6.4</span> Propiedades asintóticas de los MLEs<a href="modelo-lineal-generalizado.html#propiedades-asintóticas-de-los-mles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="propiedades-asintóticas-de-los-mles" class="section level4 hasAnchor" number="6.2.6.3">
+<h4><span class="header-section-number">6.2.6.3</span> Propiedades asintóticas de los MLEs<a href="modelo-lineal-generalizado.html#propiedades-asintóticas-de-los-mles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span class="math inline">\(\hat{\boldsymbol \theta}\)</span> es asintóticamente <span class="math inline">\((n\to \infty)\)</span> insesgado. Esto es, <span class="math inline">\(E(\hat{\boldsymbol \theta})=\boldsymbol \theta\)</span>.</p>
 <p>La varianza asintótica <span class="math inline">\((n\to \infty)\)</span> de <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> se calcula como la inversa de <strong>la matriz de información</strong>:</p>
 <p><span class="math display">\[
@@ -724,8 +755,8 @@ v(\hat{\boldsymbol \theta})=I(\boldsymbol \theta)^{-1},\quad \text{donde} \quad 
 <li><p><strong>Invarianza:</strong>si <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> es el MLE de <span class="math inline">\(\boldsymbol \theta\)</span>, entonces <span class="math inline">\(g(\hat{\boldsymbol \theta})\)</span> es el MLE de <span class="math inline">\(g(\boldsymbol \theta)\)</span></p></li>
 </ul>
 </div>
-<div id="métodos-iterativos-de-maximización" class="section level4 hasAnchor" number="6.2.6.5">
-<h4><span class="header-section-number">6.2.6.5</span> Métodos iterativos de maximización<a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="métodos-iterativos-de-maximización" class="section level4 hasAnchor" number="6.2.6.4">
+<h4><span class="header-section-number">6.2.6.4</span> Métodos iterativos de maximización<a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Algoritmo de Newton-Raphson:</strong></p>
 <p>Considere una expansión de series de Taylor de orden 1 para la función
 score, alrededor de <span class="math inline">\(\boldsymbol \theta=\boldsymbol \theta^{(t)}\)</span>:</p>

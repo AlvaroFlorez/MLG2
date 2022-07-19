@@ -34,6 +34,7 @@ eq:AlgorGN
 fig:plotpavoscrec
 tab:TmortEsc
 fig:logfun
+tab:unnamed-chunk-8
 variables-indicadoras-o-dummies
 ejemplos
 datos-de-atletas-australianos
@@ -129,7 +130,6 @@ ejemplos-de-glm
 ajuste-de-un-glm
 familia-exponencial
 ejemplo-1
-familia-exponencial-1
 estimador-de-máxima-verosimilitud
 propiedades-asintóticas-de-los-mles
 métodos-iterativos-de-maximización
@@ -168,7 +168,6 @@ datos-agrupados
 datos-no-agrupados
 modelo-logístico-2
 funciones-de-enlace-alternativas
-tab:unnamed-chunk-5
 curva-característica-operativa-del-receptorroc
 ejemplo-mortalidad-de-escarabajos-1
 bajo-peso-al-nacer-1
@@ -176,3 +175,16 @@ sobredispersión
 distribución-beta-binomial
 modelo-beta-binomial
 estudio-de-teratología-1
+modelo-para-conteos
+casos-de-estudio-1
+ataques-de-epilepsia-1
+datos-de-cáncer-de-pulmón
+modelo-poisson-1
+modelo-de-conteo-con-offset
+datos-de-cáncer-de-pulmón-1
+distribución-binomial-negativa
+modelo-binomial-negativo-poisson-gamma
+ataques-epilépticos-3
+modelo-poisson-con-ceros-infiados
+modelo-hurdle
+número-de-cangrejos-satélites
