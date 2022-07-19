@@ -188,3 +188,9 @@ ataques-epilépticos-3
 modelo-poisson-con-ceros-infiados
 modelo-hurdle
 número-de-cangrejos-satélites
+modelo-lineal-mixto
+casos-de-estudio-2
+peso-al-nacer-de-corderos
+crecimiento-craneofacial-de-ratas
+datos-correlacionados
+modelo-lineal-mixto-1

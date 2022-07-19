@@ -1,0 +1,119 @@
+# Modelo lineal mixto
+
+```{r preamble9, include=FALSE}
+
+```
+## Casos de estudio
+
+### Peso al nacer de corderos
+
+La base de datos (```harville.lamb``` de la librería ```agridat```) contiene información de 62 corderos machos de un solo parto. Estos corderos eran progenie de 23 carneros (machos), por lo que cada cordero tenía
+una madre diferente.
+
+Variables
+
+* ```weight```: peso al nacer del cordero en kgs **(respuesta)**.
+ 
+* ```damage```: edad de la madre (1: entre 1-2 años, 2: entre 2-3 años, 3: más de 3 años)
+
+* ```sire```: padre.
+
+
+"grafica"
+
+### Crecimiento craneofacial de ratas
+
+La base de datos (disponible en el campus virtual) tiene como objetivo evaluar el efecto de la inhibición de la producción de testosterona en el crecimiento craneofacial de ratas Wistar macho. Variables:
+
+* ```response```: longitud de cráneo medida como la distancia en píxeles entre dos puntos bien definidos en las imágenes de rayos X **(respuesta)**.
+
+* ```treat```: tratamiento (control, dosis baja de Decapeptyl y dosis alta de Decapeptyl).
+
+* ```age```: edad de la rata.
+
+Este es un estudio longitudinal, es decir a cada una de las 34 ratas se le tomaron diferentes mediciones en el tiempo.
+
+
+"grafica"
+
+## Datos correlacionados
+
+En ambos estudios se tienen datos que pueden estar potencialmente correlacionados.
+
+En los datos de los corderos se espera que el peso los corderos recién nacidos del mismo padre estén correlacionados. **Datos en "cluster" o jerárquicos**.
+
+En los datos de las ratas, por lo tanto las observaciones tomadas sobre la misma rata pueden estar correlacionados. **Datos longitudinales**.
+
+## Modelo lineal mixto
+
+Modelo:
+
+$$
+y_{ij}=\bx¡_{ij}\bbeta+\bz'_{ij}\bb_i+\epsilon_{ij},
+$$
+
+donde:
+
+* $\bx_{ij}$ y $\bx_{ij}$ son vectores de covariables de la $j$-ésima observación y el $i$-ésimo cluster.
+
+* $\bbeta=(\beta_0,\beta_1,...,\beta_{p-1})'$ es el vector de coeficientes de efectos fijos.
+
+* $\bb_i=(b_{0i,},b_{1i},...,b_{q-1,i})'$ el vector de coeficientes aleatorios.
+
+* $\epsilon_{ij}$ es el término del error.
+
+En forma matricial:
+
+$$
+\by_i=\bX_i\bbeta+\bZ_i\bb_i+\bepsilon_i,
+$$
+
+donde:
+
+* $\by_i=(y_{i1},y_{i2},...,y_{in_1})'$.
+
+* $\bX_i=(\bx_{i1},\bx_{i2},...,\bx_{in_1})'$ es una matriz $n_i\times p$ .
+
+* $\bZ_i=(\bz_{i1},\bz_{i2},...,\bz_{in_1})'$ es una matriz $n_i\times q$.
+
+* $\bbeta=(\beta_{0},\beta_{1},...,\beta_{p-1})'$ es un vector de longitud $p$.
+
+* $\bepsilon_i=(\epsilon_{i1},\epsilon_{i2},...,\epsilon_{in_1})'$.
+
+El LMM asume que:
+
+* $\bepsilon_i\sim N(\bZERO,\sigma^2\bI)$.
+
+* $\bb_i\sim N(\bZERO,\bD$.
+
+* $\bepsilon_i$ y $\bb_i$ son independientes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

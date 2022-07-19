@@ -10,6 +10,7 @@ biblio-style: apalike
 link-citations: yes
 
 header-includes:
+  - \newcommand{\bepsilon}{\boldsymbol \epsilon}
   - \newcommand{\bpsi}{\boldsymbol \psi}
   - \newcommand{\bmu}{\boldsymbol \mu}
   - \newcommand{\cl}{ℓ}
