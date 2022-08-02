@@ -2,6 +2,7 @@
 ```{r preamble4, include=FALSE}
 library(glmnet)
 library(olsrr)
+library(kableExtra)
 ```
 
 ## Ejemplos
@@ -432,7 +433,7 @@ De forma de equivalente, $\hatbbeta_{LASSO}$ minimiza:
 
 \[
 \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
-\sum_{j=1}^{p-1}|\beta_{j}\|leq t.
+\sum_{j=1}^{p-1}|\beta_{j}\leq t.
 \]
 
 Mientras que, en la regresión de ridge,$\hatbbeta_{ridge}$ minimiza:
@@ -450,12 +451,14 @@ También, cuando $\lambda \rightarrow \infty$, la varianza de $\hatbbeta_{LASSO}
 No hay una estimación analítica para $\hatbbeta_{LASSO}$, pero hay algoritmos
 eficientes para su estimación.
 
-```{r Vgrasalasso, echo=T, warning=FALSE,message = FALSE}
+```{r Vgrasalasso, echo=T, warning=FALSE,message = FALSE, fig.align = "center", fig.cap="Estimación de los coeficientes vs log(lambda)"}
+#se debe especificar alpha=1
 X = model.matrix(mod.fat)[,-1]
 lasso.mod <- glmnet(X, fat$brozek, alpha = 1,nlambda = 100)
 plot(lasso.mod,xvar='lambda',label=T,lwd=2)
 abline(h=0,lty=2)
 ```
+
 
 #### Validación cruzada
 
@@ -469,8 +472,11 @@ Consiste en dividir la muestra en dos grupos:
 Para no perder información, en la validación cruzada se divide la
 muestra en dos (o más) partes y se hace la validación en cada una.
 
-División de la muestra de forma aleatoria en $k =                5$ grupos $(k-fold)$
+División de la muestra de forma aleatoria en $k = 5$ grupos $(k-fold)$
 
+```{r ssa-logo, fig.align = 'center',out.width = "75%",echo=FALSE}
+knitr::include_graphics(here::here("figs", "ValidacionCruzada.png"))
+```
 Para cada división,$k = 1, . . . , K$ , y para cada valor de $\lambda$, se estima
 el modelo basado en la **muestra de entrenamiento**.
 
@@ -507,10 +513,58 @@ También, se puede aplicar la regla de una desviación estánda:
 
 #### Ejemplo grasa corporal
 Validación cruzada con $k=10$.
-```{r kgrasa, echo=T, warning=FALSE,message = FALSE}
+```{r kgrasa, echo=T, warning=FALSE,message = FALSE, fig.cap="Validación cruzada grasa corporal"}
 lasso.cv <-cv.glmnet(X, fat$brozek, nfolds = 252, alpha = 1,nlambda = 100)
 plot(lasso.cv)
 ```
-Las covariables seleccionadas (regla una desviación estándar):
+Las covariables seleccionadas al estimar el lambda óptimo (regla una desviación estándar):
+```{r}
+est = glmnet(X, fat$brozek, alpha = 1,lambda = lasso.cv$lambda.1se)
+est$beta
+```
 
-age height abdom wrist
+Observamos que las variables seleccionadas son ```age```, ```height```,```abdom``` y ```wrist```:
+
+````{r}
+mod.lasso = lm(brozek ~ age+height+abdom+wrist,data=fat)
+summary(mod.lasso)
+```` 
+Las covariables selecionas en este modelo son todas significativas, el $R^2=0.7223$ y el $R^2_{adj}=0.7178$ han disminuido ligeramente respecto al modelo con todas las covariables.
+
+```{r, echo=FALSE, include=TRUE, results="asis"}
+
+mathy.df <- data.frame(b0=c("int.","age","weight","height","neck",
+     "abdom","hip","thigh","forearm","wrist"), 
+b1=c(-20.062,0.059,-0.084,"-",-0.432,0.877,-0.186,0.286,0.4825,-1.4049),
+b2=c(10.8465,0.0285,0.0370,"-",0.2080,0.0666,0.1282,0.1195,0.1725,0.4717),
+b3=c(0.0656, 0.0388,0.0237,"-", 0.0389, 0.0000, 0.1473, 0.1473, 0.0056, 0.0032),
+b4=c(-31.297,"-",0.126,"-","-",0.921,"-","-",0.446,-1.392),
+b5=c( 6.7089,"-",0.0229,"-","-",0.0519,"-","-",0.1682,0.4099),
+b6=c(0.0000,"-",0.0000,"-","-",0.0000,"-","-",0.0085,0.0008),
+b7=c(0.249,0.067,"-",-0.165,"-",0.676,"-","-","-",-1.937),
+b8=c(6.2785, 0.0220,"-", 0.0782,"-",0.0312,"-","-","-",0.3834),
+b9=c( 0.9685,0.0025,"-",0.0363,"-",0.0000,"-","-","-",0.0000)
+)
+colnames(mathy.df)<-c("","Est"," er. std.","valor-p","Est"," er. std.","valor-p","Est"," er. std.","valor-p")
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T)%>% kable_styling(bootstrap_options = "striped",full_width = F)%>%
+  add_header_above(c("","AIC y PRESS" = 3,"BIC"=3,"LASSO"=3))%>%
+  add_header_above(c("Método de selección" = 10))
+
+```
+
+```{r, echo=FALSE, include=TRUE, results="asis"}
+mathy.df <- data.frame(b0=c("AIC y PRESS","BIC","LASSO"),
+                       b1=c( 0.7467, 0.7351, 0.7223),
+                       b2=c( 4139.682, 4209.14, 4447.052),
+                       b3=c(1420.225,1423.471,1435.389),
+                       b4=c(1455.52,1444.647,1456.566)
+                       )
+
+colnames(mathy.df)<-c("Modelo","$R^2$","PRESS","AIC","BIC")
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T)%>% kable_styling(bootstrap_options = "striped",full_width = F)
+```
+
+
+
+
+

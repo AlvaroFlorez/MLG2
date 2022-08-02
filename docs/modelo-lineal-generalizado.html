@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-07-18" />
+<meta name="date" content="2022-08-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -387,59 +387,115 @@ de probabilidad diferentes a la normal.</p>
 <p>Número de escarabajos muertos después de cinco horas de
 exposición a disulfuro de carbono gaseoso <span class="math inline">\((CS2mgl^{-1})\)</span> en diversas concentraciones:</p>
 <table>
-<caption><span id="tab:TmortEsc">Table 6.1: </span>Datos mortalidad de escarabajos</caption>
+<caption>
+<span id="tab:TmortEsc">Table 6.1: </span>Datos mortalidad de escarabajos
+</caption>
 <thead>
-<tr class="header">
-<th align="right">logdose</th>
-<th align="right">n</th>
-<th align="right">dead</th>
+<tr>
+<th style="text-align:right;">
+logdose
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+dead
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">1.6907</td>
-<td align="right">59</td>
-<td align="right">6</td>
+<tr>
+<td style="text-align:right;">
+1.6907
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+6
+</td>
 </tr>
-<tr class="even">
-<td align="right">1.7242</td>
-<td align="right">60</td>
-<td align="right">13</td>
+<tr>
+<td style="text-align:right;">
+1.7242
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+13
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1.7552</td>
-<td align="right">62</td>
-<td align="right">18</td>
+<tr>
+<td style="text-align:right;">
+1.7552
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+18
+</td>
 </tr>
-<tr class="even">
-<td align="right">1.7842</td>
-<td align="right">56</td>
-<td align="right">28</td>
+<tr>
+<td style="text-align:right;">
+1.7842
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+28
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1.8113</td>
-<td align="right">63</td>
-<td align="right">52</td>
+<tr>
+<td style="text-align:right;">
+1.8113
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+52
+</td>
 </tr>
-<tr class="even">
-<td align="right">1.8369</td>
-<td align="right">59</td>
-<td align="right">53</td>
+<tr>
+<td style="text-align:right;">
+1.8369
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+53
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1.8610</td>
-<td align="right">62</td>
-<td align="right">61</td>
+<tr>
+<td style="text-align:right;">
+1.8610
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+61
+</td>
 </tr>
-<tr class="even">
-<td align="right">1.8839</td>
-<td align="right">60</td>
-<td align="right">60</td>
+<tr>
+<td style="text-align:right;">
+1.8839
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+60
+</td>
 </tr>
 </tbody>
 </table>
 <p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="modelo-lineal-generalizado.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="modelo-lineal-generalizado.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="MLG2_files/figure-html/grafMortEsc-1.png" width="672" /></p>
 </div>
 <div id="modelo-logístico" class="section level3 hasAnchor" number="6.1.3">
@@ -658,66 +714,115 @@ donde:</p>
 <h4 id="familia-exponencial-1" class="hasAnchor">Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial-1" class="anchor-section" aria-label="Anchor link to header"></a></h4></li>
 </ul>
 <table>
-<colgroup>
-<col width="10%" />
-<col width="20%" />
-<col width="11%" />
-<col width="15%" />
-<col width="43%" />
-</colgroup>
 <thead>
-<tr class="header">
-<th align="left">Distribución</th>
-<th align="left"><span class="math inline">\(\beta\)</span></th>
-<th align="left"><span class="math inline">\(a(\phi)\)</span></th>
-<th align="left"><span class="math inline">\(b(\beta)\)</span></th>
-<th align="left"><span class="math inline">\(c(y,\phi)\)</span></th>
+<tr>
+<th style="text-align:left;">
+Distribución
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(\beta\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(a(\phi)\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(b(\beta)\)</span>
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(c(y,\phi)\)</span>
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Normal</td>
-<td align="left"><span class="math inline">\(\mu\)</span></td>
-<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
-<td align="left"><span class="math inline">\(\frac{1}{2}\mu^2\)</span></td>
-<td align="left"><span class="math inline">\(-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}\)</span></td>
+<tr>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\mu\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\sigma^2\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\frac{1}{2}\mu^2\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}\)</span>
+</td>
 </tr>
-<tr class="even">
-<td align="left">Binomial</td>
-<td align="left"><span class="math inline">\(log(\frac{\pi}{1-\pi})\)</span></td>
-<td align="left"><span class="math inline">\(\frac{1}{n}\)</span></td>
-<td align="left"><span class="math inline">\(log(1+exp\beta)\)</span></td>
-<td align="left"><span class="math inline">\(log\left(\begin{array}{c}n \\ y\end{array}\right)\)</span></td>
+<tr>
+<td style="text-align:left;">
+Binomial
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(log(\frac{\pi}{1-\pi})\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\frac{1}{n}\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(log(1+exp\beta)\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(log\left(\begin{array}{c}n \\ y\end{array}\right)\)</span>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Poisson</td>
-<td align="left"><span class="math inline">\(log(\lambda)\)</span></td>
-<td align="left"><span class="math inline">\(1\)</span></td>
-<td align="left"><span class="math inline">\(exp\lambda\)</span></td>
-<td align="left"><span class="math inline">\(-log(y!)\)</span></td>
+<tr>
+<td style="text-align:left;">
+Poisson
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(log(\lambda)\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(1\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(exp\lambda\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(-log(y!)\)</span>
+</td>
 </tr>
 </tbody>
 </table>
 <p>Relación media-varianza:</p>
 <table>
 <thead>
-<tr class="header">
-<th align="left">Distribución</th>
-<th align="left"><span class="math inline">\(v(\mu)\)</span></th>
+<tr>
+<th style="text-align:left;">
+Distribución
+</th>
+<th style="text-align:left;">
+<span class="math inline">\(v(\mu)\)</span>
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Normal</td>
-<td align="left"><span class="math inline">\(\sigma^2\)</span></td>
+<tr>
+<td style="text-align:left;">
+Normal
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\sigma^2\)</span>
+</td>
 </tr>
-<tr class="even">
-<td align="left">Binomial</td>
-<td align="left"><span class="math inline">\(\mu(1-\mu)/n\)</span></td>
+<tr>
+<td style="text-align:left;">
+Binomial
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\mu(1-\mu)/n\)</span>
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Poisson</td>
-<td align="left"><span class="math inline">\(\mu\)</span></td>
+<tr>
+<td style="text-align:left;">
+Poisson
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\mu\)</span>
+</td>
 </tr>
 </tbody>
 </table>
@@ -733,7 +838,7 @@ L(\boldsymbol \theta)=\prod_{i=1}^nf(y_{i};\boldsymbol \theta).
 \]</span></p>
 <p>La función de log-verosimilitud:</p>
 <p><span class="math display">\[
- ℓ(\boldsymbol \theta)=\sum_{i=1}^nlnf(y_{i},\boldsymbol \theta).
+ℓ(\boldsymbol \theta)=\sum_{i=1}^nlnf(y_{i},\boldsymbol \theta).
 \]</span></p>
 <p>El objetivo es encontrar el <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> que maximiza <span class="math inline">\(L(\boldsymbol \theta)\)</span> (o <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span>).</p>
 <p><span class="math inline">\(\hat{\boldsymbol \theta}\)</span> se obtiene calculando las derivadas de <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span> con respecto a cada elemento de <span class="math inline">\(\boldsymbol \theta\)</span> y resolviendo las <strong>ecuaciones score</strong>:</p>
@@ -756,8 +861,8 @@ v(\hat{\boldsymbol \theta})=I(\boldsymbol \theta)^{-1},\quad \text{donde} \quad 
 \]</span>
 <strong>Teorema de Cramer-Rao:</strong> La varianza de cualquier estimador es insesgado de un parámetro <span class="math inline">\(\boldsymbol \theta\)</span> debe:</p>
 <p><span class="math display">\[
- V(\hat{\boldsymbol \theta})\geq-E[H(\boldsymbol \theta)]^{-1}.
- \]</span></p>
+V(\hat{\boldsymbol \theta})\geq-E[H(\boldsymbol \theta)]^{-1}.
+\]</span></p>
 <p>Por lo cual, es MLE es eficiente.</p>
 <p>Otras propiedades importantes:</p>
 <ul>
@@ -775,7 +880,7 @@ U(\boldsymbol \theta)\approx U(\boldsymbol \theta^{(t)})+H(\boldsymbol \theta^{(
 \]</span></p>
 <p>Igualando a cero:</p>
 <p><span class="math display">\[
- U(\boldsymbol \theta^{(t)})+H(\boldsymbol \theta^{(t)})+(\boldsymbol \theta-\boldsymbol \theta^{(t)})=0
+U(\boldsymbol \theta^{(t)})+H(\boldsymbol \theta^{(t)})+(\boldsymbol \theta-\boldsymbol \theta^{(t)})=0
 \]</span></p>
 <p>Ahora encontramos la solución para <span class="math inline">\(\hat{\boldsymbol \theta^{(t+1)}}\)</span>:</p>
 <p><span class="math display">\[
@@ -884,12 +989,12 @@ w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})}.
 <p><span class="math display">\[
 \hat{\pi}_{i}=\frac{exp(-60.717+34.27log\text{dosis})}{1+exp(-60.717+34.27log\text{dosis})}
 \]</span></p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="modelo-lineal-generalizado.html#cb120-1" aria-hidden="true" tabindex="-1"></a>modBin <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(dead,n<span class="sc">-</span>dead)<span class="sc">~</span>logdose,<span class="at">family=</span>binomial)</span>
-<span id="cb120-2"><a href="modelo-lineal-generalizado.html#cb120-2" aria-hidden="true" tabindex="-1"></a>pred.x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">logdose =</span> <span class="fu">seq</span>(<span class="fu">min</span>(logdose),<span class="fu">max</span>(logdose),<span class="at">length.out =</span> <span class="dv">50</span>))</span>
-<span id="cb120-3"><a href="modelo-lineal-generalizado.html#cb120-3" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(modBin,pred.x,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
-<span id="cb120-4"><a href="modelo-lineal-generalizado.html#cb120-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-5"><a href="modelo-lineal-generalizado.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb120-6"><a href="modelo-lineal-generalizado.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelo-lineal-generalizado.html#cb124-1" aria-hidden="true" tabindex="-1"></a>modBin <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(dead,n<span class="sc">-</span>dead)<span class="sc">~</span>logdose,<span class="at">family=</span>binomial)</span>
+<span id="cb124-2"><a href="modelo-lineal-generalizado.html#cb124-2" aria-hidden="true" tabindex="-1"></a>pred.x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">logdose =</span> <span class="fu">seq</span>(<span class="fu">min</span>(logdose),<span class="fu">max</span>(logdose),<span class="at">length.out =</span> <span class="dv">50</span>))</span>
+<span id="cb124-3"><a href="modelo-lineal-generalizado.html#cb124-3" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(modBin,pred.x,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
+<span id="cb124-4"><a href="modelo-lineal-generalizado.html#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-5"><a href="modelo-lineal-generalizado.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb124-6"><a href="modelo-lineal-generalizado.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="MLG2_files/figure-html/grafescarMedia-1.png" width="672" /></p>
 </div>
 </div>
@@ -962,7 +1067,7 @@ donde <span class="math inline">\(\boldsymbol \beta_2\)</span> es de dimensión 
 <h4><span class="header-section-number">6.3.6.1</span> Prueba del score<a href="modelo-lineal-generalizado.html#prueba-del-score" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Hipótesis:</strong></p>
 <p><span class="math display">\[
-\qquad H_0:\beta_2=\beta_2^0 \qquad \beta_2\ne\beta_2^0 
+\qquad H_0:\beta_2=\beta_2^0 \qquad \beta_2\ne\beta_2^0
 \]</span></p>
 <p>Asintóticamente,<span class="math inline">\(U(\boldsymbol \beta)\sim N[\boldsymbol 0,\boldsymbol I(\beta)]\)</span>, entonces:</p>
 <p><span class="math display">\[
@@ -1041,7 +1146,7 @@ H_0:_2=_2^0 H_1:_2 _2^0</p>
 <p>Para encontrar el intervalo de confianza para <span class="math inline">\(\mu_i\)</span>, se hace la transformación <span class="math inline">\(g^{-1}\)</span> a los límites de confianza.</p>
 <div id="ejemplo-mortalidad-de-escarabajos" class="section level4 hasAnchor" number="6.4.1.1">
 <h4><span class="header-section-number">6.4.1.1</span> Ejemplo mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#ejemplo-mortalidad-de-escarabajos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="modelo-lineal-generalizado.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modBin)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelo-lineal-generalizado.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modBin)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(dead, n - dead) ~ logdose, family = binomial)
@@ -1064,16 +1169,16 @@ H_0:_2=_2^0 H_1:_2 _2^0</p>
 ## AIC: 41.43
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="modelo-lineal-generalizado.html#cb123-1" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modBin,<span class="at">newdata =</span> pred.x,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
-<span id="cb123-2"><a href="modelo-lineal-generalizado.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-3"><a href="modelo-lineal-generalizado.html#cb123-3" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb123-4"><a href="modelo-lineal-generalizado.html#cb123-4" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb123-5"><a href="modelo-lineal-generalizado.html#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-6"><a href="modelo-lineal-generalizado.html#cb123-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb123-7"><a href="modelo-lineal-generalizado.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred)</span>
-<span id="cb123-8"><a href="modelo-lineal-generalizado.html#cb123-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-9"><a href="modelo-lineal-generalizado.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.sup, <span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-10"><a href="modelo-lineal-generalizado.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.inf, <span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="modelo-lineal-generalizado.html#cb127-1" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modBin,<span class="at">newdata =</span> pred.x,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
+<span id="cb127-2"><a href="modelo-lineal-generalizado.html#cb127-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-3"><a href="modelo-lineal-generalizado.html#cb127-3" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb127-4"><a href="modelo-lineal-generalizado.html#cb127-4" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb127-5"><a href="modelo-lineal-generalizado.html#cb127-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-6"><a href="modelo-lineal-generalizado.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb127-7"><a href="modelo-lineal-generalizado.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred)</span>
+<span id="cb127-8"><a href="modelo-lineal-generalizado.html#cb127-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-9"><a href="modelo-lineal-generalizado.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.sup, <span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb127-10"><a href="modelo-lineal-generalizado.html#cb127-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.inf, <span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="MLG2_files/figure-html/grafintervalosescarabajos-1.png" width="672" /></p>
 </div>
 <div id="ataques-epilépticos-2" class="section level4 hasAnchor" number="6.4.1.2">
@@ -1096,7 +1201,7 @@ D=-2[\ell(\hat{\boldsymbol \mu})-\ell(\boldsymbol y)]
 <p>Donde:</p>
 <ul>
 <li><p><span class="math inline">\(\ell(\boldsymbol y)=\sum_{i=1}^n[y_i\widetilde{\theta}_i-b(\widetilde{\theta}_i)]/a(\phi)\)</span>.</p></li>
-<li><p><span class="math inline">\(\ell(\hat{\boldsymbol \mu})=\sum_{i=1}^n[y_i\widetilde{\theta}_i-b(\widetilde{\theta}_i)]/a(\phi)\)</span>. "*es y_i o mu_i?"</p></li>
+<li><p><span class="math inline">\(\ell(\hat{\boldsymbol \mu})=\sum_{i=1}^n[y_i\widetilde{\theta}_i-b(\widetilde{\theta}_i)]/a(\phi)\)</span>. “*es y_i o mu_i?”</p></li>
 </ul>
 <p><span class="math inline">\(\widetilde{\theta}_i\)</span> corresponde a la estimación de <span class="math inline">\(\theta_i\)</span> en el modelo saturado <span class="math inline">\((\widetilde{\mu}_i=y_i)\)</span></p>
 <p>Si el ajuste es pobre, se espera que <span class="math inline">\(D\)</span> sea grande.</p>
@@ -1140,35 +1245,58 @@ H_0:logit(\pi_i)=\beta_0+\sum_{i=1}^k\beta_kx_{ik}
 <p>*La aproximación es buena para datos agrupados.</p>
 <p><strong>Mortalidad de escarabajos</strong></p>
 <p>Los valores de la devianza y el <span class="math inline">\(\chi^2\)</span> de Pearson:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelo-lineal-generalizado.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devianza</span></span>
-<span id="cb124-2"><a href="modelo-lineal-generalizado.html#cb124-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">deviance</span>(modBin)</span>
-<span id="cb124-3"><a href="modelo-lineal-generalizado.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(D,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="modelo-lineal-generalizado.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devianza</span></span>
+<span id="cb128-2"><a href="modelo-lineal-generalizado.html#cb128-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">deviance</span>(modBin)</span>
+<span id="cb128-3"><a href="modelo-lineal-generalizado.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(D,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
 <pre><code>## [1] 0.08145881</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelo-lineal-generalizado.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-cuadrado de Pearson</span></span>
-<span id="cb126-2"><a href="modelo-lineal-generalizado.html#cb126-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modBin,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb126-3"><a href="modelo-lineal-generalizado.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(X2,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelo-lineal-generalizado.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-cuadrado de Pearson</span></span>
+<span id="cb130-2"><a href="modelo-lineal-generalizado.html#cb130-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modBin,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb130-3"><a href="modelo-lineal-generalizado.html#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(X2,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
 <pre><code>## [1] 0.1235272</code></pre>
 <table>
 <thead>
-<tr class="header">
-<th align="left"></th>
-<th align="right">est</th>
-<th align="right">gl</th>
-<th align="right">valor-p</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+est
+</th>
+<th style="text-align:right;">
+gl
+</th>
+<th style="text-align:right;">
+valor-p
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Devianza</td>
-<td align="right">6</td>
-<td align="right">11.232</td>
-<td align="right">0.0814</td>
+<tr>
+<td style="text-align:left;">
+Devianza
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+11.232
+</td>
+<td style="text-align:right;">
+0.0814
+</td>
 </tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(X^2\)</span></td>
-<td align="right">6</td>
-<td align="right">10.026</td>
-<td align="right">0.1235</td>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(X^2\)</span>
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+10.026
+</td>
+<td style="text-align:right;">
+0.1235
+</td>
 </tr>
 </tbody>
 </table>

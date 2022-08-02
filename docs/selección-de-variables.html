@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-07-18" />
+<meta name="date" content="2022-08-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -541,11 +541,11 @@ El Valor esperado de <span class="math inline">\(\widehat{\boldsymbol \beta}\)</
 <span class="math display">\[\begin{equation}
 \begin{split}
 E(\widehat{\boldsymbol \beta}) =&amp; (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;E(\boldsymbol y) = (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol X_{1}\boldsymbol \beta_1 \\
- = &amp; (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;(\boldsymbol X_{1} \ \boldsymbol X_{2}) \begin{pmatrix}
- \boldsymbol \beta_1 \\ \boldsymbol 0
- \end{pmatrix} = \begin{pmatrix}
- \boldsymbol \beta_1 \\ \boldsymbol 0
- \end{pmatrix}.
+= &amp; (\boldsymbol X&#39;\boldsymbol X)^{-1}\boldsymbol X&#39;(\boldsymbol X_{1} \ \boldsymbol X_{2}) \begin{pmatrix}
+\boldsymbol \beta_1 \\ \boldsymbol 0
+\end{pmatrix} = \begin{pmatrix}
+\boldsymbol \beta_1 \\ \boldsymbol 0
+\end{pmatrix}.
 \end{split}
 \nonumber
 \end{equation}\]</span>
@@ -897,7 +897,7 @@ covariables</p>
 <p>De forma de equivalente, <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span> minimiza:</p>
 <p><span class="math display">\[
 \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
-\sum_{j=1}^{p-1}|\beta_{j}\|leq t.
+\sum_{j=1}^{p-1}|\beta_{j}\leq t.
 \]</span></p>
 <p>Mientras que, en la regresión de ridge,<span class="math inline">\(\widehat{\boldsymbol \beta}_{ridge}\)</span> minimiza:</p>
 <p><span class="math display">\[
@@ -909,11 +909,17 @@ covariables</p>
 <p>También, cuando <span class="math inline">\(\lambda \rightarrow \infty\)</span>, la varianza de <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span> disminuye, pero el sesgo aumenta.</p>
 <p>No hay una estimación analítica para <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span>, pero hay algoritmos
 eficientes para su estimación.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="selección-de-variables.html#cb88-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(mod.fat)[,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb88-2"><a href="selección-de-variables.html#cb88-2" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
-<span id="cb88-3"><a href="selección-de-variables.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod,<span class="at">xvar=</span><span class="st">&#39;lambda&#39;</span>,<span class="at">label=</span>T,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb88-4"><a href="selección-de-variables.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/Vgrasalasso-1.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="selección-de-variables.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#se debe especificar alpha=1</span></span>
+<span id="cb88-2"><a href="selección-de-variables.html#cb88-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(mod.fat)[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb88-3"><a href="selección-de-variables.html#cb88-3" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
+<span id="cb88-4"><a href="selección-de-variables.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod,<span class="at">xvar=</span><span class="st">&#39;lambda&#39;</span>,<span class="at">label=</span>T,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb88-5"><a href="selección-de-variables.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Vgrasalasso"></span>
+<img src="MLG2_files/figure-html/Vgrasalasso-1.png" alt="Estimación de los coeficientes vs log(lambda)" width="672" />
+<p class="caption">
+Figure 4.3: Estimación de los coeficientes vs log(lambda)
+</p>
+</div>
 </div>
 <div id="validación-cruzada" class="section level4 hasAnchor" number="4.4.3.2">
 <h4><span class="header-section-number">4.4.3.2</span> Validación cruzada<a href="selección-de-variables.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -926,7 +932,8 @@ eficientes para su estimación.</p>
 <p>Para no perder información, en la validación cruzada se divide la
 muestra en dos (o más) partes y se hace la validación en cada una.</p>
 <p>División de la muestra de forma aleatoria en <span class="math inline">\(k = 5\)</span> grupos <span class="math inline">\((k-fold)\)</span></p>
-<p>Para cada división,<span class="math inline">\(k = 1, . . . , K\)</span> , y para cada valor de <span class="math inline">\(\lambda\)</span>, se estima
+<p><img src="figs/ValidacionCruzada.PNG" width="75%" style="display: block; margin: auto;" />
+Para cada división,<span class="math inline">\(k = 1, . . . , K\)</span> , y para cada valor de <span class="math inline">\(\lambda\)</span>, se estima
 el modelo basado en la <strong>muestra de entrenamiento</strong>.</p>
 <p>Mientras que con cada <strong>muestra de validación</strong>, y para cada valor de
 <span class="math inline">\(\lambda\)</span>, se utiliza para calcular el error cuadrático medio:</p>
@@ -956,9 +963,545 @@ Luego, selección el <span class="math inline">\(\lambda\)</span> que minimiza <
 <p>Validación cruzada con <span class="math inline">\(k=10\)</span>.</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="selección-de-variables.html#cb89-1" aria-hidden="true" tabindex="-1"></a>lasso.cv <span class="ot">&lt;-</span><span class="fu">cv.glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">nfolds =</span> <span class="dv">252</span>, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
 <span id="cb89-2"><a href="selección-de-variables.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.cv)</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/kgrasa-1.png" width="672" />
-Las covariables seleccionadas (regla una desviación estándar):</p>
-<p>age height abdom wrist</p>
+<div class="figure"><span style="display:block;" id="fig:kgrasa"></span>
+<img src="MLG2_files/figure-html/kgrasa-1.png" alt="Validación cruzada grasa corporal" width="672" />
+<p class="caption">
+Figure 4.4: Validación cruzada grasa corporal
+</p>
+</div>
+<p>Las covariables seleccionadas al estimar el lambda óptimo (regla una desviación estándar):</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="selección-de-variables.html#cb90-1" aria-hidden="true" tabindex="-1"></a>est <span class="ot">=</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">lambda =</span> lasso.cv<span class="sc">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb90-2"><a href="selección-de-variables.html#cb90-2" aria-hidden="true" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
+<pre><code>## 13 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+##                  s0
+## age      0.04227147
+## weight   .         
+## height  -0.14779997
+## neck     .         
+## chest    .         
+## abdom    0.60302949
+## hip      .         
+## thigh    .         
+## knee     .         
+## ankle    .         
+## biceps   .         
+## forearm  .         
+## wrist   -1.02250135</code></pre>
+<p>Observamos que las variables seleccionadas son <code>age</code>, <code>height</code>,<code>abdom</code> y <code>wrist</code>:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="selección-de-variables.html#cb92-1" aria-hidden="true" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
+<span id="cb92-2"><a href="selección-de-variables.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = brozek ~ age + height + abdom + wrist, data = fat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -16.2571  -2.8824  -0.2919   3.0419   9.3464 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.24853    6.27849   0.040   0.9685    
+## age          0.06707    0.02196   3.055   0.0025 ** 
+## height      -0.16461    0.07821  -2.105   0.0363 *  
+## abdom        0.67569    0.03120  21.654  &lt; 2e-16 ***
+## wrist       -1.93709    0.38343  -5.052 8.51e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.118 on 247 degrees of freedom
+## Multiple R-squared:  0.7223, Adjusted R-squared:  0.7178 
+## F-statistic: 160.6 on 4 and 247 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Las covariables selecionas en este modelo son todas significativas, el <span class="math inline">\(R^2=0.7223\)</span> y el <span class="math inline">\(R^2_{adj}=0.7178\)</span> han disminuido ligeramente respecto al modelo con todas las covariables.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="10">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Método de selección
+</div>
+</th>
+</tr>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+AIC y PRESS
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+BIC
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+LASSO
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Est
+</th>
+<th style="text-align:left;">
+er. std.
+</th>
+<th style="text-align:left;">
+valor-p
+</th>
+<th style="text-align:left;">
+Est
+</th>
+<th style="text-align:left;">
+er. std.
+</th>
+<th style="text-align:left;">
+valor-p
+</th>
+<th style="text-align:left;">
+Est
+</th>
+<th style="text-align:left;">
+er. std.
+</th>
+<th style="text-align:left;">
+valor-p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+int.
+</td>
+<td style="text-align:left;">
+-20.062
+</td>
+<td style="text-align:left;">
+10.8465
+</td>
+<td style="text-align:left;">
+0.0656
+</td>
+<td style="text-align:left;">
+-31.297
+</td>
+<td style="text-align:left;">
+6.7089
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.249
+</td>
+<td style="text-align:left;">
+6.2785
+</td>
+<td style="text-align:left;">
+0.9685
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age
+</td>
+<td style="text-align:left;">
+0.059
+</td>
+<td style="text-align:left;">
+0.0285
+</td>
+<td style="text-align:left;">
+0.0388
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+0.067
+</td>
+<td style="text-align:left;">
+0.022
+</td>
+<td style="text-align:left;">
+0.0025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+weight
+</td>
+<td style="text-align:left;">
+-0.084
+</td>
+<td style="text-align:left;">
+0.037
+</td>
+<td style="text-align:left;">
+0.0237
+</td>
+<td style="text-align:left;">
+0.126
+</td>
+<td style="text-align:left;">
+0.0229
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+height
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+-0.165
+</td>
+<td style="text-align:left;">
+0.0782
+</td>
+<td style="text-align:left;">
+0.0363
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+neck
+</td>
+<td style="text-align:left;">
+-0.432
+</td>
+<td style="text-align:left;">
+0.208
+</td>
+<td style="text-align:left;">
+0.0389
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abdom
+</td>
+<td style="text-align:left;">
+0.877
+</td>
+<td style="text-align:left;">
+0.0666
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.921
+</td>
+<td style="text-align:left;">
+0.0519
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.676
+</td>
+<td style="text-align:left;">
+0.0312
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hip
+</td>
+<td style="text-align:left;">
+-0.186
+</td>
+<td style="text-align:left;">
+0.1282
+</td>
+<td style="text-align:left;">
+0.1473
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+thigh
+</td>
+<td style="text-align:left;">
+0.286
+</td>
+<td style="text-align:left;">
+0.1195
+</td>
+<td style="text-align:left;">
+0.1473
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+forearm
+</td>
+<td style="text-align:left;">
+0.4825
+</td>
+<td style="text-align:left;">
+0.1725
+</td>
+<td style="text-align:left;">
+0.0056
+</td>
+<td style="text-align:left;">
+0.446
+</td>
+<td style="text-align:left;">
+0.1682
+</td>
+<td style="text-align:left;">
+0.0085
+</td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+<ul>
+<li></td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wrist
+</td>
+<td style="text-align:left;">
+-1.4049
+</td>
+<td style="text-align:left;">
+0.4717
+</td>
+<td style="text-align:left;">
+0.0032
+</td>
+<td style="text-align:left;">
+-1.392
+</td>
+<td style="text-align:left;">
+0.4099
+</td>
+<td style="text-align:left;">
+8e-04
+</td>
+<td style="text-align:left;">
+-1.937
+</td>
+<td style="text-align:left;">
+0.3834
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Modelo
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(R^2\)</span>
+</th>
+<th style="text-align:right;">
+PRESS
+</th>
+<th style="text-align:right;">
+AIC
+</th>
+<th style="text-align:right;">
+BIC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AIC y PRESS
+</td>
+<td style="text-align:right;">
+0.7467
+</td>
+<td style="text-align:right;">
+4139.682
+</td>
+<td style="text-align:right;">
+1420.225
+</td>
+<td style="text-align:right;">
+1455.520
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:right;">
+0.7351
+</td>
+<td style="text-align:right;">
+4209.140
+</td>
+<td style="text-align:right;">
+1423.471
+</td>
+<td style="text-align:right;">
+1444.647
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LASSO
+</td>
+<td style="text-align:right;">
+0.7223
+</td>
+<td style="text-align:right;">
+4447.052
+</td>
+<td style="text-align:right;">
+1435.389
+</td>
+<td style="text-align:right;">
+1456.566
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

@@ -28,13 +28,15 @@ fig:cementridge3
 eq:varBPC
 fig:surgicalFitAllPlot-1
 fig:surgicalFitAllPlot-2
+fig:Vgrasalasso
+fig:kgrasa
 fig:plotpavos
 fig:plotpurom
 eq:AlgorGN
 fig:plotpavoscrec
 tab:TmortEsc
 fig:logfun
-tab:unnamed-chunk-8
+tab:unnamed-chunk-12
 variables-indicadoras-o-dummies
 ejemplos
 datos-de-atletas-australianos
