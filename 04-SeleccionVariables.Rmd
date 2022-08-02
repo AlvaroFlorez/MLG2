@@ -474,7 +474,7 @@ muestra en dos (o más) partes y se hace la validación en cada una.
 
 División de la muestra de forma aleatoria en $k = 5$ grupos $(k-fold)$
 
-```{r ssa-logo, fig.align = 'center',out.width = "75%",echo=FALSE}
+```{r, fig.align = 'center',out.width = "75%",echo=FALSE}
 knitr::include_graphics(here::here("figs", "ValidacionCruzada.png"))
 ```
 Para cada división,$k = 1, . . . , K$ , y para cada valor de $\lambda$, se estima
@@ -513,7 +513,7 @@ También, se puede aplicar la regla de una desviación estánda:
 
 #### Ejemplo grasa corporal
 Validación cruzada con $k=10$.
-```{r kgrasa, echo=T, warning=FALSE,message = FALSE, fig.cap="Validación cruzada grasa corporal"}
+```{r kgrasa, echo=T, warning=FALSE,message = FALSE, fig.align = "center", fig.cap="Validación cruzada grasa corporal"}
 lasso.cv <-cv.glmnet(X, fat$brozek, nfolds = 252, alpha = 1,nlambda = 100)
 plot(lasso.cv)
 ```
