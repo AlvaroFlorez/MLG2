@@ -198,3 +198,5 @@ datos-correlacionados
 modelo-lineal-mixto-1
 número-de-cangrejos-satélites-1
 fig:unnamed-chunk-1
+fig:tresmodelospavos
+fig:linealpuromicina

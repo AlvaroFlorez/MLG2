@@ -409,7 +409,7 @@ $$
 La comparación se puede hacer por criterios de información (AIC o
 BIC)
 
-```{r tresmodelospavos, include=TRUE, fig.align='center',fig.cap="Datos Pavos.Modelo 1(Rojo), Modelo logístico(verde) y Modelo Weibull(Azul) "}
+```{r tresmodelospavos, include=TRUE, fig.align='center', fig.cap="Datos Pavos.Modelo 1(Rojo), Modelo logístico(verde) y Modelo Weibull(Azul) "}
 
 plot(Gain~A,data=turk0,xlab='cantidad de metionina (% dieta)',ylab='Peso ganado (gramos)')
 
