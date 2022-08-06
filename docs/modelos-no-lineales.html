@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,15 +233,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#crecimiento-de-pavos"><i class="fa fa-check"></i><b>5.1.1</b> Crecimiento de pavos</a></li>
 <li class="chapter" data-level="5.1.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#puromicina"><i class="fa fa-check"></i><b>5.1.2</b> Puromicina</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a></li>
-<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.3</b> Modelos no-lineales linealizables</a>
+<li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#notación"><i class="fa fa-check"></i><b>5.3.2</b> Notación</a></li>
-<li class="chapter" data-level="5.3.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#expansión-de-series-de-tylor"><i class="fa fa-check"></i><b>5.3.3</b> Expansión de series de Tylor</a></li>
-<li class="chapter" data-level="5.3.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.3.4</b> Métodos iterativos de estimación</a></li>
-<li class="chapter" data-level="5.3.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.3.5</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.3.6" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3.6</b> Método de Bootstrap</a></li>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#notación"><i class="fa fa-check"></i><b>5.2.3</b> Notación</a></li>
+<li class="chapter" data-level="5.2.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#expansión-de-series-de-tylor"><i class="fa fa-check"></i><b>5.2.4</b> Expansión de series de Tylor</a></li>
+<li class="chapter" data-level="5.2.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.2.5</b> Métodos iterativos de estimación</a></li>
+<li class="chapter" data-level="5.2.6" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.2.6</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.7" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.2.7</b> Método de Bootstrap</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
@@ -444,10 +444,12 @@ no tratadas:</p>
 <p><span class="math display">\[
 E(rate_{i}|state=0)=\frac{conc_{i}\theta_{1}}{\theta_{2}+conc_{i}}.
 \]</span></p>
-<p>-Para enzimas tratadas:
+<ul>
+<li>Para enzimas tratadas:
 <span class="math display">\[
 E(rate_{i}|state=1)=\frac{conc_{i}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+conc_{i}}.
-\]</span></p>
+\]</span></li>
+</ul>
 </div>
 </div>
 <div id="modelos-no-lineales-1" class="section level2 hasAnchor" number="5.2">
@@ -468,26 +470,25 @@ m(x_{i},\theta)=\beta_{0}+x_{1i}\beta_{1}+x_{2i}\beta_{2}+...+x_{p-1,i}\beta_{p-
 \]</span></p>
 <p>Los modelos:
 <span class="math display">\[
-y_{i}=m(x_{i},\theta)+\epsilon_{i}=\theta_{1}+\theta_{1}[1+exp(-\theta_{4}x_{i})]+\epsilon_{i},
+y_{i}=m(x_{i},\theta)+\epsilon_{i}=\theta_{1}+\theta_{1}[1+exp(-\theta_{3}x_{i})]+\epsilon_{i},
 \]</span>
 y</p>
 <p><span class="math display">\[
 y_{i}=m(x_{i},\theta)+\epsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\epsilon_{i},
 \]</span></p>
-<p>son modelo no-lineal (no es una combinación lineal de los
+<p>son un modelo no-lineal (no es una combinación lineal de los
 parámetros).</p>
-<p>Si hacen los mismos supuestos sobre los errores, esto es:
+<p>Si se hacen los mismos supuestos sobre los errores, esto es:
 <span class="math display">\[
 \epsilon\sim N(\boldsymbol 0,\sigma^2 \boldsymbol I)
 \]</span></p>
 <p>se tiene que:</p>
 <ul>
-<li><span class="math inline">\(E(y|x_{i})=m(\boldsymbol x_{i},\boldsymbol \theta)\)</span></li>
-<li><span class="math inline">\(E(y|x_{i})=\sigma^2\)</span></li>
+<li><span class="math inline">\(E(y|x_{i})=m(\boldsymbol x_{i},\boldsymbol \theta)\)</span>.</li>
+<li><span class="math inline">\(E(y|x_{i})=\sigma^2\)</span>.</li>
 </ul>
-</div>
-<div id="modelos-no-lineales-linealizables" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Modelos no-lineales linealizables<a href="modelos-no-lineales.html#modelos-no-lineales-linealizables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="modelos-no-lineales-linealizables" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Modelos no-lineales linealizables<a href="modelos-no-lineales.html#modelos-no-lineales-linealizables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Modelo de regresión exponencial:
 <span class="math display">\[
 E(y)=\theta_{0}+\theta_{1}exp(\theta_{2}+x_{i}\theta_{3})
@@ -498,8 +499,9 @@ logy_{i}=(log\theta_{1}+\theta_{2})+x_{i}\theta_{3}+\epsilon_{i}^*
 \]</span>
 Sin embargo, hay que tener cuidado con el efecto de las
 transformaciones sobre los residuos.</p>
-<div id="estimación-de-los-parámetros" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Estimación de los parámetros<a href="modelos-no-lineales.html#estimación-de-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="estimación-de-los-parámetros" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Estimación de los parámetros<a href="modelos-no-lineales.html#estimación-de-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La estimación de <span class="math inline">\(\boldsymbol \theta\)</span> se hace minimizando la suma de cuadrados de
 los residuos:</p>
 <p><span class="math display">\[
@@ -507,16 +509,16 @@ S(\boldsymbol \theta)=\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)
 \]</span></p>
 <p>Para encontrar el mínimo, <span class="math inline">\((1)\)</span> calculamos la derivada de <span class="math inline">\(S(\boldsymbol \theta)\)</span> con respecto a <span class="math inline">\(\boldsymbol \theta\)</span>:</p>
 <p><span class="math display">\[
-\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}=-2\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)][\frac{\partial m(\boldsymbol x_{i},\boldsymbol \theta)}{\partial\boldsymbol \theta}]
+\frac{\partial}{\partial\boldsymbol \theta}S(\boldsymbol \theta)=-2\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)]
+\begin{bmatrix}\frac{\partial }{\partial\boldsymbol \theta}m(\boldsymbol x_{i},\boldsymbol \theta)\end{bmatrix}
 \]</span></p>
 <p><span class="math inline">\((2)\)</span> igualamos a <span class="math inline">\(0\)</span>, y <span class="math inline">\((3)\)</span> resolvemos la ecuación para <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
 <p>En la mayoría de los casos, <span class="math inline">\(\frac{\partial S(\boldsymbol \theta)}{\partial\boldsymbol \theta}\)</span> es una función no-lineal <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
 <p>Por lo tanto, no es posible encontrar una solución analítica y
 necesitamos encontrar la solución <strong>iterativamente</strong>.</p>
-<p>“insertar grafico 12.1”</p>
 </div>
-<div id="notación" class="section level3 hasAnchor" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Notación<a href="modelos-no-lineales.html#notación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="notación" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Notación<a href="modelos-no-lineales.html#notación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><span class="math inline">\(\theta_{j}^{(t)}\)</span>: estimación de <span class="math inline">\(\theta_{j}\)</span> en la iteración <span class="math inline">\(t\)</span> (<span class="math inline">\(\theta_{j}^{(0)}\)</span> valores iniciales).</p></li>
 <li><p>Vector score (gradiente):</p></li>
@@ -542,8 +544,8 @@ u(\hat{\boldsymbol \theta})=u(\boldsymbol \theta)|_{\boldsymbol \theta=\hat{\bol
 \end{pmatrix} \quad \quad \quad \boldsymbol H(\hat{\boldsymbol \theta})=\boldsymbol H(\boldsymbol \theta)|_{\boldsymbol \theta=\hat{\boldsymbol \theta}}
 \]</span></p>
 </div>
-<div id="expansión-de-series-de-tylor" class="section level3 hasAnchor" number="5.3.3">
-<h3><span class="header-section-number">5.3.3</span> Expansión de series de Tylor<a href="modelos-no-lineales.html#expansión-de-series-de-tylor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="expansión-de-series-de-tylor" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Expansión de series de Tylor<a href="modelos-no-lineales.html#expansión-de-series-de-tylor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una función <span class="math inline">\(f(\theta)\)</span> puede expandirse como una serie de Taylor:</p>
 <p><span class="math display">\[
 f(\theta)=\sum_{n=0}^\infty \frac{1}{n!}(\theta-\theta^*)^n \frac{\partial^nf(\theta^*)}{\partial\theta^n}
@@ -558,16 +560,16 @@ f(\theta)\approx f(\theta^*)+(\theta-\theta^*) \frac{\partial f(\theta^*)}{\part
 f(\boldsymbol \theta)\approx f(\boldsymbol \theta^*)+(\boldsymbol \theta-\boldsymbol \theta^*)^{&#39;}u(\boldsymbol \theta^*)+\frac{1}{2}(\boldsymbol \theta-\boldsymbol \theta^*)^{&#39;}H(\boldsymbol \theta^*)(\boldsymbol \theta-\boldsymbol \theta^*),
 \]</span></p>
 </div>
-<div id="métodos-iterativos-de-estimación" class="section level3 hasAnchor" number="5.3.4">
-<h3><span class="header-section-number">5.3.4</span> Métodos iterativos de estimación<a href="modelos-no-lineales.html#métodos-iterativos-de-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="métodos-iterativos-de-estimación" class="section level3 hasAnchor" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Métodos iterativos de estimación<a href="modelos-no-lineales.html#métodos-iterativos-de-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Algunos métodos iterativos de estimación son:</p>
 <ul>
 <li>Gauss-Newton (approx. series de Taylor a la función de la
 media).</li>
 </ul>
 <p>-Newton-Raphson (approx. series de Taylor a la función score).</p>
-<div id="algoritmo-de-gauss-newton" class="section level4 hasAnchor" number="5.3.4.1">
-<h4><span class="header-section-number">5.3.4.1</span> Algoritmo de Gauss-Newton<a href="modelos-no-lineales.html#algoritmo-de-gauss-newton" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="algoritmo-de-gauss-newton" class="section level4 hasAnchor" number="5.2.5.1">
+<h4><span class="header-section-number">5.2.5.1</span> Algoritmo de Gauss-Newton<a href="modelos-no-lineales.html#algoritmo-de-gauss-newton" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>La idea es aproximar <span class="math inline">\(m(x_{i},\boldsymbol \theta^*)\)</span> usando series de Taylor de orden 1 alrededor de <span class="math inline">\(\boldsymbol \theta^*\)</span>:</p>
 <p><span class="math display">\[
 m(x_{i},\boldsymbol \theta)\approx m(x_{i},\boldsymbol \theta^*)+(\boldsymbol \theta-\boldsymbol \theta^*)^{&#39;}u_{i}(\boldsymbol \theta^*)
@@ -620,8 +622,8 @@ de regresión no lineal mediante una secuencia de cálculos de mínimos cuadrado
 <p>donde <span class="math inline">\(p\)</span> es la dimensión de <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
 </div>
 </div>
-<div id="estimación-de-los-parámetros-1" class="section level3 hasAnchor" number="5.3.5">
-<h3><span class="header-section-number">5.3.5</span> Estimación de los parámetros<a href="modelos-no-lineales.html#estimación-de-los-parámetros-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="estimación-de-los-parámetros-1" class="section level3 hasAnchor" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> Estimación de los parámetros<a href="modelos-no-lineales.html#estimación-de-los-parámetros-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>¿Cómo selecciono los valores iniciales?</strong></p>
 <p>El ajuste de un modelo no-lineal requiere buenos valores iniciales
 (cercanos a los valores de parámetros).</p>
@@ -633,8 +635,8 @@ de regresión no lineal mediante una secuencia de cálculos de mínimos cuadrado
 <li><p>Linearización de los datos.</p></li>
 </ul>
 <p>Dado que la solución del algoritmo puede caer en un máximo local, es recomendable ejecutar el algoritmo para diferentes valores iniciales.</p>
-<div id="crecimiento-de-pavos---valores-iniciales" class="section level4 hasAnchor" number="5.3.5.1">
-<h4><span class="header-section-number">5.3.5.1</span> Crecimiento de pavos - Valores iniciales<a href="modelos-no-lineales.html#crecimiento-de-pavos---valores-iniciales" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="crecimiento-de-pavos---valores-iniciales" class="section level4 hasAnchor" number="5.2.6.1">
+<h4><span class="header-section-number">5.2.6.1</span> Crecimiento de pavos - Valores iniciales<a href="modelos-no-lineales.html#crecimiento-de-pavos---valores-iniciales" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>En el caso del peso de los pavos:</p>
 <ul>
 <li><p><span class="math inline">\(\theta_{1}^0=620\)</span> (pesi ganado sin suplemento)</p></li>
@@ -663,8 +665,8 @@ Figure 5.4: Datos crecimiento de pavos. Ajuste del modelo para el peso medio gan
 E(Gain|A)=622.958 + 178.252 [1 - exp(-7.122A)]    
 \]</span></p>
 </div>
-<div id="inferencia-sobre-los-parámetros" class="section level4 hasAnchor" number="5.3.5.2">
-<h4><span class="header-section-number">5.3.5.2</span> Inferencia sobre los parámetros<a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="inferencia-sobre-los-parámetros" class="section level4 hasAnchor" number="5.2.6.2">
+<h4><span class="header-section-number">5.2.6.2</span> Inferencia sobre los parámetros<a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>si <span class="math inline">\(\epsilon \sim N(\boldsymbol 0,\sigma^2 \boldsymbol I)\)</span>, tenemos que asintóticamente <span class="math inline">\((n \to \infty)\)</span>:</p>
 <p><span class="math display">\[
 \hat{\boldsymbol \theta}\sim N(\boldsymbol \theta^*,\sigma^2[U(\boldsymbol \theta^*)U(\boldsymbol \theta^*)^{&#39;}]^{-1}).
@@ -695,8 +697,8 @@ H_{0}:\boldsymbol \theta_{2}=\boldsymbol 0\qquad H_{1}:\boldsymbol \theta_{2}\ne
 F_{0}=\frac{[SS_{res}(\boldsymbol \theta)-SS_{res}(\boldsymbol \theta_{1})]/r}{MS_{res}(\boldsymbol \theta)}\sim F_{r,n-p}.
 \]</span></p>
 </div>
-<div id="crecimiento-de-pavos-estimación" class="section level4 hasAnchor" number="5.3.5.3">
-<h4><span class="header-section-number">5.3.5.3</span> Crecimiento de pavos-Estimación<a href="modelos-no-lineales.html#crecimiento-de-pavos-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="crecimiento-de-pavos-estimación" class="section level4 hasAnchor" number="5.2.6.3">
+<h4><span class="header-section-number">5.2.6.3</span> Crecimiento de pavos-Estimación<a href="modelos-no-lineales.html#crecimiento-de-pavos-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Modelo estimado:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="modelos-no-lineales.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>## 
@@ -750,8 +752,8 @@ BIC)</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="modelos-no-lineales.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mod3)</span></code></pre></div>
 <pre><code>## [1] 314.5287</code></pre>
 </div>
-<div id="puromicina-estimación" class="section level4 hasAnchor" number="5.3.5.4">
-<h4><span class="header-section-number">5.3.5.4</span> Puromicina-Estimación<a href="modelos-no-lineales.html#puromicina-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="puromicina-estimación" class="section level4 hasAnchor" number="5.2.6.4">
+<h4><span class="header-section-number">5.2.6.4</span> Puromicina-Estimación<a href="modelos-no-lineales.html#puromicina-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Los valores iniciales del modelo Michaelis-Menten se puede hacer por linealización.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="modelos-no-lineales.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb13-2"><a href="modelos-no-lineales.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state, <span class="at">xlab=</span><span class="st">&#39;concentración de sustrato (ppm)&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;velocidad de reacción&#39;</span>)</span>
@@ -807,8 +809,8 @@ tratada o no.</p></li>
 <p><img src="MLG2_files/figure-html/puromicinaplotl-1.png" width="672" /></p>
 </div>
 </div>
-<div id="método-de-bootstrap" class="section level3 hasAnchor" number="5.3.6">
-<h3><span class="header-section-number">5.3.6</span> Método de Bootstrap<a href="modelos-no-lineales.html#método-de-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="método-de-bootstrap" class="section level3 hasAnchor" number="5.2.7">
+<h3><span class="header-section-number">5.2.7</span> Método de Bootstrap<a href="modelos-no-lineales.html#método-de-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Las inferencias basadas para muestras grande pueden ser inexactas
 y/o engañosas en muestras pequeñas.</p>
 <p>En esos casos, se puede hacer inferencias usando remuestreo
@@ -826,8 +828,8 @@ independiente <span class="math inline">\(\boldsymbol y=(y_{1},...,y_{n})\)</spa
 <li>Repita los pasos 1 y 2 un número grande de veces <span class="math inline">\((B)\)</span>.</li>
 <li>un intervalo de confianza del 95% basado en percentiles muestrales 2.5% y 97.5 %.</li>
 </ol>
-<div id="bootstrap-en-regresión" class="section level4 hasAnchor" number="5.3.6.1">
-<h4><span class="header-section-number">5.3.6.1</span> Bootstrap en regresión<a href="modelos-no-lineales.html#bootstrap-en-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="bootstrap-en-regresión" class="section level4 hasAnchor" number="5.2.7.1">
+<h4><span class="header-section-number">5.2.7.1</span> Bootstrap en regresión<a href="modelos-no-lineales.html#bootstrap-en-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Método residual resampling:</p>
 <ol style="list-style-type: decimal">
 <li><p>Con la muestra dada: <span class="math inline">\((x_{i},y_{i}),i=1,...,n\)</span> ajustar el modelo y obtener los resifuos: <span class="math inline">\(e_{i}=y_{i}-x_{i}^{&#39;}\hat{\beta}.\)</span></p></li>
@@ -904,8 +906,8 @@ Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual.</p>
 <span id="cb29-16"><a href="modelos-no-lineales.html#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state)</span></code></pre></div>
 <p><img src="MLG2_files/figure-html/bootgrafpred-1.png" width="672" /></p>
 </div>
-<div id="algunas-consideraciones" class="section level4 hasAnchor" number="5.3.6.2">
-<h4><span class="header-section-number">5.3.6.2</span> Algunas consideraciones<a href="modelos-no-lineales.html#algunas-consideraciones" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="algunas-consideraciones" class="section level4 hasAnchor" number="5.2.7.2">
+<h4><span class="header-section-number">5.2.7.2</span> Algunas consideraciones<a href="modelos-no-lineales.html#algunas-consideraciones" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>Lo ideal es que el algoritmo llegue a la solución en pocas
 iteraciones (esto pasa si la aproximación lineal es adecuada).</li>

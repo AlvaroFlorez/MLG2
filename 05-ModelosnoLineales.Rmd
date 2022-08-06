@@ -155,18 +155,19 @@ S(\btheta)=\sum_{i=1}^n[y_{i}-m(\bx_{i},\btheta)]^2
 Para encontrar el mínimo, $(1)$ calculamos la derivada de $S(\btheta)$ con respecto a $\btheta$:
 
 \[
-\frac{\partial S(\btheta)}{\partial\btheta}=-2\sum_{i=1}^n[y_{i}-m(\bx_{i},\btheta)][\frac{\partial m(\bx_{i},\btheta)}{\partial\btheta}]
+\frac{\partial}{\partial\btheta}S(\btheta)=-2\sum_{i=1}^n[y_{i}-m(\bx_{i},\btheta)]
+\begin{bmatrix}\frac{\partial }{\partial\btheta}m(\bx_{i},\btheta)\end{bmatrix}
 \]
 
 $(2)$ igualamos a $0$, y $(3)$ resolvemos la ecuación para $\btheta$.
 
-En la mayoría de los casos, $\frac{\partial S(\btheta)}{\partial\btheta}$ es una función no-lineal $\btheta$.
+En la mayoría de los casos, $\frac{\partial}{\partial\btheta}S(\btheta)$ es una función no-lineal $\btheta$.
 
 Por lo tanto, no es posible encontrar una solución analítica y
 necesitamos encontrar la solución **iterativamente**.
 
 
-### Notación
+#### Notación
 
 - $\theta_{j}^{(t)}$: estimación de $\theta_{j}$ en la iteración $t$ ($\theta_{j}^{(0)}$ valores iniciales).
 
@@ -194,7 +195,7 @@ $$
 \end{pmatrix} \quad \quad \quad \bH(\hat{\btheta})=\bH(\btheta)|_{\btheta=\hat{\btheta}}
 $$
 
-### Expansión de series de Tylor
+#### Expansión de series de Tylor
 
 Una función $f(\theta)$ puede expandirse como una serie de Taylor:
 
