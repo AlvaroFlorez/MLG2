@@ -222,7 +222,7 @@ Algunos métodos iterativos de estimación son:
 - Gauss-Newton (approx. series de Taylor a la función de la
 media).
 
--Newton-Raphson (approx. series de Taylor a la función score).
+- Newton-Raphson (approx. series de Taylor a la función score).
 
 #### Algoritmo de Gauss-Newton
 La idea es aproximar $m(x_{i},\btheta^*)$ usando series de Taylor de orden 1 alrededor de $\btheta^*$:
@@ -247,11 +247,11 @@ Por lo tanto, la solución es:
 
 $$
 (\hat{\btheta}-\btheta^*)=[U(\btheta^*)^{'}U(\btheta^*)]^{-1}
-  U(\btheta^*)^{'} \hat{e_{i}^*}
+  U(\btheta^*)^{'} \hat{e^*}
 $$
 
 \begin{equation}
-\hat{\btheta}=\btheta^*+[U(\btheta^*)^{'}U(\btheta^*)]^{-1}U(\btheta^*)^{'} \hat{e_{i}^*}
+\hat{\btheta}=\btheta^*+[U(\btheta^*)^{'}U(\btheta^*)]^{-1}U(\btheta^*)^{'} \hat{e^*}
 (\#eq:AlgorGN)
 \end{equation}
 
@@ -270,11 +270,10 @@ Gauss-Newton**.
 
 \begin{equation}
 \begin{split}
-& \btheta^{(j+1)}=\btheta^{(j)}+[U(\btheta^{(j)})^{'}U(\btheta^{(j)})]^{-1}U(\btheta^{(j)})^{'} \hat{e}^{(j)} \\
-& \text{y calcule} \quad S(\btheta^{(j+1)}).
+& \btheta^{(j+1)}=\btheta^{(j)}+[U(\btheta^{(j)})^{'}U(\btheta^{(j)})]^{-1}U(\btheta^{(j)})^{'} \hat{e}^{(j)}.
 \end{split}
 \end{equation}
-   
+y calcule $S(\btheta^{(j+1)})$.  
 
 4. Pare si $\delta=|S(\btheta^{(j)})-S(\btheta^{(j+1)})|$ es suficientemente pequeño (convergente). De otra forma, $j=j+1$ y vaya al paso 3.
 
@@ -302,7 +301,7 @@ los valores iniciales se pueden obtener a través:
 
 - Conocimiento previo.
 
-- Significado físico de los coecientes.
+- Significado físico de los coeficientes.
 
 - Evaluación gráfica.
 
@@ -341,7 +340,7 @@ $$
 E(Gain|A)=622.958 + 178.252 [1 - exp(-7.122A)]    
 $$
 
-#### Inferencia sobre los parámetros
+### Inferencia sobre los parámetros
 
 si $\epsilon \sim N(\bZERO,\sigma^2 \bI)$, tenemos que asintóticamente $(n \to \infty)$:
 
@@ -367,7 +366,7 @@ $$
 **Intervalos de confianza:**IC del $(1-\alpha)$% para $\theta_{j}$:
 
 $$
-\hat{\theta_{j}}\pm t_{|1-\alpha/2,n-p}\sqrt{V(\hat{\theta_{j}})} 
+\hat{\theta_{j}}\pm t_{1-\alpha/2,n-p}\sqrt{V(\hat{\theta_{j}})} 
 $$
 
 **Intervalos de confianza:** IC del $(1-\alpha)$% para $E(Y|x_{0})$:
@@ -410,7 +409,7 @@ $$
 La comparación se puede hacer por criterios de información (AIC o
 BIC)
 
-```{r tresmodelospavos, include=TRUE}
+```{r tresmodelospavos, include=TRUE, fig.align='center',fig.cap="Datos Pavos.Modelo 1(Rojo), Modelo logístico(verde) y Modelo Weibull(Azul) "}
 
 plot(Gain~A,data=turk0,xlab='cantidad de metionina (% dieta)',ylab='Peso ganado (gramos)')
 
@@ -436,7 +435,7 @@ AIC(mod3)
 
 Los valores iniciales del modelo Michaelis-Menten se puede hacer por linealización.
 
-```{r linealpuromicina, include=TRUE} 
+```{r linealpuromicina, include=TRUE, fig.align='center', fig.cap="Datos puromicina. Diagrama de dispersión. Datos linealizados(derecha)."} 
 par(mfrow=c(1,2))
 plot(Puromycin$conc,Puromycin$rate,col=Puromycin$state, xlab='concentración de sustrato (ppm)', ylab='velocidad de reacción')
 
@@ -447,7 +446,7 @@ plot(1/Puromycin$conc,1/Puromycin$rate,col=Puromycin$state, xlab='concentración
 A través del ajuste por MCO:
 
 $$
-\frac{1}{y_{i}}=\beta_{0}+\frac{1}{conc_{i}\beta_{1}}+\epsilon_{i}
+1/y_{i}=\beta_{0}+1/conc_{i}\beta_{1}+\epsilon_{i}
 $$
 
 Se puede obtener valores iniciales.
