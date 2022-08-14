@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-08-06" />
+<meta name="date" content="2022-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -240,7 +240,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.2.3</b> Métodos iterativos de estimación</a></li>
 <li class="chapter" data-level="5.2.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.2.4</b> Estimación de los parámetros</a></li>
 <li class="chapter" data-level="5.2.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.5</b> Inferencia sobre los parámetros</a></li>
-<li class="chapter" data-level="5.2.6" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.2.6</b> Método de Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#bootstrap-en-regresión"><i class="fa fa-check"></i><b>5.3.1</b> Bootstrap en regresión</a></li>
+<li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#algunas-consideraciones"><i class="fa fa-check"></i><b>5.3.2</b> Algunas consideraciones</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
@@ -815,11 +819,17 @@ tratada o no.</p></li>
 <span id="cb16-6"><a href="modelos-no-lineales.html#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-7"><a href="modelos-no-lineales.html#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, thP[<span class="dv">1</span>]<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>x),<span class="at">col=</span><span class="dv">2</span>)</span>
 <span id="cb16-8"><a href="modelos-no-lineales.html#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, (thP[<span class="dv">1</span>]<span class="sc">+</span>thP[<span class="dv">3</span>])<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>thP[<span class="dv">4</span>]<span class="sc">+</span>x))</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/puromicinaplotl-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:puromicinaplotl"></span>
+<img src="MLG2_files/figure-html/puromicinaplotl-1.png" alt="Datos puromicina. Enzimas tratadas(negro), enzimas no tratadas(rojo). " width="672" />
+<p class="caption">
+Figure 5.7: Datos puromicina. Enzimas tratadas(negro), enzimas no tratadas(rojo).
+</p>
 </div>
 </div>
-<div id="método-de-bootstrap" class="section level3 hasAnchor" number="5.2.6">
-<h3><span class="header-section-number">5.2.6</span> Método de Bootstrap<a href="modelos-no-lineales.html#método-de-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="método-de-bootstrap" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Método de Bootstrap<a href="modelos-no-lineales.html#método-de-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Las inferencias basadas para muestras grande pueden ser inexactas
 y/o engañosas en muestras pequeñas.</p>
 <p>En esos casos, se puede hacer inferencias usando remuestreo
@@ -832,13 +842,13 @@ cualquier otro parámetro) de <span class="math inline">\(Y\)</span>. Para esto 
 independiente <span class="math inline">\(\boldsymbol y=(y_{1},...,y_{n})\)</span>.</p>
 <p>Pasos del boostrap:</p>
 <ol style="list-style-type: decimal">
-<li>Obtener una muestra aleatoria con remuestreo de <span class="math inline">\(\boldsymbol y:\boldsymbol y=(y_{1}^{*},...,y_{n}^{*})\)</span>.</li>
+<li>Obtener una muestra aleatoria con remuestreo de <span class="math inline">\(\boldsymbol y=(y_{1}^{*},...,y_{n}^{*})\)</span>.</li>
 <li>Calcular la mediana usando la muestra el paso 1 <span class="math inline">\((Me_{1})\)</span>.</li>
 <li>Repita los pasos 1 y 2 un número grande de veces <span class="math inline">\((B)\)</span>.</li>
 <li>un intervalo de confianza del 95% basado en percentiles muestrales 2.5% y 97.5 %.</li>
 </ol>
-<div id="bootstrap-en-regresión" class="section level4 hasAnchor" number="5.2.6.1">
-<h4><span class="header-section-number">5.2.6.1</span> Bootstrap en regresión<a href="modelos-no-lineales.html#bootstrap-en-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="bootstrap-en-regresión" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Bootstrap en regresión<a href="modelos-no-lineales.html#bootstrap-en-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Método residual resampling:</p>
 <ol style="list-style-type: decimal">
 <li><p>Con la muestra dada: <span class="math inline">\((x_{i},y_{i}),i=1,...,n\)</span> ajustar el modelo y obtener los resifuos: <span class="math inline">\(e_{i}=y_{i}-x_{i}^{&#39;}\hat{\beta}.\)</span></p></li>
@@ -856,10 +866,13 @@ el intervalo de confianza para <span class="math inline">\(\beta_{j}\)</span> us
 ##  Number of bootstraps was 999 out of 1000 attempted</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="modelos-no-lineales.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(mod.boot<span class="sc">$</span>t,<span class="at">labels=</span><span class="fu">c</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">1</span>]),<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">2</span>]),<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">3</span>]),</span>
 <span id="cb19-2"><a href="modelos-no-lineales.html#cb19-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">4</span>])))</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/bootgraf-1.png" width="672" />
-<strong>Estimaciones por bootstrap</strong>
-Linea roja: estimación por mínimos
-cuadrados. Lineas rojas: percentil 2.5, media y percentil 97.5.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootgraf"></span>
+<img src="MLG2_files/figure-html/bootgraf-1.png" alt="Metodo Bootstrap datos puromicina. " width="672" />
+<p class="caption">
+Figure 5.8: Metodo Bootstrap datos puromicina.
+</p>
+</div>
+<p><strong>Estimaciones por bootstrap</strong></p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="modelos-no-lineales.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
 <span id="cb20-2"><a href="modelos-no-lineales.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">1</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
 <span id="cb20-3"><a href="modelos-no-lineales.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">1</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
@@ -880,7 +893,12 @@ cuadrados. Lineas rojas: percentil 2.5, media y percentil 97.5.</p>
 <span id="cb20-18"><a href="modelos-no-lineales.html#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">4</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
 <span id="cb20-19"><a href="modelos-no-lineales.html#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
 <span id="cb20-20"><a href="modelos-no-lineales.html#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/bootgrafconf-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootgrafconf"></span>
+<img src="MLG2_files/figure-html/bootgrafconf-1.png" alt="Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5" width="672" />
+<p class="caption">
+Figure 5.9: Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5
+</p>
+</div>
 <p>Intervalos del 95% de confianza usando bootstrap (corrección de
 sesgo):</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="modelos-no-lineales.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
@@ -895,8 +913,7 @@ sesgo):</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="modelos-no-lineales.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>##        2.5%       97.5% 
 ## -0.00663091  0.03540431</code></pre>
-<p><strong>Puromicina - bootstrap</strong> \
-Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual.</p>
+<p><strong>Puromicina - bootstrap</strong> \</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="modelos-no-lineales.html#cb29-1" aria-hidden="true" tabindex="-1"></a>fit.rate<span class="ot">=</span> <span class="cf">function</span>(theta,x){</span>
 <span id="cb29-2"><a href="modelos-no-lineales.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(theta[<span class="dv">1</span>]<span class="sc">*</span>x<span class="sc">/</span>(theta[<span class="dv">2</span>]<span class="sc">+</span>x),</span>
 <span id="cb29-3"><a href="modelos-no-lineales.html#cb29-3" aria-hidden="true" tabindex="-1"></a>        (theta[<span class="dv">1</span>]<span class="sc">+</span>theta[<span class="dv">3</span>])<span class="sc">*</span>x<span class="sc">/</span>(theta[<span class="dv">2</span>]<span class="sc">+</span>theta[<span class="dv">4</span>]<span class="sc">+</span>x))</span>
@@ -913,10 +930,15 @@ Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual.</p>
 <span id="cb29-14"><a href="modelos-no-lineales.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, thP[<span class="dv">1</span>]<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>x),<span class="at">col=</span><span class="dv">2</span>)</span>
 <span id="cb29-15"><a href="modelos-no-lineales.html#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, (thP[<span class="dv">1</span>]<span class="sc">+</span>thP[<span class="dv">3</span>])<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>thP[<span class="dv">4</span>]<span class="sc">+</span>x))</span>
 <span id="cb29-16"><a href="modelos-no-lineales.html#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state)</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/bootgrafpred-1.png" width="672" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootgrafpred"></span>
+<img src="MLG2_files/figure-html/bootgrafpred-1.png" alt="Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual." width="672" />
+<p class="caption">
+Figure 5.10: Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual.
+</p>
 </div>
-<div id="algunas-consideraciones" class="section level4 hasAnchor" number="5.2.6.2">
-<h4><span class="header-section-number">5.2.6.2</span> Algunas consideraciones<a href="modelos-no-lineales.html#algunas-consideraciones" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+<div id="algunas-consideraciones" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Algunas consideraciones<a href="modelos-no-lineales.html#algunas-consideraciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Lo ideal es que el algoritmo llegue a la solución en pocas
 iteraciones (esto pasa si la aproximación lineal es adecuada).</li>
@@ -927,7 +949,6 @@ iniciales. Es posible que caigamos en un máximo local.</p>
 asintóticas pueden no ser adecuadas. Por lo tanto, es mas
 conveniente usar bootstrap para hacer inferencias.</p>
 
-</div>
 </div>
 </div>
 </div>

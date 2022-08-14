@@ -200,3 +200,7 @@ número-de-cangrejos-satélites-1
 fig:unnamed-chunk-1
 fig:tresmodelospavos
 fig:linealpuromicina
+fig:puromicinaplotl
+fig:bootgraf
+fig:bootgrafconf
+fig:bootgrafpred
