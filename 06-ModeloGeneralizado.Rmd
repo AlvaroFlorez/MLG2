@@ -6,6 +6,8 @@ logdose <- c(1.6907, 1.7242, 1.7552, 1.7842, 1.8113, 1.8369, 1.8610, 1.8839)
 dead <- c(6, 13, 18, 28, 52, 53, 61, 60) # numbers dead
 n <- c(59, 60, 62, 56, 63, 59, 62, 60) # binomial sample sizes
 Datos=data.frame(logdose,n,dead)
+library(HSAUR2)
+data(epilepsy)
 ```
 ### Modelos lineales
 Modelo lineal:
@@ -37,14 +39,14 @@ knitr::kable(
 
 ¿Hay una relación entre la dosis y la mortalidad de escarabajos?
 
-```{r grafMortEsc}
+```{r grafMortEsc, fig.align='center', fig.cap="Datos escarabajos. Proporción de muerte vs log dosis."}
 plot(logdose,dead/n,xlab='log dosis',ylab='proporción de muertos',ylim=c(0,1),pch=16)
 
 ```
 
 ### Modelo logístico
 
-Definiendo $y_{i}=\sum_{i=1}^ny_{ij}/n_{i}$ (la proporción de éxitos en ni ensayos independientes), tenemos que:
+Definiendo $y_{i}=\sum_{i=1}^ny_{ij}/n_{i}$ (la proporción de éxitos en $n_i$ ensayos independientes), tenemos que:
 
 $$
 n_{i}y_{i}\sim binomial(n_{i},\pi_{i}), \quad i=1,...,n, \quad \text{donde} \quad \pi_{i}=g(\bx_{i},\bbeta).
@@ -82,8 +84,18 @@ ensayo.
 
 * ```seizure.rate```(variable respuesta): número de ataques epilépticos (x dos semanas) luego de 8 semanas.
 
-"insertar graficos de epilepsia"
+```{r, fig.align='center', fig.cap="Datos epilepsia"}
+epilepsy=subset(epilepsy, period==4)#selecionamos la semana 4
 
+par(mfrow=c(1,3))
+plot(seizure.rate~age, col=treatment, pch=16, data=epilepsy, xlab="Edad",
+     ylab = "Num. ataques epiléptico(4ta semana)")
+plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
+     xlab="Num. ataques epiléptico(pre tratamiento)",
+     ylab = "Num. ataques epiléptico(4ta semana)")
+boxplot(seizure.rate~treatment,data=epilepsy, xlab = "Tratamiento",
+        ylab = "Num. ataques epiléptico(4ta semana)")
+```
 #### Modelo poisson
 
 Aquí podemos suponer que:
@@ -100,7 +112,7 @@ $$
 \lambda_{i}=g^{-1}(\bx_{i},\bbeta)=exp(\bx_{i}^{'}\bbeta).
 $$
 
-Por lo que: $g(\lambda_{i}=log\lambda_{i}=\bx_{i}^{'}\bbeta$ **(función log)**.
+Por lo que: $g(\lambda_{i})=log\lambda_{i}=\bx_{i}^{'}\bbeta$ **(función log)**.
 
 ## Modelo lineal generalizado (GLM)
 

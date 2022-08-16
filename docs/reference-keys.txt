@@ -204,3 +204,4 @@ fig:puromicinaplotl
 fig:bootgraf
 fig:bootgrafconf
 fig:bootgrafpred
+fig:grafMortEsc
