@@ -370,7 +370,7 @@ $\hat{\btheta}$ es asintóticamente $(n\to \infty)$ insesgado. Esto es, $E(\hat{
 La varianza asintótica $(n\to \infty)$ de $\hat{\btheta}$ se calcula como la inversa de **la matriz de información**:
 
 $$
-v(\hat{\btheta})=I(\btheta)^{-1},\quad \text{donde} \quad I(\btheta)=-E[H(\btheta)]
+V(\hat{\btheta})=I(\btheta)^{-1},\quad \text{donde} \quad I(\btheta)=-E[H(\btheta)]
 $$
  **Teorema de Cramer-Rao:** La varianza de cualquier estimador es insesgado de un parámetro $\btheta$ debe:
  
@@ -417,7 +417,7 @@ Podemos reemplazar $H(\btheta)$ por $I(\btheta)$ **(algoritmo Fisher's scoring)*
 El modelo lineal generalizado (GLM) asume que:
 
 $$
-f(y_{i};\theta_{i},\phi)=exp\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)} +c(y_{i},\phi)\},
+f(y_{i};\theta_{i},\phi)=exp\left\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)} +c(y_{i},\phi)\right\},
 $$
 
 donde $\phi>0$. Además, $E(y_{i})=b'(\theta_{i})$ y $V(y_{i})=b''(\theta_{i})a(\phi).$
@@ -462,7 +462,7 @@ $$
 **Función de enlace:**
 
 $$
-log(\frac{\pi_{i}}{1-\pi_{i}})=\beta_{0}+\beta_{1}log\text{dosis}_{i}.
+log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)=\beta_{0}+\beta_{1}log\text{dosis}_{i}.
 $$
 
 ### Ataques epilépticos
@@ -546,7 +546,11 @@ $$
 w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})}.
 $$
 
-Note que los valores de $\bW$ dependen de la función dde elace g $\partial\mu_{i}/\partial\eta_{i}=g'( \mu_{i})$.
+Note que los valores de $\bW$ dependen de la función de enlace $g$
+
+$$
+\partial\mu_{i}/\partial\eta_{i}=g'( \mu_{i})
+$$
 
 #### Mortalidad de escarabajos
 
