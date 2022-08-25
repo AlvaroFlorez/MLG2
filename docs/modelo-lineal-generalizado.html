@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-08-16" />
+<meta name="date" content="2022-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -507,7 +507,7 @@ y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda
 <p><span class="math display">\[
 \lambda_{i}=g^{-1}(\boldsymbol x_{i},\boldsymbol \beta)=exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta).
 \]</span></p>
-<p>Por lo que: <span class="math inline">\(g(\lambda_{i}=log\lambda_{i}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span> <strong>(función log)</strong>.</p>
+<p>Por lo que: <span class="math inline">\(g(\lambda_{i})=log\lambda_{i}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span> <strong>(función log)</strong>.</p>
 </div>
 </div>
 </div>
@@ -654,7 +654,7 @@ f(y;\mu)=exp(-\mu+ylog\mu-logy!).
 </ul>
 <p>La distribución normal:</p>
 <p><span class="math display">\[
-f(y;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma}}exp[-\frac{()}{}]
+f(y;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma}}exp\begin{bmatrix}-\frac{(y-\mu   )^2}{2\sigma^2}\end{bmatrix}
 \]</span></p>
 <p>Se puede re-escribir como:</p>
 <p><span class="math display">\[
@@ -671,7 +671,7 @@ f(y;\pi)=\left(\begin{array}{c}n\\y\end{array}\right)\pi^y(1-\pi)^{n-y}.
 \]</span></p>
 <p>se puede re-escribir como:</p>
 <p><span class="math display">\[
-f(y;\pi)=exp\{y[log\pi-log(1-\pi)]+nlog(1-\pi)+log\left(\begin{array}{c}n\\y\end{array}\right)\}
+f(y;\pi)=exp\left\{y[log\pi-log(1-\pi)]+nlog(1-\pi)+log\left(\begin{array}{c}n\\y\end{array}\right)\right\}
 \]</span>
 donde:</p>
 <ul>
@@ -690,9 +690,9 @@ donde:</p>
 <thead>
 <tr class="header">
 <th align="left">Distribución</th>
-<th align="left"><span class="math inline">\(\beta\)</span></th>
+<th align="left"><span class="math inline">\(\theta\)</span></th>
 <th align="left"><span class="math inline">\(a(\phi)\)</span></th>
-<th align="left"><span class="math inline">\(b(\beta)\)</span></th>
+<th align="left"><span class="math inline">\(b(\theta)\)</span></th>
 <th align="left"><span class="math inline">\(c(y,\phi)\)</span></th>
 </tr>
 </thead>
@@ -708,7 +708,7 @@ donde:</p>
 <td align="left">Binomial</td>
 <td align="left"><span class="math inline">\(log(\frac{\pi}{1-\pi})\)</span></td>
 <td align="left"><span class="math inline">\(\frac{1}{n}\)</span></td>
-<td align="left"><span class="math inline">\(log(1+exp\beta)\)</span></td>
+<td align="left"><span class="math inline">\(log(1+exp\theta)\)</span></td>
 <td align="left"><span class="math inline">\(log\left(\begin{array}{c}n \\ y\end{array}\right)\)</span></td>
 </tr>
 <tr class="odd">

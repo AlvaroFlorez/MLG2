@@ -265,7 +265,7 @@ Por lo tanto:
 La distribución normal:
 
 $$
-f(y;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma}}exp[-\frac{()}{}]
+f(y;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma}}exp\begin{bmatrix}-\frac{(y-\mu   )^2}{2\sigma^2}\end{bmatrix}
 $$
 
 Se puede re-escribir como:
@@ -289,7 +289,7 @@ $$
 se puede re-escribir como:
 
 $$
-f(y;\pi)=exp\{y[log\pi-log(1-\pi)]+nlog(1-\pi)+log\left(\begin{array}{c}n\\y\end{array}\right)\}
+f(y;\pi)=exp\left\{y[log\pi-log(1-\pi)]+nlog(1-\pi)+log\left(\begin{array}{c}n\\y\end{array}\right)\right\}
 $$
 donde:
 
@@ -307,10 +307,10 @@ library(knitr)
 mathy.df <- data.frame(b4=c("Normal","Binomial", "Poisson"), 
                        b0=c("$\\mu$","$log(\\frac{\\pi}{1-\\pi})$","$log(\\lambda)$"), 
 B1=c("$\\sigma^2$","$\\frac{1}{n}$","$1$"),
-B2 = c("$\\frac{1}{2}\\mu^2$","$log(1+exp\\beta)$","$exp\\lambda$"),
+B2 = c("$\\frac{1}{2}\\mu^2$","$log(1+exp\\theta)$","$exp\\lambda$"),
 B3 = c("$-\\frac{1}{2}log(2\\pi\\sigma^2)-\\frac{y^2}{2\\sigma^2}$","$log\\left(\\begin{array}{c}n \\\\ y\\end{array}\\right)$","$-log(y!)$"))
 
-colnames(mathy.df) <- c("Distribución", "$\\beta$", "$a(\\phi)$","$b(\\beta)$","$c(y,\\phi)$")
+colnames(mathy.df) <- c("Distribución", "$\\theta$", "$a(\\phi)$","$b(\\theta)$","$c(y,\\phi)$")
 
 kable(mathy.df, escape=FALSE)
 ```
