@@ -734,19 +734,34 @@ $$
 
 donde $\hat{\bbeta}^0=(\hat{\bbeta}_1,\bbeta_2^0)'.$
 
-"grafico diapositiva 47"
-
 #### Ejemplo ataques epilépticos
 
-"Tabla"
+```{r, echo=FALSE, include=TRUE, results="asis"}
+mathy.df <- data.frame(b0=c("Intercepto",                  "tratamiento","base","tratamientoxbase"),                      b1=c("$\\beta_0$","$\\beta_1$","$\\beta_2$","$\\beta_3$"),
+b2=c(1.2453,-0.3636,0.0209,0.0009),
+b3=c(0.1176,0.1625,0.0019,0.0023),
+b4=c(10.59,-2.24,10.94,0.37),                      
+b5=c(0.0000,0.0253,0.0000,0.7083))
+
+colnames(mathy.df)<-c("Efecto","Parm.","est.","err. std.","Valor-z","Valor-p")
+
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T)
+```
 
 Prueba de hipótesis:
 $$
 \qquad H_0:\beta_1=\beta_3=0
 $$
+```{r, echo=FALSE, include=TRUE, results="asis"}
+mathy.df <- data.frame(b0=c("Razón de verosimilitud",                  "Score","Wald"),                      
+b1=c(10.405,10.418,10.325),
+b2=c(2,2,2),
+b3=c(0.005502,0.005466,0.005726))
 
-"Tabla"
+colnames(mathy.df)<-c("Prueba","Estadístico","g.l.","Valor-p")
 
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T)
+```
 
 ## intervalos de confianza
 
@@ -799,13 +814,30 @@ lines(pred.x$logdose,lim.inf, col=2)
 ```
 
 #### Ataques epilépticos
+```{r}
+summary(modPois)
+```
 
-```{r grafintervalosepilep, include=TRUE}
 
+```{r grafintervalosepilep, fig.align='center',fig.cap="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)"}
+plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
+     xlab="Num. ataques epiléptico(pre tratamiento)",
+     ylab = "Num. ataques epiléptico(4ta semana)")
+lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)
+lines(x,predpois[order(y$treatment, y$base)[51:100]],col=2, lwd = 2)
+
+pred.link = predict(modPois,newdata = y,type='link',se.fit = T)
+
+lim.sup = exp(pred.link$fit + qnorm(0.975)*pred.link$se.fit)
+lim.inf = exp(pred.link$fit - qnorm(0.975)*pred.link$se.fit)
+
+lines(x,lim.sup[order(y$treatment, y$base)[1:50]], lty=2)
+lines(x,lim.inf[order(y$treatment, y$base)[1:50]], lty=2)
+
+lines(x,lim.sup[order(y$treatment, y$base)[51:100]],col=2, lty=2)
+lines(x,lim.inf[order(y$treatment, y$base)[51:100]],col=2, lty=2)
 
 ```
-"falta gráfica y tabla"
-
 
 ## Devianza
 
@@ -829,7 +861,7 @@ Donde:
 
 * $\ell(\by)=\sum_{i=1}^n[y_i\tildetheta_i-b(\tildetheta_i)]/a(\phi)$.
 
-*  $\ell(\hat{\bmu})=\sum_{i=1}^n[y_i\tildetheta_i-b(\tildetheta_i)]/a(\phi)$. "*es y_i o mu_i?"
+*  $\ell(\hat{\bmu})=\sum_{i=1}^n[y_i\hat{\theta_i}-b(\hat{\theta_i})]/a(\phi)$. 
 
 $\tildetheta_i$ corresponde a la estimación de $\theta_i$ en el modelo saturado $(\tildemu_i=y_i)$
 

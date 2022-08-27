@@ -206,3 +206,4 @@ fig:bootgrafconf
 fig:bootgrafpred
 fig:grafMortEsc
 fig:unnamed-chunk-5
+fig:grafintervalosepilep
