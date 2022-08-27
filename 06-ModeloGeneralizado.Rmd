@@ -595,15 +595,30 @@ Modelo estimado:
 $$
 \hat{\lambda}_i=exp(1.245-0.363\text{treat}_i+0.021\text{base}_i+0.0008\text{base}_i\text{treat}_i)
 $$
+```{r}
+modPois=glm(seizure.rate~base+treatment+base:treatment,family=poisson,
+            data =epilepsy)
+summary(modPois)
+```
+```{r,fig.align='center',fig.cap="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)"}
+y = data.frame(base=seq(min(epilepsy$base),max(epilepsy$base),length.out=100),
+               treatment = factor(1:2, levels = 1:2, labels = levels(epilepsy$treatment)))
+predpois = predict(modPois,y,type='response')
+x=seq(min(epilepsy$base),max(epilepsy$base),length.out=50)
 
-"insertar gráfico de la diapositiva 41"
+plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
+     xlab="Num. ataques epiléptico(pre tratamiento)",
+     ylab = "Num. ataques epiléptico(4ta semana)")
+lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)
+lines(x,predpois[order(y$treatment, y$base)[51:100]],col=2, lwd = 2)
+```
 
 ### Interpretación de parámetros - modelo Poisson
 
 En el modelo Poisson, tenemos que: $E(Y|x)=exp(\beta_0+x\beta_1)$
 
 $$
-\beta_1=log[\frac{E(Y|x=a+1)}{E(Y|x=a)}]
+\beta_1=log\left[\frac{E(Y|x=a+1)}{E(Y|x=a)}\right]
 $$
 
 Por lo tanto,
@@ -619,7 +634,7 @@ Entonces, $exp(\beta_1)$ es una tasa de crecimiento del valor esperado de $Y$ po
 
 Para GLM con función de enlace canónica:
 
-* Matriz hessiana = matriz de información
+* Matriz hessiana = -matriz de información
 
 * Por lo tanto los algoritmos Newton-Raphson y Fisher's scoring
 son equivalentes
@@ -673,7 +688,7 @@ $$
 **Estadístico de prueba:**
 
 $$
-U_2(\hat{\beta}^0)'\{V[U_2(\hat{\beta}^0)]\}^{-1}U_2(\hat{\beta}^0)\sim \chi^2_{p-q},
+U_2(\hat{\beta}^0)'\left\{V\left[U_2(\hat{\beta}^0)\right]\right\}^{-1}U_2(\hat{\beta}^0)\sim \chi^2_{p-q},
 $$
 donde $\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)'.$
 
@@ -683,7 +698,6 @@ donde $\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)'.$
 
 $$
 \qquad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2 \ne \bbeta_2^0
-
 $$
 
 Asintóticamente, $\hat{\bbeta}\sim N[\bbeta,\bI(\bbeta)^{-1}]$. por lo tanto:
@@ -695,7 +709,7 @@ $$
 **Estadístico de prueba:**
 
 $$
-(\hat{\bbeta}_2-\bbeta_2^0)'[V(\hat{\bbeta}_2)]^{-1}(\hat{\bbeta}_2-\bbeta_2^0)\sim \chi^2_{p-q}.
+\left(\hat{\bbeta}_2-\bbeta_2^0\right)'\left[V\left(\hat{\bbeta}_2\right)\right]^{-1}\left(\hat{\bbeta}_2-\bbeta_2^0\right)\sim \chi^2_{p-q}.
 $$
 
 #### Prueba de razón de verosimilitud
@@ -706,16 +720,16 @@ $$
 \quad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2\ne\bbeta_2^0
 $$
 
-Asintóticamente (y usando aprox. series Taylor de orden 1):
+Asintóticamente (y usando aproximación por series Taylor de orden 1):
 
 $$
-2[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)]\sim\chi^2.
+2\left[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)\right]\sim\chi^2.
 $$
 
 **Estadístico de prueba:**
 
 $$
-2[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)]
+2\left[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)\right]
 $$
 
 donde $\hat{\bbeta}^0=(\hat{\bbeta}_1,\bbeta_2^0)'.$
