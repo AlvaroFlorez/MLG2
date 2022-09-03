@@ -1072,16 +1072,181 @@ donde <span class="math inline">\(\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)&#39;.\
 2\left[ℓ(\hat{\boldsymbol \beta})-ℓ(\hat{\boldsymbol \beta}^0)\right]
 \]</span></p>
 <p>donde <span class="math inline">\(\hat{\boldsymbol \beta}^0=(\hat{\boldsymbol \beta}_1,\boldsymbol \beta_2^0)&#39;.\)</span></p>
-<p>“grafico diapositiva 47”</p>
 </div>
 <div id="ejemplo-ataques-epilépticos" class="section level4 hasAnchor" number="6.3.6.4">
 <h4><span class="header-section-number">6.3.6.4</span> Ejemplo ataques epilépticos<a href="modelo-lineal-generalizado.html#ejemplo-ataques-epilépticos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>“Tabla”</p>
-<p>Prueba de hipótesis:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Efecto
+</th>
+<th style="text-align:left;">
+Parm.
+</th>
+<th style="text-align:right;">
+est.
+</th>
+<th style="text-align:right;">
+err. std.
+</th>
+<th style="text-align:right;">
+Valor-z
+</th>
+<th style="text-align:right;">
+Valor-p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Intercepto
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_0\)</span>
+</td>
+<td style="text-align:right;">
+1.2453
+</td>
+<td style="text-align:right;">
+0.1176
+</td>
+<td style="text-align:right;">
+10.59
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tratamiento
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_1\)</span>
+</td>
+<td style="text-align:right;">
+-0.3636
+</td>
+<td style="text-align:right;">
+0.1625
+</td>
+<td style="text-align:right;">
+-2.24
+</td>
+<td style="text-align:right;">
+0.0253
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+base
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_2\)</span>
+</td>
+<td style="text-align:right;">
+0.0209
+</td>
+<td style="text-align:right;">
+0.0019
+</td>
+<td style="text-align:right;">
+10.94
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tratamientoxbase
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_3\)</span>
+</td>
+<td style="text-align:right;">
+0.0009
+</td>
+<td style="text-align:right;">
+0.0023
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+0.7083
+</td>
+</tr>
+</tbody>
+</table>
+Prueba de hipótesis:
 <span class="math display">\[
 \qquad H_0:\beta_1=\beta_3=0
-\]</span></p>
-<p>“Tabla”</p>
+\]</span>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Prueba
+</th>
+<th style="text-align:right;">
+Estadístico
+</th>
+<th style="text-align:right;">
+g.l.
+</th>
+<th style="text-align:right;">
+Valor-p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Razón de verosimilitud
+</td>
+<td style="text-align:right;">
+10.405
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.005502
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Score
+</td>
+<td style="text-align:right;">
+10.418
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.005466
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wald
+</td>
+<td style="text-align:right;">
+10.325
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0.005726
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -1146,7 +1311,54 @@ donde <span class="math inline">\(\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)&#39;.\
 </div>
 <div id="ataques-epilépticos-2" class="section level4 hasAnchor" number="6.4.1.2">
 <h4><span class="header-section-number">6.4.1.2</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>“falta gráfica y tabla”</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="modelo-lineal-generalizado.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = seizure.rate ~ base + treatment + base:treatment, 
+##     family = poisson, data = epilepsy)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -3.0482  -1.2217  -0.1162   0.5115   4.0478  
+## 
+## Coefficients:
+##                           Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)              1.2453159  0.1176157  10.588   &lt;2e-16 ***
+## base                     0.0209356  0.0019144  10.936   &lt;2e-16 ***
+## treatmentProgabide      -0.3635857  0.1624995  -2.237   0.0253 *  
+## base:treatmentProgabide  0.0008523  0.0022778   0.374   0.7083    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 476.25  on 58  degrees of freedom
+## Residual deviance: 149.54  on 55  degrees of freedom
+## AIC: 345.3
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="modelo-lineal-generalizado.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
+<span id="cb12-2"><a href="modelo-lineal-generalizado.html#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
+<span id="cb12-3"><a href="modelo-lineal-generalizado.html#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
+<span id="cb12-4"><a href="modelo-lineal-generalizado.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb12-5"><a href="modelo-lineal-generalizado.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb12-6"><a href="modelo-lineal-generalizado.html#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="modelo-lineal-generalizado.html#cb12-7" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modPois,<span class="at">newdata =</span> y,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
+<span id="cb12-8"><a href="modelo-lineal-generalizado.html#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="modelo-lineal-generalizado.html#cb12-9" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb12-10"><a href="modelo-lineal-generalizado.html#cb12-10" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb12-11"><a href="modelo-lineal-generalizado.html#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="modelo-lineal-generalizado.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb12-13"><a href="modelo-lineal-generalizado.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb12-14"><a href="modelo-lineal-generalizado.html#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="modelo-lineal-generalizado.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb12-16"><a href="modelo-lineal-generalizado.html#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:grafintervalosepilep"></span>
+<img src="MLG2_files/figure-html/grafintervalosepilep-1.png" alt="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)" width="672" />
+<p class="caption">
+Figure 6.5: Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -1208,13 +1420,13 @@ H_0:logit(\pi_i)=\beta_0+\sum_{i=1}^k\beta_kx_{ik}
 <p>*La aproximación es buena para datos agrupados.</p>
 <p><strong>Mortalidad de escarabajos</strong></p>
 <p>Los valores de la devianza y el <span class="math inline">\(\chi^2\)</span> de Pearson:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="modelo-lineal-generalizado.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devianza</span></span>
-<span id="cb10-2"><a href="modelo-lineal-generalizado.html#cb10-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">deviance</span>(modBin)</span>
-<span id="cb10-3"><a href="modelo-lineal-generalizado.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(D,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="modelo-lineal-generalizado.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devianza</span></span>
+<span id="cb13-2"><a href="modelo-lineal-generalizado.html#cb13-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">deviance</span>(modBin)</span>
+<span id="cb13-3"><a href="modelo-lineal-generalizado.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(D,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
 <pre><code>## [1] 0.08145881</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="modelo-lineal-generalizado.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-cuadrado de Pearson</span></span>
-<span id="cb12-2"><a href="modelo-lineal-generalizado.html#cb12-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modBin,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb12-3"><a href="modelo-lineal-generalizado.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(X2,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="modelo-lineal-generalizado.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-cuadrado de Pearson</span></span>
+<span id="cb15-2"><a href="modelo-lineal-generalizado.html#cb15-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modBin,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb15-3"><a href="modelo-lineal-generalizado.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(X2,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
 <pre><code>## [1] 0.1235272</code></pre>
 <table>
 <thead>

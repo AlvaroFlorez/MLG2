@@ -4,6 +4,7 @@ library(MASS)
 library(knitr)
 library(kableExtra)
 library(aod)
+library(pROC)
 data(birthwt)
 ```
 ## Casos de estudio
@@ -26,9 +27,7 @@ exposición a disulfuro de carbono gaseoso $(CS2mgl^{-1})$ en diversas concentra
 |1.8839|60|60|
 ¿Hay una relación entre la dosis y la mortalidad de escarabajos?
 
-### datos de escarabajos
-
-```{r, include=TRUE}
+```{r, fig.align='center',fig.cap="Datos escarabajos."}
 logdose <- c(1.6907, 1.7242, 1.7552, 1.7842, 1.8113, 1.8369, 1.8610, 1.8839)
 dead <- c(6, 13, 18, 28, 52, 53, 61, 60) # numbers dead
 n <- c(59, 60, 62, 56, 63, 59, 62, 60) # binomial sample sizes
@@ -53,11 +52,11 @@ $$
 
 ### Bajo peso al nacer
 
-Se busca identificar factores de riesgo asociados con el nacimiento de niños con bajo peso (< 2:5 kgs). datos: ```data(birthwt,package= 'MASS'```)
+Se busca identificar factores de riesgo asociados con el nacimiento de niños con bajo peso ($<2.5$ kgs). datos: ```data(birthwt,package= 'MASS'```)
 
 **Muestra:**189 madres atendidas en una clínica.
 
-**Variable respuesta:** Bajo peso al nacer (1 si peso <2.5 kgs, 0 si peso$\geq$2.5 kgs).
+**Variable respuesta:** Bajo peso al nacer (1 si peso $<$ 2.5 kgs, 0 si peso $\geq$ 2.5 kgs).
 
 Posibles covariables:
 
@@ -97,7 +96,7 @@ Posibles covariables:
 
 * ```hb```: nivel de hemoglobina.
 
-```{r, include=TRUE}
+```{r, fig.align='center',fig.cap="Datos teratoligía"}
 data(lirat,package = 'VGAM')
 par(mfrow=c(1,2))
 #Proporcion de fetos muestos vs tratamiento
@@ -173,7 +172,7 @@ Aunque podemos utilizar otras funciones de enlace.
 **Probit:**
 
 $$
-\Phi(\pi_i)=\bx'_i\bbeta \quad \pi_i=\Phi(\bx'_i\bbeta),
+\Phi^{-1}(\pi_i)=\bx'_i\bbeta \quad \pi_i=\Phi(\bx'_i\bbeta),
 $$
 
 donde $\Phi(\cdot)$ es función acumulativa de la distribución normal estándar.
@@ -190,7 +189,7 @@ $$
 \pi_i=exp[-exp(\bx'_i\bbeta)] \quad -log[-log(\pi_i)]=\bx'_i\bbeta.
 $$
 
-```{r,echo=FALSE,include=TRUE}
+```{r,echo=FALSE,fig.align='center',fig.cap="Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
 
 pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))
 
@@ -208,7 +207,6 @@ lines(pred.x$logdose,pred.probit,col=2)
 lines(pred.x$logdose,pred.cloglog,col="green")
 
 ```
-Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
 
 ```{r, echo=FALSE, include=TRUE, results="asis"}
 
@@ -230,7 +228,14 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
   add_header_above(c("","","logit" = 2, "porbit" = 2, "cloglog" = 2))
 ```
 
-"insertar tabla najo peso al nacer"
+```{r}
+modbw.logit = glm(low~age+lwt+ptl+smoke,family=binomial(logit),data=birthwt)
+summary(modbw.logit)
+
+modbw.probit = glm(low~age+lwt+smoke+ptl,family=binomial(probit),data=birthwt)
+
+summary(modbw.probit)
+```
 
 ## Curva característica operativa del receptor(ROC)
 
@@ -247,9 +252,9 @@ colnames(mathy.df)<-c("y","0","1")
 
 kable(mathy.df, escape=FALSE,format = "html", booktabs = T,caption = "Tabla de clasificación") %>%
   kable_styling(bootstrap_options = "striped",
-                full_width = F) %>%add_header_above(c("","Predicción $\\hat{y}$" = 2)) %>% add_footnote(c("El recuento de casillas en estas tablas permite estimar la sensibilidad=$(\\haty=1|y=1)$ y específicamente=$(\\haty=0|y=0)$."))
-
+                full_width = F) 
 ```
+El recuento de casillas en estas tablas permite estimar la sensibilidad=$(\hat y=1|y=1)$ y especificidad=$(\hat y=0|y=0)$.
 
 Para datos no agrupados, la predicción $\hat{y}=1$ cuando $\hat{\pi_i}\geq\pi_0$(por ejemplo 0,5).
 
@@ -265,23 +270,52 @@ Dado que estos valores dependen de $\pi_0$, se pueden calcular para todos los po
 
 Por ejemplo, si $\pi_0$, tenemos:
 
-"tabla"
+```{r, echo=FALSE, include=TRUE, results="asis"}
+
+mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
+                       b1=c(123,49),
+                       b2=c(7,10))
+
+colnames(mathy.df)<-c("y","0","1")
+
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
+  kable_styling(bootstrap_options = "striped",
+                full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
+
+```
 
 Sensibilidad: $10/59 = 0,169$ - especificidad: $123/130 = 0,946$.
 
 Ahora, si $\pi_0= 0,3$:
 
-"tabla"
+```{r, echo=FALSE, include=TRUE, results="asis"}
+
+mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
+                       b1=c(79,19),
+                       b2=c(51,40))
+
+colnames(mathy.df)<-c("y","0","1")
+
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
+  kable_styling(bootstrap_options = "striped",
+                full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
+
+```
 
 Sensibilidad: $40/59 = 0,678$ - especificidad: $79/130 = 0,607$.
 
-Sensibilidad (linea negra) - especificidad (linea roja)
 
-"grafico"
+
+```{r, fig.align = 'center',out.width = "75%",echo=FALSE, fig.cap="Sensibilidad (linea negra) - especificidad (linea roja)"}
+knitr::include_graphics(here::here("figs", "grafsen.jpg"))
+```
 
 Gráfico de $P(\hat y=1|y=1)$ vs $P(\hat y=0|y=0)$
 
-"grafico"
+```{r, fig.align = 'center',out.width = "75%",echo=FALSE}
+knitr::include_graphics(here::here("figs", "Sensibilidad.png"))
+```
+
 
 El area bajo la curva de la curva ROC (llamado índice de concordancia) es una medida del poder predictivo del modelo.
 
@@ -292,10 +326,35 @@ Curva ROC para el modelo logístico:
 "grafico roc escarabajos"
 
 ### Bajo peso al nacer
+```{r,eval=FALSE}
+ 
+modbw.logit = glm(low~age+lwt+ptl+smoke,family=binomial(logit),data=birthwt)
+modbw.probit = glm(low~age+lwt+smoke+ptl,family=binomial(probit),data=birthwt)
+# curvas roc
+#library(pROC)
+ROCbw.logit = roc(birthwt$low~modbw.logit$fitted.values)
+ROCbw.probit = roc(birthwt$low~modbw.probit$fitted.values)
 
-Curva ROC para el modelo logístico (negro) y probit (rojo): 
 
-"grafico roc Bajo peso al nacer"
+```
+
+```{r,include=FALSE}
+ 
+modbw.logit = glm(low~age+lwt+ptl+smoke,family=binomial(logit),data=birthwt)
+modbw.probit = glm(low~age+lwt+smoke+ptl,family=binomial(probit),data=birthwt)
+# curvas roc
+#library(pROC)
+ROCbw.logit = roc(birthwt$low~modbw.logit$fitted.values)
+ROCbw.probit = roc(birthwt$low~modbw.probit$fitted.values)
+
+
+```
+
+```{r, fig.align='center', fig.cap="Curva ROC para el modelo logístico (negro) y probit (rojo)"}
+plot(ROCbw.logit)
+lines(ROCbw.probit,col=2)
+
+```
 
 modelo logístico: $AUC= 0,6884$
 modelo probit: $AUC= 0,6866$.

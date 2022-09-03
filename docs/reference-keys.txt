@@ -207,3 +207,12 @@ fig:bootgrafpred
 fig:grafMortEsc
 fig:unnamed-chunk-5
 fig:grafintervalosepilep
+tab:unnamed-chunk-5
+fig:unnamed-chunk-2
+fig:unnamed-chunk-3
+tab:unnamed-chunk-6
+tab:unnamed-chunk-7
+fig:unnamed-chunk-9
+fig:unnamed-chunk-11
+fig:unnamed-chunk-12
+fig:unnamed-chunk-13
