@@ -40,9 +40,9 @@ Dado que el número de casos depende del tamaño de la población, se modela la 
 
 $t_i$ es el tamaño de la población por grupo de edad y ciudad **(offset)**.
 
-Fredericia (línea negra), Horsens (línea roja), Kolding (línea verde), Vejle (línea azul).
 
-```{r, include=TRUE}
+
+```{r, include=TRUE, fig.align='center',fig.cap="Fredericia(línea negra), Horsens(línea roja), Kolding(línea verde), Vejle(línea azul)."}
 cancer.data = eba1977[order(eba1977$city),]
 
 # casos por 1000 habitantes
@@ -69,7 +69,7 @@ Los datos ```crabs``` de la librería ```asbio``` son de un estudio de hembras d
 
 * ```weight```: peso (kg)
 
-```{r, include=TRUE}
+```{r, include=TRUE, fig.align='center',fig.cap="Histograma(izquierda), número de satélites vs peso (derecha)"}
 par(mfrow=c(1,2))
 hist(crabs$satell,breaks = 20,main='',xlab='número de satálites',ylab='frecuencia')
 plot(crabs$satell~weight,data=crabs,xlab='peso (kg)',ylab='número de satálites')
@@ -98,7 +98,7 @@ En otros casos, la frecuencia de ceros puede ser mayor de lo esperado en el mode
 
 ### Modelo de conteo con offset
 
-El valor esperado de una variable de de conteo ·$y_i$ es proporcional a un índice $t_i$.
+El valor esperado de una variable de de conteo $y_i$ es proporcional a un índice $t_i$.
 
 Por lo que se puede modelar la tasa $(y_i/t_i)$ con valor esperado $\lambda_i/t_i$.
 
@@ -132,10 +132,9 @@ summary(poisson.model)
 ```
 Devianza= 23:447 y AIC= 137:84.
 
-Fredericia (línea negra), Horsens (línea roja), Kolding (línea verde), Vejle (línea azul).
 
-```{r, include=TRUE}
-### ajuste del modelo
+```{r, include=TRUE, fig.align='center',fig.cap="Fredericia (línea negra), Horsens (línea roja), Kolding (línea verde), Vejle (línea azul)."}
+# ajuste del modelo
 plot(1:6,tasa[cancer.data$city=='Fredericia'],xlab = 'grupo de edad',
      ylim=range(tasa),ylab='casos por 1000 habitantes',xaxt='n')
 axis(1,1:6,c('40-54','55-59','60-64','65-69','70-74','>75'))
@@ -173,9 +172,9 @@ Prueba de razón de verosimilitud:
 anova(poisson.model2,poisson.model,test='LRT')
 ```
 
-Fredericia (línea negra), otra ciudad (línea roja).
 
-```{r,include=TRUE}
+
+```{r,include=TRUE, fig.align='center',fig.cap="Fredericia (línea negra), otra ciudad (línea roja)."}
 plot(c(47,57,62,67,72,77),tasa[cancer.data$city=='Fredericia'],xlab = 'grupo de edad',
      ylim=range(tasa),ylab='casos por 1000 habitantes')
 points(c(47,57,62,67,72,77),tasa[cancer.data$city=='Horsens'],col=2)
@@ -189,7 +188,7 @@ lines(c(47,57,62,67,72,77),pred.tasa[cancer.data$city=='Horsens'],col=2,type='l'
 
 ## Distribución binomial negativa
 
-Modelo:$y|\lambda\sim Poisson(\lambda)$,
+Modelo: $y|\lambda\sim Poisson(\lambda)$,
 
 donde $\lambda\sim gamma(k,\mu).$ Esto es:
 
@@ -253,7 +252,10 @@ Dado que $\gamma>0$, el modelo binomial negativo no puede modelar datos con subd
 
 Poisson(3) (negro) - Poisson-gamma($3,\gamma=0.5$) (rojo) - Poisson-gamma($3,\gamma=2$) (verde)
 
-"Grafico comparaciones diapositiva 18"
+```{r, echo=FALSE,fig.align='center', fig.cap="", out.width = '75%'}
+knitr::include_graphics(here::here("figs", "DistribucionNegBin.jpg"))
+```
+
 
 #### Ataques epilépticos
 
@@ -269,14 +271,24 @@ summary(modbinNeg)
 
 ```
 
-|Modelo           |Devianza|g.l.|AIC   |
-|:----------------|:-------|:---|:-----|
-|Poisson          |149.68  |56  |343.44|
-|Binomial-negativa|70.124  |56  |313.32|
+```{r, echo=FALSE, include=TRUE, results="asis"}
 
-## Modelo Poisson con ceros infiados
+mathy.df <- data.frame(b0=c("Poisson","Binomial-negativa"), 
+                       b1=c(149.68,70.124),
+                       b2=c(56,56),
+                       b2=c(343.44,313.32))
 
-El modelo Poisson con ceros infiados (ZIP):
+colnames(mathy.df)<-c("Modelo","Devianza","g.l.","AIC")
+
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
+  kable_styling(bootstrap_options = "striped",
+                full_width = F)
+
+```
+
+## Modelo Poisson con ceros inflados
+
+El modelo Poisson con ceros inflados (ZIP):
 
 $$
 y_i=\begin{cases} 0 \qquad & \text{con probabilidad}\quad 1-\phi_i \\ Poisson(\lambda_i) \quad & \text{con probabilidad}\quad \phi_i\end{cases}
@@ -298,11 +310,12 @@ $$
 logit\phi_i=\bx'_{1i}\bbeta_1 \quad\text{y}\quad log\log\lambda_i\bx'_{2i}\bbeta_2
 $$
 
-Poisson(3) (negro) - ZI-Poisson($3,\phi=0.9$)(rojo) -
-Poisson-gamma($3,\phi=0.7$)(verde)
 
-"grafica diapositiva 21"
 
+```{r, echo=FALSE,fig.align='center', fig.cap="", out.width = '75%'}
+knitr::include_graphics(here::here("figs", "DistribucionZIP.jpg"))
+```
+Poisson(3) (negro), ZI-Poisson($3,\phi=0.9$)(rojo), Poisson-gamma($3,\phi=0.7$)(verde).
 
 El valor esperado y varianza de $y_i$ son:
 
