@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-09-03" />
+<meta name="date" content="2022-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -958,8 +958,8 @@ Figure 7.4: Sensibilidad (linea negra) - especificidad (linea roja)
 Figure 7.5: Curva ROC para el modelo logístico (negro) y probit (rojo)
 </p>
 </div>
-<p>modelo logístico: <span class="math inline">\(AUC= 0,6884\)</span>
-modelo probit: <span class="math inline">\(AUC= 0,6866\)</span>.</p>
+<p>modelo logístico: <span class="math inline">\(AUC= 0,6884\)</span>.</p>
+<p>modelo probit: <span class="math inline">\(AUC= 0,6866\)</span>.</p>
 </div>
 </div>
 <div id="sobredispersión" class="section level2 hasAnchor" number="7.5">
@@ -976,13 +976,13 @@ V(y_{it})=\pi_i(1-\pi_i)\quad \text{y} \quad cor(y_{it},y_{is})=\phi\pi_i(1-\pi_
 \]</span></p>
 <p>En este caso, tenemos que:</p>
 <p><span class="math display">\[
-V(y_i)=V\begin{pmatrix} \sum_{j=1}^{n_i}\frac{y_{ij}}{n_i}\end{pmatrix}=\frac{1}{n_i^2} \begin{bmatrix} \sum_{j=1}^{n_i}V(y_{it}+2\sum\sum_{s&lt;t}cov(y_{is},y_{it})) \end{bmatrix}=[1+\phi(n_i-1)]\frac{\pi_i(1-\pi_i)}{n_i}.
+V(y_i)=V\begin{pmatrix} \sum_{j=1}^{n_i}\frac{y_{ij}}{n_i}\end{pmatrix}=\frac{1}{n_i^2} \left[ \sum_{j=1}^{n_i}V(y_{it})+2\sum\sum_{s&lt;t}cov(y_{is},y_{it}) \right]=[1+\phi(n_i-1)]\frac{\pi_i(1-\pi_i)}{n_i}.
 \]</span></p>
 <p>Si:</p>
 <ul>
 <li><p><span class="math inline">\(\phi=0\)</span>, <span class="math inline">\(y_i\sim binomial(n_i,\pi)\)</span>.</p></li>
 <li><p><span class="math inline">\(\phi&gt;0\)</span>, tenemos sobredispersión.</p></li>
-<li><p><span class="math inline">\(-(n_i-1)^{-1}&lt;\phi&lt;0\)</span>tenemos subdispersión (menos
+<li><p><span class="math inline">\(-(n_i-1)^{-1}&lt;\phi&lt;0\)</span>, tenemos subdispersión (menos
 frecuente).</p></li>
 </ul>
 <p>En el caso del modelo binomial, tenemos que:</p>
@@ -1017,7 +1017,7 @@ f(y;n,\mu,\theta)=\int f(y|\pi)f(\pi)d\pi.
 \]</span></p>
 <p>La función de densidad de la distribución beta-binomial es:</p>
 <p><span class="math display">\[
-f(y;n,\mu,\theta)=\begin{pmatrix} n \\ y \end{pmatrix}\frac{\begin{bmatrix} \Pi_{k=0}^{y-1}(\mu+k\theta)\end{bmatrix} \begin{bmatrix} \Pi_{k=0}^{y-1}(1-\mu+k\theta)\end{bmatrix}}{\begin{bmatrix} \Pi_{k=0}^{y-1}(1+k\theta) \end{bmatrix}},
+f(y;n,\mu,\theta)=\begin{pmatrix} n \\ y \end{pmatrix}\frac{\begin{bmatrix} \Pi_{k=0}^{y-1}(\mu+k\theta)\end{bmatrix} \begin{bmatrix} \Pi_{k=0}^{n-y-1}(1-\mu+k\theta)\end{bmatrix}}{\begin{bmatrix} \Pi_{k=0}^{n-1}(1+k\theta) \end{bmatrix}},
 \]</span></p>
 <p>para <span class="math inline">\(y=0,1,...,n.\)</span></p>
 <p>Valor esperado y varianza de <span class="math inline">\(y=s/n\)</span>:</p>
@@ -1025,8 +1025,8 @@ f(y;n,\mu,\theta)=\begin{pmatrix} n \\ y \end{pmatrix}\frac{\begin{bmatrix} \Pi_
 E(y)=\mu\quad\text{y}\quad V(y)=\begin{bmatrix} 1+(n-1)\frac{\theta}{1+\theta} \end{bmatrix}\mu(1-\mu)\frac{1}{\mu}.
 \]</span></p>
 <p>Por lo cual, <span class="math inline">\(\phi=\theta/(1+\theta)\)</span> es la correlación entre ensayos Bernoulli.</p>
-<p>Binomial(15,0.3) (negro) - beta-binomial(15,0.3,<span class="math inline">\(\phi\)</span> = 0,1) (rojo) -beta-binomial(15,0.3,<span class="math inline">\(\phi\)</span> = 0,3) (verde)</p>
-<p>“Grafico betabinomial”</p>
+<p>Binomial(15,0.3)(negro), beta-binomial(15,0.3,<span class="math inline">\(\phi\)</span>=0,1)(rojo), beta-binomial(15,0.3,<span class="math inline">\(\phi\)</span>=0,3)(verde)</p>
+<p><img src="figs/DistrBetabin.jpg" width="75%" style="display: block; margin: auto;" /></p>
 <div id="modelo-beta-binomial" class="section level3 hasAnchor" number="7.6.1">
 <h3><span class="header-section-number">7.6.1</span> Modelo beta-binomial<a href="modelo-logístico-1.html#modelo-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Modelo:</p>
@@ -1104,6 +1104,54 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
 <pre><code>## [1] 168.9083</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="modelo-logístico-1.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.betabinom)</span></code></pre></div>
 <pre><code>## [1] 114.5625</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Modelo
+</th>
+<th style="text-align:right;">
+Deviance
+</th>
+<th style="text-align:right;">
+AIC
+</th>
+<th style="text-align:right;">
+BIC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Binomial
+</td>
+<td style="text-align:right;">
+168.908
+</td>
+<td style="text-align:right;">
+250.378
+</td>
+<td style="text-align:right;">
+260.680
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beta-Binomial
+</td>
+<td style="text-align:right;">
+114.563
+</td>
+<td style="text-align:right;">
+198.032
+</td>
+<td style="text-align:right;">
+210.395
+</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>

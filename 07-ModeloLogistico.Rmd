@@ -356,7 +356,8 @@ lines(ROCbw.probit,col=2)
 
 ```
 
-modelo logístico: $AUC= 0,6884$
+modelo logístico: $AUC= 0,6884$.
+
 modelo probit: $AUC= 0,6866$.
 
 
@@ -381,8 +382,9 @@ $$
 En este caso, tenemos que:
 
 $$
-V(y_i)=V\begin{pmatrix} \sum_{j=1}^{n_i}\frac{y_{ij}}{n_i}\end{pmatrix}=\frac{1}{n_i^2} \begin{bmatrix} \sum_{j=1}^{n_i}V(y_{it}+2\sum\sum_{s<t}cov(y_{is},y_{it})) \end{bmatrix}=[1+\phi(n_i-1)]\frac{\pi_i(1-\pi_i)}{n_i}.
+V(y_i)=V\begin{pmatrix} \sum_{j=1}^{n_i}\frac{y_{ij}}{n_i}\end{pmatrix}=\frac{1}{n_i^2} \left[ \sum_{j=1}^{n_i}V(y_{it})+2\sum\sum_{s<t}cov(y_{is},y_{it}) \right]=[1+\phi(n_i-1)]\frac{\pi_i(1-\pi_i)}{n_i}.
 $$
+
 
 Si:
 
@@ -390,7 +392,7 @@ Si:
 
 * $\phi>0$, tenemos sobredispersión.
 
-* $-(n_i-1)^{-1}<\phi<0$tenemos subdispersión (menos
+* $-(n_i-1)^{-1}<\phi<0$, tenemos subdispersión (menos
 frecuente).
 
 En el caso del modelo binomial, tenemos que:
@@ -440,7 +442,7 @@ $$
 La función de densidad de la distribución beta-binomial es:
 
 $$
-f(y;n,\mu,\theta)=\begin{pmatrix} n \\ y \end{pmatrix}\frac{\begin{bmatrix} \Pi_{k=0}^{y-1}(\mu+k\theta)\end{bmatrix} \begin{bmatrix} \Pi_{k=0}^{y-1}(1-\mu+k\theta)\end{bmatrix}}{\begin{bmatrix} \Pi_{k=0}^{y-1}(1+k\theta) \end{bmatrix}},
+f(y;n,\mu,\theta)=\begin{pmatrix} n \\ y \end{pmatrix}\frac{\begin{bmatrix} \Pi_{k=0}^{y-1}(\mu+k\theta)\end{bmatrix} \begin{bmatrix} \Pi_{k=0}^{n-y-1}(1-\mu+k\theta)\end{bmatrix}}{\begin{bmatrix} \Pi_{k=0}^{n-1}(1+k\theta) \end{bmatrix}},
 $$
 
 para $y=0,1,...,n.$
@@ -453,10 +455,11 @@ $$
 
 Por lo cual, $\phi=\theta/(1+\theta)$ es la correlación entre ensayos Bernoulli.
 
-Binomial(15,0.3) (negro) - beta-binomial(15,0.3,$\phi$ = 0,1) (rojo) -beta-binomial(15,0.3,$\phi$ = 0,3) (verde)
+Binomial(15,0.3)(negro), beta-binomial(15,0.3,$\phi$=0,1)(rojo), beta-binomial(15,0.3,$\phi$=0,3)(verde)
 
-"Grafico betabinomial"
-
+```{r, echo=FALSE,fig.align='center', fig.cap="", out.width = '75%'}
+knitr::include_graphics(here::here("figs", "DistrBetabin.jpg"))
+```
 
 ### Modelo beta-binomial
 
@@ -494,7 +497,20 @@ deviance(modlirat.binom)
 deviance(modlirat.betabinom)
 ```
 
+```{r, echo=FALSE, include=TRUE, results="asis"}
 
+mathy.df <- data.frame(b0=c("Binomial","Beta-Binomial"), 
+                       b1=c(168.908,114.563),
+                       b2=c(250.378,198.032),
+                       b3=c(260.68,210.395))
+
+colnames(mathy.df)<-c("Modelo","Deviance","AIC","BIC")
+
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
+  kable_styling(bootstrap_options = "striped",
+                full_width = F)
+
+```
 
 
 
