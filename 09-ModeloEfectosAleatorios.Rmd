@@ -1,7 +1,8 @@
 # Modelo lineal mixto
 
 ```{r preamble9, include=FALSE}
-
+library(agridat)
+data(harville.lamb)
 ```
 ## Casos de estudio
 
@@ -18,8 +19,14 @@ Variables
 
 * ```sire```: padre.
 
-
-"grafica"
+```{r, fig.align='center', fig.cap="Peso al nacer de corderos"}
+par(mfrow=c(1,2))
+plot(weight~damage,xlab="Grupo de edad de la madre",
+     ylab="Peso del carnero (kgs)", data = harville.lamb)
+plot(weight~sire,xlab="Padre",ylab="Peso del carnero (kgs)",
+     data = harville.lamb)
+abline(v=1:27,col='lightgray')
+```
 
 ### Crecimiento craneofacial de ratas
 
