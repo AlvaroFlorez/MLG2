@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
 <li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html"><i class="fa fa-check"></i><b>2</b> Modelos polinomiales</a>
@@ -604,9 +605,11 @@ donde <span class="math inline">\(\varepsilon_{i} \sim N(0, \sigma^{2})\)</span>
 Figure 1.5: Datos de atletas. Ajuste del modelo general (línea solida) y el modelo líneas paralelas (línea discontinua) para la homoglobina en función del índice de masa corporal y sexo. Líneas negra para hombres y líneas roja para mujeres.
 </p>
 </div>
-<p>En conclusión, hay diferencia en los niveles de hemoglobina entre hombres y mujeres (es, en promedio, mayor para lo hombres en 1.85g/dl). Sin embargo, el efecto del índice de masa corporal es el mismo para ambos sexos.
-### Modelo para los datos de la ONU
-El modelo propuesto es el siguiente:
+<p>En conclusión, hay diferencia en los niveles de hemoglobina entre hombres y mujeres (es, en promedio, mayor para lo hombres en 1.85g/dl). Sin embargo, el efecto del índice de masa corporal es el mismo para ambos sexos.</p>
+</div>
+<div id="modelo-para-los-datos-de-la-onu" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Modelo para los datos de la ONU<a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El modelo propuesto es el siguiente:
 <span class="math display">\[\begin{equation}
 \begin{split}
 \log\mbox{fertility}_{i} =&amp; \beta_{0} + \mbox{u}_{1i}\beta_{1}+\mbox{u}_{2i}\beta_{2} + \log\mbox{ppgdp}_{i}\beta_{3} + \\ &amp; \mbox{u}_{1i}\log\mbox{ppgdp}_{i}\beta_{4} + \mbox{u}_{2i}\log\mbox{ppgdp}_{i}\beta_{5} + \varepsilon_{i},
@@ -662,7 +665,7 @@ Finalmente, para los otros países:
 <span class="math display">\[
 E(\log\mbox{fertility}) = 2.097  -0.152\log \mbox{ppgdp}.
 \]</span>
-Aquí vemos que para los países que no son de la OCDE, el producto nacional bruto tiene un efecto significativo negativo sobre la tasa de fertilidad. Mientras que para los países de la OCDE, este efecto es positivo, aunque no es significativo. Esto mismo lo podemos ver gráficamente en la Figura <a href="variables-indicadoras-o-dummies.html#fig:MCOUN11Figure">1.6</a>.</p>
+Aquí vemos que para los países que no son de la OCDE, el PNB tiene un efecto negativo significativo sobre la tasa de fertilidad. Mientras que para los países de la OCDE, este efecto es positivo, aunque no es significativo. Esto mismo lo podemos ver gráficamente en la Figura <a href="variables-indicadoras-o-dummies.html#fig:MCOUN11Figure">1.6</a>.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="variables-indicadoras-o-dummies.html#cb13-1" aria-hidden="true" tabindex="-1"></a>Beta.UN11 <span class="ot">=</span> mod.UN11<span class="sc">$</span>coefficients</span>
 <span id="cb13-2"><a href="variables-indicadoras-o-dummies.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp),<span class="at">data=</span>UN11,<span class="at">col=</span>UN11<span class="sc">$</span>group,<span class="at">xlab=</span><span class="st">&#39;log PNB per cápita (dólares)&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;log # esperado de nacidos vivos por mujer&#39;</span>)</span>
 <span id="cb13-3"><a href="variables-indicadoras-o-dummies.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>Beta.UN11[<span class="dv">1</span>],<span class="at">b=</span>Beta.UN11[<span class="dv">4</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
@@ -679,12 +682,12 @@ Figure 1.6: Datos de la ONU. Ajuste del modelo para la fertilidad en función de
 <span id="cb14-2"><a href="variables-indicadoras-o-dummies.html#cb14-2" aria-hidden="true" tabindex="-1"></a>UN11.alt<span class="sc">$</span>group <span class="ot">=</span>  <span class="fu">relevel</span>(UN11.alt<span class="sc">$</span>group,<span class="at">ref =</span><span class="st">&#39;other&#39;</span>)</span>
 <span id="cb14-3"><a href="variables-indicadoras-o-dummies.html#cb14-3" aria-hidden="true" tabindex="-1"></a>mod.UN11.alt <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">*</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11.alt)</span>
 <span id="cb14-4"><a href="variables-indicadoras-o-dummies.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.UN11.alt)</span></code></pre></div>
-<p>Cambiar la categoría de referencia no cambia en nada los resultados del ajuste. Solo cambian la interpretación de los coeficientes.</p>
+<p>Note que cambiar la categoría de referencia no altera en nada los resultados del ajuste. Solo cambian la interpretación de los coeficientes.</p>
 <p>Se podría hacer la siguiente pregunta, ¿el efecto del PNB sobre la fertilidad es el mismo para cada tipo de país?. Para resolver esta pregunta, se plantea la siguiente hipótesis:
 <span class="math display">\[
 H_0: \beta_4 = \beta_5 = 0.
 \]</span>
-Usando la función <code>anova()</code> (prueba F) en R:</p>
+El estadístico de prueba lo podemos obtener usando la función <code>anova()</code> (prueba F) en R:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="variables-indicadoras-o-dummies.html#cb15-1" aria-hidden="true" tabindex="-1"></a>mod.UN11.red <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">+</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11)</span>
 <span id="cb15-2"><a href="variables-indicadoras-o-dummies.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod.UN11.red,mod.UN11)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
@@ -725,9 +728,9 @@ Esto, en R es:</p>
 ## 2    193 14.484  1  0.094808 1.2633 0.2624</code></pre>
 <p>Dado que no se rechaza <span class="math inline">\(H_0\)</span>, el efecto del PNB sobre la fertilidad es el mismo para los países Africano y los de la categoría de otros.</p>
 <p>En resumen, a partir del análisis de regresión:
-- El efecto del PNB per cápita es diferente cada tipo de país.
-- Para los países miembros de la OECD, el efecto es positivo (aunque no es significativo).
-- Para los países de áfrica y otros, el efecto es negativo (y no es significativamente diferente).</p>
+- El efecto del PNB per cápita sobre la fertilidad depende del tipo de país.
+- Para los países miembros de la OECD, no hay un efecto significativo.
+- Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).</p>
 
 </div>
 </div>

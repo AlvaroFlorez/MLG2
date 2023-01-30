@@ -65,6 +65,7 @@ datos-de-la-onu
 variables-indicadoras
 modelos-con-covariables-categóricas
 modelo-para-los-datos-de-atletas-australianos
+modelo-para-los-datos-de-la-onu
 modelos-polinomiales
 ejemplos-1
 pasteles
