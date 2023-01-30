@@ -112,12 +112,12 @@ donde:
 \]
 Note que en la base de datos ``ais``, la variable ``sex`` ya está codificada de esta forma. Si la variable no está codificada de forma numérica, ``R`` eligirá la categoría de referencia de forma automática. 
 
-Para ajustar el modelo utilizamos la función ``lm`` (``Sex*BMI`` aquí estamos incluyendo los efectos de ``BMI`` y ``Sex``, así como la interacción):
+Para ajustar el modelo utilizamos la función ``lm`` (aquí estamos incluyendo los efectos de ``BMI`` y ``Sex``, así como la interacción):
 ```{r MCOatletas}
 mod.ais = lm(Hg~Sex*BMI, data=ais)
 summary(mod.ais)
 ```
-Aquí tenemos que $\widehat{\beta}_{2} =`r round(mod.ais$coeff[3],2)`$, lo que nos indica que el valor esperado del nivel de hemoglobina aumenta en $`r round(mod.ais$coeff[3],2)`$ g/dl por cada aumento unitario en el índice de masa corporal de los hombres. Para las mujeres, el efecto del índice de masa corporal sobre el nivel de hemoglobina también es positivo, pero con una pendiente menor $\widehat{\beta}_{2} +\widehat{\beta}_{3} = `r round(mod.ais$coeff[2],2)` - `r abs(round(mod.ais$coeff[3],2))` = `r round(mod.ais$coeff[2]+mod.ais$coeff[3],2)`$. 
+Tenemos que $\widehat{\beta}_{2} =`r round(mod.ais$coeff[3],2)`$, lo que nos indica que el valor esperado del nivel de hemoglobina aumenta en $`r round(mod.ais$coeff[3],2)`$ g/dl por cada aumento unitario en el índice de masa corporal de los hombres. Para las mujeres, el efecto del índice de masa corporal sobre el nivel de hemoglobina también es positivo, pero con una pendiente menor $\widehat{\beta}_{2} +\widehat{\beta}_{3} = `r round(mod.ais$coeff[3],2)` - `r abs(round(mod.ais$coeff[4],2))` = `r round(mod.ais$coeff[3]+mod.ais$coeff[4],2)`$. 
 
 La representación gráfica del modelo se puede observar en la Figura \@ref(fig:AtletesAjuste). Aquí vemos que la pendiente para las mujeres es un poco menor que para los hombres.
 
