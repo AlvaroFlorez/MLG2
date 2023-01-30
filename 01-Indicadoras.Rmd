@@ -128,18 +128,18 @@ abline(a=mod.ais$coefficients[1]+mod.ais$coefficients[2],b=mod.ais$coefficients[
 ```
 Si miramos la significancia del $\widehat{\beta}_3$ (valor-$p$ igual a 0.276), podemos concluir que las diferencias en pendiente no son significativas. Por lo que, el efecto del índice de masa corporal sobre los niveles de hemoglobina es el mismo para mujeres que para hombres.
 
-Si queremos evaluar si hay diferencias entre hombres y mujeres, debemos evaluar la siguiente hipótesis:
+Si queremos evaluar si los niveles de hemoglobina son iguales para hombres y mujeres, debemos evaluar la siguiente hipótesis:
 \[
 H_{0}: \beta_{1} = \beta_3 = 0.
 \]
-En ``R``, esto lo podemos realizar usando la función ``anova()`` (prueba F) comparando el modelo completo contra el modelo reducido (sin la variable ``Sex``):
+En ``R``, esto lo podemos realizar usando la función ``anova()`` (prueba F) comparando el modelo completo contra el modelo reducido sin la variable ``Sex``:
 ```{r ANOVAatletas}
 mod.ais.red = lm(Hg~BMI, data=ais)
 anova(mod.ais.red,mod.ais)
 ```
-Aquí vemos que se rechaza $H_0$ por lo que hay diferencias en la relación de la homoglobina y el índice de masa corporal entre hombres y mujeres ($\beta_1$ o $\beta_3$ es diferente de cero, pero no ambos).
+Vemos que se rechaza $H_0$, es decir que hay diferencias en los niveles de homoglobina entre hombres y mujeres. $\beta_1$ o $\beta_3$ es diferente de cero, pero no ambos (esto por los resultados del modelo completo).
 
-El modelo con lineas paralelas es:
+Eliminando la interacción obtenemos un modelo con lineas paralelas:
 \[
 \mbox{Hg}_{i} = \beta_{0} + \mbox{Sex}_{i}\beta_{1} + \mbox{BMI}_{i}\beta_{2} +  \varepsilon_{i},
 \]
@@ -157,6 +157,7 @@ abline(a=mod.ais$coefficients[1]+mod.ais$coefficients[2],b=mod.ais$coefficients[
 abline(a=mod.ais.lp$coefficients[1],b=mod.ais.lp$coefficients[3],lwd=2,lty=2)
 abline(a=mod.ais.lp$coefficients[1]+mod.ais.lp$coefficients[2],b=mod.ais.lp$coefficients[3],col=2,lwd=2,lty=2)
 ```
+En conclusión, hay diferencia en los niveles de hemoglobina entre hombres y mujeres (es, en promedio, mayor para lo hombres en 1.85g/dl). Sin embargo, el efecto del índice de masa corporal es el mismo para ambos sexos.
 ### Modelo para los datos de la ONU
 El modelo propuesto es el siguiente:
 \begin{equation}

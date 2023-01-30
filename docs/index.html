@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2023-01-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -150,7 +150,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
 <li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
-<li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html"><i class="fa fa-check"></i><b>2</b> Modelos polinomiales</a>
@@ -235,15 +234,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#crecimiento-de-pavos"><i class="fa fa-check"></i><b>5.1.1</b> Crecimiento de pavos</a></li>
 <li class="chapter" data-level="5.1.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#puromicina"><i class="fa fa-check"></i><b>5.1.2</b> Puromicina</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a></li>
-<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.3</b> Modelos no-lineales linealizables</a>
+<li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#notación"><i class="fa fa-check"></i><b>5.3.2</b> Notación</a></li>
-<li class="chapter" data-level="5.3.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#expansión-de-series-de-tylor"><i class="fa fa-check"></i><b>5.3.3</b> Expansión de series de Tylor</a></li>
-<li class="chapter" data-level="5.3.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.3.4</b> Métodos iterativos de estimación</a></li>
-<li class="chapter" data-level="5.3.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.3.5</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.3.6" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3.6</b> Método de Bootstrap</a></li>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.2.3</b> Métodos iterativos de estimación</a></li>
+<li class="chapter" data-level="5.2.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.2.4</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.5</b> Inferencia sobre los parámetros</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#bootstrap-en-regresión"><i class="fa fa-check"></i><b>5.3.1</b> Bootstrap en regresión</a></li>
+<li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#algunas-consideraciones"><i class="fa fa-check"></i><b>5.3.2</b> Algunas consideraciones</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
@@ -290,9 +292,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#casos-de-estudio"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="7.1.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#mortalidad-de-escarabajos-3"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-de-escarabajos"><i class="fa fa-check"></i><b>7.1.2</b> datos de escarabajos</a></li>
-<li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.3</b> Bajo peso al nacer</a></li>
-<li class="chapter" data-level="7.1.4" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.4</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
 <ul>
@@ -320,6 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
 <li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#datos-de-cáncer-de-pulmón"><i class="fa fa-check"></i><b>8.1.2</b> Datos de cáncer de pulmón</a></li>
+<li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-1"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
 <ul>
@@ -329,10 +331,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-binomial-negativo-poisson-gamma"><i class="fa fa-check"></i><b>8.3.1</b> Modelo binomial negativo (Poisson-gamma)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-con-ceros-infiados"><i class="fa fa-check"></i><b>8.4</b> Modelo Poisson con ceros infiados</a></li>
+<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-con-ceros-inflados"><i class="fa fa-check"></i><b>8.4</b> Modelo Poisson con ceros inflados</a></li>
 <li class="chapter" data-level="8.5" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-hurdle"><i class="fa fa-check"></i><b>8.5</b> Modelo Hurdle</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.5.1</b> Número de cangrejos satélites</a></li>
+<li class="chapter" data-level="8.5.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites-1"><i class="fa fa-check"></i><b>8.5.1</b> Número de cangrejos satélites</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html"><i class="fa fa-check"></i><b>9</b> Modelo lineal mixto</a>
@@ -368,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Notas de clase: Modelo lineal general II</h1>
 <p class="author"><em>Alvaro J. Flórez</em></p>
-<p class="date"><em>2022-08-02</em></p>
+<p class="date"><em>2023-01-30</em></p>
 </div>
 <div id="introducción" class="section level1 unnumbered hasAnchor">
 <h1>Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -460,7 +462,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 1 Variables indicadoras (o dummies) | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 1 Variables indicadoras (o dummies) | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 1 Variables indicadoras (o dummies) | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2023-01-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -94,7 +94,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +107,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -150,7 +150,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
 <li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
-<li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html"><i class="fa fa-check"></i><b>2</b> Modelos polinomiales</a>
@@ -235,15 +234,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#crecimiento-de-pavos"><i class="fa fa-check"></i><b>5.1.1</b> Crecimiento de pavos</a></li>
 <li class="chapter" data-level="5.1.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#puromicina"><i class="fa fa-check"></i><b>5.1.2</b> Puromicina</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a></li>
-<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.3</b> Modelos no-lineales linealizables</a>
+<li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#notación"><i class="fa fa-check"></i><b>5.3.2</b> Notación</a></li>
-<li class="chapter" data-level="5.3.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#expansión-de-series-de-tylor"><i class="fa fa-check"></i><b>5.3.3</b> Expansión de series de Tylor</a></li>
-<li class="chapter" data-level="5.3.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.3.4</b> Métodos iterativos de estimación</a></li>
-<li class="chapter" data-level="5.3.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.3.5</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.3.6" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3.6</b> Método de Bootstrap</a></li>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.2.3</b> Métodos iterativos de estimación</a></li>
+<li class="chapter" data-level="5.2.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.2.4</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.5</b> Inferencia sobre los parámetros</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#bootstrap-en-regresión"><i class="fa fa-check"></i><b>5.3.1</b> Bootstrap en regresión</a></li>
+<li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#algunas-consideraciones"><i class="fa fa-check"></i><b>5.3.2</b> Algunas consideraciones</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
@@ -290,9 +292,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#casos-de-estudio"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="7.1.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#mortalidad-de-escarabajos-3"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-de-escarabajos"><i class="fa fa-check"></i><b>7.1.2</b> datos de escarabajos</a></li>
-<li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.3</b> Bajo peso al nacer</a></li>
-<li class="chapter" data-level="7.1.4" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.4</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
 <ul>
@@ -320,6 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
 <li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#datos-de-cáncer-de-pulmón"><i class="fa fa-check"></i><b>8.1.2</b> Datos de cáncer de pulmón</a></li>
+<li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-1"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
 <ul>
@@ -329,10 +331,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-binomial-negativo-poisson-gamma"><i class="fa fa-check"></i><b>8.3.1</b> Modelo binomial negativo (Poisson-gamma)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-con-ceros-infiados"><i class="fa fa-check"></i><b>8.4</b> Modelo Poisson con ceros infiados</a></li>
+<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-con-ceros-inflados"><i class="fa fa-check"></i><b>8.4</b> Modelo Poisson con ceros inflados</a></li>
 <li class="chapter" data-level="8.5" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-hurdle"><i class="fa fa-check"></i><b>8.5</b> Modelo Hurdle</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.5.1</b> Número de cangrejos satélites</a></li>
+<li class="chapter" data-level="8.5.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites-1"><i class="fa fa-check"></i><b>8.5.1</b> Número de cangrejos satélites</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html"><i class="fa fa-check"></i><b>9</b> Modelo lineal mixto</a>
@@ -419,29 +421,55 @@ u_{i} = \begin{cases}
 Aquí mujer es llamada la categoría de referencia.</p>
 <p>En caso que la covariable categórica tenga <span class="math inline">\(k\)</span> categorías, se tienen que crear <span class="math inline">\(k-1\)</span> variables indicadoras. Por ejemplo, para la variable grupo de país en los datos de la ONU se requieren 2 variables indicadoras <span class="math inline">\((u_{j})\)</span> como lo muestra la Tabla <a href="variables-indicadoras-o-dummies.html#tab:dosIndica">1.1</a>.</p>
 <table>
-<caption><span id="tab:dosIndica">Table 1.1: </span>Variables indicadoras para la variable <code>group</code> de los datos de la ONU</caption>
+<caption>
+<span id="tab:dosIndica">Table 1.1: </span>Variables indicadoras para la variable <code>group</code> de los datos de la ONU
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Categoría</th>
-<th align="right"><span class="math inline">\(u_{1}\)</span></th>
-<th align="right"><span class="math inline">\(u_{2}\)</span></th>
+<tr>
+<th style="text-align:left;">
+Categoría
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(u_{1}\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(u_{2}\)</span>
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">OECD</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:left;">
+OECD
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
 </tr>
-<tr class="even">
-<td align="left">otro</td>
-<td align="right">1</td>
-<td align="right">0</td>
+<tr>
+<td style="text-align:left;">
+otro
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
 </tr>
-<tr class="odd">
-<td align="left">África</td>
-<td align="right">0</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:left;">
+África
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
 </tbody>
 </table>
@@ -486,7 +514,7 @@ donde:
 \end{cases}
 \]</span>
 Note que en la base de datos <code>ais</code>, la variable <code>sex</code> ya está codificada de esta forma. Si la variable no está codificada de forma numérica, <code>R</code> eligirá la categoría de referencia de forma automática.</p>
-<p>Para ajustar el modelo utilizamos la función <code>lm</code> (<code>Sex*BMI</code> aquí estamos incluyendo los efectos de <code>BMI</code> y <code>Sex</code>, así como la interacción):</p>
+<p>Para ajustar el modelo utilizamos la función <code>lm</code> (aquí estamos incluyendo los efectos de <code>BMI</code> y <code>Sex</code>, así como la interacción):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="variables-indicadoras-o-dummies.html#cb3-1" aria-hidden="true" tabindex="-1"></a>mod.ais <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>Sex<span class="sc">*</span>BMI, <span class="at">data=</span>ais)</span>
 <span id="cb3-2"><a href="variables-indicadoras-o-dummies.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.ais)</span></code></pre></div>
 <pre><code>## 
@@ -509,7 +537,7 @@ Note que en la base de datos <code>ais</code>, la variable <code>sex</code> ya e
 ## Residual standard error: 0.9092 on 198 degrees of freedom
 ## Multiple R-squared:  0.5613, Adjusted R-squared:  0.5546 
 ## F-statistic: 84.44 on 3 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Aquí tenemos que <span class="math inline">\(\widehat{\beta}_{2} =0.1\)</span>, lo que nos indica que el valor esperado del nivel de hemoglobina aumenta en <span class="math inline">\(0.1\)</span> g/dl por cada aumento unitario en el índice de masa corporal de los hombres. Para las mujeres, el efecto del índice de masa corporal sobre el nivel de hemoglobina también es positivo, pero con una pendiente menor <span class="math inline">\(\widehat{\beta}_{2} +\widehat{\beta}_{3} = -0.66 - 0.1 = -0.56\)</span>.</p>
+<p>Tenemos que <span class="math inline">\(\widehat{\beta}_{2} =0.1\)</span>, lo que nos indica que el valor esperado del nivel de hemoglobina aumenta en <span class="math inline">\(0.1\)</span> g/dl por cada aumento unitario en el índice de masa corporal de los hombres. Para las mujeres, el efecto del índice de masa corporal sobre el nivel de hemoglobina también es positivo, pero con una pendiente menor <span class="math inline">\(\widehat{\beta}_{2} +\widehat{\beta}_{3} = 0.1 - 0.05 = 0.05\)</span>.</p>
 <p>La representación gráfica del modelo se puede observar en la Figura <a href="variables-indicadoras-o-dummies.html#fig:AtletesAjuste">1.4</a>. Aquí vemos que la pendiente para las mujeres es un poco menor que para los hombres.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="variables-indicadoras-o-dummies.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span>
 <span id="cb5-2"><a href="variables-indicadoras-o-dummies.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
@@ -521,11 +549,11 @@ Figure 1.4: Datos de atletas. Ajuste del modelo para la homoglobina en función 
 </p>
 </div>
 <p>Si miramos la significancia del <span class="math inline">\(\widehat{\beta}_3\)</span> (valor-<span class="math inline">\(p\)</span> igual a 0.276), podemos concluir que las diferencias en pendiente no son significativas. Por lo que, el efecto del índice de masa corporal sobre los niveles de hemoglobina es el mismo para mujeres que para hombres.</p>
-<p>Si queremos evaluar si hay diferencias entre hombres y mujeres, debemos evaluar la siguiente hipótesis:
+<p>Si queremos evaluar si los niveles de hemoglobina son iguales para hombres y mujeres, debemos evaluar la siguiente hipótesis:
 <span class="math display">\[
 H_{0}: \beta_{1} = \beta_3 = 0.
 \]</span>
-En <code>R</code>, esto lo podemos realizar usando la función <code>anova()</code> (prueba F) comparando el modelo completo contra el modelo reducido (sin la variable <code>Sex</code>):</p>
+En <code>R</code>, esto lo podemos realizar usando la función <code>anova()</code> (prueba F) comparando el modelo completo contra el modelo reducido sin la variable <code>Sex</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="variables-indicadoras-o-dummies.html#cb6-1" aria-hidden="true" tabindex="-1"></a>mod.ais.red <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>BMI, <span class="at">data=</span>ais)</span>
 <span id="cb6-2"><a href="variables-indicadoras-o-dummies.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod.ais.red,mod.ais)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
@@ -537,8 +565,8 @@ En <code>R</code>, esto lo podemos realizar usando la función <code>anova()</co
 ## 2    198 163.69  2    154.82 93.637 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>Aquí vemos que se rechaza <span class="math inline">\(H_0\)</span> por lo que hay diferencias en la relación de la homoglobina y el índice de masa corporal entre hombres y mujeres (<span class="math inline">\(\beta_1\)</span> o <span class="math inline">\(\beta_3\)</span> es diferente de cero, pero no ambos).</p>
-<p>El modelo con lineas paralelas es:
+<p>Vemos que se rechaza <span class="math inline">\(H_0\)</span>, es decir que hay diferencias en los niveles de homoglobina entre hombres y mujeres. <span class="math inline">\(\beta_1\)</span> o <span class="math inline">\(\beta_3\)</span> es diferente de cero, pero no ambos (esto por los resultados del modelo completo).</p>
+<p>Eliminando la interacción obtenemos un modelo con lineas paralelas:
 <span class="math display">\[
 \mbox{Hg}_{i} = \beta_{0} + \mbox{Sex}_{i}\beta_{1} + \mbox{BMI}_{i}\beta_{2} +  \varepsilon_{i},
 \]</span>
@@ -576,10 +604,9 @@ donde <span class="math inline">\(\varepsilon_{i} \sim N(0, \sigma^{2})\)</span>
 Figure 1.5: Datos de atletas. Ajuste del modelo general (línea solida) y el modelo líneas paralelas (línea discontinua) para la homoglobina en función del índice de masa corporal y sexo. Líneas negra para hombres y líneas roja para mujeres.
 </p>
 </div>
-</div>
-<div id="modelo-para-los-datos-de-la-onu" class="section level3 hasAnchor" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> Modelo para los datos de la ONU<a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El modelo propuesto es el siguiente:
+<p>En conclusión, hay diferencia en los niveles de hemoglobina entre hombres y mujeres (es, en promedio, mayor para lo hombres en 1.85g/dl). Sin embargo, el efecto del índice de masa corporal es el mismo para ambos sexos.
+### Modelo para los datos de la ONU
+El modelo propuesto es el siguiente:
 <span class="math display">\[\begin{equation}
 \begin{split}
 \log\mbox{fertility}_{i} =&amp; \beta_{0} + \mbox{u}_{1i}\beta_{1}+\mbox{u}_{2i}\beta_{2} + \log\mbox{ppgdp}_{i}\beta_{3} + \\ &amp; \mbox{u}_{1i}\log\mbox{ppgdp}_{i}\beta_{4} + \mbox{u}_{2i}\log\mbox{ppgdp}_{i}\beta_{5} + \varepsilon_{i},
@@ -771,7 +798,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
