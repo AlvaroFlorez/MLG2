@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Modelos polinomiales | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 2 Modelos polinomiales | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Modelos polinomiales | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,7 +225,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
 <li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algorítmos-de-selección"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
-<li class="chapter" data-level="4.4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.4.3</b> Regresión de LASSO</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.5</b> Regresión de LASSO</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#datos-de-grasa-corporal-1"><i class="fa fa-check"></i><b>4.5.1</b> Datos de grasa corporal</a></li>
+<li class="chapter" data-level="4.5.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#validación-cruzada"><i class="fa fa-check"></i><b>4.5.2</b> Validación cruzada</a></li>
+<li class="chapter" data-level="4.5.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplo-grasa-corporal"><i class="fa fa-check"></i><b>4.5.3</b> Ejemplo grasa corporal</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html"><i class="fa fa-check"></i><b>5</b> Modelos no lineales</a>
@@ -388,7 +393,7 @@ Figure 2.1: Datos de pasteles. Diagrama de dispersión.
 </div>
 <div id="datos-de-boston" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Datos de Boston<a href="modelos-polinomiales.html#datos-de-boston" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La base de datos <code>Boston</code> de la libreria <code>MASS</code> contiene información sobre 506 suburbios del area metropolitana de Boston. El objetivo del estudio es evaluar la relación del precio de las viviendas y la concentración de contaminación ambienta. En esta sección evaluaremos la relación entre la concentración anual de óxido de nitrógeno (<span class="math inline">\(y\)</span>, en partes por diez millones) y la distancia a cinco centros de empleo.</p>
+<p>La base de datos <code>Boston</code> de la libreria <code>MASS</code> contiene información sobre 506 suburbios del area metropolitana de Boston. El objetivo del estudio es evaluar la relación del precio de las viviendas y la concentración de contaminación ambiental. En esta sección evaluaremos la relación entre la concentración anual de óxido de nitrógeno (<span class="math inline">\(y\)</span>, en partes por diez millones) y la distancia a cinco centros de empleo.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="modelos-polinomiales.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb20-2"><a href="modelos-polinomiales.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Boston)</span>
 <span id="cb20-3"><a href="modelos-polinomiales.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nox<span class="sc">~</span>dis,<span class="at">data=</span>Boston,<span class="at">ylab=</span><span class="st">&#39;NOx&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;distancia a centros de empleo&#39;</span>)</span></code></pre></div>
@@ -410,7 +415,7 @@ y_{i} = \beta_{0} + \beta_{1}x_{i} + \varepsilon_i,
 <span class="math display">\[
 y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}x_{i}^{2} + \ldots + + \beta_{k}x_{i}^{k} + \varepsilon_i.
 \]</span>
-Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros <span class="math inline">\(\boldsymbol \beta\)</span>. En la Figura <a href="modelos-polinomiales.html#fig:Polinomios">2.3</a> se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3). Aquí vemos que este tipo de modelos son muy versatiles. Caulquier función suave se puede ajustar meidante un polinomio de grado suficientemente alto. Por esta razón, los modelos polinomicos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.</p>
+Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros <span class="math inline">\(\boldsymbol \beta\)</span>. En la Figura <a href="modelos-polinomiales.html#fig:Polinomios">2.3</a> se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3). Aquí vemos que este tipo de modelos son muy versatiles. Cualquier función suave se puede ajustar meidante un polinomio de grado suficientemente alto. Por esta razón, los modelos polinomicos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Polinomios"></span>
 <img src="MLG2_files/figure-html/Polinomios-1.png" alt="Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (linea verde)." width="576" />
 <p class="caption">
@@ -421,7 +426,7 @@ Figure 2.3: Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (
 <span class="math display">\[
 y_{i} = \beta_{0} + \beta_{1}x_{1i} + \beta_{2}x_{2i} + \beta_{3}x_{1i}^2 + \beta_{4}x_{2i}^2 + \beta_{5}x_{1i}x_{2i} + \varepsilon_i.
 \]</span>
-En las Figuras <a href="modelos-polinomiales.html#fig:modPoli1">2.4</a>-<a href="modelos-polinomiales.html#fig:modPoli3">2.6</a> muestran el valor esperado de <span class="math inline">\(Y\)</span> en un modelo lineal (asumiendo <span class="math inline">\(\beta_3=\beta_4=\beta_5=0\)</span>), cuadrático y con interacción (asumiendo <span class="math inline">\(\beta_3=\beta_4=0\)</span>).</p>
+En las Figuras <a href="modelos-polinomiales.html#fig:modPoli1">2.4</a>-<a href="modelos-polinomiales.html#fig:modPoli3">2.6</a> muestran el valor esperado de <span class="math inline">\(Y\)</span> en un modelo lineal (asumiendo <span class="math inline">\(\beta_3=\beta_4=\beta_5=0\)</span>), con interacción (<span class="math inline">\(\beta_3=\beta_4=0\)</span>) y cuadrático.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:modPoli1"></span>
 <img src="MLG2_files/figure-html/modPoli1-1.png" alt="Valor esperado de $Y$ en un modelo lineal (izquierda) y gráfico de contorno (derecha)." width="864" />
 <p class="caption">
@@ -447,12 +452,12 @@ Figure 2.6: Valor esperado de <span class="math inline">\(Y\)</span> en un model
 <li><strong>Selección del orden:</strong> La idea es mantener el orden del polinomio bajo. Si embargo, si es muy bajo no logra capturar la curvatura presente en los datos. En caso que el orden sea grande, el modelo es innecesariamente más complejo y puede haber problemas de multicolinealidad.</li>
 </ul>
 <p>Si los datos exige un modelo de orden alto <span class="math inline">\((k &gt; 3)\)</span>, se pueden hacer transformación sobre las variables, y así, poder ajustar un modelo polinomial de orden bajo (por ejemplo cuadrático).</p>
-<p>La selección del orden puede hacerse de dos formas. (1) ** Hacia delante<strong>: empezar con un modelo de orden <span class="math inline">\(1\)</span> e incrementar el orden uno a uno hasta que un término mayor ya no sea significativo. </strong>Hacia atrás:** empezar con el modelo más complejo y eliminar los términos mayores uno a uno hasta que todos sean significativos.</p>
+<p>La selección del orden puede hacerse de dos formas. (1) <strong>Hacia delante</strong>: empezar con un modelo de orden <span class="math inline">\(1\)</span> e incrementar el orden uno a uno hasta que un término mayor ya no sea significativo. <strong>Hacia atrás:</strong> empezar con el modelo más complejo y eliminar los términos mayores uno a uno hasta que todos sean significativos.</p>
 <ul>
 <li><strong>Extrapolación</strong>: La extrapolación con modelos polinomiales puede ser muy peligrosa. Por ejemplo en la Figura <a href="modelos-polinomiales.html#fig:extrapolacion">2.7</a> podemos ajustar un modelo de orden dos a los datos (linea negra). Si hacemos una predicción fuera del rango de los datos, el valor esperado predicho sigue el comportamiento cuadrático propuesto. Sin embargo, el valor esperado de <span class="math inline">\(Y\)</span> puede seguir un comportamiento diferente (linea roja discontinua). Lo que lleva a tener una predicción sesgada.</li>
 </ul>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:extrapolacion"></span>
-<img src="MLG2_files/figure-html/extrapolacion-1.png" alt="Problema de extrapolación." width="576" />
+<img src="MLG2_files/figure-html/Extrapolacion-1.png" alt="Problema de extrapolación." width="576" />
 <p class="caption">
 Figure 2.7: Problema de extrapolación.
 </p>
@@ -478,7 +483,7 @@ Ahora calculando la diferencia:
 <span class="math display">\[
 E(Y| X_{1}=x_1+\delta,X_{2}=x_2) - E(Y| X_{1}=x_1,X_{2}=x_2) = (\beta_{1}\delta + \beta_{3}\delta^{2}) + 2\beta_{3}\delta x_{1} + \beta_{5}\delta x_{2}.
 \]</span>
-Aquí podemos observar que el efecto del cambio <span class="math inline">\(\delta\)</span> en <span class="math inline">\(X_1\)</span> depende de ambas covariables y del valor de <span class="math inline">\(\delta\)</span>. Por esta razón es complicado interpretar coeficientes en modelos polinomiales.</p>
+Note que el efecto del cambio <span class="math inline">\(\delta\)</span> en <span class="math inline">\(X_1\)</span> depende de ambas covariables y del valor de <span class="math inline">\(\delta\)</span>. Por esta razón, la interpretación de los coeficientes es complicada.</p>
 </div>
 <div id="pasteles-1" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Pasteles<a href="modelos-polinomiales.html#pasteles-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -547,14 +552,14 @@ El ajuste del modelo es:</p>
 <pre><code>##      X1c      X2c I(X1c^2) I(X2c^2)  X1c:X2c 
 ## 1.000000 1.000000 1.005952 1.005952 1.000000</code></pre>
 <p>En este caso, los VIF decrecieron considerablemente con respecto al modelo con las covariables originales.</p>
-<p>En la figura <a href="#fig:predCakes"><strong>??</strong></a> podemos observar el valor esperado estimado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado.</p>
+<p>En la figura <a href="modelos-polinomiales.html#fig:PredCakes">2.8</a> podemos observar el valor esperado estimado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PredCakes"></span>
 <img src="MLG2_files/figure-html/PredCakes-1.png" alt="Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. " width="864" />
 <p class="caption">
 Figure 2.8: Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado.
 </p>
 </div>
-<p>En la Figura <a href="#fig:predCakes"><strong>??</strong></a> (izquierda) vemos que, cuando la temperatura es de 350 grados Fahrenheit, el máximo de palatabilidad que se obtiene en un tiempo entre 36 y 37 minutos. Sin embargo, cuando la temperatura se incrementa a 360, la máxima palatibilidad que se puede lograr es menor. Además, se obtiene en un tiempo también menor. El efecto de la interacción también se puede observar en la Figura <a href="modelos-polinomiales.html#fig:predCakes2">2.9</a> (derecha), pero ahora fijando el tiempo de horneado y variando la temperatura. El gráfico de contornos (Figura <a href="modelos-polinomiales.html#fig:predCakes2">2.9</a>) muestra que la máxima palatabilidad se observa cuando la temperatura está alrededor de 355 y el tiempo de horneado está entre 35 y 36 minutos.</p>
+<p>En la Figura <a href="modelos-polinomiales.html#fig:PredCakes">2.8</a> (izquierda) vemos que, cuando la temperatura es de 350 grados Fahrenheit, el máximo de palatabilidad que se obtiene en un tiempo entre 36 y 37 minutos. Sin embargo, cuando la temperatura se incrementa a 360, la máxima palatibilidad que se puede lograr es menor. Además, se obtiene en un tiempo también menor. El efecto de la interacción también se puede observar en la Figura <a href="modelos-polinomiales.html#fig:predCakes2">2.9</a> (derecha), pero ahora fijando el tiempo de horneado y variando la temperatura. El gráfico de contornos (Figura <a href="modelos-polinomiales.html#fig:predCakes2">2.9</a>) muestra que la máxima palatabilidad se observa cuando la temperatura está alrededor de 355 y el tiempo de horneado está entre 35 y 36 minutos.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="modelos-polinomiales.html#cb29-1" aria-hidden="true" tabindex="-1"></a>X1 <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">32</span>, <span class="dv">38</span>, <span class="at">length.out =</span> <span class="dv">50</span>)</span>
 <span id="cb29-2"><a href="modelos-polinomiales.html#cb29-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">335</span>, <span class="dv">365</span>, <span class="at">length=</span> <span class="dv">50</span>)</span>
 <span id="cb29-3"><a href="modelos-polinomiales.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -565,12 +570,12 @@ Figure 2.8: Datos de pasteles. Valor esperado de la palatabilidad para diferente
 <span id="cb29-8"><a href="modelos-polinomiales.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(X1, X2, y,<span class="at">xlab=</span><span class="st">&#39;tiempo de horneado (minutos)&#39;</span>,</span>
 <span id="cb29-9"><a href="modelos-polinomiales.html#cb29-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&#39;temperatura de horneado (Fahrenheit)&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:predCakes2"></span>
-<img src="MLG2_files/figure-html/predCakes2-1.png" alt="Datos de pasteles. Gráfica de contornos." width="576" />
+<img src="MLG2_files/figure-html/PredCakes2-1.png" alt="Datos de pasteles. Gráfica de contornos." width="576" />
 <p class="caption">
 Figure 2.9: Datos de pasteles. Gráfica de contornos.
 </p>
 </div>
-<p>Para determinar en que combinación de tiempo (X1) y temperatura de horneado (X2) se obtiene la máxima palatabilidad. Por lo tanto, debemos resolver la siguiente ecuación:
+<p>Para determinar en que combinación de tiempo (X1) y temperatura de horneado (X2) se obtiene la máxima palatabilidad, debemos resolver la siguiente ecuación:
 <span class="math display">\[
 \frac{\partial E(Y)}{\partial \boldsymbol x}  = \frac{\partial}{\partial \boldsymbol x} \left( \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \beta_{3}x_{1}^2 + \beta_{4}x_{2}^{2} + \beta_{5}x_{1}x_{2} \right) = \boldsymbol 0,
 \]</span>
@@ -585,13 +590,11 @@ verificando que se obtiene un máximo.</p>
 \]</span>
 La potencia en la variable respuesta se seleccionó usando el método de Box-Cox. El ajuste del modelo es el siguiente:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="modelos-polinomiales.html#cb30-1" aria-hidden="true" tabindex="-1"></a>Boston<span class="sc">$</span>disc <span class="ot">=</span> Boston<span class="sc">$</span>dis <span class="sc">-</span> <span class="fu">mean</span>(Boston<span class="sc">$</span>dis)</span>
-<span id="cb30-2"><a href="modelos-polinomiales.html#cb30-2" aria-hidden="true" tabindex="-1"></a>mod3.Boston <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">I</span>(nox)<span class="sc">^</span>{<span class="sc">-</span><span class="dv">1</span>}<span class="sc">~</span>disc<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">3</span>),<span class="at">data=</span>Boston)</span>
+<span id="cb30-2"><a href="modelos-polinomiales.html#cb30-2" aria-hidden="true" tabindex="-1"></a>mod3.Boston <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">I</span>(nox)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">~</span>disc<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">3</span>),<span class="at">data=</span>Boston)</span>
 <span id="cb30-3"><a href="modelos-polinomiales.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod3.Boston)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = I(nox)^{
-##     -1
-## } ~ disc + I(disc^2) + I(disc^3), data = Boston)
+## lm(formula = I(nox)^(-1) ~ disc + I(disc^2) + I(disc^3), data = Boston)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
@@ -609,7 +612,7 @@ La potencia en la variable respuesta se seleccionó usando el método de Box-Cox
 ## Residual standard error: 0.173 on 502 degrees of freedom
 ## Multiple R-squared:  0.7765, Adjusted R-squared:  0.7752 
 ## F-statistic: 581.5 on 3 and 502 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>En la Figura @ref{figPredBoston} muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del <span class="math inline">\(78.3\)</span>% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de <span class="math inline">\(0.781\)</span>. Sin embargo, se puede observar que este ajuste es un poco deficiente cuando las distancias son muy grandes (mayores a 11).</p>
+<p>La Figura <a href="modelos-polinomiales.html#fig:figPredBoston">2.10</a> muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del <span class="math inline">\(78.3\)</span>% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de <span class="math inline">\(0.781\)</span>. Sin embargo, se puede observar que este ajuste es un poco deficiente cuando las distancias son muy grandes (mayores a 11).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:figPredBoston"></span>
 <img src="MLG2_files/figure-html/figPredBoston-1.png" alt="Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)." width="576" />
 <p class="caption">
@@ -633,14 +636,14 @@ donde:
 \nonumber
 \]</span>
 Por lo tanto, si <span class="math inline">\(x_{i} \leq t\)</span>, <span class="math inline">\(E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}\)</span>. Mientras que, si <span class="math inline">\(x_{i} &gt; t\)</span>, tenemos que <span class="math inline">\(E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{1}t) + (\beta_{1} + \beta_{3})x_{i}\)</span>.</p>
-<p>Este modelo esta representado graficamente en la Figura <a href="#RegSegmentos"><strong>??</strong></a>. Cuando <span class="math inline">\(\beta_2 \neq 0\)</span>, el modelo presenta una discontinuidad en <span class="math inline">\(t\)</span>. Mientras que, cuando <span class="math inline">\(\beta_2 = 0\)</span>, el modelo presenta un cambio de pendiente en el punto <span class="math inline">\(t\)</span>. Además, <span class="math inline">\(\beta_3\)</span> indica el cambio de pendiente.</p>
+<p>Este modelo está representado graficamente en la Figura <a href="modelos-polinomiales.html#fig:RegSegmentos">2.11</a>. Cuando <span class="math inline">\(\beta_2 \neq 0\)</span>, el modelo presenta una discontinuidad en <span class="math inline">\(t\)</span>. Mientras que, cuando <span class="math inline">\(\beta_2 = 0\)</span>, el modelo presenta un cambio de pendiente en el punto <span class="math inline">\(t\)</span>. Además, <span class="math inline">\(\beta_3\)</span> indica el cambio de pendiente.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:RegSegmentos"></span>
 <img src="MLG2_files/figure-html/RegSegmentos-1.png" alt="Modelo de regresión por segmentos. Modelo con discontinuidad en $t$ (izquierda). Modelo con cambio de pendiente en $t$ (derecha)." width="864" />
 <p class="caption">
 Figure 2.11: Modelo de regresión por segmentos. Modelo con discontinuidad en <span class="math inline">\(t\)</span> (izquierda). Modelo con cambio de pendiente en <span class="math inline">\(t\)</span> (derecha).
 </p>
 </div>
-<p>Aquí asumimos que <span class="math inline">\(t\)</span> es conocido. Si este valor se asume como desconocido, debe estimarse a partir de los datos como un parámetro adicional. Sin embargo, se tendría que recurrir a un método estimación para modelos no-lineales.</p>
+<p>Aquí asumimos que <span class="math inline">\(t\)</span> es conocido. Si este valor se asume como desconocido, debe estimarse a partir de los datos como un parámetro adicional. Sin embargo, se tendría que recurrir a un método de estimación para modelos no-lineales.</p>
 <div id="ejemplo" class="section level3 hasAnchor" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Ejemplo<a href="modelos-polinomiales.html#ejemplo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="modelos-polinomiales.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MPV)</span>

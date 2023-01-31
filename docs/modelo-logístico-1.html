@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,7 +225,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
 <li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algorítmos-de-selección"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
-<li class="chapter" data-level="4.4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.4.3</b> Regresión de LASSO</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.5</b> Regresión de LASSO</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#datos-de-grasa-corporal-1"><i class="fa fa-check"></i><b>4.5.1</b> Datos de grasa corporal</a></li>
+<li class="chapter" data-level="4.5.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#validación-cruzada"><i class="fa fa-check"></i><b>4.5.2</b> Validación cruzada</a></li>
+<li class="chapter" data-level="4.5.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplo-grasa-corporal"><i class="fa fa-check"></i><b>4.5.3</b> Ejemplo grasa corporal</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html"><i class="fa fa-check"></i><b>5</b> Modelos no lineales</a>
@@ -428,14 +433,14 @@ exposición a disulfuro de carbono gaseoso <span class="math inline">\((CS2mgl^{
 </tbody>
 </table>
 <p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="modelo-logístico-1.html#cb139-1" aria-hidden="true" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
-<span id="cb139-2"><a href="modelo-logístico-1.html#cb139-2" aria-hidden="true" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) <span class="co"># numbers dead</span></span>
-<span id="cb139-3"><a href="modelo-logístico-1.html#cb139-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) <span class="co"># binomial sample sizes</span></span>
-<span id="cb139-4"><a href="modelo-logístico-1.html#cb139-4" aria-hidden="true" tabindex="-1"></a>Datos<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span>
-<span id="cb139-5"><a href="modelo-logístico-1.html#cb139-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-6"><a href="modelo-logístico-1.html#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-16"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-16-1.png" alt="Datos escarabajos." width="672" />
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="modelo-logístico-1.html#cb141-1" aria-hidden="true" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
+<span id="cb141-2"><a href="modelo-logístico-1.html#cb141-2" aria-hidden="true" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) <span class="co"># numbers dead</span></span>
+<span id="cb141-3"><a href="modelo-logístico-1.html#cb141-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) <span class="co"># binomial sample sizes</span></span>
+<span id="cb141-4"><a href="modelo-logístico-1.html#cb141-4" aria-hidden="true" tabindex="-1"></a>Datos<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span>
+<span id="cb141-5"><a href="modelo-logístico-1.html#cb141-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-6"><a href="modelo-logístico-1.html#cb141-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-13-1.png" alt="Datos escarabajos." width="672" />
 <p class="caption">
 Figure 7.1: Datos escarabajos.
 </p>
@@ -482,14 +487,14 @@ log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}
 <li><p><code>grp</code>: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro)</p></li>
 <li><p><code>hb</code>: nivel de hemoglobina.</p></li>
 </ul>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="modelo-logístico-1.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
-<span id="cb140-2"><a href="modelo-logístico-1.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb140-3"><a href="modelo-logístico-1.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
-<span id="cb140-4"><a href="modelo-logístico-1.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
-<span id="cb140-5"><a href="modelo-logístico-1.html#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
-<span id="cb140-6"><a href="modelo-logístico-1.html#cb140-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-17-1.png" alt="Datos teratoligía" width="672" />
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="modelo-logístico-1.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb142-2"><a href="modelo-logístico-1.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb142-3"><a href="modelo-logístico-1.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
+<span id="cb142-4"><a href="modelo-logístico-1.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
+<span id="cb142-5"><a href="modelo-logístico-1.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
+<span id="cb142-6"><a href="modelo-logístico-1.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-14-1.png" alt="Datos teratoligía" width="672" />
 <p class="caption">
 Figure 7.2: Datos teratoligía
 </p>
@@ -553,8 +558,8 @@ n_iy_i\sim\text{binomial}(n_i,\pi_i),\quad \text{donde} \quad \pi_i=g(\boldsymbo
 <p><span class="math display">\[
 \pi_i=exp[-exp(\boldsymbol x&#39;_i\boldsymbol \beta)] \quad -log[-log(\pi_i)]=\boldsymbol x&#39;_i\boldsymbol \beta.
 \]</span></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-18-1.png" alt="Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)." width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-15-1.png" alt="Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)." width="672" />
 <p class="caption">
 Figure 7.3: Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
 </p>
@@ -708,8 +713,8 @@ AIC
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="modelo-logístico-1.html#cb141-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
-<span id="cb141-2"><a href="modelo-logístico-1.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.logit)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelo-logístico-1.html#cb143-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
+<span id="cb143-2"><a href="modelo-logístico-1.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.logit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = low ~ age + lwt + ptl + smoke, family = binomial(logit), 
@@ -736,9 +741,9 @@ AIC
 ## AIC: 228.36
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelo-logístico-1.html#cb143-1" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
-<span id="cb143-2"><a href="modelo-logístico-1.html#cb143-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-3"><a href="modelo-logístico-1.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.probit)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelo-logístico-1.html#cb145-1" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
+<span id="cb145-2"><a href="modelo-logístico-1.html#cb145-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-3"><a href="modelo-logístico-1.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.probit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = low ~ age + lwt + smoke + ptl, family = binomial(probit), 
@@ -773,7 +778,7 @@ AIC
 tabla de contingencia:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-21">Table 7.1: </span>Tabla de clasificación
+<span id="tab:unnamed-chunk-18">Table 7.1: </span>Tabla de clasificación
 </caption>
 <thead>
 <tr>
@@ -928,14 +933,14 @@ y
 </tbody>
 </table>
 <p>Sensibilidad: <span class="math inline">\(40/59 = 0,678\)</span> - especificidad: <span class="math inline">\(79/130 = 0,607\)</span>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
 <img src="figs/grafsen.jpg" alt="Sensibilidad (linea negra) - especificidad (linea roja)" width="75%" />
 <p class="caption">
 Figure 7.4: Sensibilidad (linea negra) - especificidad (linea roja)
 </p>
 </div>
 <p>Gráfico de <span class="math inline">\(P(\hat y=1|y=1)\)</span> vs <span class="math inline">\(P(\hat y=0|y=0)\)</span></p>
-<p><img src="figs/Sensibilidad.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><img src="figs/Sensibilidad.PNG" width="75%" style="display: block; margin: auto;" /></p>
 <p>El area bajo la curva de la curva ROC (llamado índice de concordancia) es una medida del poder predictivo del modelo.</p>
 <div id="ejemplo-mortalidad-de-escarabajos-1" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> Ejemplo mortalidad de escarabajos<a href="modelo-logístico-1.html#ejemplo-mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -944,16 +949,16 @@ Figure 7.4: Sensibilidad (linea negra) - especificidad (linea roja)
 </div>
 <div id="bajo-peso-al-nacer-1" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> Bajo peso al nacer<a href="modelo-logístico-1.html#bajo-peso-al-nacer-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelo-logístico-1.html#cb145-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
-<span id="cb145-2"><a href="modelo-logístico-1.html#cb145-2" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
-<span id="cb145-3"><a href="modelo-logístico-1.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="co"># curvas roc</span></span>
-<span id="cb145-4"><a href="modelo-logístico-1.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pROC)</span></span>
-<span id="cb145-5"><a href="modelo-logístico-1.html#cb145-5" aria-hidden="true" tabindex="-1"></a>ROCbw.logit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.logit<span class="sc">$</span>fitted.values)</span>
-<span id="cb145-6"><a href="modelo-logístico-1.html#cb145-6" aria-hidden="true" tabindex="-1"></a>ROCbw.probit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.probit<span class="sc">$</span>fitted.values)</span></code></pre></div>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="modelo-logístico-1.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROCbw.logit)</span>
-<span id="cb146-2"><a href="modelo-logístico-1.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ROCbw.probit,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-28-1.png" alt="Curva ROC para el modelo logístico (negro) y probit (rojo)" width="672" />
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="modelo-logístico-1.html#cb147-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
+<span id="cb147-2"><a href="modelo-logístico-1.html#cb147-2" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
+<span id="cb147-3"><a href="modelo-logístico-1.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="co"># curvas roc</span></span>
+<span id="cb147-4"><a href="modelo-logístico-1.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pROC)</span></span>
+<span id="cb147-5"><a href="modelo-logístico-1.html#cb147-5" aria-hidden="true" tabindex="-1"></a>ROCbw.logit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.logit<span class="sc">$</span>fitted.values)</span>
+<span id="cb147-6"><a href="modelo-logístico-1.html#cb147-6" aria-hidden="true" tabindex="-1"></a>ROCbw.probit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.probit<span class="sc">$</span>fitted.values)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelo-logístico-1.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROCbw.logit)</span>
+<span id="cb148-2"><a href="modelo-logístico-1.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ROCbw.probit,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-25-1.png" alt="Curva ROC para el modelo logístico (negro) y probit (rojo)" width="672" />
 <p class="caption">
 Figure 7.5: Curva ROC para el modelo logístico (negro) y probit (rojo)
 </p>
@@ -1042,9 +1047,9 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
 <p>Dado que <span class="math inline">\(\phi&gt;0)\)</span>, el modelo beta-binomial no puede modelar datos con subdispersión.</p>
 <div id="estudio-de-teratología-1" class="section level4 hasAnchor" number="7.6.1.1">
 <h4><span class="header-section-number">7.6.1.1</span> Estudio de teratología<a href="modelo-logístico-1.html#estudio-de-teratología-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="modelo-logístico-1.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
-<span id="cb147-2"><a href="modelo-logístico-1.html#cb147-2" aria-hidden="true" tabindex="-1"></a>modlirat.binom <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">family=</span>binomial,<span class="at">data=</span>lirat)</span>
-<span id="cb147-3"><a href="modelo-logístico-1.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modlirat.binom)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelo-logístico-1.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb149-2"><a href="modelo-logístico-1.html#cb149-2" aria-hidden="true" tabindex="-1"></a>modlirat.binom <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">family=</span>binomial,<span class="at">data=</span>lirat)</span>
+<span id="cb149-3"><a href="modelo-logístico-1.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(R, N - R) ~ hb + as.factor(grp), family = binomial, 
@@ -1071,8 +1076,8 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
 ## AIC: 250.38
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelo-logístico-1.html#cb149-1" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom <span class="ot">=</span><span class="fu">betabin</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span><span class="fu">as.factor</span>(grp)<span class="sc">+</span>hb,<span class="at">data=</span>lirat,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb149-2"><a href="modelo-logístico-1.html#cb149-2" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-logístico-1.html#cb151-1" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom <span class="ot">=</span><span class="fu">betabin</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span><span class="fu">as.factor</span>(grp)<span class="sc">+</span>hb,<span class="at">data=</span>lirat,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb151-2"><a href="modelo-logístico-1.html#cb151-2" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom</span></code></pre></div>
 <pre><code>## Beta-binomial model
 ## -------------------
 ## betabin(formula = cbind(R, N - R) ~ as.factor(grp) + hb, random = ~1, 
@@ -1095,14 +1100,14 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
 ## Log-likelihood statistics
 ##    Log-lik      nbpar    df res.   Deviance        AIC       AICc 
 ## -9.302e+01          6         52  1.146e+02   1.98e+02  1.997e+02</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-logístico-1.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.binom)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelo-logístico-1.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## [1] 250.3777</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelo-logístico-1.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.betabinom)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="modelo-logístico-1.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.betabinom)</span></code></pre></div>
 <pre><code>##                    df      AIC     AICc
 ## modlirat.betabinom  6 198.0319 199.6789</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="modelo-logístico-1.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.binom)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="modelo-logístico-1.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## [1] 168.9083</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="modelo-logístico-1.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.betabinom)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="modelo-logístico-1.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.betabinom)</span></code></pre></div>
 <pre><code>## [1] 114.5625</code></pre>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>

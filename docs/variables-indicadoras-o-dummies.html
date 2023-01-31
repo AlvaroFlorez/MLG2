@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 1 Variables indicadoras (o dummies) | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 1 Variables indicadoras (o dummies) | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 1 Variables indicadoras (o dummies) | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,7 +225,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
 <li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algorítmos-de-selección"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
-<li class="chapter" data-level="4.4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.4.3</b> Regresión de LASSO</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.5</b> Regresión de LASSO</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#datos-de-grasa-corporal-1"><i class="fa fa-check"></i><b>4.5.1</b> Datos de grasa corporal</a></li>
+<li class="chapter" data-level="4.5.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#validación-cruzada"><i class="fa fa-check"></i><b>4.5.2</b> Validación cruzada</a></li>
+<li class="chapter" data-level="4.5.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplo-grasa-corporal"><i class="fa fa-check"></i><b>4.5.3</b> Ejemplo grasa corporal</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html"><i class="fa fa-check"></i><b>5</b> Modelos no lineales</a>
@@ -621,7 +626,7 @@ donde:
 \mbox{u}_{1i} = \begin{cases}
 1 &amp; \mbox{ si el país i pertenece a la categoría otro}, \\
 0 &amp; \mbox{ de otra forma}, \\
-\end{cases} \quad \mbox{ y } \quad
+\end{cases}  \mbox{ y }
 \mbox{u}_{2i} = \begin{cases}
 1 &amp; \mbox{ si el país i pertenece a África}, \\
 0 &amp; \mbox{ de otra forma}. \\
@@ -726,11 +731,13 @@ Esto, en R es:</p>
 ##   Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)
 ## 1    194 14.579                           
 ## 2    193 14.484  1  0.094808 1.2633 0.2624</code></pre>
-<p>Dado que no se rechaza <span class="math inline">\(H_0\)</span>, el efecto del PNB sobre la fertilidad es el mismo para los países Africano y los de la categoría de otros.</p>
-<p>En resumen, a partir del análisis de regresión:
-- El efecto del PNB per cápita sobre la fertilidad depende del tipo de país.
-- Para los países miembros de la OECD, no hay un efecto significativo.
-- Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).</p>
+<p>Dado que no se rechaza <span class="math inline">\(H_0\)</span>, el efecto del PNB sobre la fertilidad es el mismo para los países Africanos y los de la categoría de otros.</p>
+<p>En resumen, a partir del análisis de regresión:</p>
+<ul>
+<li><p>El efecto del PNB per cápita sobre la fertilidad depende del tipo de país.</p></li>
+<li><p>Para los países miembros de la OECD, no hay un efecto significativo.</p></li>
+<li><p>Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).</p></li>
+</ul>
 
 </div>
 </div>
