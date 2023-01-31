@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
 <li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html"><i class="fa fa-check"></i><b>2</b> Modelos polinomiales</a>
@@ -497,7 +498,7 @@ dead
 </tbody>
 </table>
 <p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="modelo-lineal-generalizado.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelo-lineal-generalizado.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grafMortEsc"></span>
 <img src="MLG2_files/figure-html/grafMortEsc-1.png" alt="Datos escarabajos. Proporción de muerte vs log dosis." width="672" />
 <p class="caption">
@@ -536,16 +537,16 @@ ensayo.</p></li>
 <li><p><code>treatment</code>: tratamiento (placebo, progabida).</p></li>
 <li><p><code>seizure.rate</code>(variable respuesta): número de ataques epilépticos (x dos semanas) luego de 8 semanas.</p></li>
 </ul>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelo-lineal-generalizado.html#cb124-1" aria-hidden="true" tabindex="-1"></a>epilepsy<span class="ot">=</span><span class="fu">subset</span>(epilepsy, period<span class="sc">==</span><span class="dv">4</span>)<span class="co">#selecionamos la semana 4</span></span>
-<span id="cb124-2"><a href="modelo-lineal-generalizado.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-3"><a href="modelo-lineal-generalizado.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb124-4"><a href="modelo-lineal-generalizado.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>age, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">data=</span>epilepsy, <span class="at">xlab=</span><span class="st">&quot;Edad&quot;</span>,</span>
-<span id="cb124-5"><a href="modelo-lineal-generalizado.html#cb124-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb124-6"><a href="modelo-lineal-generalizado.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
-<span id="cb124-7"><a href="modelo-lineal-generalizado.html#cb124-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
-<span id="cb124-8"><a href="modelo-lineal-generalizado.html#cb124-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb124-9"><a href="modelo-lineal-generalizado.html#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(seizure.rate<span class="sc">~</span>treatment,<span class="at">data=</span>epilepsy, <span class="at">xlab =</span> <span class="st">&quot;Tratamiento&quot;</span>,</span>
-<span id="cb124-10"><a href="modelo-lineal-generalizado.html#cb124-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelo-lineal-generalizado.html#cb125-1" aria-hidden="true" tabindex="-1"></a>epilepsy<span class="ot">=</span><span class="fu">subset</span>(epilepsy, period<span class="sc">==</span><span class="dv">4</span>)<span class="co">#selecionamos la semana 4</span></span>
+<span id="cb125-2"><a href="modelo-lineal-generalizado.html#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="modelo-lineal-generalizado.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb125-4"><a href="modelo-lineal-generalizado.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>age, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">data=</span>epilepsy, <span class="at">xlab=</span><span class="st">&quot;Edad&quot;</span>,</span>
+<span id="cb125-5"><a href="modelo-lineal-generalizado.html#cb125-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
+<span id="cb125-6"><a href="modelo-lineal-generalizado.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
+<span id="cb125-7"><a href="modelo-lineal-generalizado.html#cb125-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
+<span id="cb125-8"><a href="modelo-lineal-generalizado.html#cb125-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
+<span id="cb125-9"><a href="modelo-lineal-generalizado.html#cb125-9" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(seizure.rate<span class="sc">~</span>treatment,<span class="at">data=</span>epilepsy, <span class="at">xlab =</span> <span class="st">&quot;Tratamiento&quot;</span>,</span>
+<span id="cb125-10"><a href="modelo-lineal-generalizado.html#cb125-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
 <img src="MLG2_files/figure-html/unnamed-chunk-7-1.png" alt="Datos epilepsia" width="672" />
 <p class="caption">
@@ -1014,12 +1015,12 @@ w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})}.
 <p><span class="math display">\[
 \hat{\pi}_{i}=\frac{exp(-60.717+34.27log\text{dosis})}{1+exp(-60.717+34.27log\text{dosis})}
 \]</span></p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelo-lineal-generalizado.html#cb125-1" aria-hidden="true" tabindex="-1"></a>modBin <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(dead,n<span class="sc">-</span>dead)<span class="sc">~</span>logdose,<span class="at">family=</span>binomial)</span>
-<span id="cb125-2"><a href="modelo-lineal-generalizado.html#cb125-2" aria-hidden="true" tabindex="-1"></a>pred.x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">logdose =</span> <span class="fu">seq</span>(<span class="fu">min</span>(logdose),<span class="fu">max</span>(logdose),<span class="at">length.out =</span> <span class="dv">50</span>))</span>
-<span id="cb125-3"><a href="modelo-lineal-generalizado.html#cb125-3" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(modBin,pred.x,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
-<span id="cb125-4"><a href="modelo-lineal-generalizado.html#cb125-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-5"><a href="modelo-lineal-generalizado.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb125-6"><a href="modelo-lineal-generalizado.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelo-lineal-generalizado.html#cb126-1" aria-hidden="true" tabindex="-1"></a>modBin <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(dead,n<span class="sc">-</span>dead)<span class="sc">~</span>logdose,<span class="at">family=</span>binomial)</span>
+<span id="cb126-2"><a href="modelo-lineal-generalizado.html#cb126-2" aria-hidden="true" tabindex="-1"></a>pred.x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">logdose =</span> <span class="fu">seq</span>(<span class="fu">min</span>(logdose),<span class="fu">max</span>(logdose),<span class="at">length.out =</span> <span class="dv">50</span>))</span>
+<span id="cb126-3"><a href="modelo-lineal-generalizado.html#cb126-3" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(modBin,pred.x,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
+<span id="cb126-4"><a href="modelo-lineal-generalizado.html#cb126-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-5"><a href="modelo-lineal-generalizado.html#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb126-6"><a href="modelo-lineal-generalizado.html#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="MLG2_files/figure-html/grafescarMedia-1.png" width="672" /></p>
 </div>
 </div>
@@ -1042,9 +1043,9 @@ morir incrementan por un factor de <span class="math inline">\(exp(\beta_1)\)</s
 <p><span class="math display">\[
 \hat{\lambda}_i=exp(1.245-0.363\text{treat}_i+0.021\text{base}_i+0.0008\text{base}_i\text{treat}_i)
 \]</span></p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelo-lineal-generalizado.html#cb126-1" aria-hidden="true" tabindex="-1"></a>modPois<span class="ot">=</span><span class="fu">glm</span>(seizure.rate<span class="sc">~</span>base<span class="sc">+</span>treatment<span class="sc">+</span>base<span class="sc">:</span>treatment,<span class="at">family=</span>poisson,</span>
-<span id="cb126-2"><a href="modelo-lineal-generalizado.html#cb126-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span>epilepsy)</span>
-<span id="cb126-3"><a href="modelo-lineal-generalizado.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="modelo-lineal-generalizado.html#cb127-1" aria-hidden="true" tabindex="-1"></a>modPois<span class="ot">=</span><span class="fu">glm</span>(seizure.rate<span class="sc">~</span>base<span class="sc">+</span>treatment<span class="sc">+</span>base<span class="sc">:</span>treatment,<span class="at">family=</span>poisson,</span>
+<span id="cb127-2"><a href="modelo-lineal-generalizado.html#cb127-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span>epilepsy)</span>
+<span id="cb127-3"><a href="modelo-lineal-generalizado.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = seizure.rate ~ base + treatment + base:treatment, 
@@ -1070,16 +1071,16 @@ morir incrementan por un factor de <span class="math inline">\(exp(\beta_1)\)</s
 ## AIC: 345.3
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="modelo-lineal-generalizado.html#cb128-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">base=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">100</span>),</span>
-<span id="cb128-2"><a href="modelo-lineal-generalizado.html#cb128-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">treatment =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">levels</span>(epilepsy<span class="sc">$</span>treatment)))</span>
-<span id="cb128-3"><a href="modelo-lineal-generalizado.html#cb128-3" aria-hidden="true" tabindex="-1"></a>predpois <span class="ot">=</span> <span class="fu">predict</span>(modPois,y,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
-<span id="cb128-4"><a href="modelo-lineal-generalizado.html#cb128-4" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">50</span>)</span>
-<span id="cb128-5"><a href="modelo-lineal-generalizado.html#cb128-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb128-6"><a href="modelo-lineal-generalizado.html#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
-<span id="cb128-7"><a href="modelo-lineal-generalizado.html#cb128-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
-<span id="cb128-8"><a href="modelo-lineal-generalizado.html#cb128-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb128-9"><a href="modelo-lineal-generalizado.html#cb128-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb128-10"><a href="modelo-lineal-generalizado.html#cb128-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="modelo-lineal-generalizado.html#cb129-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">base=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">100</span>),</span>
+<span id="cb129-2"><a href="modelo-lineal-generalizado.html#cb129-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">treatment =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">levels</span>(epilepsy<span class="sc">$</span>treatment)))</span>
+<span id="cb129-3"><a href="modelo-lineal-generalizado.html#cb129-3" aria-hidden="true" tabindex="-1"></a>predpois <span class="ot">=</span> <span class="fu">predict</span>(modPois,y,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
+<span id="cb129-4"><a href="modelo-lineal-generalizado.html#cb129-4" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">50</span>)</span>
+<span id="cb129-5"><a href="modelo-lineal-generalizado.html#cb129-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-6"><a href="modelo-lineal-generalizado.html#cb129-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
+<span id="cb129-7"><a href="modelo-lineal-generalizado.html#cb129-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
+<span id="cb129-8"><a href="modelo-lineal-generalizado.html#cb129-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
+<span id="cb129-9"><a href="modelo-lineal-generalizado.html#cb129-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb129-10"><a href="modelo-lineal-generalizado.html#cb129-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
 <img src="MLG2_files/figure-html/unnamed-chunk-11-1.png" alt="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)" width="672" />
 <p class="caption">
@@ -1379,7 +1380,7 @@ Wald
 <p>Para encontrar el intervalo de confianza para <span class="math inline">\(\mu_i\)</span>, se hace la transformación <span class="math inline">\(g^{-1}\)</span> a los límites de confianza.</p>
 <div id="ejemplo-mortalidad-de-escarabajos" class="section level4 hasAnchor" number="6.4.1.1">
 <h4><span class="header-section-number">6.4.1.1</span> Ejemplo mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#ejemplo-mortalidad-de-escarabajos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="modelo-lineal-generalizado.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modBin)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelo-lineal-generalizado.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modBin)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(dead, n - dead) ~ logdose, family = binomial)
@@ -1402,21 +1403,21 @@ Wald
 ## AIC: 41.43
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="modelo-lineal-generalizado.html#cb131-1" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modBin,<span class="at">newdata =</span> pred.x,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
-<span id="cb131-2"><a href="modelo-lineal-generalizado.html#cb131-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-3"><a href="modelo-lineal-generalizado.html#cb131-3" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb131-4"><a href="modelo-lineal-generalizado.html#cb131-4" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb131-5"><a href="modelo-lineal-generalizado.html#cb131-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-6"><a href="modelo-lineal-generalizado.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb131-7"><a href="modelo-lineal-generalizado.html#cb131-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred)</span>
-<span id="cb131-8"><a href="modelo-lineal-generalizado.html#cb131-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb131-9"><a href="modelo-lineal-generalizado.html#cb131-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.sup, <span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb131-10"><a href="modelo-lineal-generalizado.html#cb131-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.inf, <span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="modelo-lineal-generalizado.html#cb132-1" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modBin,<span class="at">newdata =</span> pred.x,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
+<span id="cb132-2"><a href="modelo-lineal-generalizado.html#cb132-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-3"><a href="modelo-lineal-generalizado.html#cb132-3" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb132-4"><a href="modelo-lineal-generalizado.html#cb132-4" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb132-5"><a href="modelo-lineal-generalizado.html#cb132-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-6"><a href="modelo-lineal-generalizado.html#cb132-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb132-7"><a href="modelo-lineal-generalizado.html#cb132-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred)</span>
+<span id="cb132-8"><a href="modelo-lineal-generalizado.html#cb132-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-9"><a href="modelo-lineal-generalizado.html#cb132-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.sup, <span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb132-10"><a href="modelo-lineal-generalizado.html#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.inf, <span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="MLG2_files/figure-html/grafintervalosescarabajos-1.png" width="672" /></p>
 </div>
 <div id="ataques-epilépticos-2" class="section level4 hasAnchor" number="6.4.1.2">
 <h4><span class="header-section-number">6.4.1.2</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="modelo-lineal-generalizado.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="modelo-lineal-generalizado.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = seizure.rate ~ base + treatment + base:treatment, 
@@ -1442,22 +1443,22 @@ Wald
 ## AIC: 345.3
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="modelo-lineal-generalizado.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
-<span id="cb134-2"><a href="modelo-lineal-generalizado.html#cb134-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
-<span id="cb134-3"><a href="modelo-lineal-generalizado.html#cb134-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb134-4"><a href="modelo-lineal-generalizado.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb134-5"><a href="modelo-lineal-generalizado.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb134-6"><a href="modelo-lineal-generalizado.html#cb134-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-7"><a href="modelo-lineal-generalizado.html#cb134-7" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modPois,<span class="at">newdata =</span> y,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
-<span id="cb134-8"><a href="modelo-lineal-generalizado.html#cb134-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-9"><a href="modelo-lineal-generalizado.html#cb134-9" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb134-10"><a href="modelo-lineal-generalizado.html#cb134-10" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb134-11"><a href="modelo-lineal-generalizado.html#cb134-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-12"><a href="modelo-lineal-generalizado.html#cb134-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb134-13"><a href="modelo-lineal-generalizado.html#cb134-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb134-14"><a href="modelo-lineal-generalizado.html#cb134-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-15"><a href="modelo-lineal-generalizado.html#cb134-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb134-16"><a href="modelo-lineal-generalizado.html#cb134-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="modelo-lineal-generalizado.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
+<span id="cb135-2"><a href="modelo-lineal-generalizado.html#cb135-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
+<span id="cb135-3"><a href="modelo-lineal-generalizado.html#cb135-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
+<span id="cb135-4"><a href="modelo-lineal-generalizado.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb135-5"><a href="modelo-lineal-generalizado.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb135-6"><a href="modelo-lineal-generalizado.html#cb135-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-7"><a href="modelo-lineal-generalizado.html#cb135-7" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modPois,<span class="at">newdata =</span> y,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
+<span id="cb135-8"><a href="modelo-lineal-generalizado.html#cb135-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-9"><a href="modelo-lineal-generalizado.html#cb135-9" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb135-10"><a href="modelo-lineal-generalizado.html#cb135-10" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
+<span id="cb135-11"><a href="modelo-lineal-generalizado.html#cb135-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-12"><a href="modelo-lineal-generalizado.html#cb135-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb135-13"><a href="modelo-lineal-generalizado.html#cb135-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb135-14"><a href="modelo-lineal-generalizado.html#cb135-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-15"><a href="modelo-lineal-generalizado.html#cb135-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb135-16"><a href="modelo-lineal-generalizado.html#cb135-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grafintervalosepilep"></span>
 <img src="MLG2_files/figure-html/grafintervalosepilep-1.png" alt="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)" width="672" />
 <p class="caption">
@@ -1525,13 +1526,13 @@ H_0:logit(\pi_i)=\beta_0+\sum_{i=1}^k\beta_kx_{ik}
 <p>*La aproximación es buena para datos agrupados.</p>
 <p><strong>Mortalidad de escarabajos</strong></p>
 <p>Los valores de la devianza y el <span class="math inline">\(\chi^2\)</span> de Pearson:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="modelo-lineal-generalizado.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devianza</span></span>
-<span id="cb135-2"><a href="modelo-lineal-generalizado.html#cb135-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">deviance</span>(modBin)</span>
-<span id="cb135-3"><a href="modelo-lineal-generalizado.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(D,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="modelo-lineal-generalizado.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devianza</span></span>
+<span id="cb136-2"><a href="modelo-lineal-generalizado.html#cb136-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">deviance</span>(modBin)</span>
+<span id="cb136-3"><a href="modelo-lineal-generalizado.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(D,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
 <pre><code>## [1] 0.08145881</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="modelo-lineal-generalizado.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-cuadrado de Pearson</span></span>
-<span id="cb137-2"><a href="modelo-lineal-generalizado.html#cb137-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modBin,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb137-3"><a href="modelo-lineal-generalizado.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(X2,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="modelo-lineal-generalizado.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-cuadrado de Pearson</span></span>
+<span id="cb138-2"><a href="modelo-lineal-generalizado.html#cb138-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modBin,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb138-3"><a href="modelo-lineal-generalizado.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(X2,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
 <pre><code>## [1] 0.1235272</code></pre>
 <table>
 <thead>

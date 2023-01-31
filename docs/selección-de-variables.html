@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -443,7 +443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>ankle</code>:circunferencia del tobillo (en centímetros).</p></li>
 <li><p><code>biceps</code>: circunferencia del bíceps extendido (en centímetros).</p></li>
 <li><p><code>forearm</code>: circunferencia del antebrazo (en centímetros).</p></li>
-<li><p>``wrist```: circunferencia de la muñeca (en centímetros).</p></li>
+<li><p><code>wrist</code>: circunferencia de la muñeca (en centímetros).</p></li>
 </ul>
 <p>El modelo propuesto es el siguiente:
 <span class="math display">\[
@@ -493,13 +493,13 @@ El ajuste del modelo es:</p>
 <h2><span class="header-section-number">4.2</span> Problema de selección de variables<a href="selección-de-variables.html#problema-de-selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En problemas de regresión se tiene un conjunto grande de potenciales covariables. Si ajustamos un modelo considerandolas todas podemos estar incluyendo covariables que son irrelevante. Por el otro lado, si no las incluimos todas es posible que estemos omitiendo covariables importantes. En ambos casos hay consecuencias negativas.</p>
 <p>Para illustrar esto, considere el siguiente modelo:
-<span class="math display">\[\begin{equation}
+<span class="math display" id="eq:modelogral">\[\begin{equation}
 \begin{split}
 y_{i} &amp;= \beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
 &amp;= \beta_{0} + \sum_{j=1}^{r}\beta_{j}x_{ij} + \sum_{j=r+1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
 &amp;= \boldsymbol x_{1i}&#39;\boldsymbol \beta_1 + \boldsymbol x_{2i}&#39;\boldsymbol \beta_2 + \varepsilon_i,
 \end{split}
-\label{eq:modelogral}
+\tag{4.1}
 \end{equation}\]</span>
 donde <span class="math inline">\(\boldsymbol x_{1i} = (1,x_{1i},x_{2i},\ldots,x_{ri})\)</span>, <span class="math inline">\(\boldsymbol x_{2i} = (x_{r+1,i},x_{r+2,i},\ldots,x_{p-1,i})\)</span>, <span class="math inline">\(\boldsymbol \beta_1 = (\beta_0,\beta_1,\beta_2,\ldots,\beta_r)&#39;\)</span>, <span class="math inline">\(\boldsymbol \beta_2 = (\beta_{r+1},\beta_{r+2},\ldots,\beta_{p-1})&#39;\)</span>, y <span class="math inline">\(\varepsilon_i \sim N(0,\sigma^{2})\)</span>. Es decir, se hace una partición de las covariables y los coeficientes de regressión en dos componentes.</p>
 <p>En forma matricial, el modelo es:
@@ -509,7 +509,7 @@ donde <span class="math inline">\(\boldsymbol x_{1i} = (1,x_{1i},x_{2i},\ldots,x
 donde <span class="math inline">\(\boldsymbol X_{1}\)</span> es una matriz <span class="math inline">\(n \times r\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{1i}\)</span> y <span class="math inline">\(\boldsymbol X_{2}\)</span> es una matriz <span class="math inline">\(n \times (p-r-1)\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{2i}\)</span>.</p>
 <div id="qué-pasa-si-ignoramos-covariables-importantes" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> ¿Qué pasa si ignoramos covariables importantes?<a href="selección-de-variables.html#qué-pasa-si-ignoramos-covariables-importantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Ahora, considere que el modelo de regresión real es <a href="#eq:modelogral">(<strong>??</strong>)</a>, pero decidimos estimar:
+<p>Ahora, considere que el modelo de regresión real es <a href="selección-de-variables.html#eq:modelogral">(4.1)</a>, pero decidimos estimar:
 <span class="math display">\[
 y_{i} = \boldsymbol x_{1i}&#39;\boldsymbol \beta_1 + \varepsilon_i.
 \]</span>
@@ -591,7 +591,7 @@ V(\widehat{y}_{0}) = \sigma^{2} \boldsymbol x_{0}&#39;(\boldsymbol X&#39;\boldsy
 <div id="métodos-para-la-selección-de-variables" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Métodos para la selección de variables<a href="selección-de-variables.html#métodos-para-la-selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Si tenemos <span class="math inline">\((p-1)\)</span> covariables, entonces tenemos <span class="math inline">\((p-1)^2\)</span> potenciales modelos. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.</p>
-<p>Existen varios criterios para determinar que modelo es ``mejor’’ que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:</p>
+<p>Existen varios criterios para determinar que modelo es “mejor” que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:</p>
 <ul>
 <li>Coeficiente de determinación (<span class="math inline">\(R^{2}\)</span> y <span class="math inline">\(R^{2}_{adj}\)</span>).</li>
 <li>Estadístico <span class="math inline">\(C_{p}\)</span> de Mallows.</li>
@@ -645,7 +645,7 @@ Si el modelo propuesto es insesgado se espera que el <span class="math inline">\
 <h3><span class="header-section-number">4.3.4</span> Estadístico PRESS<a href="selección-de-variables.html#estadístico-press" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El estadístico PRESS (prediction error sum of squares) está definido como:
 <span class="math display">\[
-\mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \widehat{y}_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{\epsilon_{i}}{1-h_{ii}} \right)^{2}.
+\mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \widehat{y}_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{e_{i}}{1-h_{ii}} \right)^{2}.
 \]</span>
 Para comparar modelos, menor valor del PRESS indica que el modelo es mejor para hacer predicciones.</p>
 <p>A partir del PRESS se puede calcular el <span class="math inline">\(R^{2}\)</span> de predicción:
@@ -699,7 +699,7 @@ Hay varias adaptaciones de estos criterios de información definiendo diferentes
 ## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597 5.528174 -8.580332  5.342556
 ## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412 0.8198474 0.7749807 7.721367 -6.673207 11.227649
 ## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815</code></pre>
-<p>Entonces, basándonos en el <span class="math inline">\(R^{2}_{adj}\)</span> el mejor ajuste se obtiene con el modelo considerando las covariables <code>bcs</code>, <code>pindex</code>, <code>enzyme_test</code>, <code>age</code>, <code>gender</code>, y <code>alc_heavy</code>. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables <code>gender</code> obtenemos un modelo con un <span class="math inline">\(R^{2}_{pred}\)</span> más alto.</p>
+<p>Basándonos en este criterio el mejor ajuste se obtiene considerando las covariables <code>bcs</code>, <code>pindex</code>, <code>enzyme_test</code>, <code>age</code>, <code>gender</code>, y <code>alc_heavy</code>. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables <code>gender</code> obtenemos un modelo con un <span class="math inline">\(R^{2}_{pred}\)</span> más alto.</p>
 <p>Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son:</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="selección-de-variables.html#cb78-1" aria-hidden="true" tabindex="-1"></a>AIC.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>aic,<span class="at">decreasing =</span> F)</span>
 <span id="cb78-2"><a href="selección-de-variables.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[AIC.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
@@ -771,12 +771,12 @@ Figure 4.2: Valores de los criterios de selección calculados para cada uno de t
 <h4><span class="header-section-number">4.4.2.1</span> Selección hacia delante (forward selection)<a href="selección-de-variables.html#selección-hacia-delante-forward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ``óptimo’’ se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).</p>
 <p>La primera covariable se escoge luego de ajustar los <span class="math inline">\((p-1)\)</span> modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.</p>
-<p>Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes <span class="math inline">\((p-2)\)</span> regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccinando la tercer covariable de la misma forma.</p>
+<p>Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes <span class="math inline">\((p-2)\)</span> regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccionando la tercer covariable de la misma forma.</p>
 <p>El algoritmo continua seleccionando covariables hasta que se satisface un criterio de parada (por ejemplo, hasta que el AIC aumente).</p>
 </div>
 <div id="selección-hacia-atrás-backward-selection" class="section level4 hasAnchor" number="4.4.2.2">
 <h4><span class="header-section-number">4.4.2.2</span> Selección hacia atrás (backward selection)<a href="selección-de-variables.html#selección-hacia-atrás-backward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Con este algoritmo se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).</p>
+<p>Aquí se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).</p>
 </div>
 <div id="selección-por-segmentos-stepwise-selection" class="section level4 hasAnchor" number="4.4.2.3">
 <h4><span class="header-section-number">4.4.2.3</span> Selección por segmentos (stepwise selection)<a href="selección-de-variables.html#selección-por-segmentos-stepwise-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -794,7 +794,21 @@ Figure 4.2: Valores de los criterios de selección calculados para cada uno de t
 En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> posibles modelos. Lo que hace que sea difícil ajustarlos todos (aunque es posible usando la librería <code>leaps</code>). Por lo tanto, vamos a utilizar los algortimos de selección.</p>
 <p><strong>Selección hacia delante</strong>. Podemos utilizar la función <code>ols_step_forward_aic</code> de la librería <code>olsrr</code>:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="selección-de-variables.html#cb83-1" aria-hidden="true" tabindex="-1"></a>mod.surgical.completo2 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(y)<span class="sc">~</span>bcs<span class="sc">*</span>gender<span class="sc">+</span>pindex<span class="sc">*</span>gender<span class="sc">+</span>enzyme_test<span class="sc">*</span>gender<span class="sc">+</span>liver_test<span class="sc">*</span>gender<span class="sc">+</span>age<span class="sc">*</span>gender<span class="sc">+</span> bcs<span class="sc">*</span>alc_mod<span class="sc">+</span>pindex<span class="sc">*</span>alc_mod<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_mod<span class="sc">+</span>liver_test<span class="sc">*</span>alc_mod<span class="sc">+</span>age<span class="sc">*</span>alc_mod<span class="sc">+</span>bcs<span class="sc">*</span>alc_heavy<span class="sc">+</span>pindex<span class="sc">*</span>alc_heavy<span class="sc">+</span>enzyme_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>liver_test<span class="sc">*</span>alc_heavy<span class="sc">+</span>age<span class="sc">*</span>alc_heavy,<span class="at">data=</span>surgical)</span>
-<span id="cb83-2"><a href="selección-de-variables.html#cb83-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">=</span><span class="fu">ols_step_forward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<span id="cb83-2"><a href="selección-de-variables.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_forward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<pre><code>## 
+##                            Selection Summary                             
+## ------------------------------------------------------------------------
+## Variable                AIC      Sum Sq     RSS      R-Sq      Adj. R-Sq 
+## ------------------------------------------------------------------------
+## enzyme_test            51.434     5.471    7.334    0.42725      0.41624 
+## pindex                 24.767     8.492    4.313    0.66318      0.64997 
+## bcs:alc_heavy          -3.014    10.320    2.485    0.80596      0.79432 
+## bcs                    -9.430    10.678    2.126    0.83396      0.82041 
+## gender:pindex         -10.781    10.806    1.998    0.84395      0.82770 
+## gender:enzyme_test    -19.676    11.171    1.633    0.87246      0.85618 
+## gender                -23.040    11.326    1.479    0.88452      0.86695 
+## age                   -24.081    11.407    1.398    0.89085      0.87144 
+## ------------------------------------------------------------------------</code></pre>
 <p>Con el argumento <code>details = T</code> se puede ver la selección con más detalle. Usando este algoritmo el modelo óptimo es:
 <span class="math display">\[\begin{equation}
 \begin{split}
@@ -804,7 +818,7 @@ En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> p
 \nonumber
 \end{equation}\]</span></p>
 <p><strong>Selección hacia atrás</strong>. Podemos utilizar la función <code>ols_step_backward_aic</code> de la librería <code>olsrr</code>:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="selección-de-variables.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_backward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="selección-de-variables.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_backward_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
 <pre><code>## 
 ## 
 ##                         Backward Elimination Summary                         
@@ -831,13 +845,13 @@ En este caso tenemos <span class="math inline">\(2^{23}=8&#39;388,608\)</span> p
 <span class="math display">\[\begin{equation}
 \begin{split}
 \log y_{i} =&amp; \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{gender}_{i}\beta_{4} + \mbox{liver}_{i}\beta_{5} + \\
-&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
+&amp; \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} + \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}\]</span>
 Con este algoritmo no se considera la edad del paciente pero si la función hepática y otras interacciones.</p>
 <p><strong>Selección por segmentos</strong>. Aquí tenemos la función <code>ols_step_both_aic</code> de la librería <code>olsrr</code>:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="selección-de-variables.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_both_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="selección-de-variables.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_step_both_aic</span>(mod.surgical.completo2,<span class="at">details =</span> F)</span></code></pre></div>
 <pre><code>## 
 ## 
 ##                                    Stepwise Summary                                   
@@ -862,13 +876,13 @@ Con este algoritmo no se considera la edad del paciente pero si la función hep�
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
-<p>Dado que los algoritmos hacen la busqueda del modelo ``óptimo’’ evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.</p>
+<p>Dado que los algoritmos hacen la busqueda del modelo “óptimo” evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.</p>
 </div>
 </div>
 <div id="regresión-de-lasso" class="section level3 hasAnchor" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Regresión de LASSO<a href="selección-de-variables.html#regresión-de-lasso" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El estimador LASSO (Least Absolute Selection and Shrinkage
-Operator) minimiza la siguiente expresión:</p>
+<p>Otra alternativa para encontrar las variables relevantes es a través del estimador de LASSO (Least Absolute Selection and Shrinkage Operator). Este es un método de regularización que se implementa se tiene cientos de covariables disponibles y se cree que pocas tienen un aporte relevante (<em>sparsity principle</em>). Por ejemplo, en estudios de genetica se tienen miles de genes disponibles pero solo unos pocos están activos para una mutación de interés.</p>
+<p>El estimador de LASSO se obtiene minimizando la siguiente expresión:</p>
 <p><span class="math display">\[\begin{equation}
 \begin{split}
 S_{lasso}(\beta)=&amp; \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2}+
@@ -876,68 +890,55 @@ S_{lasso}(\beta)=&amp; \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2}+
 \end{split}
 \nonumber
 \end{equation}\]</span></p>
-<p>La penalización sobre <span class="math inline">\(\sum_{j=1}^{p-1}|\beta_{j}|\)</span> tiene como efecto forzar a que los
-coeficientes tiendan a cero.</p>
-<p>A medida que se incrementa, mayor es la penalización y más
-coeficientes tomarán el valor de cero (excluimos covariables que no
-son relevantes).</p>
-<p>Al igual que en la regresión ridge, se recomienda escalar las
-covariables</p>
-<div id="métodos-de-regularización" class="section level4 hasAnchor" number="4.4.3.1">
-<h4><span class="header-section-number">4.4.3.1</span> Métodos de regularización<a href="selección-de-variables.html#métodos-de-regularización" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>De forma de equivalente, <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span> minimiza:</p>
+<p>De forma de equivalente, el estimador de LASSO minimiza:</p>
 <p><span class="math display">\[
 \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
-\sum_{j=1}^{p-1}|\beta_{j}\leq t.
+\sum_{j=1}^{p-1}|\beta_{j} | \leq t.
 \]</span></p>
 <p>Mientras que, en la regresión de ridge,<span class="math inline">\(\widehat{\boldsymbol \beta}_{ridge}\)</span> minimiza:</p>
 <p><span class="math display">\[
 \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
 \sum_{j=1}^{p-1}\beta_{j}^2\leq t.
 \]</span></p>
-<p>Cuando <span class="math inline">\(\lambda \rightarrow 0\)</span> , entonces <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO} \rightarrow \widehat{\boldsymbol \beta}\)</span>, y cuando
-<span class="math inline">\(\lambda \rightarrow \infty\)</span>, entonces <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO} \rightarrow 0\)</span>.</p>
-<p>También, cuando <span class="math inline">\(\lambda \rightarrow \infty\)</span>, la varianza de <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span> disminuye, pero el sesgo aumenta.</p>
-<p>No hay una estimación analítica para <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span>, pero hay algoritmos
-eficientes para su estimación.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="selección-de-variables.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#se debe especificar alpha=1</span></span>
-<span id="cb88-2"><a href="selección-de-variables.html#cb88-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(mod.fat)[,<span class="sc">-</span><span class="dv">1</span>]</span>
-<span id="cb88-3"><a href="selección-de-variables.html#cb88-3" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
-<span id="cb88-4"><a href="selección-de-variables.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod,<span class="at">xvar=</span><span class="st">&#39;lambda&#39;</span>,<span class="at">label=</span>T,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb88-5"><a href="selección-de-variables.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<p>Aquí vemos que la penalización tiene como efecto forzar a que los coeficientes del ajuste, especialmente los de poco aporte, tiendan a cero. A medida que se incrementa mas coeficientes tomarán el valor de cero (con el objetivo de excluir covariables que no son relevantes). Para eliminar el efecto de las unidades de medida, se recomienda escalar las covariables.</p>
+<p>También se puede probar que, cuando <span class="math inline">\(\lambda \rightarrow \infty\)</span>, la varianza de <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span> disminuye, pero el sesgo aumenta.</p>
+<p>No hay una estimación analítica para <span class="math inline">\(\widehat{\boldsymbol \beta}_{LASSO}\)</span>, pero hay algoritmos eficientes para su estimación. De igual forma, se recomienda escalar las variables para remover el efecto de las unidades de medida.</p>
+<p>Resultados usando los datos de % de grasa ….</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="selección-de-variables.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#se debe especificar alpha=1</span></span>
+<span id="cb89-2"><a href="selección-de-variables.html#cb89-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">model.matrix</span>(mod.fat)[,<span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb89-3"><a href="selección-de-variables.html#cb89-3" aria-hidden="true" tabindex="-1"></a>lasso.mod <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
+<span id="cb89-4"><a href="selección-de-variables.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.mod,<span class="at">xvar=</span><span class="st">&#39;lambda&#39;</span>,<span class="at">label=</span>T,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb89-5"><a href="selección-de-variables.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Vgrasalasso"></span>
 <img src="MLG2_files/figure-html/Vgrasalasso-1.png" alt="Estimación de los coeficientes vs log(lambda)" width="672" />
 <p class="caption">
 Figure 4.3: Estimación de los coeficientes vs log(lambda)
 </p>
 </div>
-</div>
-<div id="validación-cruzada" class="section level4 hasAnchor" number="4.4.3.2">
-<h4><span class="header-section-number">4.4.3.2</span> Validación cruzada<a href="selección-de-variables.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>…. selección de <span class="math inline">\(\lambda\)</span> ….</p>
+<div id="validación-cruzada" class="section level4 hasAnchor" number="4.4.3.1">
+<h4><span class="header-section-number">4.4.3.1</span> Validación cruzada<a href="selección-de-variables.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>La validación cruzada se utiliza para evaluar y comparar modelos.</p>
 <p>Consiste en dividir la muestra en dos grupos:</p>
 <ul>
 <li><strong>Entrenamiento:</strong> se usa para ajusta el modelo.</li>
 <li><strong>Validación:</strong> se utiliza para validar el modelo.</li>
 </ul>
-<p>Para no perder información, en la validación cruzada se divide la
-muestra en dos (o más) partes y se hace la validación en cada una.</p>
+<p>Para no perder información, en la validación cruzada se divide la muestra en dos (o más) partes y se hace la validación en cada una.</p>
 <p>División de la muestra de forma aleatoria en <span class="math inline">\(k = 5\)</span> grupos <span class="math inline">\((k-fold)\)</span></p>
-<p><img src="figs/ValidacionCruzada.png" width="75%" style="display: block; margin: auto;" />
-Para cada división,<span class="math inline">\(k = 1, . . . , K\)</span> , y para cada valor de <span class="math inline">\(\lambda\)</span>, se estima
-el modelo basado en la <strong>muestra de entrenamiento</strong>.</p>
-<p>Mientras que con cada <strong>muestra de validación</strong>, y para cada valor de
-<span class="math inline">\(\lambda\)</span>, se utiliza para calcular el error cuadrático medio:</p>
+<p><img src="figs/ValidacionCruzada.PNG" width="75%" style="display: block; margin: auto;" />
+Para cada división,<span class="math inline">\(k = 1, . . . , K\)</span> , y para cada valor de <span class="math inline">\(\lambda\)</span>, se estima el modelo basado en la <strong>muestra de entrenamiento</strong>.</p>
+<p>Mientras que con cada <strong>muestra de validación</strong>, y para cada valor de <span class="math inline">\(\lambda\)</span>, se utiliza para calcular el error cuadrático medio:</p>
 <p><span class="math display">\[
-EMC_{k}(\lambda) = \sum_{i=1}^{n_k} \frac{[y_{i}^{(k)}-x_{i}^{(k)}\widehat{\boldsymbol \beta}_{lasso}^{(k)}(\lambda)]^2}{n}               
+EMC_{k}(\lambda) = \sum_{i=1}^{n_k} \frac{[y_{i}^{(k)}-x_{i}^{(k)}\widehat{\boldsymbol \beta}_{lasso}^{(k)}(\lambda)]^2}{n}           
 \]</span></p>
 <p>donde <span class="math inline">\(y_{i}^{(k)}\)</span> son las observaciones de la muestra de validación <span class="math inline">\(k\)</span>, y <span class="math inline">\(\widehat{\boldsymbol \beta}_{lasso}^{(k)}(\lambda)\)</span> es la estimación utilizando la muestra de entrenamiento <span class="math inline">\(k\)</span>.</p>
 <p>Para cada <span class="math inline">\(\lambda\)</span>, se calcula la validación cruzada como:</p>
 <p><span class="math display">\[
 CV(\lambda) = \frac{1}{K}\sum_{i=1}^{K}EMC_{k}(\lambda)              
 \]</span>
-y la desviación estándar:</p>
-<p><span class="math display">\[
+y la desviación estándar:
+<span class="math display">\[
 SD(\lambda) = \sqrt{\sum_{i=1}^{K} \frac{[EMC_{k}(\lambda)-CV(\lambda)]^2}{K-1}}              
 \]</span>
 Luego, selección el <span class="math inline">\(\lambda\)</span> que minimiza <span class="math inline">\(CV(\lambda)\)</span>:
@@ -949,11 +950,11 @@ Luego, selección el <span class="math inline">\(\lambda\)</span> que minimiza <
 \hat{\lambda}_{cv1sd}=máx \{\lambda:CV(\hat{\lambda})&lt;CV(\hat{\lambda}_{cv})+SD(\hat{\lambda}_{cv})\}
 \]</span></p>
 </div>
-<div id="ejemplo-grasa-corporal" class="section level4 hasAnchor" number="4.4.3.3">
-<h4><span class="header-section-number">4.4.3.3</span> Ejemplo grasa corporal<a href="selección-de-variables.html#ejemplo-grasa-corporal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="ejemplo-grasa-corporal" class="section level4 hasAnchor" number="4.4.3.2">
+<h4><span class="header-section-number">4.4.3.2</span> Ejemplo grasa corporal<a href="selección-de-variables.html#ejemplo-grasa-corporal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Validación cruzada con <span class="math inline">\(k=10\)</span>.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="selección-de-variables.html#cb89-1" aria-hidden="true" tabindex="-1"></a>lasso.cv <span class="ot">&lt;-</span><span class="fu">cv.glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">nfolds =</span> <span class="dv">252</span>, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
-<span id="cb89-2"><a href="selección-de-variables.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.cv)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="selección-de-variables.html#cb90-1" aria-hidden="true" tabindex="-1"></a>lasso.cv <span class="ot">&lt;-</span><span class="fu">cv.glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">nfolds =</span> <span class="dv">252</span>, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
+<span id="cb90-2"><a href="selección-de-variables.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lasso.cv)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:kgrasa"></span>
 <img src="MLG2_files/figure-html/kgrasa-1.png" alt="Validación cruzada grasa corporal" width="672" />
 <p class="caption">
@@ -961,8 +962,8 @@ Figure 4.4: Validación cruzada grasa corporal
 </p>
 </div>
 <p>Las covariables seleccionadas al estimar el lambda óptimo (regla una desviación estándar):</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="selección-de-variables.html#cb90-1" aria-hidden="true" tabindex="-1"></a>est <span class="ot">=</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">lambda =</span> lasso.cv<span class="sc">$</span>lambda<span class="fl">.1</span>se)</span>
-<span id="cb90-2"><a href="selección-de-variables.html#cb90-2" aria-hidden="true" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="selección-de-variables.html#cb91-1" aria-hidden="true" tabindex="-1"></a>est <span class="ot">=</span> <span class="fu">glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">lambda =</span> lasso.cv<span class="sc">$</span>lambda<span class="fl">.1</span>se)</span>
+<span id="cb91-2"><a href="selección-de-variables.html#cb91-2" aria-hidden="true" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
 <pre><code>## 13 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                  s0
 ## age      0.04227147
@@ -979,8 +980,8 @@ Figure 4.4: Validación cruzada grasa corporal
 ## forearm  .         
 ## wrist   -1.02250135</code></pre>
 <p>Observamos que las variables seleccionadas son <code>age</code>, <code>height</code>,<code>abdom</code> y <code>wrist</code>:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="selección-de-variables.html#cb92-1" aria-hidden="true" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
-<span id="cb92-2"><a href="selección-de-variables.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="selección-de-variables.html#cb93-1" aria-hidden="true" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
+<span id="cb93-2"><a href="selección-de-variables.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = brozek ~ age + height + abdom + wrist, data = fat)

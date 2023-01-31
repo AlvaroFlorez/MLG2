@@ -77,7 +77,7 @@ Cómo variable respuesta se utiliza la medición por el método de Brozek, y las
 
 - ``forearm``: circunferencia del antebrazo (en centímetros).
 
-- ``wrist```: circunferencia de la muñeca (en centímetros).
+- ``wrist``: circunferencia de la muñeca (en centímetros).
 
 El modelo propuesto es el siguiente:
 $$
@@ -102,7 +102,7 @@ y_{i} &= \beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
 &= \beta_{0} + \sum_{j=1}^{r}\beta_{j}x_{ij} + \sum_{j=r+1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
 &= \bx_{1i}'\bbeta_1 + \bx_{2i}'\bbeta_2 + \varepsilon_i,
 \end{split}
-\label{eq:modelogral}
+(\#eq:modelogral)
 \end{equation}
 donde $\bx_{1i} = (1,x_{1i},x_{2i},\ldots,x_{ri})$, $\bx_{2i} = (x_{r+1,i},x_{r+2,i},\ldots,x_{p-1,i})$, $\bbeta_1 = (\beta_0,\beta_1,\beta_2,\ldots,\beta_r)'$, $\bbeta_2 = (\beta_{r+1},\beta_{r+2},\ldots,\beta_{p-1})'$, y $\varepsilon_i \sim N(0,\sigma^{2})$. Es decir, se hace una partición de las covariables y los coeficientes de regressión en dos componentes. 
 
@@ -200,7 +200,7 @@ En conclusión:
 ## Métodos para la selección de variables
 Si tenemos $(p-1)$ covariables, entonces tenemos $(p-1)^2$ potenciales modelos. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
 
-Existen varios criterios para determinar que modelo es ``mejor'' que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:
+Existen varios criterios para determinar que modelo es "mejor" que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:
 
 - Coeficiente de determinación ($R^{2}$ y $R^{2}_{adj}$).
 - Estadístico $C_{p}$ de Mallows.
@@ -253,7 +253,7 @@ Si el modelo propuesto es insesgado se espera que el $C_p$ esté cercano a $p$. 
 ### Estadístico PRESS
 El estadístico PRESS (prediction error sum of squares) está definido como: 
 $$
-\mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \haty_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{\epsilon_{i}}{1-h_{ii}} \right)^{2}.
+\mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \haty_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{e_{i}}{1-h_{ii}} \right)^{2}.
 $$
 Para comparar modelos, menor valor del PRESS indica que el modelo es mejor para hacer predicciones.
 
@@ -306,7 +306,7 @@ Puesto que son muchos modelos, podemos organizar los resultados de tal forma que
 R2adj.order = order(surgical.all.mods$adjr,decreasing = T)
 as.data.frame(surgical.all.mods)[R2adj.order[1:5],c(2:8,10)]
 ```
-Entonces, basándonos en el $R^{2}_{adj}$ el mejor ajuste se obtiene con el modelo considerando las covariables ``bcs``, ``pindex``, ``enzyme_test``, ``age``, ``gender``, y ``alc_heavy``. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables ``gender`` obtenemos un modelo con un $R^{2}_{pred}$ más alto.
+Basándonos en este criterio el mejor ajuste se obtiene considerando las covariables ``bcs``, ``pindex``, ``enzyme_test``, ``age``, ``gender``, y ``alc_heavy``. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables ``gender`` obtenemos un modelo con un $R^{2}_{pred}$ más alto.
 
 Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son: 
 ```{r surgicalFitAll3, echo=T, warning=FALSE,message = FALSE}
@@ -338,12 +338,12 @@ Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el interc
 
 La primera covariable se escoge luego de ajustar los $(p-1)$ modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.
 
-Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes $(p-2)$ regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccinando la tercer covariable de la misma forma. 
+Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes $(p-2)$ regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccionando la tercer covariable de la misma forma. 
 
 El algoritmo continua seleccionando covariables hasta que se satisface un criterio de parada (por ejemplo, hasta que el AIC aumente).
 
 #### Selección hacia atrás (backward selection)
-Con este algoritmo se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).
+Aquí se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).
 
 #### Selección por segmentos (stepwise selection)
 Aquí se siguen los mismos pasos que la selección hacia delante. Pero en cada paso se evalúan de nuevo los candidatos que ya habían ingresado en el modelo. Por lo tanto, una covariable que ya esté en el modelo puede ser eliminada en algún paso posterior.
@@ -363,7 +363,7 @@ En este caso tenemos $2^{23}=8'388,608$ posibles modelos. Lo que hace que sea di
 
 ```{r surgicalForward, echo=T, warning=FALSE,message = FALSE}
 mod.surgical.completo2 = lm(log(y)~bcs*gender+pindex*gender+enzyme_test*gender+liver_test*gender+age*gender+ bcs*alc_mod+pindex*alc_mod+enzyme_test*alc_mod+liver_test*alc_mod+age*alc_mod+bcs*alc_heavy+pindex*alc_heavy+enzyme_test*alc_heavy+liver_test*alc_heavy+age*alc_heavy,data=surgical)
-res =ols_step_forward_aic(mod.surgical.completo2,details = F)
+ols_step_forward_aic(mod.surgical.completo2,details = F)
 ```
 Con el argumento ``details = T`` se puede ver la selección con más detalle. Usando este algoritmo el modelo óptimo es:
 \begin{equation}
@@ -383,7 +383,7 @@ Por lo tanto, el modelo seleccionado es:
 \begin{equation}
 \begin{split}
 \log y_{i} =& \beta_{0} + \mbox{bcs}_{i}\beta_{1} + \mbox{pindex}_{i}\beta_{2} + \mbox{enzyme}_{i}\beta_{3} + \mbox{gender}_{i}\beta_{4} + \mbox{liver}_{i}\beta_{5} + \\
-& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} \varepsilon_{i}.
+& \mbox{gender}_{i}\mbox{enzyme}_{i}\beta_{6} + \mbox{enzyme}_{i}\mbox{alc_mod}_{i}\beta_{7} + \mbox{liver}_{i}\mbox{alc_mod}_{i}\beta_{8} + \mbox{liver}_{i}\mbox{gender}_{i}\beta_{9} + \varepsilon_{i}.
 \end{split}
 \nonumber
 \end{equation}
@@ -404,11 +404,12 @@ Note que este método sigue los mismos pasos que la selección hacia delante has
 \nonumber
 \end{equation}
 
-Dado que los algoritmos hacen la busqueda del modelo ``óptimo'' evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.
+Dado que los algoritmos hacen la busqueda del modelo "óptimo" evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.
 
 ### Regresión de LASSO
-El estimador LASSO (Least Absolute Selection and Shrinkage
-Operator) minimiza la siguiente expresión:
+Otra alternativa para encontrar las variables relevantes es a través del estimador de LASSO (Least Absolute Selection and Shrinkage Operator). Este es un método de regularización que se implementa se tiene cientos de covariables disponibles y se cree que pocas tienen un aporte relevante (*sparsity principle*). Por ejemplo, en estudios de genetica se tienen miles de genes disponibles pero solo unos pocos están activos para una mutación de interés.
+
+El estimador de LASSO se obtiene minimizando la siguiente expresión:
 
 \begin{equation}
 \begin{split}
@@ -418,22 +419,11 @@ S_{lasso}(\beta)=& \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2}+
 \nonumber
 \end{equation}
 
-La penalización sobre $\sum_{j=1}^{p-1}|\beta_{j}|$ tiene como efecto forzar a que los
-coeficientes tiendan a cero.
-
-A medida que \lambda se incrementa, mayor es la penalización y más
-coeficientes tomarán el valor de cero (excluimos covariables que no
-son relevantes).
-
-Al igual que en la regresión ridge, se recomienda escalar las
-covariables
-
-#### Métodos de regularización
-De forma de equivalente, $\hatbbeta_{LASSO}$ minimiza:
+De forma de equivalente, el estimador de LASSO minimiza:
 
 \[
 \sum_{i=1}^{n}(y_{i}-x_{i}^{′}\beta)^{2} \quad \mbox{ sujeto a } \quad
-\sum_{j=1}^{p-1}|\beta_{j}\leq t.
+\sum_{j=1}^{p-1}|\beta_{j} | \leq t.
 \]
 
 Mientras que, en la regresión de ridge,$\hatbbeta_{ridge}$ minimiza:
@@ -443,14 +433,15 @@ Mientras que, en la regresión de ridge,$\hatbbeta_{ridge}$ minimiza:
 \sum_{j=1}^{p-1}\beta_{j}^2\leq t.
 \]
 
-Cuando $\lambda \rightarrow 0$ , entonces $\hatbbeta_{LASSO} \rightarrow \hatbbeta$, y cuando 
-$\lambda \rightarrow \infty$, entonces $\hatbbeta_{LASSO} \rightarrow 0$.
+Aquí vemos que la penalización tiene como efecto forzar a que los coeficientes del ajuste, especialmente los de poco aporte, tiendan a cero. A medida que \lambda se incrementa mas coeficientes tomarán el valor de cero (con el objetivo de excluir covariables que no son relevantes). Para eliminar el efecto de las unidades de medida, se recomienda escalar las covariables.
 
-También, cuando $\lambda \rightarrow \infty$, la varianza de $\hatbbeta_{LASSO}$ disminuye, pero el sesgo aumenta.
+También se puede probar que, cuando $\lambda \rightarrow \infty$, la varianza de $\hatbbeta_{LASSO}$ disminuye, pero el sesgo aumenta.
 
-No hay una estimación analítica para $\hatbbeta_{LASSO}$, pero hay algoritmos
-eficientes para su estimación.
+No hay una estimación analítica para $\hatbbeta_{LASSO}$, pero hay algoritmos eficientes para su estimación. De igual forma, se recomienda escalar las variables para remover el efecto de las unidades de medida.
 
+
+
+Resultados usando los datos de \% de grasa ....
 ```{r Vgrasalasso, echo=T, warning=FALSE,message = FALSE, fig.align = "center", fig.cap="Estimación de los coeficientes vs log(lambda)"}
 #se debe especificar alpha=1
 X = model.matrix(mod.fat)[,-1]
@@ -458,7 +449,7 @@ lasso.mod <- glmnet(X, fat$brozek, alpha = 1,nlambda = 100)
 plot(lasso.mod,xvar='lambda',label=T,lwd=2)
 abline(h=0,lty=2)
 ```
-
+ .... selección de $\lambda$ ....
 
 #### Validación cruzada
 
@@ -469,22 +460,19 @@ Consiste en dividir la muestra en dos grupos:
 - **Entrenamiento:** se usa para ajusta el modelo.
 - **Validación:** se utiliza para validar el modelo.
 
-Para no perder información, en la validación cruzada se divide la
-muestra en dos (o más) partes y se hace la validación en cada una.
+Para no perder información, en la validación cruzada se divide la muestra en dos (o más) partes y se hace la validación en cada una.
 
 División de la muestra de forma aleatoria en $k = 5$ grupos $(k-fold)$
 
 ```{r, fig.align = 'center',out.width = "75%",echo=FALSE}
 knitr::include_graphics(here::here("figs", "ValidacionCruzada.png"))
 ```
-Para cada división,$k = 1, . . . , K$ , y para cada valor de $\lambda$, se estima
-el modelo basado en la **muestra de entrenamiento**.
+Para cada división,$k = 1, . . . , K$ , y para cada valor de $\lambda$, se estima el modelo basado en la **muestra de entrenamiento**.
 
-Mientras que con cada **muestra de validación**, y para cada valor de
-$\lambda$, se utiliza para calcular el error cuadrático medio:
+Mientras que con cada **muestra de validación**, y para cada valor de $\lambda$, se utiliza para calcular el error cuadrático medio:
 
 \[
-EMC_{k}(\lambda) = \sum_{i=1}^{n_k} \frac{[y_{i}^{(k)}-x_{i}^{(k)}\hatbbeta_{lasso}^{(k)}(\lambda)]^2}{n}               
+EMC_{k}(\lambda) = \sum_{i=1}^{n_k} \frac{[y_{i}^{(k)}-x_{i}^{(k)}\hatbbeta_{lasso}^{(k)}(\lambda)]^2}{n}           
 \]
 
 donde $y_{i}^{(k)}$ son las observaciones de la muestra de validación $k$, y $\hatbbeta_{lasso}^{(k)}(\lambda)$ es la estimación utilizando la muestra de entrenamiento $k$.
@@ -496,7 +484,6 @@ Para cada $\lambda$, se calcula la validación cruzada como:
 CV(\lambda) = \frac{1}{K}\sum_{i=1}^{K}EMC_{k}(\lambda)              
 \]
 y la desviación estándar:
-
 \[
 SD(\lambda) = \sqrt{\sum_{i=1}^{K} \frac{[EMC_{k}(\lambda)-CV(\lambda)]^2}{K-1}}              
 \]
@@ -563,8 +550,3 @@ mathy.df <- data.frame(b0=c("AIC y PRESS","BIC","LASSO"),
 colnames(mathy.df)<-c("Modelo","$R^2$","PRESS","AIC","BIC")
 kable(mathy.df, escape=FALSE,format = "html", booktabs = T)%>% kable_styling(bootstrap_options = "striped",full_width = F)
 ```
-
-
-
-
-

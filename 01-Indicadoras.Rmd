@@ -172,7 +172,7 @@ donde:
 \mbox{u}_{1i} = \begin{cases}
 1 & \mbox{ si el país i pertenece a la categoría otro}, \\
 0 & \mbox{ de otra forma}, \\
-\end{cases} \quad \mbox{ y } \quad 
+\end{cases}  \mbox{ y } 
 \mbox{u}_{2i} = \begin{cases}
 1 & \mbox{ si el país i pertenece a África}, \\
 0 & \mbox{ de otra forma}. \\
@@ -245,9 +245,12 @@ Esto, en R es:
 L = matrix(c(0,0,0,0,1,-1),1,6,byrow = T)
 linearHypothesis(mod.UN11, hypothesis.matrix=L)
 ```
-Dado que no se rechaza $H_0$, el efecto del PNB sobre la fertilidad es el mismo para los países Africano y los de la categoría de otros.
+Dado que no se rechaza $H_0$, el efecto del PNB sobre la fertilidad es el mismo para los países Africanos y los de la categoría de otros.
 
 En resumen, a partir del análisis de regresión:
+
 - El efecto del PNB per cápita sobre la fertilidad depende del tipo de país.
+
 - Para los países miembros de la OECD, no hay un efecto significativo.
+
 - Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).

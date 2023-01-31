@@ -26,6 +26,7 @@ fig:ECMrepresentacion
 fig:CementTrazaRidge
 fig:cementridge3
 eq:varBPC
+eq:modelogral
 fig:surgicalFitAllPlot-1
 fig:surgicalFitAllPlot-2
 fig:Vgrasalasso
@@ -116,7 +117,6 @@ selección-hacia-atrás-backward-selection
 selección-por-segmentos-stepwise-selection
 unidad-quirúrgica-1
 regresión-de-lasso
-métodos-de-regularización
 validación-cruzada
 ejemplo-grasa-corporal
 modelos-no-lineales

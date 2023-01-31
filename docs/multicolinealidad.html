@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -374,7 +374,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.1</span> Ejemplos<a href="multicolinealidad.html#ejemplos-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="cemento" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Cemento<a href="multicolinealidad.html#cemento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Los datos <code>data(cement)</code> en la librería <code>MASS</code> corresponden a un experimento sobre calor emanado en el fraguado de diferentes combinaciones químicas de cemento. Se tiene una muestra de <span class="math inline">\(13\)</span> fraguados de cemento Portlan. En cada muestra, se midió con precisión los porcentajes de los cuatro ingredientes químicos principales (covariables). Mientras el cemento fraguaba, también se midió la cantidad de calor desprendido (cals/gm, variable respuesta).</p>
+<p>Los datos <code>data(cement)</code> en la librería <code>MASS</code> corresponden a un experimento sobre calor emanado en el fraguado de diferentes combinaciones químicas de cemento. Se tiene una muestra de <span class="math inline">\(13\)</span> fraguados de cemento Portland. En cada muestra, se midió con precisión los porcentajes de los cuatro ingredientes químicos principales (covariables). Mientras el cemento fraguaba, también se midió la cantidad de calor desprendido (cals/gm, variable respuesta).</p>
 <p>Los cuatro ingredientes químicos son:</p>
 <ul>
 <li><strong><code>x1</code></strong> aluminato tricálcico (%).</li>
@@ -429,7 +429,7 @@ Los resultados del ajuste son:</p>
 <li><strong><code>Thigh</code>:</strong> circunferencia del muslo (cm).</li>
 <li><strong><code>Midarm</code>:</strong> circunferencia del brazo medio (cm).</li>
 </ul>
-<p>La Figura @(fig:bodyfatFigure) muestra la relación entre variables. Podemos observar que hay una relación fuerte del % de masa corporal con las covariables Triceps y Thigh. Además hay también una relación lineal fuerte entre esas dos covariables.</p>
+<p>La Figura <a href="multicolinealidad.html#fig:bodyfatFigure">3.2</a> muestra la relación entre variables. Podemos observar que hay una relación fuerte del % de masa corporal con las covariables Triceps y Thigh. Además hay una relación lineal fuerte entre esas dos covariables.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="multicolinealidad.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(isdals)</span>
 <span id="cb39-2"><a href="multicolinealidad.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bodyfat)</span>
 <span id="cb39-3"><a href="multicolinealidad.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bodyfat)</span></code></pre></div>
@@ -478,13 +478,13 @@ Si esto se cumple para un subconjunto de <span class="math inline">\(\boldsymbol
 <p>Si la relación es aproximada <span class="math inline">\((\sum_{j=1}^{p-1}a_{j}\boldsymbol x_{j} \approx c)\)</span>, existe el problema de multicolinealidad.</p>
 <p>Vamos a ilustrar el efecto de la multicolinealidad con un ejemplo sencillo considerando un modelo lineal con dos covariables:
 <span class="math display">\[
-\boldsymbol y^{*} = \boldsymbol Z\boldsymbol \beta+ \boldsymbol \varepsilon,
+y_{i}^{*} = z_{i1}\beta_1 +z_{i2}\beta_2 +\varepsilon_i,
 \]</span>
-donde <span class="math inline">\(\boldsymbol Z\)</span> es la matriz de covariables escaladas con longitud unitaria. Esto es:
+donde las covariables están escaladas con longitud unitaria. Esto es:
 <span class="math display">\[
 y_{i}^{*} = \frac{y_{i}-\bar{y}}{\sqrt{SST}}, \mbox{ y } z_{ij} = \frac{x_{ij} - \bar{x}_{j}}{\sqrt{s_{jj}}},
 \]</span>
-donde <span class="math inline">\(s_{jj} = \sum_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}\)</span>. De esta forma <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span> es la matriz de correlación de las covariables,
+donde <span class="math inline">\(s_{jj} = \sum_{i=1}^{n}(x_{ij}-\bar{x}_{j})^{2}\)</span>. Además, sea <span class="math inline">\(\boldsymbol Z\)</span> la matriz de covariables. Con esta transformación, tenemos que <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span> es la matriz de correlación de las covariables,
 <span class="math display">\[
 \boldsymbol Z&#39;\boldsymbol Z= \begin{pmatrix}
 1 &amp; r_{12} \\ r_{12} &amp; 1
@@ -567,7 +567,7 @@ E(L_{1}^{2}) = \sigma^{2}\sum_{j=1}^{p-1}1/\lambda_{j},
 donde <span class="math inline">\(\lambda_{j} &gt; 0\)</span>, para <span class="math inline">\(j=1,\ldots,p-1\)</span>, son los valores propios de <span class="math inline">\(\boldsymbol R\)</span>. Por lo tanto, si <span class="math inline">\(\boldsymbol R\)</span> está mal condicionada debido a la multicolinealidad, al menos un <span class="math inline">\(\lambda_{j}\)</span> será muy pequeño.</p>
 <p>Cabe notar que, la multicolinealidad no viola ningún supuesto sobre los errores. Por lo tanto los estimadores por MCO siguen siendo BLUE. Pero, en presencia de multicolinealidad:</p>
 <ul>
-<li><p>Las varianzas de los coeficientes <span class="math inline">\((\widehat{\beta}_{j})\)</span> se incrementan. Lo que reduce los valores <span class="math inline">\(t\)</span> asociados.</p></li>
+<li><p>Las varianzas de los coeficientes estimados <span class="math inline">\((\widehat{\beta}_{j})\)</span> se incrementan. Lo que reduce los valores <span class="math inline">\(t\)</span> asociados.</p></li>
 <li><p>Los <span class="math inline">\(\widehat{\beta}_{j}\)</span> son sensibles a las especificaciones. Estos pueden cambiar drásticamente cuando se agregan o eliminan covariables.</p></li>
 <li><p>El ajuste general del modelo, y por lo tanto los pronósticos y las predicciones, no se verá afectado en gran medida. Pero los intervalos de confianza que se calculen pueden ser muy amplios.</p></li>
 </ul>
@@ -682,7 +682,7 @@ Si se agrupan los <span class="math inline">\(\pi_{ij}\)</span> en una matriz <s
 </div>
 <div id="datos-de-grasa-corporal" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Datos de grasa corporal<a href="multicolinealidad.html#datos-de-grasa-corporal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Para el modelo ajustado a losdatos de grasa corporal, los VIFs son:</p>
+<p>Para el modelo ajustado a los datos de grasa corporal, los VIFs son:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="multicolinealidad.html#cb46-1" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">vif</span>(mod.bodyfat)</span></code></pre></div>
 <pre><code>##  Triceps    Thigh   Midarm 
 ## 708.8429 564.3434 104.6060</code></pre>
@@ -701,8 +701,8 @@ Si se agrupan los <span class="math inline">\(\pi_{ij}\)</span> en una matriz <s
 <h2><span class="header-section-number">3.6</span> Solución al problema de multicolinealidad<a href="multicolinealidad.html#solución-al-problema-de-multicolinealidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Una forma sencilla de resolver los problemas de multicolinealidad son:</p>
 <ul>
-<li><p>la recolección de datos adicionales: si se tiene control sobre las covariables, es posible tomar más observaciones para romper con la casi dependencia en <span class="math inline">\(\boldsymbol X\)</span>. Pero esto en muchas casos es díficl por la naturaleza de las covariables. Por ejemplo, sería imposible buscar personas con circunferencia del muslo grande y pliegue cutáneo del tríceps bajo (o viceversa).</p></li>
-<li><p>la re-especificación del modelo: se pueden eliminar del modelo las covariables que me generan el problema de multicolinealidad y que pueden tener poco aporte explicativo dentro del modelo.</p></li>
+<li><p><strong>recolección de datos adicionales:</strong> si se tiene control sobre las covariables, es posible tomar más observaciones para romper con la casi dependencia en <span class="math inline">\(\boldsymbol X\)</span>. Pero esto en muchas casos es díficl por la naturaleza de las covariables. Por ejemplo, sería imposible buscar personas con circunferencia del muslo grande y pliegue cutáneo del tríceps bajo (o viceversa).</p></li>
+<li><p><strong>re-especificación del modelo:</strong> se pueden eliminar del modelo las covariables que me generan el problema de multicolinealidad y que pueden tener poco aporte explicativo dentro del modelo.</p></li>
 </ul>
 <p>Por ejemplo, en los datos de la grasa corporal podemos eliminar la variable asociada al muslo (o al tríceps, pues ambas proporcionan la misma información). Si quitamos esta covariable:</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="multicolinealidad.html#cb50-1" aria-hidden="true" tabindex="-1"></a>mod.bodyfat0 <span class="ot">=</span> <span class="fu">lm</span>(Fat <span class="sc">~</span> Triceps<span class="sc">+</span>Midarm,<span class="at">data=</span>bodyfat)</span>
@@ -762,8 +762,8 @@ donde <span class="math inline">\(\lambda_{1},\ldots,\lambda_{k}\)</span> son lo
 <span class="math display">\[
 SS_{\mbox{res}}= (\boldsymbol y- \boldsymbol X\widehat{\boldsymbol b})&#39;(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol b}) + (\widehat{\boldsymbol b}_{R}-\widehat{\boldsymbol b})&#39;\boldsymbol R(\widehat{\boldsymbol b}_{R}-\widehat{\boldsymbol b}).
 \]</span>
-A partir de estos resultados, vemos que: (1) Si <span class="math inline">\(k\)</span> crece, disminuye la varianza, pero aumenta el sesgo. (2) Si <span class="math inline">\(k\)</span> disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un <span class="math inline">\(R^{2}\)</span> mas pequeño que el estimador por MCO. Además, <span class="math inline">\(R^2\)</span> disminuye con <span class="math inline">\(k\)</span>. Sin embargo, la regresión ridge proporciona estimaciones de <span class="math inline">\(\boldsymbol b\)</span> más estables.</p>
-<p>La idea de la regresión de ridge es encontrar un valor de <span class="math inline">\(k\)</span> tal que <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>. En la Figura <a href="multicolinealidad.html#fig:ECMrepresentacion">3.3</a> podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta <span class="math inline">\(k\)</span>, el sesgo incrementa y la varianza disminuye. También, hay una región de <span class="math inline">\(k\)</span> donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de <span class="math inline">\(k\)</span> que minimiza el ECM, o por lo menos algún valor en la región donde <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>.</p>
+A partir de estos resultados, vemos que: (1) Si <span class="math inline">\(k\)</span> crece, disminuye la varianza, pero aumenta el sesgo. (2) Si <span class="math inline">\(k\)</span> disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un <span class="math inline">\(R^{2}\)</span> mas pequeño que el estimador por MCO. Sin embargo, la regresión ridge proporciona estimaciones de <span class="math inline">\(\boldsymbol b\)</span> más estables.</p>
+<p>La idea de la regresión de ridge es encontrar un valor de <span class="math inline">\(k\)</span> tal que <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>. En la Figura <a href="multicolinealidad.html#fig:ECMrepresentacion">3.3</a> podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta <span class="math inline">\(k\)</span>, el sesgo incrementa y la varianza disminuye. Además, hay una región de <span class="math inline">\(k\)</span> donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de <span class="math inline">\(k\)</span> que minimiza el ECM, o por lo menos algún valor en la región donde <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="multicolinealidad.html#cb52-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.3</span>,<span class="at">length.out =</span> <span class="dv">100</span>)</span>
 <span id="cb52-2"><a href="multicolinealidad.html#cb52-2" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">=</span> <span class="fl">0.25</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">20</span><span class="sc">*</span>(x<span class="fl">-0.001</span>)))</span>
 <span id="cb52-3"><a href="multicolinealidad.html#cb52-3" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">=</span> sesgo <span class="sc">-</span> <span class="fu">min</span>(sesgo) </span>
@@ -785,8 +785,8 @@ Figure 3.3: Representación del sesgo al cuadrado (linea cortada), varianza (lin
 </div>
 <p>Algunos métodos de selección de <span class="math inline">\(k\)</span> son:</p>
 <ul>
-<li><p>Traza de ridge <span class="math inline">\(k\)</span>: el efecto de <span class="math inline">\(k\)</span> sobre las estimaciones de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es mas fuerte para valores bajos. De igual forma, si <span class="math inline">\(k\)</span> es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar <span class="math inline">\(k\)</span> hasta que parezca que su influencia sobre <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> se atenúe.</p></li>
-<li><p>Validación cruzada (CV): sea <span class="math inline">\(\widehat{y}_{(i),k}\)</span> la estimación de <span class="math inline">\(E(y_i)\)</span> por medio del estimador de ridge con el parámetro <span class="math inline">\(k\)</span> y usando una muestra excluyendo la i-ésima observación. La validación cruzada está definida como:
+<li><p><strong>Traza de ridge <span class="math inline">\(k\)</span>:</strong> el efecto de <span class="math inline">\(k\)</span> sobre las estimaciones de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es mas fuerte para valores bajos. De igual forma, si <span class="math inline">\(k\)</span> es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar <span class="math inline">\(k\)</span> hasta que parezca que su influencia sobre <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> se atenúe.</p></li>
+<li><p><strong>Validación cruzada (CV):</strong> sea <span class="math inline">\(\widehat{y}_{(i),k}\)</span> la estimación de <span class="math inline">\(E(y_i)\)</span> por medio del estimador de ridge con el parámetro <span class="math inline">\(k\)</span> y usando una muestra excluyendo la i-ésima observación. La validación cruzada está definida como:
 <span class="math display">\[
 CV(k) = \sum_{i=1}^{n} (y_i - \widehat{y}_{(i),k})^2.
 \]</span>

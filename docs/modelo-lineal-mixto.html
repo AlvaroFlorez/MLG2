@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 9 Modelo lineal mixto | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 9 Modelo lineal mixto | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 9 Modelo lineal mixto | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-01-30" />
+<meta name="date" content="2023-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -382,12 +382,12 @@ una madre diferente.</p>
 <li><p><code>damage</code>: edad de la madre (1: entre 1-2 años, 2: entre 2-3 años, 3: más de 3 años)</p></li>
 <li><p><code>sire</code>: padre.</p></li>
 </ul>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="modelo-lineal-mixto.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb181-2"><a href="modelo-lineal-mixto.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>damage,<span class="at">xlab=</span><span class="st">&quot;Grupo de edad de la madre&quot;</span>,</span>
-<span id="cb181-3"><a href="modelo-lineal-mixto.html#cb181-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Peso del carnero (kgs)&quot;</span>, <span class="at">data =</span> harville.lamb)</span>
-<span id="cb181-4"><a href="modelo-lineal-mixto.html#cb181-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>sire,<span class="at">xlab=</span><span class="st">&quot;Padre&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Peso del carnero (kgs)&quot;</span>,</span>
-<span id="cb181-5"><a href="modelo-lineal-mixto.html#cb181-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> harville.lamb)</span>
-<span id="cb181-6"><a href="modelo-lineal-mixto.html#cb181-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">27</span>,<span class="at">col=</span><span class="st">&#39;lightgray&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="modelo-lineal-mixto.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb182-2"><a href="modelo-lineal-mixto.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>damage,<span class="at">xlab=</span><span class="st">&quot;Grupo de edad de la madre&quot;</span>,</span>
+<span id="cb182-3"><a href="modelo-lineal-mixto.html#cb182-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Peso del carnero (kgs)&quot;</span>, <span class="at">data =</span> harville.lamb)</span>
+<span id="cb182-4"><a href="modelo-lineal-mixto.html#cb182-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>sire,<span class="at">xlab=</span><span class="st">&quot;Padre&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Peso del carnero (kgs)&quot;</span>,</span>
+<span id="cb182-5"><a href="modelo-lineal-mixto.html#cb182-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> harville.lamb)</span>
+<span id="cb182-6"><a href="modelo-lineal-mixto.html#cb182-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">27</span>,<span class="at">col=</span><span class="st">&#39;lightgray&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
 <img src="MLG2_files/figure-html/unnamed-chunk-48-1.png" alt="Peso al nacer de corderos" width="672" />
 <p class="caption">
