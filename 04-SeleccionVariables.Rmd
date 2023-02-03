@@ -571,8 +571,6 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T)%>% kable_styling(boo
 
 ```
 
-La selección del modelo más adecuado no solo debe depender de un análisis estadístico, sino también de la opinión de expertos en el tema.
-
 ```{r tablaEstFat2, echo=FALSE, include=TRUE, results="asis"}
 mathy.df <- data.frame(b0=c("AIC y PRESS","BIC","LASSO"),
                        b1=c( 0.7467, 0.7351, 0.7223),
@@ -584,3 +582,6 @@ mathy.df <- data.frame(b0=c("AIC y PRESS","BIC","LASSO"),
 colnames(mathy.df)<-c("Modelo","$R^2$","PRESS","AIC","BIC")
 kable(mathy.df, escape=FALSE,format = "html", booktabs = T)%>% kable_styling(bootstrap_options = "striped",full_width = F)
 ```
+
+
+La selección del modelo más adecuado no solo debe depender de un análisis estadístico, sino también de la opinión de expertos en el tema.
