@@ -1,0 +1,114 @@
+{
+    "sources": [
+        {
+            "author": [
+                {
+                    "family": "Montgomery",
+                    "given": "Douglas C."
+                },
+                {
+                    "family": "Peck",
+                    "given": "Elizabeth A."
+                },
+                {
+                    "family": "Vining",
+                    "given": "G. Geoffrey"
+                }
+            ],
+            "edition": "5th ed",
+            "id": "montgomery_introduction_2012",
+            "issued": {
+                "date-parts": [
+                    [
+                        2012
+                    ]
+                ]
+            },
+            "publisher": "Wiley",
+            "title": "Introduction to linear regression analysis",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Weisberg",
+                    "given": "Sanford"
+                }
+            ],
+            "edition": "Fourth edition",
+            "id": "weisberg_applied_2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "title": "Applied linear regression",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Seber",
+                    "given": "G. A. F."
+                },
+                {
+                    "family": "Lee",
+                    "given": "A. J."
+                }
+            ],
+            "edition": "2nd ed",
+            "id": "seber_linear_2003",
+            "issued": {
+                "date-parts": [
+                    [
+                        2003
+                    ]
+                ]
+            },
+            "title": "Linear regression analysis",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Fox",
+                    "given": "John"
+                }
+            ],
+            "edition": "Third Edition",
+            "id": "fox_applied_2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "title": "Applied regression analysis and generalized linear models",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Behar",
+                    "given": "Roberto"
+                }
+            ],
+            "id": "behar_validacion_2002",
+            "issued": {
+                "date-parts": [
+                    [
+                        2002
+                    ]
+                ]
+            },
+            "title": "Validación de supuestos en el modelo de regresión",
+            "type": "book"
+        }
+    ],
+    "project_biblios": [
+        "ModeloLineal.bib"
+    ]
+}

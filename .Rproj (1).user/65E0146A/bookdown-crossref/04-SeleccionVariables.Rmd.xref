@@ -1,0 +1,30 @@
+h1:selección-de-variables Selección de variables
+h2:ejemplos Ejemplos
+h3:unidad-quirúrgica Unidad quirúrgica
+h3:grasa-corporal Grasa corporal
+h2:problema-de-selección-de-variables Problema de selección de variables
+h3:qué-pasa-si-ignoramos-covariables-importantes ¿Qué pasa si ignoramos covariables importantes?
+h3:que-pasa-si-incluimos-covariables-irrelevantes ¿Que pasa si incluimos covariables irrelevantes?
+h2:métodos-para-la-selección-de-variables Métodos para la selección de variables
+h3:coeficiente-de-determinación Coeficiente de determinación
+h3:coeficiente-de-determinación-ajustado Coeficiente de determinación ajustado
+h3:c_p-de-mallows C de Mallows
+h3:estadístico-press Estadístico PRESS
+h3:criterios-de-información Criterios de información
+h2:comparación-de-los-modelos Comparación de los modelos
+h3:todos-los-posibles-modelos Todos los posibles modelos
+h4:datos-de-unidad-quirúrgica Datos de unidad quirúrgica
+fig:surgicalAll Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.
+h3:algorítmos-de-selección Algorítmos de selección
+h4:selección-hacia-delante-forward-selection Selección hacia delante (forward selection)
+h4:selección-hacia-atrás-backward-selection Selección hacia atrás (backward selection)
+h4:selección-por-segmentos-stepwise-selection Selección por segmentos (stepwise selection)
+h4:unidad-quirúrgica-1 Unidad quirúrgica
+h2:regresión-de-lasso Regresión de LASSO
+fig:LASSOrest Estimación del estimador de LASSO (izquierda) y ridge (derecha). Las elipses rojas son los contornos de la suma de cuadrados de los errores. Mientras que, la región roja son las restricciones para cada estimador).
+h3:datos-de-grasa-corporal Datos de grasa corporal
+fig:Vgrasalasso Datos de grasa corporal. Estimación de los coeficientes de regresión vs el logaritmo de $\\lambda$
+h3:validación-cruzada Validación cruzada
+h3:ejemplo-grasa-corporal Ejemplo grasa corporal
+fig:kgrasa Datos de grasa corporal. Valiación cruzada (puntos rojos) para diferentes valores de $\\lambda$. Las lineas cortadas verticales representan los valores seleccionados para $\\lambda$ por mínimo valores de CV y la regla de una desviación estándar.
+

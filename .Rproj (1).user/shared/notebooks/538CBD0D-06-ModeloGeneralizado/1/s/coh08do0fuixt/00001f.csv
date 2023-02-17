@@ -1,0 +1,5 @@
+"0","epilepsy=subset(epilepsy, period==4)#selecionamos la semana 4"
+"0",""
+"0","par(mfrow=c(1,3))"
+"0","plot(seizure.rate~age, col=treatment, pch=16, data=epilepsy, xlab=""edad"","
+"0","     ylab = ""número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)"")"

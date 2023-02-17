@@ -1,0 +1,16 @@
+h1:variables-indicadoras-o-dummies Variables indicadoras (o dummies)
+h2:ejemplos Ejemplos
+h3:datos-de-atletas-australianos Datos de atletas australianos
+fig:AtletesFigure Datos de atletas. Densidad de la hemoglobina para hombres y mujeres (derecha) y diagrama de dispersión entre la homoglobina y el índice de masa corporal (izquierda). Negro para hombres y rojo para mujeres.
+h3:datos-de-la-onu Datos de la ONU
+fig:UN11Figure Datos de la ONU. Relación entre la fertilidad y el PNB per cápita para los países de OCDE (puntos negros), países africanos (puntos verdes) y los otros países (rojos)
+h2:variables-indicadoras Variables indicadoras
+tab:dosIndica Variables indicadoras para la variable ``group`` de los datos de la ONU
+h3:modelos-con-covariables-categóricas Modelos con covariables categóricas
+fig:Rectas1 Efecto de la interacción entre variable continua e indicadora. Modelo general (izquierda) y modelo de líneas paralelas (derecha).
+h3:modelo-para-los-datos-de-atletas-australianos Modelo para los datos de atletas australianos
+fig:AtletesAjuste Datos de atletas. Ajuste del modelo para la homoglobina en función  del índice de masa corporal y sexo. Línea negra para hombres y línea roja para mujeres.
+fig:AtletesAjuste2 Datos de atletas. Ajuste del modelo general (línea solida) y el modelo líneas paralelas (línea discontinua) para la homoglobina en función  del índice de masa corporal y sexo. Líneas negra para hombres y líneas roja para mujeres.
+h3:modelo-para-los-datos-de-la-onu Modelo para los datos de la ONU
+fig:MCOUN11Figure Datos de la ONU. Ajuste del modelo para la fertilidad en función  del PNB y tipo de país. Países de OCDE (línea negra), países africanos (línea verde) y los otros países (línea roja)
+

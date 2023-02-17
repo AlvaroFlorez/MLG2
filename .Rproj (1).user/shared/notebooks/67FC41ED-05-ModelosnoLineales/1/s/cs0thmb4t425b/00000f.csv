@@ -1,0 +1,17 @@
+"0","plot(Puromycin$conc,Puromycin$rate,col=Puromycin$state,"
+"2","Warning messages:
+"
+"2","1: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on 'G:/Mi unidad/Material de clase/Bookdown/MLG2/index.Rmd'
+"
+"2","2: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on 'G:/Mi unidad/Material de clase/Bookdown/MLG2/index.Rmd'
+"
+"0","     xlab='concentración de sustrato (ppm)',"
+"0","     ylab='velocidad de reacción')"

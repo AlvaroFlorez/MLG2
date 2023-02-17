@@ -1,0 +1,2 @@
+"0",""
+"0","plot(Gain~A,data=turk0,xlab='cantidad de metionina (% dieta)',ylab='Peso ganado (gramos)')"

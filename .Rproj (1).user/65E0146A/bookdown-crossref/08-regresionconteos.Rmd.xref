@@ -1,0 +1,15 @@
+h1:modelo-para-conteos Modelo para conteos
+h2:casos-de-estudio Casos de estudio
+h3:ataques-de-epilepsia Ataques de epilepsia
+h3:datos-de-cáncer-de-pulmón Datos de cáncer de pulmón
+h3:número-de-cangrejos-satélites Número de cangrejos satélites
+h2:modelo-poisson Modelo Poisson
+h3:modelo-de-conteo-con-offset Modelo de conteo con offset
+h4:datos-de-cáncer-de-pulmón-1 Datos de cáncer de pulmón
+h2:distribución-binomial-negativa Distribución binomial negativa
+h3:modelo-binomial-negativo-poisson-gamma Modelo binomial negativo (Poisson-gamma)
+h4:ataques-epilépticos Ataques epilépticos
+h2:modelo-poisson-con-ceros-inflados Modelo Poisson con ceros inflados
+h2:modelo-hurdle Modelo Hurdle
+h3:número-de-cangrejos-satélites-1 Número de cangrejos satélites
+

@@ -1,0 +1,10 @@
+bookdown::render_book("index.Rmd")
+
+
+library(alr4)
+library(nlstools)
+library(car)
+data(turk0)
+data(Puromycin)
+
+turk0

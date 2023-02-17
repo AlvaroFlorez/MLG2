@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 6 Modelo lineal generalizado | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-02-03" />
+<meta name="date" content="2023-02-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,11 +242,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
-<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#métodos-iterativos-de-estimación"><i class="fa fa-check"></i><b>5.2.3</b> Métodos iterativos de estimación</a></li>
-<li class="chapter" data-level="5.2.4" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>5.2.4</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.2.5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.5</b> Inferencia sobre los parámetros</a></li>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.1</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Inferencia sobre los parámetros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
 <ul>
@@ -260,44 +257,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelos-lineales"><i class="fa fa-check"></i><b>6.1.1</b> Modelos lineales</a></li>
 <li class="chapter" data-level="6.1.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.1.2</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="6.1.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-logístico"><i class="fa fa-check"></i><b>6.1.3</b> Modelo logístico</a></li>
-<li class="chapter" data-level="6.1.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.1.4</b> ataques de epilepsia</a></li>
+<li class="chapter" data-level="6.1.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.1.3</b> ataques de epilepsia</a></li>
+<li class="chapter" data-level="6.1.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.1.4</b> Familia exponencial</a></li>
+<li class="chapter" data-level="6.1.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.1.5</b> Relación media-varianza:</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.2</b> Modelo lineal generalizado (GLM)</a>
+<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.2</b> Estimador de máxima verosimilitud</a></li>
+<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.3</b> Modelo lineal generalizado (GLM)</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.2.1</b> Componente aleatorio</a></li>
-<li class="chapter" data-level="6.2.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.2.2</b> Predictor lineal</a></li>
-<li class="chapter" data-level="6.2.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.2.3</b> Función de enlace</a></li>
-<li class="chapter" data-level="6.2.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.2.4</b> Ejemplos de GLM</a></li>
-<li class="chapter" data-level="6.2.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.2.5</b> Ajuste de un GLM</a></li>
-<li class="chapter" data-level="6.2.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.2.6</b> Familia exponencial</a></li>
+<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.3.1</b> Componente aleatorio</a></li>
+<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.3.2</b> Predictor lineal</a></li>
+<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.3.3</b> Función de enlace</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#glm"><i class="fa fa-check"></i><b>6.3</b> GLM</a>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4</b> Ejemplos de GLM</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>6.3.1</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.3.2</b> Ataques epilépticos</a></li>
-<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mle-de-boldsymbol-beta"><i class="fa fa-check"></i><b>6.3.3</b> MLE de <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
-<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.3.4</b> interpretación de parámetros - modelo logístico</a></li>
-<li class="chapter" data-level="6.3.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson"><i class="fa fa-check"></i><b>6.3.5</b> Interpretación de parámetros - modelo Poisson</a></li>
-<li class="chapter" data-level="6.3.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.3.6</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-logístico"><i class="fa fa-check"></i><b>6.4.1</b> modelo logístico</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-poisson"><i class="fa fa-check"></i><b>6.4.2</b> modelo Poisson</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4.3</b> Ajuste de un GLM</a></li>
+<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.4</b> Ataques epilépticos</a></li>
+<li class="chapter" data-level="6.4.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.5</b> interpretación de parámetros - modelo logístico</a></li>
+<li class="chapter" data-level="6.4.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson"><i class="fa fa-check"></i><b>6.4.6</b> Interpretación de parámetros - modelo Poisson</a></li>
+<li class="chapter" data-level="6.4.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.4.7</b> Pruebas de hipótesis</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>6.4</b> intervalos de confianza</a>
-<ul>
-<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalo-de-confianza-para-la-media"><i class="fa fa-check"></i><b>6.4.1</b> Intervalo de confianza para la media</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#devianza"><i class="fa fa-check"></i><b>6.5</b> Devianza</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.5.1</b> El estadístico chi-cuadrado de Pearson</a></li>
-</ul></li>
-<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.6</b> Bondad de ajuste</a></li>
-<li class="chapter" data-level="6.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pseudo-r2"><i class="fa fa-check"></i><b>6.7</b> Pseudo <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="6.8" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.8</b> Selección de variables</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#casos-de-estudio"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#mortalidad-de-escarabajos-3"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.1.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#mortalidad-de-escarabajos-2"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
 <li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
 <li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
 </ul></li>
@@ -312,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#ejemplo-mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.4.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#ejemplo-mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
 <li class="chapter" data-level="7.4.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
@@ -379,35 +365,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Introducción<a href="modelo-lineal-generalizado.html#introducción-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="modelos-lineales" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Modelos lineales<a href="modelo-lineal-generalizado.html#modelos-lineales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Modelo lineal:</p>
-<p><span class="math display">\[
-y_{i}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta+\epsilon, \quad \text{donde}\quad \epsilon \sim N(\boldsymbol 0,\sigma^2\boldsymbol I)
-\]</span></p>
-<p>Lo que implica que <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=\boldsymbol x_{i}\boldsymbol \beta\)</span> y <span class="math inline">\(V(y_{i}|\boldsymbol x_{i})=\sigma^2\)</span></p>
-<p>En algunos casos es difícil que se cumplan esas propiedades (incluso luego de hacer transformaciones).</p>
-<p>Si la variable respuesta <span class="math inline">\(Y\)</span> solo puede tomar dos valores <span class="math inline">\((y_{i}\in\{0,1\})\)</span> no podríamos representar <span class="math inline">\(E(y|\boldsymbol x)\)</span> como una función lineal.</p>
-<p>Los modelos lineales generalizados (GLM) son una clase de
-modelos que permite modelar variables aleatorias con distribución
-de probabilidad diferentes a la normal.</p>
+<p>Los modelos lineales se expresan como:
+<span class="math display">\[
+\boldsymbol y=\boldsymbol X\boldsymbol \beta+\boldsymbol \varepsilon, \quad \text{donde}\quad \boldsymbol \varepsilon\sim N(\boldsymbol 0,\sigma^2\boldsymbol I).
+\]</span>
+Lo que implica que <span class="math inline">\(\boldsymbol y\sim N(\boldsymbol X\boldsymbol \beta, \sigma^{2}\boldsymbol I)\)</span>. Esto implica que:</p>
+<ul>
+<li>hay una relación lineal entre el valor esperado de la variable respuesta y el conjunto de covariables,</li>
+<li>la varianza de la variable respuesta es constante,</li>
+<li>la inferencia asume que la variable respuesta sigue una distribución normal.</li>
+</ul>
+<p>Sin embargo, hay situaciones en donde estas propiedades no son factibles, incluso luego de hacer transformaciones sobre las variables. Por ejemplo, si la variable de respuesta es dicotómica <span class="math inline">\((y_{i}\in\{0,1\})\)</span> no podríamos representar <span class="math inline">\(E(y|\boldsymbol x)\)</span> como una función lineal. Además, la distribución asociada díficilmente serían normal. Aquí es mas conveniente, proponer una distribución de probabilidad diferente, por ejemplo, una Bernoulli, y ajustar un modelo lineal generalizado (GLM).</p>
+<p>Los GLM son una clase de modelos que permite modelar variables aleatorias con distribución de probabilidad diferentes a la normal.</p>
 </div>
 <div id="mortalidad-de-escarabajos" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Número de escarabajos muertos después de cinco horas de
-exposición a disulfuro de carbono gaseoso <span class="math inline">\((CS2mgl^{-1})\)</span> en diversas concentraciones:</p>
+<p>En un estudio de toxicología, se está interesado en la tasa de mortalidad de escarabajos expuestos a disulfuro de carbono gaseoso. La Tabla <a href="modelo-lineal-generalizado.html#tab:TmortEsc">6.1</a> muestra el número de escarabajos muertos después de cinco horas de exposición de este tóxico a diferentes concentraciones. Podemos ver que a medida que aumenta la dosis, la mortalidad va aumentando.</p>
 <table>
 <caption>
-<span id="tab:TmortEsc">Table 6.1: </span>Datos mortalidad de escarabajos
+<span id="tab:TmortEsc">Table 6.1: </span>Número de escarabajos expuestos y muertos a diferentes dosis (escala logarítmica)
 </caption>
 <thead>
 <tr>
 <th style="text-align:right;">
-logdose
+log. dosis
 </th>
 <th style="text-align:right;">
-n
+expuestos
 </th>
 <th style="text-align:right;">
-dead
+muertos
 </th>
 </tr>
 </thead>
@@ -502,229 +489,75 @@ dead
 </tr>
 </tbody>
 </table>
-<p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelo-lineal-generalizado.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<p>En la Figura <a href="#tab:grafMortEsc"><strong>??</strong></a> podemos observar como es el aumento de la tasa de mortalidad con respecto a la dosis del tóxico. Note que la relación no es lineal, si no que tiene una forma de ‘S’. Esto hace que un modelo de regresión lineal sea inadecuado.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grafMortEsc"></span>
-<img src="MLG2_files/figure-html/grafMortEsc-1.png" alt="Datos escarabajos. Proporción de muerte vs log dosis." width="672" />
+<img src="MLG2_files/figure-html/grafMortEsc-1.png" alt="Datos escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos." width="576" />
 <p class="caption">
-Figure 6.1: Datos escarabajos. Proporción de muerte vs log dosis.
+Figure 6.1: Datos escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos.
 </p>
 </div>
+<p>Una alternativa es utilizar una transformación que describa la relación de forma adecuada y que garantice que la respuesta se encuentre dentro de la región del parámetro. Es decir, que la estimación de la proporción de escarabajos muertos esté entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
+<!--
+### Modelo logístico
+
+
+-->
 </div>
-<div id="modelo-logístico" class="section level3 hasAnchor" number="6.1.3">
-<h3><span class="header-section-number">6.1.3</span> Modelo logístico<a href="modelo-lineal-generalizado.html#modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Definiendo <span class="math inline">\(y_{i}=\sum_{i=1}^ny_{ij}/n_{i}\)</span> (la proporción de éxitos en <span class="math inline">\(n_i\)</span> ensayos independientes), tenemos que:</p>
-<p><span class="math display">\[
-n_{i}y_{i}\sim binomial(n_{i},\pi_{i}), \quad i=1,...,n, \quad \text{donde} \quad \pi_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
-\]</span></p>
-<p>Entonces: <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=\pi_{i}\)</span> y <span class="math inline">\(V(y_{i}|\boldsymbol x_{i})=\pi_{i}(1-\pi_{i})/n_{i}\)</span>.</p>
-<p>El modelo ligístico es un GLM y asume que:</p>
-<p><span class="math display">\[
-\pi_{i}=g^{-1}(\boldsymbol x_{i},\boldsymbol \beta)=\frac{exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}{1+exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}=\frac{1}{1+exp(-\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}
-\]</span></p>
-<p>Por lo que: <span class="math inline">\(g(\pi_{i})=log(\frac{\pi_{i}}{1-\pi_{i}})=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span> <strong>(función logit).</strong></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logfun"></span>
-<img src="MLG2_files/figure-html/logfun-1.png" alt="Función logística" width="672" />
-<p class="caption">
-Figure 6.2: Función logística
-</p>
-</div>
-</div>
-<div id="ataques-de-epilepsia" class="section level3 hasAnchor" number="6.1.4">
-<h3><span class="header-section-number">6.1.4</span> ataques de epilepsia<a href="modelo-lineal-generalizado.html#ataques-de-epilepsia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Ensayo clínico para evaluar el impacto de progabida sobre las crisis
-epilépticas (<code>data(epilepsy)</code> de la librería <code>HSAUR2</code>).</p>
-<p>Datos:</p>
+<div id="ataques-de-epilepsia" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> ataques de epilepsia<a href="modelo-lineal-generalizado.html#ataques-de-epilepsia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los datos <code>data(epilepsy)</code> de la librería <code>HSAUR2</code> corresponden a un ensayo clínico para evaluar el efecto del fármaco progabida sobre los ataques epilépticos. Al inicio del estudio, los <span class="math inline">\(59\)</span> pacientes epilépticos fueron observados durante 8 semenas, y se registró el número de convulsiones. Luego, fueron aleatorizados al tratamiento con el fármaco Progabide (<span class="math inline">\(31\)</span> pacientes) o al grupo de placebo (<span class="math inline">\(28\)</span> pacientes). A los pacientes de ambos grupos se les observo durante cuatro períodos de 2 semanas y se registró el número de convulsiones.</p>
+<p>Estos datos son de naturaleza longitudinal (cada paciente cuenta con 4 observaciones tomadas en el tiempo), lo que requiere metodologías que tengan en cuenta la correlación que hay en los datos. En es caso, no consideraremos todas las observaciones de cada paciente, sino solamente las mediciones tomadas luego de 8 semanas.</p>
+<p>Las variables que se tendrán en cuenta son las siguientes:</p>
 <ul>
 <li><p><code>age</code>: edad del paciente.</p></li>
-<li><p><code>base</code>: número de ataques epilépticos (x 8 semanas) antes del
-ensayo.</p></li>
+<li><p><code>base</code>: número de ataques epilépticos (x 8 semanas) antes de iniciar los tratamientos.</p></li>
 <li><p><code>treatment</code>: tratamiento (placebo, progabida).</p></li>
 <li><p><code>seizure.rate</code>(variable respuesta): número de ataques epilépticos (x dos semanas) luego de 8 semanas.</p></li>
 </ul>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelo-lineal-generalizado.html#cb126-1" aria-hidden="true" tabindex="-1"></a>epilepsy<span class="ot">=</span><span class="fu">subset</span>(epilepsy, period<span class="sc">==</span><span class="dv">4</span>)<span class="co">#selecionamos la semana 4</span></span>
-<span id="cb126-2"><a href="modelo-lineal-generalizado.html#cb126-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb126-3"><a href="modelo-lineal-generalizado.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb126-4"><a href="modelo-lineal-generalizado.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>age, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">data=</span>epilepsy, <span class="at">xlab=</span><span class="st">&quot;Edad&quot;</span>,</span>
-<span id="cb126-5"><a href="modelo-lineal-generalizado.html#cb126-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb126-6"><a href="modelo-lineal-generalizado.html#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
-<span id="cb126-7"><a href="modelo-lineal-generalizado.html#cb126-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
-<span id="cb126-8"><a href="modelo-lineal-generalizado.html#cb126-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb126-9"><a href="modelo-lineal-generalizado.html#cb126-9" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(seizure.rate<span class="sc">~</span>treatment,<span class="at">data=</span>epilepsy, <span class="at">xlab =</span> <span class="st">&quot;Tratamiento&quot;</span>,</span>
-<span id="cb126-10"><a href="modelo-lineal-generalizado.html#cb126-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-4-1.png" alt="Datos epilepsia" width="672" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:seizurePlot"></span>
+<img src="MLG2_files/figure-html/seizurePlot-1.png" alt="Datos epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos y tratamiento." width="960" />
 <p class="caption">
-Figure 6.3: Datos epilepsia
+Figure 6.2: Datos epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos y tratamiento.
 </p>
 </div>
-<div id="modelo-poisson" class="section level4 hasAnchor" number="6.1.4.1">
-<h4><span class="header-section-number">6.1.4.1</span> Modelo poisson<a href="modelo-lineal-generalizado.html#modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Aquí podemos suponer que:</p>
-<p><span class="math display">\[
-y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
-\]</span></p>
-<p>Entonces:<span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=V(y_{i}|\boldsymbol x_{i})=\lambda_{i}).\)</span></p>
-<p>El modelo Pooisson es un GLM y asume que:</p>
-<p><span class="math display">\[
-\lambda_{i}=g^{-1}(\boldsymbol x_{i},\boldsymbol \beta)=exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta).
-\]</span></p>
-<p>Por lo que: <span class="math inline">\(g(\lambda_{i})=log\lambda_{i}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span> <strong>(función log)</strong>.</p>
+<p>La Figura <a href="modelo-lineal-generalizado.html#fig:seizurePlot">6.2</a> muestra la relación del número de ataques epiléticos al final del estudio con las posibles covariables. Aquí vemos que no parece haber relación con la edad, hay una relación fuerte con el número de ataques pre-tratamiento, y que los pacientes del grupo placebo parecen presentar un poco más de convulsiones.</p>
+<p>Antes de introducir los GLM, vamos a recordar algunos conceptos sobre distribuciones de probabilidad:</p>
 </div>
-</div>
-</div>
-<div id="modelo-lineal-generalizado-glm" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Modelo lineal generalizado (GLM)<a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Un modelo lineal generalizado (GLM) tiene tres componentes:</p>
-<ul>
-<li><p><strong>Componente aleatorio:</strong> variable respuesta <span class="math inline">\(Y\)</span> y su distribución de probabilidad.</p></li>
-<li><p><strong>Predictor lineal:</strong></p></li>
-</ul>
-<p><span class="math display">\[
-\eta=\boldsymbol x^{&#39;}\boldsymbol \beta,
+<div id="familia-exponencial" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La distribución de probabilidad de una variable aleatoria <span class="math inline">\(Y\)</span> pertenece a la <strong>familia exponencial</strong> si la función de densidad (o masa) de <span class="math inline">\(Y\)</span> se puede formular de la siguiente forma:
+<span class="math display">\[
+f(y;\theta,\phi)=exp\{[y\theta-b(\theta)]/a(\phi)+c(y,\phi)\}
 \]</span></p>
-<p>donde <span class="math inline">\(\boldsymbol \beta\)</span> es un vector de parámetros y <span class="math inline">\(\boldsymbol x\)</span> un vector de
-covariables.</p>
-<ul>
-<li><strong>Función de enlace:</strong> una función g que conecta <span class="math inline">\(E(Y)\)</span> con el predictor lineal,</li>
-</ul>
+<p>donde <span class="math inline">\(\theta\)</span> es llamado parámetro natural, y <span class="math inline">\(\phi&gt;0\)</span> es un parámetro de dispersión. Además se tiene que:</p>
 <p><span class="math display">\[
-g[E(Y|\boldsymbol x)]=\boldsymbol x^{&#39;}\boldsymbol \beta
-\]</span></p>
-<div id="componente-aleatorio" class="section level3 hasAnchor" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Componente aleatorio<a href="modelo-lineal-generalizado.html#componente-aleatorio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Observaciones independientes <span class="math inline">\((y_{i},...,y_{n})\)</span> de una variable aleatoria <span class="math inline">\(Y\)</span> cuya distribución de probabilidad pertenece a la <strong>familia exponencial.</strong></p>
-<p>Restringir un GLM a la familia exponencial permite tener expresiones generales para:</p>
-<ul>
-<li><p>La función de verosimilitud y funciones score.</p></li>
-<li><p>distribución asintótica de los estimadores de los parámetros del modelo</p></li>
-<li><p>Algoritmo para ajustar el modelo.</p></li>
-</ul>
-</div>
-<div id="predictor-lineal" class="section level3 hasAnchor" number="6.2.2">
-<h3><span class="header-section-number">6.2.2</span> Predictor lineal<a href="modelo-lineal-generalizado.html#predictor-lineal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para cada observación <span class="math inline">\(i\)</span>,</p>
+E[Y]=b&#39;(\theta) \quad \text{y} \quad V[Y]=b&#39;&#39;(\theta)a(\phi).
+\]</span>
+#### Ejemplo
+La distribución Poisson:</p>
 <p><span class="math display">\[
-\boldsymbol x_{i}=(1,x_{i1},...,x_{i(p-1)})^{&#39;},
-\]</span></p>
-<p>donde <span class="math inline">\(x_{ij}\)</span> es la observación <span class="math inline">\(i\)</span> de la covariable <span class="math inline">\(j,\quad j=1,...,p-1\)</span>.</p>
-<p>Predictor lineal es una combinación lineal de las covariables:</p>
-<p><span class="math display">\[
-\eta_{i}=\beta_{0}+\sum_{j=1}^{p-1}\beta_{j}x_{ij}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta
-\]</span></p>
-<p>Un GLM asume que las covariables no son aleatorias.</p>
-</div>
-<div id="función-de-enlace" class="section level3 hasAnchor" number="6.2.3">
-<h3><span class="header-section-number">6.2.3</span> Función de enlace<a href="modelo-lineal-generalizado.html#función-de-enlace" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Sea:</p>
-<p><span class="math display">\[
-E(Y|\boldsymbol x_{i})=\mu_{i}, \quad i=1,...,n.
-\]</span></p>
-<p>En algunas distribuciones,<span class="math inline">\(\mu_{i}\)</span> está acotada en un intervalo. Por ejemplo, en la distribución binomial, <span class="math inline">\(0\leq \pi_{i}\leq 1\)</span>, o en la Poisson, <span class="math inline">\(\lambda_{i}&gt;0\)</span>.</p>
-<p>El GLM conecta <span class="math inline">\(\mu_{i}\)</span> con <span class="math inline">\(\eta_{i}\)</span>:</p>
-<p><span class="math display">\[
-\mu_{i}=g^{-1}(\eta_{i})=g^{-1}(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)
-\]</span></p>
-<p>La función <span class="math inline">\(g(\cdot)\)</span> es monótona y diferenciable.</p>
-<p><span class="math inline">\(g(\cdot)\)</span> esta determinada generalmente por la distribución que se asume para <span class="math inline">\(Y\)</span>.</p>
-</div>
-<div id="ejemplos-de-glm" class="section level3 hasAnchor" number="6.2.4">
-<h3><span class="header-section-number">6.2.4</span> Ejemplos de GLM<a href="modelo-lineal-generalizado.html#ejemplos-de-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Algunos ejemplos de GLM:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Tipo de respuesta</th>
-<th align="left">Distribución</th>
-<th align="left">función de enlace</th>
-<th align="left">Modelo</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Continuo</td>
-<td align="left">Normal</td>
-<td align="left">Identidad</td>
-<td align="left">Modelo lineal</td>
-</tr>
-<tr class="even">
-<td align="left">Binaria</td>
-<td align="left">Bernoulli</td>
-<td align="left">Logit</td>
-<td align="left">Modelo logístico</td>
-</tr>
-<tr class="odd">
-<td align="left">Conteo</td>
-<td align="left">Poisson</td>
-<td align="left">Log</td>
-<td align="left">Modelo Poisson</td>
-</tr>
-</tbody>
-</table>
-<p>Otros ejemplos son <strong>beta</strong> , <strong>gamma</strong>, <strong>exponencial</strong>, …</p>
-<p>hay extensiones del GLM para distribuciones:</p>
-<ul>
-<li><p><strong>binomial negativa</strong> para conteo con sobredispersión.</p></li>
-<li><p><strong>beta-binomial</strong> para ensayos Bernoulli correlacionados (sobredispersión).</p></li>
-<li><p><strong>multinomial</strong> para variables nominales (ordinales) con más de
-dos categorías</p></li>
-<li><p><strong>Weibull</strong> para tiempos de falla.</p></li>
-</ul>
-</div>
-<div id="ajuste-de-un-glm" class="section level3 hasAnchor" number="6.2.5">
-<h3><span class="header-section-number">6.2.5</span> Ajuste de un GLM<a href="modelo-lineal-generalizado.html#ajuste-de-un-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El proceso de ajustar un GLM incluye:</p>
-<ul>
-<li><p><strong>Especificación del modelo</strong>.Definición del componente
-aleatorio, predictor lineal y función de enlace.</p></li>
-<li><p><strong>Estimación de los parámetros</strong> del modelo.</p></li>
-<li><p><strong>Evaluación del modelo</strong>. ¿El modelo describe bien los datos?</p></li>
-<li><p><strong>Inferencia</strong>. Intervalos de confianza, pruebas de hipótesis e
-interpretación de los resultados.</p></li>
-</ul>
-</div>
-<div id="familia-exponencial" class="section level3 hasAnchor" number="6.2.6">
-<h3><span class="header-section-number">6.2.6</span> Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La distribución de probabilidad de una variable aleatoria Y pertenece
-a la <strong>familia exponencial</strong> si la función de densidad (o masa) de Y toma esta forma:</p>
-<p><span class="math display">\[
-f(y;\theta,\phi)exp\{[y\theta-b(\theta)]/a(\phi)+c(y,\phi)\}
-\]</span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(\theta\)</span> es el parámetro natural.</li>
-<li><span class="math inline">\(\phi&gt;0\)</span> parámetro de dispersión.</li>
-</ul>
-<p>Además se tiene que:</p>
-<p><span class="math display">\[
-E[Y]=b^{&#39;}(\theta) \quad \text{y} \quad V[Y]=b^{&#39;&#39;}(\theta)a(\phi).
-\]</span></p>
-<div id="ejemplo-1" class="section level4 hasAnchor" number="6.2.6.1">
-<h4><span class="header-section-number">6.2.6.1</span> Ejemplo<a href="modelo-lineal-generalizado.html#ejemplo-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>La distribución Poisson:</p>
-<p><span class="math display">\[
-f(y;\mu)=\frac{\mu^yexp(-\mu)}{y!}, \quad \theta&gt;0.
+f(y;\mu)=\frac{\mu^y\exp(-\mu)}{y!}, \quad \mu&gt;0,
 \]</span></p>
 <p>se puede re-escribir como:</p>
 <p><span class="math display">\[
-f(y;\mu)=exp(-\mu+ylog\mu-logy!).
-\]</span></p>
-<p>Por lo tanto:</p>
+f(y;\mu)=exp(-\mu+y\log\mu-\log y!).
+\]</span>
+Por lo tanto, pertenece a la familia exponencial con:</p>
 <ul>
-<li><p><span class="math inline">\(\theta=log\mu, \quad b(\theta)=exp(\theta)\)</span>.</p></li>
-<li><p><span class="math inline">\(a(\phi)=1\)</span> y <span class="math inline">\(c(y,\phi)=-lny!\)</span>.</p></li>
+<li><p><span class="math inline">\(\theta=\log\mu, \quad b(\theta)=\exp(\theta)\)</span>.</p></li>
+<li><p><span class="math inline">\(a(\phi)=1\)</span> y <span class="math inline">\(c(y,\phi)=-\log y!\)</span>.</p></li>
 </ul>
 <p>La distribución normal:</p>
 <p><span class="math display">\[
-f(y;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma}}exp\begin{bmatrix}-\frac{(y-\mu   )^2}{2\sigma^2}\end{bmatrix}
+f(y;\mu,\sigma^2)=\frac{1}{\sqrt{2\pi\sigma}}\exp\left[-\frac{(y-\mu   )^2}{2\sigma^2}\right],
 \]</span></p>
-<p>Se puede re-escribir como:</p>
+<p>se puede re-escribir como:</p>
 <p><span class="math display">\[
-f(y;\mu,\sigma^2)=exp[\frac{y\mu-\frac{1}{2}\mu^2}{\sigma^2}-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}]
+f(y;\mu,\sigma^2)=\exp\left[\frac{y\mu-\frac{1}{2}\mu^2}{\sigma^2}-\frac{1}{2}\log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}\right],
 \]</span></p>
 <p>donde:</p>
 <ul>
-<li><p><span class="math inline">\(\theta=\mu, \quad b(\theta)=\frac{1}{2}\theta^2\)</span>.</p></li>
+<li><p><span class="math inline">\(\theta=\mu, \quad b(\theta)=\frac{1}{2}\theta^2\)</span>,</p></li>
 <li><p><span class="math inline">\(a(\phi)=\sigma^2\)</span> y <span class="math inline">\(c(y,\phi)=-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}\)</span>.</p></li>
 </ul>
 <p>La distribución binomial:</p>
@@ -733,659 +566,271 @@ f(y;\pi)=\left(\begin{array}{c}n\\y\end{array}\right)\pi^y(1-\pi)^{n-y}.
 \]</span></p>
 <p>se puede re-escribir como:</p>
 <p><span class="math display">\[
-f(y;\pi)=exp\left\{y[log\pi-log(1-\pi)]+nlog(1-\pi)+log\left(\begin{array}{c}n\\y\end{array}\right)\right\}
+f(y;\pi)=\exp\left\{y[\log\pi-log(1-\pi)]+n\log(1-\pi)+\log\left(\begin{array}{c}n\\y\end{array}\right)\right\},
 \]</span>
 donde:</p>
 <ul>
-<li><p><span class="math inline">\(\theta=log(\frac{\pi}{1-\pi}), \quad b(\theta)=-nlog[1+exp(\theta)]\)</span>.</p></li>
-<li><p><span class="math inline">\(c(\phi)=1\)</span> y <span class="math inline">\(d(y,\phi)=log\left(\begin{array}{c}n\\y\end{array}\right)\)</span>.</p>
-<h4 id="familia-exponencial-1" class="hasAnchor">Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial-1" class="anchor-section" aria-label="Anchor link to header"></a></h4></li>
+<li><p><span class="math inline">\(\theta=log\left(\frac{\pi}{1-\pi}\right), \quad b(\theta)=-n\log\left[1+\exp(\theta)\right]\)</span>,</p></li>
+<li><p><span class="math inline">\(c(\phi)=1\)</span> y <span class="math inline">\(d(y,\phi)=\log\left(\begin{array}{c}n\\y\end{array}\right)\)</span>.</p></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Distribución
-</th>
-<th style="text-align:left;">
-<span class="math inline">\(\theta\)</span>
-</th>
-<th style="text-align:left;">
-<span class="math inline">\(a(\phi)\)</span>
-</th>
-<th style="text-align:left;">
-<span class="math inline">\(b(\theta)\)</span>
-</th>
-<th style="text-align:left;">
-<span class="math inline">\(c(y,\phi)\)</span>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\mu\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\sigma^2\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\frac{1}{2}\mu^2\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(-\frac{1}{2}log(2\pi\sigma^2)-\frac{y^2}{2\sigma^2}\)</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Binomial
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(log(\frac{\pi}{1-\pi})\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\frac{1}{n}\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(log(1+exp\theta)\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(log\left(\begin{array}{c}n \\ y\end{array}\right)\)</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Poisson
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(log(\lambda)\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(1\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(exp\lambda\)</span>
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(-log(y!)\)</span>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Relación media-varianza:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Distribución
-</th>
-<th style="text-align:left;">
-<span class="math inline">\(v(\mu)\)</span>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Normal
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\sigma^2\)</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Binomial
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\mu(1-\mu)/n\)</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Poisson
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\mu\)</span>
-</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="estimador-de-máxima-verosimilitud" class="section level4 hasAnchor" number="6.2.6.2">
-<h4><span class="header-section-number">6.2.6.2</span> Estimador de máxima verosimilitud<a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>Modelo</strong> <span class="math inline">\(Y\sim f(y,\boldsymbol \theta)\)</span>.</p>
-<p>Estamos interesados en estimar <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
-<p>Para ello tomamos una muestra independiente <span class="math inline">\((y_{1},y_{2},...,y_{n}).\)</span></p>
-<p>Si las observaciones son independientes, la <strong>función de verosimilitud</strong> es:</p>
-<p><span class="math display">\[
+<div id="relación-media-varianza" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Relación media-varianza:<a href="modelo-lineal-generalizado.html#relación-media-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para algunas distribuciones de probabilidad hay una relación directa entre la media y la varianza. Por ejemplo, para la distribución binomial tenemos que:
+<span class="math display">\[
+E(Y) = \mu = n\pi \mbox{ y } V(Y) =  n\pi(1-\pi),
+\]</span>
+por lo que <span class="math inline">\(V(Y) = \nu(\mu) = \mu(1-\mu)/n\)</span>.</p>
+<p>Para la distribución Poisson, tenemos que <span class="math inline">\(V(Y) = \nu(\mu) = \mu\)</span>. Es decir, la varianza es igual a la media. Mientras que, para la distribución normal, la media y la varianza son parámetros independientes.</p>
+</div>
+</div>
+<div id="estimador-de-máxima-verosimilitud" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Estimador de máxima verosimilitud<a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se asume que <span class="math inline">\(Y\sim f(y,\boldsymbol \theta)\)</span> y estamos interesados en estimar <span class="math inline">\(\boldsymbol \theta\)</span>. Para ello tomamos una muestra independiente <span class="math inline">\((y_{1},y_{2},...,y_{n})\)</span>. Por lo que, la <strong>función de verosimilitud</strong> está definida como:
+<span class="math display">\[
 L(\boldsymbol \theta)=\prod_{i=1}^nf(y_{i};\boldsymbol \theta).
 \]</span></p>
-<p>La función de log-verosimilitud:</p>
-<p><span class="math display">\[
-ℓ(\boldsymbol \theta)=\sum_{i=1}^nlnf(y_{i},\boldsymbol \theta).
+<p>La función de log-verosimilitud es:
+<span class="math display">\[
+\ell(\boldsymbol \theta)=\sum_{i=1}^n\log f(y_{i},\boldsymbol \theta).
 \]</span></p>
-<p>El objetivo es encontrar el <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> que maximiza <span class="math inline">\(L(\boldsymbol \theta)\)</span> (o <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span>).</p>
-<p><span class="math inline">\(\hat{\boldsymbol \theta}\)</span> se obtiene calculando las derivadas de <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span> con respecto a cada elemento de <span class="math inline">\(\boldsymbol \theta\)</span> y resolviendo las <strong>ecuaciones score</strong>:</p>
+<p>El objetivo del estimador por máxima verosimilitud (MLE) es encontrar el <span class="math inline">\(\widehat{\boldsymbol \theta}\)</span> que maximiza <span class="math inline">\(L(\boldsymbol \theta)\)</span> (o <span class="math inline">\(\ell(\boldsymbol \theta)\)</span>). Para esto, tenemos que calcular las derivadas de <span class="math inline">\(\ell(\boldsymbol \theta)\)</span> con respecto a cada elemento de <span class="math inline">\(\boldsymbol \theta\)</span> y resolver las <strong>ecuaciones score</strong>:</p>
 <p><span class="math display">\[
-U(\boldsymbol \theta)=\frac{\partial ℓ(\boldsymbol \theta)}{\partial\boldsymbol \theta}=\boldsymbol 0.
+U(\boldsymbol \theta)=\frac{\partial\ell(\boldsymbol \theta)}{\partial\boldsymbol \theta}=\boldsymbol 0,
 \]</span></p>
-<p>s necesario verificar si la solución corresponde a un máximo de <span class="math inline">\(ℓ(\boldsymbol \theta)\)</span>.
-Se requiere que la matriz de segundas derivadas <strong>(matriz Hessiana)</strong>:</p>
+<p>para <span class="math inline">\(\boldsymbol \theta\)</span>. Es necesario verificar si la solución corresponde a un máximo de <span class="math inline">\(\elll(\boldsymbol \theta)\)</span>, evaluando si la matriz de segundas derivadas <strong>(matriz Hessiana)</strong>:</p>
 <p><span class="math display">\[
-H(\boldsymbol \theta)=\frac{\partial^2ℓ(\boldsymbol \theta)}{\partial\boldsymbol \theta\partial\boldsymbol \theta^{&#39;}},
+H(\boldsymbol \theta)=\frac{\partial^2\ell(\boldsymbol \theta)}{\partial\boldsymbol \theta\partial\boldsymbol \theta^{&#39;}},
 \]</span></p>
-<p>evaluada en <span class="math inline">\(\boldsymbol \theta=\hat{\boldsymbol \theta}\)</span>, sea negativa definida.</p>
-</div>
-<div id="propiedades-asintóticas-de-los-mles" class="section level4 hasAnchor" number="6.2.6.3">
-<h4><span class="header-section-number">6.2.6.3</span> Propiedades asintóticas de los MLEs<a href="modelo-lineal-generalizado.html#propiedades-asintóticas-de-los-mles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><span class="math inline">\(\hat{\boldsymbol \theta}\)</span> es asintóticamente <span class="math inline">\((n\to \infty)\)</span> insesgado. Esto es, <span class="math inline">\(E(\hat{\boldsymbol \theta})=\boldsymbol \theta\)</span>.</p>
-<p>La varianza asintótica <span class="math inline">\((n\to \infty)\)</span> de <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> se calcula como la inversa de <strong>la matriz de información</strong>:</p>
+<p>evaluada en <span class="math inline">\(\boldsymbol \theta=\widehat{\boldsymbol \theta}\)</span>, es negativa-definida.</p>
+<div id="propiedades-asintóticas-de-los-mles" class="section level4 hasAnchor" number="6.2.0.1">
+<h4><span class="header-section-number">6.2.0.1</span> Propiedades asintóticas de los MLEs<a href="modelo-lineal-generalizado.html#propiedades-asintóticas-de-los-mles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math inline">\(\widehat{\boldsymbol \theta}\)</span> es asintóticamente <span class="math inline">\((n\to \infty)\)</span> insesgado. Esto es, <span class="math inline">\(E(\widehat{\boldsymbol \theta})=\boldsymbol \theta\)</span> cuando <span class="math inline">\(n\to \infty\)</span>. La varianza asintótica <span class="math inline">\((n\to \infty)\)</span> de <span class="math inline">\(\widehat{\boldsymbol \theta}\)</span> se calcula como la inversa de <strong>la matriz de información</strong>:</p>
 <p><span class="math display">\[
-V(\hat{\boldsymbol \theta})=I(\boldsymbol \theta)^{-1},\quad \text{donde} \quad I(\boldsymbol \theta)=-E[H(\boldsymbol \theta)]
+V(\widehat{\boldsymbol \theta})=I(\boldsymbol \theta)^{-1},\quad \text{donde} \quad I(\boldsymbol \theta)=-E[H(\boldsymbol \theta)].
 \]</span>
-<strong>Teorema de Cramer-Rao:</strong> La varianza de cualquier estimador es insesgado de un parámetro <span class="math inline">\(\boldsymbol \theta\)</span> debe:</p>
-<p><span class="math display">\[
-V(\hat{\boldsymbol \theta})\geq-E[H(\boldsymbol \theta)]^{-1}.
-\]</span></p>
-<p>Por lo cual, es MLE es eficiente.</p>
-<p>Otras propiedades importantes:</p>
+Por lo cual, es MLE es un estimador eficiente (Teorema de Cramer-Rao). Otras propiedades importantes son:</p>
 <ul>
-<li><p><strong>Asintoticamente normal:</strong><span class="math inline">\(\hat{\boldsymbol \theta}\sim N[\boldsymbol \theta,I(\boldsymbol \theta)^{-1}]\)</span></p></li>
-<li><p><strong>Invarianza:</strong>si <span class="math inline">\(\hat{\boldsymbol \theta}\)</span> es el MLE de <span class="math inline">\(\boldsymbol \theta\)</span>, entonces <span class="math inline">\(g(\hat{\boldsymbol \theta})\)</span> es el MLE de <span class="math inline">\(g(\boldsymbol \theta)\)</span></p></li>
+<li><p><strong>Asintoticamente normal:</strong><span class="math inline">\(\widehat{\boldsymbol \theta}\sim N[\boldsymbol \theta,I(\boldsymbol \theta)^{-1}]\)</span>.</p></li>
+<li><p><strong>Invarianza:</strong>si <span class="math inline">\(\widehat{\boldsymbol \theta}\)</span> es el MLE de <span class="math inline">\(\boldsymbol \theta\)</span>, entonces <span class="math inline">\(g(\widehat{\boldsymbol \theta})\)</span> es el MLE de <span class="math inline">\(g(\boldsymbol \theta)\)</span>.</p></li>
 </ul>
 </div>
-<div id="métodos-iterativos-de-maximización" class="section level4 hasAnchor" number="6.2.6.4">
-<h4><span class="header-section-number">6.2.6.4</span> Métodos iterativos de maximización<a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>Algoritmo de Newton-Raphson:</strong></p>
-<p>Considere una expansión de series de Taylor de orden 1 para la función
-score, alrededor de <span class="math inline">\(\boldsymbol \theta=\boldsymbol \theta^{(t)}\)</span>:</p>
+<div id="métodos-iterativos-de-maximización" class="section level4 hasAnchor" number="6.2.0.2">
+<h4><span class="header-section-number">6.2.0.2</span> Métodos iterativos de maximización<a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>En algunos casos no es posible encontrar los MLEs de forma analítica, por lo que debemos hacerlo de forma iterativa. Los métodos que vamos a utilizar están basados en expansiones de series de Taylor.</p>
+<!--
+.... series de Taylor ...
+-->
+<p>Considere una expansión de series de Taylor de orden 1 para la función score, alrededor de <span class="math inline">\(\boldsymbol \theta=\boldsymbol \theta^{(t)}\)</span>:</p>
 <p><span class="math display">\[
-U(\boldsymbol \theta)\approx U(\boldsymbol \theta^{(t)})+H(\boldsymbol \theta^{(t)})+(\boldsymbol \theta-\boldsymbol \theta^{(t)})
+U\left(\boldsymbol \theta\right)\approx U\left(\boldsymbol \theta^{(t)}\right)+H\left(\boldsymbol \theta^{(t)}\right)+\left(\boldsymbol \theta-\boldsymbol \theta^{(t)}\right).
 \]</span></p>
-<p>Igualando a cero:</p>
+<p>Igualando la expresión anterior a cero tenemos que:</p>
 <p><span class="math display">\[
-U(\boldsymbol \theta^{(t)})+H(\boldsymbol \theta^{(t)})+(\boldsymbol \theta-\boldsymbol \theta^{(t)})=0
+U\left(\boldsymbol \theta^{(t)}\right)+H\left(\boldsymbol \theta^{(t)}\right)+\left(\boldsymbol \theta-\boldsymbol \theta^{(t)}\right)=\boldsymbol 0,
 \]</span></p>
-<p>Ahora encontramos la solución para <span class="math inline">\(\hat{\boldsymbol \theta^{(t+1)}}\)</span>:</p>
+<p>Ahora, encontramos la solución para <span class="math inline">\(\boldsymbol \theta^{(t+1)}\)</span>:</p>
 <p><span class="math display">\[
-\boldsymbol \theta^{(t+1)}=\boldsymbol \theta^{t}-H(\boldsymbol \theta^{t})^{-1}U(\boldsymbol \theta^{t}).
-\]</span></p>
-<p>Podemos reemplazar <span class="math inline">\(H(\boldsymbol \theta)\)</span> por <span class="math inline">\(I(\boldsymbol \theta)\)</span> <strong>(algoritmo Fisher’s scoring)</strong>.</p>
+\boldsymbol \theta^{(t+1)}=\boldsymbol \theta^{t}-H\left(\boldsymbol \theta^{t}\right)^{-1}U\left(\boldsymbol \theta^{t}\right).
+\]</span>
+Podemos encontrar la estimación de <span class="math inline">\(\boldsymbol \theta\)</span> repitiendo los pasos anteriores hasta que se cumpla un criterio de convergencia. Si reemplazamos <span class="math inline">\(H(\boldsymbol \theta)\)</span> por <span class="math inline">\(I(\boldsymbol \theta)\)</span>, el algoritmo recibe el nombre de <strong>Fisher’s scoring</strong>.</p>
 </div>
 </div>
+<div id="modelo-lineal-generalizado-glm" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Modelo lineal generalizado (GLM)<a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un GLM está definido por tres componentes:</p>
+<ul>
+<li><p><strong>Componente aleatorio:</strong> variable respuesta <span class="math inline">\(Y\)</span> y su distribución de probabilidad.</p></li>
+<li><p><strong>Predictor lineal:</strong> <span class="math inline">\(\eta=\boldsymbol x^{&#39;}\boldsymbol \beta\)</span>, donde <span class="math inline">\(\boldsymbol \beta\)</span> es un vector de parámetros y <span class="math inline">\(\boldsymbol x\)</span> un vector de covariables.</p></li>
+<li><p><strong>Función de enlace:</strong> una función <span class="math inline">\(g\)</span> que conecta <span class="math inline">\(E(Y)\)</span> con el predictor lineal, <span class="math inline">\(g[E(Y|\boldsymbol x)]=\boldsymbol x^{&#39;}\boldsymbol \beta\)</span>.</p></li>
+</ul>
+<div id="componente-aleatorio" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Componente aleatorio<a href="modelo-lineal-generalizado.html#componente-aleatorio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se asume que se cuenta con <span class="math inline">\(n\)</span> observaciones independientes <span class="math inline">\((y_{i},...,y_{n})\)</span> de una variable aleatoria <span class="math inline">\(Y\)</span> cuya distribución de probabilidad pertenece a la <strong>familia exponencial.</strong> Restringir un GLM a esta familia permite tener expresiones generales para:</p>
+<ul>
+<li><p>La función de verosimilitud y funciones score.</p></li>
+<li><p>distribución asintótica de los estimadores de los parámetros del modelo</p></li>
+<li><p>Algoritmo para ajustar el modelo.</p></li>
+</ul>
+<p>Por ejemplo, para los datos de los escarabajos podemos asumir que el número de escarabajos que mueren sigue una distribución binomial. Mientras que en el caso del ensayo clínico en epilepsia, se podría asumir que el número de ataques epilépticos sigue una distribución Poisson.</p>
+<div id="familia-exponencial-1" class="section level4 hasAnchor" number="6.3.1.1">
+<h4><span class="header-section-number">6.3.1.1</span> Familia exponencial<a href="modelo-lineal-generalizado.html#familia-exponencial-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 </div>
-<div id="glm" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> GLM<a href="modelo-lineal-generalizado.html#glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="predictor-lineal" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Predictor lineal<a href="modelo-lineal-generalizado.html#predictor-lineal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para cada observación <span class="math inline">\(i\)</span>, tenemos un conjunto de covariables observadas. Esto es:</p>
+<p><span class="math display">\[
+\boldsymbol x_{i}=(1,x_{i1},...,x_{i,p-1})^{&#39;},
+\]</span></p>
+<p>donde <span class="math inline">\(x_{ij}\)</span> es la <span class="math inline">\(j\)</span>-ésima covariable asociada al individuo <span class="math inline">\(i\)</span>. El predictor lineal está definido como:
+<span class="math display">\[
+\eta_{i}=\beta_{0}+\sum_{j=1}^{p-1}\beta_{j}x_{ij}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta
+\]</span></p>
+</div>
+<div id="función-de-enlace" class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Función de enlace<a href="modelo-lineal-generalizado.html#función-de-enlace" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea:</p>
+<p><span class="math display">\[
+E(Y|\boldsymbol x_{i})=\mu_{i}, \quad i=1,...,n.
+\]</span></p>
+<p>En algunas distribuciones,<span class="math inline">\(\mu_{i}\)</span> está acotada en un intervalo. Por ejemplo, en la distribución binomial, <span class="math inline">\(0\leq \pi_{i}\leq 1\)</span>, o en la Poisson, <span class="math inline">\(\lambda_{i}&gt;0\)</span>. Esto hace que no siempre es razonable asumir una relación lineal entre <span class="math inline">\(E(Y | \boldsymbol x)\)</span> y <span class="math inline">\(\boldsymbol x\)</span>. Por lo que la función de enlace conecta <span class="math inline">\(\mu_{i}\)</span> con el predictor lineal <span class="math inline">\(\eta_{i}\)</span> a través de una función <span class="math inline">\(g()\)</span>:</p>
+<p><span class="math display">\[
+\mu_{i}=g^{-1}(\eta_{i})=g^{-1}(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta),
+\]</span></p>
+<p>donde, la función <span class="math inline">\(g(\cdot)\)</span> es monótona y diferenciable. Generalmente, <span class="math inline">\(g(\cdot)\)</span> esta determinada por la distribución que se asume para <span class="math inline">\(Y\)</span>.</p>
+</div>
+</div>
+<div id="ejemplos-de-glm" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Ejemplos de GLM<a href="modelo-lineal-generalizado.html#ejemplos-de-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="modelo-logístico" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> modelo logístico<a href="modelo-lineal-generalizado.html#modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Definiendo <span class="math inline">\(y_{i}=\sum_{i=1}^ny_{ij}/n_{i}\)</span> (la proporción de éxitos en <span class="math inline">\(n_i\)</span> ensayos independientes), tenemos que:</p>
+<p><span class="math display">\[
+n_{i}y_{i}\sim \mbox{binomial}(n_{i},\pi_{i}), \quad i=1,...,n, \quad \text{donde} \quad \pi_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
+\]</span></p>
+<p>Entonces: <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=\pi_{i}\)</span> y <span class="math inline">\(V(y_{i}|\boldsymbol x_{i})=\pi_{i}(1-\pi_{i})/n_{i}\)</span>. El modelo ligístico es un GLM que asume:</p>
+<p><span class="math display">\[
+\pi_{i}=g^{-1}(\boldsymbol x_{i},\boldsymbol \beta)=\frac{exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}{1+exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}=\frac{1}{1+exp(-\boldsymbol x_{i}^{&#39;}\boldsymbol \beta)}
+\]</span></p>
+<p>Por lo que: <span class="math inline">\(g(\pi_{i})=log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span>. Esta función recibe el nombre de <strong>función logit</strong> y su forma la podemos ver gráficamente en la Figura <a href="modelo-lineal-generalizado.html#fig:logfun">6.3</a>. Como vemos, está función está acotada entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, garantizando que las probabilidades estimadas estén en este rango, y tiene forma de ‘S’.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:logfun"></span>
+<img src="MLG2_files/figure-html/logfun-1.png" alt="Función logística" width="576" />
+<p class="caption">
+Figure 6.3: Función logística
+</p>
+</div>
+<p>Este modelo se puede utilizar para estimar la probabilidad de que el escarabajo muera en función de la concentración de disulfuro de carbono gaseoso.</p>
+</div>
+<div id="modelo-poisson" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> modelo Poisson<a href="modelo-lineal-generalizado.html#modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aquí asumimos que:</p>
+<p><span class="math display">\[
+y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
+\]</span></p>
+<p>Entonces, <span class="math inline">\(E(y_{i}|\boldsymbol x_{i})=V(y_{i}|\boldsymbol x_{i})=\lambda_{i}\)</span>. Dado que <span class="math inline">\(\lambda_ i &gt; 0\)</span>, se puede asumir que:
+<span class="math display">\[
+\lambda_{i}=g^{-1}(\boldsymbol x_{i},\boldsymbol \beta)=exp(\boldsymbol x_{i}^{&#39;}\boldsymbol \beta).
+\]</span></p>
+<p>Por lo que, <span class="math inline">\(g(\lambda_{i})=log\lambda_{i}=\boldsymbol x_{i}^{&#39;}\boldsymbol \beta\)</span>. La función de enlace escogida es logarítmica.</p>
+<p>Este modelo puede ser una opción para estimar el número medio de ataques epiléticos de los pacientes del ensayo clínico en epilepsia.</p>
+<p>Un modelo lineal se puede representar como un GLM. Aquí asumimos que <span class="math inline">\(y_i \sim N(\mu_i, \sigma^2)\)</span>, con <span class="math inline">\(\mu_i = \boldsymbol x_i&#39;\boldsymbol \beta\)</span>. Es decir, la función de enlace es la identidad.</p>
+<p>Otros ejemplos de distribuciones que se pueden utilizar son:</p>
+<ul>
+<li><p><strong>binomial negativa</strong> para conteo con sobredispersión.</p></li>
+<li><p><strong>beta-binomial</strong> para ensayos Bernoulli correlacionados (sobredispersión).</p></li>
+<li><p><strong>multinomial</strong> para variables nominales (ordinales) con más de dos categorías.</p></li>
+<li><p><strong>Weibull</strong> para tiempos de falla.</p></li>
+</ul>
+</div>
+<div id="ajuste-de-un-glm" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Ajuste de un GLM<a href="modelo-lineal-generalizado.html#ajuste-de-un-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al igual que en los modelos lineales, los pasos para ajustar un GLM incluyen:</p>
+<ul>
+<li><p><strong>Especificación del modelo</strong>.Definición del componente aleatorio, predictor lineal y función de enlace.</p></li>
+<li><p><strong>Estimación de los parámetros</strong>. Para los GLM, la estimación se hace por máxima verosimilitud.</p></li>
+<li><p><strong>Evaluación del modelo</strong>. Verificar si el modelo estimado se ajusta bien a los datos.</p></li>
+<li><p><strong>Inferencia</strong>. Intervalos de confianza, pruebas de hipótesis e interpretación de los resultados según los objetivos del estudio.</p></li>
+</ul>
+<div id="especificación-del-modelo" class="section level4 hasAnchor" number="6.4.3.1">
+<h4><span class="header-section-number">6.4.3.1</span> Especificación del modelo<a href="modelo-lineal-generalizado.html#especificación-del-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El modelo lineal generalizado (GLM) asume que:</p>
 <p><span class="math display">\[
 f(y_{i};\theta_{i},\phi)=exp\left\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)} +c(y_{i},\phi)\right\},
 \]</span></p>
-<p>donde <span class="math inline">\(\phi&gt;0\)</span>. Además, <span class="math inline">\(E(y_{i})=b&#39;(\theta_{i})\)</span> y <span class="math inline">\(V(y_{i})=b&#39;&#39;(\theta_{i})a(\phi).\)</span></p>
-<p>El <strong>predictor lineal</strong> <span class="math inline">\(\eta_{i}=\boldsymbol x&#39;_{i}\boldsymbol \beta\)</span> se relaciona con <span class="math inline">\(\mu_{i}\)</span> a través la <strong>función de enlace:</strong></p>
-<p><span class="math display">\[
-\eta_{i}=g(\mu_{i}).
-\]</span></p>
-<p>La función de enlace <span class="math inline">\(g(\cdot)\)</span> que transforma <span class="math inline">\(\mu_{i}\)</span> en el parámetro natural <span class="math inline">\(\theta_{i}\)</span> es llamada <strong>función de enlace canónica.</strong></p>
-<p><strong>Distribución normal:</strong> <span class="math inline">\(\eta_{i}=\mu_{i}\)</span> (identidad), por lo tanto:</p>
-<p><span class="math display">\[
-\mu_{i}=\eta_{i}
-\]</span></p>
-<p><strong>Distribución Poisson:</strong><span class="math inline">\(\eta_{i}=log\mu_{i}\)</span> (logarítmica), por lo tanto:</p>
-<p><span class="math display">\[
-\mu_{i}=exp(\eta_{i})
-\]</span></p>
-<p><strong>Distribución binomial:</strong><span class="math inline">\(\eta_{i}=log(\frac{\pi_{i}}{1-\pi_{i}})\)</span> (logit), por lo tanto:</p>
-<p><span class="math display">\[
-\pi_{i}=\frac{exp(\eta_{i})}{1+exp(\eta_{i})}
-\]</span></p>
-<div id="mortalidad-de-escarabajos-1" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Variable respuesta</strong> <span class="math inline">\(y_{i}=\sum_{j=1}^{n_{i}}y_{ij}/n{i}\)</span>: proporción de escarabajos muertos.</p>
-<p><strong>Distribución de probabilidad</strong> binomial:</p>
-<p><span class="math display">\[
+<p>donde <span class="math inline">\(\phi&gt;0\)</span>. Además, <span class="math inline">\(E(y_{i})=b&#39;(\theta_{i})\)</span> y <span class="math inline">\(V(y_{i})=b&#39;&#39;(\theta_{i})a(\phi).\)</span> El <strong>predictor lineal</strong> <span class="math inline">\(\eta_{i}=\boldsymbol x&#39;_{i}\boldsymbol \beta\)</span> se relaciona con <span class="math inline">\(\mu_{i}\)</span> a través la <strong>función de enlace,</strong> <span class="math inline">\(\eta_{i}=g(\mu_{i})\)</span>.</p>
+<p>La función de enlace <span class="math inline">\(g(\cdot)\)</span> que transforma <span class="math inline">\(\mu_{i}\)</span> en el parámetro natural <span class="math inline">\(\theta_{i}\)</span> es llamada <strong>función de enlace canónica.</strong> Por ejemplo:</p>
+<p>Para la distribución normal, <span class="math inline">\(\eta_{i}=\mu_{i}\)</span> (identidad), por lo tanto: <span class="math inline">\(\mu_{i}=\eta_{i}\)</span>.</p>
+<p>Para la distribución Poisson, <span class="math inline">\(\eta_{i}=log\mu_{i}\)</span> (función logarítmica), por lo tanto: <span class="math inline">\(\mu_{i}=exp(\eta_{i})\)</span>.</p>
+<p>Para la distribución binomial, <span class="math inline">\(\eta_{i}=\log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)\)</span> (función logit), por lo tanto: <span class="math inline">\(\pi_{i}=\frac{\exp(\eta_{i})}{1+\exp(\eta_{i})}\)</span>.</p>
+<div id="mortalidad-de-escarabajos-1" class="section level5 hasAnchor" number="6.4.3.1.1">
+<h5><span class="header-section-number">6.4.3.1.1</span> Mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Para los datos de mortalidad de escarabajos, la variable respuesta es la proporción de escarabajos muertos, <span class="math inline">\(y_{i}=\sum_{j=1}^{n_{i}}y_{ij}/n{i}\)</span>, donde <span class="math inline">\(y_{ij}=1\)</span> si el <span class="math inline">\(j\)</span>-ésimo escarabajo asociado a la <span class="math inline">\(i\)</span>-ésima concentración del tóxico está muerto, <span class="math inline">\(y_{ij}=0\)</span> si lo contrario.</p>
+<p>Podemos asumir que <span class="math inline">\(y_i\)</span> sigue una distribución binomial. Entonces, tenemos la siguiente función de densidad para <span class="math inline">\(y_i\)</span>:
+<span class="math display">\[
 f(n_{i}y_{i};\pi_{i})= \begin{pmatrix} n_{i}\\y_{i} \end{pmatrix}\pi_{i}^{y_{i}}(1-\pi_{i})^{(n_{i}-y_{i})}.
 \]</span></p>
-<p><strong>Función de enlace:</strong></p>
+<p>El predictor lineal es <span class="math inline">\(\eta_i = \beta_{0}+\beta_{1}\log\text{dosis}_{i}\)</span>. La función de enlace (logit) está definida como:</p>
 <p><span class="math display">\[
-log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)=\beta_{0}+\beta_{1}log\text{dosis}_{i}.
+log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)=\beta_{0}+\beta_{1}\log\text{dosis}_{i}.
+\]</span>
+Por lo que:
+<span class="math display">\[
+\pi_i = \frac{\exp(\beta_{0}+\beta_{1}\log\text{dosis}_{i})}{1+\exp(\beta_{0}+\beta_{1}\log\text{dosis}_{i})}.
 \]</span></p>
 </div>
-<div id="ataques-epilépticos" class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Variable respuesta</strong> <span class="math inline">\(y_{i}\)</span>: número de ataques epilépticos.</p>
-<p><strong>Distribución de probabilidad</strong> Poisson:</p>
-<p><span class="math display">\[
-f(y_{i};\lambda_{i})=\frac{\lambda_{i}^{y_{i}}exp(-\lambda_{i})}{y_{i}!}.
-\]</span></p>
-<p><strong>Función de enlace:</strong></p>
-<p><span class="math display">\[
-log\lambda_{i}=\beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i}
-\]</span></p>
 </div>
-<div id="mle-de-boldsymbol-beta" class="section level3 hasAnchor" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> MLE de <span class="math inline">\(\boldsymbol \beta\)</span><a href="modelo-lineal-generalizado.html#mle-de-boldsymbol-beta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Función de log-verosimilitud:</p>
-<p><span class="math display">\[
-ℓ(\boldsymbol \beta)=\sum_{i=1}^{n}ℓ_{i}(\boldsymbol \beta)=\sum_{i=1}^{n}logf(y_{i};\theta_{i},\phi)=\sum_{i=1}^{n}\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)}+c(y_{i},\phi)\}
+</div>
+<div id="ataques-epilépticos" class="section level3 hasAnchor" number="6.4.4">
+<h3><span class="header-section-number">6.4.4</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para el ensayo clínico sobre epilepsia, la variable respuesta es número de ataques epilépticos. Dado que es un conteo, podemos asociar la variable respuesta con una distribución Poisson. La función de densidad es:
+<span class="math display">\[
+f(y_{i};\mu_{i})=\frac{\mu_{i}^{y_{i}}\exp(-\mu_{i})}{y_{i}!}.
 \]</span></p>
-<p>En un GLM tenemos que <span class="math inline">\(\eta_{i}=\boldsymbol x_{i}&#39;\boldsymbol \beta=g(\mu_{i})\)</span>.</p>
+<p>El predictor lineal que podemos utilizar es <span class="math inline">\(\eta_i = \beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i}\)</span>. La función de enlace (logarítmica) está definida como:</p>
+<p><span class="math display">\[
+\log\mu_{i}=\beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i}.
+\]</span>
+Por lo que:
+<span class="math display">\[
+\mu_{i}=\exp\left(\beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i} \right).
+\]</span>
+### Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span>
+dado que asumimos que la distribución de probabilidad asociada a la variable resputa pertenece a la familia exponencial, la función de log-verosimilitud está definida como:
+<span class="math display">\[
+\ell(\boldsymbol \beta)=\sum_{i=1}^{n}\ell_{i}(\boldsymbol \beta)=\sum_{i=1}^{n}\log f(y_{i};\theta_{i},\phi)=\sum_{i=1}^{n}\left[\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)}+c(y_{i},\phi)\right]
+\]</span></p>
 <p>Las funciones score están definidas como:</p>
 <p><span class="math display">\[
-U(\beta_{j})=\sum_{i=1}^{n}\frac{(y_{i}-\mu_{i})x_{ij}}{V(y_{i})}\frac{\partial\mu_{i}}{\partial\eta_{i}}=0, \quad \text{para} \quad j=0,...,k.
+U(\beta_{j})=\sum_{i=1}^{n}\frac{(y_{i}-\mu_{i})x_{ij}}{V(y_{i})}\frac{\partial\mu_{i}}{\partial\eta_{i}}=0, \quad \text{para} \quad j=0,...,p-1,
+\]</span>
+donde <span class="math inline">\(\eta_{i}=\boldsymbol x_{i}&#39;\boldsymbol \beta=g(\mu_{i})\)</span>. Dado que las funciones score son no-lineales, es necesario estimar <span class="math inline">\(\boldsymbol \beta\)</span> iterativamente usando el algoritmo de Newton-Raphson.</p>
+<p>En forma matricial, tenemos que la función score es:
+<span class="math display">\[
+U(\boldsymbol \beta)=\boldsymbol X&#39;\boldsymbol D\boldsymbol V^{-1}(\boldsymbol y-\boldsymbol \mu),
 \]</span></p>
-<p>Dado que las funciones score son no-lineales, es necesario estimar <span class="math inline">\(\boldsymbol \beta\)</span> iterativamente usando el algoritmo de Newton-Raphson.</p>
-<p>En forma matricial, tenemos:</p>
-<p>Función score:<span class="math inline">\(U(\boldsymbol \beta)=\boldsymbol X&#39;\boldsymbol D\boldsymbol V^{-1}(\boldsymbol y-\boldsymbol \mu)\)</span>,</p>
-<p>Función Hessiana: <span class="math inline">\(H(\boldsymbol \beta)=\boldsymbol I(\boldsymbol \beta)=\boldsymbol X&#39;\boldsymbol W\boldsymbol X\)</span></p>
-<p>donde:</p>
+<p>la función Hessiana es:
+<span class="math display">\[
+H(\boldsymbol \beta)=\boldsymbol I(\boldsymbol \beta)=\boldsymbol X&#39;\boldsymbol W\boldsymbol X,
+\]</span>
+donde:</p>
 <ul>
-<li><p><span class="math inline">\(\boldsymbol V\)</span> es una matriz diagonal con valores <span class="math inline">\(v_{ii}=V(y_{i})\)</span> en la diagonal.</p></li>
-<li><p><span class="math inline">\(\boldsymbol D\)</span> es una matriz diagonal con valores <span class="math inline">\(d_{ii}=\frac{\partial\mu_{i}}{\partial\eta_{i}}\)</span>.</p></li>
+<li><p><span class="math inline">\(\boldsymbol V\)</span> es una matriz diagonal con valores <span class="math inline">\(v_{ii}=V(y_{i})\)</span> en la diagonal,</p></li>
+<li><p><span class="math inline">\(\boldsymbol D\)</span> es una matriz diagonal con valores <span class="math inline">\(d_{ii}=\frac{\partial\mu_{i}}{\partial\eta_{i}}\)</span>,</p></li>
 <li><p><span class="math inline">\(\boldsymbol W\)</span> es una matriz diagonal con <span class="math inline">\(w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})}\)</span>.</p></li>
 </ul>
-<div id="estimador-de-máxima-verosimilitud-1" class="section level4 hasAnchor" number="6.3.3.1">
-<h4><span class="header-section-number">6.3.3.1</span> Estimador de máxima verosimilitud<a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Utilizando el algoritmo de Newton-Raphson (Fisher’s scoring):</p>
-<p><span class="math display">\[
+<p>A través del algoritmo de Newton-Raphson (o Fisher’s scoring) podemos encontrar la estimación de <span class="math inline">\(\boldsymbol \beta\)</span> de forma iterativa:
+<span class="math display">\[
 \boldsymbol \beta^{(t+1)}=\boldsymbol \beta^{(t)}+[\boldsymbol I(\boldsymbol \beta^{(t)})]^{-1}U(\boldsymbol \beta^{(t)}).
 \]</span></p>
-<p>Equivalentemente, utilizando el <strong>método de mínimos cuadrados iterativamente reponderados:</strong></p>
+<p>Equivalentemente, podmeos utilizar el <strong>método de mínimos cuadrados iterativamente reponderados:</strong></p>
 <p><span class="math display">\[
-\boldsymbol \beta^{(t+1)}=(\boldsymbol X&#39;\boldsymbol W^{(t)}\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol W^{(t)}z^{(t)}
+\boldsymbol \beta^{(t+1)}=(\boldsymbol X&#39;\boldsymbol W^{(t)}\boldsymbol X)^{-1}\boldsymbol X&#39;\boldsymbol W^{(t)}\boldsymbol z^{(t)},
+\]</span>
+donde, los elementos de <span class="math inline">\(\boldsymbol z^{(t)}\)</span> son:</p>
+<p><span class="math display">\[
+z_{i}^{(t)}=\boldsymbol x_{i}&#39;\boldsymbol \beta^{(t)}+(y_{i}-\mu_{i}^{(t)})\frac{\partial\eta_{i}^{(t)}}{\partial \mu_{i}^{(t)}}, \mbox{ para }i=1,\ldots,n.
 \]</span></p>
-<p>donde, los elementos de <span class="math inline">\(z^{(t)}\)</span> son:</p>
+<p>La distribución asintótica del MLE de <span class="math inline">\(\boldsymbol \beta\)</span> es:</p>
 <p><span class="math display">\[
-z_{i}^{(t)}=\boldsymbol x_{i}&#39;\boldsymbol \beta^{(t)}+(y_{i}-\mu_{i}^{(t)})\frac{\partial\eta_{i}^{(t)}}{\partial \mu_{i}^{(t)}}.
-\]</span></p>
-<p>Distribución asintótica del MLE <span class="math inline">\((n \to \infty)\)</span>:</p>
-<p><span class="math display">\[
-\hat{\boldsymbol \beta}\sim N[\boldsymbol \beta,(\boldsymbol X&#39;\boldsymbol W\boldsymbol X)^{-1}],
+\widehat{\boldsymbol \beta}\sim N\left[\boldsymbol \beta,(\boldsymbol X&#39;\boldsymbol W\boldsymbol X)^{-1}\right],
 \]</span></p>
 <p>donde <span class="math inline">\(\boldsymbol W\)</span> es una matriz diagonal con:</p>
 <p><span class="math display">\[
-w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})}.
-\]</span></p>
-<p>Note que los valores de <span class="math inline">\(\boldsymbol W\)</span> dependen de la función de enlace <span class="math inline">\(g\)</span></p>
-<p><span class="math display">\[
-\partial\mu_{i}/\partial\eta_{i}=g&#39;( \mu_{i})
-\]</span></p>
-</div>
-<div id="mortalidad-de-escarabajos-2" class="section level4 hasAnchor" number="6.3.3.2">
-<h4><span class="header-section-number">6.3.3.2</span> Mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Modelo estimado:</p>
-<p><span class="math display">\[
-\hat{\pi}_{i}=\frac{exp(-60.717+34.27log\text{dosis})}{1+exp(-60.717+34.27log\text{dosis})}
-\]</span></p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="modelo-lineal-generalizado.html#cb127-1" aria-hidden="true" tabindex="-1"></a>modBin <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(dead,n<span class="sc">-</span>dead)<span class="sc">~</span>logdose,<span class="at">family=</span>binomial)</span>
-<span id="cb127-2"><a href="modelo-lineal-generalizado.html#cb127-2" aria-hidden="true" tabindex="-1"></a>pred.x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">logdose =</span> <span class="fu">seq</span>(<span class="fu">min</span>(logdose),<span class="fu">max</span>(logdose),<span class="at">length.out =</span> <span class="dv">50</span>))</span>
-<span id="cb127-3"><a href="modelo-lineal-generalizado.html#cb127-3" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(modBin,pred.x,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
-<span id="cb127-4"><a href="modelo-lineal-generalizado.html#cb127-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-5"><a href="modelo-lineal-generalizado.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb127-6"><a href="modelo-lineal-generalizado.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/grafescarMedia-1.png" width="672" /></p>
-</div>
-</div>
-<div id="interpretación-de-parámetros---modelo-logístico" class="section level3 hasAnchor" number="6.3.4">
-<h3><span class="header-section-number">6.3.4</span> interpretación de parámetros - modelo logístico<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En el caso de la mortalidad de escarabajos, un <strong>odds</strong> está definido como:</p>
-<p><span class="math display">\[
-\text{odd}(\text{morir}|x)=\frac{P(Y=1|x)}{P(Y=0|x_{i})}=exp(\beta_{0}+x\beta_{1})
-\]</span></p>
-<p>Mientras que un <strong>odds ratio</strong> está definido como:</p>
-<p><span class="math display">\[
-\text{OR}=\frac{\text{odd}(\text{morir}|x=a+1)}{\text{odd}(\text{morir}|x=a)}=\frac{exp(\beta_{0}+(a+1)\beta_{1})}{exp(\beta_0+a\beta_1)}=exp(\beta_1).
-\]</span></p>
-<p>Por lo tanto, por cada cambio unitario en <span class="math inline">\(x\)</span> los odds (`chances’) de
-morir incrementan por un factor de <span class="math inline">\(exp(\beta_1)\)</span>.</p>
-<p>Por un cambio en<span class="math inline">\(x\)</span> de <span class="math inline">\(a\)</span> a <span class="math inline">\(a+\delta\)</span>, <span class="math inline">\(OR=e^{\delta\beta_1}\)</span>.</p>
-<div id="ataques-epilépticos-1" class="section level4 hasAnchor" number="6.3.4.1">
-<h4><span class="header-section-number">6.3.4.1</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Modelo estimado:</p>
-<p><span class="math display">\[
-\hat{\lambda}_i=exp(1.245-0.363\text{treat}_i+0.021\text{base}_i+0.0008\text{base}_i\text{treat}_i)
-\]</span></p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="modelo-lineal-generalizado.html#cb128-1" aria-hidden="true" tabindex="-1"></a>modPois<span class="ot">=</span><span class="fu">glm</span>(seizure.rate<span class="sc">~</span>base<span class="sc">+</span>treatment<span class="sc">+</span>base<span class="sc">:</span>treatment,<span class="at">family=</span>poisson,</span>
-<span id="cb128-2"><a href="modelo-lineal-generalizado.html#cb128-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span>epilepsy)</span>
-<span id="cb128-3"><a href="modelo-lineal-generalizado.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## glm(formula = seizure.rate ~ base + treatment + base:treatment, 
-##     family = poisson, data = epilepsy)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -3.0482  -1.2217  -0.1162   0.5115   4.0478  
-## 
-## Coefficients:
-##                           Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)              1.2453159  0.1176157  10.588   &lt;2e-16 ***
-## base                     0.0209356  0.0019144  10.936   &lt;2e-16 ***
-## treatmentProgabide      -0.3635857  0.1624995  -2.237   0.0253 *  
-## base:treatmentProgabide  0.0008523  0.0022778   0.374   0.7083    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## (Dispersion parameter for poisson family taken to be 1)
-## 
-##     Null deviance: 476.25  on 58  degrees of freedom
-## Residual deviance: 149.54  on 55  degrees of freedom
-## AIC: 345.3
-## 
-## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelo-lineal-generalizado.html#cb130-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">base=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">100</span>),</span>
-<span id="cb130-2"><a href="modelo-lineal-generalizado.html#cb130-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">treatment =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">levels</span>(epilepsy<span class="sc">$</span>treatment)))</span>
-<span id="cb130-3"><a href="modelo-lineal-generalizado.html#cb130-3" aria-hidden="true" tabindex="-1"></a>predpois <span class="ot">=</span> <span class="fu">predict</span>(modPois,y,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
-<span id="cb130-4"><a href="modelo-lineal-generalizado.html#cb130-4" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">50</span>)</span>
-<span id="cb130-5"><a href="modelo-lineal-generalizado.html#cb130-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-6"><a href="modelo-lineal-generalizado.html#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
-<span id="cb130-7"><a href="modelo-lineal-generalizado.html#cb130-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
-<span id="cb130-8"><a href="modelo-lineal-generalizado.html#cb130-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb130-9"><a href="modelo-lineal-generalizado.html#cb130-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb130-10"><a href="modelo-lineal-generalizado.html#cb130-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-8-1.png" alt="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)" width="672" />
-<p class="caption">
-Figure 6.4: Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)
-</p>
-</div>
-</div>
-</div>
-<div id="interpretación-de-parámetros---modelo-poisson" class="section level3 hasAnchor" number="6.3.5">
-<h3><span class="header-section-number">6.3.5</span> Interpretación de parámetros - modelo Poisson<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En el modelo Poisson, tenemos que: <span class="math inline">\(E(Y|x)=exp(\beta_0+x\beta_1)\)</span></p>
-<p><span class="math display">\[
-\beta_1=log\left[\frac{E(Y|x=a+1)}{E(Y|x=a)}\right]
-\]</span></p>
-<p>Por lo tanto,</p>
-<p><span class="math display">\[
-exp(\beta_1)=\frac{E(Y|x=a+1)}{E(Y|x=a)}.
-\]</span></p>
-<p>Entonces, <span class="math inline">\(exp(\beta_1)\)</span> es una tasa de crecimiento del valor esperado de <span class="math inline">\(Y\)</span> por un incremento de <span class="math inline">\(x\)</span> de una unidad.</p>
-<div id="algunas-consideraciones-1" class="section level4 hasAnchor" number="6.3.5.1">
-<h4><span class="header-section-number">6.3.5.1</span> Algunas consideraciones<a href="modelo-lineal-generalizado.html#algunas-consideraciones-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Para GLM con función de enlace canónica:</p>
-<ul>
-<li><p>Matriz hessiana = -matriz de información</p></li>
-<li><p>Por lo tanto los algoritmos Newton-Raphson y Fisher’s scoring
-son equivalentes</p></li>
-<li><p>La función de log-verosimilitud es concava.</p></li>
-<li><p>Por lo tanto, no hay posibilidad de múltiples máximos.</p></li>
-</ul>
-</div>
-</div>
-<div id="pruebas-de-hipótesis" class="section level3 hasAnchor" number="6.3.6">
-<h3><span class="header-section-number">6.3.6</span> Pruebas de hipótesis<a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Al igual que en los modelos lineales, uno puede estar interesado en
-realizar pruebas hipótesis sobre los coeficientes del modelo:</p>
-<p><span class="math display">\[
-\qquad H_0:\boldsymbol \beta_0=\boldsymbol 0\qquad H_1:\boldsymbol \beta_0 \ne \boldsymbol 0
-\]</span></p>
-<p>Para esto podemos utilizar:</p>
-<ul>
-<li><p>Método del score (multiplicadores de Lagrange).</p></li>
-<li><p>Método de Wald.</p></li>
-<li><p>Método de razón de verosimilitud.</p></li>
-</ul>
-<p><strong>Modelo completo:</strong><span class="math inline">\(\boldsymbol\eta=\boldsymbol X_1\boldsymbol \beta_1+\boldsymbol X_2\boldsymbol \beta_2\)</span>.</p>
-<p><strong>Modelo restringido:</strong><span class="math inline">\(\boldsymbol\eta_0=\boldsymbol X_1\boldsymbol \beta_1+\boldsymbol X_2\boldsymbol \beta_2^0.\)</span></p>
-<p>En este caso, quiero probar:</p>
-<p><span class="math display">\[
-\qquad H_0:\boldsymbol \beta_2=\boldsymbol \beta_2^0 \qquad H_1:\boldsymbol \beta_2 \ne \boldsymbol \beta_2^0
+w_{ii}=\frac{(\partial\mu_{i}/\partial\eta_{i})^2}{V(y_{i})},
 \]</span>
-donde <span class="math inline">\(\boldsymbol \beta_2\)</span> es de dimensión <span class="math inline">\(q\)</span> y <span class="math inline">\(\boldsymbol \beta_2^0\)</span> es de dimensión <span class="math inline">\(p-q\)</span></p>
-<div id="prueba-del-score" class="section level4 hasAnchor" number="6.3.6.1">
-<h4><span class="header-section-number">6.3.6.1</span> Prueba del score<a href="modelo-lineal-generalizado.html#prueba-del-score" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>Hipótesis:</strong></p>
+en la diagonal. Note que los valores de <span class="math inline">\(\boldsymbol W\)</span> dependen de la función de enlace <span class="math inline">\(g()\)</span>:</p>
 <p><span class="math display">\[
-\qquad H_0:\beta_2=\beta_2^0 \qquad \beta_2\ne\beta_2^0
-\]</span></p>
-<p>Asintóticamente,<span class="math inline">\(U(\boldsymbol \beta)\sim N[\boldsymbol 0,\boldsymbol I(\beta)]\)</span>, entonces:</p>
-<p><span class="math display">\[
-U(\boldsymbol \beta)&#39;\boldsymbol I(\beta)^{-1}U(\boldsymbol \beta)\sim \chi^2.
-\]</span></p>
-<p><strong>Estadístico de prueba:</strong></p>
-<p><span class="math display">\[
-U_2(\hat{\beta}^0)&#39;\left\{V\left[U_2(\hat{\beta}^0)\right]\right\}^{-1}U_2(\hat{\beta}^0)\sim \chi^2_{p-q},
+\partial\mu_{i}/\partial\eta_{i}=g&#39;( \mu_{i}).
 \]</span>
-donde <span class="math inline">\(\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)&#39;.\)</span></p>
-</div>
-<div id="prueba-de-wald" class="section level4 hasAnchor" number="6.3.6.2">
-<h4><span class="header-section-number">6.3.6.2</span> Prueba de wald<a href="modelo-lineal-generalizado.html#prueba-de-wald" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>Hipótesis:</strong></p>
+#### Mortalidad de escarabajos
+Para los datos de mortalidad de escarabajos, tenemos el siguiente modelo:</p>
 <p><span class="math display">\[
-\qquad H_0:\boldsymbol \beta_2=\boldsymbol \beta_2^0 \qquad H_1:\boldsymbol \beta_2 \ne \boldsymbol \beta_2^0
-\]</span></p>
-<p>Asintóticamente, <span class="math inline">\(\hat{\boldsymbol \beta}\sim N[\boldsymbol \beta,\boldsymbol I(\boldsymbol \beta)^{-1}]\)</span>. por lo tanto:</p>
-<p><span class="math display">\[
-(\hat{\boldsymbol \beta}-\boldsymbol \beta)&#39;\boldsymbol I(\boldsymbol \beta)(\hat{\boldsymbol \beta}-\boldsymbol \beta)\sim\chi^2.
-\]</span></p>
-<p><strong>Estadístico de prueba:</strong></p>
-<p><span class="math display">\[
-\left(\hat{\boldsymbol \beta}_2-\boldsymbol \beta_2^0\right)&#39;\left[V\left(\hat{\boldsymbol \beta}_2\right)\right]^{-1}\left(\hat{\boldsymbol \beta}_2-\boldsymbol \beta_2^0\right)\sim \chi^2_{p-q}.
-\]</span></p>
-</div>
-<div id="prueba-de-razón-de-verosimilitud" class="section level4 hasAnchor" number="6.3.6.3">
-<h4><span class="header-section-number">6.3.6.3</span> Prueba de razón de verosimilitud<a href="modelo-lineal-generalizado.html#prueba-de-razón-de-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>Hipótesis:</strong></p>
-<p><span class="math display">\[
-\quad H_0:\boldsymbol \beta_2=\boldsymbol \beta_2^0 \qquad H_1:\boldsymbol \beta_2\ne\boldsymbol \beta_2^0
-\]</span></p>
-<p>Asintóticamente (y usando aproximación por series Taylor de orden 1):</p>
-<p><span class="math display">\[
-2\left[ℓ(\hat{\boldsymbol \beta})-ℓ(\hat{\boldsymbol \beta}^0)\right]\sim\chi^2.
-\]</span></p>
-<p><strong>Estadístico de prueba:</strong></p>
-<p><span class="math display">\[
-2\left[ℓ(\hat{\boldsymbol \beta})-ℓ(\hat{\boldsymbol \beta}^0)\right]
-\]</span></p>
-<p>donde <span class="math inline">\(\hat{\boldsymbol \beta}^0=(\hat{\boldsymbol \beta}_1,\boldsymbol \beta_2^0)&#39;.\)</span></p>
-</div>
-<div id="ejemplo-ataques-epilépticos" class="section level4 hasAnchor" number="6.3.6.4">
-<h4><span class="header-section-number">6.3.6.4</span> Ejemplo ataques epilépticos<a href="modelo-lineal-generalizado.html#ejemplo-ataques-epilépticos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Efecto
-</th>
-<th style="text-align:left;">
-Parm.
-</th>
-<th style="text-align:right;">
-est.
-</th>
-<th style="text-align:right;">
-err. std.
-</th>
-<th style="text-align:right;">
-Valor-z
-</th>
-<th style="text-align:right;">
-Valor-p
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Intercepto
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_0\)</span>
-</td>
-<td style="text-align:right;">
-1.2453
-</td>
-<td style="text-align:right;">
-0.1176
-</td>
-<td style="text-align:right;">
-10.59
-</td>
-<td style="text-align:right;">
-0.0000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tratamiento
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_1\)</span>
-</td>
-<td style="text-align:right;">
--0.3636
-</td>
-<td style="text-align:right;">
-0.1625
-</td>
-<td style="text-align:right;">
--2.24
-</td>
-<td style="text-align:right;">
-0.0253
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-base
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_2\)</span>
-</td>
-<td style="text-align:right;">
-0.0209
-</td>
-<td style="text-align:right;">
-0.0019
-</td>
-<td style="text-align:right;">
-10.94
-</td>
-<td style="text-align:right;">
-0.0000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-tratamientoxbase
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_3\)</span>
-</td>
-<td style="text-align:right;">
-0.0009
-</td>
-<td style="text-align:right;">
-0.0023
-</td>
-<td style="text-align:right;">
-0.37
-</td>
-<td style="text-align:right;">
-0.7083
-</td>
-</tr>
-</tbody>
-</table>
-Prueba de hipótesis:
-<span class="math display">\[
-\qquad H_0:\beta_1=\beta_3=0
+y_i \sim \mbox{binomial}(n_i,\pi_i), \mbox{ donde } \pi_{i}=\frac{\exp(\beta_0+\beta_1\log\text{dosis})}{1+\exp(\beta_0+\beta_0\log\text{dosis})}.
 \]</span>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Prueba
-</th>
-<th style="text-align:right;">
-Estadístico
-</th>
-<th style="text-align:right;">
-g.l.
-</th>
-<th style="text-align:right;">
-Valor-p
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Razón de verosimilitud
-</td>
-<td style="text-align:right;">
-10.405
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0.005502
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Score
-</td>
-<td style="text-align:right;">
-10.418
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0.005466
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Wald
-</td>
-<td style="text-align:right;">
-10.325
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0.005726
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="intervalos-de-confianza" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> intervalos de confianza<a href="modelo-lineal-generalizado.html#intervalos-de-confianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A partir de los estadísticos de prueba anteriores se pueden encontrar intervalos de confianza para <span class="math inline">\(\hat{\boldsymbol \beta}\)</span>. Por ejemplo usando el estadístico de Wald:</p>
-<p><span class="math display">\[
-\hat{\beta}\pm z_{\alpha/2}SE(\hat{\beta})
-\]</span></p>
-<p>Otra alternativa es a partir de los perfiles de log-verosimilitud, el IC está definido a partir de los valores de <span class="math inline">\(\beta_0\)</span> que satisfacen:</p>
-<p><span class="math display">\[
--2[ℓ(\beta_0,\hat{\psi}(\beta_0))-ℓ(\hat{\boldsymbol \beta,\hat{\boldsymbol \psi}})]&lt;\chi^2_1,
-\]</span></p>
-<p>donde <span class="math inline">\(\psi\)</span> son los demás parámetros del modelo.</p>
-<div id="intervalo-de-confianza-para-la-media" class="section level3 hasAnchor" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> Intervalo de confianza para la media<a href="modelo-lineal-generalizado.html#intervalo-de-confianza-para-la-media" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Dado que <span class="math inline">\(\hat{\eta_0}=\boldsymbol x_0&#39;\hat{\boldsymbol \beta}\)</span> ,por lo tanto (asintóticamente):</p>
-<p><span class="math display">\[
-\hat{\eta_0}\sim N[\boldsymbol x_0&#39;\boldsymbol \beta,\boldsymbol x_0&#39;\boldsymbol I(\boldsymbol \beta)^{-1}\boldsymbol x_0].
-\]</span></p>
-<p>Entonces un intervalo de confianza para <span class="math inline">\(\hat{\eta_0}\)</span> es:</p>
-<p><span class="math display">\[
-\hat{\eta_0}\pm z_{\alpha/2}\sqrt{\boldsymbol x_0&#39;I(\boldsymbol \beta)^{-1}\boldsymbol x_0}
-\]</span></p>
-<p>Para encontrar el intervalo de confianza para <span class="math inline">\(\mu_i\)</span>, se hace la transformación <span class="math inline">\(g^{-1}\)</span> a los límites de confianza.</p>
-<div id="ejemplo-mortalidad-de-escarabajos" class="section level4 hasAnchor" number="6.4.1.1">
-<h4><span class="header-section-number">6.4.1.1</span> Ejemplo mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#ejemplo-mortalidad-de-escarabajos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="modelo-lineal-generalizado.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modBin)</span></code></pre></div>
+La estimación de los parámetros del GLM por MLE se puede hacer utilizando la función <code>glm()</code>. En este función debemos determinar la distribución de probabilidad asociada a los datos y la función de enlace con el argumento <code>family</code>. Para el modelo logístico, usamos <code>family=binomial</code> (por defecto la función de enlace es logit):</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelo-lineal-generalizado.html#cb125-1" aria-hidden="true" tabindex="-1"></a>modBin <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(dead,n<span class="sc">-</span>dead)<span class="sc">~</span>logdose,<span class="at">family=</span>binomial)</span>
+<span id="cb125-2"><a href="modelo-lineal-generalizado.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modBin)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(dead, n - dead) ~ logdose, family = binomial)
@@ -1408,24 +853,53 @@ Wald
 ## AIC: 41.43
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="modelo-lineal-generalizado.html#cb133-1" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modBin,<span class="at">newdata =</span> pred.x,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
-<span id="cb133-2"><a href="modelo-lineal-generalizado.html#cb133-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-3"><a href="modelo-lineal-generalizado.html#cb133-3" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb133-4"><a href="modelo-lineal-generalizado.html#cb133-4" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">ilogit</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb133-5"><a href="modelo-lineal-generalizado.html#cb133-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-6"><a href="modelo-lineal-generalizado.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb133-7"><a href="modelo-lineal-generalizado.html#cb133-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred)</span>
-<span id="cb133-8"><a href="modelo-lineal-generalizado.html#cb133-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb133-9"><a href="modelo-lineal-generalizado.html#cb133-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.sup, <span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb133-10"><a href="modelo-lineal-generalizado.html#cb133-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,lim.inf, <span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="MLG2_files/figure-html/grafintervalosescarabajos-1.png" width="672" /></p>
+<p>Aquí vemos que el efecto del logarítmo de la dosis es positivo y significativo. Es decir que, un incremento en la dosis significa un aumento en la probabidad de que el escarabajo muera. La relación la podemos ver de forma gráfica en la figura <a href="modelo-lineal-generalizado.html#fig:escarabajosEstimacionFig">6.4</a>.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="modelo-lineal-generalizado.html#cb127-1" aria-hidden="true" tabindex="-1"></a>pred.x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">logdose =</span> <span class="fu">seq</span>(<span class="fu">min</span>(logdose),<span class="fu">max</span>(logdose),<span class="at">length.out =</span> <span class="dv">50</span>))</span>
+<span id="cb127-2"><a href="modelo-lineal-generalizado.html#cb127-2" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(modBin,pred.x,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
+<span id="cb127-3"><a href="modelo-lineal-generalizado.html#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="modelo-lineal-generalizado.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de escarabajos muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb127-5"><a href="modelo-lineal-generalizado.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred.x<span class="sc">$</span>logdose,pred,<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:escarabajosEstimacionFig"></span>
+<img src="MLG2_files/figure-html/escarabajosEstimacionFig-1.png" alt="Datos de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis" width="576" />
+<p class="caption">
+Figure 6.4: Datos de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis
+</p>
 </div>
-<div id="ataques-epilépticos-2" class="section level4 hasAnchor" number="6.4.1.2">
-<h4><span class="header-section-number">6.4.1.2</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="modelo-lineal-generalizado.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
+</div>
+<div id="interpretación-de-parámetros---modelo-logístico" class="section level3 hasAnchor" number="6.4.5">
+<h3><span class="header-section-number">6.4.5</span> interpretación de parámetros - modelo logístico<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La interpretación de los coeficientes del modelo logístico se hacen a través de los <strong>odds ratio</strong>. Primero, un <strong>odd</strong> está definido como:</p>
+<p><span class="math display">\[
+\text{odd}=\frac{P(Y=1)}{P(Y=0)}.
+\]</span>
+Es decir, es una razón entre la probabilidad de éxito sobre la probabilidad de fracaso. Por ejemplo, si el odd es igual a dos, estaríamos diciendo que la probabilidad de éxito es dos veces mayor a la probabilidad de fracaso. Para el caso del modelo logístco simple, tenemos que:</p>
+<p><span class="math display">\[
+\text{odd}(x)=\frac{P(Y=1|x)}{P(Y=0|x)}= \frac{\frac{\exp(\beta_0+x\beta_1)}{1+\exp(\beta_0+x\beta_1)}}{1-\frac{\exp(\beta_0+x\beta_1)}{1+\exp(\beta_0+x\beta_1)}} = \exp(\beta_0+x\beta_1).
+\]</span></p>
+<p>Ahora, los <strong>odds ratio</strong> están definido como <span class="math inline">\(\text{OR}=\frac{\text{odd}(x=a+1)}{\text{odd}(x=a)}\)</span>. Para el caso del modelo logístico simple:</p>
+<p><span class="math display">\[
+\mbox{OR}(x)=\frac{\text{odd}(x=a+1)}{\text{odd}(x=a)}=\frac{\exp\left[\beta_{0}+(a+1)\beta_{1}\right]}{\exp(\beta_0+a\beta_1)}=\exp(\beta_1).
+\]</span></p>
+<p>Por lo tanto, por cada cambio unitario en <span class="math inline">\(x\)</span>, los odds (`chances’) de morir incrementan por un factor de <span class="math inline">\(exp(\beta_1)\)</span>. Por un cambio en <span class="math inline">\(x\)</span> de <span class="math inline">\(a\)</span> a <span class="math inline">\(a+\delta\)</span>, tenemos que <span class="math inline">\(OR=\exp(\delta\beta_1)\)</span>.</p>
+<p>Para los datos de los escarabajos un cambio unitario en el log dosis es un grande, por lo que podríamos interpetra <span class="math inline">\(\beta_1\)</span> usando un aumento en la log dosis de <span class="math inline">\(\delta=0.02\)</span>:</p>
+<p><span class="math display">\[
+\text{OR}=\exp ( 0.01\times  34.270) = 1.984
+5.
+\]</span>
+Es decir, si el log de la concentración de aumenta en 0.02, entonces la probabilidad de que el escarabajo muera aumenta a casi el doble.</p>
+<div id="ataques-epilépticos-1" class="section level4 hasAnchor" number="6.4.5.1">
+<h4><span class="header-section-number">6.4.5.1</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para el ensayo clínico en epilepsia, el modelo propuesto es:
+<span class="math display">\[
+y_i \sim \mbox{Poisson}(\mu_i), \mbox{ donde } \mu_i=\exp(\beta_0+\beta_1\text{treat}_i+\beta_2\text{base}_i+\beta_2\text{base}_i\text{treat}_i).
+\]</span>
+El ajuste del modelo usamos la función ´´glm()´´ con el argumento ´´family=poisson´´:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="modelo-lineal-generalizado.html#cb128-1" aria-hidden="true" tabindex="-1"></a>modPois<span class="ot">=</span><span class="fu">glm</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base<span class="sc">+</span>base<span class="sc">:</span>treatment,<span class="at">family=</span>poisson,</span>
+<span id="cb128-2"><a href="modelo-lineal-generalizado.html#cb128-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span>epilepsy)</span>
+<span id="cb128-3"><a href="modelo-lineal-generalizado.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## glm(formula = seizure.rate ~ base + treatment + base:treatment, 
+## glm(formula = seizure.rate ~ treatment + base + base:treatment, 
 ##     family = poisson, data = epilepsy)
 ## 
 ## Deviance Residuals: 
@@ -1435,9 +909,9 @@ Wald
 ## Coefficients:
 ##                           Estimate Std. Error z value Pr(&gt;|z|)    
 ## (Intercept)              1.2453159  0.1176157  10.588   &lt;2e-16 ***
-## base                     0.0209356  0.0019144  10.936   &lt;2e-16 ***
 ## treatmentProgabide      -0.3635857  0.1624995  -2.237   0.0253 *  
-## base:treatmentProgabide  0.0008523  0.0022778   0.374   0.7083    
+## base                     0.0209356  0.0019144  10.936   &lt;2e-16 ***
+## treatmentProgabide:base  0.0008523  0.0022778   0.374   0.7083    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -1448,171 +922,539 @@ Wald
 ## AIC: 345.3
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="modelo-lineal-generalizado.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
-<span id="cb136-2"><a href="modelo-lineal-generalizado.html#cb136-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Num. ataques epiléptico(pre tratamiento)&quot;</span>,</span>
-<span id="cb136-3"><a href="modelo-lineal-generalizado.html#cb136-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Num. ataques epiléptico(4ta semana)&quot;</span>)</span>
-<span id="cb136-4"><a href="modelo-lineal-generalizado.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb136-5"><a href="modelo-lineal-generalizado.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb136-6"><a href="modelo-lineal-generalizado.html#cb136-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-7"><a href="modelo-lineal-generalizado.html#cb136-7" aria-hidden="true" tabindex="-1"></a>pred.link <span class="ot">=</span> <span class="fu">predict</span>(modPois,<span class="at">newdata =</span> y,<span class="at">type=</span><span class="st">&#39;link&#39;</span>,<span class="at">se.fit =</span> T)</span>
-<span id="cb136-8"><a href="modelo-lineal-generalizado.html#cb136-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-9"><a href="modelo-lineal-generalizado.html#cb136-9" aria-hidden="true" tabindex="-1"></a>lim.sup <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb136-10"><a href="modelo-lineal-generalizado.html#cb136-10" aria-hidden="true" tabindex="-1"></a>lim.inf <span class="ot">=</span> <span class="fu">exp</span>(pred.link<span class="sc">$</span>fit <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>pred.link<span class="sc">$</span>se.fit)</span>
-<span id="cb136-11"><a href="modelo-lineal-generalizado.html#cb136-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-12"><a href="modelo-lineal-generalizado.html#cb136-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb136-13"><a href="modelo-lineal-generalizado.html#cb136-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb136-14"><a href="modelo-lineal-generalizado.html#cb136-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb136-15"><a href="modelo-lineal-generalizado.html#cb136-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.sup[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb136-16"><a href="modelo-lineal-generalizado.html#cb136-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,lim.inf[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:grafintervalosepilep"></span>
-<img src="MLG2_files/figure-html/grafintervalosepilep-1.png" alt="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)" width="672" />
+<p>El ajuste vemos que el número de ataques pre-tramiento tiene un efecto positivo sobre la media del número de ataques epilépticos. Es decir, esta aumenta entre más ataques previos tenga el paciente. Mientras que, el tratamiento parece tener un efecto negativo. Es decir, reduce la media del número de ataques epilépticos. Esto lo podemos ver graficamente en la Figura <a href="modelo-lineal-generalizado.html#fig:ajusteSeizureFig">6.5</a>.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelo-lineal-generalizado.html#cb130-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">base=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">100</span>),</span>
+<span id="cb130-2"><a href="modelo-lineal-generalizado.html#cb130-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">treatment =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">levels</span>(epilepsy<span class="sc">$</span>treatment)))</span>
+<span id="cb130-3"><a href="modelo-lineal-generalizado.html#cb130-3" aria-hidden="true" tabindex="-1"></a>predpois <span class="ot">=</span> <span class="fu">predict</span>(modPois,y,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
+<span id="cb130-4"><a href="modelo-lineal-generalizado.html#cb130-4" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">50</span>)</span>
+<span id="cb130-5"><a href="modelo-lineal-generalizado.html#cb130-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-6"><a href="modelo-lineal-generalizado.html#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(seizure.rate<span class="sc">~</span>base, <span class="at">col=</span>treatment, <span class="at">pch=</span><span class="dv">16</span>,<span class="at">data=</span>epilepsy,</span>
+<span id="cb130-7"><a href="modelo-lineal-generalizado.html#cb130-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;número de ataques epiléptico(pre tratamiento)&quot;</span>,</span>
+<span id="cb130-8"><a href="modelo-lineal-generalizado.html#cb130-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;número deataques epiléptico(4ta semana de tratamiento)&quot;</span>)</span>
+<span id="cb130-9"><a href="modelo-lineal-generalizado.html#cb130-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>]], <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb130-10"><a href="modelo-lineal-generalizado.html#cb130-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x,predpois[<span class="fu">order</span>(y<span class="sc">$</span>treatment, y<span class="sc">$</span>base)[<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>]],<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ajusteSeizureFig"></span>
+<img src="MLG2_files/figure-html/ajusteSeizureFig-1.png" alt="Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa el placebo, mientras que, la linea roja al tratamiento con Progabide." width="576" />
 <p class="caption">
-Figure 6.5: Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)
+Figure 6.5: Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa el placebo, mientras que, la linea roja al tratamiento con Progabide.
 </p>
 </div>
 </div>
 </div>
-</div>
-<div id="devianza" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Devianza<a href="modelo-lineal-generalizado.html#devianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Considere un GLM con observaciones <span class="math inline">\(\boldsymbol y_i=(y_1,...,y_n)\)</span>.</p>
-<p>Sea <span class="math inline">\(ℓ(\boldsymbol \mu)\)</span> la log-verosimilitud (expresada en función de <span class="math inline">\(\boldsymbol \mu\)</span>).</p>
-<p>Por lo tanto, <span class="math inline">\(ℓ(\boldsymbol \mu)\)</span> es la log-verosimilitud evaluada en el MLE.</p>
-<p>La máxima verosimilitud que se puede alcanzar corresponde a <span class="math inline">\(ℓ(\boldsymbol y)\)</span> (un modelo con ajuste perfecto <span class="math inline">\(y_i=\mu_i\)</span>).</p>
-<p>A este modelo, se le conoce como el <strong>modelo saturado.</strong></p>
-<p>La idea es comparar el modelo propuesto contra el modelo saturado:</p>
+<div id="interpretación-de-parámetros---modelo-poisson" class="section level3 hasAnchor" number="6.4.6">
+<h3><span class="header-section-number">6.4.6</span> Interpretación de parámetros - modelo Poisson<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En el modelo Poisson, tenemos que: <span class="math inline">\(E(Y|x)=\exp(\beta_0+x\beta_1)\)</span>. Si aumentamos a <span class="math inline">\(x\)</span> en <span class="math inline">\(\delta\)</span> unidades, tenemos que <span class="math inline">\(E(Y|x+\delta)=\exp(\beta_0+(x+\delta)\beta_1)\)</span>. Ahora si calculamos el logarítmo de la razón de los valores esperados obtenemos que:</p>
 <p><span class="math display">\[
-D=-2[\ell(\hat{\boldsymbol \mu})-\ell(\boldsymbol y)]
+\log\left[\frac{E(Y|x=a+\delta)}{E(Y|x=a)}\right]=\delta\beta_1.
 \]</span></p>
-<p>Donde:</p>
+<p>Por lo tanto, <span class="math inline">\(\exp(\delta\beta_1)=\frac{E(Y|x=a+\delta)}{E(Y|x=a)}\)</span>. Es decir que, <span class="math inline">\(exp(\delta\beta_1)\)</span> es una tasa de crecimiento del valor esperado de <span class="math inline">\(Y\)</span> por un aumento de <span class="math inline">\(x\)</span> de <span class="math inline">\(\delta\)</span> unidades.</p>
+<p>Por ejemplo, si el número de ataques epilépticos aumenta <span class="math inline">\(20\)</span> casos, entonces el valor esperado de ataques epilépticos post-tramiento aumenta un 52% <span class="math inline">\((\exp(20 \times0.021)=1.522)\)</span>. El tramiento con Progabida reduce en un poco más del 40% el número de episodios de epilepsia <span class="math inline">\((exp(-0.3635857) = 0.695)\)</span>. Finalmente, <span class="math inline">\(exp(0.0009) \approx 1\)</span>, indicando que el efecto de los casos pre-tramiento es el mismo para los pacientes en el grupo tratamiento y el control.</p>
+<!--
+### Algunas consideraciones
+
+Para GLM con función de enlace canónica:
+
+* Matriz hessiana = -matriz de información
+
+* Por lo tanto los algoritmos Newton-Raphson y Fisher's scoring
+son equivalentes
+
+* La función de log-verosimilitud es concava.
+
+* Por lo tanto, no hay posibilidad de múltiples máximos.
+-->
+</div>
+<div id="pruebas-de-hipótesis" class="section level3 hasAnchor" number="6.4.7">
+<h3><span class="header-section-number">6.4.7</span> Pruebas de hipótesis<a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al igual que en los modelos lineales, uno puede estar interesado en realizar pruebas hipótesis sobre los coeficientes del modelo. Por ejemplo, en el estudio sobre epilépsia estamos interesados en evaluar:
+<span class="math display">\[
+\qquad H_0:\beta_1=\beta_3=0.
+\]</span>
+Si rechazamos <span class="math inline">\(H_0\)</span> podemos concluir que el tratamiento con Progabida tiene un efecto sobre el número de ataques epilépticos. Particularmente, si <span class="math inline">\(\beta_1 &lt; 0\)</span>, este fármaco reduce los episodios.</p>
+<p>Para un modelo con:
+<span class="math display">\[
+\eta_i = \boldsymbol x_1&#39;\boldsymbol \beta_1+\boldsymbol x_2&#39;\boldsymbol \beta_2,
+\]</span>
+podemos plantear las siguientes hipótesis:
+<span class="math display">\[
+\qquad H_0:\boldsymbol \beta_2=\boldsymbol 0\qquad H_1:\boldsymbol \beta_2 \ne \boldsymbol 0
+\]</span></p>
+<p>Para estimadores basados en verosimilitud, podemos utilizar los siguientes métodos:</p>
 <ul>
-<li><p><span class="math inline">\(\ell(\boldsymbol y)=\sum_{i=1}^n[y_i\widetilde{\theta}_i-b(\widetilde{\theta}_i)]/a(\phi)\)</span>.</p></li>
-<li><p><span class="math inline">\(\ell(\hat{\boldsymbol \mu})=\sum_{i=1}^n[y_i\hat{\theta_i}-b(\hat{\theta_i})]/a(\phi)\)</span>.</p></li>
+<li><p>Método del score (multiplicadores de Lagrange).</p></li>
+<li><p>Método de Wald.</p></li>
+<li><p>Método de razón de verosimilitud.</p></li>
 </ul>
-<p><span class="math inline">\(\widetilde{\theta}_i\)</span> corresponde a la estimación de <span class="math inline">\(\theta_i\)</span> en el modelo saturado <span class="math inline">\((\widetilde{\mu}_i=y_i)\)</span></p>
-<p>Si el ajuste es pobre, se espera que <span class="math inline">\(D\)</span> sea grande.</p>
-<p><strong>Modelo binomial:</strong></p>
-<p><span class="math display">\[
-D=2\sum_{i=1}^n[y_ilog(\frac{y_i}{\hat{\mu}_i})+(n_i-y_i)log(\frac{n_i-y_i}{n_i-\hat{\mu}_i})],
-\]</span></p>
-<p>donde <span class="math inline">\(\hat{\mu}_i=n_i\hat{\pi}_i.\)</span></p>
-<p><strong>Modelo Poisson:</strong></p>
-<p><span class="math display">\[
-D=2\sum_{i=1}^ny_ilog(\frac{y_i}{\hat{\mu}_i}), \quad \text{donde} \quad \hat{\mu}_i=\hat{\lambda}_i.
-\]</span></p>
-<p><strong>Modelo normal:</strong></p>
-<p><span class="math display">\[
-D=2\sum_{i=1}^n(y_i-\hat{\mu}_i)^2.
-\]</span></p>
-<div id="el-estadístico-chi-cuadrado-de-pearson" class="section level3 hasAnchor" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> El estadístico chi-cuadrado de Pearson<a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El estadístico chi-cuadrado de Pearson:</p>
-<p><span class="math display">\[
-X^2=\sum_{i=1}^n\frac{(y_i-\hat{\mu}_i)^2}{v(\hat{\mu}_i)}.
-\]</span></p>
-<p>Para el modelo Binomial, tenemos que:</p>
-<p><span class="math display">\[
-X^2=\sum_{i=1}^n\frac{(y_i-n_i\hat{\pi}_i)^2}{n_i\hat{\pi}_i(1-\hat{\pi})}.
-\]</span></p>
-<p>y para el modelo Poisson:</p>
-<p><span class="math display">\[
-X^2=\sum_{i=1}^n\frac{(y_i-\hat{\mu}_i)^2}{\hat{\mu}_i}.
-\]</span></p>
-</div>
-</div>
-<div id="bondad-de-ajuste" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Bondad de ajuste<a href="modelo-lineal-generalizado.html#bondad-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Tanto <span class="math inline">\(D\)</span> como <span class="math inline">\(X^2\)</span> se pueden utilizar para evaluar la bondad del ajuste.</p>
-<p><span class="math inline">\(H_0\)</span> indica que el modelo ajusta bien a los datos, y <span class="math inline">\(H_1\)</span> lo contrario. Por ejemplo, en el caso de un modelo logístico:</p>
-<p><span class="math display">\[
-H_0:logit(\pi_i)=\beta_0+\sum_{i=1}^k\beta_kx_{ik}
-\]</span></p>
-<p>Si <span class="math inline">\(H_0\)</span> es cierta, entonces <span class="math inline">\(D\)</span> y <span class="math inline">\(X_2\)</span> siguen una distribución <span class="math inline">\(\chi_2\)</span> con <span class="math inline">\((n - p)\)</span> grados de libertadad*.</p>
-<p>*La aproximación es buena para datos agrupados.</p>
-<p><strong>Mortalidad de escarabajos</strong></p>
-<p>Los valores de la devianza y el <span class="math inline">\(\chi^2\)</span> de Pearson:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="modelo-lineal-generalizado.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devianza</span></span>
-<span id="cb137-2"><a href="modelo-lineal-generalizado.html#cb137-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">=</span> <span class="fu">deviance</span>(modBin)</span>
-<span id="cb137-3"><a href="modelo-lineal-generalizado.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(D,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
-<pre><code>## [1] 0.08145881</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="modelo-lineal-generalizado.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chi-cuadrado de Pearson</span></span>
-<span id="cb139-2"><a href="modelo-lineal-generalizado.html#cb139-2" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modBin,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb139-3"><a href="modelo-lineal-generalizado.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(X2,<span class="dv">6</span>) <span class="co"># valor p</span></span></code></pre></div>
-<pre><code>## [1] 0.1235272</code></pre>
+<!--
+
+
+
+**Modelo completo:**$\boldsymbol\eta=\bX_1\bbeta_1+\bX_2\bbeta_2$.
+
+**Modelo restringido:**$\boldsymbol\eta_0=\bX_1\bbeta_1+\bX_2\bbeta_2^0.$
+
+En este caso, quiero probar:
+
+$$
+\qquad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2 \ne \bbeta_2^0
+$$
+donde $\bbeta_2$ es de dimensión $q$ y $\bbeta_2^0$ es de dimensión $p-q$
+
+#### Prueba del score
+
+**Hipótesis:**
+
+$$
+\qquad H_0:\beta_2=\beta_2^0 \qquad \beta_2\ne\beta_2^0 
+$$
+
+Asintóticamente,$U(\bbeta)\sim N[\bZERO,\bI(\beta)]$, entonces:
+
+$$
+U(\bbeta)'\bI(\beta)^{-1}U(\bbeta)\sim \chi^2.
+$$
+
+**Estadístico de prueba:**
+
+$$
+U_2(\hat{\beta}^0)'\left\{V\left[U_2(\hat{\beta}^0)\right]\right\}^{-1}U_2(\hat{\beta}^0)\sim \chi^2_{p-q},
+$$
+donde $\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)'.$
+
+#### Prueba de wald
+
+**Hipótesis:**
+
+$$
+\qquad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2 \ne \bbeta_2^0
+$$
+
+Asintóticamente, $\hat{\bbeta}\sim N[\bbeta,\bI(\bbeta)^{-1}]$. por lo tanto:
+
+$$
+(\hat{\bbeta}-\bbeta)'\bI(\bbeta)(\hat{\bbeta}-\bbeta)\sim\chi^2.
+$$
+
+**Estadístico de prueba:**
+
+$$
+\left(\hat{\bbeta}_2-\bbeta_2^0\right)'\left[V\left(\hat{\bbeta}_2\right)\right]^{-1}\left(\hat{\bbeta}_2-\bbeta_2^0\right)\sim \chi^2_{p-q}.
+$$
+
+#### Prueba de razón de verosimilitud
+
+**Hipótesis:**
+
+$$
+\quad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2\ne\bbeta_2^0
+$$
+
+Asintóticamente (y usando aproximación por series Taylor de orden 1):
+
+$$
+2\left[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)\right]\sim\chi^2.
+$$
+
+**Estadístico de prueba:**
+
+$$
+2\left[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)\right]
+$$
+
+donde $\hat{\bbeta}^0=(\hat{\bbeta}_1,\bbeta_2^0)'.$
+
+#### Ejemplo ataques epilépticos
+
 <table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-est
-</th>
-<th style="text-align:right;">
-gl
-</th>
-<th style="text-align:right;">
-valor-p
-</th>
-</tr>
-</thead>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Efecto </th>
+   <th style="text-align:left;"> Parm. </th>
+   <th style="text-align:right;"> est. </th>
+   <th style="text-align:right;"> err. std. </th>
+   <th style="text-align:right;"> Valor-z </th>
+   <th style="text-align:right;"> Valor-p </th>
+  </tr>
+ </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Devianza
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-11.232
-</td>
-<td style="text-align:right;">
-0.0814
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(X^2\)</span>
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-10.026
-</td>
-<td style="text-align:right;">
-0.1235
-</td>
-</tr>
+  <tr>
+   <td style="text-align:left;"> Intercepto </td>
+   <td style="text-align:left;"> $\beta_0$ </td>
+   <td style="text-align:right;"> 1.2453 </td>
+   <td style="text-align:right;"> 0.1176 </td>
+   <td style="text-align:right;"> 10.59 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> tratamiento </td>
+   <td style="text-align:left;"> $\beta_1$ </td>
+   <td style="text-align:right;"> -0.3636 </td>
+   <td style="text-align:right;"> 0.1625 </td>
+   <td style="text-align:right;"> -2.24 </td>
+   <td style="text-align:right;"> 0.0253 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> base </td>
+   <td style="text-align:left;"> $\beta_2$ </td>
+   <td style="text-align:right;"> 0.0209 </td>
+   <td style="text-align:right;"> 0.0019 </td>
+   <td style="text-align:right;"> 10.94 </td>
+   <td style="text-align:right;"> 0.0000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> tratamientoxbase </td>
+   <td style="text-align:left;"> $\beta_3$ </td>
+   <td style="text-align:right;"> 0.0009 </td>
+   <td style="text-align:right;"> 0.0023 </td>
+   <td style="text-align:right;"> 0.37 </td>
+   <td style="text-align:right;"> 0.7083 </td>
+  </tr>
 </tbody>
 </table>
-</div>
-<div id="pseudo-r2" class="section level2 hasAnchor" number="6.7">
-<h2><span class="header-section-number">6.7</span> Pseudo <span class="math inline">\(R^2\)</span><a href="modelo-lineal-generalizado.html#pseudo-r2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El pseudo <span class="math inline">\(R^2\)</span> está definido como:</p>
-<p><span class="math display">\[
-\qquad \text{pseudo}R^2=\frac{\ell_M-\ell_0}{\ell_S-\ell_0}
-\]</span></p>
-<p>donde:</p>
-<ul>
-<li><p><span class="math inline">\(\ell_M\)</span>: log-versimilitud del modelo ajustado (evaluada en <span class="math inline">\(\hat{\beta}\)</span>.</p></li>
-<li><p><span class="math inline">\(\ell_0\)</span>: log-versimilitud del modelo nulo (solo con intercepto).</p></li>
-<li><p><span class="math inline">\(\ell_S\)</span>: log-versimilitud del modelo saturado.</p></li>
-</ul>
-<p>El pseudo <span class="math inline">\(R^2\)</span> se encuentra entre 0 y 1. Se utiliza para comparar modelos.</p>
-</div>
-<div id="selección-de-variables-1" class="section level2 hasAnchor" number="6.8">
-<h2><span class="header-section-number">6.8</span> Selección de variables<a href="modelo-lineal-generalizado.html#selección-de-variables-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La selección de variables se puede realizar de la misma forma que en los LMs basándose en indicadores como el AIC y BIC (o alguna modificación de ellos).</p>
-<p><strong>AIC:</strong></p>
-<p><span class="math display">\[
-\text{AIC}=-2\ell_M+2p.
-\]</span></p>
-<p><strong>BIC:</strong></p>
-<p><span class="math display">\[
-\text{BIC}=-2\ell_M+plog(n).
-\]</span></p>
 
+Prueba de hipótesis:
+$$
+\qquad H_0:\beta_1=\beta_3=0
+$$
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Prueba </th>
+   <th style="text-align:right;"> Estadístico </th>
+   <th style="text-align:right;"> g.l. </th>
+   <th style="text-align:right;"> Valor-p </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Razón de verosimilitud </td>
+   <td style="text-align:right;"> 10.405 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.005502 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Score </td>
+   <td style="text-align:right;"> 10.418 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.005466 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wald </td>
+   <td style="text-align:right;"> 10.325 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.005726 </td>
+  </tr>
+</tbody>
+</table>
+
+## intervalos de confianza
+
+A partir de los estadísticos de prueba anteriores se pueden encontrar intervalos de confianza para $\hat{\bbeta}$. Por ejemplo usando el estadístico de Wald:
+
+$$
+\hat{\beta}\pm z_{\alpha/2}SE(\hat{\beta})
+$$
+
+Otra alternativa es a partir de los perfiles de log-verosimilitud, el IC está definido a partir de los valores de $\beta_0$ que satisfacen:
+
+$$
+-2[\cl(\beta_0,\hat{\psi}(\beta_0))-\cl(\hat{\bbeta,\hat{\bpsi}})]<\chi^2_1,
+$$
+
+donde $\psi$ son los demás parámetros del modelo.
+
+### Intervalo de confianza para la media
+
+Dado que $\hat{\eta_0}=\bx_0'\hat{\bbeta}$ ,por lo tanto (asintóticamente):
+
+$$
+\hat{\eta_0}\sim N[\bx_0'\bbeta,\bx_0'\bI(\bbeta)^{-1}\bx_0].
+$$
+
+Entonces un intervalo de confianza para $\hat{\eta_0}$ es:
+
+$$
+\hat{\eta_0}\pm z_{\alpha/2}\sqrt{\bx_0'I(\bbeta)^{-1}\bx_0}
+$$
+
+Para encontrar el intervalo de confianza para $\mu_i$, se hace la transformación $g^{-1}$ a los límites de confianza.
+
+#### Ejemplo mortalidad de escarabajos
+
+
+```r
+summary(modBin)
+```
+
+```
+## 
+## Call:
+## glm(formula = cbind(dead, n - dead) ~ logdose, family = binomial)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.5941  -0.3944   0.8329   1.2592   1.5940  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  -60.717      5.181  -11.72   <2e-16 ***
+## logdose       34.270      2.912   11.77   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 284.202  on 7  degrees of freedom
+## Residual deviance:  11.232  on 6  degrees of freedom
+## AIC: 41.43
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+```r
+pred.link = predict(modBin,newdata = pred.x,type='link',se.fit = T)
+
+lim.sup = ilogit(pred.link$fit + qnorm(0.975)*pred.link$se.fit)
+lim.inf = ilogit(pred.link$fit - qnorm(0.975)*pred.link$se.fit)
+
+plot(logdose,dead/n,xlab='log dosis',ylab='proporción de escarabajos muertos',ylim=c(0,1))
+lines(pred.x$logdose,pred)
+
+lines(pred.x$logdose,lim.sup, col=2)
+lines(pred.x$logdose,lim.inf, col=2)
+```
+
+<img src="MLG2_files/figure-html/grafintervalosescarabajos-1.png" width="672" />
+
+#### Ataques epilépticos
+
+```r
+summary(modPois)
+```
+
+```
+## 
+## Call:
+## glm(formula = seizure.rate ~ treatment + base + base:treatment, 
+##     family = poisson, data = epilepsy)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -3.0482  -1.2217  -0.1162   0.5115   4.0478  
+## 
+## Coefficients:
+##                           Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)              1.2453159  0.1176157  10.588   <2e-16 ***
+## treatmentProgabide      -0.3635857  0.1624995  -2.237   0.0253 *  
+## base                     0.0209356  0.0019144  10.936   <2e-16 ***
+## treatmentProgabide:base  0.0008523  0.0022778   0.374   0.7083    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for poisson family taken to be 1)
+## 
+##     Null deviance: 476.25  on 58  degrees of freedom
+## Residual deviance: 149.54  on 55  degrees of freedom
+## AIC: 345.3
+## 
+## Number of Fisher Scoring iterations: 5
+```
+
+
+
+```r
+plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
+     xlab="Num. ataques epiléptico(pre tratamiento)",
+     ylab = "Num. ataques epiléptico(4ta semana)")
+lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)
+lines(x,predpois[order(y$treatment, y$base)[51:100]],col=2, lwd = 2)
+
+pred.link = predict(modPois,newdata = y,type='link',se.fit = T)
+
+lim.sup = exp(pred.link$fit + qnorm(0.975)*pred.link$se.fit)
+lim.inf = exp(pred.link$fit - qnorm(0.975)*pred.link$se.fit)
+
+lines(x,lim.sup[order(y$treatment, y$base)[1:50]], lty=2)
+lines(x,lim.inf[order(y$treatment, y$base)[1:50]], lty=2)
+
+lines(x,lim.sup[order(y$treatment, y$base)[51:100]],col=2, lty=2)
+lines(x,lim.inf[order(y$treatment, y$base)[51:100]],col=2, lty=2)
+```
+
+<div class="figure" style="text-align: center">
+<img src="MLG2_files/figure-html/grafintervalosepilep-1.png" alt="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)" width="672" />
+<p class="caption">(\#fig:grafintervalosepilep)Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)</p>
+</div>
+
+## Devianza
+
+Considere un GLM con observaciones $\by_i=(y_1,...,y_n)$.
+
+Sea $\cl(\bmu)$ la log-verosimilitud (expresada en función de $\bmu$).
+
+Por lo tanto, $\cl(\bmu)$ es la log-verosimilitud evaluada en el MLE.
+
+La máxima verosimilitud que se puede alcanzar corresponde a $\cl(\by)$ (un modelo con ajuste perfecto $y_i=\mu_i$).
+
+A este modelo, se le conoce como el **modelo saturado.**
+
+La idea es comparar el modelo propuesto contra el modelo saturado:
+
+$$
+D=-2[\ell(\hat{\bmu})-\ell(\by)]
+$$
+
+Donde:
+
+* $\ell(\by)=\sum_{i=1}^n[y_i\tildetheta_i-b(\tildetheta_i)]/a(\phi)$.
+
+*  $\ell(\hat{\bmu})=\sum_{i=1}^n[y_i\hat{\theta_i}-b(\hat{\theta_i})]/a(\phi)$. 
+
+$\tildetheta_i$ corresponde a la estimación de $\theta_i$ en el modelo saturado $(\tildemu_i=y_i)$
+
+Si el ajuste es pobre, se espera que $D$ sea grande.
+
+**Modelo binomial:**
+
+$$
+D=2\sum_{i=1}^n[y_ilog(\frac{y_i}{\hat{\mu}_i})+(n_i-y_i)log(\frac{n_i-y_i}{n_i-\hat{\mu}_i})],
+$$
+
+donde $\hat{\mu}_i=n_i\hat{\pi}_i.$
+
+**Modelo Poisson:**
+
+$$
+D=2\sum_{i=1}^ny_ilog(\frac{y_i}{\hat{\mu}_i}), \quad \text{donde} \quad \hat{\mu}_i=\hat{\lambda}_i.
+$$
+
+**Modelo normal:**
+
+$$
+D=2\sum_{i=1}^n(y_i-\hat{\mu}_i)^2.
+$$
+
+
+### El estadístico chi-cuadrado de Pearson
+
+El estadístico chi-cuadrado de Pearson:
+
+$$
+X^2=\sum_{i=1}^n\frac{(y_i-\hat{\mu}_i)^2}{v(\hat{\mu}_i)}.
+$$
+
+Para el modelo Binomial, tenemos que:
+
+$$
+X^2=\sum_{i=1}^n\frac{(y_i-n_i\hat{\pi}_i)^2}{n_i\hat{\pi}_i(1-\hat{\pi})}.
+$$
+
+y para el modelo Poisson:
+
+$$
+X^2=\sum_{i=1}^n\frac{(y_i-\hat{\mu}_i)^2}{\hat{\mu}_i}.
+$$
+
+## Bondad de ajuste
+
+Tanto $D$ como $X^2$ se pueden utilizar para evaluar la bondad del ajuste.
+
+$H_0$ indica que el modelo ajusta bien a los datos, y $H_1$  lo contrario. Por ejemplo, en el caso de un modelo logístico:
+
+$$
+H_0:logit(\pi_i)=\beta_0+\sum_{i=1}^k\beta_kx_{ik}
+$$
+
+Si $H_0$ es cierta, entonces $D$ y $X_2$ siguen una distribución $\chi_2$ con $(n - p)$ grados de libertadad*.
+
+*La aproximación es buena para datos agrupados.
+
+**Mortalidad de escarabajos**
+
+Los valores de la devianza y el $\chi^2$ de Pearson:
+
+
+```r
+# devianza
+D = deviance(modBin)
+1-pchisq(D,6) # valor p
+```
+
+```
+## [1] 0.08145881
+```
+
+```r
+# chi-cuadrado de Pearson
+X2 = sum(residuals(modBin,type='pearson')^2)
+1-pchisq(X2,6) # valor p
+```
+
+```
+## [1] 0.1235272
+```
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:right;"> est </th>
+   <th style="text-align:right;"> gl </th>
+   <th style="text-align:right;"> valor-p </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Devianza </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 11.232 </td>
+   <td style="text-align:right;"> 0.0814 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $X^2$ </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 10.026 </td>
+   <td style="text-align:right;"> 0.1235 </td>
+  </tr>
+</tbody>
+</table>
+## Pseudo $R^2$
+
+El pseudo $R^2$ está definido como:
+
+$$
+\qquad \text{pseudo}R^2=\frac{\ell_M-\ell_0}{\ell_S-\ell_0}
+$$
+
+donde:
+
+* $\ell_M$: log-versimilitud del modelo ajustado (evaluada en $\hat{\beta}$.
+
+* $\ell_0$: log-versimilitud del modelo nulo (solo con intercepto).
+
+* $\ell_S$: log-versimilitud del modelo saturado.
+
+El pseudo $R^2$ se encuentra entre 0 y 1. Se utiliza para comparar modelos.
+
+## Selección de variables
+
+La selección de variables se puede realizar de la misma forma que en los LMs basándose en indicadores como el AIC y BIC (o alguna modificación de ellos).
+
+**AIC:**
+
+$$
+\text{AIC}=-2\ell_M+2p.
+$$
+
+**BIC:**
+
+$$
+\text{BIC}=-2\ell_M+plog(n).
+$$
+
+-->
+
+</div>
 </div>
 </div>
             </section>

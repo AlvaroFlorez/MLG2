@@ -1,0 +1,36 @@
+h1:modelo-lineal-generalizado Modelo lineal generalizado
+h2:introducción Introducción
+h3:modelos-lineales Modelos lineales
+h3:mortalidad-de-escarabajos Mortalidad de escarabajos
+tab:TmortEsc Número de escarabajos expuestos y muertos a diferentes dosis (escala logarítmica)
+fig:grafMortEsc Datos escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos.
+h3:ataques-de-epilepsia ataques de epilepsia
+fig:seizurePlot Datos epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos y tratamiento.
+h3:familia-exponencial Familia exponencial
+h4:ejemplo Ejemplo
+h3:relación-media-varianza Relación media-varianza:
+h2:estimador-de-máxima-verosimilitud Estimador de máxima verosimilitud
+h4:propiedades-asintóticas-de-los-mles Propiedades asintóticas de los MLEs
+h4:métodos-iterativos-de-maximización Métodos iterativos de maximización
+h2:modelo-lineal-generalizado-glm Modelo lineal generalizado (GLM)
+h3:componente-aleatorio Componente aleatorio
+h4:familia-exponencial-1 Familia exponencial
+h3:predictor-lineal Predictor lineal
+h3:función-de-enlace Función de enlace
+h2:ejemplos-de-glm Ejemplos de GLM
+h3:modelo-logístico modelo logístico
+fig:logfun Función logística
+h3:modelo-poisson modelo Poisson
+h3:ajuste-de-un-glm Ajuste de un GLM
+h4:especificación-del-modelo Especificación del modelo
+h5:mortalidad-de-escarabajos-1 Mortalidad de escarabajos
+h3:ataques-epilépticos Ataques epilépticos
+h3:estimador-por-máxima-verosimilitud-para-bbeta Estimador por máxima verosimilitud para 
+h4:mortalidad-de-escarabajos-2 Mortalidad de escarabajos
+fig:escarabajosEstimacionFig Datos de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis
+h3:interpretación-de-parámetros---modelo-logístico interpretación de parámetros - modelo logístico
+h4:ataques-epilépticos-1 Ataques epilépticos
+fig:ajusteSeizureFig Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa el placebo, mientras que, la linea roja al tratamiento con Progabide.
+h3:interpretación-de-parámetros---modelo-poisson Interpretación de parámetros - modelo Poisson
+h3:pruebas-de-hipótesis Pruebas de hipótesis
+

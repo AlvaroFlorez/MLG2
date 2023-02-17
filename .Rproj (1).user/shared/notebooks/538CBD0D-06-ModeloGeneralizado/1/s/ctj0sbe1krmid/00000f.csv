@@ -1,0 +1,2 @@
+"0","x= seq(from=-8,to=8,length.out = 1000)"
+"0","curve(1/(1+exp(-x)),-8,8,lwd=2,ylab='y',xlab='log[y/(1-y)]')"

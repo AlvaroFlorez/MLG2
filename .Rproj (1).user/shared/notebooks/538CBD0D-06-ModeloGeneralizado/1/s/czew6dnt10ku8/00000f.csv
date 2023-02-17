@@ -1,0 +1,4 @@
+"0","pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))"
+"0","pred = predict(modBin,pred.x,type='response')"
+"0",""
+"0","plot(logdose,dead/n,xlab='log dosis',ylab='proporción de escarabajos muertos',ylim=c(0,1))"
