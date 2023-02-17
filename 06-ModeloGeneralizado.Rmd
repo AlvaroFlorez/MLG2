@@ -68,12 +68,12 @@ epilepsy=subset(epilepsy, period==4)#selecionamos la semana 4
 
 par(mfrow=c(1,3))
 plot(seizure.rate~age, col=treatment, pch=16, data=epilepsy, xlab="edad",
-     ylab = "número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)")
+     ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
 plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
-     xlab="número de ataques epiléptico pre-tratamiento (ataques x cuatro semanas)",
-     ylab = "número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)")
+     xlab="núm. de ataques pre-tratamiento (ataques x 4 semanas)",
+     ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
 boxplot(seizure.rate~treatment,data=epilepsy, xlab = "tratamiento",
-        ylab = "número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)")
+        ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
 
 ```
 La Figura \@ref(fig:seizurePlot) muestra la relación del número de ataques epiléticos al final del estudio con las posibles covariables. Aquí vemos que no parece haber relación con la edad, hay una relación fuerte con el número de ataques pre-tratamiento, y que los pacientes del grupo placebo parecen  presentar un poco más de convulsiones.
@@ -519,8 +519,8 @@ predpois = predict(modPois,y,type='response')
 x=seq(min(epilepsy$base),max(epilepsy$base),length.out=50)
 
 plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
-     xlab="número de ataques epiléptico(pre tratamiento)",
-     ylab = "número deataques epiléptico(4ta semana de tratamiento)")
+     xlab="ataques pre-tratamiento (x 4 semanas)",
+     ylab = "ataques post-tratamiento (x 2 semanas)")
 lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)
 lines(x,predpois[order(y$treatment, y$base)[51:100]],col=2, lwd = 2)
 ```
