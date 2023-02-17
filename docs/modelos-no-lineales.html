@@ -267,17 +267,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.3.1</b> Componente aleatorio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.3.2</b> Predictor lineal</a></li>
 <li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.3.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.3.4</b> Ejemplos de GLM</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4</b> Ejemplos de GLM</a>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4</b> Ajuste de un GLM</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-logístico"><i class="fa fa-check"></i><b>6.4.1</b> modelo logístico</a></li>
-<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-poisson"><i class="fa fa-check"></i><b>6.4.2</b> modelo Poisson</a></li>
-<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4.3</b> Ajuste de un GLM</a></li>
-<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.4</b> Ataques epilépticos</a></li>
-<li class="chapter" data-level="6.4.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.5</b> interpretación de parámetros - modelo logístico</a></li>
-<li class="chapter" data-level="6.4.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson"><i class="fa fa-check"></i><b>6.4.6</b> Interpretación de parámetros - modelo Poisson</a></li>
-<li class="chapter" data-level="6.4.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.4.7</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.4.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.2</b> Ataques epilépticos</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.3</b> interpretación de parámetros - modelo logístico</a></li>
 </ul></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.5</b> Pruebas de hipótesis</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
@@ -414,7 +412,7 @@ Figure 5.2: Daros Puromicina. Diagrama de dispersión: Relación entre la veloci
 <p><span class="math display">\[
 y_{i}=\frac{x_{1}\theta_{1}}{\theta_{2}+x_{1}}+\varepsilon_{i}.
 \]</span>
-En este caso, <span class="math inline">\(\theta_1\)</span> es la asíntota. Es decir la velocidad de reacción máxima. Mientras que <span class="math inline">\(\theta_2\)</span> determina la concentración en la cual se obtiene la mitad de la velocidad máxima. Esto lo podemos observar en la Figura <a href="#modMichMen"><strong>??</strong></a>.</p>
+En este caso, <span class="math inline">\(\theta_1\)</span> es la asíntota. Es decir la velocidad de reacción máxima. Mientras que <span class="math inline">\(\theta_2\)</span> determina la concentración en la cual se obtiene la mitad de la velocidad máxima. Esto lo podemos observar en la Figura <a href="modelos-no-lineales.html#fig:modMichMen">5.3</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:modMichMen"></span>
 <img src="figs/Michaelis.jpg" alt="Modelo Michaelis-Menten" width="75%" />
 <p class="caption">

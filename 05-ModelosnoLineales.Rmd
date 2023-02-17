@@ -53,7 +53,7 @@ Aquí vamos a considerar el modelo Michaelis-Menten (modelo comunmente utilizado
 \[
 y_{i}=\frac{x_{1}\theta_{1}}{\theta_{2}+x_{1}}+\varepsilon_{i}.
 \]
-En este caso, $\theta_1$ es la asíntota. Es decir la velocidad de reacción máxima. Mientras que $\theta_2$ determina la concentración en la cual se obtiene la mitad de la velocidad máxima. Esto lo podemos observar en la Figura \@ref(modMichMen).
+En este caso, $\theta_1$ es la asíntota. Es decir la velocidad de reacción máxima. Mientras que $\theta_2$ determina la concentración en la cual se obtiene la mitad de la velocidad máxima. Esto lo podemos observar en la Figura \@ref(fig:modMichMen).
 
 ```{r modMichMen, fig.align = 'center',out.width = "75%",echo=FALSE, fig.cap="Modelo Michaelis-Menten"}
 knitr::include_graphics(here::here("figs", "Michaelis.jpg"))

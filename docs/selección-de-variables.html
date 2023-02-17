@@ -267,17 +267,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.3.1</b> Componente aleatorio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.3.2</b> Predictor lineal</a></li>
 <li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.3.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.3.4</b> Ejemplos de GLM</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4</b> Ejemplos de GLM</a>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4</b> Ajuste de un GLM</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-logístico"><i class="fa fa-check"></i><b>6.4.1</b> modelo logístico</a></li>
-<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-poisson"><i class="fa fa-check"></i><b>6.4.2</b> modelo Poisson</a></li>
-<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4.3</b> Ajuste de un GLM</a></li>
-<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.4</b> Ataques epilépticos</a></li>
-<li class="chapter" data-level="6.4.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.5</b> interpretación de parámetros - modelo logístico</a></li>
-<li class="chapter" data-level="6.4.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson"><i class="fa fa-check"></i><b>6.4.6</b> Interpretación de parámetros - modelo Poisson</a></li>
-<li class="chapter" data-level="6.4.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.4.7</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.4.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.2</b> Ataques epilépticos</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.3</b> interpretación de parámetros - modelo logístico</a></li>
 </ul></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.5</b> Pruebas de hipótesis</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
@@ -1037,8 +1035,11 @@ Figure 4.5: Datos de grasa corporal. Valiación cruzada (puntos rojos) para dife
 ## Multiple R-squared:  0.7223, Adjusted R-squared:  0.7178 
 ## F-statistic: 160.6 on 4 and 247 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Las covariables seleciondas en este modelo son todas significativas. Además, <span class="math inline">\(R^2=0.7223\)</span> y <span class="math inline">\(R^2_{adj}=0.7178\)</span>. Comparado con el modelo completeo, estás cantidades han disminuido ligeramente.</p>
-<p>La Tabla <a href="#tab:tablaEstFat1"><strong>??</strong></a> muestra las estimaciones de los modelos ajustados utilizando diferentes métodos de selección de variables. En los tres modelos coinciden con la inclusión de la circunferencia del abdomen y de la muñeca. Las variables peso y estatura se encuentran en algunos de estos modelos, pero no de forma simultanea. Esto sugiere que proporcionan la misma información y no es necesario incluirlas juntas. Finalmente, se puede observar en la Tabla <a href="#tab:tablaEstFat2"><strong>??</strong></a> que los tres modelos proporcionan similar ajuste.</p>
+<p>La Tabla <a href="selección-de-variables.html#tab:tablaEstFat1">4.1</a> muestra las estimaciones de los modelos ajustados utilizando diferentes métodos de selección de variables. En los tres modelos coinciden con la inclusión de la circunferencia del abdomen y de la muñeca. Las variables peso y estatura se encuentran en algunos de estos modelos, pero no de forma simultanea. Esto sugiere que proporcionan la misma información y no es necesario incluirlas juntas. Finalmente, se puede observar en la Tabla <a href="selección-de-variables.html#tab:tablaEstFat2">4.2</a> que los tres modelos proporcionan similar ajuste.</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tablaEstFat1">Table 4.1: </span>datos de grasa corporal. Estimación de coeficientes de los modelos seleccionados
+</caption>
 <thead>
 <tr>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="10">
@@ -1389,6 +1390,9 @@ wrist
 </tbody>
 </table>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tablaEstFat2">Table 4.2: </span>datos de grasa corporal. Valores de los criterios de selección para los modelos seleccionados.
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">

@@ -34,6 +34,8 @@ eq:SSLASSO
 fig:LASSOrest
 fig:Vgrasalasso
 fig:kgrasa
+tab:tablaEstFat1
+tab:tablaEstFat2
 fig:plotpavos
 fig:plotpurom
 fig:modMichMen

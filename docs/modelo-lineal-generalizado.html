@@ -267,17 +267,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.3.1</b> Componente aleatorio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.3.2</b> Predictor lineal</a></li>
 <li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.3.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.3.4</b> Ejemplos de GLM</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4</b> Ejemplos de GLM</a>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4</b> Ajuste de un GLM</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-logístico"><i class="fa fa-check"></i><b>6.4.1</b> modelo logístico</a></li>
-<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-poisson"><i class="fa fa-check"></i><b>6.4.2</b> modelo Poisson</a></li>
-<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4.3</b> Ajuste de un GLM</a></li>
-<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.4</b> Ataques epilépticos</a></li>
-<li class="chapter" data-level="6.4.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.5</b> interpretación de parámetros - modelo logístico</a></li>
-<li class="chapter" data-level="6.4.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson"><i class="fa fa-check"></i><b>6.4.6</b> Interpretación de parámetros - modelo Poisson</a></li>
-<li class="chapter" data-level="6.4.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.4.7</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.4.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.2</b> Ataques epilépticos</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.3</b> interpretación de parámetros - modelo logístico</a></li>
 </ul></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.5</b> Pruebas de hipótesis</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
@@ -489,7 +487,7 @@ muertos
 </tr>
 </tbody>
 </table>
-<p>En la Figura <a href="#tab:grafMortEsc"><strong>??</strong></a> podemos observar como es el aumento de la tasa de mortalidad con respecto a la dosis del tóxico. Note que la relación no es lineal, si no que tiene una forma de ‘S’. Esto hace que un modelo de regresión lineal sea inadecuado.</p>
+<p>En la Figura <a href="modelo-lineal-generalizado.html#fig:grafMortEsc">6.1</a> podemos observar como es el aumento de la tasa de mortalidad con respecto a la dosis del tóxico. Note que la relación no es lineal, si no que tiene una forma de ‘S’. Esto hace que un modelo de regresión lineal sea inadecuado.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:grafMortEsc"></span>
 <img src="MLG2_files/figure-html/grafMortEsc-1.png" alt="Datos escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos." width="576" />
 <p class="caption">
@@ -680,11 +678,10 @@ E(Y|\boldsymbol x_{i})=\mu_{i}, \quad i=1,...,n.
 \]</span></p>
 <p>donde, la función <span class="math inline">\(g(\cdot)\)</span> es monótona y diferenciable. Generalmente, <span class="math inline">\(g(\cdot)\)</span> esta determinada por la distribución que se asume para <span class="math inline">\(Y\)</span>.</p>
 </div>
-</div>
-<div id="ejemplos-de-glm" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Ejemplos de GLM<a href="modelo-lineal-generalizado.html#ejemplos-de-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="modelo-logístico" class="section level3 hasAnchor" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> modelo logístico<a href="modelo-lineal-generalizado.html#modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ejemplos-de-glm" class="section level3 hasAnchor" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Ejemplos de GLM<a href="modelo-lineal-generalizado.html#ejemplos-de-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="modelo-logístico" class="section level4 hasAnchor" number="6.3.4.1">
+<h4><span class="header-section-number">6.3.4.1</span> modelo logístico<a href="modelo-lineal-generalizado.html#modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Definiendo <span class="math inline">\(y_{i}=\sum_{i=1}^ny_{ij}/n_{i}\)</span> (la proporción de éxitos en <span class="math inline">\(n_i\)</span> ensayos independientes), tenemos que:</p>
 <p><span class="math display">\[
 n_{i}y_{i}\sim \mbox{binomial}(n_{i},\pi_{i}), \quad i=1,...,n, \quad \text{donde} \quad \pi_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
@@ -702,8 +699,8 @@ Figure 6.3: Función logística
 </div>
 <p>Este modelo se puede utilizar para estimar la probabilidad de que el escarabajo muera en función de la concentración de disulfuro de carbono gaseoso.</p>
 </div>
-<div id="modelo-poisson" class="section level3 hasAnchor" number="6.4.2">
-<h3><span class="header-section-number">6.4.2</span> modelo Poisson<a href="modelo-lineal-generalizado.html#modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="modelo-poisson" class="section level4 hasAnchor" number="6.3.4.2">
+<h4><span class="header-section-number">6.3.4.2</span> modelo Poisson<a href="modelo-lineal-generalizado.html#modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Aquí asumimos que:</p>
 <p><span class="math display">\[
 y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda_{i}=g(\boldsymbol x_{i},\boldsymbol \beta).
@@ -723,8 +720,10 @@ y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda
 <li><p><strong>Weibull</strong> para tiempos de falla.</p></li>
 </ul>
 </div>
-<div id="ajuste-de-un-glm" class="section level3 hasAnchor" number="6.4.3">
-<h3><span class="header-section-number">6.4.3</span> Ajuste de un GLM<a href="modelo-lineal-generalizado.html#ajuste-de-un-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="ajuste-de-un-glm" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Ajuste de un GLM<a href="modelo-lineal-generalizado.html#ajuste-de-un-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Al igual que en los modelos lineales, los pasos para ajustar un GLM incluyen:</p>
 <ul>
 <li><p><strong>Especificación del modelo</strong>.Definición del componente aleatorio, predictor lineal y función de enlace.</p></li>
@@ -732,8 +731,8 @@ y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda
 <li><p><strong>Evaluación del modelo</strong>. Verificar si el modelo estimado se ajusta bien a los datos.</p></li>
 <li><p><strong>Inferencia</strong>. Intervalos de confianza, pruebas de hipótesis e interpretación de los resultados según los objetivos del estudio.</p></li>
 </ul>
-<div id="especificación-del-modelo" class="section level4 hasAnchor" number="6.4.3.1">
-<h4><span class="header-section-number">6.4.3.1</span> Especificación del modelo<a href="modelo-lineal-generalizado.html#especificación-del-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="especificación-del-modelo" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> Especificación del modelo<a href="modelo-lineal-generalizado.html#especificación-del-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El modelo lineal generalizado (GLM) asume que:</p>
 <p><span class="math display">\[
 f(y_{i};\theta_{i},\phi)=exp\left\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)} +c(y_{i},\phi)\right\},
@@ -743,8 +742,8 @@ f(y_{i};\theta_{i},\phi)=exp\left\{\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)}
 <p>Para la distribución normal, <span class="math inline">\(\eta_{i}=\mu_{i}\)</span> (identidad), por lo tanto: <span class="math inline">\(\mu_{i}=\eta_{i}\)</span>.</p>
 <p>Para la distribución Poisson, <span class="math inline">\(\eta_{i}=log\mu_{i}\)</span> (función logarítmica), por lo tanto: <span class="math inline">\(\mu_{i}=exp(\eta_{i})\)</span>.</p>
 <p>Para la distribución binomial, <span class="math inline">\(\eta_{i}=\log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)\)</span> (función logit), por lo tanto: <span class="math inline">\(\pi_{i}=\frac{\exp(\eta_{i})}{1+\exp(\eta_{i})}\)</span>.</p>
-<div id="mortalidad-de-escarabajos-1" class="section level5 hasAnchor" number="6.4.3.1.1">
-<h5><span class="header-section-number">6.4.3.1.1</span> Mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div id="mortalidad-de-escarabajos-1" class="section level5 hasAnchor" number="6.4.1.0.1">
+<h5><span class="header-section-number">6.4.1.0.1</span> Mortalidad de escarabajos<a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Para los datos de mortalidad de escarabajos, la variable respuesta es la proporción de escarabajos muertos, <span class="math inline">\(y_{i}=\sum_{j=1}^{n_{i}}y_{ij}/n{i}\)</span>, donde <span class="math inline">\(y_{ij}=1\)</span> si el <span class="math inline">\(j\)</span>-ésimo escarabajo asociado a la <span class="math inline">\(i\)</span>-ésima concentración del tóxico está muerto, <span class="math inline">\(y_{ij}=0\)</span> si lo contrario.</p>
 <p>Podemos asumir que <span class="math inline">\(y_i\)</span> sigue una distribución binomial. Entonces, tenemos la siguiente función de densidad para <span class="math inline">\(y_i\)</span>:
 <span class="math display">\[
@@ -760,9 +759,8 @@ Por lo que:
 \]</span></p>
 </div>
 </div>
-</div>
-<div id="ataques-epilépticos" class="section level3 hasAnchor" number="6.4.4">
-<h3><span class="header-section-number">6.4.4</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ataques-epilépticos" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para el ensayo clínico sobre epilepsia, la variable respuesta es número de ataques epilépticos. Dado que es un conteo, podemos asociar la variable respuesta con una distribución Poisson. La función de densidad es:
 <span class="math display">\[
 f(y_{i};\mu_{i})=\frac{\mu_{i}^{y_{i}}\exp(-\mu_{i})}{y_{i}!}.
@@ -866,8 +864,8 @@ Figure 6.4: Datos de escarabajos. Estimación de la probabilidad de que el escar
 </p>
 </div>
 </div>
-<div id="interpretación-de-parámetros---modelo-logístico" class="section level3 hasAnchor" number="6.4.5">
-<h3><span class="header-section-number">6.4.5</span> interpretación de parámetros - modelo logístico<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpretación-de-parámetros---modelo-logístico" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> interpretación de parámetros - modelo logístico<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La interpretación de los coeficientes del modelo logístico se hacen a través de los <strong>odds ratio</strong>. Primero, un <strong>odd</strong> está definido como:</p>
 <p><span class="math display">\[
 \text{odd}=\frac{P(Y=1)}{P(Y=0)}.
@@ -887,8 +885,8 @@ Es decir, es una razón entre la probabilidad de éxito sobre la probabilidad de
 5.
 \]</span>
 Es decir, si el log de la concentración de aumenta en 0.02, entonces la probabilidad de que el escarabajo muera aumenta a casi el doble.</p>
-<div id="ataques-epilépticos-1" class="section level4 hasAnchor" number="6.4.5.1">
-<h4><span class="header-section-number">6.4.5.1</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="ataques-epilépticos-1" class="section level4 hasAnchor" number="6.4.3.1">
+<h4><span class="header-section-number">6.4.3.1</span> Ataques epilépticos<a href="modelo-lineal-generalizado.html#ataques-epilépticos-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Para el ensayo clínico en epilepsia, el modelo propuesto es:
 <span class="math display">\[
 y_i \sim \mbox{Poisson}(\mu_i), \mbox{ donde } \mu_i=\exp(\beta_0+\beta_1\text{treat}_i+\beta_2\text{base}_i+\beta_2\text{base}_i\text{treat}_i).
@@ -940,9 +938,8 @@ Figure 6.5: Datos de epilepsia. Estimación de la media de ataques epilépticos 
 </p>
 </div>
 </div>
-</div>
-<div id="interpretación-de-parámetros---modelo-poisson" class="section level3 hasAnchor" number="6.4.6">
-<h3><span class="header-section-number">6.4.6</span> Interpretación de parámetros - modelo Poisson<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpretación-de-parámetros---modelo-poisson" class="section level4 hasAnchor" number="6.4.3.2">
+<h4><span class="header-section-number">6.4.3.2</span> Interpretación de parámetros - modelo Poisson<a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>En el modelo Poisson, tenemos que: <span class="math inline">\(E(Y|x)=\exp(\beta_0+x\beta_1)\)</span>. Si aumentamos a <span class="math inline">\(x\)</span> en <span class="math inline">\(\delta\)</span> unidades, tenemos que <span class="math inline">\(E(Y|x+\delta)=\exp(\beta_0+(x+\delta)\beta_1)\)</span>. Ahora si calculamos el logarítmo de la razón de los valores esperados obtenemos que:</p>
 <p><span class="math display">\[
 \log\left[\frac{E(Y|x=a+\delta)}{E(Y|x=a)}\right]=\delta\beta_1.
@@ -964,8 +961,10 @@ son equivalentes
 * Por lo tanto, no hay posibilidad de múltiples máximos.
 -->
 </div>
-<div id="pruebas-de-hipótesis" class="section level3 hasAnchor" number="6.4.7">
-<h3><span class="header-section-number">6.4.7</span> Pruebas de hipótesis<a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="pruebas-de-hipótesis" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Pruebas de hipótesis<a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Al igual que en los modelos lineales, uno puede estar interesado en realizar pruebas hipótesis sobre los coeficientes del modelo. Por ejemplo, en el estudio sobre epilépsia estamos interesados en evaluar:
 <span class="math display">\[
 \qquad H_0:\beta_1=\beta_3=0.
@@ -1454,7 +1453,6 @@ $$
 
 -->
 
-</div>
 </div>
 </div>
             </section>
