@@ -101,3 +101,5 @@ Tenga en cuenta que el propósito de estas notas de clase no es reemplazar los t
 - *Análisis de Regresión. Introducción Teórica y Práctica basada en R*, 2011, by F. Tusell.
 - *Applied Linear Regression*, Fourth Ed.,  2014, by S. Weisberg.
 - *Applied Regression Analysis \& Generalized Linear Models*, 2016, by J. Fox.
+
+Agradecimientos especiales a John Sebastian Manjarres por la ayuda en la elaboración de estas notas.

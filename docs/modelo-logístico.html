@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II</title>
+  <meta name="description" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
+  
+  
+  
+
+<meta name="author" content="Alvaro J. Flórez" />
+
+
+<meta name="date" content="2023-03-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelo-lineal-generalizado.html"/>
+<link rel="next" href="modelo-para-conteos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de clase MLGII</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
+<li class="chapter" data-level="1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html"><i class="fa fa-check"></i><b>1</b> Variables indicadoras (o dummies)</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#ejemplos"><i class="fa fa-check"></i><b>1.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.1.1</b> Datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#datos-de-la-onu"><i class="fa fa-check"></i><b>1.1.2</b> Datos de la ONU</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#variables-indicadoras"><i class="fa fa-check"></i><b>1.2</b> Variables indicadoras</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
+<li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
+<li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html"><i class="fa fa-check"></i><b>2</b> Modelos polinomiales</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#ejemplos-1"><i class="fa fa-check"></i><b>2.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#pasteles"><i class="fa fa-check"></i><b>2.1.1</b> Pasteles</a></li>
+<li class="chapter" data-level="2.1.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#datos-de-boston"><i class="fa fa-check"></i><b>2.1.2</b> Datos de Boston</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#modelos-polinomiales-1"><i class="fa fa-check"></i><b>2.2</b> Modelos polinomiales</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>2.2.1</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="2.2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#pasteles-1"><i class="fa fa-check"></i><b>2.2.2</b> Pasteles</a></li>
+<li class="chapter" data-level="2.2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#datos-de-boston-1"><i class="fa fa-check"></i><b>2.2.3</b> Datos de Boston</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#regresión-por-segmentos"><i class="fa fa-check"></i><b>2.3</b> Regresión por segmentos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#ejemplo"><i class="fa fa-check"></i><b>2.3.1</b> Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multicolinealidad.html"><a href="multicolinealidad.html"><i class="fa fa-check"></i><b>3</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#ejemplos-2"><i class="fa fa-check"></i><b>3.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#cemento"><i class="fa fa-check"></i><b>3.1.1</b> Cemento</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#grasa-corporal"><i class="fa fa-check"></i><b>3.1.2</b> Grasa corporal</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#multicolinealidad-1"><i class="fa fa-check"></i><b>3.2</b> Multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#causas-de-la-multicolinealidad"><i class="fa fa-check"></i><b>3.2.1</b> Causas de la multicolinealidad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#detección-de-multicolinealidad"><i class="fa fa-check"></i><b>3.3</b> Detección de multicolinealidad</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#factores-de-inflación-de-varianza"><i class="fa fa-check"></i><b>3.3.1</b> Factores de inflación de varianza</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-propios-de-boldsymbol-zboldsymbol-z"><i class="fa fa-check"></i><b>3.3.2</b> Valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span></a></li>
+<li class="chapter" data-level="3.3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-singulares-de-boldsymbol-z"><i class="fa fa-check"></i><b>3.3.3</b> Valores singulares de <span class="math inline">\(\boldsymbol Z\)</span></a></li>
+<li class="chapter" data-level="3.3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#proporciones-de-descomposición-de-varianza"><i class="fa fa-check"></i><b>3.3.4</b> Proporciones de descomposición de varianza</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento"><i class="fa fa-check"></i><b>3.4</b> Datos de cemento</a></li>
+<li class="chapter" data-level="3.5" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-grasa-corporal"><i class="fa fa-check"></i><b>3.5</b> Datos de grasa corporal</a></li>
+<li class="chapter" data-level="3.6" data-path="multicolinealidad.html"><a href="multicolinealidad.html#solución-al-problema-de-multicolinealidad"><i class="fa fa-check"></i><b>3.6</b> Solución al problema de multicolinealidad</a></li>
+<li class="chapter" data-level="3.7" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-de-ridge"><i class="fa fa-check"></i><b>3.7</b> Estimador de ridge</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-1"><i class="fa fa-check"></i><b>3.7.1</b> Datos de cemento</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-por-componentes-principales"><i class="fa fa-check"></i><b>3.8</b> Estimador por componentes principales</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-2"><i class="fa fa-check"></i><b>3.8.1</b> Datos de cemento</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="selección-de-variables.html"><a href="selección-de-variables.html"><i class="fa fa-check"></i><b>4</b> Selección de variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplos-3"><i class="fa fa-check"></i><b>4.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#unidad-quirúrgica"><i class="fa fa-check"></i><b>4.1.1</b> Unidad quirúrgica</a></li>
+<li class="chapter" data-level="4.1.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#grasa-corporal-1"><i class="fa fa-check"></i><b>4.1.2</b> Grasa corporal</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#problema-de-selección-de-variables"><i class="fa fa-check"></i><b>4.2</b> Problema de selección de variables</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#qué-pasa-si-ignoramos-covariables-importantes"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué pasa si ignoramos covariables importantes?</a></li>
+<li class="chapter" data-level="4.2.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#que-pasa-si-incluimos-covariables-irrelevantes"><i class="fa fa-check"></i><b>4.2.2</b> ¿Que pasa si incluimos covariables irrelevantes?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#métodos-para-la-selección-de-variables"><i class="fa fa-check"></i><b>4.3</b> Métodos para la selección de variables</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinación"><i class="fa fa-check"></i><b>4.3.1</b> Coeficiente de determinación</a></li>
+<li class="chapter" data-level="4.3.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinación-ajustado"><i class="fa fa-check"></i><b>4.3.2</b> Coeficiente de determinación ajustado</a></li>
+<li class="chapter" data-level="4.3.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#c_p-de-mallows"><i class="fa fa-check"></i><b>4.3.3</b> C<span class="math inline">\(_p\)</span> de Mallows</a></li>
+<li class="chapter" data-level="4.3.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#estadístico-press"><i class="fa fa-check"></i><b>4.3.4</b> Estadístico PRESS</a></li>
+<li class="chapter" data-level="4.3.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#criterios-de-información"><i class="fa fa-check"></i><b>4.3.5</b> Criterios de información</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#comparación-de-los-modelos"><i class="fa fa-check"></i><b>4.4</b> Comparación de los modelos</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
+<li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algorítmos-de-selección"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.5</b> Regresión de LASSO</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#datos-de-grasa-corporal-1"><i class="fa fa-check"></i><b>4.5.1</b> Datos de grasa corporal</a></li>
+<li class="chapter" data-level="4.5.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#validación-cruzada"><i class="fa fa-check"></i><b>4.5.2</b> Validación cruzada</a></li>
+<li class="chapter" data-level="4.5.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplo-grasa-corporal"><i class="fa fa-check"></i><b>4.5.3</b> Ejemplo grasa corporal</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html"><i class="fa fa-check"></i><b>5</b> Modelos no lineales</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#ejemplos-4"><i class="fa fa-check"></i><b>5.1</b> Ejemplos</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#crecimiento-de-pavos"><i class="fa fa-check"></i><b>5.1.1</b> Crecimiento de pavos</a></li>
+<li class="chapter" data-level="5.1.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#puromicina"><i class="fa fa-check"></i><b>5.1.2</b> Puromicina</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.1</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Inferencia sobre los parámetros</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#bootstrap-en-regresión"><i class="fa fa-check"></i><b>5.3.1</b> Bootstrap en regresión</a></li>
+<li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#algunas-consideraciones"><i class="fa fa-check"></i><b>5.3.2</b> Algunas consideraciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#casos-de-estudio"><i class="fa fa-check"></i><b>6.2</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.2.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="6.2.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.2.2</b> ataques de epilepsia</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#preambulo"><i class="fa fa-check"></i><b>6.3</b> Preambulo</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.3.1</b> Familia exponencial</a></li>
+<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.3.2</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.3.3</b> Estimador de máxima verosimilitud</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización"><i class="fa fa-check"></i><b>6.3.4</b> Métodos iterativos de maximización</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.4</b> Modelo lineal generalizado (GLM)</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.4.1</b> Componente aleatorio</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.4.2</b> Predictor lineal</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.4.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4.4</b> Ejemplos de GLM</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.5</b> Ajuste de un GLM</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.5.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.5.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-por-máxima-verosimilitud-para-boldsymbol-beta"><i class="fa fa-check"></i><b>6.5.2</b> Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
+<li class="chapter" data-level="6.5.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.5.3</b> interpretación de parámetros - modelo logístico</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.6</b> Pruebas de hipótesis</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-razón-de-verosimilitud"><i class="fa fa-check"></i><b>6.6.1</b> Método de razón de verosimilitud</a></li>
+<li class="chapter" data-level="6.6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-wald"><i class="fa fa-check"></i><b>6.6.2</b> Método de Wald</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>6.7</b> intervalos de confianza</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalo-de-confianza-para-la-media"><i class="fa fa-check"></i><b>6.7.1</b> Intervalo de confianza para la media</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#devianza"><i class="fa fa-check"></i><b>6.8</b> Devianza</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.8.1</b> El estadístico chi-cuadrado de Pearson</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.9</b> Bondad de ajuste</a></li>
+<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pseudo-r2"><i class="fa fa-check"></i><b>6.10</b> Pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.11" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.11</b> Selección de variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="modelo-logístico.html"><a href="modelo-logístico.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.1.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
+<li class="chapter" data-level="7.2.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-logístico-1"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#ejemplo-mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.4.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="modelo-logístico.html"><a href="modelo-logístico.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
+<li class="chapter" data-level="7.6" data-path="modelo-logístico.html"><a href="modelo-logístico.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html"><i class="fa fa-check"></i><b>8</b> Modelo para conteos</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-2"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
+<li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#datos-de-cáncer-de-pulmón"><i class="fa fa-check"></i><b>8.1.2</b> Datos de cáncer de pulmón</a></li>
+<li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-conteo-con-offset"><i class="fa fa-check"></i><b>8.2.1</b> Modelo de conteo con offset</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#distribución-binomial-negativa"><i class="fa fa-check"></i><b>8.3</b> Distribución binomial negativa</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-binomial-negativo-poisson-gamma"><i class="fa fa-check"></i><b>8.3.1</b> Modelo binomial negativo (Poisson-gamma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-con-ceros-inflados"><i class="fa fa-check"></i><b>8.4</b> Modelo Poisson con ceros inflados</a></li>
+<li class="chapter" data-level="8.5" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-hurdle"><i class="fa fa-check"></i><b>8.5</b> Modelo Hurdle</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites-1"><i class="fa fa-check"></i><b>8.5.1</b> Número de cangrejos satélites</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html"><i class="fa fa-check"></i><b>9</b> Modelo lineal mixto</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-3"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#peso-al-nacer-de-corderos"><i class="fa fa-check"></i><b>9.1.1</b> Peso al nacer de corderos</a></li>
+<li class="chapter" data-level="9.1.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#crecimiento-craneofacial-de-ratas"><i class="fa fa-check"></i><b>9.1.2</b> Crecimiento craneofacial de ratas</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#datos-correlacionados"><i class="fa fa-check"></i><b>9.2</b> Datos correlacionados</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1"><i class="fa fa-check"></i><b>9.3</b> Modelo lineal mixto</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notas de clase: Modelo lineal general II</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelo-logístico" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Capítulo 7</span> Modelo logístico<a href="modelo-logístico.html#modelo-logístico" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="casos-de-estudio-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Casos de estudio<a href="modelo-logístico.html#casos-de-estudio-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mortalidad-de-escarabajos-1" class="section level3 hasAnchor" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Mortalidad de escarabajos<a href="modelo-logístico.html#mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Número de escarabajos muertos después de cinco horas de
+exposición a disulfuro de carbono gaseoso <span class="math inline">\((CS2mgl^{-1})\)</span> en diversas concentraciones</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">log.dosis</th>
+<th align="left">Escarabajos Total</th>
+<th align="left">Escarabajos Muertos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.6907</td>
+<td align="left">59</td>
+<td align="left">6</td>
+</tr>
+<tr class="even">
+<td align="left">1.7242</td>
+<td align="left">60</td>
+<td align="left">13</td>
+</tr>
+<tr class="odd">
+<td align="left">1.7552</td>
+<td align="left">62</td>
+<td align="left">18</td>
+</tr>
+<tr class="even">
+<td align="left">1.7842</td>
+<td align="left">56</td>
+<td align="left">28</td>
+</tr>
+<tr class="odd">
+<td align="left">1.8113</td>
+<td align="left">63</td>
+<td align="left">52</td>
+</tr>
+<tr class="even">
+<td align="left">1.8369</td>
+<td align="left">59</td>
+<td align="left">53</td>
+</tr>
+<tr class="odd">
+<td align="left">1.8610</td>
+<td align="left">62</td>
+<td align="left">61</td>
+</tr>
+<tr class="even">
+<td align="left">1.8839</td>
+<td align="left">60</td>
+<td align="left">60</td>
+</tr>
+</tbody>
+</table>
+<p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="modelo-logístico.html#cb144-1" aria-hidden="true" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
+<span id="cb144-2"><a href="modelo-logístico.html#cb144-2" aria-hidden="true" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) <span class="co"># numbers dead</span></span>
+<span id="cb144-3"><a href="modelo-logístico.html#cb144-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) <span class="co"># binomial sample sizes</span></span>
+<span id="cb144-4"><a href="modelo-logístico.html#cb144-4" aria-hidden="true" tabindex="-1"></a>Datos<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span>
+<span id="cb144-5"><a href="modelo-logístico.html#cb144-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-6"><a href="modelo-logístico.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-5-1.png" alt="Datos escarabajos." width="672" />
+<p class="caption">
+Figure 7.1: Datos escarabajos.
+</p>
+</div>
+<p><strong>Variable respuesta <span class="math inline">\(y_i=\sum_{j=1}^{n_i}y_{ij}/n_{i}\)</span>:</strong> proporción de escarabajos muertos.</p>
+<p><strong>Distribución de probabilidad:</strong> binomial:</p>
+<p><span class="math display">\[
+f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
+\]</span></p>
+<p><strong>Función de enlace:</strong></p>
+<p><span class="math display">\[
+log \begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1log\text{dosis}_i.
+\]</span></p>
+</div>
+<div id="bajo-peso-al-nacer" class="section level3 hasAnchor" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Bajo peso al nacer<a href="modelo-logístico.html#bajo-peso-al-nacer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se busca identificar factores de riesgo asociados con el nacimiento de niños con bajo peso (<span class="math inline">\(&lt;2.5\)</span> kgs). datos: <code>data(birthwt,package= 'MASS'</code>)</p>
+<p><strong>Muestra:</strong>189 madres atendidas en una clínica.</p>
+<p><strong>Variable respuesta:</strong> Bajo peso al nacer (1 si peso <span class="math inline">\(&lt;\)</span> 2.5 kgs, 0 si peso <span class="math inline">\(\geq\)</span> 2.5 kgs).</p>
+<p>Posibles covariables:</p>
+<ul>
+<li><p><code>age</code>: edad de la madre (años).</p></li>
+<li><p><code>lwt</code>: peso de la madre antes del embarazo (libras).</p></li>
+<li><p><code>smoke</code>: estado de tabaquismo durante el embarazo (0 no, 1 si).</p></li>
+<li><p><code>ptl</code>: historia de parto prematuro (número de casos).</p></li>
+</ul>
+<p><strong>Variable respuesta <span class="math inline">\(y_i\)</span>:</strong> bajo peso al nacer (0: no, 1: si)</p>
+<p><strong>Distribución de probabilidad:</strong> Bernoulli:</p>
+<p><span class="math display">\[
+f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{(1-y_i)}.
+\]</span></p>
+<p><strong>Función de enlace:</strong></p>
+<p><span class="math display">\[
+log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}_i+\beta_2\text{lwt}_i+\beta_3\text{smoke}_i+\beta_4\text{ptl}_i.
+\]</span></p>
+</div>
+<div id="estudio-de-teratología" class="section level3 hasAnchor" number="7.1.3">
+<h3><span class="header-section-number">7.1.3</span> Estudio de teratología<a href="modelo-logístico.html#estudio-de-teratología" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se quiere investigar los efectos de agentes químicos en el desarrollo fetal de ratas. datos: <code>data(lirat,package = 'VGAM')</code>.</p>
+<p><strong>Muestra:</strong> 58 ratas hembras con dietas deficientes en hierro.</p>
+<p><strong>Variable respuesta:</strong> proporción de fetos muertos.</p>
+<p>Posibles covariables:</p>
+<ul>
+<li><p><code>grp</code>: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro)</p></li>
+<li><p><code>hb</code>: nivel de hemoglobina.</p></li>
+</ul>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelo-logístico.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb145-2"><a href="modelo-logístico.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb145-3"><a href="modelo-logístico.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
+<span id="cb145-4"><a href="modelo-logístico.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
+<span id="cb145-5"><a href="modelo-logístico.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
+<span id="cb145-6"><a href="modelo-logístico.html#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-6-1.png" alt="Datos teratoligía" width="672" />
+<p class="caption">
+Figure 7.2: Datos teratoligía
+</p>
+</div>
+<p><strong>Variable respuesta <span class="math inline">\(y_i=\sum_{j=1}^{n_i}y_{ij}/n_i\)</span>:</strong> proporción de fetos muertos por hembra.</p>
+<p><strong>Distribución de probabilidad:</strong>binomial:</p>
+<p><span class="math display">\[
+f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
+\]</span></p>
+<p><strong>Función de enlace:</strong></p>
+<p><span class="math display">\[
+log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp}_{i1}+\beta_2\text{grp}_{i2}+\beta_3\text{grp}_{i3}+\beta_4\text{hb}_i.
+\]</span></p>
+</div>
+</div>
+<div id="datos-agrupados-o-datos-no-agrupados" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Datos agrupados o datos no agrupados<a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Datos agrupados:</strong> Hay <span class="math inline">\(n_i\)</span> observaciones que tienen los mismos valores de las covariables <span class="math inline">\(x_i\)</span>.</p>
+<p><strong>Datos no agrupados:</strong> Hay <span class="math inline">\(n_i=1\)</span> (o muy pocas) observaciones por cada <span class="math inline">\(x_i\)</span>.</p>
+<p>Las propiedades asintóticas de las inferencias para los datos no agrupados aplican cuando <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>Mientras que para datos agrupados, aplican cuando <span class="math inline">\(\sum_{i=1}^nn_i\to\infty\)</span>.</p>
+<div id="datos-agrupados" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Datos agrupados<a href="modelo-logístico.html#datos-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para datos agrupados, <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> sirven para evaluar si el ajuste del modelo es bueno o no.</p>
+<p><span class="math inline">\(H_0\)</span> indica que el modelo se ajusta bien a los datos, <span class="math inline">\(H_1\)</span> lo contrario.</p>
+<p>Si <span class="math inline">\(H_0\)</span> es cierta (y <span class="math inline">\(\sum_{i=1}^nn_i\to\infty\)</span>), entonces <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> siguen una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((n-p)\)</span> grados de libertad.</p>
+</div>
+<div id="datos-no-agrupados" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Datos no agrupados<a href="modelo-logístico.html#datos-no-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las distribuciones límite para <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> no aplican para datos no agrupados.</p>
+<p>Tampoco para datos agrupados con <span class="math inline">\(n\)</span> grande y con algunos <span class="math inline">\(n_i\)</span> muy pequeños.</p>
+<p>Se puede aproximar <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> agrupando <span class="math inline">\((\boldsymbol x_i,\hat{\boldsymbol y})\)</span> por particiones del espacio de covariables o por particiones de <span class="math inline">\(\hat{\pi}\)</span>.</p>
+<p>La falta de ajuste se puede hacer comparando el modelo propuesto contra modelos más generales.</p>
+</div>
+</div>
+<div id="modelo-logístico-1" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Modelo logístico<a href="modelo-logístico.html#modelo-logístico-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Modelo:</p>
+<p><span class="math display">\[
+n_iy_i\sim\text{binomial}(n_i,\pi_i),\quad \text{donde} \quad \pi_i=g(\boldsymbol x_i\boldsymbol \beta).
+\]</span></p>
+<p>Entonces: <span class="math inline">\(E(y_i|\boldsymbol x_i)=\pi_i\)</span> y <span class="math inline">\(V(y_i|\boldsymbol x_i)=\pi_i(1-\pi_i)/n_i\)</span>.</p>
+<p>Función de enlace logit: <span class="math inline">\(log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\boldsymbol x_i\boldsymbol \beta\)</span>.</p>
+<p>Lo que implica que:</p>
+<p><span class="math display">\[
+\pi_i=g^{-1}(\boldsymbol x_i,\boldsymbol \beta)=\frac{exp(\boldsymbol x_i&#39;\boldsymbol \beta)}{1+exp(\boldsymbol x_i&#39;\boldsymbol \beta)}=\frac{1}{1+exp(-\boldsymbol x_i&#39;\boldsymbol \beta)}
+\]</span></p>
+<p>Aunque podemos utilizar otras funciones de enlace.</p>
+<div id="funciones-de-enlace-alternativas" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Funciones de enlace alternativas<a href="modelo-logístico.html#funciones-de-enlace-alternativas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Probit:</strong></p>
+<p><span class="math display">\[
+\Phi^{-1}(\pi_i)=\boldsymbol x&#39;_i\boldsymbol \beta\quad \pi_i=\Phi(\boldsymbol x&#39;_i\boldsymbol \beta),
+\]</span></p>
+<p>donde <span class="math inline">\(\Phi(\cdot)\)</span> es función acumulativa de la distribución normal estándar.</p>
+<p><strong>Log-log complementaria:</strong></p>
+<p><span class="math display">\[
+\pi_i=1-exp[-exp(\boldsymbol x&#39;_i\boldsymbol \beta)] \quad log[-log(1-\pi_i)]=\boldsymbol x&#39;_i\boldsymbol \beta.
+\]</span></p>
+<p><strong>Log-log:</strong></p>
+<p><span class="math display">\[
+\pi_i=exp[-exp(\boldsymbol x&#39;_i\boldsymbol \beta)] \quad -log[-log(\pi_i)]=\boldsymbol x&#39;_i\boldsymbol \beta.
+\]</span></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-7-1.png" alt="Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)." width="672" />
+<p class="caption">
+Figure 7.3: Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
+</p>
+</div>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+logit
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+porbit
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+cloglog
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Effect
+</th>
+<th style="text-align:left;">
+Parm
+</th>
+<th style="text-align:right;">
+est.
+</th>
+<th style="text-align:left;">
+s.e
+</th>
+<th style="text-align:right;">
+est.
+</th>
+<th style="text-align:left;">
+s.e
+</th>
+<th style="text-align:right;">
+est.
+</th>
+<th style="text-align:left;">
+s.e
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Intercept
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_0\)</span>
+</td>
+<td style="text-align:right;">
+-60.72
+</td>
+<td style="text-align:left;">
+5.18
+</td>
+<td style="text-align:right;">
+-34.94
+</td>
+<td style="text-align:left;">
+2.65
+</td>
+<td style="text-align:right;">
+-39.57
+</td>
+<td style="text-align:left;">
+3.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dosis
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\beta_1\)</span>
+</td>
+<td style="text-align:right;">
+34.27
+</td>
+<td style="text-align:left;">
+2.91
+</td>
+<td style="text-align:right;">
+19.73
+</td>
+<td style="text-align:left;">
+1.49
+</td>
+<td style="text-align:right;">
+22.04
+</td>
+<td style="text-align:left;">
+180
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+log.lik
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+-18.71
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+-18.16
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+-14.82
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+41.43
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+40.32
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+33.64
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="modelo-logístico.html#cb146-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
+<span id="cb146-2"><a href="modelo-logístico.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.logit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = low ~ age + lwt + ptl + smoke, family = binomial(logit), 
+##     data = birthwt)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.9339  -0.8646  -0.6816   1.2182   1.9904  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)  
+## (Intercept)  1.275961   1.031063   1.238   0.2159  
+## age         -0.048859   0.033796  -1.446   0.1483  
+## lwt         -0.010412   0.006219  -1.674   0.0941 .
+## ptl          0.695720   0.336895   2.065   0.0389 *
+## smoke        0.550111   0.334455   1.645   0.1000  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 234.67  on 188  degrees of freedom
+## Residual deviance: 218.36  on 184  degrees of freedom
+## AIC: 228.36
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelo-logístico.html#cb148-1" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
+<span id="cb148-2"><a href="modelo-logístico.html#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-3"><a href="modelo-logístico.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.probit)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = low ~ age + lwt + smoke + ptl, family = binomial(probit), 
+##     data = birthwt)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.9017  -0.8663  -0.6763   1.2301   1.9996  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)  
+## (Intercept)  0.749466   0.603409   1.242   0.2142  
+## age         -0.030224   0.019886  -1.520   0.1286  
+## lwt         -0.006079   0.003576  -1.700   0.0891 .
+## smoke        0.342834   0.201795   1.699   0.0893 .
+## ptl          0.406405   0.202487   2.007   0.0447 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 234.67  on 188  degrees of freedom
+## Residual deviance: 218.24  on 184  degrees of freedom
+## AIC: 228.24
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+</div>
+<div id="curva-característica-operativa-del-receptorroc" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Curva característica operativa del receptor(ROC)<a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para evaluar el poder predictivo del modelo se puede construir una
+tabla de contingencia:</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-10">Table 7.1: </span>Tabla de clasificación
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+y
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+<p>El recuento de casillas en estas tablas permite estimar la sensibilidad=<span class="math inline">\((\hat y=1|y=1)\)</span> y especificidad=<span class="math inline">\((\hat y=0|y=0)\)</span>.</p>
+<p>Para datos no agrupados, la predicción <span class="math inline">\(\hat{y}=1\)</span> cuando <span class="math inline">\(\hat{\pi_i}\geq\pi_0\)</span>(por ejemplo 0,5).</p>
+<p>Para <span class="math inline">\(\pi_0\)</span>, se calcula:</p>
+<ul>
+<li><p>La sensibilidad <span class="math inline">\(P(\hat y=1|y=1)\)</span>.</p></li>
+<li><p>La especificidad <span class="math inline">\(P(\hat y=0|y=0)\)</span>.</p></li>
+</ul>
+<p>Dado que estos valores dependen de <span class="math inline">\(\pi_0\)</span>, se pueden calcular para todos los posibles <span class="math inline">\(\pi_0\)</span>.</p>
+<p><strong>Ejemplo - Datos de peso al nacer</strong></p>
+<p>Por ejemplo, si <span class="math inline">\(\pi_0\)</span>, tenemos:</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<span class="math inline">\(\hat{y}=0\)</span>
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<span class="math inline">\(\hat{y}=1\)</span>
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+y
+</th>
+<th style="text-align:right;">
+0
+</th>
+<th style="text-align:right;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y=0\)</span>
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y=1\)</span>
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+</tbody>
+</table>
+<p>Sensibilidad: <span class="math inline">\(10/59 = 0,169\)</span> - especificidad: <span class="math inline">\(123/130 = 0,946\)</span>.</p>
+<p>Ahora, si <span class="math inline">\(\pi_0= 0,3\)</span>:</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<span class="math inline">\(\hat{y}=0\)</span>
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<span class="math inline">\(\hat{y}=1\)</span>
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+y
+</th>
+<th style="text-align:right;">
+0
+</th>
+<th style="text-align:right;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y=0\)</span>
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y=1\)</span>
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+</tbody>
+</table>
+<p>Sensibilidad: <span class="math inline">\(40/59 = 0,678\)</span> - especificidad: <span class="math inline">\(79/130 = 0,607\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
+<img src="figs/grafsen.jpg" alt="Sensibilidad (linea negra) - especificidad (linea roja)" width="75%" />
+<p class="caption">
+Figure 7.4: Sensibilidad (linea negra) - especificidad (linea roja)
+</p>
+</div>
+<p>Gráfico de <span class="math inline">\(P(\hat y=1|y=1)\)</span> vs <span class="math inline">\(P(\hat y=0|y=0)\)</span></p>
+<p><img src="figs/Sensibilidad.PNG" width="75%" style="display: block; margin: auto;" /></p>
+<p>El area bajo la curva de la curva ROC (llamado índice de concordancia) es una medida del poder predictivo del modelo.</p>
+<div id="ejemplo-mortalidad-de-escarabajos-1" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> Ejemplo mortalidad de escarabajos<a href="modelo-logístico.html#ejemplo-mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Curva ROC para el modelo logístico:</p>
+<p>“grafico roc escarabajos”</p>
+</div>
+<div id="bajo-peso-al-nacer-1" class="section level3 hasAnchor" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> Bajo peso al nacer<a href="modelo-logístico.html#bajo-peso-al-nacer-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="modelo-logístico.html#cb150-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
+<span id="cb150-2"><a href="modelo-logístico.html#cb150-2" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
+<span id="cb150-3"><a href="modelo-logístico.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co"># curvas roc</span></span>
+<span id="cb150-4"><a href="modelo-logístico.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pROC)</span></span>
+<span id="cb150-5"><a href="modelo-logístico.html#cb150-5" aria-hidden="true" tabindex="-1"></a>ROCbw.logit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.logit<span class="sc">$</span>fitted.values)</span>
+<span id="cb150-6"><a href="modelo-logístico.html#cb150-6" aria-hidden="true" tabindex="-1"></a>ROCbw.probit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.probit<span class="sc">$</span>fitted.values)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-logístico.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROCbw.logit)</span>
+<span id="cb151-2"><a href="modelo-logístico.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ROCbw.probit,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-17-1.png" alt="Curva ROC para el modelo logístico (negro) y probit (rojo)" width="672" />
+<p class="caption">
+Figure 7.5: Curva ROC para el modelo logístico (negro) y probit (rojo)
+</p>
+</div>
+<p>modelo logístico: <span class="math inline">\(AUC= 0,6884\)</span>.</p>
+<p>modelo probit: <span class="math inline">\(AUC= 0,6866\)</span>.</p>
+</div>
+</div>
+<div id="sobredispersión" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Sobredispersión<a href="modelo-logístico.html#sobredispersión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En un experimento Bernoulli se asume que los <span class="math inline">\(n_i\)</span> ensayos para la observación <span class="math inline">\(i,\quad y_{i1},...y_in_i\)</span> son independientes.</p>
+<p>Por lo tanto, tenemos que:</p>
+<p><span class="math display">\[
+E(y_i)=\pi_i\quad \text{y} \quad V(y_i)=\pi_i(1-\pi_i)\frac{1}{n_i}.
+\]</span></p>
+<p>Pero, hay casos donde las observaciones <span class="math inline">\(y_{i1},...y_in_i\)</span> están correlacionadas, es decir <span class="math inline">\(cor(y_{is},y_{it})\ne0\)</span>.</p>
+<p>Por lo general, se asume que <span class="math inline">\(cor(y_{is},y_{it})=\phi\)</span>, para todo <span class="math inline">\(s\ne t\)</span> (exchangeability property). Entonces:</p>
+<p><span class="math display">\[
+V(y_{it})=\pi_i(1-\pi_i)\quad \text{y} \quad cor(y_{it},y_{is})=\phi\pi_i(1-\pi_i).
+\]</span></p>
+<p>En este caso, tenemos que:</p>
+<p><span class="math display">\[
+V(y_i)=V\begin{pmatrix} \sum_{j=1}^{n_i}\frac{y_{ij}}{n_i}\end{pmatrix}=\frac{1}{n_i^2} \left[ \sum_{j=1}^{n_i}V(y_{it})+2\sum\sum_{s&lt;t}cov(y_{is},y_{it}) \right]=[1+\phi(n_i-1)]\frac{\pi_i(1-\pi_i)}{n_i}.
+\]</span></p>
+<p>Si:</p>
+<ul>
+<li><p><span class="math inline">\(\phi=0\)</span>, <span class="math inline">\(y_i\sim binomial(n_i,\pi)\)</span>.</p></li>
+<li><p><span class="math inline">\(\phi&gt;0\)</span>, tenemos sobredispersión.</p></li>
+<li><p><span class="math inline">\(-(n_i-1)^{-1}&lt;\phi&lt;0\)</span>, tenemos subdispersión (menos
+frecuente).</p></li>
+</ul>
+<p>En el caso del modelo binomial, tenemos que:</p>
+<p><span class="math display">\[
+v(\pi_i)=\pi_i(1-\pi_i)/n_i.
+\]</span></p>
+<p>El estadístico de <span class="math inline">\(\chi^2\)</span> de Pearson es:</p>
+<p><span class="math display">\[
+X^2=\sum_{i=1}^n\frac{(y_i-\hat{\pi}_i)^2}{\pi_i(1-\pi_1)/n_i}
+\]</span></p>
+<p>Un indicador de posible inflación de varianza es:</p>
+<p><span class="math display">\[
+\hat{\phi}=\frac{X^2}{n-p}.
+\]</span></p>
+<p>Si no hay problemas de sobredispersión <span class="math inline">\(\hat{\phi}\approx1\)</span>.</p>
+</div>
+<div id="distribución-beta-binomial" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Distribución beta-binomial<a href="modelo-logístico.html#distribución-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Modelo: <span class="math inline">\(y|\pi\sim binomial(n,\pi)\)</span></p>
+<p>Donde <span class="math inline">\(\pi\sim beta(\alpha_1,\alpha_2)\)</span>, esto es:</p>
+<p><span class="math display">\[
+f(\pi;\alpha_1,\alpha_2)=\frac{\Gamma(\alpha_1+\alpha_2)}{\Gamma(\alpha_1)\Gamma(\alpha_2)}\pi^{\alpha_1-1}(1-\pi)^{\alpha_2-1}
+\]</span></p>
+<p>con <span class="math inline">\(\alpha_1&gt;0\)</span> y <span class="math inline">\(\alpha_2&gt;0\)</span>.</p>
+<p>Asumiendo <span class="math inline">\(\mu=\frac{\alpha_1}{\alpha_1+\alpha_2}\)</span> y <span class="math inline">\(\theta=1/(\alpha_1+\alpha_2)\)</span>, tenemos:</p>
+<p><span class="math display">\[
+E(\pi)=\mu\quad\text{y}\quad V(\pi)=\mu(1-\mu)\frac{\theta}{1+\theta}.
+\]</span></p>
+<p>La distribución beta-binomial se obtiene al marginalizar <span class="math inline">\(y\)</span>. Esto es:</p>
+<p><span class="math display">\[
+f(y;n,\mu,\theta)=\int f(y|\pi)f(\pi)d\pi.
+\]</span></p>
+<p>La función de densidad de la distribución beta-binomial es:</p>
+<p><span class="math display">\[
+f(y;n,\mu,\theta)=\begin{pmatrix} n \\ y \end{pmatrix}\frac{\begin{bmatrix} \Pi_{k=0}^{y-1}(\mu+k\theta)\end{bmatrix} \begin{bmatrix} \Pi_{k=0}^{n-y-1}(1-\mu+k\theta)\end{bmatrix}}{\begin{bmatrix} \Pi_{k=0}^{n-1}(1+k\theta) \end{bmatrix}},
+\]</span></p>
+<p>para <span class="math inline">\(y=0,1,...,n.\)</span></p>
+<p>Valor esperado y varianza de <span class="math inline">\(y=s/n\)</span>:</p>
+<p><span class="math display">\[
+E(y)=\mu\quad\text{y}\quad V(y)=\begin{bmatrix} 1+(n-1)\frac{\theta}{1+\theta} \end{bmatrix}\mu(1-\mu)\frac{1}{\mu}.
+\]</span></p>
+<p>Por lo cual, <span class="math inline">\(\phi=\theta/(1+\theta)\)</span> es la correlación entre ensayos Bernoulli.</p>
+<p>Binomial(15,0.3)(negro), beta-binomial(15,0.3,<span class="math inline">\(\phi\)</span>=0,1)(rojo), beta-binomial(15,0.3,<span class="math inline">\(\phi\)</span>=0,3)(verde)</p>
+<p><img src="figs/DistrBetabin.jpg" width="75%" style="display: block; margin: auto;" /></p>
+<div id="modelo-beta-binomial" class="section level3 hasAnchor" number="7.6.1">
+<h3><span class="header-section-number">7.6.1</span> Modelo beta-binomial<a href="modelo-logístico.html#modelo-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Modelo:</p>
+<p><span class="math display">\[
+n_iy_i|\pi_i\sim binomial(n_i,\pi_i)\\
+\pi_i\sim beta(\mu_i,\phi),
+\]</span></p>
+<p>Por lo cuál:</p>
+<p><span class="math display">\[
+E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
+\]</span></p>
+<p>La estimación de los parámetros <span class="math inline">\((\beta,\phi)\)</span> se hace por máxima verosimilitud.</p>
+<p>Dado que <span class="math inline">\(\phi&gt;0)\)</span>, el modelo beta-binomial no puede modelar datos con subdispersión.</p>
+<div id="estudio-de-teratología-1" class="section level4 hasAnchor" number="7.6.1.1">
+<h4><span class="header-section-number">7.6.1.1</span> Estudio de teratología<a href="modelo-logístico.html#estudio-de-teratología-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="modelo-logístico.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb152-2"><a href="modelo-logístico.html#cb152-2" aria-hidden="true" tabindex="-1"></a>modlirat.binom <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">family=</span>binomial,<span class="at">data=</span>lirat)</span>
+<span id="cb152-3"><a href="modelo-logístico.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modlirat.binom)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = cbind(R, N - R) ~ hb + as.factor(grp), family = binomial, 
+##     data = lirat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -4.6331  -0.9684  -0.0471   1.3945   2.8256  
+## 
+## Coefficients:
+##                 Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)       2.1795     0.5056   4.311 1.63e-05 ***
+## hb               -0.2190     0.1020  -2.148 0.031728 *  
+## as.factor(grp)2  -2.4748     0.5045  -4.906 9.30e-07 ***
+## as.factor(grp)3  -3.1527     0.9433  -3.342 0.000832 ***
+## as.factor(grp)4  -2.0520     1.0629  -1.931 0.053525 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 509.43  on 57  degrees of freedom
+## Residual deviance: 168.91  on 53  degrees of freedom
+## AIC: 250.38
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="modelo-logístico.html#cb154-1" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom <span class="ot">=</span><span class="fu">betabin</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span><span class="fu">as.factor</span>(grp)<span class="sc">+</span>hb,<span class="at">data=</span>lirat,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb154-2"><a href="modelo-logístico.html#cb154-2" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom</span></code></pre></div>
+<pre><code>## Beta-binomial model
+## -------------------
+## betabin(formula = cbind(R, N - R) ~ as.factor(grp) + hb, random = ~1, 
+##     data = lirat)
+## 
+## Convergence was obtained after 433 iterations.
+## 
+## Fixed-effect coefficients:
+##                   Estimate Std. Error    z value Pr(&gt; |z|)
+## (Intercept)      2.130e+00  8.676e-01  2.455e+00 1.408e-02
+## as.factor(grp)2 -2.441e+00  8.508e-01 -2.869e+00 4.113e-03
+## as.factor(grp)3 -2.836e+00  1.329e+00 -2.134e+00 3.287e-02
+## as.factor(grp)4 -2.285e+00  1.817e+00 -1.258e+00 2.085e-01
+## hb              -1.694e-01  1.772e-01 -9.557e-01 3.392e-01
+## 
+## Overdispersion coefficients:
+##                  Estimate Std. Error z value   Pr(&gt; z)
+## phi.(Intercept) 2.356e-01  6.041e-02 3.9e+00 4.813e-05
+## 
+## Log-likelihood statistics
+##    Log-lik      nbpar    df res.   Deviance        AIC       AICc 
+## -9.302e+01          6         52  1.146e+02   1.98e+02  1.997e+02</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelo-logístico.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.binom)</span></code></pre></div>
+<pre><code>## [1] 250.3777</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelo-logístico.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.betabinom)</span></code></pre></div>
+<pre><code>##                    df      AIC     AICc
+## modlirat.betabinom  6 198.0319 199.6789</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelo-logístico.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.binom)</span></code></pre></div>
+<pre><code>## [1] 168.9083</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="modelo-logístico.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.betabinom)</span></code></pre></div>
+<pre><code>## [1] 114.5625</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Modelo
+</th>
+<th style="text-align:right;">
+Deviance
+</th>
+<th style="text-align:right;">
+AIC
+</th>
+<th style="text-align:right;">
+BIC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Binomial
+</td>
+<td style="text-align:right;">
+168.908
+</td>
+<td style="text-align:right;">
+250.378
+</td>
+<td style="text-align:right;">
+260.680
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beta-Binomial
+</td>
+<td style="text-align:right;">
+114.563
+</td>
+<td style="text-align:right;">
+198.032
+</td>
+<td style="text-align:right;">
+210.395
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelo-lineal-generalizado.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelo-para-conteos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/07-ModeloLogistico.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/07-ModeloLogistico.Rmd",
+"text": null
+},
+"download": ["MLG2.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

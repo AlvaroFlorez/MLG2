@@ -27,4 +27,6 @@ fig:Vgrasalasso Datos de grasa corporal. Estimación de los coeficientes de regr
 h3:validación-cruzada Validación cruzada
 h3:ejemplo-grasa-corporal Ejemplo grasa corporal
 fig:kgrasa Datos de grasa corporal. Valiación cruzada (puntos rojos) para diferentes valores de $\\lambda$. Las lineas cortadas verticales representan los valores seleccionados para $\\lambda$ por mínimo valores de CV y la regla de una desviación estándar.
+tab:tablaEstFat1 datos de grasa corporal. Estimación de coeficientes de los modelos seleccionados
+tab:tablaEstFat2 datos de grasa corporal. Valores de los criterios de selección para los modelos seleccionados.
 

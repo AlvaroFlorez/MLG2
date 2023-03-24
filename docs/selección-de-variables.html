@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-02-17" />
+<meta name="date" content="2023-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -253,67 +253,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a>
+<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#casos-de-estudio"><i class="fa fa-check"></i><b>6.2</b> Casos de estudio</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelos-lineales"><i class="fa fa-check"></i><b>6.1.1</b> Modelos lineales</a></li>
-<li class="chapter" data-level="6.1.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.1.2</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="6.1.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.1.3</b> ataques de epilepsia</a></li>
-<li class="chapter" data-level="6.1.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.1.4</b> Familia exponencial</a></li>
-<li class="chapter" data-level="6.1.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.1.5</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.2.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.2.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="6.2.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.2.2</b> ataques de epilepsia</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.2</b> Estimador de máxima verosimilitud</a></li>
-<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.3</b> Modelo lineal generalizado (GLM)</a>
+<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#preambulo"><i class="fa fa-check"></i><b>6.3</b> Preambulo</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.3.1</b> Componente aleatorio</a></li>
-<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.3.2</b> Predictor lineal</a></li>
-<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.3.3</b> Función de enlace</a></li>
-<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.3.4</b> Ejemplos de GLM</a></li>
+<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.3.1</b> Familia exponencial</a></li>
+<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.3.2</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.3.3</b> Estimador de máxima verosimilitud</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización"><i class="fa fa-check"></i><b>6.3.4</b> Métodos iterativos de maximización</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4</b> Ajuste de un GLM</a>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.4</b> Modelo lineal generalizado (GLM)</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.4.1</b> Especificación del modelo</a></li>
-<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.2</b> Ataques epilépticos</a></li>
-<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.3</b> interpretación de parámetros - modelo logístico</a></li>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.4.1</b> Componente aleatorio</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.4.2</b> Predictor lineal</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.4.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4.4</b> Ejemplos de GLM</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.5</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.5</b> Ajuste de un GLM</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.5.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.5.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-por-máxima-verosimilitud-para-boldsymbol-beta"><i class="fa fa-check"></i><b>6.5.2</b> Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
+<li class="chapter" data-level="6.5.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.5.3</b> interpretación de parámetros - modelo logístico</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
+<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.6</b> Pruebas de hipótesis</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#casos-de-estudio"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#mortalidad-de-escarabajos-2"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
-<li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="6.6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-razón-de-verosimilitud"><i class="fa fa-check"></i><b>6.6.1</b> Método de razón de verosimilitud</a></li>
+<li class="chapter" data-level="6.6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-wald"><i class="fa fa-check"></i><b>6.6.2</b> Método de Wald</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
+<li class="chapter" data-level="6.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>6.7</b> intervalos de confianza</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
-<li class="chapter" data-level="7.2.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
+<li class="chapter" data-level="6.7.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalo-de-confianza-para-la-media"><i class="fa fa-check"></i><b>6.7.1</b> Intervalo de confianza para la media</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-logístico-2"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
+<li class="chapter" data-level="6.8" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#devianza"><i class="fa fa-check"></i><b>6.8</b> Devianza</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+<li class="chapter" data-level="6.8.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.8.1</b> El estadístico chi-cuadrado de Pearson</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#ejemplo-mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.4.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="6.9" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.9</b> Bondad de ajuste</a></li>
+<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pseudo-r2"><i class="fa fa-check"></i><b>6.10</b> Pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.11" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.11</b> Selección de variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
-<li class="chapter" data-level="7.6" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<li class="chapter" data-level="7" data-path="modelo-logístico.html"><a href="modelo-logístico.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
+<li class="chapter" data-level="7.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.1.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
+<li class="chapter" data-level="7.2.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-logístico-1"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#ejemplo-mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.4.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="modelo-logístico.html"><a href="modelo-logístico.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
+<li class="chapter" data-level="7.6" data-path="modelo-logístico.html"><a href="modelo-logístico.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html"><i class="fa fa-check"></i><b>8</b> Modelo para conteos</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
+<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-2"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
 <li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#datos-de-cáncer-de-pulmón"><i class="fa fa-check"></i><b>8.1.2</b> Datos de cáncer de pulmón</a></li>
 <li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-1"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
+<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-conteo-con-offset"><i class="fa fa-check"></i><b>8.2.1</b> Modelo de conteo con offset</a></li>
 </ul></li>
@@ -329,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html"><i class="fa fa-check"></i><b>9</b> Modelo lineal mixto</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-2"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
+<li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-3"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#peso-al-nacer-de-corderos"><i class="fa fa-check"></i><b>9.1.1</b> Peso al nacer de corderos</a></li>
 <li class="chapter" data-level="9.1.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#crecimiento-craneofacial-de-ratas"><i class="fa fa-check"></i><b>9.1.2</b> Crecimiento craneofacial de ratas</a></li>
@@ -683,22 +702,34 @@ Hay varias adaptaciones de estos criterios de información definiendo diferentes
 <p>Puesto que son muchos modelos, podemos organizar los resultados de tal forma que obtengamos los mejores modelos basándonos en cada uno de los criterios. Por ejemplo, los 5 mejores ajustes según el <span class="math inline">\(R^{2}_{adj}\)</span> son:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="selección-de-variables.html#cb76-1" aria-hidden="true" tabindex="-1"></a>R2adj.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>adjr,<span class="at">decreasing =</span> T)</span>
 <span id="cb76-2"><a href="selección-de-variables.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[R2adj.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                             predictors   rsquare      adjr   predrsq       cp       aic       sbc
-## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037 5.772458 -8.612898  7.298974
-## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940 7.028837 -7.497389 10.403468
-## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597 5.528174 -8.580332  5.342556
-## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412 0.8198474 0.7749807 7.721367 -6.673207 11.227649
-## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815</code></pre>
+<pre><code>##     n                                             predictors   rsquare      adjr   predrsq
+## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037
+## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940
+## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597
+## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412 0.8198474 0.7749807
+## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369
+##           cp       aic       sbc
+## 226 5.772458 -8.612898  7.298974
+## 251 7.028837 -7.497389 10.403468
+## 171 5.528174 -8.580332  5.342556
+## 248 7.721367 -6.673207 11.227649
+## 169 5.998959 -8.048073  5.874815</code></pre>
 <p>Basándonos en este criterio el mejor ajuste se obtiene considerando las covariables <code>bcs</code>, <code>pindex</code>, <code>enzyme_test</code>, <code>age</code>, <code>gender</code>, y <code>alc_heavy</code>. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables <code>gender</code> obtenemos un modelo con un <span class="math inline">\(R^{2}_{pred}\)</span> más alto.</p>
 <p>Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son:</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="selección-de-variables.html#cb78-1" aria-hidden="true" tabindex="-1"></a>AIC.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>aic,<span class="at">decreasing =</span> F)</span>
 <span id="cb78-2"><a href="selección-de-variables.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods)[AIC.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                          predictors   rsquare      adjr   predrsq       cp       aic       sbc
-## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037 5.772458 -8.612898  7.298974
-## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597 5.528174 -8.580332  5.342556
-## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345 0.7862922 5.733992 -8.130569  3.803335
-## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369 5.998959 -8.048073  5.874815
-## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940 7.028837 -7.497389 10.403468</code></pre>
+<pre><code>##     n                                          predictors   rsquare      adjr   predrsq
+## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.7836037
+## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.7827597
+## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345 0.7862922
+## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.7862369
+## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.7806940
+##           cp       aic       sbc
+## 226 5.772458 -8.612898  7.298974
+## 171 5.528174 -8.580332  5.342556
+## 97  5.733992 -8.130569  3.803335
+## 169 5.998959 -8.048073  5.874815
+## 251 7.028837 -7.497389 10.403468</code></pre>
 <p>Con este críterio se escoge el mismo modelo que con el <span class="math inline">\(R^{2}_{adj}\)</span>. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad.</p>
 <p>En la Figura <a href="#fig:surgicalAll"><strong>??</strong></a> muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^{2}_{pred}\)</span>.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="selección-de-variables.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
@@ -997,19 +1028,19 @@ Figure 4.5: Datos de grasa corporal. Valiación cruzada (puntos rojos) para dife
 <span id="cb92-2"><a href="selección-de-variables.html#cb92-2" aria-hidden="true" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
 <pre><code>## 13 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                  s0
-## age      0.03109358
+## age      0.04428910
 ## weight   .         
-## height  -0.14026654
-## neck     .         
+## height  -0.14861287
+## neck    -0.01394232
 ## chest    .         
-## abdom    0.57022182
+## abdom    0.61111812
 ## hip      .         
 ## thigh    .         
 ## knee     .         
 ## ankle    .         
 ## biceps   .         
 ## forearm  .         
-## wrist   -0.60977822</code></pre>
+## wrist   -1.08873009</code></pre>
 <p>La selección de variables por medio del estimador LASSO son <code>age</code>, <code>height</code>,<code>abdom</code> y <code>wrist</code>. Ahora ajustamos el modelo con estas variables por medio de MCO:</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="selección-de-variables.html#cb94-1" aria-hidden="true" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
 <span id="cb94-2"><a href="selección-de-variables.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>

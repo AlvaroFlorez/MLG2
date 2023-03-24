@@ -142,22 +142,46 @@ Por lo que el estimador de $\bb$ es:
 $$
 \hatbb = \bR^{-1}\bZ'\by^{*}, \mbox{donde }\bR = \bZ'\bZ.
 $$
-Se puede demostrar que los elementos de la diagonal de la matriz $\bR^{-1}$ son:
-$$
-\{\bR^{-1}\}_{jj} = \frac{1}{1-R^{2}_{j}}, j=1,\ldots,p-1,
-$$
-donde $R^{2}_{j}$ es el coeficiente de determinación de la regresión de $z_{j}$ en función de las $(p-2)$ covariables restantes. Es decir, coeficiente de determinacón del siguiente ajuste:
-$$
-z_{ij} = z_{i1}\alpha_1 + z_{i2}\alpha_2 + \ldots + z_{i,j-1}\alpha_{j-1} + z_{i,j+1}\alpha_{j+1} + \ldots + z_{i,p-1}\alpha_{p-1} + \varepsilon_i.
-$$
+La Varianza de $\hatbb$ está determinada por:
+\[
+V(\hatbb)=\sigma^{2}\bR^{-1} = \sigma^{2} \begin{pmatrix}
+1 & \br' \\ \br & \bR_{22},
+\end{pmatrix}^{-1},
+\]
+donde $\br = (r_{12},r_{13},\ldots,r_{1,p-1})$ y $\bR_{22}$ es la matriz $\bR$ eliminando la primer fila y columna. Particularmente para $\hatb_1$, tenemos que:
+\[
+V(\hatb_1) = \sigma^{2}\frac{1}{1 - \br'\bR_{22}^{-1}\br}.
+\]
 
-Por lo que la varianza del estimador de $\bb$ es: 
-$$
-V(\hatb_{j}) = \frac{\sigma^{2}}{1-R^{2}_{j}}.
-$$
-Por lo que, si $z_j$ se puede expresar como una combinación lineal aproximada de las demás covariables, la varianza del estimador de $b_j$ Si $R^{2}_{j} \rightarrow 1$, entonces $V(\hatb_{j})\rightarrow \infty$.
+Ahora asumamos que hacemos una regresión de $Z_1$ en función de los demás regresores. Esto es:
+\[
+z_1 = \alpha_1 z_2 + \alpha_2 z_3 + \ldots + \alpha_{p-2} z_{p-1}+\varepsilon_1.
+\]
+Las sumas de cuadrados totales y de los residuos de este modelo son:
+\[
+SST = \sum_{i=1}^{n}z_1^2 = 1,
+\]
+y
+\[
+\Sres = SST - \Sreg = 1 - \bz_1' \bZ_{(1)}(\bZ_{(1)}'\bZ_{(1)})^{-1}\bZ_{(1)}'\bz_1= 1 - \br'R_{22}^{-1}\br,
+\]
+respectivamente. Además, el coeficiente de determinación es:
+\[
+R^{2}_1 = 1 - \frac{\Sres}{\Stotal} = \br'R_{22}^{-1}\br,
+\]
+donde $\bZ_{(1)}$ es la matriz $\bZ$ sin la primer columna.
 
-La multicolinealidad también produce que los estimadores $\hatb_{j}$, para $j=1,\ldots,p-1$, sean muy grandes en valor absoluto. Considere: 
+De aquí obtenemos que:
+\[
+V(\hatb_1) = \sigma^{2} \frac{1}{1-R^{2}_1}.
+\]
+De forma similar se puede demostrar que:
+\[
+V(\hatb_j) = \sigma^{2} \frac{1}{1-R^{2}_j}, j=1,\ldots,p-1,
+\]
+donde $R^{2}_{j}$ es el coeficiente de determinación de la regresión de $z_{j}$ en función de las $(p-2)$ covariables restantes. Por lo que, si $R^{2}_{j} \rightarrow 1$, entonces $V(\hatb_{j})\rightarrow \infty$.
+
+La multicolinealidad también produce que los estimadores $\hatb_{j}$ sean muy grandes en valor absoluto. Considere: 
 $$
 L_{1}^{2} = (\hatbb - \bb)'(\hatbb - \bb) = \sum_{j=1}^{p}(\hatb_{j}-b_{j})^{2}.
 $$ 
@@ -208,7 +232,7 @@ Los métodos mas usados para detectar multicolinealidad son:
 - los índices de condiciones de $\bR$ o $\bZ$.
 
 ### Factores de inflación de varianza
-Dado que $V(\hatbb) = \sigma^2\bR^{-1}$, la diagonal de $\bR^{-1}$ es un buen indicador de multicolinealidad:
+Dado que $V(\hatbb) = \sigma^2\bR^{-1}$, los elementos de la diagonal de $\bR^{-1}$ son buenos indicadores de multicolinealidad:
 $$
 \{\bR^{-1}\}_{jj} = (1-R_{j}^{2})^{-1},
 $$
@@ -334,18 +358,18 @@ Dos de estas alternativas son:
 El estimador de ridge tiene como objetivo minimizar la siguiente suma de cuadrados penalizada:
 \begin{equation}
 \begin{split}
-S_{R}(\bb) &= \sum_{i=1}^{n}(y_{i} - \bz_{i}'\bb)^{2} + k \sum_{j=1}^{p-1}\bb_{j}^2 \\
+S_{k}(\bb) &= \sum_{i=1}^{n}(y_{i} - \bz_{i}'\bb)^{2} + k \sum_{j=1}^{p-1}\bb_{j}^2 \\
 &= (\by - \bZ\bb)'(\by - \bZ\bb) + k ||\bb||_{2}^{2},
 \end{split}
 \nonumber
 \end{equation}
 con $k \geq 0$ (el cual es seleccionado por el investigador). Lo que lleva a las siguientes ecuaciones normales:
 \[
-(\bR + k \bI)\hatbb_{R} = \bZ'\by.
+(\bR + k \bI)\hatbb_{k} = \bZ'\by.
 \]
 La solución de las ecuaciones normales lleva al estimador ridge:
 \[
-\hatbb_{R} = (\bR + k \bI)^{-1}\bZ'\by.
+\hatbb_{k} = (\bR + k \bI)^{-1}\bZ'\by.
 \]
 Note que, incluso si $\bR$ es no es invertible, un $k > 0$ resuelve el problema. Además, la solución depende de $k$ (por cada $k$, hay una estimación diferente). 
 
@@ -354,31 +378,38 @@ $k$ es un parámetro de contracción:
 - si $k \rightarrow 0$, encontramos que $\hatbb_{R} \rightarrow \hatbb$.
 - si $k \rightarrow \infty$, encontramos que $\hatbb_{R} \rightarrow \bZERO$ (excepto el intercepto).
 
-Ahora veamos las propiedades del estimador de ridge. El valor esperado de $\hatbb_{R}$ es:
-$$
-E(\hatbb_{R}) = (\bR + k \bI)^{-1}\bR \bb.
-$$
-De aquí vemos que $\hatbb_{R}$ es sesgado, y aumenta con $k$ (por lo que este parámetro también es llamado de sesgo). La varianza de $\hatbb_{R}$ es:
-$$
-V(\hatbb_{R}) = \sigma^{2}(\bR + k \bI)^{-1}\bR(\bR + k \bI)^{-1}.
-$$
+Ahora veamos las propiedades del estimador de ridge. El estimador de ridge se puede expresar como:
+\[
+\hatbb_k = (\bR + k \bI)^{-1}\bR\by = (\bI + k \bR^{-1})^{-1}\hatbb = \bC \hatbb.
+\]
+Por lo que, su valor esperado es:
+\[
+E(\hatbb_{k}) =\bC\bb \neq \bb,
+\]
+de aquí vemos que $\hatbb_{k}$ es sesgado, y el sesgo aumenta con $k$ (por lo que este parámetro también es llamado de sesgo). 
+
+La varianza de $\hatbb_k$ está dada por:
+\[
+V(\hatbb_{k}) = \sigma^2 \bC' \bR^{-1} \bC.
+\]
 A partir de las cantidades anteriores se puede determinar el error cuadrático medio (ECM) de $\hatbb_{R}$:
 \begin{equation}
 \begin{split}
-\mbox{ECM}(\hatbb_{R}) &= \sigma^{2}\tr [(\bR + k\bI)^{-1}\bR(\bR + k\bI)^{-1}] + k^{2}\bb'(\bR + k\bI)^{-2}\bb \\
-&=\sigma^{2}\sum_{i=1}^{p-1}\frac{\lambda_{j}}{(\lambda_{j}+ k)^2} + k^{2} \bb'(\bR + k\bI)^{-2}\bb,
+\mbox{MSE}(\hatbb_{k}) &= \tr V(\hatbb_k) + \left[ E(\hatbb_{k}) - \bb \right]'\left[ E(\hatbb_{k}) - \bb \right] \\
+&= \sigma^2\tr \left( R^{-1}\bC'\bC \right) + \bb'(\bC-\bI)'(\bC-\bI)\bb \\
+&=\sigma^{2}\sum_{j=1}^{p-1}\frac{\lambda_{j}}{(\lambda_{j}+ k)^2} + \sum_{j=1}^{p-1}\frac{\alpha_j^{2}k^2}{(\lambda_{j}+ k)^2},
 \end{split}
 \nonumber
 \end{equation}
-donde $\lambda_{1},\ldots,\lambda_{k}$ son los valores propios de $\bR$.
+donde $\balpha = \bT'\bb$.
 
-Finalmente, la suma de cuadrados de los residuos usando $\hatbb_{R}$ es:
+Finalmente, la suma de cuadrados de los residuos usando $\hatbb_{k}$ es:
 $$
-\Sres = (\by - \bX\hatbb)'(\by - \bX\hatbb) + (\hatbb_{R}-\hatbb)'\bR(\hatbb_{R}-\hatbb).
+\Sres_k = (\by - \bZ\hatbb)'(\by - \bZ\hatbb) + (\hatbb_{k}-\hatbb)'\bR(\hatbb_{k}-\hatbb).
 $$
 A partir de estos resultados, vemos que: (1) Si $k$ crece, disminuye la varianza, pero aumenta el sesgo. (2) Si $k$ disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un $R^{2}$ mas pequeño que el estimador por MCO. Sin embargo, la regresión ridge proporciona estimaciones de $\bb$ más estables.
 
-La idea de la regresión de ridge es encontrar un valor de $k$ tal que  $\mbox{ECM}(\hatbb_{R}) < V(\hatbb)$. En la Figura \@ref(fig:ECMrepresentacion) podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta $k$, el sesgo incrementa y la varianza disminuye. Además, hay una región de $k$ donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de $k$ que minimiza el ECM, o por lo menos algún valor en la región donde $\mbox{ECM}(\hatbb_{R}) < V(\hatbb)$.
+La idea de la regresión de ridge es encontrar un valor de $k$ tal que  $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$. En la Figura \@ref(fig:ECMrepresentacion) podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta $k$, el sesgo incrementa y la varianza disminuye. Además, hay una región de $k$ donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de $k$ que minimiza el ECM, o por lo menos algún valor en la región donde $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$.
 
 
 ```{r ECMrepresentacion, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO.",warning=FALSE,message = FALSE}
@@ -398,7 +429,7 @@ axis(1,x[ecm==min(ecm)],'k óptimo')
 ```
 Algunos métodos de selección de $k$ son:
 
-- **Traza de ridge $k$:** el efecto de $k$ sobre las estimaciones de $\hatbb_{R}$ es mas fuerte para valores bajos. De igual forma, si $k$ es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar $k$ hasta que parezca que su influencia sobre $\hatbb_{R}$ se atenúe.
+- **Traza de ridge $k$:** el efecto de $k$ sobre las estimaciones de $\hatbb_{k}$ es mas fuerte para valores bajos. De igual forma, si $k$ es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar $k$ hasta que parezca que su influencia sobre $\hatbb_{k}$ se atenúe.
 
 - **Validación cruzada (CV):** sea $\haty_{(i),k}$ la estimación de $E(y_i)$ por medio del estimador de ridge con el parámetro $k$ y usando una muestra excluyendo la i-ésima observación. La validación cruzada está definida como:
 $$
@@ -456,6 +487,9 @@ Las columnas de $\bP = \bZ\bT = (\bp_{1},\ldots,\bp_{p-1})$ son un conjunto de r
 $$
 \bp_{k} = \sum_{j=1}^{p-1} t_{kj}\bz_{j}.
 $$
+
+
+
 El estimador de $\balpha$ por MCO es:
 $$
 \hatbalpha = (\bP'\bP)^{-1}\bP'\by^{*} = \bLambda^{-1}\bP'\by^{*},
@@ -464,46 +498,35 @@ y la varianza de $\hatbalpha$ es:
 $$
 V(\hatbalpha) = \sigma^{2}(\bP'\bP)^{-1} = \sigma^{2}\bLambda^{-1}.
 $$
-De aquí podemos ver que valores propios de $\bZ'\bZ$ están asociados con la varianza de los coeficientes de regresión. Si $\lambda_j=1$ (para $j=1,\ldots,p$), las covariables originales son ortogonales. Mientras que valores propios cercanos a cero indican problemas de multicolinealidad dado que inflan la varianza de $\hatbalpha$. 
+De aquí podemos ver que valores propios de $\bR$ están asociados con la varianza de los coeficientes de regresión. Si $\lambda_j=1$ (para $j=1,\ldots,p$), las covariables originales son ortogonales. Mientras que valores propios cercanos a cero indican problemas de multicolinealidad dado que inflan la varianza de $\hatbalpha$. 
 
-Además, Note que para $\hatbb = \bT\hatbalpha$, tenemos:
-$$
+Note que, para $\hatbb = \bT\hatbalpha$, tenemos:
+\[
 V(\hatbb) = V(\bT\hatbalpha) =\sigma^{2}\bT\bLambda^{-1}\bT' = \sigma^{2} \sum_{j=1}^{p-1}\lambda_{j}^{-1}\bt_{j}\bt_{j}',
-$$
-lo que implica que $V(\hatb_{k}) = \sigma^{2} \sum_{j=1}^{p-1}t_{kj}^{2}/\lambda_{j}$; la varianza de $\hatb_j$ es una combinación lineal de los valores propios.
-
-Para combatir el problema de multicolinealidad, la idea de la regresión por componentes principales es usar un subconjunto de $\bP$ como regresores (en vez de todos los compontes). Para esto, eliminamos los componentes principales $(\bp_{r+1},\ldots,\bp_{p-1})$ asociados a los valores propios cercanos a cero $(\lambda_{r+1},\ldots,\lambda_{p-1})$. Aquí estamos asumiendo que los valores propios están ordenados de mayor a menor, $\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_p$ (como lo hace `R`). Esto es,
-$$
-\hatbalpha_{PC} = \bL \hatbalpha = \begin{pmatrix} \bI_{r} & \bZERO \\ \bZERO & \bZERO \end{pmatrix} \hatbalpha.
-$$
-Por lo tanto $\hatbalpha_{PC} = (\overbrace{\hatalpha_{1},\hatalpha_{2},\ldots, \hatalpha_{r}}^{r},\overbrace{0, \ldots,0}^{p-1-r})'$. 
-
-En términos de $\bb$, 
-\[
-\hatbb_{PC} = \bT\hatbalpha_{PC} = \bT\bL\bLambda^{-1}\bT'\bZ'\by^{*}.
 \]
-Además,
+lo que implica que $V(\hatb_{k}) = \sigma^{2} \sum_{j=1}^{p-1}t_{kj}^{2}/\lambda_{j}$, la varianza de $\hatb_j$ es una combinación lineal de los valores propios.
+
+Para combatir el problema de multicolinealidad, la idea de la regresión por componentes principales es usar un subconjunto de $\bP$ como regresores (en vez de todos los compontes). Para esto, eliminamos los componentes principales $(\bp_{r+1},\ldots,\bp_{p-1})$ asociados a los valores propios cercanos a cero $(\lambda_{r+1},\ldots,\lambda_{p-1})$. Aquí estamos asumiendo que $\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_{p-1}$. Esto es,
+$$
+\hatbalpha_{r} = (\overbrace{\hatalpha_{1},\hatalpha_{2},\ldots, \hatalpha_{r}}^{r},\overbrace{0, \ldots,0}^{p-1-r})'.
+$$
+De esta forma el estimador de $\bb$ por CP está dado por:
 \[
-V(\hatbb_{PC}) = \sigma^{2} \bT\bL\bLambda^{-1}\bL'\bT' = \sigma^{2}\sum_{j=1}^{r} \lambda_{j}^{-1}\bt_{j}\bt_{j}'.
+\hatbb_{r} = \bT \hatbalpha_{r} =\sum_{l=1}^{r} \bt_l \hatalpha_l,
 \]
-lo que implica que $V(\hatb_{PC,j}) = \sigma^{2} \sum_{k=1}^{r}t_{jk}^{2}/\lambda_{k}$.
 
-El sesgo de $\hatbb_{PC}$ está definido como:
-$$
-E(\bT\hatbalpha_{PC}) - \bT\balpha = -\sum_{k=r+1}^{p-1}\alpha_k\bt_{k}.
-$$
-Mientras que la varianza de $\hatbb_{PC}$ es:
-\begin{equation}
-V(\bT\hatbalpha_{PC}) = \bT \left[ \sigma^{2}\bL \bLambda^{-1} \bL \right] \bT^{-1} = \sigma^{2} \sum_{k=1}^{r}\lambda_k^{-1}\bt_{k}\bt_{k}' \leq \sigma^{2} \sum_{k=1}^{p-1}\lambda_k^{-1}\bt_{k}\bt_{k}' = \sigma^{2}(\bZ'\bZ)^{-1}.
-(\#eq:varBPC)
-\end{equation}
-Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de $\hatbb_{PC}$.
-
-Note en \@ref(eq:varBPC) que la diferencia en varianzas con respecto al estimador de MCO de $\bb$:
-$$
-\sigma^{2}\sum_{k=r+1}^{p-1}\lambda_k^{-1} \bt_{k}\bt_{k}',
-$$
-será mayor si las componentes principales excluidas están asociadas a valores propios pequeños.
+El sesgo de $\hatbb_{r}$ es igual a:
+\[
+\hatbb_{r} - \bb = \sum_{l=1}^{r} \bt_l \hatalpha_l -  \sum_{l=1}^{p-1} \bt_l \alpha_l = - \sum_{l = r+1}^{p-1} \bt_l \alpha_l.
+\]
+La varianza de $\hatbb_{r}$ es:
+\[
+V(\hatbb_{r}) = \bT V(\hatbalpha_{r})\bT' =  \sigma^{2}\sum_{l=1}^{r} \lambda_{l}^{-1}\bt_{l}\bt_{l}' \leq \sigma^{2} \sum_{l=1}^{p-1}\lambda_l^{-1}\bt_{l}\bt_{l}' = V(\hatbb).
+\]
+Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de $\hatbb_r$. Finalmente, el ECM de $\hatbb_r$ está dado por:
+\[
+ECM(\hatbb_r) = \sigma^{2}\sum_{i=1}^{r}\frac{1}{\lambda_l} + \sum_{l=r+1}^{p-1}\alpha_l^2.
+\]
 
 ### Datos de cemento
 Antes de ajustar el modelo vamos a escalar las variables
@@ -530,7 +553,7 @@ Las estimaciones de los coeficientes $(\bb)$ para las variables escaladas:
 beta.CP =T.mat%*%c(PCR.cement$coefficients,0)
 beta.CP
 ```
-La matriz de varianza de $\bb_{PC}$ es:
+La matriz de varianza de $\bb_{r}$ es:
 ```{r cementRCP5,echo=T, warning=FALSE,message = FALSE}
 sigma2.pc = sum(PCR.cement$residuals^2)/(13-4)
 Var.b = sigma2.pc*T.mat%*%diag(c(1/lambda[1:3],0))%*%t(T.mat)

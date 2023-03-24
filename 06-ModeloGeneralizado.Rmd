@@ -11,12 +11,11 @@ colnames(DatosEsc) = c('log. dosis','expuestos', 'muertos')
 library(HSAUR2)
 data(epilepsy)
 ```
-### Modelos lineales
 Los modelos lineales se expresan como:
 $$
 \by=\bX\bbeta+\bvarepsi, \quad \text{donde}\quad \bvarepsi \sim N(\bZERO,\sigma^2\bI).
 $$
-Lo que implica que $\by \sim N(\bX\bbeta, \sigma^{2}\bI)$. Esto implica que:
+Por lo  que $\by \sim N(\bX\bbeta, \sigma^{2}\bI)$. Esto implica que:
 
 - hay una relación lineal entre el valor esperado de la variable respuesta y el conjunto de covariables,
 - la varianza de la variable respuesta es constante,
@@ -25,6 +24,8 @@ Lo que implica que $\by \sim N(\bX\bbeta, \sigma^{2}\bI)$. Esto implica que:
 Sin embargo, hay situaciones en donde estas propiedades no son factibles, incluso luego de hacer transformaciones sobre las variables. Por ejemplo, si la variable de respuesta es dicotómica $(y_{i}\in\{0,1\})$ no podríamos representar $E(y|\bx)$ como una función lineal. Además, la distribución asociada díficilmente serían normal. Aquí es mas conveniente, proponer una distribución de probabilidad diferente, por ejemplo, una Bernoulli, y ajustar un modelo lineal generalizado (GLM).
 
 Los GLM son una clase de modelos que permite modelar variables aleatorias con distribución de probabilidad diferentes a la normal.
+
+## Casos de estudio
 
 ### Mortalidad de escarabajos
 En un estudio de toxicología, se está interesado en la tasa de mortalidad de escarabajos expuestos a disulfuro de carbono gaseoso. La Tabla \@ref(tab:TmortEsc) muestra el número de escarabajos muertos después de cinco horas de exposición de este tóxico a diferentes concentraciones. Podemos ver que a medida que aumenta la dosis, la mortalidad va aumentando.
@@ -43,11 +44,6 @@ plot(logdose,dead/n,xlab='log dosis',ylab='proporción de muertos',ylim=c(0,1),p
 ```
 Una alternativa es utilizar una transformación que describa la relación de forma adecuada y que garantice que la respuesta se encuentre dentro de la región del parámetro. Es decir, que la estimación de la proporción de escarabajos muertos esté entre $0$ y $1$.
 
-<!--
-### Modelo logístico
-
-
--->
 ### ataques de epilepsia
 Los datos ```data(epilepsy)``` de la librería ```HSAUR2``` corresponden a un ensayo clínico para evaluar el efecto del fármaco progabida sobre los ataques epilépticos. Al inicio del estudio, los $59$ pacientes epilépticos fueron observados durante 8 semenas, y se registró el número de convulsiones. Luego, fueron aleatorizados al tratamiento con el fármaco Progabide ($31$ pacientes) o al grupo de placebo ($28$ pacientes). A los pacientes de ambos grupos se les observo durante cuatro períodos de 2 semanas y se registró el número de convulsiones.
 
@@ -78,6 +74,7 @@ boxplot(seizure.rate~treatment,data=epilepsy, xlab = "tratamiento",
 ```
 La Figura \@ref(fig:seizurePlot) muestra la relación del número de ataques epiléticos al final del estudio con las posibles covariables. Aquí vemos que no parece haber relación con la edad, hay una relación fuerte con el número de ataques pre-tratamiento, y que los pacientes del grupo placebo parecen  presentar un poco más de convulsiones.
 
+## Preambulo
 Antes de introducir los GLM, vamos a recordar algunos conceptos sobre distribuciones de probabilidad:
 
 ### Familia exponencial
@@ -153,10 +150,7 @@ por lo que $V(Y) = \nu(\mu) = \mu(1-\mu)/n$.
 
 Para la distribución Poisson, tenemos que $V(Y) = \nu(\mu) = \mu$. Es decir, la varianza es igual a la media. Mientras que, para la distribución normal, la media y la varianza son parámetros independientes.
 
-
-
-## Estimador de máxima verosimilitud
-
+### Estimador de máxima verosimilitud
 Se asume que $Y\sim f(y,\btheta)$ y estamos interesados en estimar $\btheta$. Para ello tomamos una muestra independiente $(y_{1},y_{2},...,y_{n})$. Por lo que, la **función de verosimilitud** está definida como:
 $$
 L(\btheta)=\prod_{i=1}^nf(y_{i};\btheta).
@@ -173,7 +167,7 @@ $$
 U(\btheta)=\frac{\partial\ell(\btheta)}{\partial\btheta}=\bZERO,
 $$
 
-para $\btheta$. Es necesario verificar si la solución corresponde a un máximo de $\elll(\btheta)$, evaluando si la matriz de segundas derivadas **(matriz Hessiana)**:
+para $\btheta$. Es necesario verificar si la solución corresponde a un máximo de $\ell(\btheta)$, evaluando si la matriz de segundas derivadas **(matriz Hessiana)**:
 
 $$
 H(\btheta)=\frac{\partial^2\ell(\btheta)}{\partial\btheta\partial\btheta^{'}},
@@ -182,7 +176,6 @@ $$
 evaluada en $\btheta=\widehat{\btheta}$, es negativa-definida.
 
 #### Propiedades asintóticas de los MLEs
-
 $\widehat{\btheta}$ es asintóticamente $(n\to \infty)$ insesgado. Esto es, $E(\widehat{\btheta})=\btheta$ cuando $n\to \infty$. La varianza asintótica $(n\to \infty)$ de $\widehat{\btheta}$ se calcula como la inversa de **la matriz de información**:
 
 $$
@@ -194,7 +187,7 @@ $$
  
  * **Invarianza:**si $\widehat{\btheta}$ es el MLE de $\btheta$, entonces $g(\widehat{\btheta})$ es el  MLE de $g(\btheta)$.
  
-#### Métodos iterativos de maximización
+### Métodos iterativos de maximización
 En algunos casos no es posible encontrar los MLEs de forma analítica, por lo que debemos hacerlo de forma iterativa. Los métodos que vamos a utilizar están basados en expansiones de series de Taylor.
 
 <!--
@@ -235,13 +228,11 @@ Se asume que se cuenta con $n$ observaciones independientes $(y_{i},...,y_{n})$ 
 
 * La función de verosimilitud y funciones score.
 
-* distribución asintótica de los estimadores de los parámetros del modelo
+* distribución asintótica de los estimadores de los parámetros del modelo.
 
 * Algoritmo para ajustar el modelo.
 
 Por ejemplo, para los datos de los escarabajos podemos asumir que el número de escarabajos que mueren sigue una distribución binomial. Mientras que en el caso del ensayo clínico en epilepsia, se podría asumir que el número de ataques epilépticos sigue una distribución Poisson.
-
-#### Familia exponencial
 
 ### Predictor lineal
 Para cada observación $i$, tenemos un conjunto de covariables observadas. Esto es:
@@ -257,7 +248,6 @@ $$
 
 ### Función de enlace
 Sea:
-
 $$
 E(Y|\bx_{i})=\mu_{i}, \quad i=1,...,n.
 $$
@@ -267,24 +257,31 @@ En algunas distribuciones,$\mu_{i}$ está acotada en un intervalo. Por ejemplo, 
 $$
 \mu_{i}=g^{-1}(\eta_{i})=g^{-1}(\bx_{i}^{'}\bbeta),
 $$
-
 donde, la función $g(\cdot)$ es monótona y diferenciable. Generalmente, $g(\cdot)$ esta determinada por la distribución que se asume para $Y$.
 
 ### Ejemplos de GLM
-#### modelo logístico
-Definiendo $y_{i}=\sum_{i=1}^ny_{ij}/n_{i}$ (la proporción de éxitos en $n_i$ ensayos independientes), tenemos que:
+#### modelo logístico para la mortalidad de escarabajos
+Sea:
+\[
+y_{ij} = \begin{cases}
+1 & \mbox{ si el escarabajo \textit{j} expuesto a la dosis \textit{i} muere,} \\
+0 & \mbox{ si lo contrario.}
+\end{cases}
+\]
+Por lo que, para $i$-ésima dosis, el número de escarabajos que muere es igual a $\sum_{j=1}^{n_i} y_{ij}$. Además, asumiendo independencia, podemos decir que:
+\[
+\sum_{j=1}^{n_i} y_{ij} \sim \mbox{binomial} (n_{i},\pi_{i}), i=1,\ldots,n_i,
+\]
+donde $0 < \pi_i < 1$ depende de la dosis. Definiendo $y_{i}=\sum_{i=1}^{n}y_{ij}/n_{i}$ (la proporción de escarabajos muertos para la dosis $i$), tenemos que:
+\[
+E(y_{i}| \bx_{i}) = \pi_{i} \mbox{ y }V(y_{i}| \bx_{i}) = \pi_{i}(1-\pi_{i})/n_{i}.
+\]
 
-$$
-n_{i}y_{i}\sim \mbox{binomial}(n_{i},\pi_{i}), \quad i=1,...,n, \quad \text{donde} \quad \pi_{i}=g(\bx_{i},\bbeta).
-$$
-
-Entonces: $E(y_{i}|\bx_{i})=\pi_{i}$ y $V(y_{i}|\bx_{i})=\pi_{i}(1-\pi_{i})/n_{i}$. El modelo ligístico es un GLM que asume:
-
-$$
-\pi_{i}=g^{-1}(\bx_{i},\bbeta)=\frac{exp(\bx_{i}^{'}\bbeta)}{1+exp(\bx_{i}^{'}\bbeta)}=\frac{1}{1+exp(-\bx_{i}^{'}\bbeta)}
-$$
-
-Por lo que: $g(\pi_{i})=log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)=\bx_{i}^{'}\bbeta$. Esta función recibe el nombre de **función logit** y su forma la podemos ver gráficamente en la Figura \@ref(fig:logfun). Como vemos, está función está acotada entre $0$ y $1$, garantizando que las probabilidades estimadas estén en este rango, y tiene forma de 'S'.
+Aquí estamos interesados en modelar $\pi_i$ en función de la dosis. Dado que $0 \leq \pi_i \leq 1$, se podría proponer que:
+\[
+\pi_{i} = g^{-1}(\mbox{dosis},\bbeta) =  \frac{\exp(\beta_0 + \log \mbox{dosis}_i\beta_1)}{1+\exp(\beta_0 + \log \mbox{dosis}_i\beta_1)} =\frac{\exp(\eta_i)}{1+\exp(\eta_i)}.
+\]
+Por lo que $g(\pi_{i}) = \log \left( \frac{\pi_{i}}{1-\pi_{i}}\right) = \eta_i$. Esta función recibe el nombre de función logit y su forma la podemos ver gráficamente en la Figura \@ref(fig:logfun). Como vemos, está función está acotada entre $0$ y $1$, garantizando que las probabilidades estimadas estén en este rango, y tiene forma de 'S'.
 
 ```{r logfun, echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Función logística"}
 x= seq(from=-8,to=8,length.out = 1000)
@@ -293,36 +290,27 @@ abline(h=0,lty=2,lwd=1)
 abline(h=1,lty=2,lwd=1)
 ```
 
-Este modelo se puede utilizar para estimar la probabilidad de que el escarabajo muera en función de la concentración de disulfuro de carbono gaseoso.
-
-#### modelo Poisson
+#### modelo Poisson para el número de ataque epilépticos
 Aquí asumimos que:
 
 $$
-y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda_{i}=g(\bx_{i},\bbeta).
+y_{i}\sim Poisson(\lambda_{i}), \quad i=1,...,n,\quad \text{donde} \quad \lambda_{i}=g(\eta_i),
 $$
-
-Entonces, $E(y_{i}|\bx_{i})=V(y_{i}|\bx_{i})=\lambda_{i}$. Dado que $\lambda_ i > 0$, se puede asumir que:
+donde $\eta_i = \beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i}.$ Entonces, $E(y_{i}|\bx_{i})=V(y_{i}|\bx_{i})=\lambda_{i}$. Dado que $\lambda_ i > 0$, se puede asumir que:
 $$
 \lambda_{i}=g^{-1}(\bx_{i},\bbeta)=exp(\bx_{i}^{'}\bbeta).
 $$
 
-Por lo que, $g(\lambda_{i})=log\lambda_{i}=\bx_{i}^{'}\bbeta$. La función de enlace escogida es logarítmica. 
-
-Este modelo puede ser una opción para estimar el número medio de ataques epiléticos de los pacientes del ensayo clínico en epilepsia.
-
-Un modelo lineal se puede representar como un GLM. Aquí asumimos que $y_i \sim N(\mu_i, \sigma^2)$, con $\mu_i = \bx_i'\bbeta$. Es decir, la función de enlace es la identidad.
+Por lo que, $g(\lambda_{i})=log\lambda_{i}=\bx_{i}^{'}\bbeta$. La función de enlace escogida es logarítmica.  Este modelo puede ser una opción para estimar el número medio de ataques epiléticos de los pacientes del ensayo clínico en epilepsia. 
 
 
-Otros ejemplos de distribuciones que se pueden utilizar son:
+#### Otros ejemplos
+Un modelo lineal se puede representar como un GLM. Aquí asumimos que $y_i \sim N(\mu_i, \sigma^2)$, con $\mu_i = \bx_i'\bbeta$. Es decir, la función de enlace es la identidad. Otros ejemplos de distribuciones que se pueden utilizar son:
 
-* **binomial negativa** para conteo con sobredispersión.
-
-* **beta-binomial** para ensayos Bernoulli correlacionados (sobredispersión).
-
-* **multinomial** para variables nominales (ordinales) con más de dos categorías.
-
-* **Weibull** para tiempos de falla.
+* **Modelo binomial-negativo** para conteo con sobredispersión.
+* **Modelo beta-binomial** para ensayos Bernoulli correlacionados (sobredispersión).
+* **Modelo multinomial** para variables nominales (ordinales) con más de dos categorías.
+* **Modelo Weibull** para tiempos de falla.
 
 
 ## Ajuste de un GLM
@@ -354,39 +342,6 @@ Para la distribución Poisson, $\eta_{i}=log\mu_{i}$ (función logarítmica), po
 
 Para la distribución binomial, $\eta_{i}=\log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)$ (función logit), por lo tanto: $\pi_{i}=\frac{\exp(\eta_{i})}{1+\exp(\eta_{i})}$.
 
-##### Mortalidad de escarabajos
-Para los datos de mortalidad de escarabajos, la variable respuesta es la proporción de escarabajos muertos, $y_{i}=\sum_{j=1}^{n_{i}}y_{ij}/n{i}$, donde $y_{ij}=1$ si el $j$-ésimo escarabajo asociado a la $i$-ésima concentración del tóxico está muerto, $y_{ij}=0$ si lo contrario.
-
-Podemos asumir que $y_i$ sigue una distribución binomial. Entonces, tenemos la siguiente función de densidad para $y_i$:
-$$
-f(n_{i}y_{i};\pi_{i})= \begin{pmatrix} n_{i}\\y_{i} \end{pmatrix}\pi_{i}^{y_{i}}(1-\pi_{i})^{(n_{i}-y_{i})}.
-$$
-
-El predictor lineal es $\eta_i = \beta_{0}+\beta_{1}\log\text{dosis}_{i}$. La función de enlace (logit) está definida como:
-
-$$
-log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)=\beta_{0}+\beta_{1}\log\text{dosis}_{i}.
-$$
-Por lo que:
-$$
-\pi_i = \frac{\exp(\beta_{0}+\beta_{1}\log\text{dosis}_{i})}{1+\exp(\beta_{0}+\beta_{1}\log\text{dosis}_{i})}.
-$$
-
-### Ataques epilépticos
-Para el ensayo clínico sobre epilepsia, la variable respuesta es número de ataques epilépticos. Dado que es un conteo, podemos asociar la variable respuesta con una distribución Poisson. La función de densidad es:
-$$
-f(y_{i};\mu_{i})=\frac{\mu_{i}^{y_{i}}\exp(-\mu_{i})}{y_{i}!}.
-$$
-
-El predictor lineal que podemos utilizar es $\eta_i = \beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i}$. La función de enlace (logarítmica) está definida como:
-
-$$
-\log\mu_{i}=\beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i}.
-$$
-Por lo que:
-$$
-\mu_{i}=\exp\left(\beta_{0}+\beta_{1}\text{treat}_{i}+\beta_{2}\text{base}_{i}+\beta_{3}\text{base}_{i}\text{treat}_{i} \right).
-$$
 ### Estimador por máxima verosimilitud para $\bbeta$
 dado que asumimos que la distribución de probabilidad asociada a la variable resputa pertenece a la familia exponencial, la función de log-verosimilitud está definida como:
 $$
@@ -491,13 +446,13 @@ $$
 
 Por lo tanto, por cada cambio unitario en $x$, los odds (`chances') de morir incrementan por un factor de $exp(\beta_1)$. Por un cambio en $x$ de $a$ a $a+\delta$, tenemos que $OR=\exp(\delta\beta_1)$.
 
-Para los datos de los escarabajos un cambio unitario en el log dosis es un grande, por lo que podríamos interpetra $\beta_1$ usando un aumento en la log dosis de $\delta=0.02$:
+Para los datos de los escarabajos un cambio unitario en el log dosis es muy grande, por lo que podríamos interpetra $\beta_1$ usando un aumento en la log dosis de $\delta=0.02$:
 
 $$
 \text{OR}=\exp ( 0.01\times  34.270) = 1.984
 5.
 $$
-Es decir, si el log de la concentración de aumenta en 0.02, entonces la probabilidad de que el escarabajo muera aumenta a casi el doble.
+Es decir, si el log de la concentración de aumenta en $0.02$, entonces la probabilidad de que el escarabajo muera aumenta casi el doble.
 
 #### Ataques epilépticos
 Para el ensayo clínico en epilepsia, el modelo propuesto es:
@@ -558,171 +513,105 @@ $$
 $$
 Si rechazamos $H_0$ podemos concluir que el tratamiento con Progabida tiene un efecto sobre el número de ataques epilépticos. Particularmente, si $\beta_1 < 0$, este fármaco reduce los episodios.
 
-Para un modelo con:
+Suponga que tenemos un modelo con el siguiente predictor lineal:
 $$
-\eta_i = \bx_1'\bbeta_1+\bx_2'\bbeta_2,
+\eta = \bx_{1}'\bbeta_1+\bx_{2}'\bbeta_2,
 $$
-podemos plantear las siguientes hipótesis:
+donde $\bx_{1 }= (1,x_{11},x_{12},\ldots,,x_{1,q-1})'$ y $\bx_{2}= (1,x_{21},x_{22},\ldots,,x_{2,p-q})'$ con vectores de covariables; $\bbeta_1$ y $\bbeta_2$ vectores de coeficientes de dimiensiones $q$ y $p-q$. Ahora, planteamos el siguiente sistema de hipótesis:
 $$
-\qquad H_0:\bbeta_2=\bZERO \qquad H_1:\bbeta_2 \ne \bZERO
+\qquad H_0:\bbeta_2=\bZERO \qquad H_1:\bbeta_2 \ne \bZERO.
 $$
-
 Para estimadores basados en verosimilitud, podemos utilizar los siguientes métodos:
+
+* Método de razón de verosimilitud.
 
 * Método del score (multiplicadores de Lagrange).
 
 * Método de Wald.
 
-* Método de razón de verosimilitud.
 
-<!--
-
-
-
-**Modelo completo:**$\boldsymbol\eta=\bX_1\bbeta_1+\bX_2\bbeta_2$.
-
-**Modelo restringido:**$\boldsymbol\eta_0=\bX_1\bbeta_1+\bX_2\bbeta_2^0.$
-
-En este caso, quiero probar:
-
+### Método de razón de verosimilitud
+La idea de este método es comparar la verosimilitud bajo dos condiciones: ($\ell_0$) la máxima alcanzada bajo $H_0$ (es decir, asumiendo que $\bbeta_2=\bZERO$) y ($\ell_1$) la evaluada en la estimación maximo verosimil, es decir $L(\hatbbeta)$. El estadístico de prueba usado es:
 $$
-\qquad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2 \ne \bbeta_2^0
+LR = 2\log \left( \frac{L(\hatbbeta)}{L(\hatbbeta_0)} \right) = 2 (\ell_1 - \ell_0).
 $$
-donde $\bbeta_2$ es de dimensión $q$ y $\bbeta_2^0$ es de dimensión $p-q$
+Asumiendo que $H_0$ es cierta, asintóticamente tenemos que $LR \sim \chi^{2}_{p-q}$. Por lo que, rechazamos $H_0$ con un nivel de significancia de $\alpha$, si $LR > \chi^{2}_{1-\alpha,p-q}$.
 
-#### Prueba del score
-
-**Hipótesis:**
-
+### Método de Wald
+Asintóticamente, tenemos que $\hatbbeta\sim N[\bbeta,\bI(\bbeta)^{-1}]$. por lo tanto se tiene que: 
+\[
+(\hat{\bbeta}-\bbeta)'\bI(\bbeta)(\hat{\bbeta}-\bbeta)\sim\chi^2_{p}.
+\]
+Entonces, para probar $H_0: \bbeta_2 = \bbeta_2^{0}$, se puede utilizar el siguiente estadístico de prueba:
 $$
-\qquad H_0:\beta_2=\beta_2^0 \qquad \beta_2\ne\beta_2^0 
+W = \left(\hatbbeta_2-\bbeta_2^{0}\right)'\left[V\left(\hatbbeta_2\right)\right]^{-1}\left(\hatbbeta_2-\bbeta_2^0\right).
 $$
+Si $H_0$ es cierta, entonces $W \sim \chi^2_{p-q}$. Por lo que, rechazamos $H_0$ con un nivel de significancia de $\alpha$, si $W > \chi^{2}_{1-\alpha,p-q}$.
 
-Asintóticamente,$U(\bbeta)\sim N[\bZERO,\bI(\beta)]$, entonces:
-
-$$
-U(\bbeta)'\bI(\beta)^{-1}U(\bbeta)\sim \chi^2.
-$$
-
-**Estadístico de prueba:**
-
-$$
-U_2(\hat{\beta}^0)'\left\{V\left[U_2(\hat{\beta}^0)\right]\right\}^{-1}U_2(\hat{\beta}^0)\sim \chi^2_{p-q},
-$$
-donde $\hat{\beta}^0=(\hat{\beta}_1,\beta^0_2)'.$
-
-#### Prueba de wald
-
-**Hipótesis:**
-
-$$
-\qquad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2 \ne \bbeta_2^0
-$$
-
-Asintóticamente, $\hat{\bbeta}\sim N[\bbeta,\bI(\bbeta)^{-1}]$. por lo tanto:
-
-$$
-(\hat{\bbeta}-\bbeta)'\bI(\bbeta)(\hat{\bbeta}-\bbeta)\sim\chi^2.
-$$
-
-**Estadístico de prueba:**
-
-$$
-\left(\hat{\bbeta}_2-\bbeta_2^0\right)'\left[V\left(\hat{\bbeta}_2\right)\right]^{-1}\left(\hat{\bbeta}_2-\bbeta_2^0\right)\sim \chi^2_{p-q}.
-$$
-
-#### Prueba de razón de verosimilitud
-
-**Hipótesis:**
-
-$$
-\quad H_0:\bbeta_2=\bbeta_2^0 \qquad H_1:\bbeta_2\ne\bbeta_2^0
-$$
-
-Asintóticamente (y usando aproximación por series Taylor de orden 1):
-
-$$
-2\left[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)\right]\sim\chi^2.
-$$
-
-**Estadístico de prueba:**
-
-$$
-2\left[\cl(\hat{\bbeta})-\cl(\hat{\bbeta}^0)\right]
-$$
-
-donde $\hat{\bbeta}^0=(\hat{\bbeta}_1,\bbeta_2^0)'.$
 
 #### Ejemplo ataques epilépticos
-
-```{r, echo=FALSE, include=TRUE, results="asis"}
-mathy.df <- data.frame(b0=c("Intercepto",                  "tratamiento","base","tratamientoxbase"),                      b1=c("$\\beta_0$","$\\beta_1$","$\\beta_2$","$\\beta_3$"),
-b2=c(1.2453,-0.3636,0.0209,0.0009),
-b3=c(0.1176,0.1625,0.0019,0.0023),
-b4=c(10.59,-2.24,10.94,0.37),                      
-b5=c(0.0000,0.0253,0.0000,0.7083))
-
-colnames(mathy.df)<-c("Efecto","Parm.","est.","err. std.","Valor-z","Valor-p")
-
-kable(mathy.df, escape=FALSE,format = "html", booktabs = T)
-```
-
-Prueba de hipótesis:
+En este caso, podríamos plantear el siguiente sistema de hipótesis:
 $$
-\qquad H_0:\beta_1=\beta_3=0
+\qquad H_0:\beta_1=\beta_3=0.
 $$
-```{r, echo=FALSE, include=TRUE, results="asis"}
-mathy.df <- data.frame(b0=c("Razón de verosimilitud",                  "Score","Wald"),                      
-b1=c(10.405,10.418,10.325),
-b2=c(2,2,2),
-b3=c(0.005502,0.005466,0.005726))
+Es decir, no hay ningún efecto del tratamiento para la epilépsia (no es estadísticamente diferente al placebo). La prueba de razón de verosimilitud se puede implementar de las siguiente forma:
 
-colnames(mathy.df)<-c("Prueba","Estadístico","g.l.","Valor-p")
-
-kable(mathy.df, escape=FALSE,format = "html", booktabs = T)
+```{r ajusteSeizureLRT,echo=TRUE}
+modPois0=glm(seizure.rate~base,family=poisson,
+            data =epilepsy)
+anova(modPois0,modPois,test='LRT')
 ```
+Este resultado sugiere que hay un efecto del tratamiento. Es decir, el Progabida tiene un efecto significativo para reducir los ataques epilépticos. 
+
+La prueba de Wald la podemos implementar de la siguiente forma:
+```{r ajusteSeizureWald,echo=TRUE}
+library(aod)
+VarMat = vcov(modPois)
+Coef = coefficients(modPois)
+wald.test(VarMat,Coef,Terms=c(2,4))
+```
+La prueba de Wald proporciona resultados similares a la de razón de verosimilitud y llegamos a la misma conclusión.
 
 ## intervalos de confianza
 
-A partir de los estadísticos de prueba anteriores se pueden encontrar intervalos de confianza para $\hat{\bbeta}$. Por ejemplo usando el estadístico de Wald:
+A partir de los estadísticos de prueba anteriores se pueden encontrar intervalos de confianza para $\bbeta$. Por ejemplo usando el estadístico de Wald:
 
 $$
-\hat{\beta}\pm z_{\alpha/2}SE(\hat{\beta})
+\widehat{\beta}_j\pm z_{\alpha/2}\sqrt{V(\widehat{\beta}_j)}.
 $$
 
-Otra alternativa es a partir de los perfiles de log-verosimilitud, el IC está definido a partir de los valores de $\beta_0$ que satisfacen:
+Otra alternativa es a partir de los perfiles de log-verosimilitud, el intervalo del $(1-\alpha)$\% de confianza para $\beta_j$ está definido a partir de los valores de $\beta^0_j$ que satisfacen:
 
 $$
--2[\cl(\beta_0,\hat{\psi}(\beta_0))-\cl(\hat{\bbeta,\hat{\bpsi}})]<\chi^2_1,
+-2[\ell(\hatbbeta)-\ell(\hatbbeta^{0})]<\chi^2_{1-\alpha,1},
 $$
 
-donde $\psi$ son los demás parámetros del modelo.
+donde $\ell(\hatbbeta^{0})$ es la log-verosimilitud donde $\beta_j$ está restringido a los valores de $\beta_j^0$.
 
 ### Intervalo de confianza para la media
 
-Dado que $\hat{\eta_0}=\bx_0'\hat{\bbeta}$ ,por lo tanto (asintóticamente):
+Dado que $\widehat{\eta}_0=\bx_0'\hatbbeta$ ,por lo tanto (asintóticamente):
 
 $$
-\hat{\eta_0}\sim N[\bx_0'\bbeta,\bx_0'\bI(\bbeta)^{-1}\bx_0].
+\widehat{\eta}_0\sim N[\bx_0'\bbeta,\bx_0'\bI(\bbeta)^{-1}\bx_0].
 $$
 
-Entonces un intervalo de confianza para $\hat{\eta_0}$ es:
+Entonces un intervalo de confianza para $\eta_0$ es:
 
 $$
-\hat{\eta_0}\pm z_{\alpha/2}\sqrt{\bx_0'I(\bbeta)^{-1}\bx_0}
+\widehat{\eta}_0\pm z_{\alpha/2}\sqrt{\bx_0'I(\hatbbeta)^{-1}\bx_0}
 $$
 
 Para encontrar el intervalo de confianza para $\mu_i$, se hace la transformación $g^{-1}$ a los límites de confianza.
 
 #### Ejemplo mortalidad de escarabajos
+La estimación de la probabilidad de que el escarabajo muera se puede observar en la Figura \@{fig:grafICesc}.
 
-```{r grafintervalosescarabajos, include=TRUE}
-summary(modBin)
+```{r grafICesc, fig.height = 4, fig.width = 6,fig.align = "center", include=TRUE,fig.cap = "Datos de mortalidad de escarabajos. Intervalo del 95% de confianza para la probabilidad de que el escarabajo muera.",warning=FALSE,message = FALSE}
 
 pred.link = predict(modBin,newdata = pred.x,type='link',se.fit = T)
-
-lim.sup = ilogit(pred.link$fit + qnorm(0.975)*pred.link$se.fit)
-lim.inf = ilogit(pred.link$fit - qnorm(0.975)*pred.link$se.fit)
+lim.sup = faraway::ilogit(pred.link$fit + qnorm(0.975)*pred.link$se.fit)
+lim.inf = faraway::ilogit(pred.link$fit - qnorm(0.975)*pred.link$se.fit)
 
 plot(logdose,dead/n,xlab='log dosis',ylab='proporción de escarabajos muertos',ylim=c(0,1))
 lines(pred.x$logdose,pred)
@@ -733,29 +622,35 @@ lines(pred.x$logdose,lim.inf, col=2)
 ```
 
 #### Ataques epilépticos
+Los intervalos del 95\% de confianza para los parámetros del modelo son:
 ```{r}
-summary(modPois)
+confint(modPois)
 ```
+Aquí vemos que el efecto del tratamiento está entre $-0.4$ y $-0.09$. Es decir, que la reducción del número de ataques epilépticos está entre el 10\% y el 49\%. Mientras que, como ya se mencionó antes, el efecto interacción no tiene un aporte significativo.
 
+La media del número de ataques epiléptico por 2 semanas se puede observar en la Figura \@ref(fig:grafICepilep). Se puede observar que las estimaciones de la media para el grupo tratamiento es inferior que para el grupo control.
 
-```{r grafintervalosepilep, fig.align='center',fig.cap="Ajuste del modelo Poisson. Placebo(negro), Progabide(rojo)"}
-plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
-     xlab="Num. ataques epiléptico(pre tratamiento)",
-     ylab = "Num. ataques epiléptico(4ta semana)")
-lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)
-lines(x,predpois[order(y$treatment, y$base)[51:100]],col=2, lwd = 2)
-
-pred.link = predict(modPois,newdata = y,type='link',se.fit = T)
-
-lim.sup = exp(pred.link$fit + qnorm(0.975)*pred.link$se.fit)
-lim.inf = exp(pred.link$fit - qnorm(0.975)*pred.link$se.fit)
-
-lines(x,lim.sup[order(y$treatment, y$base)[1:50]], lty=2)
-lines(x,lim.inf[order(y$treatment, y$base)[1:50]], lty=2)
-
-lines(x,lim.sup[order(y$treatment, y$base)[51:100]],col=2, lty=2)
-lines(x,lim.inf[order(y$treatment, y$base)[51:100]],col=2, lty=2)
-
+```{r grafICepilep, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Datos de epilépsia. Estimación de la media de ataques epilépticos por 2 semanas en el grupo placebo(negro) y el grupo tratamiento(rojo)."}
+predx1 = data.frame(base=seq(6,151,length.out = 100),treatment='placebo')
+predx2 = data.frame(base=seq(6,151,length.out = 100),treatment='Progabide')
+predy1 = predict(modPois,newdata = predx1,type='response')
+predy2 = predict(modPois,newdata = predx2,type='response')
+predy1Link = predict(modPois,newdata = predx1,type='link',se.fit = T)
+predy2Link = predict(modPois,newdata = predx2,type='link',se.fit = T)
+lwr1 = exp(predy1Link$fit - qnorm(0.975)*predy1Link$se.fit)
+upr1 = exp(predy1Link$fit + qnorm(0.975)*predy1Link$se.fit)
+lwr2 = exp(predy2Link$fit - qnorm(0.975)*predy2Link$se.fit)
+upr2 = exp(predy2Link$fit + qnorm(0.975)*predy2Link$se.fit)
+plot(epilepsy4$base,epilepsy4$seizure.rate,
+ylab='# ataques epilépticos (4ta semana)',
+xlab='# ataques epilépticos (pre tratamiento)',
+col=as.double(epilepsy4$treatment))
+lines(predx1$base,predy1,lwd=2)
+lines(predx1$base,predy2,col=2,lwd=2)
+lines(predx1$base,lwr1,lty=2)
+lines(predx1$base,upr1,lty=2)
+lines(predx2$base,lwr2,lty=2,col=2)
+lines(predx2$base,upr2,lty=2,col=2)
 ```
 
 ## Devianza

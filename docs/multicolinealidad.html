@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 3 Multicolinealidad | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-02-17" />
+<meta name="date" content="2023-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -253,67 +253,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a>
+<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#casos-de-estudio"><i class="fa fa-check"></i><b>6.2</b> Casos de estudio</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelos-lineales"><i class="fa fa-check"></i><b>6.1.1</b> Modelos lineales</a></li>
-<li class="chapter" data-level="6.1.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.1.2</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="6.1.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.1.3</b> ataques de epilepsia</a></li>
-<li class="chapter" data-level="6.1.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.1.4</b> Familia exponencial</a></li>
-<li class="chapter" data-level="6.1.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.1.5</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.2.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.2.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="6.2.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.2.2</b> ataques de epilepsia</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.2</b> Estimador de máxima verosimilitud</a></li>
-<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.3</b> Modelo lineal generalizado (GLM)</a>
+<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#preambulo"><i class="fa fa-check"></i><b>6.3</b> Preambulo</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.3.1</b> Componente aleatorio</a></li>
-<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.3.2</b> Predictor lineal</a></li>
-<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.3.3</b> Función de enlace</a></li>
-<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.3.4</b> Ejemplos de GLM</a></li>
+<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.3.1</b> Familia exponencial</a></li>
+<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.3.2</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.3.3</b> Estimador de máxima verosimilitud</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización"><i class="fa fa-check"></i><b>6.3.4</b> Métodos iterativos de maximización</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4</b> Ajuste de un GLM</a>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.4</b> Modelo lineal generalizado (GLM)</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.4.1</b> Especificación del modelo</a></li>
-<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.2</b> Ataques epilépticos</a></li>
-<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.3</b> interpretación de parámetros - modelo logístico</a></li>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.4.1</b> Componente aleatorio</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.4.2</b> Predictor lineal</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.4.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4.4</b> Ejemplos de GLM</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.5</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.5</b> Ajuste de un GLM</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.5.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.5.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-por-máxima-verosimilitud-para-boldsymbol-beta"><i class="fa fa-check"></i><b>6.5.2</b> Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
+<li class="chapter" data-level="6.5.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.5.3</b> interpretación de parámetros - modelo logístico</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
+<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.6</b> Pruebas de hipótesis</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#casos-de-estudio"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#mortalidad-de-escarabajos-2"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
-<li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="6.6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-razón-de-verosimilitud"><i class="fa fa-check"></i><b>6.6.1</b> Método de razón de verosimilitud</a></li>
+<li class="chapter" data-level="6.6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-wald"><i class="fa fa-check"></i><b>6.6.2</b> Método de Wald</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
+<li class="chapter" data-level="6.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>6.7</b> intervalos de confianza</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
-<li class="chapter" data-level="7.2.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
+<li class="chapter" data-level="6.7.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalo-de-confianza-para-la-media"><i class="fa fa-check"></i><b>6.7.1</b> Intervalo de confianza para la media</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-logístico-2"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
+<li class="chapter" data-level="6.8" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#devianza"><i class="fa fa-check"></i><b>6.8</b> Devianza</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+<li class="chapter" data-level="6.8.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.8.1</b> El estadístico chi-cuadrado de Pearson</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#ejemplo-mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.4.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="6.9" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.9</b> Bondad de ajuste</a></li>
+<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pseudo-r2"><i class="fa fa-check"></i><b>6.10</b> Pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.11" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.11</b> Selección de variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
-<li class="chapter" data-level="7.6" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<li class="chapter" data-level="7" data-path="modelo-logístico.html"><a href="modelo-logístico.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
+<li class="chapter" data-level="7.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.1.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
+<li class="chapter" data-level="7.2.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-logístico-1"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#ejemplo-mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.4.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="modelo-logístico.html"><a href="modelo-logístico.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
+<li class="chapter" data-level="7.6" data-path="modelo-logístico.html"><a href="modelo-logístico.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html"><i class="fa fa-check"></i><b>8</b> Modelo para conteos</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
+<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-2"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
 <li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#datos-de-cáncer-de-pulmón"><i class="fa fa-check"></i><b>8.1.2</b> Datos de cáncer de pulmón</a></li>
 <li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-1"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
+<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-conteo-con-offset"><i class="fa fa-check"></i><b>8.2.1</b> Modelo de conteo con offset</a></li>
 </ul></li>
@@ -329,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html"><i class="fa fa-check"></i><b>9</b> Modelo lineal mixto</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-2"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
+<li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-3"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#peso-al-nacer-de-corderos"><i class="fa fa-check"></i><b>9.1.1</b> Peso al nacer de corderos</a></li>
 <li class="chapter" data-level="9.1.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#crecimiento-craneofacial-de-ratas"><i class="fa fa-check"></i><b>9.1.2</b> Crecimiento craneofacial de ratas</a></li>
@@ -528,20 +547,43 @@ Por lo que el estimador de <span class="math inline">\(\boldsymbol b\)</span> es
 <span class="math display">\[
 \widehat{\boldsymbol b}= \boldsymbol R^{-1}\boldsymbol Z&#39;\boldsymbol y^{*}, \mbox{donde }\boldsymbol R= \boldsymbol Z&#39;\boldsymbol Z.
 \]</span>
-Se puede demostrar que los elementos de la diagonal de la matriz <span class="math inline">\(\boldsymbol R^{-1}\)</span> son:
+La Varianza de <span class="math inline">\(\widehat{\boldsymbol b}\)</span> está determinada por:
 <span class="math display">\[
-\{\boldsymbol R^{-1}\}_{jj} = \frac{1}{1-R^{2}_{j}}, j=1,\ldots,p-1,
+V(\widehat{\boldsymbol b})=\sigma^{2}\boldsymbol R^{-1} = \sigma^{2} \begin{pmatrix}
+1 &amp; \boldsymbol r&#39; \\ \boldsymbol r&amp; \boldsymbol R_{22},
+\end{pmatrix}^{-1},
 \]</span>
-donde <span class="math inline">\(R^{2}_{j}\)</span> es el coeficiente de determinación de la regresión de <span class="math inline">\(z_{j}\)</span> en función de las <span class="math inline">\((p-2)\)</span> covariables restantes. Es decir, coeficiente de determinacón del siguiente ajuste:
+donde <span class="math inline">\(\boldsymbol r= (r_{12},r_{13},\ldots,r_{1,p-1})\)</span> y <span class="math inline">\(\boldsymbol R_{22}\)</span> es la matriz <span class="math inline">\(\boldsymbol R\)</span> eliminando la primer fila y columna. Particularmente para <span class="math inline">\(\widehat{b}_1\)</span>, tenemos que:
 <span class="math display">\[
-z_{ij} = z_{i1}\alpha_1 + z_{i2}\alpha_2 + \ldots + z_{i,j-1}\alpha_{j-1} + z_{i,j+1}\alpha_{j+1} + \ldots + z_{i,p-1}\alpha_{p-1} + \varepsilon_i.
+V(\widehat{b}_1) = \sigma^{2}\frac{1}{1 - \boldsymbol r&#39;\boldsymbol R_{22}^{-1}\boldsymbol r}.
 \]</span></p>
-<p>Por lo que la varianza del estimador de <span class="math inline">\(\boldsymbol b\)</span> es:
+<p>Ahora asumamos que hacemos una regresión de <span class="math inline">\(Z_1\)</span> en función de los demás regresores. Esto es:
 <span class="math display">\[
-V(\widehat{b}_{j}) = \frac{\sigma^{2}}{1-R^{2}_{j}}.
+z_1 = \alpha_1 z_2 + \alpha_2 z_3 + \ldots + \alpha_{p-2} z_{p-1}+\varepsilon_1.
 \]</span>
-Por lo que, si <span class="math inline">\(z_j\)</span> se puede expresar como una combinación lineal aproximada de las demás covariables, la varianza del estimador de <span class="math inline">\(b_j\)</span> Si <span class="math inline">\(R^{2}_{j} \rightarrow 1\)</span>, entonces <span class="math inline">\(V(\widehat{b}_{j})\rightarrow \infty\)</span>.</p>
-<p>La multicolinealidad también produce que los estimadores <span class="math inline">\(\widehat{b}_{j}\)</span>, para <span class="math inline">\(j=1,\ldots,p-1\)</span>, sean muy grandes en valor absoluto. Considere:
+Las sumas de cuadrados totales y de los residuos de este modelo son:
+<span class="math display">\[
+SST = \sum_{i=1}^{n}z_1^2 = 1,
+\]</span>
+y
+<span class="math display">\[
+SS_{\mbox{res}}= SST - SS_{\mbox{reg}}= 1 - \boldsymbol z_1&#39; \boldsymbol Z_{(1)}(\boldsymbol Z_{(1)}&#39;\boldsymbol Z_{(1)})^{-1}\boldsymbol Z_{(1)}&#39;\boldsymbol z_1= 1 - \boldsymbol r&#39;R_{22}^{-1}\boldsymbol r,
+\]</span>
+respectivamente. Además, el coeficiente de determinación es:
+<span class="math display">\[
+R^{2}_1 = 1 - \frac{SS_{\mbox{res}}}{SS_{\mbox{T}}} = \boldsymbol r&#39;R_{22}^{-1}\boldsymbol r,
+\]</span>
+donde <span class="math inline">\(\boldsymbol Z_{(1)}\)</span> es la matriz <span class="math inline">\(\boldsymbol Z\)</span> sin la primer columna.</p>
+<p>De aquí obtenemos que:
+<span class="math display">\[
+V(\widehat{b}_1) = \sigma^{2} \frac{1}{1-R^{2}_1}.
+\]</span>
+De forma similar se puede demostrar que:
+<span class="math display">\[
+V(\widehat{b}_j) = \sigma^{2} \frac{1}{1-R^{2}_j}, j=1,\ldots,p-1,
+\]</span>
+donde <span class="math inline">\(R^{2}_{j}\)</span> es el coeficiente de determinación de la regresión de <span class="math inline">\(z_{j}\)</span> en función de las <span class="math inline">\((p-2)\)</span> covariables restantes. Por lo que, si <span class="math inline">\(R^{2}_{j} \rightarrow 1\)</span>, entonces <span class="math inline">\(V(\widehat{b}_{j})\rightarrow \infty\)</span>.</p>
+<p>La multicolinealidad también produce que los estimadores <span class="math inline">\(\widehat{b}_{j}\)</span> sean muy grandes en valor absoluto. Considere:
 <span class="math display">\[
 L_{1}^{2} = (\widehat{\boldsymbol b}- \boldsymbol b)&#39;(\widehat{\boldsymbol b}- \boldsymbol b) = \sum_{j=1}^{p}(\widehat{b}_{j}-b_{j})^{2}.
 \]</span>
@@ -587,7 +629,7 @@ En los datos de grasa corporal, el problema es causado por la alta correlación 
 </ul>
 <div id="factores-de-inflación-de-varianza" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Factores de inflación de varianza<a href="multicolinealidad.html#factores-de-inflación-de-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Dado que <span class="math inline">\(V(\widehat{\boldsymbol b}) = \sigma^2\boldsymbol R^{-1}\)</span>, la diagonal de <span class="math inline">\(\boldsymbol R^{-1}\)</span> es un buen indicador de multicolinealidad:
+<p>Dado que <span class="math inline">\(V(\widehat{\boldsymbol b}) = \sigma^2\boldsymbol R^{-1}\)</span>, los elementos de la diagonal de <span class="math inline">\(\boldsymbol R^{-1}\)</span> son buenos indicadores de multicolinealidad:
 <span class="math display">\[
 \{\boldsymbol R^{-1}\}_{jj} = (1-R_{j}^{2})^{-1},
 \]</span>
@@ -711,18 +753,18 @@ Si se agrupan los <span class="math inline">\(\pi_{ij}\)</span> en una matriz <s
 <p>El estimador de ridge tiene como objetivo minimizar la siguiente suma de cuadrados penalizada:
 <span class="math display">\[\begin{equation}
 \begin{split}
-S_{R}(\boldsymbol b) &amp;= \sum_{i=1}^{n}(y_{i} - \boldsymbol z_{i}&#39;\boldsymbol b)^{2} + k \sum_{j=1}^{p-1}\boldsymbol b_{j}^2 \\
+S_{k}(\boldsymbol b) &amp;= \sum_{i=1}^{n}(y_{i} - \boldsymbol z_{i}&#39;\boldsymbol b)^{2} + k \sum_{j=1}^{p-1}\boldsymbol b_{j}^2 \\
 &amp;= (\boldsymbol y- \boldsymbol Z\boldsymbol b)&#39;(\boldsymbol y- \boldsymbol Z\boldsymbol b) + k ||\boldsymbol b||_{2}^{2},
 \end{split}
 \nonumber
 \end{equation}\]</span>
 con <span class="math inline">\(k \geq 0\)</span> (el cual es seleccionado por el investigador). Lo que lleva a las siguientes ecuaciones normales:
 <span class="math display">\[
-(\boldsymbol R+ k \boldsymbol I)\widehat{\boldsymbol b}_{R} = \boldsymbol Z&#39;\boldsymbol y.
+(\boldsymbol R+ k \boldsymbol I)\widehat{\boldsymbol b}_{k} = \boldsymbol Z&#39;\boldsymbol y.
 \]</span>
 La solución de las ecuaciones normales lleva al estimador ridge:
 <span class="math display">\[
-\widehat{\boldsymbol b}_{R} = (\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol Z&#39;\boldsymbol y.
+\widehat{\boldsymbol b}_{k} = (\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol Z&#39;\boldsymbol y.
 \]</span>
 Note que, incluso si <span class="math inline">\(\boldsymbol R\)</span> es no es invertible, un <span class="math inline">\(k &gt; 0\)</span> resuelve el problema. Además, la solución depende de <span class="math inline">\(k\)</span> (por cada <span class="math inline">\(k\)</span>, hay una estimación diferente).</p>
 <p><span class="math inline">\(k\)</span> es un parámetro de contracción:</p>
@@ -730,29 +772,35 @@ Note que, incluso si <span class="math inline">\(\boldsymbol R\)</span> es no es
 <li>si <span class="math inline">\(k \rightarrow 0\)</span>, encontramos que <span class="math inline">\(\widehat{\boldsymbol b}_{R} \rightarrow \widehat{\boldsymbol b}\)</span>.</li>
 <li>si <span class="math inline">\(k \rightarrow \infty\)</span>, encontramos que <span class="math inline">\(\widehat{\boldsymbol b}_{R} \rightarrow \boldsymbol 0\)</span> (excepto el intercepto).</li>
 </ul>
-<p>Ahora veamos las propiedades del estimador de ridge. El valor esperado de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es:
+<p>Ahora veamos las propiedades del estimador de ridge. El estimador de ridge se puede expresar como:
 <span class="math display">\[
-E(\widehat{\boldsymbol b}_{R}) = (\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol R\boldsymbol b.
+\widehat{\boldsymbol b}_k = (\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol R\boldsymbol y= (\boldsymbol I+ k \boldsymbol R^{-1})^{-1}\widehat{\boldsymbol b}= \boldsymbol C\widehat{\boldsymbol b}.
 \]</span>
-De aquí vemos que <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es sesgado, y aumenta con <span class="math inline">\(k\)</span> (por lo que este parámetro también es llamado de sesgo). La varianza de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es:
+Por lo que, su valor esperado es:
 <span class="math display">\[
-V(\widehat{\boldsymbol b}_{R}) = \sigma^{2}(\boldsymbol R+ k \boldsymbol I)^{-1}\boldsymbol R(\boldsymbol R+ k \boldsymbol I)^{-1}.
+E(\widehat{\boldsymbol b}_{k}) =\boldsymbol C\boldsymbol b\neq \boldsymbol b,
+\]</span>
+de aquí vemos que <span class="math inline">\(\widehat{\boldsymbol b}_{k}\)</span> es sesgado, y el sesgo aumenta con <span class="math inline">\(k\)</span> (por lo que este parámetro también es llamado de sesgo).</p>
+<p>La varianza de <span class="math inline">\(\widehat{\boldsymbol b}_k\)</span> está dada por:
+<span class="math display">\[
+V(\widehat{\boldsymbol b}_{k}) = \sigma^2 \boldsymbol C&#39; \boldsymbol R^{-1} \boldsymbol C.
 \]</span>
 A partir de las cantidades anteriores se puede determinar el error cuadrático medio (ECM) de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span>:
 <span class="math display">\[\begin{equation}
 \begin{split}
-\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &amp;= \sigma^{2}\mbox{tr}[(\boldsymbol R+ k\boldsymbol I)^{-1}\boldsymbol R(\boldsymbol R+ k\boldsymbol I)^{-1}] + k^{2}\boldsymbol b&#39;(\boldsymbol R+ k\boldsymbol I)^{-2}\boldsymbol b\\
-&amp;=\sigma^{2}\sum_{i=1}^{p-1}\frac{\lambda_{j}}{(\lambda_{j}+ k)^2} + k^{2} \boldsymbol b&#39;(\boldsymbol R+ k\boldsymbol I)^{-2}\boldsymbol b,
+\mbox{MSE}(\widehat{\boldsymbol b}_{k}) &amp;= \mbox{tr}V(\widehat{\boldsymbol b}_k) + \left[ E(\widehat{\boldsymbol b}_{k}) - \boldsymbol b\right]&#39;\left[ E(\widehat{\boldsymbol b}_{k}) - \boldsymbol b\right] \\
+&amp;= \sigma^2\mbox{tr}\left( R^{-1}\boldsymbol C&#39;\boldsymbol C\right) + \boldsymbol b&#39;(\boldsymbol C-\boldsymbol I)&#39;(\boldsymbol C-\boldsymbol I)\boldsymbol b\\
+&amp;=\sigma^{2}\sum_{j=1}^{p-1}\frac{\lambda_{j}}{(\lambda_{j}+ k)^2} + \sum_{j=1}^{p-1}\frac{\alpha_j^{2}k^2}{(\lambda_{j}+ k)^2},
 \end{split}
 \nonumber
 \end{equation}\]</span>
-donde <span class="math inline">\(\lambda_{1},\ldots,\lambda_{k}\)</span> son los valores propios de <span class="math inline">\(\boldsymbol R\)</span>.</p>
-<p>Finalmente, la suma de cuadrados de los residuos usando <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es:
+donde <span class="math inline">\(\boldsymbol \alpha= \boldsymbol T&#39;\boldsymbol b\)</span>.</p>
+<p>Finalmente, la suma de cuadrados de los residuos usando <span class="math inline">\(\widehat{\boldsymbol b}_{k}\)</span> es:
 <span class="math display">\[
-SS_{\mbox{res}}= (\boldsymbol y- \boldsymbol X\widehat{\boldsymbol b})&#39;(\boldsymbol y- \boldsymbol X\widehat{\boldsymbol b}) + (\widehat{\boldsymbol b}_{R}-\widehat{\boldsymbol b})&#39;\boldsymbol R(\widehat{\boldsymbol b}_{R}-\widehat{\boldsymbol b}).
+SS_{\mbox{res}}_k = (\boldsymbol y- \boldsymbol Z\widehat{\boldsymbol b})&#39;(\boldsymbol y- \boldsymbol Z\widehat{\boldsymbol b}) + (\widehat{\boldsymbol b}_{k}-\widehat{\boldsymbol b})&#39;\boldsymbol R(\widehat{\boldsymbol b}_{k}-\widehat{\boldsymbol b}).
 \]</span>
 A partir de estos resultados, vemos que: (1) Si <span class="math inline">\(k\)</span> crece, disminuye la varianza, pero aumenta el sesgo. (2) Si <span class="math inline">\(k\)</span> disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un <span class="math inline">\(R^{2}\)</span> mas pequeño que el estimador por MCO. Sin embargo, la regresión ridge proporciona estimaciones de <span class="math inline">\(\boldsymbol b\)</span> más estables.</p>
-<p>La idea de la regresión de ridge es encontrar un valor de <span class="math inline">\(k\)</span> tal que <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>. En la Figura <a href="multicolinealidad.html#fig:ECMrepresentacion">3.3</a> podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta <span class="math inline">\(k\)</span>, el sesgo incrementa y la varianza disminuye. Además, hay una región de <span class="math inline">\(k\)</span> donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de <span class="math inline">\(k\)</span> que minimiza el ECM, o por lo menos algún valor en la región donde <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{R}) &lt; V(\widehat{\boldsymbol b})\)</span>.</p>
+<p>La idea de la regresión de ridge es encontrar un valor de <span class="math inline">\(k\)</span> tal que <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{k}) &lt; V(\widehat{\boldsymbol b})\)</span>. En la Figura <a href="multicolinealidad.html#fig:ECMrepresentacion">3.3</a> podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta <span class="math inline">\(k\)</span>, el sesgo incrementa y la varianza disminuye. Además, hay una región de <span class="math inline">\(k\)</span> donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de <span class="math inline">\(k\)</span> que minimiza el ECM, o por lo menos algún valor en la región donde <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{k}) &lt; V(\widehat{\boldsymbol b})\)</span>.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="multicolinealidad.html#cb52-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.3</span>,<span class="at">length.out =</span> <span class="dv">100</span>)</span>
 <span id="cb52-2"><a href="multicolinealidad.html#cb52-2" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">=</span> <span class="fl">0.25</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span><span class="dv">20</span><span class="sc">*</span>(x<span class="fl">-0.001</span>)))</span>
 <span id="cb52-3"><a href="multicolinealidad.html#cb52-3" aria-hidden="true" tabindex="-1"></a>sesgo <span class="ot">=</span> sesgo <span class="sc">-</span> <span class="fu">min</span>(sesgo) </span>
@@ -774,7 +822,7 @@ Figure 3.3: Representación del sesgo al cuadrado (linea cortada), varianza (lin
 </div>
 <p>Algunos métodos de selección de <span class="math inline">\(k\)</span> son:</p>
 <ul>
-<li><p><strong>Traza de ridge <span class="math inline">\(k\)</span>:</strong> el efecto de <span class="math inline">\(k\)</span> sobre las estimaciones de <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> es mas fuerte para valores bajos. De igual forma, si <span class="math inline">\(k\)</span> es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar <span class="math inline">\(k\)</span> hasta que parezca que su influencia sobre <span class="math inline">\(\widehat{\boldsymbol b}_{R}\)</span> se atenúe.</p></li>
+<li><p><strong>Traza de ridge <span class="math inline">\(k\)</span>:</strong> el efecto de <span class="math inline">\(k\)</span> sobre las estimaciones de <span class="math inline">\(\widehat{\boldsymbol b}_{k}\)</span> es mas fuerte para valores bajos. De igual forma, si <span class="math inline">\(k\)</span> es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar <span class="math inline">\(k\)</span> hasta que parezca que su influencia sobre <span class="math inline">\(\widehat{\boldsymbol b}_{k}\)</span> se atenúe.</p></li>
 <li><p><strong>Validación cruzada (CV):</strong> sea <span class="math inline">\(\widehat{y}_{(i),k}\)</span> la estimación de <span class="math inline">\(E(y_i)\)</span> por medio del estimador de ridge con el parámetro <span class="math inline">\(k\)</span> y usando una muestra excluyendo la i-ésima observación. La validación cruzada está definida como:
 <span class="math display">\[
 CV(k) = \sum_{i=1}^{n} (y_i - \widehat{y}_{(i),k})^2.
@@ -880,8 +928,8 @@ donde <span class="math inline">\(\boldsymbol \alpha= \boldsymbol T&#39;\boldsym
 <p>Las columnas de <span class="math inline">\(\boldsymbol P= \boldsymbol Z\boldsymbol T= (\boldsymbol p_{1},\ldots,\boldsymbol p_{p-1})\)</span> son un conjunto de regresores ortogonales(llamados componentes principales):
 <span class="math display">\[
 \boldsymbol p_{k} = \sum_{j=1}^{p-1} t_{kj}\boldsymbol z_{j}.
-\]</span>
-El estimador de <span class="math inline">\(\boldsymbol \alpha\)</span> por MCO es:
+\]</span></p>
+<p>El estimador de <span class="math inline">\(\boldsymbol \alpha\)</span> por MCO es:
 <span class="math display">\[
 \widehat{\boldsymbol \alpha}= (\boldsymbol P&#39;\boldsymbol P)^{-1}\boldsymbol P&#39;\boldsymbol y^{*} = \boldsymbol \Lambda^{-1}\boldsymbol P&#39;\boldsymbol y^{*},
 \]</span>
@@ -889,41 +937,32 @@ y la varianza de <span class="math inline">\(\widehat{\boldsymbol \alpha}\)</spa
 <span class="math display">\[
 V(\widehat{\boldsymbol \alpha}) = \sigma^{2}(\boldsymbol P&#39;\boldsymbol P)^{-1} = \sigma^{2}\boldsymbol \Lambda^{-1}.
 \]</span>
-De aquí podemos ver que valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span> están asociados con la varianza de los coeficientes de regresión. Si <span class="math inline">\(\lambda_j=1\)</span> (para <span class="math inline">\(j=1,\ldots,p\)</span>), las covariables originales son ortogonales. Mientras que valores propios cercanos a cero indican problemas de multicolinealidad dado que inflan la varianza de <span class="math inline">\(\widehat{\boldsymbol \alpha}\)</span>.</p>
-<p>Además, Note que para <span class="math inline">\(\widehat{\boldsymbol b}= \boldsymbol T\widehat{\boldsymbol \alpha}\)</span>, tenemos:
+De aquí podemos ver que valores propios de <span class="math inline">\(\boldsymbol R\)</span> están asociados con la varianza de los coeficientes de regresión. Si <span class="math inline">\(\lambda_j=1\)</span> (para <span class="math inline">\(j=1,\ldots,p\)</span>), las covariables originales son ortogonales. Mientras que valores propios cercanos a cero indican problemas de multicolinealidad dado que inflan la varianza de <span class="math inline">\(\widehat{\boldsymbol \alpha}\)</span>.</p>
+<p>Note que, para <span class="math inline">\(\widehat{\boldsymbol b}= \boldsymbol T\widehat{\boldsymbol \alpha}\)</span>, tenemos:
 <span class="math display">\[
 V(\widehat{\boldsymbol b}) = V(\boldsymbol T\widehat{\boldsymbol \alpha}) =\sigma^{2}\boldsymbol T\boldsymbol \Lambda^{-1}\boldsymbol T&#39; = \sigma^{2} \sum_{j=1}^{p-1}\lambda_{j}^{-1}\boldsymbol t_{j}\boldsymbol t_{j}&#39;,
 \]</span>
-lo que implica que <span class="math inline">\(V(\widehat{b}_{k}) = \sigma^{2} \sum_{j=1}^{p-1}t_{kj}^{2}/\lambda_{j}\)</span>; la varianza de <span class="math inline">\(\widehat{b}_j\)</span> es una combinación lineal de los valores propios.</p>
-<p>Para combatir el problema de multicolinealidad, la idea de la regresión por componentes principales es usar un subconjunto de <span class="math inline">\(\boldsymbol P\)</span> como regresores (en vez de todos los compontes). Para esto, eliminamos los componentes principales <span class="math inline">\((\boldsymbol p_{r+1},\ldots,\boldsymbol p_{p-1})\)</span> asociados a los valores propios cercanos a cero <span class="math inline">\((\lambda_{r+1},\ldots,\lambda_{p-1})\)</span>. Aquí estamos asumiendo que los valores propios están ordenados de mayor a menor, <span class="math inline">\(\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_p\)</span> (como lo hace <code>R</code>). Esto es,
+lo que implica que <span class="math inline">\(V(\widehat{b}_{k}) = \sigma^{2} \sum_{j=1}^{p-1}t_{kj}^{2}/\lambda_{j}\)</span>, la varianza de <span class="math inline">\(\widehat{b}_j\)</span> es una combinación lineal de los valores propios.</p>
+<p>Para combatir el problema de multicolinealidad, la idea de la regresión por componentes principales es usar un subconjunto de <span class="math inline">\(\boldsymbol P\)</span> como regresores (en vez de todos los compontes). Para esto, eliminamos los componentes principales <span class="math inline">\((\boldsymbol p_{r+1},\ldots,\boldsymbol p_{p-1})\)</span> asociados a los valores propios cercanos a cero <span class="math inline">\((\lambda_{r+1},\ldots,\lambda_{p-1})\)</span>. Aquí estamos asumiendo que <span class="math inline">\(\lambda_1 \leq \lambda_2 \leq \ldots \leq \lambda_{p-1}\)</span>. Esto es,
 <span class="math display">\[
-\widehat{\boldsymbol \alpha}_{PC} = \boldsymbol L\widehat{\boldsymbol \alpha}= \begin{pmatrix} \boldsymbol I_{r} &amp; \boldsymbol 0\\ \boldsymbol 0&amp; \boldsymbol 0\end{pmatrix} \widehat{\boldsymbol \alpha}.
+\widehat{\boldsymbol \alpha}_{r} = (\overbrace{\widehat{\alpha}_{1},\widehat{\alpha}_{2},\ldots, \widehat{\alpha}_{r}}^{r},\overbrace{0, \ldots,0}^{p-1-r})&#39;.
 \]</span>
-Por lo tanto <span class="math inline">\(\widehat{\boldsymbol \alpha}_{PC} = (\overbrace{\widehat{\alpha}_{1},\widehat{\alpha}_{2},\ldots, \widehat{\alpha}_{r}}^{r},\overbrace{0, \ldots,0}^{p-1-r})&#39;\)</span>.</p>
-<p>En términos de <span class="math inline">\(\boldsymbol b\)</span>,
+De esta forma el estimador de <span class="math inline">\(\boldsymbol b\)</span> por CP está dado por:
 <span class="math display">\[
-\widehat{\boldsymbol b}_{PC} = \boldsymbol T\widehat{\boldsymbol \alpha}_{PC} = \boldsymbol T\boldsymbol L\boldsymbol \Lambda^{-1}\boldsymbol T&#39;\boldsymbol Z&#39;\boldsymbol y^{*}.
-\]</span>
-Además,
+\widehat{\boldsymbol b}_{r} = \boldsymbol T\widehat{\boldsymbol \alpha}_{r} =\sum_{l=1}^{r} \boldsymbol t_l \widehat{\alpha}_l,
+\]</span></p>
+<p>El sesgo de <span class="math inline">\(\widehat{\boldsymbol b}_{r}\)</span> es igual a:
 <span class="math display">\[
-V(\widehat{\boldsymbol b}_{PC}) = \sigma^{2} \boldsymbol T\boldsymbol L\boldsymbol \Lambda^{-1}\boldsymbol L&#39;\boldsymbol T&#39; = \sigma^{2}\sum_{j=1}^{r} \lambda_{j}^{-1}\boldsymbol t_{j}\boldsymbol t_{j}&#39;.
+\widehat{\boldsymbol b}_{r} - \boldsymbol b= \sum_{l=1}^{r} \boldsymbol t_l \widehat{\alpha}_l -  \sum_{l=1}^{p-1} \boldsymbol t_l \alpha_l = - \sum_{l = r+1}^{p-1} \boldsymbol t_l \alpha_l.
 \]</span>
-lo que implica que <span class="math inline">\(V(\widehat{b}_{PC,j}) = \sigma^{2} \sum_{k=1}^{r}t_{jk}^{2}/\lambda_{k}\)</span>.</p>
-<p>El sesgo de <span class="math inline">\(\widehat{\boldsymbol b}_{PC}\)</span> está definido como:
+La varianza de <span class="math inline">\(\widehat{\boldsymbol b}_{r}\)</span> es:
 <span class="math display">\[
-E(\boldsymbol T\widehat{\boldsymbol \alpha}_{PC}) - \boldsymbol T\boldsymbol \alpha= -\sum_{k=r+1}^{p-1}\alpha_k\boldsymbol t_{k}.
+V(\widehat{\boldsymbol b}_{r}) = \boldsymbol TV(\widehat{\boldsymbol \alpha}_{r})\boldsymbol T&#39; =  \sigma^{2}\sum_{l=1}^{r} \lambda_{l}^{-1}\boldsymbol t_{l}\boldsymbol t_{l}&#39; \leq \sigma^{2} \sum_{l=1}^{p-1}\lambda_l^{-1}\boldsymbol t_{l}\boldsymbol t_{l}&#39; = V(\widehat{\boldsymbol b}).
 \]</span>
-Mientras que la varianza de <span class="math inline">\(\widehat{\boldsymbol b}_{PC}\)</span> es:
-<span class="math display" id="eq:varBPC">\[\begin{equation}
-V(\boldsymbol T\widehat{\boldsymbol \alpha}_{PC}) = \boldsymbol T\left[ \sigma^{2}\boldsymbol L\boldsymbol \Lambda^{-1} \boldsymbol L\right] \boldsymbol T^{-1} = \sigma^{2} \sum_{k=1}^{r}\lambda_k^{-1}\boldsymbol t_{k}\boldsymbol t_{k}&#39; \leq \sigma^{2} \sum_{k=1}^{p-1}\lambda_k^{-1}\boldsymbol t_{k}\boldsymbol t_{k}&#39; = \sigma^{2}(\boldsymbol Z&#39;\boldsymbol Z)^{-1}.
-\tag{3.2}
-\end{equation}\]</span>
-Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de <span class="math inline">\(\widehat{\boldsymbol b}_{PC}\)</span>.</p>
-<p>Note en <a href="multicolinealidad.html#eq:varBPC">(3.2)</a> que la diferencia en varianzas con respecto al estimador de MCO de <span class="math inline">\(\boldsymbol b\)</span>:
+Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de <span class="math inline">\(\widehat{\boldsymbol b}_r\)</span>. Finalmente, el ECM de <span class="math inline">\(\widehat{\boldsymbol b}_r\)</span> está dado por:
 <span class="math display">\[
-\sigma^{2}\sum_{k=r+1}^{p-1}\lambda_k^{-1} \boldsymbol t_{k}\boldsymbol t_{k}&#39;,
-\]</span>
-será mayor si las componentes principales excluidas están asociadas a valores propios pequeños.</p>
+ECM(\widehat{\boldsymbol b}_r) = \sigma^{2}\sum_{i=1}^{r}\frac{1}{\lambda_l} + \sum_{l=r+1}^{p-1}\alpha_l^2.
+\]</span></p>
 <div id="datos-de-cemento-2" class="section level3 hasAnchor" number="3.8.1">
 <h3><span class="header-section-number">3.8.1</span> Datos de cemento<a href="multicolinealidad.html#datos-de-cemento-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Antes de ajustar el modelo vamos a escalar las variables</p>
@@ -967,7 +1006,7 @@ será mayor si las componentes principales excluidas están asociadas a valores 
 ## [2,]  0.27868114
 ## [3,] -0.06078483
 ## [4,] -0.42288461</code></pre>
-<p>La matriz de varianza de <span class="math inline">\(\boldsymbol b_{PC}\)</span> es:</p>
+<p>La matriz de varianza de <span class="math inline">\(\boldsymbol b_{r}\)</span> es:</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="multicolinealidad.html#cb69-1" aria-hidden="true" tabindex="-1"></a>sigma2.pc <span class="ot">=</span> <span class="fu">sum</span>(PCR.cement<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">13-4</span>)</span>
 <span id="cb69-2"><a href="multicolinealidad.html#cb69-2" aria-hidden="true" tabindex="-1"></a>Var.b <span class="ot">=</span> sigma2.pc<span class="sc">*</span>T.mat<span class="sc">%*%</span><span class="fu">diag</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span>lambda[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],<span class="dv">0</span>))<span class="sc">%*%</span><span class="fu">t</span>(T.mat)</span>
 <span id="cb69-3"><a href="multicolinealidad.html#cb69-3" aria-hidden="true" tabindex="-1"></a>Var.b</span></code></pre></div>

@@ -1,0 +1,26 @@
+library(rsm)
+codata
+CO <- as.coded.data(codata,  x1 ~ (Ethanol - 0.2)/0.1,  x2 ~ A.F.ratio - 15)
+
+mod = lm(y ~ x1+x2+I(x1^2)+I(x2^2) + x1*x2,data=codata)
+
+contour(mod, x1 ~ x2, image = TRUE)
+
+
+mod = lm(y ~ x1+x2+I(x1^2)+I(x2^2) + x1*x2,data=CO)
+
+contour(mod, x2 ~ x1, image = TRUE)
+plot(codata)
+
+
+
+heli.rsm <- rsm (ave ~ SO(x1, x2, x3, x4), data = heli)
+
+# Plain contour plots
+par (mfrow = c(2,3))
+contour (heli.rsm, ~x1+x2+x3+x4, at = xs(heli.rsm))
+
+# Same but with image overlay, slices at origin and block 2,
+# and no slice labeling
+contour (heli.rsm, ~x1+x2+x3+x4, at = list(block="2"), 
+         atpos = 0, image = TRUE)

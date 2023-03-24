@@ -17,12 +17,12 @@ h3:componente-aleatorio Componente aleatorio
 h4:familia-exponencial-1 Familia exponencial
 h3:predictor-lineal Predictor lineal
 h3:función-de-enlace Función de enlace
-h2:ejemplos-de-glm Ejemplos de GLM
-h3:modelo-logístico modelo logístico
+h3:ejemplos-de-glm Ejemplos de GLM
+h4:modelo-logístico modelo logístico
 fig:logfun Función logística
-h3:modelo-poisson modelo Poisson
-h3:ajuste-de-un-glm Ajuste de un GLM
-h4:especificación-del-modelo Especificación del modelo
+h4:modelo-poisson modelo Poisson
+h2:ajuste-de-un-glm Ajuste de un GLM
+h3:especificación-del-modelo Especificación del modelo
 h5:mortalidad-de-escarabajos-1 Mortalidad de escarabajos
 h3:ataques-epilépticos Ataques epilépticos
 h3:estimador-por-máxima-verosimilitud-para-bbeta Estimador por máxima verosimilitud para 
@@ -31,6 +31,6 @@ fig:escarabajosEstimacionFig Datos de escarabajos. Estimación de la probabilida
 h3:interpretación-de-parámetros---modelo-logístico interpretación de parámetros - modelo logístico
 h4:ataques-epilépticos-1 Ataques epilépticos
 fig:ajusteSeizureFig Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa el placebo, mientras que, la linea roja al tratamiento con Progabide.
-h3:interpretación-de-parámetros---modelo-poisson Interpretación de parámetros - modelo Poisson
-h3:pruebas-de-hipótesis Pruebas de hipótesis
+h4:interpretación-de-parámetros---modelo-poisson Interpretación de parámetros - modelo Poisson
+h2:pruebas-de-hipótesis Pruebas de hipótesis
 

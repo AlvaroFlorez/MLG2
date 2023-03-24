@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 8 Modelo para conteos | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 8 Modelo para conteos | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 8 Modelo para conteos | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,14 +23,14 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-02-17" />
+<meta name="date" content="2023-03-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="modelo-logístico-1.html"/>
+<link rel="prev" href="modelo-logístico.html"/>
 <link rel="next" href="modelo-lineal-mixto.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -253,67 +253,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a>
+<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#casos-de-estudio"><i class="fa fa-check"></i><b>6.2</b> Casos de estudio</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelos-lineales"><i class="fa fa-check"></i><b>6.1.1</b> Modelos lineales</a></li>
-<li class="chapter" data-level="6.1.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.1.2</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="6.1.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.1.3</b> ataques de epilepsia</a></li>
-<li class="chapter" data-level="6.1.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.1.4</b> Familia exponencial</a></li>
-<li class="chapter" data-level="6.1.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.1.5</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.2.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.2.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="6.2.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-de-epilepsia"><i class="fa fa-check"></i><b>6.2.2</b> ataques de epilepsia</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.2</b> Estimador de máxima verosimilitud</a></li>
-<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.3</b> Modelo lineal generalizado (GLM)</a>
+<li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#preambulo"><i class="fa fa-check"></i><b>6.3</b> Preambulo</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.3.1</b> Componente aleatorio</a></li>
-<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.3.2</b> Predictor lineal</a></li>
-<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.3.3</b> Función de enlace</a></li>
-<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.3.4</b> Ejemplos de GLM</a></li>
+<li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.3.1</b> Familia exponencial</a></li>
+<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.3.2</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.3.3</b> Estimador de máxima verosimilitud</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización"><i class="fa fa-check"></i><b>6.3.4</b> Métodos iterativos de maximización</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.4</b> Ajuste de un GLM</a>
+<li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.4</b> Modelo lineal generalizado (GLM)</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.4.1</b> Especificación del modelo</a></li>
-<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ataques-epilépticos"><i class="fa fa-check"></i><b>6.4.2</b> Ataques epilépticos</a></li>
-<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.4.3</b> interpretación de parámetros - modelo logístico</a></li>
+<li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.4.1</b> Componente aleatorio</a></li>
+<li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.4.2</b> Predictor lineal</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.4.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4.4</b> Ejemplos de GLM</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.5</b> Pruebas de hipótesis</a></li>
+<li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.5</b> Ajuste de un GLM</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.5.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.5.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-por-máxima-verosimilitud-para-boldsymbol-beta"><i class="fa fa-check"></i><b>6.5.2</b> Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
+<li class="chapter" data-level="6.5.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.5.3</b> interpretación de parámetros - modelo logístico</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
+<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.6</b> Pruebas de hipótesis</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#casos-de-estudio"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#mortalidad-de-escarabajos-2"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.1.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
-<li class="chapter" data-level="7.1.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="6.6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-razón-de-verosimilitud"><i class="fa fa-check"></i><b>6.6.1</b> Método de razón de verosimilitud</a></li>
+<li class="chapter" data-level="6.6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-wald"><i class="fa fa-check"></i><b>6.6.2</b> Método de Wald</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
+<li class="chapter" data-level="6.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>6.7</b> intervalos de confianza</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
-<li class="chapter" data-level="7.2.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
+<li class="chapter" data-level="6.7.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalo-de-confianza-para-la-media"><i class="fa fa-check"></i><b>6.7.1</b> Intervalo de confianza para la media</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-logístico-2"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
+<li class="chapter" data-level="6.8" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#devianza"><i class="fa fa-check"></i><b>6.8</b> Devianza</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+<li class="chapter" data-level="6.8.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.8.1</b> El estadístico chi-cuadrado de Pearson</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#ejemplo-mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
-<li class="chapter" data-level="7.4.2" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="6.9" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.9</b> Bondad de ajuste</a></li>
+<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pseudo-r2"><i class="fa fa-check"></i><b>6.10</b> Pseudo <span class="math inline">\(R^2\)</span></a></li>
+<li class="chapter" data-level="6.11" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.11</b> Selección de variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
-<li class="chapter" data-level="7.6" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<li class="chapter" data-level="7" data-path="modelo-logístico.html"><a href="modelo-logístico.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="modelo-logístico-1.html"><a href="modelo-logístico-1.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
+<li class="chapter" data-level="7.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>7.1</b> Casos de estudio</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.1.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
+<li class="chapter" data-level="7.2.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-logístico-1"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#ejemplo-mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
+<li class="chapter" data-level="7.4.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer-1"><i class="fa fa-check"></i><b>7.4.2</b> Bajo peso al nacer</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="modelo-logístico.html"><a href="modelo-logístico.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a></li>
+<li class="chapter" data-level="7.6" data-path="modelo-logístico.html"><a href="modelo-logístico.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html"><i class="fa fa-check"></i><b>8</b> Modelo para conteos</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-1"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
+<li class="chapter" data-level="8.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#casos-de-estudio-2"><i class="fa fa-check"></i><b>8.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
 <li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#datos-de-cáncer-de-pulmón"><i class="fa fa-check"></i><b>8.1.2</b> Datos de cáncer de pulmón</a></li>
 <li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson-1"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
+<li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-conteo-con-offset"><i class="fa fa-check"></i><b>8.2.1</b> Modelo de conteo con offset</a></li>
 </ul></li>
@@ -329,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html"><i class="fa fa-check"></i><b>9</b> Modelo lineal mixto</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-2"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
+<li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-3"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#peso-al-nacer-de-corderos"><i class="fa fa-check"></i><b>9.1.1</b> Peso al nacer de corderos</a></li>
 <li class="chapter" data-level="9.1.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#crecimiento-craneofacial-de-ratas"><i class="fa fa-check"></i><b>9.1.2</b> Crecimiento craneofacial de ratas</a></li>
@@ -359,8 +378,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelo-para-conteos" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Capítulo 8</span> Modelo para conteos<a href="modelo-para-conteos.html#modelo-para-conteos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="casos-de-estudio-1" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> Casos de estudio<a href="modelo-para-conteos.html#casos-de-estudio-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="casos-de-estudio-2" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Casos de estudio<a href="modelo-para-conteos.html#casos-de-estudio-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="ataques-de-epilepsia-1" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Ataques de epilepsia<a href="modelo-para-conteos.html#ataques-de-epilepsia-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ensayo clínico para evaluar el impacto de progabida sobre las crisis epilépticas (<code>data(epilepsy)</code> de la librería <code>HSAUR2</code>).</p>
@@ -383,18 +402,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Dado que el número de casos depende del tamaño de la población, se modela la tasa de casos de cáncer de pulmón: <span class="math inline">\(Y_i/t_i\)</span>.</p>
 <p><span class="math inline">\(t_i\)</span> es el tamaño de la población por grupo de edad y ciudad <strong>(offset)</strong>.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-para-conteos.html#cb151-1" aria-hidden="true" tabindex="-1"></a>cancer.data <span class="ot">=</span> eba1977[<span class="fu">order</span>(eba1977<span class="sc">$</span>city),]</span>
-<span id="cb151-2"><a href="modelo-para-conteos.html#cb151-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-3"><a href="modelo-para-conteos.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="co"># casos por 1000 habitantes</span></span>
-<span id="cb151-4"><a href="modelo-para-conteos.html#cb151-4" aria-hidden="true" tabindex="-1"></a>tasa <span class="ot">=</span> <span class="dv">1000</span><span class="sc">*</span>cancer.data<span class="sc">$</span>cases<span class="sc">/</span>cancer.data<span class="sc">$</span>pop</span>
-<span id="cb151-5"><a href="modelo-para-conteos.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">xlab =</span> <span class="st">&#39;grupo de edad&#39;</span>,</span>
-<span id="cb151-6"><a href="modelo-para-conteos.html#cb151-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(tasa),<span class="at">ylab=</span><span class="st">&#39;casos por 1000 habitantes&#39;</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb151-7"><a href="modelo-para-conteos.html#cb151-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="fu">c</span>(<span class="st">&#39;40-54&#39;</span>,<span class="st">&#39;55-59&#39;</span>,<span class="st">&#39;60-64&#39;</span>,<span class="st">&#39;65-69&#39;</span>,<span class="st">&#39;70-74&#39;</span>,<span class="st">&#39;&gt;75&#39;</span>))</span>
-<span id="cb151-8"><a href="modelo-para-conteos.html#cb151-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb151-9"><a href="modelo-para-conteos.html#cb151-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb151-10"><a href="modelo-para-conteos.html#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">4</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-23-1.png" alt="Fredericia(línea negra), Horsens(línea roja), Kolding(línea verde), Vejle(línea azul)." width="672" />
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="modelo-para-conteos.html#cb164-1" aria-hidden="true" tabindex="-1"></a>cancer.data <span class="ot">=</span> eba1977[<span class="fu">order</span>(eba1977<span class="sc">$</span>city),]</span>
+<span id="cb164-2"><a href="modelo-para-conteos.html#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-3"><a href="modelo-para-conteos.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="co"># casos por 1000 habitantes</span></span>
+<span id="cb164-4"><a href="modelo-para-conteos.html#cb164-4" aria-hidden="true" tabindex="-1"></a>tasa <span class="ot">=</span> <span class="dv">1000</span><span class="sc">*</span>cancer.data<span class="sc">$</span>cases<span class="sc">/</span>cancer.data<span class="sc">$</span>pop</span>
+<span id="cb164-5"><a href="modelo-para-conteos.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">xlab =</span> <span class="st">&#39;grupo de edad&#39;</span>,</span>
+<span id="cb164-6"><a href="modelo-para-conteos.html#cb164-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(tasa),<span class="at">ylab=</span><span class="st">&#39;casos por 1000 habitantes&#39;</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb164-7"><a href="modelo-para-conteos.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="fu">c</span>(<span class="st">&#39;40-54&#39;</span>,<span class="st">&#39;55-59&#39;</span>,<span class="st">&#39;60-64&#39;</span>,<span class="st">&#39;65-69&#39;</span>,<span class="st">&#39;70-74&#39;</span>,<span class="st">&#39;&gt;75&#39;</span>))</span>
+<span id="cb164-8"><a href="modelo-para-conteos.html#cb164-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb164-9"><a href="modelo-para-conteos.html#cb164-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb164-10"><a href="modelo-para-conteos.html#cb164-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">4</span>,<span class="at">type=</span><span class="st">&#39;b&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-21-1.png" alt="Fredericia(línea negra), Horsens(línea roja), Kolding(línea verde), Vejle(línea azul)." width="672" />
 <p class="caption">
 Figure 8.1: Fredericia(línea negra), Horsens(línea roja), Kolding(línea verde), Vejle(línea azul).
 </p>
@@ -410,19 +429,19 @@ Figure 8.1: Fredericia(línea negra), Horsens(línea roja), Kolding(línea verde
 <li><p><code>width</code>: ancho del caparazón (cm).</p></li>
 <li><p><code>weight</code>: peso (kg)</p></li>
 </ul>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="modelo-para-conteos.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb152-2"><a href="modelo-para-conteos.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(crabs<span class="sc">$</span>satell,<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">main=</span><span class="st">&#39;&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;número de satálites&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;frecuencia&#39;</span>)</span>
-<span id="cb152-3"><a href="modelo-para-conteos.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crabs<span class="sc">$</span>satell<span class="sc">~</span>weight,<span class="at">data=</span>crabs,<span class="at">xlab=</span><span class="st">&#39;peso (kg)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;número de satálites&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-24-1.png" alt="Histograma(izquierda), número de satélites vs peso (derecha)" width="672" />
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="modelo-para-conteos.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb165-2"><a href="modelo-para-conteos.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(crabs<span class="sc">$</span>satell,<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">main=</span><span class="st">&#39;&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;número de satálites&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;frecuencia&#39;</span>)</span>
+<span id="cb165-3"><a href="modelo-para-conteos.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(crabs<span class="sc">$</span>satell<span class="sc">~</span>weight,<span class="at">data=</span>crabs,<span class="at">xlab=</span><span class="st">&#39;peso (kg)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;número de satálites&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-22-1.png" alt="Histograma(izquierda), número de satélites vs peso (derecha)" width="672" />
 <p class="caption">
 Figure 8.2: Histograma(izquierda), número de satélites vs peso (derecha)
 </p>
 </div>
 </div>
 </div>
-<div id="modelo-poisson-1" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Modelo Poisson<a href="modelo-para-conteos.html#modelo-poisson-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="modelo-poisson" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Modelo Poisson<a href="modelo-para-conteos.html#modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La distribución Poisson se utiliza para modelar variables de tipo conteo (número de eventos por intervalo de tiempo o espacio).</p>
 <p>Modelo:</p>
 <p><span class="math display">\[
@@ -453,10 +472,10 @@ log\lambda_i=\boldsymbol x_i&#39;\boldsymbol \beta+logt_i,
 <p><span class="math display">\[
 log(\mu_i/\text{pop}_i)=\beta_0+\beta_1\text{Horsens}_i+\beta_2\text{Kolding}_i+\beta_3\text{Vejle}_i+\beta_4I\text{(55-59)}_i+\beta_5I\text{(60-64)}_i+\beta_6I\text{(65-69)}_i+\beta_7I\text{(70-74)}_i+\beta_8I\text{(&gt;75)}_i
 \]</span></p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelo-para-conteos.html#cb153-1" aria-hidden="true" tabindex="-1"></a>poisson.model <span class="ot">=</span> <span class="fu">glm</span>(cases <span class="sc">~</span> city <span class="sc">+</span> age<span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(pop)), </span>
-<span id="cb153-2"><a href="modelo-para-conteos.html#cb153-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> cancer.data)</span>
-<span id="cb153-3"><a href="modelo-para-conteos.html#cb153-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-4"><a href="modelo-para-conteos.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poisson.model)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="modelo-para-conteos.html#cb166-1" aria-hidden="true" tabindex="-1"></a>poisson.model <span class="ot">=</span> <span class="fu">glm</span>(cases <span class="sc">~</span> city <span class="sc">+</span> age<span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(pop)), </span>
+<span id="cb166-2"><a href="modelo-para-conteos.html#cb166-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> cancer.data)</span>
+<span id="cb166-3"><a href="modelo-para-conteos.html#cb166-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-4"><a href="modelo-para-conteos.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poisson.model)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cases ~ city + age + offset(log(pop)), family = poisson(link = &quot;log&quot;), 
@@ -488,21 +507,21 @@ log(\mu_i/\text{pop}_i)=\beta_0+\beta_1\text{Horsens}_i+\beta_2\text{Kolding}_i+
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>Devianza= 23:447 y AIC= 137:84.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="modelo-para-conteos.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ajuste del modelo</span></span>
-<span id="cb155-2"><a href="modelo-para-conteos.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">xlab =</span> <span class="st">&#39;grupo de edad&#39;</span>,</span>
-<span id="cb155-3"><a href="modelo-para-conteos.html#cb155-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(tasa),<span class="at">ylab=</span><span class="st">&#39;casos por 1000 habitantes&#39;</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>)</span>
-<span id="cb155-4"><a href="modelo-para-conteos.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="fu">c</span>(<span class="st">&#39;40-54&#39;</span>,<span class="st">&#39;55-59&#39;</span>,<span class="st">&#39;60-64&#39;</span>,<span class="st">&#39;65-69&#39;</span>,<span class="st">&#39;70-74&#39;</span>,<span class="st">&#39;&gt;75&#39;</span>))</span>
-<span id="cb155-5"><a href="modelo-para-conteos.html#cb155-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb155-6"><a href="modelo-para-conteos.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">3</span>)</span>
-<span id="cb155-7"><a href="modelo-para-conteos.html#cb155-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">4</span>)</span>
-<span id="cb155-8"><a href="modelo-para-conteos.html#cb155-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-9"><a href="modelo-para-conteos.html#cb155-9" aria-hidden="true" tabindex="-1"></a>pred.tasa <span class="ot">=</span> <span class="dv">1000</span><span class="sc">*</span>poisson.model<span class="sc">$</span>fitted.values<span class="sc">/</span>cancer.data<span class="sc">$</span>pop</span>
-<span id="cb155-10"><a href="modelo-para-conteos.html#cb155-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb155-11"><a href="modelo-para-conteos.html#cb155-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb155-12"><a href="modelo-para-conteos.html#cb155-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb155-13"><a href="modelo-para-conteos.html#cb155-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">4</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-26-1.png" alt="Fredericia (línea negra), Horsens (línea roja), Kolding (línea verde), Vejle (línea azul)." width="672" />
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="modelo-para-conteos.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ajuste del modelo</span></span>
+<span id="cb168-2"><a href="modelo-para-conteos.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">xlab =</span> <span class="st">&#39;grupo de edad&#39;</span>,</span>
+<span id="cb168-3"><a href="modelo-para-conteos.html#cb168-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(tasa),<span class="at">ylab=</span><span class="st">&#39;casos por 1000 habitantes&#39;</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>)</span>
+<span id="cb168-4"><a href="modelo-para-conteos.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="fu">c</span>(<span class="st">&#39;40-54&#39;</span>,<span class="st">&#39;55-59&#39;</span>,<span class="st">&#39;60-64&#39;</span>,<span class="st">&#39;65-69&#39;</span>,<span class="st">&#39;70-74&#39;</span>,<span class="st">&#39;&gt;75&#39;</span>))</span>
+<span id="cb168-5"><a href="modelo-para-conteos.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb168-6"><a href="modelo-para-conteos.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">3</span>)</span>
+<span id="cb168-7"><a href="modelo-para-conteos.html#cb168-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">4</span>)</span>
+<span id="cb168-8"><a href="modelo-para-conteos.html#cb168-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-9"><a href="modelo-para-conteos.html#cb168-9" aria-hidden="true" tabindex="-1"></a>pred.tasa <span class="ot">=</span> <span class="dv">1000</span><span class="sc">*</span>poisson.model<span class="sc">$</span>fitted.values<span class="sc">/</span>cancer.data<span class="sc">$</span>pop</span>
+<span id="cb168-10"><a href="modelo-para-conteos.html#cb168-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb168-11"><a href="modelo-para-conteos.html#cb168-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb168-12"><a href="modelo-para-conteos.html#cb168-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb168-13"><a href="modelo-para-conteos.html#cb168-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">4</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-24"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-24-1.png" alt="Fredericia (línea negra), Horsens (línea roja), Kolding (línea verde), Vejle (línea azul)." width="672" />
 <p class="caption">
 Figure 8.3: Fredericia (línea negra), Horsens (línea roja), Kolding (línea verde), Vejle (línea azul).
 </p>
@@ -512,12 +531,12 @@ Figure 8.3: Fredericia (línea negra), Horsens (línea roja), Kolding (línea ve
 log(\mu_i/\text{pop}_i)=\beta_0+\beta_1\text{Fredericia}_i+\beta_2\text{edad}_i^*+\beta_3\text{edad}_i^{*2},
 \]</span></p>
 <p>donde <span class="math inline">\(\text{edad}_i^{*2}\)</span> es el punto medio de los grupos de edad.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelo-para-conteos.html#cb156-1" aria-hidden="true" tabindex="-1"></a>cancer.data<span class="sc">$</span>t <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>)</span>
-<span id="cb156-2"><a href="modelo-para-conteos.html#cb156-2" aria-hidden="true" tabindex="-1"></a>cancer.data<span class="sc">$</span>Fredericia <span class="ot">=</span> <span class="fu">as.double</span>(cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>)</span>
-<span id="cb156-3"><a href="modelo-para-conteos.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-4"><a href="modelo-para-conteos.html#cb156-4" aria-hidden="true" tabindex="-1"></a>poisson.model2 <span class="ot">=</span> <span class="fu">glm</span>(cases <span class="sc">~</span> Fredericia <span class="sc">+</span> t <span class="sc">+</span> <span class="fu">I</span>(t<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(pop)), </span>
-<span id="cb156-5"><a href="modelo-para-conteos.html#cb156-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> cancer.data)</span>
-<span id="cb156-6"><a href="modelo-para-conteos.html#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poisson.model2)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="modelo-para-conteos.html#cb169-1" aria-hidden="true" tabindex="-1"></a>cancer.data<span class="sc">$</span>t <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>)</span>
+<span id="cb169-2"><a href="modelo-para-conteos.html#cb169-2" aria-hidden="true" tabindex="-1"></a>cancer.data<span class="sc">$</span>Fredericia <span class="ot">=</span> <span class="fu">as.double</span>(cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>)</span>
+<span id="cb169-3"><a href="modelo-para-conteos.html#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-4"><a href="modelo-para-conteos.html#cb169-4" aria-hidden="true" tabindex="-1"></a>poisson.model2 <span class="ot">=</span> <span class="fu">glm</span>(cases <span class="sc">~</span> Fredericia <span class="sc">+</span> t <span class="sc">+</span> <span class="fu">I</span>(t<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(pop)), </span>
+<span id="cb169-5"><a href="modelo-para-conteos.html#cb169-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> cancer.data)</span>
+<span id="cb169-6"><a href="modelo-para-conteos.html#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poisson.model2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cases ~ Fredericia + t + I(t^2) + offset(log(pop)), 
@@ -544,7 +563,7 @@ log(\mu_i/\text{pop}_i)=\beta_0+\beta_1\text{Fredericia}_i+\beta_2\text{edad}_i^
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>Prueba de razón de verosimilitud:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelo-para-conteos.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(poisson.model2,poisson.model,<span class="at">test=</span><span class="st">&#39;LRT&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="modelo-para-conteos.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(poisson.model2,poisson.model,<span class="at">test=</span><span class="st">&#39;LRT&#39;</span>)</span></code></pre></div>
 <pre><code>## Analysis of Deviance Table
 ## 
 ## Model 1: cases ~ Fredericia + t + I(t^2) + offset(log(pop))
@@ -552,17 +571,17 @@ log(\mu_i/\text{pop}_i)=\beta_0+\beta_1\text{Fredericia}_i+\beta_2\text{edad}_i^
 ##   Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)
 ## 1        20     25.364                     
 ## 2        15     23.448  5   1.9161   0.8606</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelo-para-conteos.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">xlab =</span> <span class="st">&#39;grupo de edad&#39;</span>,</span>
-<span id="cb160-2"><a href="modelo-para-conteos.html#cb160-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(tasa),<span class="at">ylab=</span><span class="st">&#39;casos por 1000 habitantes&#39;</span>)</span>
-<span id="cb160-3"><a href="modelo-para-conteos.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb160-4"><a href="modelo-para-conteos.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb160-5"><a href="modelo-para-conteos.html#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb160-6"><a href="modelo-para-conteos.html#cb160-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-7"><a href="modelo-para-conteos.html#cb160-7" aria-hidden="true" tabindex="-1"></a>pred.tasa <span class="ot">=</span> <span class="dv">1000</span><span class="sc">*</span>poisson.model2<span class="sc">$</span>fitted.values<span class="sc">/</span>cancer.data<span class="sc">$</span>pop</span>
-<span id="cb160-8"><a href="modelo-para-conteos.html#cb160-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb160-9"><a href="modelo-para-conteos.html#cb160-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-29"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-29-1.png" alt="Fredericia (línea negra), otra ciudad (línea roja)." width="672" />
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="modelo-para-conteos.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">xlab =</span> <span class="st">&#39;grupo de edad&#39;</span>,</span>
+<span id="cb173-2"><a href="modelo-para-conteos.html#cb173-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(tasa),<span class="at">ylab=</span><span class="st">&#39;casos por 1000 habitantes&#39;</span>)</span>
+<span id="cb173-3"><a href="modelo-para-conteos.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb173-4"><a href="modelo-para-conteos.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Kolding&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb173-5"><a href="modelo-para-conteos.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Vejle&#39;</span>],<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb173-6"><a href="modelo-para-conteos.html#cb173-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-7"><a href="modelo-para-conteos.html#cb173-7" aria-hidden="true" tabindex="-1"></a>pred.tasa <span class="ot">=</span> <span class="dv">1000</span><span class="sc">*</span>poisson.model2<span class="sc">$</span>fitted.values<span class="sc">/</span>cancer.data<span class="sc">$</span>pop</span>
+<span id="cb173-8"><a href="modelo-para-conteos.html#cb173-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Fredericia&#39;</span>],<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb173-9"><a href="modelo-para-conteos.html#cb173-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(<span class="dv">47</span>,<span class="dv">57</span>,<span class="dv">62</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">77</span>),pred.tasa[cancer.data<span class="sc">$</span>city<span class="sc">==</span><span class="st">&#39;Horsens&#39;</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-27-1.png" alt="Fredericia (línea negra), otra ciudad (línea roja)." width="672" />
 <p class="caption">
 Figure 8.4: Fredericia (línea negra), otra ciudad (línea roja).
 </p>
@@ -616,10 +635,10 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=\mu_i(1+\gamma\mu_i)
 <p><img src="figs/DistribucionNegBin.jpg" width="75%" style="display: block; margin: auto;" /></p>
 <div id="ataques-epilépticos-2" class="section level4 hasAnchor" number="8.3.1.1">
 <h4><span class="header-section-number">8.3.1.1</span> Ataques epilépticos<a href="modelo-para-conteos.html#ataques-epilépticos-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="modelo-para-conteos.html#cb161-1" aria-hidden="true" tabindex="-1"></a>epilepsy4<span class="ot">=</span> epilepsy[epilepsy<span class="sc">$</span>period<span class="sc">==</span><span class="dv">4</span>,]</span>
-<span id="cb161-2"><a href="modelo-para-conteos.html#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-3"><a href="modelo-para-conteos.html#cb161-3" aria-hidden="true" tabindex="-1"></a>modPois <span class="ot">=</span> <span class="fu">glm</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4,<span class="at">family=</span>poisson)</span>
-<span id="cb161-4"><a href="modelo-para-conteos.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="modelo-para-conteos.html#cb174-1" aria-hidden="true" tabindex="-1"></a>epilepsy4<span class="ot">=</span> epilepsy[epilepsy<span class="sc">$</span>period<span class="sc">==</span><span class="dv">4</span>,]</span>
+<span id="cb174-2"><a href="modelo-para-conteos.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="modelo-para-conteos.html#cb174-3" aria-hidden="true" tabindex="-1"></a>modPois <span class="ot">=</span> <span class="fu">glm</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4,<span class="at">family=</span>poisson)</span>
+<span id="cb174-4"><a href="modelo-para-conteos.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = seizure.rate ~ treatment + base, family = poisson, 
@@ -644,9 +663,9 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=\mu_i(1+\gamma\mu_i)
 ## AIC: 343.44
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="modelo-para-conteos.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(MASS)</span></span>
-<span id="cb163-2"><a href="modelo-para-conteos.html#cb163-2" aria-hidden="true" tabindex="-1"></a>modbinNeg <span class="ot">=</span> <span class="fu">glm.nb</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4)</span>
-<span id="cb163-3"><a href="modelo-para-conteos.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbinNeg)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="modelo-para-conteos.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(MASS)</span></span>
+<span id="cb176-2"><a href="modelo-para-conteos.html#cb176-2" aria-hidden="true" tabindex="-1"></a>modbinNeg <span class="ot">=</span> <span class="fu">glm.nb</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4)</span>
+<span id="cb176-3"><a href="modelo-para-conteos.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbinNeg)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm.nb(formula = seizure.rate ~ treatment + base, data = epilepsy4, 
@@ -770,9 +789,9 @@ logit\phi_i=\boldsymbol x&#39;_{1i}\boldsymbol \beta_1\quad\text{y}\quad log\lam
 \]</span></p>
 <div id="número-de-cangrejos-satélites-1" class="section level3 hasAnchor" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> Número de cangrejos satélites<a href="modelo-para-conteos.html#número-de-cangrejos-satélites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="modelo-para-conteos.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo Poisson</span></span>
-<span id="cb165-2"><a href="modelo-para-conteos.html#cb165-2" aria-hidden="true" tabindex="-1"></a>Pois.sat <span class="ot">=</span> <span class="fu">glm</span>(satell<span class="sc">~</span>weight,<span class="at">data =</span> crabs,<span class="at">family =</span> poisson)</span>
-<span id="cb165-3"><a href="modelo-para-conteos.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Pois.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="modelo-para-conteos.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo Poisson</span></span>
+<span id="cb178-2"><a href="modelo-para-conteos.html#cb178-2" aria-hidden="true" tabindex="-1"></a>Pois.sat <span class="ot">=</span> <span class="fu">glm</span>(satell<span class="sc">~</span>weight,<span class="at">data =</span> crabs,<span class="at">family =</span> poisson)</span>
+<span id="cb178-3"><a href="modelo-para-conteos.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Pois.sat)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = satell ~ weight, family = poisson, data = crabs)
@@ -795,9 +814,9 @@ logit\phi_i=\boldsymbol x&#39;_{1i}\boldsymbol \beta_1\quad\text{y}\quad log\lam
 ## AIC: 920.16
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="modelo-para-conteos.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo binomial negativo</span></span>
-<span id="cb167-2"><a href="modelo-para-conteos.html#cb167-2" aria-hidden="true" tabindex="-1"></a>NB.sat <span class="ot">=</span> <span class="fu">glm.nb</span>(satell<span class="sc">~</span>weight,<span class="at">data=</span>crabs)</span>
-<span id="cb167-3"><a href="modelo-para-conteos.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(NB.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="modelo-para-conteos.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo binomial negativo</span></span>
+<span id="cb180-2"><a href="modelo-para-conteos.html#cb180-2" aria-hidden="true" tabindex="-1"></a>NB.sat <span class="ot">=</span> <span class="fu">glm.nb</span>(satell<span class="sc">~</span>weight,<span class="at">data=</span>crabs)</span>
+<span id="cb180-3"><a href="modelo-para-conteos.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(NB.sat)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm.nb(formula = satell ~ weight, data = crabs, init.theta = 0.9310592338, 
@@ -827,10 +846,10 @@ logit\phi_i=\boldsymbol x&#39;_{1i}\boldsymbol \beta_1\quad\text{y}\quad log\lam
 ##           Std. Err.:  0.168 
 ## 
 ##  2 x log-likelihood:  -748.644</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="modelo-para-conteos.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pscl)</span></span>
-<span id="cb169-2"><a href="modelo-para-conteos.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo de inflación de cero</span></span>
-<span id="cb169-3"><a href="modelo-para-conteos.html#cb169-3" aria-hidden="true" tabindex="-1"></a>ZINB.sat1 <span class="ot">=</span> <span class="fu">zeroinfl</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span>
-<span id="cb169-4"><a href="modelo-para-conteos.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ZINB.sat1)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="modelo-para-conteos.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pscl)</span></span>
+<span id="cb182-2"><a href="modelo-para-conteos.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo de inflación de cero</span></span>
+<span id="cb182-3"><a href="modelo-para-conteos.html#cb182-3" aria-hidden="true" tabindex="-1"></a>ZINB.sat1 <span class="ot">=</span> <span class="fu">zeroinfl</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span>
+<span id="cb182-4"><a href="modelo-para-conteos.html#cb182-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ZINB.sat1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## zeroinfl(formula = satell ~ weight | weight, data = crabs, dist = &quot;negbin&quot;)
@@ -855,9 +874,9 @@ logit\phi_i=\boldsymbol x&#39;_{1i}\boldsymbol \beta_1\quad\text{y}\quad log\lam
 ## Theta = 4.9595 
 ## Number of iterations in BFGS optimization: 8 
 ## Log-likelihood: -352.8 on 5 Df</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="modelo-para-conteos.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo hurdle</span></span>
-<span id="cb171-2"><a href="modelo-para-conteos.html#cb171-2" aria-hidden="true" tabindex="-1"></a>HNB.sat <span class="ot">=</span> <span class="fu">hurdle</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span>
-<span id="cb171-3"><a href="modelo-para-conteos.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(HNB.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="modelo-para-conteos.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo hurdle</span></span>
+<span id="cb184-2"><a href="modelo-para-conteos.html#cb184-2" aria-hidden="true" tabindex="-1"></a>HNB.sat <span class="ot">=</span> <span class="fu">hurdle</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span>
+<span id="cb184-3"><a href="modelo-para-conteos.html#cb184-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(HNB.sat)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## hurdle(formula = satell ~ weight | weight, data = crabs, dist = &quot;negbin&quot;)
@@ -955,7 +974,7 @@ BIC
           </div>
         </div>
       </div>
-<a href="modelo-logístico-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelo-logístico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="modelo-lineal-mixto.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

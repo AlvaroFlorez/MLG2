@@ -35,7 +35,7 @@ knitr::kable(
   caption = 'Número de escarabajos expuestos y muertos a diferentes dosis (escala logarítmica)'
 )
 ```
-En la Figura \@ref(tab:grafMortEsc) podemos observar como es el aumento de la tasa de mortalidad con respecto a la dosis del tóxico. Note que la relación no es lineal, si no que tiene una forma de 'S'. Esto hace que un modelo de regresión lineal sea inadecuado.
+En la Figura \@ref(fig:grafMortEsc) podemos observar como es el aumento de la tasa de mortalidad con respecto a la dosis del tóxico. Note que la relación no es lineal, si no que tiene una forma de 'S'. Esto hace que un modelo de regresión lineal sea inadecuado.
 
 ```{r grafMortEsc, echo=F,, fig.height = 4, fig.width = 6, fig.align='center', fig.cap="Datos escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos."}
 plot(logdose,dead/n,xlab='log dosis',ylab='proporción de muertos',ylim=c(0,1),pch=16)
@@ -68,12 +68,12 @@ epilepsy=subset(epilepsy, period==4)#selecionamos la semana 4
 
 par(mfrow=c(1,3))
 plot(seizure.rate~age, col=treatment, pch=16, data=epilepsy, xlab="edad",
-     ylab = "número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)")
+     ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
 plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
-     xlab="número de ataques epiléptico pre-tratamiento (ataques x cuatro semanas)",
-     ylab = "número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)")
+     xlab="núm. de ataques pre-tratamiento (ataques x 4 semanas)",
+     ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
 boxplot(seizure.rate~treatment,data=epilepsy, xlab = "tratamiento",
-        ylab = "número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)")
+        ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
 
 ```
 La Figura \@ref(fig:seizurePlot) muestra la relación del número de ataques epiléticos al final del estudio con las posibles covariables. Aquí vemos que no parece haber relación con la edad, hay una relación fuerte con el número de ataques pre-tratamiento, y que los pacientes del grupo placebo parecen  presentar un poco más de convulsiones.
@@ -270,8 +270,8 @@ $$
 
 donde, la función $g(\cdot)$ es monótona y diferenciable. Generalmente, $g(\cdot)$ esta determinada por la distribución que se asume para $Y$.
 
-## Ejemplos de GLM
-### modelo logístico
+### Ejemplos de GLM
+#### modelo logístico
 Definiendo $y_{i}=\sum_{i=1}^ny_{ij}/n_{i}$ (la proporción de éxitos en $n_i$ ensayos independientes), tenemos que:
 
 $$
@@ -295,7 +295,7 @@ abline(h=1,lty=2,lwd=1)
 
 Este modelo se puede utilizar para estimar la probabilidad de que el escarabajo muera en función de la concentración de disulfuro de carbono gaseoso.
 
-### modelo Poisson
+#### modelo Poisson
 Aquí asumimos que:
 
 $$
@@ -325,7 +325,7 @@ Otros ejemplos de distribuciones que se pueden utilizar son:
 * **Weibull** para tiempos de falla.
 
 
-### Ajuste de un GLM
+## Ajuste de un GLM
 Al igual que en los modelos lineales, los pasos para ajustar un GLM incluyen:
 
 * **Especificación del modelo**.Definición del componente aleatorio, predictor lineal y función de enlace.
@@ -337,7 +337,7 @@ Al igual que en los modelos lineales, los pasos para ajustar un GLM incluyen:
 * **Inferencia**. Intervalos de confianza, pruebas de hipótesis e interpretación de los resultados según los objetivos del estudio.
 
 
-#### Especificación del modelo 
+### Especificación del modelo 
 El modelo lineal generalizado (GLM) asume que:
 
 $$
@@ -519,13 +519,13 @@ predpois = predict(modPois,y,type='response')
 x=seq(min(epilepsy$base),max(epilepsy$base),length.out=50)
 
 plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
-     xlab="número de ataques epiléptico(pre tratamiento)",
-     ylab = "número deataques epiléptico(4ta semana de tratamiento)")
+     xlab="ataques pre-tratamiento (x 4 semanas)",
+     ylab = "ataques post-tratamiento (x 2 semanas)")
 lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)
 lines(x,predpois[order(y$treatment, y$base)[51:100]],col=2, lwd = 2)
 ```
 
-### Interpretación de parámetros - modelo Poisson
+#### Interpretación de parámetros - modelo Poisson
 En el modelo Poisson, tenemos que: $E(Y|x)=\exp(\beta_0+x\beta_1)$. Si aumentamos a $x$ en $\delta$ unidades, tenemos que $E(Y|x+\delta)=\exp(\beta_0+(x+\delta)\beta_1)$. Ahora si calculamos el logarítmo de la razón de los valores esperados obtenemos que:
 
 $$
@@ -551,7 +551,7 @@ son equivalentes
 * Por lo tanto, no hay posibilidad de múltiples máximos.
 -->
 
-### Pruebas de hipótesis
+## Pruebas de hipótesis
 Al igual que en los modelos lineales, uno puede estar interesado en realizar pruebas hipótesis sobre los coeficientes del modelo. Por ejemplo, en el estudio sobre epilépsia estamos interesados en evaluar:
 $$
 \qquad H_0:\beta_1=\beta_3=0.
