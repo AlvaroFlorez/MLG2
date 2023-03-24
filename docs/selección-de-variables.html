@@ -1028,19 +1028,19 @@ Figure 4.5: Datos de grasa corporal. Valiación cruzada (puntos rojos) para dife
 <span id="cb92-2"><a href="selección-de-variables.html#cb92-2" aria-hidden="true" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
 <pre><code>## 13 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                  s0
-## age      0.04428910
+## age      0.03109358
 ## weight   .         
-## height  -0.14861287
-## neck    -0.01394232
+## height  -0.14026654
+## neck     .         
 ## chest    .         
-## abdom    0.61111812
+## abdom    0.57022182
 ## hip      .         
 ## thigh    .         
 ## knee     .         
 ## ankle    .         
 ## biceps   .         
 ## forearm  .         
-## wrist   -1.08873009</code></pre>
+## wrist   -0.60977822</code></pre>
 <p>La selección de variables por medio del estimador LASSO son <code>age</code>, <code>height</code>,<code>abdom</code> y <code>wrist</code>. Ahora ajustamos el modelo con estas variables por medio de MCO:</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="selección-de-variables.html#cb94-1" aria-hidden="true" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
 <span id="cb94-2"><a href="selección-de-variables.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>

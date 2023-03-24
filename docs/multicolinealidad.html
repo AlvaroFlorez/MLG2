@@ -797,7 +797,7 @@ A partir de las cantidades anteriores se puede determinar el error cuadrático m
 donde <span class="math inline">\(\boldsymbol \alpha= \boldsymbol T&#39;\boldsymbol b\)</span>.</p>
 <p>Finalmente, la suma de cuadrados de los residuos usando <span class="math inline">\(\widehat{\boldsymbol b}_{k}\)</span> es:
 <span class="math display">\[
-SS_{\mbox{res}}_k = (\boldsymbol y- \boldsymbol Z\widehat{\boldsymbol b})&#39;(\boldsymbol y- \boldsymbol Z\widehat{\boldsymbol b}) + (\widehat{\boldsymbol b}_{k}-\widehat{\boldsymbol b})&#39;\boldsymbol R(\widehat{\boldsymbol b}_{k}-\widehat{\boldsymbol b}).
+SS_{res} =(\boldsymbol y- \boldsymbol Z\widehat{\boldsymbol b})&#39;(\boldsymbol y- \boldsymbol Z\widehat{\boldsymbol b}) + (\widehat{\boldsymbol b}_{k}-\widehat{\boldsymbol b})&#39;\boldsymbol R(\widehat{\boldsymbol b}_{k}-\widehat{\boldsymbol b}).
 \]</span>
 A partir de estos resultados, vemos que: (1) Si <span class="math inline">\(k\)</span> crece, disminuye la varianza, pero aumenta el sesgo. (2) Si <span class="math inline">\(k\)</span> disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un <span class="math inline">\(R^{2}\)</span> mas pequeño que el estimador por MCO. Sin embargo, la regresión ridge proporciona estimaciones de <span class="math inline">\(\boldsymbol b\)</span> más estables.</p>
 <p>La idea de la regresión de ridge es encontrar un valor de <span class="math inline">\(k\)</span> tal que <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{k}) &lt; V(\widehat{\boldsymbol b})\)</span>. En la Figura <a href="multicolinealidad.html#fig:ECMrepresentacion">3.3</a> podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta <span class="math inline">\(k\)</span>, el sesgo incrementa y la varianza disminuye. Además, hay una región de <span class="math inline">\(k\)</span> donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de <span class="math inline">\(k\)</span> que minimiza el ECM, o por lo menos algún valor en la región donde <span class="math inline">\(\mbox{ECM}(\widehat{\boldsymbol b}_{k}) &lt; V(\widehat{\boldsymbol b})\)</span>.</p>
@@ -961,7 +961,7 @@ V(\widehat{\boldsymbol b}_{r}) = \boldsymbol TV(\widehat{\boldsymbol \alpha}_{r}
 \]</span>
 Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de <span class="math inline">\(\widehat{\boldsymbol b}_r\)</span>. Finalmente, el ECM de <span class="math inline">\(\widehat{\boldsymbol b}_r\)</span> está dado por:
 <span class="math display">\[
-ECM(\widehat{\boldsymbol b}_r) = \sigma^{2}\sum_{i=1}^{r}\frac{1}{\lambda_l} + \sum_{l=r+1}^{p-1}\alpha_l^2.
+MSE(\widehat{\boldsymbol b}_r) = \sigma^{2}\sum_{i=1}^{r}\frac{1}{\lambda_l} + \sum_{l=r+1}^{p-1}\alpha_l^2.
 \]</span></p>
 <div id="datos-de-cemento-2" class="section level3 hasAnchor" number="3.8.1">
 <h3><span class="header-section-number">3.8.1</span> Datos de cemento<a href="multicolinealidad.html#datos-de-cemento-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>

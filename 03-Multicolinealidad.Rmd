@@ -404,9 +404,9 @@ A partir de las cantidades anteriores se puede determinar el error cuadrático m
 donde $\balpha = \bT'\bb$.
 
 Finalmente, la suma de cuadrados de los residuos usando $\hatbb_{k}$ es:
-$$
-\Sres_k = (\by - \bZ\hatbb)'(\by - \bZ\hatbb) + (\hatbb_{k}-\hatbb)'\bR(\hatbb_{k}-\hatbb).
-$$
+\[
+SS_{res} =(\by - \bZ\hatbb)'(\by - \bZ\hatbb) + (\hatbb_{k}-\hatbb)'\bR(\hatbb_{k}-\hatbb).
+\]
 A partir de estos resultados, vemos que: (1) Si $k$ crece, disminuye la varianza, pero aumenta el sesgo. (2) Si $k$ disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un $R^{2}$ mas pequeño que el estimador por MCO. Sin embargo, la regresión ridge proporciona estimaciones de $\bb$ más estables.
 
 La idea de la regresión de ridge es encontrar un valor de $k$ tal que  $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$. En la Figura \@ref(fig:ECMrepresentacion) podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta $k$, el sesgo incrementa y la varianza disminuye. Además, hay una región de $k$ donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de $k$ que minimiza el ECM, o por lo menos algún valor en la región donde $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$.
@@ -525,7 +525,7 @@ V(\hatbb_{r}) = \bT V(\hatbalpha_{r})\bT' =  \sigma^{2}\sum_{l=1}^{r} \lambda_{l
 \]
 Por lo tanto, al eliminar componentes principales se aumenta el sesgo, pero se disminuye la varianza de $\hatbb_r$. Finalmente, el ECM de $\hatbb_r$ está dado por:
 \[
-ECM(\hatbb_r) = \sigma^{2}\sum_{i=1}^{r}\frac{1}{\lambda_l} + \sum_{l=r+1}^{p-1}\alpha_l^2.
+MSE(\hatbb_r) = \sigma^{2}\sum_{i=1}^{r}\frac{1}{\lambda_l} + \sum_{l=r+1}^{p-1}\alpha_l^2.
 \]
 
 ### Datos de cemento
