@@ -10,55 +10,16 @@ data(birthwt)
 ## Casos de estudio
 
 ### Mortalidad de escarabajos
-
-Número de escarabajos muertos después de cinco horas de
-exposición a disulfuro de carbono gaseoso $(CS2mgl^{-1})$ en diversas concentraciones
-
-
-|log.dosis|Escarabajos Total|Escarabajos Muertos|
-|:--------|:----------------|:------------------|
-|1.6907|59|6 |
-|1.7242|60|13|
-|1.7552|62|18|
-|1.7842|56|28|
-|1.8113|63|52|
-|1.8369|59|53|
-|1.8610|62|61|
-|1.8839|60|60|
-¿Hay una relación entre la dosis y la mortalidad de escarabajos?
-
-```{r, fig.align='center',fig.cap="Datos escarabajos."}
+Vamos a trabajar con los datos del estudio sobre los escarabajos:
+```{r datosEscarabajos}
 logdose <- c(1.6907, 1.7242, 1.7552, 1.7842, 1.8113, 1.8369, 1.8610, 1.8839)
-dead <- c(6, 13, 18, 28, 52, 53, 61, 60) # numbers dead
-n <- c(59, 60, 62, 56, 63, 59, 62, 60) # binomial sample sizes
+dead <- c(6, 13, 18, 28, 52, 53, 61, 60) 
+n <- c(59, 60, 62, 56, 63, 59, 62, 60) 
 Datos=data.frame(logdose,n,dead)
-
-plot(logdose,dead/n,xlab='log dosis',ylab='proporción de muertos',ylim=c(0,1),pch=16)
 ```
 
-**Variable respuesta $y_i=\sum_{j=1}^{n_i}y_{ij}/n_{i}$:** proporción de escarabajos muertos.
-
-**Distribución de probabilidad:** binomial:
-
-$$
-f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
-$$
-
-**Función de enlace:**
-
-$$
-log \begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1log\text{dosis}_i.
-$$
-
 ### Bajo peso al nacer
-
-Se busca identificar factores de riesgo asociados con el nacimiento de niños con bajo peso ($<2.5$ kgs). datos: ```data(birthwt,package= 'MASS'```)
-
-**Muestra:**189 madres atendidas en una clínica.
-
-**Variable respuesta:** Bajo peso al nacer (1 si peso $<$ 2.5 kgs, 0 si peso $\geq$ 2.5 kgs).
-
-Posibles covariables:
+Con los datos \texttt{birthwt} de la librería \texttt{MASS}, se quiere indentificar factores de riesgo asociados con el nacimiento de niños con bajo peso (es decir, un peso al nacer menor de $2.5$kgs). Se tiene información de 189 recién nacidos y sus madres atendidos en una hospital (Baystate Medical Center, Springfield, Mass en 1986). Los posibles factores que pueden afectar el bajo al peso son:
 
 * ```age```: edad de la madre (años).
 
@@ -68,35 +29,22 @@ Posibles covariables:
 
 * ```ptl```: historia de parto prematuro (número de casos).
 
-**Variable respuesta $y_i$:** bajo peso al nacer (0: no, 1: si)
+La variable de respuesta es ```low``` (1 si peso $<$ 2.5 kgs, 0 si peso $\geq$ 2.5 kgs).
 
-**Distribución de probabilidad:** Bernoulli:
-
+Para este caso, se puede ajustar modelo logístico. Sea $y_i=1$ si el $i$-ésimo bebé nace con bajo peso, $y_i=0$ si lo contrario. Por lo que la densidad de $y_i$ está definida como:
 $$
 f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{(1-y_i)}.
 $$
-
-**Función de enlace:**
-
+La función de enlace es:
 $$
 log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}_i+\beta_2\text{lwt}_i+\beta_3\text{smoke}_i+\beta_4\text{ptl}_i.
 $$
-
 ### Estudio de teratología
+Los datos \texttt{lirat} de la librería \texttt{VGAM} son de un estudio para investigar los efectos de unos régimenes alimenticio  en el desarrollo fetal de ratas. En este experimento, 58 ratas hembras con dietas deficientes en hierro se dividieron en cuatro grupos.  Tres grupos recibieron inyecciones semanales de suplementos de hierro, a diferentes dosis, para normalizar sus niveles de hierro. Mientras que, el grupo restante no recibieron ningún suplemento (placebo). Luego, las ratas se preñaron, se sacrificaron 3 semanas después, y se contó el número de fetos muertos en cada camada.
 
-Se quiere investigar los efectos de agentes químicos en el desarrollo fetal de ratas. datos: ```data(lirat,package = 'VGAM')```.
+En la Figura \@ref(fig:liratFig) se puede observar la relación entre el número de fetos muertos por tratamiento, y también, la relación con los niveles de hemoglobina de las ratas hembras.
 
-**Muestra:** 58 ratas hembras con dietas deficientes en hierro.
-
-**Variable respuesta:** proporción de fetos muertos.
-
-Posibles covariables:
-
-* ```grp```: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro)
-
-* ```hb```: nivel de hemoglobina.
-
-```{r, fig.align='center',fig.cap="Datos teratoligía"}
+```{r liratFig,  fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Datos teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) "}
 data(lirat,package = 'VGAM')
 par(mfrow=c(1,2))
 #Proporcion de fetos muestos vs tratamiento
@@ -105,91 +53,58 @@ plot(lirat$grp,lirat$R/lirat$N,xlab="Tratamiento",ylab="Proporción de fetos mue
 plot(lirat$hb,lirat$R/lirat$N,xlab="Hemoglobina",ylab="Proporción de fetos muertos")
 ```
 
-**Variable respuesta $y_i=\sum_{j=1}^{n_i}y_{ij}/n_i$:** proporción de fetos muertos por hembra.
-
-**Distribución de probabilidad:**binomial:
-
-$$
-f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
-$$
-
-**Función de enlace:**
-
-$$
-log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp}_{i1}+\beta_2\text{grp}_{i2}+\beta_3\text{grp}_{i3}+\beta_4\text{hb}_i.
-$$
+Si consideramos:
+\[
+y_{ij} = \begin{cases}
+1 & \mbox{ si el feto} j \mbox{ de la camada }i\mbox{ está muerto}, \\
+0 & \mbox{ si lo contrario}, \\
+ \end{cases}
+\]
+la variable número de fetos muertos se puede asociar a una distribución binomial:
+\[
+y_i = \sum_{j=1}^{n_i} y_{ij} \sim \mbox{binomial}(n_i, \pi_i),
+\]
+donde $n_i$ es el tamaño de la camada y $\pi_i$ es la probabilidad de que el feto muera. Dado que $\pi_i$ depende del tratamiento y de los niveles de hemoglobina de la rata hembra, se propone que:
+\[
+log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp}_{i1}+\beta_2\text{grp}_{i2}+\beta_3\text{grp}_{i3}+\beta_4\text{hb}_i,
+\]
+donde: ```grp_2```: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro) ```hb```: nivel de hemoglobina.
 
 ## Datos agrupados o datos no agrupados
+Los datos binarios tienen dos tipos de formatos:
 
-**Datos agrupados:** Hay $n_i$ observaciones que tienen los mismos valores de las covariables $x_i$.
+**Datos agrupados:** Hay $n_i$ observaciones que tienen los mismos valores de las covariables $x_i$. Aquí tenemos que para agrupación, $y_i \sim$binomial$(n_i,\pi_i)$.
 
-**Datos no agrupados:** Hay $n_i=1$ (o muy pocas) observaciones por cada $x_i$.
+**Datos no agrupados:** Hay $n_i=1$ (o muy pocas) observaciones por cada $x_i$. Es decir que, cada $y_i$ sigue una distribución Bernoulli$(\pi_i)$.
 
-Las propiedades asintóticas de las inferencias para los datos no agrupados aplican cuando $n \to \infty$.
-
-Mientras que para datos agrupados, aplican cuando $\sum_{i=1}^nn_i\to\infty$.
+Las propiedades asintóticas de las inferencias para los datos no agrupados aplican cuando $N \to \infty$. Mientras que para datos agrupados, aplican cuando $\sum_{i=1}^nn_i\to\infty$.
 
 ### Datos agrupados
-
-Para datos agrupados, $D$ y $X^2$ sirven para evaluar si el ajuste del modelo es bueno o no.
-
-$H_0$ indica que el modelo se ajusta bien a los datos, $H_1$ lo contrario.
+Para datos agrupados, $D$ y $X^2$ sirven para evaluar si el ajuste del modelo es bueno o no. Aquí podemos plantear las siguientes hipótesis: $H_0$ indica que el modelo se ajusta bien a los datos, $H_1$ lo contrario.
 
 Si $H_0$ es cierta (y $\sum_{i=1}^nn_i\to\infty$), entonces $D$ y $X^2$ siguen una distribución $\chi^2$ con $(n-p)$ grados de libertad.
 
 ### Datos no agrupados
+Las distribuciones límite para $D$ y $X^2$  no aplican para datos no agrupados. Tampoco para datos agrupados con $N$ grande y algunos $n_i$ muy pequeños. Se puede aproximar $D$ y $X^2$ agrupando $(\bx_i,\hat{\by})$ por particiones del espacio de covariables o por particiones de $\hat{\pi}$. En estos casos, es preferible evaluar la falta de ajuste comparando el modelo propuesto contra modelos más generales.
 
-Las distribuciones límite para $D$ y $X^2$  no aplican para datos no agrupados.
-
-Tampoco para datos agrupados con $n$ grande y con algunos $n_i$ muy pequeños.
-
-Se puede aproximar $D$ y $X^2$ agrupando $(\bx_i,\hat{\by})$ por particiones del espacio de covariables o por particiones de $\hat{\pi}$.
-
-La falta de ajuste se puede hacer comparando el modelo propuesto contra modelos más generales.
-
-## Modelo logístico
-
-Modelo:
-
-$$
-n_iy_i\sim\text{binomial}(n_i,\pi_i),\quad \text{donde} \quad \pi_i=g(\bx_i\bbeta).
-$$ 
-
-Entonces: $E(y_i|\bx_i)=\pi_i$ y $V(y_i|\bx_i)=\pi_i(1-\pi_i)/n_i$.
-
-Función de enlace logit: $log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\bx_i\bbeta$.
-
-Lo que implica que:
+## Funciones de enlace
+En los modelos anteriores hemos propuesto funciones de enlace logit: $log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\bx_i\bbeta$.Lo que implica que:
 
 $$
 \pi_i=g^{-1}(\bx_i,\bbeta)=\frac{exp(\bx_i'\bbeta)}{1+exp(\bx_i'\bbeta)}=\frac{1}{1+exp(-\bx_i'\bbeta)} 
 $$
-
-Aunque podemos utilizar otras funciones de enlace.
-
-### Funciones de enlace alternativas
-
-**Probit:**
-
+Sin embargo, podemos utilizar otras funciones de enlace. Por ejemplo, la función **Probit:**
 $$
 \Phi^{-1}(\pi_i)=\bx'_i\bbeta \quad \pi_i=\Phi(\bx'_i\bbeta),
 $$
-
-donde $\Phi(\cdot)$ es función acumulativa de la distribución normal estándar.
-
-**Log-log complementaria:**
-
+donde $\Phi(\cdot)$ es función acumulativa de la distribución normal estándar. La función **Log-log complementaria:**
 $$
 \pi_i=1-exp[-exp(\bx'_i\bbeta)] \quad log[-log(1-\pi_i)]=\bx'_i\bbeta.
 $$
+En la Figura \@ref(fig:linkEsc) podemos observar la estimación de la probabilidad de que el escarabajo muera utilizando diferentes funciones de enlace (logit, probit, log-log complementaria). Graficamente, la función log-log complementaria parece mostrar mejores estimaciones que la probit y la logit.
 
-**Log-log:**
 
-$$
-\pi_i=exp[-exp(\bx'_i\bbeta)] \quad -log[-log(\pi_i)]=\bx'_i\bbeta.
-$$
-
-```{r,echo=FALSE,fig.align='center',fig.cap="Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
+```{r linkEsc,echo=FALSE, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
 
 pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))
 
@@ -201,82 +116,92 @@ pred.logit = predict(modEsc.logit,pred.x,type='response')
 pred.probit = predict(modEsc.probit,pred.x,type='response')
 pred.cloglog = predict(modEsc.cloglog,pred.x,type='response')
 
-plot(pred.x$logdose,xlim=c(1.69,1.88),ylim=c(0,1),xlab='log dosis',ylab='proporción de escarabajos muertos')
-lines(pred.x$logdose,pred.logit)
-lines(pred.x$logdose,pred.probit,col=2)
-lines(pred.x$logdose,pred.cloglog,col="green")
-
+plot(logdose,dead/n,xlim=c(1.69,1.88),ylim=c(0,1),xlab='log dosis',ylab='proporción de escarabajos muertos')
+lines(pred.x$logdose,pred.logit,lwd=2)
+lines(pred.x$logdose,pred.probit,col=2,lwd=2)
+lines(pred.x$logdose,pred.cloglog,col=3,lwd=2)
 ```
+Este resultado se puede comprobar utilizando criterios de información:
+```{r linkEscAIC,echo=T}
+AIC(modEsc.logit)
+AIC(modEsc.probit)
+AIC(modEsc.cloglog)
+```
+## Curva característica operativa del receptor(ROC)
+Para evaluar el poder predictivo del modelo se puede construir una tabla de contingencia (ver Tabla \@ref(tab:tabcont)) comparando $y_i$ con la predicción $\haty_i$ a través del modelo. Para datos no agrupados, la predicción $\haty_i$ se define como:
+\[
+\haty_i = \begin{cases}
+1 & \mbox{si } \hatpi_i > \pi_0, \\
+0 & \mbox{si } \hatpi_i \leq \pi_0, \\
+\end{cases}
+\]
+para un punto de corte $\pi_0$ definido por el investigador, por ejemplo $\pi_0 = 0.5$.
 
-```{r, echo=FALSE, include=TRUE, results="asis"}
+```{r tabcont, echo=FALSE, include=TRUE, results="asis"}
+mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
+                       b1=c('a','b'),
+                       b2=c('c','d'))
 
-
-mathy.df <- data.frame(b4=c("Intercept", "Dosis","log.lik","AIC"), 
-                       b0=c("$\\beta_0$","$\\beta_1$","",""), 
-B1=c(-60.72,34.27,-18.71,41.43),
-B2 = c(5.18,2.91,"",""),
-B3 = c(-34.94,19.73,-18.16,40.32),
-B4 = c(2.65,1.49,"",""),
-B5 = c(-39.57,22.04,-14.82,33.64),
-B6 = c(3.24,180,"",""))
-
-colnames(mathy.df)<-c("Effect","Parm","est.","s.e","est.","s.e","est.","s.e")
+colnames(mathy.df)<-NULL
 
 kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
   kable_styling(bootstrap_options = "striped",
-                full_width = F) %>%
-  add_header_above(c("","","logit" = 2, "porbit" = 2, "cloglog" = 2))
+                full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
 ```
 
-```{r}
-modbw.logit = glm(low~age+lwt+ptl+smoke,family=binomial(logit),data=birthwt)
-summary(modbw.logit)
-
-modbw.probit = glm(low~age+lwt+smoke+ptl,family=binomial(probit),data=birthwt)
-
-summary(modbw.probit)
-```
-
-## Curva característica operativa del receptor(ROC)
-
-Para evaluar el poder predictivo del modelo se puede construir una
-tabla de contingencia:
-
-```{r, echo=FALSE, include=TRUE, results="asis"}
-
-mathy.df <- data.frame(b4=c(0,1), 
-                       b0=c("",""),
-                       b1=c("",""))
-
-colnames(mathy.df)<-c("y","0","1")
-
-kable(mathy.df, escape=FALSE,format = "html", booktabs = T,caption = "Tabla de clasificación") %>%
-  kable_styling(bootstrap_options = "striped",
-                full_width = F) 
-```
-El recuento de casillas en estas tablas permite estimar la sensibilidad=$(\hat y=1|y=1)$ y especificidad=$(\hat y=0|y=0)$.
-
-Para datos no agrupados, la predicción $\hat{y}=1$ cuando $\hat{\pi_i}\geq\pi_0$(por ejemplo 0,5).
-
-Para $\pi_0$, se calcula:
-
-* La sensibilidad $P(\hat y=1|y=1)$.
-
-* La especificidad $P(\hat y=0|y=0)$.
-
-Dado que estos valores dependen de $\pi_0$, se pueden calcular para todos los posibles $\pi_0$.
+El recuento de casillas en estas tablas permite estimar la sensibilidad, 
+\[
+P(\haty=1|y=1) = \frac{d}{b+d},
+\]
+y la especificidad, $P(\haty=0|y=0)$.
+\[
+P(\haty=0|y=0) = \frac{a}{a+c}.
+\]
+Sin embargo, estos valores dependen de $\pi_0$.
 
 **Ejemplo - Datos de peso al nacer**
+Para los datos de peso al nacer, se propone el siguiente modelo:
+\[
+\mbox{logit} \pi_i = \beta_0+  \mbox{age}_i\beta_1+  \mbox{lwt}_i\beta_2 +  \mbox{smoke}_i\beta_3 + \mbox{ptl}_i\beta_4,
+\]
+donde $\pi_i$ es la probabilidad de que el recién nacido nazca con bajo peso. El ajuste del modelo es:
 
-Por ejemplo, si $\pi_0$, tenemos:
+```{r lbwfit, echo=FALSE, include=TRUE}
+mod.lbw = glm(low ~ age + lwt + smoke + ptl, data= birthwt,family=binomial)
+summary(mod.lbw)
+```
+Estos resultados muestran que el estado de tabaquismo y el historial de partos prematuros son factores de riesgo para el bajo peso al nacer. Sin embargo, el primero no tiene un aporte significativo dentro del modelo.
 
-```{r, echo=FALSE, include=TRUE, results="asis"}
+Ahora vamos a evaluar el poder predictivo del modelo. Si definimos $\pi_0=0.5$, tenemos:
+
+```{r roc1, echo=FALSE, include=TRUE, results="asis"}
+obs = birthwt$low
+pred = mod.lbw$fitted.values > 0.5
+tab1 = table(obs,pred)
 
 mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
-                       b1=c(123,49),
-                       b2=c(7,10))
+                       b1=c(tab1[1,1],tab1[2,1]),
+                       b2=c(tab1[1,2],tab1[2,2]))
 
-colnames(mathy.df)<-c("y","0","1")
+colnames(mathy.df)<-NULL
+
+kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
+  kable_styling(bootstrap_options = "striped",
+                full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
+
+```
+Por lo tanto, la sensibilidad es $10/59 = 0,169$ y la especificidad es $123/130 = 0,946$. Con este punto de corte, el modelo tiene una predictividad alta para los recién nacidos con peso adecuado (alta especificidad). Sin embargo, la probabilidad de falsos positivos es alta (baja sensibilidad). Ahora, si $\pi_0= 0,3$:
+
+```{r, echo=FALSE, include=TRUE, results="asis"}
+obs = birthwt$low
+pred = mod.lbw$fitted.values > 0.3
+tab1 = table(obs,pred)
+
+mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
+                       b1=c(tab1[1,1],tab1[2,1]),
+                       b2=c(tab1[1,2],tab1[2,2]))
+
+colnames(mathy.df)<-NULL
 
 kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
   kable_styling(bootstrap_options = "striped",
@@ -284,36 +209,30 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
 
 ```
 
-Sensibilidad: $10/59 = 0,169$ - especificidad: $123/130 = 0,946$.
+En este caso la sensibilidad aumentó $(40/59 = 0,678)$, pero la especificidad disminuye $(79/130 = 0,607)$. 
 
-Ahora, si $\pi_0= 0,3$:
+Dado que la sensibilidad y especificidad tiene una alta dependencia del punto de corte, lo preferible calcular estas cantidades para muchos valores de $\pi_0$. En la Figura \@ref(fig:sensespc) podemos observar que a medida que aumenta $\pi_0$ la sensibilidad disminuye y la especificidad aumenta.
 
-```{r, echo=FALSE, include=TRUE, results="asis"}
+```{r sensespc, fig.align = 'center', fig.height = 4, fig.width = 6,echo=FALSE, fig.cap="Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte."}
+tab.fun = function(obs,fit,pi0){
+pred0 = fit > pi0
+tab = table(obs,pred0)
+senc = tab[2,2]/sum(tab[2,])
+espc = tab[1,1]/sum(tab[1,])
+c(senc,espc)
+}
+pi0 = seq(0.1,0.8,length.out=500)
+sens.espc = mapply(function(x){tab.fun(obs,mod.lbw$fitted.values,pi0[x])},x=1:500)
 
-mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
-                       b1=c(79,19),
-                       b2=c(51,40))
-
-colnames(mathy.df)<-c("y","0","1")
-
-kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
-  kable_styling(bootstrap_options = "striped",
-                full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
-
+plot(pi0,sens.espc[1,],lwd=2,type = 'l',xlab=expression(pi[0]),ylab='Sensibilidad y especificidad')
+lines(pi0,sens.espc[2,],lwd=2,col=2)
 ```
-
-Sensibilidad: $40/59 = 0,678$ - especificidad: $79/130 = 0,607$.
-
+La sensibilidad es la tasa de verdaderos positivos (tvp), mientras que, el complemento de la especificidad $(P(\haty = 1 | y=0))$ es la tasa de falsos positivos (tfp). El gráfico de la tasa de verdaderos positivos en función de la tasa de falsos positivos para diferentes valores de $\pi_0$, entre $0$ y $1$, lleva el nombre de curva característica operativa del receptor (ROC). Cuando $\pi_0$ es muy cercano a $1$, casi todas las predicciones son $\haty =0$; entonces tenemos (tvp,tfp)$\approx(0,0)$. Mientras que, cuando $\pi_0$ es muy cercano a $0$, casi todas las predicciones son $\haty =1$; entonces tenemos (tvp,tfp)$\approx(1,1)$. esto lo podemos ver en la Figura \@ref(fig:sensespc2).
 
 
-```{r, fig.align = 'center',out.width = "75%",echo=FALSE, fig.cap="Sensibilidad (linea negra) - especificidad (linea roja)"}
-knitr::include_graphics(here::here("figs", "grafsen.jpg"))
-```
-
-Gráfico de $P(\hat y=1|y=1)$ vs $P(\hat y=0|y=0)$
-
-```{r, fig.align = 'center',out.width = "75%",echo=FALSE}
-knitr::include_graphics(here::here("figs", "Sensibilidad.png"))
+```{r sensespc2, fig.align = 'center', fig.height = 4, fig.width = 6,echo=FALSE,fig.cap="Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte."}
+plot(1-sens.espc[2,],sens.espc[1,],lwd=2,xlab='1 - especificidad',
+     ylab='sensibilidad')
 ```
 
 

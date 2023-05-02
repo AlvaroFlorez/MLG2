@@ -59,6 +59,7 @@ header-includes:
     
   - \newcommand{\bbeta}{\boldsymbol \beta}
   - \newcommand{\hatbeta}{\widehat{\beta}}
+  - \newcommand{\hatpi}{\widehat{\pi}}
   - \newcommand{\hatbbeta}{\widehat{\bbeta}}
   - \newcommand{\bgamma}{\boldsymbol \gamma}
   - \newcommand{\hatmu}{\widehat{\mu}}

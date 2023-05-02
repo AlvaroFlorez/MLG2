@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-03-24" />
+<meta name="date" content="2023-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -293,8 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.8.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.8.1</b> El estadístico chi-cuadrado de Pearson</a></li>
 </ul></li>
 <li class="chapter" data-level="6.9" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.9</b> Bondad de ajuste</a></li>
-<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pseudo-r2"><i class="fa fa-check"></i><b>6.10</b> Pseudo <span class="math inline">\(R^2\)</span></a></li>
-<li class="chapter" data-level="6.11" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.11</b> Selección de variables</a></li>
+<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.10</b> Selección de variables</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="modelo-logístico.html"><a href="modelo-logístico.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
@@ -302,17 +301,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
 <li class="chapter" data-level="7.1.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
-<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados"><i class="fa fa-check"></i><b>7.2.1</b> Datos agrupados</a></li>
 <li class="chapter" data-level="7.2.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-logístico-1"><i class="fa fa-check"></i><b>7.3</b> Modelo logístico</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#funciones-de-enlace-alternativas"><i class="fa fa-check"></i><b>7.3.1</b> Funciones de enlace alternativas</a></li>
-</ul></li>
+<li class="chapter" data-level="7.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#funciones-de-enlace"><i class="fa fa-check"></i><b>7.3</b> Funciones de enlace</a></li>
 <li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a>
 <ul>
 <li class="chapter" data-level="7.4.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#ejemplo-mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.4.1</b> Ejemplo mortalidad de escarabajos</a></li>
@@ -382,451 +377,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> Casos de estudio<a href="modelo-logístico.html#casos-de-estudio-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="mortalidad-de-escarabajos-1" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Mortalidad de escarabajos<a href="modelo-logístico.html#mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Número de escarabajos muertos después de cinco horas de
-exposición a disulfuro de carbono gaseoso <span class="math inline">\((CS2mgl^{-1})\)</span> en diversas concentraciones</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">log.dosis</th>
-<th align="left">Escarabajos Total</th>
-<th align="left">Escarabajos Muertos</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1.6907</td>
-<td align="left">59</td>
-<td align="left">6</td>
-</tr>
-<tr class="even">
-<td align="left">1.7242</td>
-<td align="left">60</td>
-<td align="left">13</td>
-</tr>
-<tr class="odd">
-<td align="left">1.7552</td>
-<td align="left">62</td>
-<td align="left">18</td>
-</tr>
-<tr class="even">
-<td align="left">1.7842</td>
-<td align="left">56</td>
-<td align="left">28</td>
-</tr>
-<tr class="odd">
-<td align="left">1.8113</td>
-<td align="left">63</td>
-<td align="left">52</td>
-</tr>
-<tr class="even">
-<td align="left">1.8369</td>
-<td align="left">59</td>
-<td align="left">53</td>
-</tr>
-<tr class="odd">
-<td align="left">1.8610</td>
-<td align="left">62</td>
-<td align="left">61</td>
-</tr>
-<tr class="even">
-<td align="left">1.8839</td>
-<td align="left">60</td>
-<td align="left">60</td>
-</tr>
-</tbody>
-</table>
-<p>¿Hay una relación entre la dosis y la mortalidad de escarabajos?</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="modelo-logístico.html#cb144-1" aria-hidden="true" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
-<span id="cb144-2"><a href="modelo-logístico.html#cb144-2" aria-hidden="true" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) <span class="co"># numbers dead</span></span>
-<span id="cb144-3"><a href="modelo-logístico.html#cb144-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) <span class="co"># binomial sample sizes</span></span>
-<span id="cb144-4"><a href="modelo-logístico.html#cb144-4" aria-hidden="true" tabindex="-1"></a>Datos<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span>
-<span id="cb144-5"><a href="modelo-logístico.html#cb144-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-6"><a href="modelo-logístico.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(logdose,dead<span class="sc">/</span>n,<span class="at">xlab=</span><span class="st">&#39;log dosis&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;proporción de muertos&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-5-1.png" alt="Datos escarabajos." width="672" />
-<p class="caption">
-Figure 7.1: Datos escarabajos.
-</p>
-</div>
-<p><strong>Variable respuesta <span class="math inline">\(y_i=\sum_{j=1}^{n_i}y_{ij}/n_{i}\)</span>:</strong> proporción de escarabajos muertos.</p>
-<p><strong>Distribución de probabilidad:</strong> binomial:</p>
-<p><span class="math display">\[
-f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
-\]</span></p>
-<p><strong>Función de enlace:</strong></p>
-<p><span class="math display">\[
-log \begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1log\text{dosis}_i.
-\]</span></p>
+<p>Vamos a trabajar con los datos del estudio sobre los escarabajos:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="modelo-logístico.html#cb147-1" aria-hidden="true" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
+<span id="cb147-2"><a href="modelo-logístico.html#cb147-2" aria-hidden="true" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) </span>
+<span id="cb147-3"><a href="modelo-logístico.html#cb147-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) </span>
+<span id="cb147-4"><a href="modelo-logístico.html#cb147-4" aria-hidden="true" tabindex="-1"></a>Datos<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span></code></pre></div>
 </div>
 <div id="bajo-peso-al-nacer" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Bajo peso al nacer<a href="modelo-logístico.html#bajo-peso-al-nacer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Se busca identificar factores de riesgo asociados con el nacimiento de niños con bajo peso (<span class="math inline">\(&lt;2.5\)</span> kgs). datos: <code>data(birthwt,package= 'MASS'</code>)</p>
-<p><strong>Muestra:</strong>189 madres atendidas en una clínica.</p>
-<p><strong>Variable respuesta:</strong> Bajo peso al nacer (1 si peso <span class="math inline">\(&lt;\)</span> 2.5 kgs, 0 si peso <span class="math inline">\(\geq\)</span> 2.5 kgs).</p>
-<p>Posibles covariables:</p>
+<p>Con los datos de la librería , se quiere indentificar factores de riesgo asociados con el nacimiento de niños con bajo peso (es decir, un peso al nacer menor de <span class="math inline">\(2.5\)</span>kgs). Se tiene información de 189 recién nacidos y sus madres atendidos en una hospital (Baystate Medical Center, Springfield, Mass en 1986). Los posibles factores que pueden afectar el bajo al peso son:</p>
 <ul>
 <li><p><code>age</code>: edad de la madre (años).</p></li>
 <li><p><code>lwt</code>: peso de la madre antes del embarazo (libras).</p></li>
 <li><p><code>smoke</code>: estado de tabaquismo durante el embarazo (0 no, 1 si).</p></li>
 <li><p><code>ptl</code>: historia de parto prematuro (número de casos).</p></li>
 </ul>
-<p><strong>Variable respuesta <span class="math inline">\(y_i\)</span>:</strong> bajo peso al nacer (0: no, 1: si)</p>
-<p><strong>Distribución de probabilidad:</strong> Bernoulli:</p>
-<p><span class="math display">\[
+<p>La variable de respuesta es <code>low</code> (1 si peso <span class="math inline">\(&lt;\)</span> 2.5 kgs, 0 si peso <span class="math inline">\(\geq\)</span> 2.5 kgs).</p>
+<p>Para este caso, se puede ajustar modelo logístico. Sea <span class="math inline">\(y_i=1\)</span> si el <span class="math inline">\(i\)</span>-ésimo bebé nace con bajo peso, <span class="math inline">\(y_i=0\)</span> si lo contrario. Por lo que la densidad de <span class="math inline">\(y_i\)</span> está definida como:
+<span class="math display">\[
 f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{(1-y_i)}.
-\]</span></p>
-<p><strong>Función de enlace:</strong></p>
-<p><span class="math display">\[
+\]</span>
+La función de enlace es:
+<span class="math display">\[
 log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}_i+\beta_2\text{lwt}_i+\beta_3\text{smoke}_i+\beta_4\text{ptl}_i.
-\]</span></p>
-</div>
-<div id="estudio-de-teratología" class="section level3 hasAnchor" number="7.1.3">
-<h3><span class="header-section-number">7.1.3</span> Estudio de teratología<a href="modelo-logístico.html#estudio-de-teratología" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Se quiere investigar los efectos de agentes químicos en el desarrollo fetal de ratas. datos: <code>data(lirat,package = 'VGAM')</code>.</p>
-<p><strong>Muestra:</strong> 58 ratas hembras con dietas deficientes en hierro.</p>
-<p><strong>Variable respuesta:</strong> proporción de fetos muertos.</p>
-<p>Posibles covariables:</p>
-<ul>
-<li><p><code>grp</code>: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro)</p></li>
-<li><p><code>hb</code>: nivel de hemoglobina.</p></li>
-</ul>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelo-logístico.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
-<span id="cb145-2"><a href="modelo-logístico.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb145-3"><a href="modelo-logístico.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
-<span id="cb145-4"><a href="modelo-logístico.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
-<span id="cb145-5"><a href="modelo-logístico.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
-<span id="cb145-6"><a href="modelo-logístico.html#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-6-1.png" alt="Datos teratoligía" width="672" />
+\]</span>
+### Estudio de teratología
+Los datos de la librería son de un estudio para investigar los efectos de unos régimenes alimenticio en el desarrollo fetal de ratas. En este experimento, 58 ratas hembras con dietas deficientes en hierro se dividieron en cuatro grupos. Tres grupos recibieron inyecciones semanales de suplementos de hierro, a diferentes dosis, para normalizar sus niveles de hierro. Mientras que, el grupo restante no recibieron ningún suplemento (placebo). Luego, las ratas se preñaron, se sacrificaron 3 semanas después, y se contó el número de fetos muertos en cada camada.</p>
+<p>En la Figura <a href="modelo-logístico.html#fig:liratFig">7.1</a> se puede observar la relación entre el número de fetos muertos por tratamiento, y también, la relación con los niveles de hemoglobina de las ratas hembras.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelo-logístico.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb148-2"><a href="modelo-logístico.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb148-3"><a href="modelo-logístico.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
+<span id="cb148-4"><a href="modelo-logístico.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
+<span id="cb148-5"><a href="modelo-logístico.html#cb148-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
+<span id="cb148-6"><a href="modelo-logístico.html#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:liratFig"></span>
+<img src="MLG2_files/figure-html/liratFig-1.png" alt="Datos teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) " width="576" />
 <p class="caption">
-Figure 7.2: Datos teratoligía
+Figure 7.1: Datos teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha)
 </p>
 </div>
-<p><strong>Variable respuesta <span class="math inline">\(y_i=\sum_{j=1}^{n_i}y_{ij}/n_i\)</span>:</strong> proporción de fetos muertos por hembra.</p>
-<p><strong>Distribución de probabilidad:</strong>binomial:</p>
-<p><span class="math display">\[
-f(n_iy_i;\pi_i)=\begin{pmatrix} n_i \\ n_iy_i \end{pmatrix} \pi_i^{n_iy_i}(1-\pi_i)^{(n_i-n_iy_i)}.
-\]</span></p>
-<p><strong>Función de enlace:</strong></p>
-<p><span class="math display">\[
-log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp}_{i1}+\beta_2\text{grp}_{i2}+\beta_3\text{grp}_{i3}+\beta_4\text{hb}_i.
-\]</span></p>
+<p>Si consideramos:
+<span class="math display">\[
+y_{ij} = \begin{cases}
+1 &amp; \mbox{ si el feto} j \mbox{ de la camada }i\mbox{ está muerto}, \\
+0 &amp; \mbox{ si lo contrario}, \\
+\end{cases}
+\]</span>
+la variable número de fetos muertos se puede asociar a una distribución binomial:
+<span class="math display">\[
+y_i = \sum_{j=1}^{n_i} y_{ij} \sim \mbox{binomial}(n_i, \pi_i),
+\]</span>
+donde <span class="math inline">\(n_i\)</span> es el tamaño de la camada y <span class="math inline">\(\pi_i\)</span> es la probabilidad de que el feto muera. Dado que <span class="math inline">\(\pi_i\)</span> depende del tratamiento y de los niveles de hemoglobina de la rata hembra, se propone que:
+<span class="math display">\[
+log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp}_{i1}+\beta_2\text{grp}_{i2}+\beta_3\text{grp}_{i3}+\beta_4\text{hb}_i,
+\]</span>
+donde: <code>grp_2</code>: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro) <code>hb</code>: nivel de hemoglobina.</p>
 </div>
 </div>
 <div id="datos-agrupados-o-datos-no-agrupados" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Datos agrupados o datos no agrupados<a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Datos agrupados:</strong> Hay <span class="math inline">\(n_i\)</span> observaciones que tienen los mismos valores de las covariables <span class="math inline">\(x_i\)</span>.</p>
-<p><strong>Datos no agrupados:</strong> Hay <span class="math inline">\(n_i=1\)</span> (o muy pocas) observaciones por cada <span class="math inline">\(x_i\)</span>.</p>
-<p>Las propiedades asintóticas de las inferencias para los datos no agrupados aplican cuando <span class="math inline">\(n \to \infty\)</span>.</p>
-<p>Mientras que para datos agrupados, aplican cuando <span class="math inline">\(\sum_{i=1}^nn_i\to\infty\)</span>.</p>
+<p>Los datos binarios tienen dos tipos de formatos:</p>
+<p><strong>Datos agrupados:</strong> Hay <span class="math inline">\(n_i\)</span> observaciones que tienen los mismos valores de las covariables <span class="math inline">\(x_i\)</span>. Aquí tenemos que para agrupación, <span class="math inline">\(y_i \sim\)</span>binomial<span class="math inline">\((n_i,\pi_i)\)</span>.</p>
+<p><strong>Datos no agrupados:</strong> Hay <span class="math inline">\(n_i=1\)</span> (o muy pocas) observaciones por cada <span class="math inline">\(x_i\)</span>. Es decir que, cada <span class="math inline">\(y_i\)</span> sigue una distribución Bernoulli<span class="math inline">\((\pi_i)\)</span>.</p>
+<p>Las propiedades asintóticas de las inferencias para los datos no agrupados aplican cuando <span class="math inline">\(N \to \infty\)</span>. Mientras que para datos agrupados, aplican cuando <span class="math inline">\(\sum_{i=1}^nn_i\to\infty\)</span>.</p>
 <div id="datos-agrupados" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Datos agrupados<a href="modelo-logístico.html#datos-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Para datos agrupados, <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> sirven para evaluar si el ajuste del modelo es bueno o no.</p>
-<p><span class="math inline">\(H_0\)</span> indica que el modelo se ajusta bien a los datos, <span class="math inline">\(H_1\)</span> lo contrario.</p>
+<p>Para datos agrupados, <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> sirven para evaluar si el ajuste del modelo es bueno o no. Aquí podemos plantear las siguientes hipótesis: <span class="math inline">\(H_0\)</span> indica que el modelo se ajusta bien a los datos, <span class="math inline">\(H_1\)</span> lo contrario.</p>
 <p>Si <span class="math inline">\(H_0\)</span> es cierta (y <span class="math inline">\(\sum_{i=1}^nn_i\to\infty\)</span>), entonces <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> siguen una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((n-p)\)</span> grados de libertad.</p>
 </div>
 <div id="datos-no-agrupados" class="section level3 hasAnchor" number="7.2.2">
 <h3><span class="header-section-number">7.2.2</span> Datos no agrupados<a href="modelo-logístico.html#datos-no-agrupados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Las distribuciones límite para <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> no aplican para datos no agrupados.</p>
-<p>Tampoco para datos agrupados con <span class="math inline">\(n\)</span> grande y con algunos <span class="math inline">\(n_i\)</span> muy pequeños.</p>
-<p>Se puede aproximar <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> agrupando <span class="math inline">\((\boldsymbol x_i,\hat{\boldsymbol y})\)</span> por particiones del espacio de covariables o por particiones de <span class="math inline">\(\hat{\pi}\)</span>.</p>
-<p>La falta de ajuste se puede hacer comparando el modelo propuesto contra modelos más generales.</p>
+<p>Las distribuciones límite para <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> no aplican para datos no agrupados. Tampoco para datos agrupados con <span class="math inline">\(N\)</span> grande y algunos <span class="math inline">\(n_i\)</span> muy pequeños. Se puede aproximar <span class="math inline">\(D\)</span> y <span class="math inline">\(X^2\)</span> agrupando <span class="math inline">\((\boldsymbol x_i,\hat{\boldsymbol y})\)</span> por particiones del espacio de covariables o por particiones de <span class="math inline">\(\hat{\pi}\)</span>. En estos casos, es preferible evaluar la falta de ajuste comparando el modelo propuesto contra modelos más generales.</p>
 </div>
 </div>
-<div id="modelo-logístico-1" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Modelo logístico<a href="modelo-logístico.html#modelo-logístico-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Modelo:</p>
-<p><span class="math display">\[
-n_iy_i\sim\text{binomial}(n_i,\pi_i),\quad \text{donde} \quad \pi_i=g(\boldsymbol x_i\boldsymbol \beta).
-\]</span></p>
-<p>Entonces: <span class="math inline">\(E(y_i|\boldsymbol x_i)=\pi_i\)</span> y <span class="math inline">\(V(y_i|\boldsymbol x_i)=\pi_i(1-\pi_i)/n_i\)</span>.</p>
-<p>Función de enlace logit: <span class="math inline">\(log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\boldsymbol x_i\boldsymbol \beta\)</span>.</p>
-<p>Lo que implica que:</p>
+<div id="funciones-de-enlace" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Funciones de enlace<a href="modelo-logístico.html#funciones-de-enlace" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En los modelos anteriores hemos propuesto funciones de enlace logit: <span class="math inline">\(log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\boldsymbol x_i\boldsymbol \beta\)</span>.Lo que implica que:</p>
 <p><span class="math display">\[
 \pi_i=g^{-1}(\boldsymbol x_i,\boldsymbol \beta)=\frac{exp(\boldsymbol x_i&#39;\boldsymbol \beta)}{1+exp(\boldsymbol x_i&#39;\boldsymbol \beta)}=\frac{1}{1+exp(-\boldsymbol x_i&#39;\boldsymbol \beta)}
-\]</span></p>
-<p>Aunque podemos utilizar otras funciones de enlace.</p>
-<div id="funciones-de-enlace-alternativas" class="section level3 hasAnchor" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Funciones de enlace alternativas<a href="modelo-logístico.html#funciones-de-enlace-alternativas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Probit:</strong></p>
-<p><span class="math display">\[
+\]</span>
+Sin embargo, podemos utilizar otras funciones de enlace. Por ejemplo, la función <strong>Probit:</strong>
+<span class="math display">\[
 \Phi^{-1}(\pi_i)=\boldsymbol x&#39;_i\boldsymbol \beta\quad \pi_i=\Phi(\boldsymbol x&#39;_i\boldsymbol \beta),
-\]</span></p>
-<p>donde <span class="math inline">\(\Phi(\cdot)\)</span> es función acumulativa de la distribución normal estándar.</p>
-<p><strong>Log-log complementaria:</strong></p>
-<p><span class="math display">\[
+\]</span>
+donde <span class="math inline">\(\Phi(\cdot)\)</span> es función acumulativa de la distribución normal estándar. La función <strong>Log-log complementaria:</strong>
+<span class="math display">\[
 \pi_i=1-exp[-exp(\boldsymbol x&#39;_i\boldsymbol \beta)] \quad log[-log(1-\pi_i)]=\boldsymbol x&#39;_i\boldsymbol \beta.
-\]</span></p>
-<p><strong>Log-log:</strong></p>
-<p><span class="math display">\[
-\pi_i=exp[-exp(\boldsymbol x&#39;_i\boldsymbol \beta)] \quad -log[-log(\pi_i)]=\boldsymbol x&#39;_i\boldsymbol \beta.
-\]</span></p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-7-1.png" alt="Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)." width="672" />
+\]</span>
+En la Figura <a href="modelo-logístico.html#fig:linkEsc">7.2</a> podemos observar la estimación de la probabilidad de que el escarabajo muera utilizando diferentes funciones de enlace (logit, probit, log-log complementaria). Graficamente, la función log-log complementaria parece mostrar mejores estimaciones que la probit y la logit.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:linkEsc"></span>
+<img src="MLG2_files/figure-html/linkEsc-1.png" alt="Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)." width="576" />
 <p class="caption">
-Figure 7.3: Estimaciones con funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
+Figure 7.2: Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
 </p>
 </div>
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-</th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
-</th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-logit
-</div>
-</th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-porbit
-</div>
-</th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
-<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-cloglog
-</div>
-</th>
-</tr>
-<tr>
-<th style="text-align:left;">
-Effect
-</th>
-<th style="text-align:left;">
-Parm
-</th>
-<th style="text-align:right;">
-est.
-</th>
-<th style="text-align:left;">
-s.e
-</th>
-<th style="text-align:right;">
-est.
-</th>
-<th style="text-align:left;">
-s.e
-</th>
-<th style="text-align:right;">
-est.
-</th>
-<th style="text-align:left;">
-s.e
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Intercept
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_0\)</span>
-</td>
-<td style="text-align:right;">
--60.72
-</td>
-<td style="text-align:left;">
-5.18
-</td>
-<td style="text-align:right;">
--34.94
-</td>
-<td style="text-align:left;">
-2.65
-</td>
-<td style="text-align:right;">
--39.57
-</td>
-<td style="text-align:left;">
-3.24
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dosis
-</td>
-<td style="text-align:left;">
-<span class="math inline">\(\beta_1\)</span>
-</td>
-<td style="text-align:right;">
-34.27
-</td>
-<td style="text-align:left;">
-2.91
-</td>
-<td style="text-align:right;">
-19.73
-</td>
-<td style="text-align:left;">
-1.49
-</td>
-<td style="text-align:right;">
-22.04
-</td>
-<td style="text-align:left;">
-180
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-log.lik
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
--18.71
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
--18.16
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
--14.82
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-AIC
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-41.43
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-40.32
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-33.64
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="modelo-logístico.html#cb146-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
-<span id="cb146-2"><a href="modelo-logístico.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.logit)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## glm(formula = low ~ age + lwt + ptl + smoke, family = binomial(logit), 
-##     data = birthwt)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.9339  -0.8646  -0.6816   1.2182   1.9904  
-## 
-## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)  
-## (Intercept)  1.275961   1.031063   1.238   0.2159  
-## age         -0.048859   0.033796  -1.446   0.1483  
-## lwt         -0.010412   0.006219  -1.674   0.0941 .
-## ptl          0.695720   0.336895   2.065   0.0389 *
-## smoke        0.550111   0.334455   1.645   0.1000  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 234.67  on 188  degrees of freedom
-## Residual deviance: 218.36  on 184  degrees of freedom
-## AIC: 228.36
-## 
-## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelo-logístico.html#cb148-1" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
-<span id="cb148-2"><a href="modelo-logístico.html#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-3"><a href="modelo-logístico.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbw.probit)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## glm(formula = low ~ age + lwt + smoke + ptl, family = binomial(probit), 
-##     data = birthwt)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.9017  -0.8663  -0.6763   1.2301   1.9996  
-## 
-## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)  
-## (Intercept)  0.749466   0.603409   1.242   0.2142  
-## age         -0.030224   0.019886  -1.520   0.1286  
-## lwt         -0.006079   0.003576  -1.700   0.0891 .
-## smoke        0.342834   0.201795   1.699   0.0893 .
-## ptl          0.406405   0.202487   2.007   0.0447 *
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 234.67  on 188  degrees of freedom
-## Residual deviance: 218.24  on 184  degrees of freedom
-## AIC: 228.24
-## 
-## Number of Fisher Scoring iterations: 5</code></pre>
-</div>
+<p>Este resultado se puede comprobar utilizando criterios de información:</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelo-logístico.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.logit)</span></code></pre></div>
+<pre><code>## [1] 41.43027</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-logístico.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.probit)</span></code></pre></div>
+<pre><code>## [1] 40.3178</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelo-logístico.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.cloglog)</span></code></pre></div>
+<pre><code>## [1] 33.64448</code></pre>
 </div>
 <div id="curva-característica-operativa-del-receptorroc" class="section level2 hasAnchor" number="7.4">
 <h2><span class="header-section-number">7.4</span> Curva característica operativa del receptor(ROC)<a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Para evaluar el poder predictivo del modelo se puede construir una
-tabla de contingencia:</p>
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:unnamed-chunk-10">Table 7.1: </span>Tabla de clasificación
-</caption>
-<thead>
-<tr>
-<th style="text-align:right;">
-y
-</th>
-<th style="text-align:left;">
-0
-</th>
-<th style="text-align:left;">
-1
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-</tbody>
-</table>
-<p>El recuento de casillas en estas tablas permite estimar la sensibilidad=<span class="math inline">\((\hat y=1|y=1)\)</span> y especificidad=<span class="math inline">\((\hat y=0|y=0)\)</span>.</p>
-<p>Para datos no agrupados, la predicción <span class="math inline">\(\hat{y}=1\)</span> cuando <span class="math inline">\(\hat{\pi_i}\geq\pi_0\)</span>(por ejemplo 0,5).</p>
-<p>Para <span class="math inline">\(\pi_0\)</span>, se calcula:</p>
-<ul>
-<li><p>La sensibilidad <span class="math inline">\(P(\hat y=1|y=1)\)</span>.</p></li>
-<li><p>La especificidad <span class="math inline">\(P(\hat y=0|y=0)\)</span>.</p></li>
-</ul>
-<p>Dado que estos valores dependen de <span class="math inline">\(\pi_0\)</span>, se pueden calcular para todos los posibles <span class="math inline">\(\pi_0\)</span>.</p>
-<p><strong>Ejemplo - Datos de peso al nacer</strong></p>
-<p>Por ejemplo, si <span class="math inline">\(\pi_0\)</span>, tenemos:</p>
+<p>Para evaluar el poder predictivo del modelo se puede construir una tabla de contingencia (ver Tabla <a href="#tab:tabcont"><strong>??</strong></a>) comparando <span class="math inline">\(y_i\)</span> con la predicción <span class="math inline">\(\widehat{y}_i\)</span> a través del modelo. Para datos no agrupados, la predicción <span class="math inline">\(\widehat{y}_i\)</span> se define como:
+<span class="math display">\[
+\widehat{y}_i = \begin{cases}
+1 &amp; \mbox{si } \widehat{\pi}_i &gt; \pi_0, \\
+0 &amp; \mbox{si } \widehat{\pi}_i \leq \pi_0, \\
+\end{cases}
+\]</span>
+para un punto de corte <span class="math inline">\(\pi_0\)</span> definido por el investigador, por ejemplo <span class="math inline">\(\pi_0 = 0.5\)</span>.</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -843,15 +505,89 @@ y
 </div>
 </th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<th style="text-align:left;">
-y
+<td style="text-align:left;">
+<span class="math inline">\(y=0\)</span>
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+c
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(y=1\)</span>
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+d
+</td>
+</tr>
+</tbody>
+</table>
+<p>El recuento de casillas en estas tablas permite estimar la sensibilidad,
+<span class="math display">\[
+P(\widehat{y}=1|y=1) = \frac{d}{b+d},
+\]</span>
+y la especificidad, <span class="math inline">\(P(\widehat{y}=0|y=0)\)</span>.
+<span class="math display">\[
+P(\widehat{y}=0|y=0) = \frac{a}{a+c}.
+\]</span>
+Sin embargo, estos valores dependen de <span class="math inline">\(\pi_0\)</span>.</p>
+<p><strong>Ejemplo - Datos de peso al nacer</strong>
+Para los datos de peso al nacer, se propone el siguiente modelo:
+<span class="math display">\[
+\mbox{logit} \pi_i = \beta_0+  \mbox{age}_i\beta_1+  \mbox{lwt}_i\beta_2 +  \mbox{smoke}_i\beta_3 + \mbox{ptl}_i\beta_4,
+\]</span>
+donde <span class="math inline">\(\pi_i\)</span> es la probabilidad de que el recién nacido nazca con bajo peso. El ajuste del modelo es:</p>
+<pre><code>## 
+## Call:
+## glm(formula = low ~ age + lwt + smoke + ptl, family = binomial, 
+##     data = birthwt)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.9339  -0.8646  -0.6816   1.2182   1.9904  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(&gt;|z|)  
+## (Intercept)  1.275961   1.031063   1.238   0.2159  
+## age         -0.048859   0.033796  -1.446   0.1483  
+## lwt         -0.010412   0.006219  -1.674   0.0941 .
+## smoke        0.550111   0.334455   1.645   0.1000  
+## ptl          0.695720   0.336895   2.065   0.0389 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 234.67  on 188  degrees of freedom
+## Residual deviance: 218.36  on 184  degrees of freedom
+## AIC: 228.36
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>Estos resultados muestran que el estado de tabaquismo y el historial de partos prematuros son factores de riesgo para el bajo peso al nacer. Sin embargo, el primero no tiene un aporte significativo dentro del modelo.</p>
+<p>Ahora vamos a evaluar el poder predictivo del modelo. Si definimos <span class="math inline">\(\pi_0=0.5\)</span>, tenemos:</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
 </th>
-<th style="text-align:right;">
-0
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<span class="math inline">\(\hat{y}=0\)</span>
+</div>
 </th>
-<th style="text-align:right;">
-1
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<span class="math inline">\(\hat{y}=1\)</span>
+</div>
 </th>
 </tr>
 </thead>
@@ -880,8 +616,7 @@ y
 </tr>
 </tbody>
 </table>
-<p>Sensibilidad: <span class="math inline">\(10/59 = 0,169\)</span> - especificidad: <span class="math inline">\(123/130 = 0,946\)</span>.</p>
-<p>Ahora, si <span class="math inline">\(\pi_0= 0,3\)</span>:</p>
+<p>Por lo tanto, la sensibilidad es <span class="math inline">\(10/59 = 0,169\)</span> y la especificidad es <span class="math inline">\(123/130 = 0,946\)</span>. Con este punto de corte, el modelo tiene una predictividad alta para los recién nacidos con peso adecuado (alta especificidad). Sin embargo, la probabilidad de falsos positivos es alta (baja sensibilidad). Ahora, si <span class="math inline">\(\pi_0= 0,3\)</span>:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -896,17 +631,6 @@ y
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 <span class="math inline">\(\hat{y}=1\)</span>
 </div>
-</th>
-</tr>
-<tr>
-<th style="text-align:left;">
-y
-</th>
-<th style="text-align:right;">
-0
-</th>
-<th style="text-align:right;">
-1
 </th>
 </tr>
 </thead>
@@ -935,15 +659,21 @@ y
 </tr>
 </tbody>
 </table>
-<p>Sensibilidad: <span class="math inline">\(40/59 = 0,678\)</span> - especificidad: <span class="math inline">\(79/130 = 0,607\)</span>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
-<img src="figs/grafsen.jpg" alt="Sensibilidad (linea negra) - especificidad (linea roja)" width="75%" />
+<p>En este caso la sensibilidad aumentó <span class="math inline">\((40/59 = 0,678)\)</span>, pero la especificidad disminuye <span class="math inline">\((79/130 = 0,607)\)</span>.</p>
+<p>Dado que la sensibilidad y especificidad tiene una alta dependencia del punto de corte, lo preferible calcular estas cantidades para muchos valores de <span class="math inline">\(\pi_0\)</span>. En la Figura <a href="modelo-logístico.html#fig:sensespc">7.3</a> podemos observar que a medida que aumenta <span class="math inline">\(\pi_0\)</span> la sensibilidad disminuye y la especificidad aumenta.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sensespc"></span>
+<img src="MLG2_files/figure-html/sensespc-1.png" alt="Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte." width="576" />
 <p class="caption">
-Figure 7.4: Sensibilidad (linea negra) - especificidad (linea roja)
+Figure 7.3: Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte.
 </p>
 </div>
-<p>Gráfico de <span class="math inline">\(P(\hat y=1|y=1)\)</span> vs <span class="math inline">\(P(\hat y=0|y=0)\)</span></p>
-<p><img src="figs/Sensibilidad.PNG" width="75%" style="display: block; margin: auto;" /></p>
+<p>La sensibilidad es la tasa de verdaderos positivos (tvp), mientras que, el complemento de la especificidad <span class="math inline">\((P(\widehat{y}= 1 | y=0))\)</span> es la tasa de falsos positivos (tfp). El gráfico de la tasa de verdaderos positivos en función de la tasa de falsos positivos para diferentes valores de <span class="math inline">\(\pi_0\)</span>, entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, lleva el nombre de curva característica operativa del receptor (ROC). Cuando <span class="math inline">\(\pi_0\)</span> es muy cercano a <span class="math inline">\(1\)</span>, casi todas las predicciones son <span class="math inline">\(\widehat{y}=0\)</span>; entonces tenemos (tvp,tfp)<span class="math inline">\(\approx(0,0)\)</span>. Mientras que, cuando <span class="math inline">\(\pi_0\)</span> es muy cercano a <span class="math inline">\(0\)</span>, casi todas las predicciones son <span class="math inline">\(\widehat{y}=1\)</span>; entonces tenemos (tvp,tfp)<span class="math inline">\(\approx(1,1)\)</span>. esto lo podemos ver en la Figura <a href="modelo-logístico.html#fig:sensespc2">7.4</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sensespc2"></span>
+<img src="MLG2_files/figure-html/sensespc2-1.png" alt="Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte." width="576" />
+<p class="caption">
+Figure 7.4: Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte.
+</p>
+</div>
 <p>El area bajo la curva de la curva ROC (llamado índice de concordancia) es una medida del poder predictivo del modelo.</p>
 <div id="ejemplo-mortalidad-de-escarabajos-1" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> Ejemplo mortalidad de escarabajos<a href="modelo-logístico.html#ejemplo-mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -952,16 +682,16 @@ Figure 7.4: Sensibilidad (linea negra) - especificidad (linea roja)
 </div>
 <div id="bajo-peso-al-nacer-1" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> Bajo peso al nacer<a href="modelo-logístico.html#bajo-peso-al-nacer-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="modelo-logístico.html#cb150-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
-<span id="cb150-2"><a href="modelo-logístico.html#cb150-2" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
-<span id="cb150-3"><a href="modelo-logístico.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co"># curvas roc</span></span>
-<span id="cb150-4"><a href="modelo-logístico.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pROC)</span></span>
-<span id="cb150-5"><a href="modelo-logístico.html#cb150-5" aria-hidden="true" tabindex="-1"></a>ROCbw.logit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.logit<span class="sc">$</span>fitted.values)</span>
-<span id="cb150-6"><a href="modelo-logístico.html#cb150-6" aria-hidden="true" tabindex="-1"></a>ROCbw.probit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.probit<span class="sc">$</span>fitted.values)</span></code></pre></div>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-logístico.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROCbw.logit)</span>
-<span id="cb151-2"><a href="modelo-logístico.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ROCbw.probit,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-17"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-17-1.png" alt="Curva ROC para el modelo logístico (negro) y probit (rojo)" width="672" />
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelo-logístico.html#cb156-1" aria-hidden="true" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
+<span id="cb156-2"><a href="modelo-logístico.html#cb156-2" aria-hidden="true" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
+<span id="cb156-3"><a href="modelo-logístico.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="co"># curvas roc</span></span>
+<span id="cb156-4"><a href="modelo-logístico.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="co">#library(pROC)</span></span>
+<span id="cb156-5"><a href="modelo-logístico.html#cb156-5" aria-hidden="true" tabindex="-1"></a>ROCbw.logit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.logit<span class="sc">$</span>fitted.values)</span>
+<span id="cb156-6"><a href="modelo-logístico.html#cb156-6" aria-hidden="true" tabindex="-1"></a>ROCbw.probit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.probit<span class="sc">$</span>fitted.values)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="modelo-logístico.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROCbw.logit)</span>
+<span id="cb157-2"><a href="modelo-logístico.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(ROCbw.probit,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="MLG2_files/figure-html/unnamed-chunk-6-1.png" alt="Curva ROC para el modelo logístico (negro) y probit (rojo)" width="672" />
 <p class="caption">
 Figure 7.5: Curva ROC para el modelo logístico (negro) y probit (rojo)
 </p>
@@ -1048,11 +778,11 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
 \]</span></p>
 <p>La estimación de los parámetros <span class="math inline">\((\beta,\phi)\)</span> se hace por máxima verosimilitud.</p>
 <p>Dado que <span class="math inline">\(\phi&gt;0)\)</span>, el modelo beta-binomial no puede modelar datos con subdispersión.</p>
-<div id="estudio-de-teratología-1" class="section level4 hasAnchor" number="7.6.1.1">
-<h4><span class="header-section-number">7.6.1.1</span> Estudio de teratología<a href="modelo-logístico.html#estudio-de-teratología-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="modelo-logístico.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
-<span id="cb152-2"><a href="modelo-logístico.html#cb152-2" aria-hidden="true" tabindex="-1"></a>modlirat.binom <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">family=</span>binomial,<span class="at">data=</span>lirat)</span>
-<span id="cb152-3"><a href="modelo-logístico.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modlirat.binom)</span></code></pre></div>
+<div id="estudio-de-teratología" class="section level4 hasAnchor" number="7.6.1.1">
+<h4><span class="header-section-number">7.6.1.1</span> Estudio de teratología<a href="modelo-logístico.html#estudio-de-teratología" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelo-logístico.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb158-2"><a href="modelo-logístico.html#cb158-2" aria-hidden="true" tabindex="-1"></a>modlirat.binom <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">family=</span>binomial,<span class="at">data=</span>lirat)</span>
+<span id="cb158-3"><a href="modelo-logístico.html#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(R, N - R) ~ hb + as.factor(grp), family = binomial, 
@@ -1079,8 +809,8 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
 ## AIC: 250.38
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="modelo-logístico.html#cb154-1" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom <span class="ot">=</span><span class="fu">betabin</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span><span class="fu">as.factor</span>(grp)<span class="sc">+</span>hb,<span class="at">data=</span>lirat,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb154-2"><a href="modelo-logístico.html#cb154-2" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelo-logístico.html#cb160-1" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom <span class="ot">=</span><span class="fu">betabin</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span><span class="fu">as.factor</span>(grp)<span class="sc">+</span>hb,<span class="at">data=</span>lirat,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb160-2"><a href="modelo-logístico.html#cb160-2" aria-hidden="true" tabindex="-1"></a>modlirat.betabinom</span></code></pre></div>
 <pre><code>## Beta-binomial model
 ## -------------------
 ## betabin(formula = cbind(R, N - R) ~ as.factor(grp) + hb, random = ~1, 
@@ -1103,14 +833,14 @@ E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
 ## Log-likelihood statistics
 ##    Log-lik      nbpar    df res.   Deviance        AIC       AICc 
 ## -9.302e+01          6         52  1.146e+02   1.98e+02  1.997e+02</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelo-logístico.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.binom)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="modelo-logístico.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## [1] 250.3777</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelo-logístico.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.betabinom)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="modelo-logístico.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.betabinom)</span></code></pre></div>
 <pre><code>##                    df      AIC     AICc
 ## modlirat.betabinom  6 198.0319 199.6789</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelo-logístico.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.binom)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="modelo-logístico.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## [1] 168.9083</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="modelo-logístico.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.betabinom)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="modelo-logístico.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance</span>(modlirat.betabinom)</span></code></pre></div>
 <pre><code>## [1] 114.5625</code></pre>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
