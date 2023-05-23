@@ -289,7 +289,7 @@ confint(mod.turk)
 Aquí podemos ver que, por ejemplo, la ganancia máxima que se puede obtener con el suplemento está entre 156 y 204 gramos con un nivel de confianza del 95\%. 
 
 Para calcular los intervalos de confianza para la media podemos utilizar la función ``predFit`` de la librería ``investr``. La Figura \@ref(fig:Confintpavos2) muestra el intervalo del 95\% del peso ganado medio en función del \% de metionina en la dieta.
-```{r Confintpavos2,include=TRUE}
+```{r Confintpavos2,include=TRUE,fig.height = 4, fig.width = 10,fig.align = "center", fig.cap='Datos pavos. Intervalo del 95% de confianza para la media del peso ganado en función de la dieta.'}
 library(investr)
 predx = data.frame(A=seq(from=0,to=0.5,length.out=100))
 

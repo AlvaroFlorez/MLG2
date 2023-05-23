@@ -315,7 +315,7 @@ $$
 Por lo cual, $\phi > 0$ es la correlación entre ensayos Bernoulli. La distribución de probabilidad de la distribución beta-binomial se puede observar en la Figura \@ref(fig:betabinomialdensidad). Aquí vemos que la dispersión de la distribución beta-binomial aumenta con el parámetro $\phi$.
 
 
-```{r betabinomialdensidad, echo=FALSE,fig.align='center', fig.cap="Distribución de probabilidad de Binomial(15,0.3) (negro), beta-binomial(15,0.3,$\phi$=0.1) (rojo), beta-binomial(15,0.3,$\phi$=0.4) (verde)", fig.height = 4, fig.width = 6}
+```{r betabinomialdensidad, echo=FALSE,fig.align='center', fig.cap="Distribución de probabilidad de Binomial(15,0.3) (negro), beta-binomial(15,0.3,0.1) (rojo), beta-binomial(15,0.3,0.4) (verde)", fig.height = 4, fig.width = 6}
 library(VGAM)
 x = 0:15
 y0 = dbinom(x, 15, 0.3)

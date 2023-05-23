@@ -192,9 +192,7 @@ y_i \sim \mbox{Poisson}(\lambda_i), \mbox{ donde } \log \lambda_i = \beta_0 + \m
 \]
 donde $y_i$ es el número de ataques epiléptivos en dos semanas luego de cuatro semanas de tratamiento; treatment$_i=1$ si el $i$-ésimo paciente recibió el tratamiento progabida y treatment$_i=0$ si lo contrario. Los resultados del ajuste son:
 ```{r epiPoisson,include=TRUE}
-library(HSAUR2)
-data(epilepsy)
-epilepsy4= epilepsy[epilepsy$period==4,]
+epilepsy4= HSAUR2::epilepsy[HSAUR2::epilepsy$period==4,]
 
 modPois = glm(seizure.rate~treatment+base,data=epilepsy4,family=poisson)
 summary(modPois)
@@ -224,7 +222,7 @@ X2 = sum(residuals(modbinNeg,type='pearson')^2)
 X2/modbinNeg$df.residual
 ```
 Este resultado sugiere que la varianza está bien estimada. Comparando criterios de información, el modelo binomial negativo presenta un mejor ajuste que el modelo Poisson:
-```{r sobredispersionBN, echo=FALSE}
+```{r sobredispersionBN2, echo=FALSE}
 BIC(modbinNeg)
 BIC(modPois)
 ```
@@ -232,6 +230,7 @@ BIC(modPois)
 En ocaciones, los datos muestran mayor frecuencia de ceros de los que la distribución Poisson y binomial negativa permiten. Por ejemplo, en datos de cangrejos herradura, hay muchas hembras que llegan a la playa sin ningún satélite. La Figura \@ref(fig:crabsData) muestra que una distribución bimodal para el número de satélites. 
 
 **Distribución con inflación de ceros**
+
 Este tipo de datos se pueden modelar con una mezcla de distribuciones donde $Y=0$ cuando $Z=1$, y $Y$ sigue una distribución particular cuando $Z=0$ (la cual permite la posibilidad de ceros). Por ejemplo, la distribución Poisson con inflación de ceros (ZIP) se puede representar como:
 $$
 y\sim\begin{cases} 0 \qquad & \text{con probabilidad}\quad \phi, \\ \mbox{Poisson}(\lambda) \quad & \text{con probabilidad}\quad 1-\phi.
@@ -266,11 +265,12 @@ E(y)= (1-\phi)\mu \mbox{ y } V(y) = (1-\phi) \mu \left[1+\mu(\gamma+\phi)\right]
 $$
 Otra alternativa para modelar exceso de ceros es a través del mdelo Hurdle. Este asume que hay un proceso Bernoulli que determina si el conteo es igual a cero o positivo. Si ocurre lo segundo, una distribución truncada determina la probabilidad del conteo. La distribución se puede expresar como:
 \begin{equation}
-\begin{cases}
-P(y = j)=\begin{cases} \pi \qquad & j=0, \\ (1-\pi)\frac{f(y|\theta)}{1-f(0|\theta)} & j >0.
+P(y = j)=\begin{cases} \pi & j=0, \\ 
+(1-\pi)\frac{f(y|\theta)}{1-f(0|\theta)} & j >0.
 \end{cases}
 (\#eq:Hdis)
 \end{equation}
+
 
 A diferencia del modelo ZI, aquí la probabilidad de $y=0$ solo está determinado por $\pi$ (no por una mezcla de distribuciones). 
 

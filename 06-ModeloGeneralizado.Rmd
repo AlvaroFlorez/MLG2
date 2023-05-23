@@ -63,18 +63,16 @@ Las variables que se tendrán en cuenta son las siguientes:
 
 * ```seizure.rate```(variable respuesta): número de ataques epilépticos ($\times$2 semanas) luego de 8 semanas.
 
-```{r seizurePlot, echo=F,, fig.height = 4, fig.width = 10,fig.align = "center", fig.cap="Datos epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos y tratamiento."}
-library(HSAUR2)
-data(epilepsy)
-epilepsy4=subset(epilepsy, period==4)#selecionamos la semana 4
+```{r seizurePlot, echo=F, fig.height = 4, fig.width = 10,fig.align = "center", fig.cap="Datos epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos y tratamiento."}
+epilepsy4= HSAUR2::epilepsy[HSAUR2::epilepsy$period==4,]
 
 par(mfrow=c(1,3))
-plot(seizure.rate~age, col=treatment, pch=16, data=epilepsy, xlab="edad",
+plot(seizure.rate~age, col=treatment, pch=16, data=epilepsy4, xlab="edad",
      ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
-plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
+plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy4,
      xlab="núm. de ataques pre-tratamiento (ataques x 4 semanas)",
      ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
-boxplot(seizure.rate~treatment,data=epilepsy, xlab = "tratamiento",
+boxplot(seizure.rate~treatment,data=epilepsy4, xlab = "tratamiento",
         ylab = "núm. de ataques post-tratamiento (ataques x 2 semanas)")
 ```
 La Figura \@ref(fig:seizurePlot) muestra la relación del número de ataques epiléticos al final del estudio con las posibles covariables. Aquí vemos que no parece haber relación con la edad, hay una relación fuerte con el número de ataques pre-tratamiento, y que los pacientes del grupo placebo parecen  presentar un poco más de convulsiones.
@@ -457,10 +455,6 @@ y_i \sim \mbox{Poisson}(\mu_i), \mbox{ donde } \mu_i=\exp(\beta_0+\beta_1\text{t
 $$
 El ajuste del modelo usamos la función `glm()` con el argumento `family=poisson`:
 ```{r ajusteSeizure}
-library(HSAUR2)
-data(epilepsy)
-epilepsy4=subset(epilepsy, period==4)
-
 modPois=glm(seizure.rate~treatment+base+base:treatment,family=poisson,
             data =epilepsy4)
 summary(modPois)
@@ -468,12 +462,12 @@ summary(modPois)
 El ajuste vemos que el número de ataques pre-tratamiento tiene un efecto positivo sobre la media del número de ataques epilépticos. Es decir, esta aumenta entre más ataques previos tenga el paciente. Mientras que, el tratamiento parece tener un efecto negativo. Es decir, reduce la media del número de ataques epilépticos. Esto lo podemos ver graficamente en la Figura \@ref(fig:ajusteSeizureFig).
 
 ```{r ajusteSeizureFig,fig.height = 4, fig.width = 6,fig.align = "center",fig.cap="Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa el placebo, mientras que, la linea roja al tratamiento con Progabide."}
-y = data.frame(base=seq(min(epilepsy$base),max(epilepsy$base),length.out=100),
-               treatment = factor(1:2, levels = 1:2, labels = levels(epilepsy$treatment)))
+y = data.frame(base=seq(min(epilepsy4$base),max(epilepsy4$base),length.out=100),
+               treatment = factor(1:2, levels = 1:2, labels = levels(epilepsy4$treatment)))
 predpois = predict(modPois,y,type='response')
-x=seq(min(epilepsy$base),max(epilepsy$base),length.out=50)
+x=seq(min(epilepsy4$base),max(epilepsy4$base),length.out=50)
 
-plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,
+plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy4,
      xlab="ataques pre-tratamiento (x 4 semanas)",
      ylab = "ataques post-tratamiento (x 2 semanas)")
 lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)
