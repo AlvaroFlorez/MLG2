@@ -159,8 +159,7 @@ P(\haty=0|y=0) = \frac{a}{a+c}.
 \]
 Sin embargo, estos valores dependen de $\pi_0$.
 
-**Ejemplo - Datos de peso al nacer**
-Para los datos de peso al nacer, se propone el siguiente modelo:
+Consideremos los datos de peso al nacer. Se propone el siguiente modelo:
 \[
 \mbox{logit} \pi_i = \beta_0+  \mbox{age}_i\beta_1+  \mbox{lwt}_i\beta_2 +  \mbox{smoke}_i\beta_3 + \mbox{ptl}_i\beta_4,
 \]
@@ -229,70 +228,34 @@ lines(pi0,sens.espc[2,],lwd=2,col=2)
 ```
 La sensibilidad es la tasa de verdaderos positivos (tvp), mientras que, el complemento de la especificidad $(P(\haty = 1 | y=0))$ es la tasa de falsos positivos (tfp). El gráfico de la tasa de verdaderos positivos en función de la tasa de falsos positivos para diferentes valores de $\pi_0$, entre $0$ y $1$, lleva el nombre de curva característica operativa del receptor (ROC). Cuando $\pi_0$ es muy cercano a $1$, casi todas las predicciones son $\haty =0$; entonces tenemos (tvp,tfp)$\approx(0,0)$. Mientras que, cuando $\pi_0$ es muy cercano a $0$, casi todas las predicciones son $\haty =1$; entonces tenemos (tvp,tfp)$\approx(1,1)$. esto lo podemos ver en la Figura \@ref(fig:sensespc2).
 
-
 ```{r sensespc2, fig.align = 'center', fig.height = 4, fig.width = 6,echo=FALSE,fig.cap="Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte."}
 plot(1-sens.espc[2,],sens.espc[1,],lwd=2,xlab='1 - especificidad',
      ylab='sensibilidad')
 ```
+Si el modelo realiza buenas predicciones, para un valor de especificidad dado, se espera que la sensibilidad sea también alta. Por lo tanto, el poder predictivo del modelo se puede medir a través del área bajo la curva del gráfico ROC. Esta medida es llamada índice de concordancia.
 
 
-El area bajo la curva de la curva ROC (llamado índice de concordancia) es una medida del poder predictivo del modelo.
-
-### Ejemplo mortalidad de escarabajos
-
-Curva ROC para el modelo logístico:
-
-"grafico roc escarabajos"
-
-### Bajo peso al nacer
-```{r,eval=FALSE}
- 
+En R, las curvas ROC se puede graficar con la función `roc` de la librería `pROC` de la siguiente forma:
+```{r ROClbwdata,eval=T,fig.cap="Datos de bajo peso al nacer. Curva ROC para el modelo logístico (negro) y probit (rojo)",fig.height = 4, fig.width = 6}
+library(pROC)
 modbw.logit = glm(low~age+lwt+ptl+smoke,family=binomial(logit),data=birthwt)
 modbw.probit = glm(low~age+lwt+smoke+ptl,family=binomial(probit),data=birthwt)
-# curvas roc
-#library(pROC)
+
 ROCbw.logit = roc(birthwt$low~modbw.logit$fitted.values)
 ROCbw.probit = roc(birthwt$low~modbw.probit$fitted.values)
-
-
-```
-
-```{r,include=FALSE}
- 
-modbw.logit = glm(low~age+lwt+ptl+smoke,family=binomial(logit),data=birthwt)
-modbw.probit = glm(low~age+lwt+smoke+ptl,family=binomial(probit),data=birthwt)
-# curvas roc
-#library(pROC)
-ROCbw.logit = roc(birthwt$low~modbw.logit$fitted.values)
-ROCbw.probit = roc(birthwt$low~modbw.probit$fitted.values)
-
-
-```
-
-```{r, fig.align='center', fig.cap="Curva ROC para el modelo logístico (negro) y probit (rojo)"}
 plot(ROCbw.logit)
 lines(ROCbw.probit,col=2)
-
 ```
-
-modelo logístico: $AUC= 0,6884$.
-
-modelo probit: $AUC= 0,6866$.
-
+En la Figura \@ref(fig:ROClbwdata) se puede observar que ambas funciones de enlace proporcionan el mismo poder predictivo. El índice de concordancia es de $AUC= 0,6884$ para el modelo logístico y $AUC= 0,6866$ para el modelo probit.    
 
 ## Sobredispersión
-
-En un experimento Bernoulli se asume que los $n_i$ ensayos para la observación $i,\quad y_{i1},...y_in_i$ son independientes.
-
-Por lo tanto, tenemos que:
+En un experimento Bernoulli se asume que los $n_i$ ensayos para la observación $i,\quad (y_{i1},...y_{in_i})$, son independientes. Por lo tanto, para $y_i = \sum_{j=1}^{n_i}y_{ij}/n_i$,tenemos que:
 
 $$
-E(y_i)=\pi_i\quad \text{y} \quad V(y_i)=\pi_i(1-\pi_i)\frac{1}{n_i}.
+E(y_i)=\pi_i \quad \text{y} \quad V(y_i)=\pi_i(1-\pi_i)\frac{1}{n_i}.
 $$
 
-Pero, hay casos donde las observaciones $y_{i1},...y_in_i$ están correlacionadas, es decir $cor(y_{is},y_{it})\ne0$.
-
-Por lo general, se asume que $cor(y_{is},y_{it})=\phi$, para todo $s\ne t$ (exchangeability property). Entonces:
+Pero, hay casos donde las observaciones $(y_{i1},...y_{in_i})$ están correlacionadas, es decir $cor(y_{is},y_{it}) \ne 0$. Esto hace que $V(y_{i}) \neq V(y_i)=\pi_i(1-\pi_i)\frac{1}{n_i}$. Si asumimos que $cor(y_{is},y_{it})=\phi$, para todo $s\ne t$ (exchangeability property). Entonces:
 
 $$
 V(y_{it})=\pi_i(1-\pi_i)\quad \text{y} \quad cor(y_{it},y_{is})=\phi\pi_i(1-\pi_i).
@@ -303,151 +266,122 @@ En este caso, tenemos que:
 $$
 V(y_i)=V\begin{pmatrix} \sum_{j=1}^{n_i}\frac{y_{ij}}{n_i}\end{pmatrix}=\frac{1}{n_i^2} \left[ \sum_{j=1}^{n_i}V(y_{it})+2\sum\sum_{s<t}cov(y_{is},y_{it}) \right]=[1+\phi(n_i-1)]\frac{\pi_i(1-\pi_i)}{n_i}.
 $$
+Dependiendo del valor de $\phi$, la varianza de $y_i$ puede ser mayor o menor a la esperada bajo una distribución binomial. Si $\phi_i > 0$, tenemos un problema de sobredispersión (los datos tienen una varianza superior a la que se asume bajo un modelo binomial). Mientras que, si $-(n_i-1)^{-1}<\phi<0$, hay presencia de subdispersión. El segunda caso es menos frecuenta en datos reales.
 
-
-Si:
-
-* $\phi=0$, $y_i\sim  binomial(n_i,\pi)$.
-
-* $\phi>0$, tenemos sobredispersión.
-
-* $-(n_i-1)^{-1}<\phi<0$, tenemos subdispersión (menos
-frecuente).
-
-En el caso del modelo binomial, tenemos que:
+### Evalaución de sobredispersión
+En el caso del modelo binomial, el estadístico de $\chi^2$ de Pearson está definido como:
 
 $$
-v(\pi_i)=\pi_i(1-\pi_i)/n_i.
+X^2=\sum_{i=1}^n\frac{(y_i-\hat{\pi}_i)^2}{\pi_i(1-\pi_1)/n_i}.
 $$
-
-El estadístico de $\chi^2$ de Pearson es:
-
+Si el modelo binomial proporciona buen ajuste, $X^2$ sigue (asintóticamente) una distribución $\chi^2$ con $n-p$ grados de libertad. Por lo tanto, un indicador de posible inflación de varianza es:
 $$
-X^2=\sum_{i=1}^n\frac{(y_i-\hat{\pi}_i)^2}{\pi_i(1-\pi_1)/n_i}
+\widehat{\phi}=\frac{X^2}{n-p}.
 $$
-
-Un indicador de posible inflación de varianza es:
-
-$$
-\hat{\phi}=\frac{X^2}{n-p}.
-$$
-
-Si no hay problemas de sobredispersión $\hat{\phi}\approx1$.
+Si hay problemas de sobredispersión, entonces $\widehat{\phi} > 1$.
 
 ## Distribución beta-binomial
-
-Modelo: $y|\pi\sim binomial(n,\pi)$
-
-Donde $\pi\sim beta(\alpha_1,\alpha_2)$, esto es:
-
+El modelo beta-binomial es una alternativa para modelar datos binomial con sobredispersión. Esta distribución parte de una mezcla de una distribución binomial con una distribución beta. Sea $y^{*}$ el número de éxitos de $n$ ensayos Bernoulli. Se puede suponer la siguiente distribución de $y^{*}$:
+\[
+y^{*}|\pi\sim \mbox{binomial}(n,\pi), \mbox{ donde } \pi\sim \mbox{beta}(\alpha_1,\alpha_2).
+\]
+La función de densidad de $\pi$ es:
 $$
-f(\pi;\alpha_1,\alpha_2)=\frac{\Gamma(\alpha_1+\alpha_2)}{\Gamma(\alpha_1)\Gamma(\alpha_2)}\pi^{\alpha_1-1}(1-\pi)^{\alpha_2-1}
+f(\pi;\alpha_1,\alpha_2)=\frac{\Gamma(\alpha_1+\alpha_2)}{\Gamma(\alpha_1)\Gamma(\alpha_2)}\pi^{\alpha_1-1}(1-\pi)^{\alpha_2-1},
 $$
-
-con $\alpha_1>0$ y $\alpha_2>0$.
-
-Asumiendo $\mu=\frac{\alpha_1}{\alpha_1+\alpha_2}$ y $\theta=1/(\alpha_1+\alpha_2)$, tenemos:
+con $\alpha_1>0$ y $\alpha_2>0$. Asumiendo $\mu=\frac{\alpha_1}{\alpha_1+\alpha_2}$ y $\theta=1/(\alpha_1+\alpha_2)$, tenemos:
 
 $$
 E(\pi)=\mu\quad\text{y}\quad V(\pi)=\mu(1-\mu)\frac{\theta}{1+\theta}.
 $$
 
-La distribución beta-binomial se obtiene al marginalizar $y$. Esto es:
+La distribución beta-binomial se obtiene al marginalizar $y^{*}$. Esto es:
 
 $$
-f(y;n,\mu,\theta)=\int f(y|\pi)f(\pi)d\pi.
+f(y^{*};n,\mu,\theta)=\int f(y^{*}|\pi)f(\pi)d\pi.
 $$
-
-La función de densidad de la distribución beta-binomial es:
-
-$$
-f(y;n,\mu,\theta)=\begin{pmatrix} n \\ y \end{pmatrix}\frac{\begin{bmatrix} \Pi_{k=0}^{y-1}(\mu+k\theta)\end{bmatrix} \begin{bmatrix} \Pi_{k=0}^{n-y-1}(1-\mu+k\theta)\end{bmatrix}}{\begin{bmatrix} \Pi_{k=0}^{n-1}(1+k\theta) \end{bmatrix}},
-$$
-
-para $y=0,1,...,n.$
-
-Valor esperado y varianza de $y=s/n$:
+Al resolver la integral anterior, encontramos la función de densidad de la distribución beta-binomial es:
 
 $$
-E(y)=\mu\quad\text{y}\quad V(y)=\begin{bmatrix} 1+(n-1)\frac{\theta}{1+\theta} \end{bmatrix}\mu(1-\mu)\frac{1}{\mu}.
+f(y^{*};n,\mu,\theta)=\begin{pmatrix} n \\ y^{*} \end{pmatrix}\frac{\begin{bmatrix} \Pi_{k=0}^{y^{*}-1}(\mu+k\theta)\end{bmatrix} \begin{bmatrix} \Pi_{k=0}^{n-y^{*}-1}(1-\mu+k\theta)\end{bmatrix}}{\begin{bmatrix} \Pi_{k=0}^{n-1}(1+k\theta) \end{bmatrix}},
 $$
 
-Por lo cual, $\phi=\theta/(1+\theta)$ es la correlación entre ensayos Bernoulli.
+para $y^{*}=0,1,...,n.$ El valor esperado y varianza de $y = \frac{y^{*}}{n}$ son:
 
-Binomial(15,0.3)(negro), beta-binomial(15,0.3,$\phi$=0,1)(rojo), beta-binomial(15,0.3,$\phi$=0,3)(verde)
+$$
+E(y)=\mu\quad\text{y}\quad V(y)=\left[ 1+(n-1)\frac{\theta}{1+\theta} \right]\frac{\mu(1-\mu)}{n} = \left[ 1+(n-1)\phi \right]\frac{\mu(1-\mu)}{n}.
+$$
 
-```{r, echo=FALSE,fig.align='center', fig.cap="", out.width = '75%'}
-knitr::include_graphics(here::here("figs", "DistrBetabin.jpg"))
+Por lo cual, $\phi > 0$ es la correlación entre ensayos Bernoulli. La distribución de probabilidad de la distribución beta-binomial se puede observar en la Figura \@ref(fig:betabinomialdensidad). Aquí vemos que la dispersión de la distribución beta-binomial aumenta con el parámetro $\phi$.
+
+
+```{r betabinomialdensidad, echo=FALSE,fig.align='center', fig.cap="Distribución de probabilidad de Binomial(15,0.3) (negro), beta-binomial(15,0.3,$\phi$=0.1) (rojo), beta-binomial(15,0.3,$\phi$=0.4) (verde)", fig.height = 4, fig.width = 6}
+library(VGAM)
+x = 0:15
+y0 = dbinom(x, 15, 0.3)
+y1 = dbetabinom(x, 15, 0.3, rho = 0.1)
+y2 = dbetabinom(x, 15, 0.3, rho = 0.4)
+plot(x,y0,type='l',xlab='y',ylab='probabilidad',lwd=2)
+lines(x,y1,col=2,lwd=2)
+lines(x,y2,col=3,lwd=2)
 ```
 
 ### Modelo beta-binomial
-
-Modelo:
-
+El modelo beta-binomial para $y_i^{*}$ se define como:
 $$
-n_iy_i|\pi_i\sim binomial(n_i,\pi_i)\\
-\pi_i\sim beta(\mu_i,\phi),
+y_i^{*}|\pi_i\sim \mbox{binomial}(n_i,\pi_i), \mbox{ donde } \pi_i\sim \mbox{beta}(\mu_i,\phi),
 $$
-
-Por lo cuál:
-
+donde $\mbox{logit } \mu_i = \bx_{i}'\bbeta$ (si usamos una función de enlace logit). Por lo cuál, para $y_i = \frac{y_i^{*}}{n_i}$ se tiene que:
 $$
-E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i
+E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=[1+(n-1)\phi]\mu_i(1-\mu_i)/n_i,
 $$
+La estimación de los parámetros $(\beta,\phi)$ se hace por máxima verosimilitud. Dado que $\phi>0)$, el modelo beta-binomial no puede modelar datos con subdispersión.
 
-La estimación de los parámetros $(\beta,\phi)$ se hace por máxima verosimilitud.
-
-Dado que $\phi>0)$, el modelo beta-binomial no puede modelar datos con subdispersión.
-
-#### Estudio de teratología
-
-```{r,include=TRUE}
+### Estudio de teratología
+Para los datos del estudio de teratología se puede proponer un modelo binomial en un principio:
+\[
+n_i y_i \sim \mbox{binomial} (n_i, \pi_i),
+\]
+donde $n_i$ y $y_i$ es el tamaño y la proporción de fetos muertos de la camada $i$. Además, se tiene que:
+\[
+\mbox{logit }\pi_i = \beta_0 + \mbox{hb}_i \beta_1 + \mbox{treat}_{2i} \beta_2 + \mbox{treat}_{3i}\beta_3 + \mbox{treat}_{4i} \beta_4.
+\]
+El ajuste del modelo es:
+```{r liratmod0,include=TRUE}
 data(lirat,package = 'VGAM')
 modlirat.binom = glm(cbind(R,N-R)~hb+as.factor(grp),family=binomial,data=lirat)
 summary(modlirat.binom)
-
-modlirat.betabinom =betabin(cbind(R,N-R)~as.factor(grp)+hb,data=lirat,random=~1)
+```
+La evaluación de sobredispersión la podemos hacer usando la razón entre el estadístico $\chi^2$ de Pearson y los grados de libertad:
+```{r liratmod0chi,include=TRUE}
+X2 = sum(residuals(modlirat.binom,type='pearson')^2)
+X2/53
+```
+Dado que está razón es aproximadamente $3$, los datos presentan sobredispersión. Por esta razón es mas conveniente proponer un modelo beta-binomial:
+$$
+y_i^{*}|\pi_i\sim \mbox{binomial}(n_i,\pi_i), \mbox{ donde } \pi_i\sim \mbox{beta}(\mu_i,\phi),
+$$
+con 
+\[
+\mbox{logit }\pi_i = \beta_0 + \mbox{hb}_i \beta_1 + \mbox{treat}_{2i} \beta_2 + \mbox{treat}_{3i}\beta_3 + \mbox{treat}_{4i} \beta_4.
+\]
+En R el modelo beta-binomial se puede estimar utilizando la función `betabin` de la librería `aod`:
+```{r liratmod1,include=TRUE}
+library(aod)
+modlirat.betabinom =betabin(cbind(R,N-R)~hb+as.factor(grp),data=lirat,random=~1)
 modlirat.betabinom
+```
+Las estimaciones de los coeficientes del modelo beta-binomial son similares a los del modelo binomial. Sin embargo, los errores estándar son mas grandes. Esto último es debido al efecto de la sobredispersión ($\widehat{\phi}=0.236$ indica una correlación positiva entre los fetos que pertenecen a la misma camada). Además, el efecto del tratamiento \#4 no es significativamente diferente al placebo.
 
+
+Podemos evaluar sobredispersión de nuevo:
+```{r liratmod1chi,include=TRUE}
+X2 = sum(residuals(modlirat.betabinom,type='pearson')^2)
+X2/52
+```
+La razón está cercana a $1$ por lo que la varianza está mejor modelada por la distribución beta-binomial. La comparación de los ajustes se puede hacer a través de criterios de información:
+```{r liratcomp,include=TRUE}
 AIC(modlirat.binom)
 AIC(modlirat.betabinom)
-
-deviance(modlirat.binom)
-deviance(modlirat.betabinom)
 ```
-
-```{r, echo=FALSE, include=TRUE, results="asis"}
-
-mathy.df <- data.frame(b0=c("Binomial","Beta-Binomial"), 
-                       b1=c(168.908,114.563),
-                       b2=c(250.378,198.032),
-                       b3=c(260.68,210.395))
-
-colnames(mathy.df)<-c("Modelo","Deviance","AIC","BIC")
-
-kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
-  kable_styling(bootstrap_options = "striped",
-                full_width = F)
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Observando los valores del AIC podemos determinar que el modelo beta-binomial presenta mejor ajuste.

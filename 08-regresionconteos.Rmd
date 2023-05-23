@@ -4,62 +4,32 @@ library(HSAUR2)
 library(MASS)
 library(pscl)
 library(kableExtra)
+library(ACSWR)
 data(epilepsy)
 data(eba1977,package='ISwR')
 data(crabs,package='asbio')
-
 ```
 
 ## Casos de estudio
 ### Ataques de epilepsia
-Ensayo clínico para evaluar el impacto de progabida sobre las crisis epilépticas (```data(epilepsy)``` de la librería ```HSAUR2```).
+Vamos a considerar de nuevo los datos del ensayo clínico sobre epilepsia (``data(epilepsy)`` de la librería ``HSAUR2``).
 
-Datos:
+### Muertes por enfermedades cardiovasculares en doctores del Reino Unido
+....
 
-* ```age```: edad del paciente.
- 
-* ```base```: número de ataques epilépticos (x 8 semanas) antes delensayo.
-
-* ```treatment```: tratamiento (placebo, progabida).
-
-* ```seizure.rate```(variable respuesta): número de ataques epilépticos (x dos semanas) luego de 8 semanas.
-
-### Datos de cáncer de pulmón
-
-Incidencia de cáncer de pulmón en cuatro ciudades de Dinamarca entre 1968 y 1971 ```(data(eba1977,package='ISwR'))```.
-
-Variable respuesta: número de casos de cáncer de pulmón.
-
-Covariables:
-
-* Ciudad (Fredericia, Horsens, Kolding, Vejle).
-
-* Grupo de edad (40-54, 55-59, 60-64, 65-69, 70-74, >75).
-
-Dado que el número de casos depende del tamaño de la población, se modela la tasa de casos de cáncer de pulmón: $Y_i/t_i$.
-
-$t_i$ es el tamaño de la población por grupo de edad y ciudad **(offset)**.
-
-
-
-```{r, include=TRUE, fig.align='center',fig.cap="Fredericia(línea negra), Horsens(línea roja), Kolding(línea verde), Vejle(línea azul)."}
-cancer.data = eba1977[order(eba1977$city),]
-
-# casos por 1000 habitantes
-tasa = 1000*cancer.data$cases/cancer.data$pop
-plot(1:6,tasa[cancer.data$city=='Fredericia'],type='b',xlab = 'grupo de edad',
-     ylim=range(tasa),ylab='casos por 1000 habitantes',xaxt='n',lwd=2)
-axis(1,1:6,c('40-54','55-59','60-64','65-69','70-74','>75'))
-lines(1:6,tasa[cancer.data$city=='Horsens'],col=2,type='b',lwd=2)
-lines(1:6,tasa[cancer.data$city=='Kolding'],col=3,type='b',lwd=2)
-lines(1:6,tasa[cancer.data$city=='Vejle'],col=4,type='b',lwd=2)
+```{r doctorUK1, echo=T, fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Tasa de muertes por enfermedades cardiovasculares en doctores del Reino Unido por grupo de edad. Los puntos rojos corresponden a fumadores y los negros a no fumadores."}
+library(ACSWR)
+data(bs1)
+plot(bs1$Age_Cat, 100000*(bs1$Deaths/bs1$Person_Years),col=bs1$Smoke_Ind+1,
+     xlab='grupo de edad',ylab='muertes por 100,000 personas-año',pch=20,xaxt='n')
+axis(1,1:5,bs1$Age_Group[1:5])
 
 ```
+
 ### Número de cangrejos satélites
+Los datos ```crabs``` de la librería ```asbio``` son de un estudio sobre $173$ hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove. Durante el apareamiento, un macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena poner racimos de huevos. Luego, el macho fecunda los huevos de forma externa. Dada la competencia por fecundar los huevos, las hembras suelen llegar a la playa con otros cangrejos machos adheridos a ella. A este grupo de cangrejos se les llama satélites.
 
-Los datos ```crabs``` de la librería ```asbio``` son de un estudio de hembras de cangrejos herradura durante el periodo de desove en una isla en el Golfo de México.
-
-**Variable respuesta:**el número de "satélites de cangrejos" herradura hembras ($n = 173$). Las posibles covariables son:
+Aquí, nuestra variable de respuesta es el número de satélites que tiene cada hembra. Mientras que las posibles covariables son:
 
 * ```color```: color (1, medio-claro; 2, medio; 3, medio-oscuro; 4,oscuro).
 
@@ -69,141 +39,106 @@ Los datos ```crabs``` de la librería ```asbio``` son de un estudio de hembras d
 
 * ```weight```: peso (kg)
 
-```{r, include=TRUE, fig.align='center',fig.cap="Histograma(izquierda), número de satélites vs peso (derecha)"}
+En la Figura \@ref(fig:crabsData) podemos observar que hay una alta presencia de hembras que llegan a la playa sin ningún satélite. Además, vemos que hay una relación positiva entre el número de satélites y el tamaño de la hembra.
+```{r crabsData, echo=F, fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Histograma(izquierda), número de satélites vs peso (derecha)"}
 par(mfrow=c(1,2))
 hist(crabs$satell,breaks = 20,main='',xlab='número de satálites',ylab='frecuencia')
 plot(crabs$satell~weight,data=crabs,xlab='peso (kg)',ylab='número de satálites')
 ```
 
 ## Modelo Poisson
+La distribución Poisson es comúnmente usada para modelar el número de eventos aleatorios que ocurren en un intervalo de tiempo o espacio. Esta distribución también se aplica como una aproximación de la binomial cuando $n$ es grande y $\pi$ es pequeño. En este caso, la binomial$(n_i, \pi_i)$ converge hacia una Poisson$(\mu=n\pi)$.
 
-La distribución Poisson se utiliza para modelar variables de tipo conteo (número de eventos por intervalo de tiempo o espacio).
-
-Modelo:
-
+  
+El modelo Poisson se expresa como:
 $$
-y_i\sim Poisson(\lambda_i), \quad i=1,...,n,\quad \text{donde} \quad \lambda_i=exp(\bx'_i\bbeta),
+y_i\sim \mbox{Poisson}(\lambda_i), \quad i=1,...,n, \text{ donde }  \log \lambda_i=\bx'_i\bbeta,
 $$
-
-Por lo tanto: $E(y_i|\bx_i)=V(y_i|\bx_i)=\lambda_i$.
-
-El modelo Poisson también se puede usar como aproximación al modelo binomial cuando $n_i$ es grande y $\pi_i$ es pequeño, con $\mu_i=n_i\pi_i$.
-
-Los conteos $y_i$ son proporcionales a un índice $t_i$ (intervalo de tiempo, área de espacio, tamaño de población). Cuando $t_i$ no es fijo, se debe incluir un término llamado **offset**.
-
-El modelo Poisson asume que $E(y_i|\bx_i) = V (y_i|\bx_i)$. En la práctica, es común encontrar que la varianza es mayor que la media que predice la Poisson **(sobredispersión)**.
-
-
-En otros casos, la frecuencia de ceros puede ser mayor de lo esperado en el modelo ajustado **(exceso de ceros)**.
+donde $\bx_i$ es el vector de covariables asociada al individuo $i$. Este modelo asume que:
+\[
+E(y_i|\bx_i)=V(y_i|\bx_i)=\lambda_i.
+\]
+Es decir, la media es igual a la varianza.
 
 ### Modelo de conteo con offset
+En algunos casos los conteos $y_i$ son proporcionales a un índice $t_i$ (intervalo de tiempo, área de espacio, tamaño de población). Cuando $t_i$ no es fijo, se debe incluir un término llamado **offset**. En este caso, es preferible modelar la tasa $y_i/t_i$ con valor esperado $\lambda_i/t_i$.
 
-El valor esperado de una variable de de conteo $y_i$ es proporcional a un índice $t_i$.
-
-Por lo que se puede modelar la tasa $(y_i/t_i)$ con valor esperado $\lambda_i/t_i$.
-
-En este caso, el predictor lineal queda de la forma:
+Por lo tanto, el predictor lineal queda de la forma:
 
 $$
-log\begin{pmatrix}\frac{\lambda_i}{t_i}\end{pmatrix}=\bx'_i\bbeta. \\
-log\lambda_i=\bx_i'\bbeta+logt_i,
+\log\left(\frac{\lambda_i}{t_i}\right)=\bx'_i\bbeta. \mbox{ Por lo que ,}
+\log\lambda_i=\bx_i'\bbeta+\log t_i,
 $$
-
-donde $logt_i$ es llamado **offset.**
-
-Por lo tanto, el valor esperado de $y_i$ es:
+donde el término $\logt_i$ es llamado **offset**. Entonces, el valor esperado de $y_i$ es:
 
 $$
-\lambda_i=t_iexp(x_i\beta).
+\lambda_i=t_i \exp(x_i'\beta).
 $$
-
-#### Datos de cáncer de pulmón
-
-Modelo 1:
-
+#### Muertes por enfermedades cardiovasculares en doctores del Reino Unido
+Dado que los tamaños de la población por grupo de edad son diferentes (hay menos personas en los grupos de edad mayores), debemos considerar esto en el modelo por medio del offset. En este caso el modelo propuesto puede ser:
 $$
-log(\mu_i/\text{pop}_i)=\beta_0+\beta_1\text{Horsens}_i+\beta_2\text{Kolding}_i+\beta_3\text{Vejle}_i+\beta_4I\text{(55-59)}_i+\beta_5I\text{(60-64)}_i+\beta_6I\text{(65-69)}_i+\beta_7I\text{(70-74)}_i+\beta_8I\text{(>75)}_i
+y_i \sim \mbox{Poisson}(\lambda_i),
 $$
-```{r, include=TRUE}
-poisson.model = glm(cases ~ city + age+ offset(log(pop)), 
-                    family = poisson(link = "log"), data = cancer.data)
+donde:
+$$
+\log \lambda_i = \beta_0 + \mbox{smoke}_i\beta_1 + \mbox{ageCat1}_i\beta_2 + \mbox{ageCat2}_i\beta_3 + \mbox{ageCat3}_i\beta_4 + \mbox{ageCat4}_i\beta_5 + \log(t_i),
+$$
+donde $y_i$ es el número de doctores muertos por enfermedades cardiovasculares en la $i$-ésima categoría; smoke$_i=1$ si la $i$-ésima categoría corresponde a fumadores; smoke$_i=0$ si lo contrario; $t_i$ es el número de doctores en riesgo asociados al grupo $i$, ageCat$j$ corresponde a las variables indicadores asociadas al grupo de edad, con $[35,44]$ como referencia. 
 
-summary(poisson.model)
+El ajuste del modelo es
+```{r doctorMod1, include=TRUE}
+poisson.doctor = glm(Deaths ~ Smoke_Ind + Age_Group + offset(log(Person_Years)), 
+                    family = poisson(link = "log"), data = bs1)
+summary(poisson.doctor)
 ```
-Devianza= 23:447 y AIC= 137:84.
+Estos datos sugieren que, luego de tener en cuenta el efecto de la edad, los fumadores tienen una tasa de mortalidad $\exp(\widehat{\beta}_1)=1.42$ mayor que los no fumadores.
 
-
-```{r, include=TRUE, fig.align='center',fig.cap="Fredericia (línea negra), Horsens (línea roja), Kolding (línea verde), Vejle (línea azul)."}
-# ajuste del modelo
-plot(1:6,tasa[cancer.data$city=='Fredericia'],xlab = 'grupo de edad',
-     ylim=range(tasa),ylab='casos por 1000 habitantes',xaxt='n')
-axis(1,1:6,c('40-54','55-59','60-64','65-69','70-74','>75'))
-points(1:6,tasa[cancer.data$city=='Horsens'],col=2)
-points(1:6,tasa[cancer.data$city=='Kolding'],col=3)
-points(1:6,tasa[cancer.data$city=='Vejle'],col=4)
-
-pred.tasa = 1000*poisson.model$fitted.values/cancer.data$pop
-lines(1:6,pred.tasa[cancer.data$city=='Fredericia'],type='l',lwd=2)
-lines(1:6,pred.tasa[cancer.data$city=='Horsens'],col=2,type='l',lwd=2)
-lines(1:6,pred.tasa[cancer.data$city=='Kolding'],col=3,type='l',lwd=2)
-lines(1:6,pred.tasa[cancer.data$city=='Vejle'],col=4,type='l',lwd=2)
-```
-
-Modelo 2:
-
+Para simplificar el modelo, y evaluar efectos de interacción, uno podría tomar la categoría de edad de forma numérica:  age$=1,2,\ldots,5$ para las categorías $35-44,45-54,\ldots,75-84$. Así podemos proponer un modelo de la forma:
 $$
-log(\mu_i/\text{pop}_i)=\beta_0+\beta_1\text{Fredericia}_i+\beta_2\text{edad}_i^*+\beta_3\text{edad}_i^{*2},
+\log \lambda_i = \beta_0 + \mbox{smoke}_i\beta_1 + \mbox{age}_i\beta_2 + \mbox{age}^2_i\beta_3 + \mbox{smoke}_i\mbox{age}_i\beta_4  + \log(t_i),
 $$
-
-donde $\text{edad}_i^{*2}$ es el punto medio de los grupos de edad.
-
-```{r,include=TRUE}
-cancer.data$t = c(47,57,62,67,72,77)
-cancer.data$Fredericia = as.double(cancer.data$city=='Fredericia')
-
-poisson.model2 = glm(cases ~ Fredericia + t + I(t^2)+ offset(log(pop)), 
-                     family = poisson(link = "log"), data = cancer.data)
-summary(poisson.model2)
+El efecto de la interacción se incluye para evaluar si la diferencia en la tasa de muertes entre fumadores y no fumadores cambia con el aumento de la edad. El ajuste del modelo es:
+```{r doctorMod2, include=TRUE}
+bs1$Age = c(1:5,1:5)
+poisson.doctor2 = glm(Deaths ~ Smoke_Ind+Age+I(Age^2)+Smoke_Ind*Age + offset(log(Person_Years)), 
+                    family = poisson(link = "log"), data = bs1)
+summary(poisson.doctor2)
 ```
+Estos resultados también muestran que, en promedio, los fumadores tienen una tasa de mortalidad $4$ veces más alta que los no fumadores. Sin embargo, esta diferencia se atenua a medida que la edad aumenta (efecto interacción negativo). Esto lo podemos ver forma gráfica en la Figura \@ref(fig:doctorUKgraf).
 
-Prueba de razón de verosimilitud:
 
-```{r,include=TRUE}
-anova(poisson.model2,poisson.model,test='LRT')
+```{r doctorUKgraf, echo=TRUE, fig.align='center',fig.cap="Estimación de la tasa de muertes de doctores del Reino Unido por grupo de edad para fumadores(línea roja) y no fumadores (línea negra)."}
+plot(bs1$Age, 100000*(bs1$Deaths/bs1$Person_Years),col=bs1$Smoke_Ind+1,
+     xlab='grupo de edad',ylab='muertes por 100,000 personas-año',pch=20,xaxt='n')
+axis(1,1:5,bs1$Age_Group[1:5])
+
+pred.tasa = 100000*poisson.doctor2$fitted.values/bs1$Person_Years
+lines(1:5,pred.tasa[bs1$Smoke_Ind==0],lwd=2)
+lines(1:5,pred.tasa[bs1$Smoke_Ind==1],col=2,lwd=2)
 ```
 
 
+## Sobredispersión
+El modelo Poisson asume que $V(y) = E(y)$. Sin embargo, es común encontrar datos en que la varianza crece más rápido que la media, provocando sobredispersión. En este caso, el estimador por máxima verosimilitud del modelo Poisson sigue proporcionan estimaciones consistentes para la media. Sin embargo, los errores estándar estarán mal calculados (por lo general son más pequeños).
 
-```{r,include=TRUE, fig.align='center',fig.cap="Fredericia (línea negra), otra ciudad (línea roja)."}
-plot(c(47,57,62,67,72,77),tasa[cancer.data$city=='Fredericia'],xlab = 'grupo de edad',
-     ylim=range(tasa),ylab='casos por 1000 habitantes')
-points(c(47,57,62,67,72,77),tasa[cancer.data$city=='Horsens'],col=2)
-points(c(47,57,62,67,72,77),tasa[cancer.data$city=='Kolding'],col=2)
-points(c(47,57,62,67,72,77),tasa[cancer.data$city=='Vejle'],col=2)
+Para modelar datos de tipo conteo en presencia de sobredispersión se puede asumir una distribución binomial negativa. Esta incluye un parámetro adicional que cuantifica la sobredispersión.
 
-pred.tasa = 1000*poisson.model2$fitted.values/cancer.data$pop
-lines(c(47,57,62,67,72,77),pred.tasa[cancer.data$city=='Fredericia'],type='l',lwd=2)
-lines(c(47,57,62,67,72,77),pred.tasa[cancer.data$city=='Horsens'],col=2,type='l',lwd=2)
-```
-
-## Distribución binomial negativa
-
-Modelo: $y|\lambda\sim Poisson(\lambda)$,
-
-donde $\lambda\sim gamma(k,\mu).$ Esto es:
+### Distribución binomial negativa
+La distribución binomial negativa parte de una mezcla de una distribución Poisson con una gamma. Esto es:
+\[
+y | \lambda \sim \mbox{Poisson}(\lambda), \mbox{ donde } \lambda\sim \mbox{gamma}(k,\mu).
+\]
+La función de densidad de $\lambda$ es:
 
 $$
-f(\lambda;k,\mu)=\frac{(k/\mu)^k}{\Gamma(k)}exp(-k\lambda/\mu)\lambda^{k-1},
+f(\lambda;k,\mu)=\frac{(k/\mu)^k}{\Gamma(k)}\exp\left(-\frac{k\lambda}{\mu}\right)\lambda^{k-1},
 $$
 
 Entonces tenemos:
-
 $$
-E(\lambda)=\mu\quad\text{y}\quad V(\lambda)=\mu^2/k
+E(\lambda)=\mu \mbox{ y } V(\lambda)=\mu^2/k.
 $$
-
 La distribución binomial negativa (Poisson-gamma) se obtiene al marginalizar $y$. Esto es:
-
 $$
 f(y;\mu,k)=\int f(y|\lambda)f(\lambda)d\lambda.
 $$
@@ -211,182 +146,206 @@ $$
 La función de densidad de la binomial negativa es:
 
 $$
-f(y;\mu,k)=\frac{\Gamma(y+k)}{\Gamma(k)\Gamma(y+1)}\begin{pmatrix} \frac{\mu}{\mu+k}\end{pmatrix}^y \begin{pmatrix} \frac{k}{\mu+k} \end{pmatrix}^k
+f(y;\mu,k)=\frac{\Gamma(y+k)}{\Gamma(k)\Gamma(y+1)}\left( \frac{\mu}{\mu+k}\right)^y \left( \frac{k}{\mu+k} \right)^k
 $$
-
-para $y=0,1,...$
-
-Si definimos $\gamma=1/k$, tenemos que:
+para $y=0,1,...$ Si definimos $\gamma=1/k$, tenemos que:
 
 $$
-E(y)=\mu\quad\text{y}\quad V(y)=\mu(1+\gamma\mu),
+E(y)=\mu \mbox{ y }  V(y)=\mu(1+\gamma\mu),
 $$
+para $\gamma>0$ (llamado parámetro de sobredispersión). La distribución de probabilidad de la distribución binomial negativa se puede observar en la Figura \@ref(fig:disNegBin). Aquí vemos que a medida que aumenta $\gamma$, la probabilidad de valores extremos es más alta.
 
-para $\gamma>0$ (parámetro de sobredispersión).
+```{r disNegBin, echo=FALSE,fig.align='center', fig.cap="Distribución de probabilidad de Poisson(3) (negro), binomial negativa (3,0.5) (rojo), binomial negativa (3,1.5) (verde).", fig.height = 4, fig.width = 6}
+x = 0:20
+y0 = dpois(x,3)
+y1 = dnbinom(x,mu=3,size=2)
+y2 = dnbinom(x,mu=3,size=1/1.5)
+plot(x,y0,type='l',xlab='y',ylab='probabilidad',lwd=2,ylim = c(0,max(y2)))
+lines(x,y1,col=2,lwd=2)
+lines(x,y2,col=3,lwd=2)
+```
 
-### Modelo binomial negativo (Poisson-gamma)
+Dado que $\gamma>0$, el modelo binomial negativo no puede modelar datos con subdispersión.
 
-Modelo:
-
+### Modelo binomial negativo (Poisson-gamma)    
+El modelo binomial negativo se expresa de la siguiente forma:
 $$
-y_i|\lambda_i\sim Poisson(\lambda_i)\\
-\lambda_i\sim gamma(\mu_i,\gamma),
+y_i|\lambda_i\sim \mbox{Poisson}(\lambda_i), \qquad
+\lambda_i\sim \mbox{gamma}(\mu_i,\gamma),
 $$
 
 donde
 
 $$
-\lambda_i=exp(\bx'_i\bbeta).
+\mu_i=\exp(\bx'_i\bbeta).
 $$
-
 Por lo cuál:
-
 $$
-E(y_i)=\mu_i\quad\text{y}\quad V(y_i)=\mu_i(1+\gamma\mu_i)
+E(y_i)=\mu_i\mbox{ y } V(y_i)=\mu_i(1+\gamma\mu_i).
 $$
-
 La estimación de los parámetros $(\bbeta,\gamma)$ se hace por máxima verosimilitud.
 
-
-Dado que $\gamma>0$, el modelo binomial negativo no puede modelar datos con subdispersión.
-
-Poisson(3) (negro) - Poisson-gamma($3,\gamma=0.5$) (rojo) - Poisson-gamma($3,\gamma=2$) (verde)
-
-```{r, echo=FALSE,fig.align='center', fig.cap="", out.width = '75%'}
-knitr::include_graphics(here::here("figs", "DistribucionNegBin.jpg"))
-```
-
-
 #### Ataques epilépticos
-
-```{r,include=TRUE}
+Para los datos de los ataques epilépticos se propone el siguiente modelo:
+\[
+y_i \sim \mbox{Poisson}(\lambda_i), \mbox{ donde } \log \lambda_i = \beta_0 + \mbox{treatment}_i\beta_1 + \mbox{base}_i\beta_2,
+\]
+donde $y_i$ es el número de ataques epiléptivos en dos semanas luego de cuatro semanas de tratamiento; treatment$_i=1$ si el $i$-ésimo paciente recibió el tratamiento progabida y treatment$_i=0$ si lo contrario. Los resultados del ajuste son:
+```{r epiPoisson,include=TRUE}
+library(HSAUR2)
+data(epilepsy)
 epilepsy4= epilepsy[epilepsy$period==4,]
 
 modPois = glm(seizure.rate~treatment+base,data=epilepsy4,family=poisson)
 summary(modPois)
+```
+Los resultados del ajuste del modelo Poisson muestran que el tratamiento es altamente significativo. Por lo que, se puede concluir que la progabida reduce el número de ataques epilépticos. 
 
-#library(MASS)
+Sin embargo, estos datos presenta sobredispersión. Esto se puede verificar por medio de la razón del estadístico $\chi^2$ de Pearson y los grados de libertad:
+```{r epiPoissonSobredispersion,include=TRUE}
+X2.poisson = sum(residuals(modPois,type='pearson')^2)
+X2.poisson/modPois$df.residual
+```
+Por esta razón se puede estimar el modelo binomial negativo:
+\[
+y_i \sim \mbox{binomial negativa}(\mu_i,\gamma), \mbox{ donde } \log \mu_i = \beta_0 + \mbox{treat}_i\beta_1 + \mbox{base}_i\beta_2.
+\]
+El ajuste en R se puede hacer utilizando la función ``glm.nb`` de la librería ``MASS``:
+```{r epiNegBinom,include=TRUE}
+library(MASS)
 modbinNeg = glm.nb(seizure.rate~treatment+base,data=epilepsy4)
 summary(modbinNeg)
-
 ```
+Las estimaciones del modelo binomial negativo son similares a las del ajuste del modelo Poisson. Sin embargo, vemos que los errores estándar son más grandes. Además, el valor-$p$ del efecto asociado al tratamiento es mayor. Si consideramos $\alpha=0.05$, el efecto del tratamiento no es significativo.
 
-```{r, echo=FALSE, include=TRUE, results="asis"}
-
-mathy.df <- data.frame(b0=c("Poisson","Binomial-negativa"), 
-                       b1=c(149.68,70.124),
-                       b2=c(56,56),
-                       b2=c(343.44,313.32))
-
-colnames(mathy.df)<-c("Modelo","Devianza","g.l.","AIC")
-
-kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
-  kable_styling(bootstrap_options = "striped",
-                full_width = F)
-
+Podemos evaluar si se presentan problemas de sobredispersión con el ajuste del modelo binomial negativo:
+```{r sobredispersionBN, echo=FALSE}
+X2 = sum(residuals(modbinNeg,type='pearson')^2)
+X2/modbinNeg$df.residual
 ```
+Este resultado sugiere que la varianza está bien estimada. Comparando criterios de información, el modelo binomial negativo presenta un mejor ajuste que el modelo Poisson:
+```{r sobredispersionBN, echo=FALSE}
+BIC(modbinNeg)
+BIC(modPois)
+```
+## Inflación de ceros
+En ocaciones, los datos muestran mayor frecuencia de ceros de los que la distribución Poisson y binomial negativa permiten. Por ejemplo, en datos de cangrejos herradura, hay muchas hembras que llegan a la playa sin ningún satélite. La Figura \@ref(fig:crabsData) muestra que una distribución bimodal para el número de satélites. 
 
-## Modelo Poisson con ceros inflados
-
-El modelo Poisson con ceros inflados (ZIP):
-
+**Distribución con inflación de ceros**
+Este tipo de datos se pueden modelar con una mezcla de distribuciones donde $Y=0$ cuando $Z=1$, y $Y$ sigue una distribución particular cuando $Z=0$ (la cual permite la posibilidad de ceros). Por ejemplo, la distribución Poisson con inflación de ceros (ZIP) se puede representar como:
 $$
-y_i=\begin{cases} 0 \qquad & \text{con probabilidad}\quad 1-\phi_i \\ Poisson(\lambda_i) \quad & \text{con probabilidad}\quad \phi_i\end{cases}
+y\sim\begin{cases} 0 \qquad & \text{con probabilidad}\quad \phi, \\ \mbox{Poisson}(\lambda) \quad & \text{con probabilidad}\quad 1-\phi.
+\end{cases}
 $$
+La probabilidad de que $y$ sea igual a cero es:
+$$
+P(y=0) = \phi + (1-\phi) \exp \left(-\lambda\right).
+$$
+Mientras que para $y>0$ se tiene:
+$$
+P(y=j) =(1-\phi) \exp \frac{\left(-\lambda\right)\lambda^j}{j!}, j=1,2,\ldots.
+$$
+El valor esperado y la varianza de $y$ son:
+$$
+E(y) = E(E(y|z)) = (1-\phi)\lambda, \mbox{ y } V(y)= E(V(y|z)) + V(E(y|z)) = (1-\phi)\lambda \left( 1+ \phi\lambda\right).
+$$
+Note que la distribución ZIP permite sobredispersión.
 
-La distribución de probabilidad incondicional es:
+De igual forma, se puede tener un modelo binomial negativo con inflación de ceros (ZINB):
+$$
+y\sim \begin{cases} 0 \qquad & \text{con probabilidad } \phi, \\ \mbox{binomial negativa}(\mu,\gamma) \quad & \text{con probabilidad } 1-\phi.
+\end{cases}
+$$
+En este modelo, la probabilidad de que $y$ sea igual a cero es:
+$$
+P(y=0) = \phi + (1-\phi) \left( 1 + \gamma \mu \right)^{-1/\gamma}.
+$$
+Mientras que el valor esperado y varianza son:
+$$
+E(y)= (1-\phi)\mu \mbox{ y } V(y) = (1-\phi) \mu \left[1+\mu(\gamma+\phi)\right].
+$$
+Otra alternativa para modelar exceso de ceros es a través del mdelo Hurdle. Este asume que hay un proceso Bernoulli que determina si el conteo es igual a cero o positivo. Si ocurre lo segundo, una distribución truncada determina la probabilidad del conteo. La distribución se puede expresar como:
+\begin{equation}
+\begin{cases}
+P(y = j)=\begin{cases} \pi \qquad & j=0, \\ (1-\pi)\frac{f(y|\theta)}{1-f(0|\theta)} & j >0.
+\end{cases}
+(\#eq:Hdis)
+\end{equation}
 
-$$
-P(y_i=0)=(1-\phi_i)+\phi_iexp(-\lambda_i)
-$$
+A diferencia del modelo ZI, aquí la probabilidad de $y=0$ solo está determinado por $\pi$ (no por una mezcla de distribuciones). 
 
+Por ejemplo, el modelo Hurdle Poisson (HP) se define como:
 $$
-P(y_i=j)=\phi_i\frac{exp(-\lambda_i)\lambda_i^j}{j!},\quad \text{para}\quad j=1,2,...
+P(y = j)=\begin{cases} \pi \qquad & j=0, \\ (1-\pi)\frac{\lambda^{j}\exp(-\lambda)}{j! [1-\exp(-\lambda)]} & j >0.
+\end{cases}
+$$
+El valor esperado y varianza de $y$ son:
+\begin{equation}
+E(y)= (1-\pi) E(y | y > 0) \mbox{ y } V(y) = (1-\pi) V(y | y > 0) + \pi(1-\pi)E(y | y>0)^2,
+(\#eq:Hvar)
+\end{equation}
+donde:
+$$
+E(y | y > 0) = \frac{\lambda}{1- \exp(-\lambda)} \mbox{ y } V(y|y>0) = \frac{\mu}{1-\exp(-\lambda)} + \exp(-\lambda)E(y | y >0)^2.
+$$
+También, se tiene la distribución Hurdle binomial negativa (HNB), definiendo $f(y)$ como la distribución binomial negativa en \@ref(eq:Hdis).
+
+### Modelo de inflación de ceros
+El modelo Poisson con ceros inflados (ZIP) se expresa de la siguiente forma:
+$$
+y_i \sim \begin{cases} 0 \qquad & \text{con probabilidad } \phi_i, \\ \mbox{Poisson}(\lambda_i) \quad & \text{con probabilidad } 1-\phi_i.
+\end{cases}
 $$
 
 Los parámetros $\phi_i$ y $\lambda_i$ pueden ser modelados a través de covariables:
 
 $$
-logit\phi_i=\bx'_{1i}\bbeta_1 \quad\text{y}\quad log\log\lambda_i\bx'_{2i}\bbeta_2
+\mbox{logit } \phi_i=\bx'_{1i}\bbeta_1 \quad\text{y}\quad \log\lambda_i=\bx'_{2i}\bbeta_2.
 $$
-
-
-
-```{r, echo=FALSE,fig.align='center', fig.cap="", out.width = '75%'}
-knitr::include_graphics(here::here("figs", "DistribucionZIP.jpg"))
-```
-Poisson(3) (negro), ZI-Poisson($3,\phi=0.9$)(rojo), Poisson-gamma($3,\phi=0.7$)(verde).
-
-El valor esperado y varianza de $y_i$ son:
-
-$$
-E(y_i)=\phi_i\lambda_i\quad\text{y}\quad V(y_i)=\phi_i\lambda_i[1+(1-\phi_i)\lambda_i].
-$$
-
-Dado que $E(y_i)<V(y_i)$ el modelo ZIP tiene en cuenta algo de sobredispersión.
 
 En presencia de una sobredispersión mayor, el modelo de ceros inflados puede combinarse con una distribución binomial negativa. Esto es:
-
 $$
-y_i=\begin{cases}  0 & \text{con probabilidad} \quad1-\phi_i \\  \text{binomial negativa}(\lambda_i,\gamma)& \text{con probabilidad} \quad\phi_i \end{cases}
+y_i\sim \begin{cases}  0 & \text{con probabilidad } \phi_i \\  \text{binomial negativa}(\mu_i,\gamma)& \text{con probabilidad } 1-\phi_i \end{cases}
 $$
+De igual forma $\mu_i$ y $\phi_i$ se pueden modelar por medio de covariables.
 
-## Modelo Hurdle
-
-El modelo Hurdle:
-
+### Modelo Hurdle
+El modelo Hurdle lo podemos expresar de la forma:
 $$
-P(Y_i=j)=\begin{cases} 1-\pi_i & \text{si}\quad j=0,\\ \pi_i\frac{f(j;\mu_i)}{1-f(0;\mu_i)} &\text{si}\quad j=1,2,... \end{cases}
+P(Y_i=j)=\begin{cases} \pi_i &  j=0,\\ (1-\pi_i)\frac{f(j;\theta_i)}{1-f(0;\theta_i)} & j=1,2,\ldots, \end{cases}
 $$
-
-La función $f(\cdot;\mu_i)$ puede ser una Poisson o binomial negativa.
-
-$\pi_i$ se puede modelar usando un modelo logístico y un modelo log-lineal para $\mu_i$:
-
-$$
-logit\phi_i=\bx'_{1i}\bbeta_1\quad\text{y}\quad log\lambda_i=\bx'_{2i}\bbeta_2.
-$$
+donde la función $f(\cdot;\theta_i)$ puede ser una Poisson o binomial negativa. Al igual que el modelo ZI, $\pi_i$ se puede modelar usando un modelo logístico y un modelo log-lineal para $\lambda_i$ (Poisson) o $\mu_i$ (binomial negativo).
 
 ### Número de cangrejos satélites
-
-```{r,include=TRUE}
-# modelo Poisson
-Pois.sat = glm(satell~weight,data = crabs,family = poisson)
-summary(Pois.sat)
+Para los datos de los cangrejos satélites podemo estimar un modelo con inflación de ceros con:
+$$
+\mbox{logit } \phi_i=\beta_{10} + \mbox{weight}_i\beta_{11} \quad\text{y}\quad \log\lambda_i=\beta_{20} + \mbox{weight}_i\beta_{21}.
+$$
+En R, se puede utilizar la funcion ``zeroinfl`` de la librería ``pscl``
+```{r ZIPNB,include=TRUE}
+library(pscl)
+# modelo ZIP
+ZIP.sat = zeroinfl(satell~weight | weight,data=crabs,dist='poisson')
+# modelo ZINB
+ZINB.sat = zeroinfl(satell~weight | weight,data=crabs,dist='negbin')
 ```
+Mientras que los modelos Hurdle se pueden estimar con la función ``hurdle``:
 
-```{r,include=TRUE}
-# modelo binomial negativo
-NB.sat = glm.nb(satell~weight,data=crabs)
-summary(NB.sat)
-```
-
-```{r,include=TRUE}
-#library(pscl)
-# modelo de inflación de cero
-ZINB.sat1 = zeroinfl(satell~weight | weight,data=crabs,dist='negbin')
-summary(ZINB.sat1)
-```
-
-
-```{r,include=TRUE}
-# modelo hurdle
+```{r HPNB,include=TRUE}
+# modelo HP
+HP.sat = hurdle(satell~weight | weight,data=crabs,dist='poisson')
+# modelo HNB
 HNB.sat = hurdle(satell~weight | weight,data=crabs,dist='negbin')
-summary(HNB.sat)
 ```
-
-
-```{r, echo=FALSE, include=TRUE, results="asis"}
-
-mathy.df <- data.frame(b0=c("AIC","BIC"), 
-                       b1=c(920.1,876.9),
-                       b2=c(754.6,764.1),
-                       b3=c(715.5,731.3),
-                       b4=c(715.3,731.0))
-
-colnames(mathy.df)<-c("","P","NB","ZINB","HNB")
-
-kable(mathy.df, escape=FALSE,format = "html", booktabs = T)%>% kable_styling(bootstrap_options = "striped",
-                full_width = F)%>%add_header_above(c("","Modelo" = 4))
-
+Los ajustes los podemos comparar con criterios de información:
+```{r BICZIH,include=TRUE}
+BIC(ZIP.sat)
+BIC(ZINB.sat)
+BIC(HP.sat)
+BIC(HNB.sat)
 ```
+Aquí vemos que los modelos ZINB y HNB proporcionan mejores ajustes. Las estimaciones del modelo ZINB son:
+```{r HPNB2,include=TRUE}
+summary(ZINB.sat)
+```
+Los resultados muestran que la probabilidad de que no hayan satélites disminuye cuando la hembra tiene mayor peso. De igual forma, la media incrementa con el peso.
