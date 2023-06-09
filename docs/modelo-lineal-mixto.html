@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-05-23" />
+<meta name="date" content="2023-06-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -347,11 +347,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#casos-de-estudio-3"><i class="fa fa-check"></i><b>9.1</b> Casos de estudio</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#peso-al-nacer-de-corderos"><i class="fa fa-check"></i><b>9.1.1</b> Peso al nacer de corderos</a></li>
-<li class="chapter" data-level="9.1.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#crecimiento-craneofacial-de-ratas"><i class="fa fa-check"></i><b>9.1.2</b> Crecimiento craneofacial de ratas</a></li>
+<li class="chapter" data-level="9.1.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#peso-al-nacer-de-ratas"><i class="fa fa-check"></i><b>9.1.1</b> Peso al nacer de ratas</a></li>
+<li class="chapter" data-level="9.1.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#capacidad-respiratoria"><i class="fa fa-check"></i><b>9.1.2</b> Capacidad respiratoria</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#datos-correlacionados"><i class="fa fa-check"></i><b>9.2</b> Datos correlacionados</a></li>
-<li class="chapter" data-level="9.3" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1"><i class="fa fa-check"></i><b>9.3</b> Modelo lineal mixto</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#datos-por-cluster-correlacionados"><i class="fa fa-check"></i><b>9.2</b> Datos por cluster (correlacionados)</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#notación"><i class="fa fa-check"></i><b>9.3</b> Notación</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelos-con-intercepto-aleatorios"><i class="fa fa-check"></i><b>9.4</b> Modelos con intercepto aleatorios</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.4.1</b> Modelo con pendiente aleatoria</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1"><i class="fa fa-check"></i><b>9.5</b> Modelo lineal mixto</a></li>
+<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -377,78 +383,110 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Capítulo 9</span> Modelo lineal mixto<a href="modelo-lineal-mixto.html#modelo-lineal-mixto" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="casos-de-estudio-3" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Casos de estudio<a href="modelo-lineal-mixto.html#casos-de-estudio-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="peso-al-nacer-de-corderos" class="section level3 hasAnchor" number="9.1.1">
-<h3><span class="header-section-number">9.1.1</span> Peso al nacer de corderos<a href="modelo-lineal-mixto.html#peso-al-nacer-de-corderos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La base de datos (<code>harville.lamb</code> de la librería <code>agridat</code>) contiene información de 62 corderos machos de un solo parto. Estos corderos eran progenie de 23 carneros (machos), por lo que cada cordero tenía
-una madre diferente.</p>
-<p>Variables</p>
-<ul>
-<li><p><code>weight</code>: peso al nacer del cordero en kgs <strong>(respuesta)</strong>.</p></li>
-<li><p><code>damage</code>: edad de la madre (1: entre 1-2 años, 2: entre 2-3 años, 3: más de 3 años)</p></li>
-<li><p><code>sire</code>: padre.</p></li>
-</ul>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="modelo-lineal-mixto.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb203-2"><a href="modelo-lineal-mixto.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>damage,<span class="at">xlab=</span><span class="st">&quot;Grupo de edad de la madre&quot;</span>,</span>
-<span id="cb203-3"><a href="modelo-lineal-mixto.html#cb203-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Peso del carnero (kgs)&quot;</span>, <span class="at">data =</span> harville.lamb)</span>
-<span id="cb203-4"><a href="modelo-lineal-mixto.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight<span class="sc">~</span>sire,<span class="at">xlab=</span><span class="st">&quot;Padre&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Peso del carnero (kgs)&quot;</span>,</span>
-<span id="cb203-5"><a href="modelo-lineal-mixto.html#cb203-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> harville.lamb)</span>
-<span id="cb203-6"><a href="modelo-lineal-mixto.html#cb203-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">27</span>,<span class="at">col=</span><span class="st">&#39;lightgray&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="MLG2_files/figure-html/unnamed-chunk-4-1.png" alt="Peso al nacer de corderos" width="672" />
+<div id="peso-al-nacer-de-ratas" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Peso al nacer de ratas<a href="modelo-lineal-mixto.html#peso-al-nacer-de-ratas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los datos <code>ratpup</code> de la librería <code>WWGbook</code> corresponden a un estudio donde se asignaron aleatoriamente 30 ratas hembra para recibir una de tres dosis (Alta, Baja o Control) de un compuesto experimental. El objetivo es determinar como este compuesto afecta el peso al nacer de las crías.</p>
+<p>En la Figura <a href="modelo-lineal-mixto.html#fig:ratpup">9.1</a> se puede observar que ls pesos de los machos tiende a ser un poco mayor que el de las hembras. En término de los tratamientos, las crías que pertenecen a las madres que recibieron las dosis del compuesto experimental tiene pesos levemente inferiores. Adicionalmente, vemos que las medidas del peso de las crías que pertenecen a la misma madre son más parecidas entre ellas que las observaciones entre madres. Esto puede ser un indicio de que las observaciones dentro de la misma madre estén correlacionadas, sin embargo, se podría asumir que las observaciones entre madres sean
+independientes.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="modelo-lineal-mixto.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(WWGbook)</span>
+<span id="cb217-2"><a href="modelo-lineal-mixto.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ratpup)</span>
+<span id="cb217-3"><a href="modelo-lineal-mixto.html#cb217-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ratpup<span class="sc">$</span>litter,ratpup<span class="sc">$</span>weight,<span class="at">col=</span><span class="fu">as.double</span>(ratpup<span class="sc">$</span>sex),<span class="at">pch=</span><span class="dv">19</span>,<span class="at">xlab=</span><span class="st">&#39;camada&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;peso al nacer (gramos)&#39;</span>)</span>
+<span id="cb217-4"><a href="modelo-lineal-mixto.html#cb217-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">c</span>(<span class="fl">10.5</span>,<span class="fl">20.5</span>),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ratpup"></span>
+<img src="MLG2_files/figure-html/ratpup-1.png" alt="Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta." width="576" />
 <p class="caption">
-Figure 9.1: Peso al nacer de corderos
+Figure 9.1: Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta.
 </p>
 </div>
 </div>
-<div id="crecimiento-craneofacial-de-ratas" class="section level3 hasAnchor" number="9.1.2">
-<h3><span class="header-section-number">9.1.2</span> Crecimiento craneofacial de ratas<a href="modelo-lineal-mixto.html#crecimiento-craneofacial-de-ratas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La base de datos (disponible en el campus virtual) tiene como objetivo evaluar el efecto de la inhibición de la producción de testosterona en el crecimiento craneofacial de ratas Wistar macho. Variables:</p>
-<ul>
-<li><p><code>response</code>: longitud de cráneo medida como la distancia en píxeles entre dos puntos bien definidos en las imágenes de rayos X <strong>(respuesta)</strong>.</p></li>
-<li><p><code>treat</code>: tratamiento (control, dosis baja de Decapeptyl y dosis alta de Decapeptyl).</p></li>
-<li><p><code>age</code>: edad de la rata.</p></li>
-</ul>
-<p>Este es un estudio longitudinal, es decir a cada una de las 34 ratas se le tomaron diferentes mediciones en el tiempo.</p>
-<p>“grafica”</p>
+<div id="capacidad-respiratoria" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Capacidad respiratoria<a href="modelo-lineal-mixto.html#capacidad-respiratoria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El volumen espiratorio forzado (FEV) es la cantidad de aire que una personal puede exhalar (en litros por segundo) durante una respiración forzada . Los datos datos <code>fev.txt</code> (Disponible <a href="https://https://raw.githubusercontent.com/AlvaroFlorez/MLG2/master/fev.txt" target="_blank">aquí</a>) pertenece a un estudio que tiene como objetivo determinar como dos tratamientos experimentales afecta la capacidad respiratoria de los pacientes. Para esto, se asignó de forma aleatoria <span class="math inline">\(72\)</span> pacientes hombres en tres grupos, droga A, droga B y control. A cada paciente, el FEV fue medido antes administrar los tratamientos (baseline) y luego cada hora durante 8 horas consecutivas.</p>
+<p>La Figura <a href="modelo-lineal-mixto.html#fig:fev">9.2</a> muestra las trayectorias individuales de cada individuo. Se puede observar una tendencia negativa del FEV en el tiempo para los pacientes que se encuentran en los grupos tratamiento. Mientras que, para los pacientes del grupo placebo se observa que el FEV es constante en el tiempo. Además, se observa que hay poca variabilidad en las mediciones que pertecen al mismo individuo. Por el contrario, hay mucha variabilidad entre individuos.</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="modelo-lineal-mixto.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb218-2"><a href="modelo-lineal-mixto.html#cb218-2" aria-hidden="true" tabindex="-1"></a>fev <span class="ot">=</span> <span class="fu">read.table</span>(<span class="st">&#39;fev.txt&#39;</span>,<span class="at">header =</span> T)</span>
+<span id="cb218-3"><a href="modelo-lineal-mixto.html#cb218-3" aria-hidden="true" tabindex="-1"></a>fev<span class="sc">$</span>drug <span class="ot">=</span> <span class="fu">as.factor</span>(fev<span class="sc">$</span>drug)</span>
+<span id="cb218-4"><a href="modelo-lineal-mixto.html#cb218-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fev<span class="sc">$</span>drug) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;Placebo&#39;</span>)</span>
+<span id="cb218-5"><a href="modelo-lineal-mixto.html#cb218-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb218-6"><a href="modelo-lineal-mixto.html#cb218-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> fev, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> fev, <span class="at">group =</span> patient))</span>
+<span id="cb218-7"><a href="modelo-lineal-mixto.html#cb218-7" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> drug) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;Volumen espiratorio forzado (litros por segundo)&#39;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&#39;tiempo (horas)&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fev"></span>
+<img src="MLG2_files/figure-html/fev-1.png" alt="." width="576" />
+<p class="caption">
+Figure 9.2: .
+</p>
 </div>
 </div>
-<div id="datos-correlacionados" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Datos correlacionados<a href="modelo-lineal-mixto.html#datos-correlacionados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En ambos estudios se tienen datos que pueden estar potencialmente correlacionados.</p>
-<p>En los datos de los corderos se espera que el peso los corderos recién nacidos del mismo padre estén correlacionados. <strong>Datos en “cluster” o jerárquicos</strong>.</p>
-<p>En los datos de las ratas, por lo tanto las observaciones tomadas sobre la misma rata pueden estar correlacionados. <strong>Datos longitudinales</strong>.</p>
 </div>
-<div id="modelo-lineal-mixto-1" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Modelo lineal mixto<a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Modelo:</p>
-<p><span class="math display">\[
-y_{ij}=\boldsymbol x¡_{ij}\boldsymbol \beta+\boldsymbol z&#39;_{ij}\boldsymbol b_i+\epsilon_{ij},
-\]</span></p>
-<p>donde:</p>
+<div id="datos-por-cluster-correlacionados" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Datos por cluster (correlacionados)<a href="modelo-lineal-mixto.html#datos-por-cluster-correlacionados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En ambos estudios se tienen datos que pueden estar potencialmente correlacionados. Este tipo de datos son llamados por cluster (jerárquicos o multinivel) dado que pueden ordenarse jerárquicamente. Por ejemplo:</p>
 <ul>
-<li><p><span class="math inline">\(\boldsymbol x_{ij}\)</span> y <span class="math inline">\(\boldsymbol x_{ij}\)</span> son vectores de covariables de la <span class="math inline">\(j\)</span>-ésima observación y el <span class="math inline">\(i\)</span>-ésimo cluster.</p></li>
-<li><p><span class="math inline">\(\boldsymbol \beta=(\beta_0,\beta_1,...,\beta_{p-1})&#39;\)</span> es el vector de coeficientes de efectos fijos.</p></li>
-<li><p><span class="math inline">\(\boldsymbol b_i=(b_{0i,},b_{1i},...,b_{q-1,i})&#39;\)</span> el vector de coeficientes aleatorios.</p></li>
-<li><p><span class="math inline">\(\epsilon_{ij}\)</span> es el término del error.</p></li>
+<li><p>En el estudio del peso de las crías de ratas, se espera que las crías que pertenecen a la misma camada (madre) estén correlacionados. Por lo que el cluster está definido por la camada.</p></li>
+<li><p>En el estudio sobre capacidad pulmonar, las mediciones que pertenecen al mismo individuo pueden estar correlacionadas. Por lo que el paciente define el cluster.</p></li>
+<li><p>En un estudio sobre resultados de estudiantes de una muestra de escuelas se puede tener correlaciones entre estudiantes de la misma clase, o de estudiantes que pertenecen a la misma escuela. Por lo que se tienen tres niveles: escuelas - salones - estudiantes.</p></li>
 </ul>
-<p>En forma matricial:</p>
-<p><span class="math display">\[
-\boldsymbol y_i=\boldsymbol X_i\boldsymbol \beta+\boldsymbol Z_i\boldsymbol b_i+\boldsymbol \epsilon_i,
-\]</span></p>
-<p>donde:</p>
-<ul>
-<li><p><span class="math inline">\(\boldsymbol y_i=(y_{i1},y_{i2},...,y_{in_1})&#39;\)</span>.</p></li>
-<li><p><span class="math inline">\(\boldsymbol X_i=(\boldsymbol x_{i1},\boldsymbol x_{i2},...,\boldsymbol x_{in_1})&#39;\)</span> es una matriz <span class="math inline">\(n_i\times p\)</span> .</p></li>
-<li><p><span class="math inline">\(\boldsymbol Z_i=(\boldsymbol z_{i1},\boldsymbol z_{i2},...,\boldsymbol z_{in_1})&#39;\)</span> es una matriz <span class="math inline">\(n_i\times q\)</span>.</p></li>
-<li><p><span class="math inline">\(\boldsymbol \beta=(\beta_{0},\beta_{1},...,\beta_{p-1})&#39;\)</span> es un vector de longitud <span class="math inline">\(p\)</span>.</p></li>
-<li><p><span class="math inline">\(\boldsymbol \epsilon_i=(\epsilon_{i1},\epsilon_{i2},...,\epsilon_{in_1})&#39;\)</span>.</p></li>
-</ul>
-<p>El LMM asume que:</p>
-<ul>
-<li><p><span class="math inline">\(\boldsymbol \epsilon_i\sim N(\boldsymbol 0,\sigma^2\boldsymbol I)\)</span>.</p></li>
-<li><p><span class="math inline">\(\boldsymbol b_i\sim N(\boldsymbol 0,\boldsymbol D\)</span>.</p></li>
-<li><p><span class="math inline">\(\boldsymbol \epsilon_i\)</span> y <span class="math inline">\(\boldsymbol b_i\)</span> son independientes.</p></li>
-</ul>
+</div>
+<div id="notación" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Notación<a href="modelo-lineal-mixto.html#notación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para el cluster <span class="math inline">\(i\)</span>, se tienen <span class="math inline">\(n_i\)</span> observaciones. Por lo que ahora tenemos un vector respuesta <span class="math inline">\(\boldsymbol y_i = (y_{i1},\ldots,y_{in_i})&#39;\)</span>, para <span class="math inline">\(i=1,\ldots,N\)</span>. Sea <span class="math inline">\(\boldsymbol x_{ij}\)</span> el vector <span class="math inline">\(p\)</span>-dimensional de covariables asociadas a la observación <span class="math inline">\(y_{ij}\)</span>.</p>
+</div>
+<div id="modelos-con-intercepto-aleatorios" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Modelos con intercepto aleatorios<a href="modelo-lineal-mixto.html#modelos-con-intercepto-aleatorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sea <span class="math inline">\(y_{ij}\)</span> el peso de la <span class="math inline">\(j\)</span>-ésima cría de la camada <span class="math inline">\(i\)</span>. Por lo que, <span class="math inline">\(\boldsymbol y_i\)</span> es el vector de pesos de las crías de la madre <span class="math inline">\(i\)</span>. Para inducir correlación entre las observaciones del mismo cluster se puede incluir un efecto aleatorio en el modelo. por lo que, el modelo propuesto es el siguiente:
+<span class="math display">\[
+y_{ij} = \beta_0 + b_i + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3 + \varepsilon_{ij},
+\]</span>
+donde sex<span class="math inline">\(_{ij}=1\)</span> si la <span class="math inline">\(j\)</span>-ésima cría de la camada <span class="math inline">\(i\)</span> es macho, sex<span class="math inline">\(_{ij}=1\)</span> si lo contrario; treat<span class="math inline">\(_{1i}=1\)</span> si la madre <span class="math inline">\(i\)</span> recibió la dosis baja, treat<span class="math inline">\(_{1i}=0\)</span> si lo contrario; treat<span class="math inline">\(_{2i}=1\)</span> si la madre <span class="math inline">\(i\)</span> recibió la dosis alta, treat<span class="math inline">\(_{2i}=0\)</span> si lo contrario. Además, i.i.d. <span class="math inline">\(b_i \sim N(0,d)\)</span> y <span class="math inline">\(\varepsilon_{ij} \sim N(0,\sigma^2)\)</span>.</p>
+<p>Por lo que condicionalmente a <span class="math inline">\(b_i\)</span>, se tiene que:
+<span class="math display">\[
+E(y_{ij} | b_i)= \beta_0 + b_i + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3 \mbox{ y } v(y_{ij} | b_i)= \sigma^{2}.
+\]</span>
+Mientras que, marginalmente:
+<span class="math display">\[
+E(y_{ij}) = E\left[ E(y_{ij} | b_i) \right] = \beta_0 + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3.
+\]</span>
+y
+<span class="math display">\[
+V(y_{ij}) = E\left[ V(y_{ij} | b_i) \right] + V\left[ E(y_{ij} | b_i) \right] = \sigma^{2} + d.
+\]</span>
+Además,
+<span class="math display">\[
+cov(y_{ij},y_{ik}) = d \mbox{ y } cov(y_{i^{*}j},y_{ik}) = 0.
+\]</span>
+Esto quiere decir que los pesos de las crías que pertenecen a la misma camada están correlacionadas, con <span class="math inline">\(cor(y_{ij},y_{ik}) = d/(\sigma^2+d)\)</span>. La matriz de covarianza y correlación de <span class="math inline">\(y_{ij}\)</span> son:
+<span class="math display">\[
+\boldsymbol V_{i} = \begin{pmatrix}
+\sigma^{2} + d &amp; d  &amp; d &amp; \ldots &amp; d \\
+d &amp; \sigma^{2} + d &amp; d &amp; \ldots &amp; d \\
+d &amp; d &amp; \sigma^{2} + d &amp;  \ldots &amp; d \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+d &amp; d &amp; d &amp;  \ldots &amp; \sigma^{2} + d \\
+\end{pmatrix} \mbox{ y }
+\boldsymbol R_{i} = \begin{pmatrix}
+1 &amp; \frac{d}{\sigma^{2} + d}  &amp; \frac{d}{\sigma^{2} + d} &amp; \ldots &amp; \frac{d}{\sigma^{2} + d} \\
+\frac{d}{\sigma^{2} + d} &amp; 1 &amp; \frac{d}{\sigma^{2} + d} &amp; \ldots &amp; \frac{d}{\sigma^{2} + d} \\
+\frac{d}{\sigma^{2} + d} &amp; \frac{d}{\sigma^{2} + d} &amp; 1 &amp;  \ldots &amp; \frac{d}{\sigma^{2} + d} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\frac{d}{\sigma^{2} + d} &amp; \frac{d}{\sigma^{2} + d} &amp; \frac{d}{\sigma^{2} + d} &amp;  \ldots &amp; 1 \\
+\end{pmatrix}.
+\]</span>
+Mientras que se asume que hay incorrelación entre los pesos de crías de diferente madre.</p>
+<div id="modelo-con-pendiente-aleatoria" class="section level3 hasAnchor" number="9.4.1">
+<h3><span class="header-section-number">9.4.1</span> Modelo con pendiente aleatoria<a href="modelo-lineal-mixto.html#modelo-con-pendiente-aleatoria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea <span class="math inline">\(y_{ij}\)</span> la diferencia del FEV del <span class="math inline">\(j\)</span>-ésimo paciente antes de iniciar el tratamiento y en la hora <span class="math inline">\(t_{j}\)</span>, para <span class="math inline">\(t_{j}= \{1,2,\ldots,8\}\)</span>. Por lo tanto, <span class="math inline">\(\boldsymbol y_i\)</span> corresponde al vector de mediciones del FEV del paciente <span class="math inline">\(i\)</span> a lo largo del tiempo.</p>
+<p>En este caso el modelo de intercepto aleatorio no es conveniente, puesto que este asume que todas las correlaciones de las observaciones del mismo cluster están correlacionadas. Con datos de longitudinales lo que se espera que la correlación dependa de la distancia en el tiempo en que se hayan tomado las observaciones. Por ejemplo, <span class="math inline">\(cor(y_{i1}, y_{i2}) &gt; cor(y_{i1}, y_{i3}) &gt; cor(y_{i1}, y_{i4})\)</span>. En este caso, se puede proponer un modelo con pendiente aleatoria:
+<span class="math display">\[
+y_{ij} = \beta_{0} + b_{0i} +   \mbox{drugA}_{i}\beta_{2} + \mbox{drugB}_{i}\beta_{3} + t_j \beta_4 + t_jb_{1i} + \mbox{drugA}_{i}t_j\beta_{5} + \mbox{drugB}_{i}t_j\beta_{6}  + \varepsilon_{ij},
+\]</span>
+donde drugA<span class="math inline">\(_{i}=1\)</span> si el paciente <span class="math inline">\(i\)</span> recibió la droga A, drugA<span class="math inline">\(_{i}=0\)</span> si lo contrario; donde drugB<span class="math inline">\(_{i}=1\)</span> si el paciente <span class="math inline">\(i\)</span> recibió la droga B, drugB<span class="math inline">\(_{i}=0\)</span> si lo contrario. Además, i.i.d. <span class="math inline">\(\boldsymbol b_i = (b_{0i},b_{1i}) \sim N(\boldsymbol 0,\boldsymbol D)\)</span> y <span class="math inline">\(\varepsilon_{ij} \sim N(0,\sigma^2)\)</span>.</p>
+</div>
+</div>
+<div id="modelo-lineal-mixto-1" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Modelo lineal mixto<a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="estimación-de-los-parámetros-1" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Estimación de los parámetros<a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

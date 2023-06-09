@@ -67,7 +67,8 @@ fig:doctorUKgraf
 fig:disNegBin
 eq:Hdis
 eq:Hvar
-fig:unnamed-chunk-4
+fig:ratpup
+fig:fev
 variables-indicadoras-o-dummies
 ejemplos
 datos-de-atletas-australianos
@@ -207,7 +208,11 @@ modelo-hurdle
 número-de-cangrejos-satélites-1
 modelo-lineal-mixto
 casos-de-estudio-3
-peso-al-nacer-de-corderos
-crecimiento-craneofacial-de-ratas
-datos-correlacionados
+peso-al-nacer-de-ratas
+capacidad-respiratoria
+datos-por-cluster-correlacionados
+notación
+modelos-con-intercepto-aleatorios
+modelo-con-pendiente-aleatoria
 modelo-lineal-mixto-1
+estimación-de-los-parámetros-1

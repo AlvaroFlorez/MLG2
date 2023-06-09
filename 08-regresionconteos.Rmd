@@ -15,7 +15,8 @@ data(crabs,package='asbio')
 Vamos a considerar de nuevo los datos del ensayo clínico sobre epilepsia (``data(epilepsy)`` de la librería ``HSAUR2``).
 
 ### Muertes por enfermedades cardiovasculares en doctores del Reino Unido
-....
+Los datos ``bs1`` de la librería ``ACSW`` muestran el número de doctores muertos por enfermedades coronarias entre médicos varones $10$ años después de seguimiento por grupos de edad y condición de tabaquismo. De igual forma, la base de datos contiene el número de total de años-personas de observación en el momento de análisis. En la Figura \@ref(fig:doctorUK1) podemos observar la tasa de mortalidad, por 100,000 personas, crece por grupo de edad, y es generalmente, mayor para los fumadores.
+
 
 ```{r doctorUK1, echo=T, fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Tasa de muertes por enfermedades cardiovasculares en doctores del Reino Unido por grupo de edad. Los puntos rojos corresponden a fumadores y los negros a no fumadores."}
 library(ACSWR)
@@ -25,6 +26,8 @@ plot(bs1$Age_Cat, 100000*(bs1$Deaths/bs1$Person_Years),col=bs1$Smoke_Ind+1,
 axis(1,1:5,bs1$Age_Group[1:5])
 
 ```
+A partir de estos datos surgen las siguientes preguntas: ¿La tasa de mortalidad es mayor para los fumadores que para los no fumadores? y ¿El efecto diferencial está relacionado con la edad?
+
 
 ### Número de cangrejos satélites
 Los datos ```crabs``` de la librería ```asbio``` son de un estudio sobre $173$ hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove. Durante el apareamiento, un macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena poner racimos de huevos. Luego, el macho fecunda los huevos de forma externa. Dada la competencia por fecundar los huevos, las hembras suelen llegar a la playa con otros cangrejos machos adheridos a ella. A este grupo de cangrejos se les llama satélites.
@@ -246,7 +249,7 @@ P(y=j) =(1-\phi) \exp \frac{\left(-\lambda\right)\lambda^j}{j!}, j=1,2,\ldots.
 $$
 El valor esperado y la varianza de $y$ son:
 $$
-E(y) = E(E(y|z)) = (1-\phi)\lambda, \mbox{ y } V(y)= E(V(y|z)) + V(E(y|z)) = (1-\phi)\lambda \left( 1+ \phi\lambda\right).
+E(y) = E(E(y|z)) = (1-\phi)\lambda, \mbox{ y } V(y)= (1-\phi)\lambda \left( 1+ \phi\lambda\right).
 $$
 Note que la distribución ZIP permite sobredispersión.
 

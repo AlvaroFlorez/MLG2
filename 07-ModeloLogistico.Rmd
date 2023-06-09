@@ -56,7 +56,7 @@ plot(lirat$hb,lirat$R/lirat$N,xlab="Hemoglobina",ylab="Proporción de fetos muer
 Si consideramos:
 \[
 y_{ij} = \begin{cases}
-1 & \mbox{ si el feto} j \mbox{ de la camada }i\mbox{ está muerto}, \\
+1 & \mbox{ si el feto } j \mbox{ de la camada }i\mbox{ está muerto}, \\
 0 & \mbox{ si lo contrario}, \\
  \end{cases}
 \]
@@ -159,9 +159,9 @@ P(\haty=0|y=0) = \frac{a}{a+c}.
 \]
 Sin embargo, estos valores dependen de $\pi_0$.
 
-Consideremos los datos de peso al nacer. Se propone el siguiente modelo:
+Ahora consideremos los datos de peso al nacer. Se propone el siguiente modelo:
 \[
-\mbox{logit} \pi_i = \beta_0+  \mbox{age}_i\beta_1+  \mbox{lwt}_i\beta_2 +  \mbox{smoke}_i\beta_3 + \mbox{ptl}_i\beta_4,
+\mbox{logit } \pi_i = \beta_0+  \mbox{age}_i\beta_1+  \mbox{lwt}_i\beta_2 +  \mbox{smoke}_i\beta_3 + \mbox{ptl}_i\beta_4,
 \]
 donde $\pi_i$ es la probabilidad de que el recién nacido nazca con bajo peso. El ajuste del modelo es:
 
@@ -189,7 +189,7 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
                 full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
 
 ```
-Por lo tanto, la sensibilidad es $10/59 = 0,169$ y la especificidad es $123/130 = 0,946$. Con este punto de corte, el modelo tiene una predictividad alta para los recién nacidos con peso adecuado (alta especificidad). Sin embargo, la probabilidad de falsos positivos es alta (baja sensibilidad). Ahora, si $\pi_0= 0,3$:
+Por lo tanto, la sensibilidad es $10/59 = 0,169$ y la especificidad es $123/130 = 0.946$. Con este punto de corte, el modelo tiene una predictividad alta para los recién nacidos con peso adecuado (alta especificidad). Sin embargo, la probabilidad de falsos positivos es alta (baja sensibilidad). Ahora, si $\pi_0= 0,3$:
 
 ```{r, echo=FALSE, include=TRUE, results="asis"}
 obs = birthwt$low
@@ -210,7 +210,7 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
 
 En este caso la sensibilidad aumentó $(40/59 = 0,678)$, pero la especificidad disminuye $(79/130 = 0,607)$. 
 
-Dado que la sensibilidad y especificidad tiene una alta dependencia del punto de corte, lo preferible calcular estas cantidades para muchos valores de $\pi_0$. En la Figura \@ref(fig:sensespc) podemos observar que a medida que aumenta $\pi_0$ la sensibilidad disminuye y la especificidad aumenta.
+Dado que la sensibilidad y especificidad tiene una alta dependencia del punto de corte, lo preferible es calcular estas cantidades para muchos valores de $\pi_0$. En la Figura \@ref(fig:sensespc) podemos observar que a medida que aumenta $\pi_0$ la sensibilidad disminuye y la especificidad aumenta.
 
 ```{r sensespc, fig.align = 'center', fig.height = 4, fig.width = 6,echo=FALSE, fig.cap="Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte."}
 tab.fun = function(obs,fit,pi0){
