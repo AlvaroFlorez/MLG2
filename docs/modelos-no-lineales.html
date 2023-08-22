@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-06-09" />
+<meta name="date" content="2023-08-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,8 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.1</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Inferencia sobre los parámetros</a></li>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.3</b> Inferencia sobre los parámetros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
 <ul>
@@ -357,7 +358,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.4.1</b> Modelo con pendiente aleatoria</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1"><i class="fa fa-check"></i><b>9.5</b> Modelo lineal mixto</a></li>
-<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-intercepto-aleatorio"><i class="fa fa-check"></i><b>9.6.1</b> Estimación del modelo con intercepto aleatorio</a></li>
+<li class="chapter" data-level="9.6.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.6.2</b> Estimación del modelo con pendiente aleatoria</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -392,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong><code>Gain</code>:</strong> Peso medio ganado por corral (gramos) después de 3 semanas.</li>
 </ul>
 <p>El objetivo del estudio es evaluar la metionina como suplemento alimenticio para pavos. En la Figura <a href="modelos-no-lineales.html#fig:plotpavos">5.1</a> podemos observar que hay una relación positiva, a mayor cantidad de metionina, mayor peso ganado. Sin embargo, la relación no es lineal. Por lo que sería necesario hacer transformaciones sobre las variables o considerar modelos polinomiales para ajustar un modelo lineal a los datos. Otra alternativa es considerar modelos no lineales.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="modelos-no-lineales.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado por corral (gramos)&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="modelos-no-lineales.html#cb96-1" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado por corral (gramos)&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotpavos"></span>
 <img src="MLG2_files/figure-html/plotpavos-1.png" alt="Datos pavos. Relación entre el peso ganado por corral y el % de metionina en la dieta." width="768" />
 <p class="caption">
@@ -421,9 +426,9 @@ convierte un sustrato en producto) de 23 encimas, donde 12 de ellas fueron trata
 <li><code>state</code>:tratado y no tratado.</li>
 </ul>
 <p>El objetivo es evaluar la velocidad de reacción y el efecto de la Puromicina. La relación de la velocidad de reacción en función de la concentración de sustraro se puede observar en la Figura <a href="modelos-no-lineales.html#fig:plotpurom">5.2</a>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelos-no-lineales.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state,</span>
-<span id="cb97-2"><a href="modelos-no-lineales.html#cb97-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;concentración de sustrato (ppm)&#39;</span>,</span>
-<span id="cb97-3"><a href="modelos-no-lineales.html#cb97-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;velocidad de reacción&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelos-no-lineales.html#cb97-1" tabindex="-1"></a><span class="fu">plot</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state,</span>
+<span id="cb97-2"><a href="modelos-no-lineales.html#cb97-2" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;concentración de sustrato (ppm)&#39;</span>,</span>
+<span id="cb97-3"><a href="modelos-no-lineales.html#cb97-3" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;velocidad de reacción&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotpurom"></span>
 <img src="MLG2_files/figure-html/plotpurom-1.png" alt="Daros Puromicina. Diagrama de dispersión: Relación entre la velocidad de reacción y la concentración de sustrato. Encimas tratadas(puntos negros), Encimas no tratadas(puntos rojos)" width="768" />
 <p class="caption">
@@ -458,7 +463,7 @@ E(rate_{i}|state=0)=\frac{conc_{i}\theta_{1}}{\theta_{2}+conc_{i}}.
 <span class="math display">\[
 E(rate_{i}|state=1)=\frac{conc_{i}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+conc_{i}}.
 \]</span>
-Por lo que, <span class="math inline">\(\theta_3\)</span> determina la velocidad máxima entre las celulas tratadas y no las no tratadas. De igual forma, <span class="math inline">\(\theta_{4}\)</span> indica la diferencia en la concentración en la cual se obtiene la mitad de la máxima velocidad.</li>
+Por lo que, <span class="math inline">\(\theta_3\)</span> determina la velocidad máxima entre las células tratadas y no las no tratadas. De igual forma, <span class="math inline">\(\theta_{4}\)</span> indica la diferencia en la concentración en la cual se obtiene la mitad de la velocidad máxima.</li>
 </ul>
 </div>
 </div>
@@ -481,9 +486,10 @@ o
 <span class="math display">\[
 y_{i}=m(x_{i},\theta)+\epsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\epsilon_{i},
 \]</span>
-son ejemos de modelos no lineales. Es decir, no son combinación lineal de los parámetros.
-### Modelos no-lineales linealizables
-Dentro de los modelos no lineales se encuentran algunos que pueden ser linealizables a través de transformaciones sobre las variables. Por ejemplo, el modelo de regresión exponencial:
+son ejemplos de modelos no lineales. Es decir, no son combinación lineal de los parámetros.</p>
+<div id="modelos-no-lineales-linealizables" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Modelos no-lineales linealizables<a href="modelos-no-lineales.html#modelos-no-lineales-linealizables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dentro de los modelos no lineales se encuentran algunos que pueden ser linealizables a través de transformaciones sobre las variables. Por ejemplo, el modelo de regresión exponencial:
 <span class="math display">\[
 E(y)=\theta_{0}+\theta_{1}exp(\theta_{2}+x_{i}\theta_{3}),
 \]</span></p>
@@ -491,8 +497,9 @@ E(y)=\theta_{0}+\theta_{1}exp(\theta_{2}+x_{i}\theta_{3}),
 <span class="math display">\[
 log y_{i}=(log\theta_{1}+\theta_{2})+x_{i}\theta_{3}+\varepsilon_{i}^* = \beta_0+x_{i}\beta_1+\varepsilon_{i}^*
 \]</span></p>
-<div id="estimación-de-los-parámetros" class="section level3 hasAnchor" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Estimación de los parámetros<a href="modelos-no-lineales.html#estimación-de-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="estimación-de-los-parámetros" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Estimación de los parámetros<a href="modelos-no-lineales.html#estimación-de-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Al igual que en los modelos lineales, la estimación de <span class="math inline">\(\boldsymbol \theta\)</span> se hace minimizando la suma de cuadrados de los residuos:
 <span class="math display">\[
 S(\boldsymbol \theta)=\sum_{i=1}^n[y_{i}-m(\boldsymbol x_{i},\boldsymbol \theta)]^2.
@@ -507,13 +514,11 @@ Por lo que, para encontrar el mínimo, <span class="math inline">\((1)\)</span> 
 <span class="math display">\[
 f(\theta)=\sum_{n=0}^\infty \frac{1}{n!}(\theta-\theta^*)^n \frac{\partial^nf(\theta^*)}{\partial\theta^n}.
 \]</span>
-Una aproximación de la función <span class="math inline">\(f(\theta)\)</span> en los valores alrededor del punto <span class="math inline">\(\theta^*\)</span> se puede hacer usando la series de Taylor usando las dos primeras
-derivadas:
+Una aproximación de la función <span class="math inline">\(f(\theta)\)</span> en los valores alrededor del punto <span class="math inline">\(\theta^*\)</span> se puede hacer usando series de Taylor de orden dos:
 <span class="math display">\[
 f(\theta)\approx f(\theta^*)+(\theta-\theta^*) \frac{\partial f(\theta^*)}{\partial\theta}+\frac{1}{2}(\theta-\theta^*)^2\frac{\partial^2 f(\theta^*)}{\partial\theta^2}.
 \]</span>
-En este caso, se llama una aproximación por series de Taylor de orden 2.</p>
-<p>En caso de que <span class="math inline">\(\boldsymbol \theta\)</span> (vector de parámetros), la aproximación por series de Taylor de orden 2 es:
+En caso de que <span class="math inline">\(\boldsymbol \theta\)</span> (vector de parámetros), la aproximación por series de Taylor de orden dos es:
 <span class="math display">\[
 f(\boldsymbol \theta)\approx f(\boldsymbol \theta^*)+(\boldsymbol \theta-\boldsymbol \theta^*)^{&#39;}u(\boldsymbol \theta^*)+\frac{1}{2}(\boldsymbol \theta-\boldsymbol \theta^*)^{&#39;}H(\boldsymbol \theta^*)(\boldsymbol \theta-\boldsymbol \theta^*),
 \]</span>
@@ -538,12 +543,12 @@ es el vector Score, y
 \]</span>
 es la matriz Hessiana.</p>
 <p>Algunos métodos iterativos de estimación son: Gauss-Newton (approx. series de Taylor a la función de la media) y Newton-Raphson (approx. series de Taylor a la función score). En este caso vamos a optar por el primero.</p>
-<p>La idea es aproximar <span class="math inline">\(m(x_{i},\boldsymbol \theta^*)\)</span> usando series de Taylor de orden 1 alrededor de <span class="math inline">\(\boldsymbol \theta^*\)</span>, esto es:</p>
+<p>La idea es aproximar <span class="math inline">\(m(x_{i},\boldsymbol \theta^*)\)</span> usando series de Taylor de orden uno alrededor de <span class="math inline">\(\boldsymbol \theta^*\)</span>, esto es:</p>
 <p><span class="math display" id="eq:modeloFat">\[\begin{equation}
 m(x_{i},\boldsymbol \theta)\approx m(x_{i},\boldsymbol \theta^*)+(\boldsymbol \theta-\boldsymbol \theta^*)^{&#39;}u_{i}(\boldsymbol \theta^*).
 \tag{4.1}
-\end{equation}\]</span>
-Note que <a href="selección-de-variables.html#eq:modeloFat">(4.1)</a> tiene la forma de un modelo lineal, donde <span class="math inline">\(u_{i}(\boldsymbol \theta^*)\)</span> juega el papel de vector de covariables. La diferencia radica en que <span class="math inline">\(u_{i}(\boldsymbol \theta^*)\)</span> puede depender de los parámetros.</p>
+\end{equation}\]</span></p>
+<p>Note que <a href="selección-de-variables.html#eq:modeloFat">(4.1)</a> tiene la forma de un modelo lineal, donde <span class="math inline">\(u_{i}(\boldsymbol \theta^*)\)</span> juega el papel de vector de covariables. La diferencia radica en que <span class="math inline">\(u_{i}(\boldsymbol \theta^*)\)</span> puede depender de los parámetros.</p>
 <p>La aproximación de la suma de cuadrados de los residuos es:
 <span class="math display">\[\begin{equation}
 \begin{split}
@@ -587,14 +592,14 @@ y calcule <span class="math inline">\(S(\boldsymbol \theta^{(j+1)})\)</span>.</p
 <li><p><span class="math inline">\(\theta_{2}^0+\theta_{1}^0=800\)</span> (valor cercano al máximo peso obtenido). Por lo tanto <span class="math inline">\(\theta_{2}^0=180\)</span></p></li>
 <li><p><span class="math inline">\(\theta_{3}^0\)</span> se puede obtener resolviendo la siguiente ecuación <span class="math inline">\(E(y) = \theta_1^{0}+\theta_2^{0}[1-exp(-\theta_{3} A)]\)</span> para un posible punto. Por ejemplo, si <span class="math inline">\(A=0.16\)</span>, un valor posible para <span class="math inline">\(E(y)\)</span> es 750. Por lo que:
 <span class="math display">\[
-750=620+180[1-exp(-\theta_{3}^00.16)].
+750=620+180[1-\exp(-\theta_{3}^00.16)].
 \]</span>
 Resolviendo la ecuación <span class="math inline">\(\theta_{3}^0\approx8\)</span>.</p></li>
 </ul>
 <p>En R, la estimación del modelo lineal se hace usando la función ´nls()´. Para el caso de crecimiento de los pavos:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="modelos-no-lineales.html#cb98-1" aria-hidden="true" tabindex="-1"></a>mod.turk <span class="ot">=</span> <span class="fu">nls</span>(Gain <span class="sc">~</span> th1 <span class="sc">+</span> th2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th3<span class="sc">*</span>A)),<span class="at">data =</span> turk0,</span>
-<span id="cb98-2"><a href="modelos-no-lineales.html#cb98-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">620</span>,<span class="at">th2=</span><span class="dv">180</span>,<span class="at">th3=</span><span class="dv">8</span>),<span class="at">trace=</span>F)</span>
-<span id="cb98-3"><a href="modelos-no-lineales.html#cb98-3" aria-hidden="true" tabindex="-1"></a>mod.turk</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="modelos-no-lineales.html#cb98-1" tabindex="-1"></a>mod.turk <span class="ot">=</span> <span class="fu">nls</span>(Gain <span class="sc">~</span> th1 <span class="sc">+</span> th2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th3<span class="sc">*</span>A)),<span class="at">data =</span> turk0,</span>
+<span id="cb98-2"><a href="modelos-no-lineales.html#cb98-2" tabindex="-1"></a>          <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">620</span>,<span class="at">th2=</span><span class="dv">180</span>,<span class="at">th3=</span><span class="dv">8</span>),<span class="at">trace=</span>F)</span>
+<span id="cb98-3"><a href="modelos-no-lineales.html#cb98-3" tabindex="-1"></a>mod.turk</span></code></pre></div>
 <pre><code>## Nonlinear regression model
 ##   model: Gain ~ th1 + th2 * (1 - exp(-th3 * A))
 ##    data: turk0
@@ -606,13 +611,13 @@ Resolviendo la ecuación <span class="math inline">\(\theta_{3}^0\approx8\)</spa
 ## Achieved convergence tolerance: 6.736e-06</code></pre>
 <p>Por lo que la estimación de la media del peso ganado por corral es:
 <span class="math display">\[
-E(Gain|A)=622.958 + 178.252 [1 - exp(-7.122A)]    
+E(\mbox{Gain}|A)=622.958 + 178.252 [1 - \exp(-7.122A)]    
 \]</span>
 La figura <a href="modelos-no-lineales.html#fig:plotpavoscrec">5.4</a> muestra el ajuste de forma gráfica.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="modelos-no-lineales.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado (gramos)&#39;</span>)</span>
-<span id="cb100-2"><a href="modelos-no-lineales.html#cb100-2" aria-hidden="true" tabindex="-1"></a>th.turk <span class="ot">=</span> <span class="fu">coef</span>(mod.turk)</span>
-<span id="cb100-3"><a href="modelos-no-lineales.html#cb100-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
-<span id="cb100-4"><a href="modelos-no-lineales.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, th.turk[<span class="dv">1</span>]<span class="sc">+</span>th.turk[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th.turk[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="modelos-no-lineales.html#cb100-1" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado (gramos)&#39;</span>)</span>
+<span id="cb100-2"><a href="modelos-no-lineales.html#cb100-2" tabindex="-1"></a>th.turk <span class="ot">=</span> <span class="fu">coef</span>(mod.turk)</span>
+<span id="cb100-3"><a href="modelos-no-lineales.html#cb100-3" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
+<span id="cb100-4"><a href="modelos-no-lineales.html#cb100-4" tabindex="-1"></a><span class="fu">lines</span>(x, th.turk[<span class="dv">1</span>]<span class="sc">+</span>th.turk[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th.turk[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plotpavoscrec"></span>
 <img src="MLG2_files/figure-html/plotpavoscrec-1.png" alt="Datos crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina." width="576" />
 <p class="caption">
@@ -620,8 +625,8 @@ Figure 5.4: Datos crecimiento de pavos. Ajuste del modelo para el peso medio gan
 </p>
 </div>
 </div>
-<div id="inferencia-sobre-los-parámetros" class="section level3 hasAnchor" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Inferencia sobre los parámetros<a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="inferencia-sobre-los-parámetros" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Inferencia sobre los parámetros<a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Las propiedades del <span class="math inline">\(\hatbtheta\)</span> se basan en teoría asintótica, es decir que son válidas si se tiene muestras grandes. Si <span class="math inline">\(\epsilon \sim N(\boldsymbol 0,\sigma^2 \boldsymbol I)\)</span>, tenemos que asintóticamente <span class="math inline">\((n \to \infty)\)</span>:</p>
 <p><span class="math display">\[
 \hatbtheta\sim N\left(\boldsymbol \theta,\sigma^2\left[U(\boldsymbol \theta^*)U(\boldsymbol \theta^*)&#39;\right]^{-1}\right).
@@ -648,9 +653,9 @@ De igual forma, intervalos de confianza del del <span class="math inline">\((1-\
 \hat{\theta_{j}}\pm t_{1-\alpha/2,n-p}\sqrt{V(\hat{\theta_{j}})} ,
 \]</span>
 o intervalos de confianza del del <span class="math inline">\((1-\alpha)\)</span>% para <span class="math inline">\(E(Y|x_{0})\)</span>.Con la función <code>confint</code> de R se pueden obtener los IC de los coeficientes a través de los perfiles de verosimilitud.</p>
-<p>Hay que hacer énfasis que estas son propiedades para muestras grandes, para muestras pequeñas, estas propiedades pueden ser inadecuadas y se puede recurrir a otras alternativas, como <strong>bootstrap</strong>.</p>
+<p>Hay que hacer énfasis que estas son propiedades para muestras grandes, para muestras pequeñas, estas propiedades pueden ser inadecuadas y se puede recurrir a otras alternativas, como el <strong>bootstrap</strong>.</p>
 <p>Para el modelo de crecimiento de los pavos, tenemos que:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelos-no-lineales.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.turk)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelos-no-lineales.html#cb101-1" tabindex="-1"></a><span class="fu">summary</span>(mod.turk)</span></code></pre></div>
 <pre><code>## 
 ## Formula: Gain ~ th1 + th2 * (1 - exp(-th3 * A))
 ## 
@@ -666,32 +671,32 @@ o intervalos de confianza del del <span class="math inline">\((1-\alpha)\)</span
 ## 
 ## Number of iterations to convergence: 4 
 ## Achieved convergence tolerance: 6.736e-06</code></pre>
-<p>A partir de este ajuste se puede concluir que el peso medio obtenido sin suplemento es de <span class="math inline">\(622\)</span>. Mientras que la ganancia máxmima que se obtiene con el suplemento es de <span class="math inline">\(178\)</span> (significativemente mayor de cero). Los intervalos de confianza para <span class="math inline">\(\boldsymbol \theta\)</span> se obtienen de la siguiente forma:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="modelos-no-lineales.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mod.turk)</span></code></pre></div>
+<p>A partir de este ajuste se puede concluir que el peso medio obtenido sin suplemento es de <span class="math inline">\(622\)</span>. Mientras que la ganancia máxima que se obtiene con el suplemento es de <span class="math inline">\(178\)</span> (significativemente mayor de cero). Los intervalos de confianza para <span class="math inline">\(\boldsymbol \theta\)</span> se obtienen de la siguiente forma:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="modelos-no-lineales.html#cb103-1" tabindex="-1"></a><span class="fu">confint</span>(mod.turk)</span></code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <pre><code>##           2.5%      97.5%
 ## th1 610.970918 634.855196
 ## th2 156.322676 204.476710
 ## th3   4.966356   9.777723</code></pre>
-<p>Aquí podemos ver que, por ejemplo, la ganancia máxima que se puede obtener con el suplemento está entre 156 y 204 gramos con un nivel de confianza del 95%.</p>
+<p>Aquí podemos ver que, por ejemplo, la ganancia máxima que se puede obtener con el suplemento está entre <span class="math inline">\(156\)</span> y <span class="math inline">\(204\)</span> gramos con un nivel de confianza del 95%.</p>
 <p>Para calcular los intervalos de confianza para la media podemos utilizar la función <code>predFit</code> de la librería <code>investr</code>. La Figura <a href="modelos-no-lineales.html#fig:Confintpavos2">5.5</a> muestra el intervalo del 95% del peso ganado medio en función del % de metionina en la dieta.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="modelos-no-lineales.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(investr)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="modelos-no-lineales.html#cb106-1" tabindex="-1"></a><span class="fu">library</span>(investr)</span></code></pre></div>
 <pre><code>## Warning: package &#39;investr&#39; was built under R version 4.2.3</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;investr&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:faraway&#39;:
 ## 
 ##     beetle</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="modelos-no-lineales.html#cb110-1" aria-hidden="true" tabindex="-1"></a>predx <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">A=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.5</span>,<span class="at">length.out=</span><span class="dv">100</span>))</span>
-<span id="cb110-2"><a href="modelos-no-lineales.html#cb110-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-3"><a href="modelos-no-lineales.html#cb110-3" aria-hidden="true" tabindex="-1"></a>predGain <span class="ot">=</span> <span class="fu">predFit</span>(mod.turk,predx,<span class="at">interval=</span><span class="st">&#39;confidence&#39;</span>)</span>
-<span id="cb110-4"><a href="modelos-no-lineales.html#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-5"><a href="modelos-no-lineales.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado (gramos)&#39;</span>)</span>
-<span id="cb110-6"><a href="modelos-no-lineales.html#cb110-6" aria-hidden="true" tabindex="-1"></a>th <span class="ot">=</span> <span class="fu">coef</span>(mod.turk)</span>
-<span id="cb110-7"><a href="modelos-no-lineales.html#cb110-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
-<span id="cb110-8"><a href="modelos-no-lineales.html#cb110-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, th.turk[<span class="dv">1</span>]<span class="sc">+</span>th.turk[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th.turk[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb110-9"><a href="modelos-no-lineales.html#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(predx<span class="sc">$</span>A,predGain[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb110-10"><a href="modelos-no-lineales.html#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(predx<span class="sc">$</span>A,predGain[,<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="modelos-no-lineales.html#cb110-1" tabindex="-1"></a>predx <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">A=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.5</span>,<span class="at">length.out=</span><span class="dv">100</span>))</span>
+<span id="cb110-2"><a href="modelos-no-lineales.html#cb110-2" tabindex="-1"></a></span>
+<span id="cb110-3"><a href="modelos-no-lineales.html#cb110-3" tabindex="-1"></a>predGain <span class="ot">=</span> <span class="fu">predFit</span>(mod.turk,predx,<span class="at">interval=</span><span class="st">&#39;confidence&#39;</span>)</span>
+<span id="cb110-4"><a href="modelos-no-lineales.html#cb110-4" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="modelos-no-lineales.html#cb110-5" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado (gramos)&#39;</span>)</span>
+<span id="cb110-6"><a href="modelos-no-lineales.html#cb110-6" tabindex="-1"></a>th <span class="ot">=</span> <span class="fu">coef</span>(mod.turk)</span>
+<span id="cb110-7"><a href="modelos-no-lineales.html#cb110-7" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
+<span id="cb110-8"><a href="modelos-no-lineales.html#cb110-8" tabindex="-1"></a><span class="fu">lines</span>(x, th.turk[<span class="dv">1</span>]<span class="sc">+</span>th.turk[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th.turk[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb110-9"><a href="modelos-no-lineales.html#cb110-9" tabindex="-1"></a><span class="fu">lines</span>(predx<span class="sc">$</span>A,predGain[,<span class="dv">2</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb110-10"><a href="modelos-no-lineales.html#cb110-10" tabindex="-1"></a><span class="fu">lines</span>(predx<span class="sc">$</span>A,predGain[,<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Confintpavos2"></span>
 <img src="MLG2_files/figure-html/Confintpavos2-1.png" alt="Datos pavos. Intervalo del 95% de confianza para la media del peso ganado en función de la dieta." width="960" />
 <p class="caption">
@@ -703,40 +708,40 @@ Figure 5.5: Datos pavos. Intervalo del 95% de confianza para la media del peso g
 <li>Modelo logístico:</li>
 </ul>
 <p><span class="math display">\[
-y_{i}=\frac{\theta_{1}}{1+\theta_{2}exp(-\theta_{3}x_{i})}+\varepsilon_{i},
+y_{i}=\frac{\theta_{1}}{1+\theta_{2}\exp(-\theta_{3}x_{i})}+\varepsilon_{i},
 \]</span>
 - Modelo Weibull:</p>
 <p><span class="math display">\[
-y_{i}=\theta_{1}+\theta_{2}[1-exp(-\theta_{3}x_{i}^{\theta_{4}})]+\varepsilon_{i}.
+y_{i}=\theta_{1}+\theta_{2}[1-\exp(-\theta_{3}x_{i}^{\theta_{4}})]+\varepsilon_{i}.
 \]</span>
 Para compararlos, podemos ajustarlos y verificar cuál de los tres proporciona mejor ajuste usando criterios de información (AIC o BIC). En la Figura @ref{fig:tresmodelospavos}, y a través del BIC, podemos ver que los tres modelos proporcionan casi el mismo ajuste. Así que, cualquiera puede ser usado para hacer inferencias y sacar conclusiones.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelos-no-lineales.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado (gramos)&#39;</span>)</span>
-<span id="cb111-2"><a href="modelos-no-lineales.html#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-3"><a href="modelos-no-lineales.html#cb111-3" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">=</span> <span class="fu">nls</span>(Gain <span class="sc">~</span> th1<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>th2<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>th3<span class="sc">*</span>A)),<span class="at">data =</span> turk0,</span>
-<span id="cb111-4"><a href="modelos-no-lineales.html#cb111-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">620</span>,<span class="at">th2=</span><span class="fl">0.25</span>,<span class="at">th3=</span><span class="dv">8</span>) )</span>
-<span id="cb111-5"><a href="modelos-no-lineales.html#cb111-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-6"><a href="modelos-no-lineales.html#cb111-6" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">=</span> <span class="fu">nls</span>(Gain <span class="sc">~</span> th1 <span class="sc">+</span> th2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th3<span class="sc">*</span>A<span class="sc">^</span>th4)),<span class="at">data =</span> turk0,</span>
-<span id="cb111-7"><a href="modelos-no-lineales.html#cb111-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">800</span>,<span class="at">th2=</span><span class="dv">180</span>,<span class="at">th3=</span><span class="dv">8</span>,<span class="at">th4=</span><span class="dv">1</span>) )</span>
-<span id="cb111-8"><a href="modelos-no-lineales.html#cb111-8" aria-hidden="true" tabindex="-1"></a>           </span>
-<span id="cb111-9"><a href="modelos-no-lineales.html#cb111-9" aria-hidden="true" tabindex="-1"></a>th2 <span class="ot">=</span> <span class="fu">coef</span>(mod2)         </span>
-<span id="cb111-10"><a href="modelos-no-lineales.html#cb111-10" aria-hidden="true" tabindex="-1"></a>th3 <span class="ot">=</span> <span class="fu">coef</span>(mod3)</span>
-<span id="cb111-11"><a href="modelos-no-lineales.html#cb111-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, th[<span class="dv">1</span>]<span class="sc">+</span>th[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb111-12"><a href="modelos-no-lineales.html#cb111-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, th2[<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>th2[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>th2[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb111-13"><a href="modelos-no-lineales.html#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, th3[<span class="dv">1</span>]<span class="sc">+</span>th3[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th3[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span>th3[<span class="dv">4</span>])),<span class="at">col=</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelos-no-lineales.html#cb111-1" tabindex="-1"></a><span class="fu">plot</span>(Gain<span class="sc">~</span>A,<span class="at">data=</span>turk0,<span class="at">xlab=</span><span class="st">&#39;cantidad de metionina (% dieta)&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Peso ganado (gramos)&#39;</span>)</span>
+<span id="cb111-2"><a href="modelos-no-lineales.html#cb111-2" tabindex="-1"></a></span>
+<span id="cb111-3"><a href="modelos-no-lineales.html#cb111-3" tabindex="-1"></a>mod2 <span class="ot">=</span> <span class="fu">nls</span>(Gain <span class="sc">~</span> th1<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>th2<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>th3<span class="sc">*</span>A)),<span class="at">data =</span> turk0,</span>
+<span id="cb111-4"><a href="modelos-no-lineales.html#cb111-4" tabindex="-1"></a>           <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">620</span>,<span class="at">th2=</span><span class="fl">0.25</span>,<span class="at">th3=</span><span class="dv">8</span>) )</span>
+<span id="cb111-5"><a href="modelos-no-lineales.html#cb111-5" tabindex="-1"></a></span>
+<span id="cb111-6"><a href="modelos-no-lineales.html#cb111-6" tabindex="-1"></a>mod3 <span class="ot">=</span> <span class="fu">nls</span>(Gain <span class="sc">~</span> th1 <span class="sc">+</span> th2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th3<span class="sc">*</span>A<span class="sc">^</span>th4)),<span class="at">data =</span> turk0,</span>
+<span id="cb111-7"><a href="modelos-no-lineales.html#cb111-7" tabindex="-1"></a>           <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">800</span>,<span class="at">th2=</span><span class="dv">180</span>,<span class="at">th3=</span><span class="dv">8</span>,<span class="at">th4=</span><span class="dv">1</span>) )</span>
+<span id="cb111-8"><a href="modelos-no-lineales.html#cb111-8" tabindex="-1"></a>           </span>
+<span id="cb111-9"><a href="modelos-no-lineales.html#cb111-9" tabindex="-1"></a>th2 <span class="ot">=</span> <span class="fu">coef</span>(mod2)         </span>
+<span id="cb111-10"><a href="modelos-no-lineales.html#cb111-10" tabindex="-1"></a>th3 <span class="ot">=</span> <span class="fu">coef</span>(mod3)</span>
+<span id="cb111-11"><a href="modelos-no-lineales.html#cb111-11" tabindex="-1"></a><span class="fu">lines</span>(x, th[<span class="dv">1</span>]<span class="sc">+</span>th[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb111-12"><a href="modelos-no-lineales.html#cb111-12" tabindex="-1"></a><span class="fu">lines</span>(x, th2[<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>th2[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>th2[<span class="dv">3</span>]<span class="sc">*</span>x)),<span class="at">col=</span><span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb111-13"><a href="modelos-no-lineales.html#cb111-13" tabindex="-1"></a><span class="fu">lines</span>(x, th3[<span class="dv">1</span>]<span class="sc">+</span>th3[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>th3[<span class="dv">3</span>]<span class="sc">*</span>x<span class="sc">^</span>th3[<span class="dv">4</span>])),<span class="at">col=</span><span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tresmodelospavos"></span>
 <img src="MLG2_files/figure-html/tresmodelospavos-1.png" alt="Datos crecimiento de pavos. Ajuste del modelo de crecimiento propuesto (rojo), modelo logístico (verde) y Modelo Weibull (azul)." width="672" />
 <p class="caption">
 Figure 5.6: Datos crecimiento de pavos. Ajuste del modelo de crecimiento propuesto (rojo), modelo logístico (verde) y Modelo Weibull (azul).
 </p>
 </div>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="modelos-no-lineales.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(mod.turk)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="modelos-no-lineales.html#cb112-1" tabindex="-1"></a><span class="fu">BIC</span>(mod.turk)</span></code></pre></div>
 <pre><code>## [1] 318.9086</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="modelos-no-lineales.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(mod2)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="modelos-no-lineales.html#cb114-1" tabindex="-1"></a><span class="fu">BIC</span>(mod2)</span></code></pre></div>
 <pre><code>## [1] 318.6193</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="modelos-no-lineales.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(mod3)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="modelos-no-lineales.html#cb116-1" tabindex="-1"></a><span class="fu">BIC</span>(mod3)</span></code></pre></div>
 <pre><code>## [1] 322.3054</code></pre>
-<div id="puromicina-estimación" class="section level4 hasAnchor" number="5.2.2.1">
-<h4><span class="header-section-number">5.2.2.1</span> Puromicina-Estimación<a href="modelos-no-lineales.html#puromicina-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="puromicina-estimación" class="section level4 hasAnchor" number="5.2.3.1">
+<h4><span class="header-section-number">5.2.3.1</span> Puromicina-Estimación<a href="modelos-no-lineales.html#puromicina-estimación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Los valores iniciales del modelo Michaelis-Menten se puede hacer por linealización. Tenemos que:
 <span class="math display">\[
 m(\boldsymbol x,\boldsymbol \theta) = \frac{\theta_1 x}{x + \theta_2},
@@ -754,17 +759,17 @@ Figure 5.7: Datos puromicina. Diagrama de dispersión. Datos linealizados(derech
 </div>
 <p>A través del ajuste por MCO para:</p>
 <p><span class="math display">\[
-1/y_{i}=\beta_{0}+1/conc_{i}\beta_{1}+\varepsilon_{i},
+1/y_{i}=\beta_{0}+1/\mbox{conc}_{i}\beta_{1}+\varepsilon_{i},
 \]</span>
-Se puede obtener valores iniciales. Luego de ajustar el modelo se obtiene que:</p>
+se puede obtener valores iniciales. Luego de ajustar el modelo se obtiene que:</p>
 <p><span class="math display">\[
 \theta_{1}^{(0)}=\frac{1}{\hat{\beta}_{0}}=167.408 \qquad \theta_{2}^{(0)}=\frac{\hat{\beta}_{1}}{\hat{\beta}_{0}}=0.039
 \]</span>
 Inicialmente, se podríamos asumir que <span class="math inline">\(\beta_{3}^{(0)}=\beta_{4}^{(0)}=0\)</span> (es decir, no hay diferencias entre las células tratadas y no tratadas). Usando la función ´nls()´ de R obtenemos los siguientes resultados:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="modelos-no-lineales.html#cb118-1" aria-hidden="true" tabindex="-1"></a>Puromycin<span class="sc">$</span>state2 <span class="ot">=</span> <span class="fu">as.double</span>(Puromycin<span class="sc">$</span>state <span class="sc">==</span> <span class="st">&#39;treated&#39;</span>)</span>
-<span id="cb118-2"><a href="modelos-no-lineales.html#cb118-2" aria-hidden="true" tabindex="-1"></a>mod.puromicyn <span class="ot">=</span> <span class="fu">nls</span>(rate <span class="sc">~</span> (th1<span class="sc">*</span>conc <span class="sc">+</span> th3<span class="sc">*</span>conc<span class="sc">*</span>state2)<span class="sc">/</span>(th2<span class="sc">+</span>th4<span class="sc">*</span>state2<span class="sc">+</span>conc),<span class="at">data =</span> Puromycin,</span>
-<span id="cb118-3"><a href="modelos-no-lineales.html#cb118-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">168</span>,<span class="at">th2=</span><span class="fl">0.4</span>,<span class="at">th3=</span><span class="dv">0</span>,<span class="at">th4=</span><span class="dv">0</span>),<span class="at">trace=</span>F )</span>
-<span id="cb118-4"><a href="modelos-no-lineales.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.puromicyn )</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="modelos-no-lineales.html#cb118-1" tabindex="-1"></a>Puromycin<span class="sc">$</span>state2 <span class="ot">=</span> <span class="fu">as.double</span>(Puromycin<span class="sc">$</span>state <span class="sc">==</span> <span class="st">&#39;treated&#39;</span>)</span>
+<span id="cb118-2"><a href="modelos-no-lineales.html#cb118-2" tabindex="-1"></a>mod.puromicyn <span class="ot">=</span> <span class="fu">nls</span>(rate <span class="sc">~</span> (th1<span class="sc">*</span>conc <span class="sc">+</span> th3<span class="sc">*</span>conc<span class="sc">*</span>state2)<span class="sc">/</span>(th2<span class="sc">+</span>th4<span class="sc">*</span>state2<span class="sc">+</span>conc),<span class="at">data =</span> Puromycin,</span>
+<span id="cb118-3"><a href="modelos-no-lineales.html#cb118-3" tabindex="-1"></a>          <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">168</span>,<span class="at">th2=</span><span class="fl">0.4</span>,<span class="at">th3=</span><span class="dv">0</span>,<span class="at">th4=</span><span class="dv">0</span>),<span class="at">trace=</span>F )</span>
+<span id="cb118-4"><a href="modelos-no-lineales.html#cb118-4" tabindex="-1"></a><span class="fu">summary</span>(mod.puromicyn )</span></code></pre></div>
 <pre><code>## 
 ## Formula: rate ~ (th1 * conc + th3 * conc * state2)/(th2 + th4 * state2 + 
 ##     conc)
@@ -795,8 +800,7 @@ Figure 5.8: Datos puromicina. Enzimas tratadas(negro), enzimas no tratadas(rojo)
 <div id="método-de-bootstrap" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Método de Bootstrap<a href="modelos-no-lineales.html#método-de-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Los métodos de inferencia que se muestran anteriormente se basan en la distribución asintótica de los estimadores. Por lo que pueden ser inexactas y/o engañosas si tenemos muestras pequeñas. En esos casos, una alternativa preferible es usar ténicas de remuestreo (<strong>bootstrap</strong>).</p>
-<p>El bootstrap es una técnica que se puede usar para calcular intervalos de confianza and pruebas de hipótesis cuando el cumplimiento de los supuestos asumidos en el modelo están en duda.</p>
-<p>Por ejemplo, si se quiere calcular un intervalo de confianza para la mediana (o cualquier otro parámetro) de <span class="math inline">\(Y\)</span>. Para esto tomamos una muestra
+<p>El bootstrap es una técnica que se puede usar para calcular intervalos de confianza and pruebas de hipótesis cuando el cumplimiento de los supuestos asumidos en el modelo están en duda. Por ejemplo, si se quiere calcular un intervalo de confianza para la mediana (o cualquier otro parámetro) de <span class="math inline">\(Y\)</span>. Para esto tomamos una muestra
 independiente <span class="math inline">\(\boldsymbol y=(y_{1},...,y_{n})\)</span>.</p>
 <p>Pasos del boostrap:</p>
 <ol style="list-style-type: decimal">
@@ -807,9 +811,9 @@ independiente <span class="math inline">\(\boldsymbol y=(y_{1},...,y_{n})\)</spa
 </ol>
 <div id="bootstrap-en-regresión" class="section level3 hasAnchor" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Bootstrap en regresión<a href="modelos-no-lineales.html#bootstrap-en-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Método residual resampling:</p>
+<p>Para un modelo de regresión, el remuestreo se hace sobre los observaciones, considerando la respuesta y las covariables, <span class="math inline">\((y_i,\boldsymbol x_i)\)</span>, o sobre los residuos del ajuste por MCO. El segundo método es llamado residual resampling y se realiza de las siguiente forma:</p>
 <ol style="list-style-type: decimal">
-<li><p>Con la muestra dada: <span class="math inline">\((x_{i},y_{i}),i=1,...,n\)</span> ajustar el modelo y obtener los resifuos: <span class="math inline">\(e_{i}=y_{i}-x_{i}^{&#39;}\hat{\beta}.\)</span></p></li>
+<li><p>Con la muestra dada: <span class="math inline">\((x_{i},y_{i}),i=1,...,n\)</span> ajustar el modelo y obtener los residuos: <span class="math inline">\(e_{i}=y_{i}-x_{i}^{&#39;}\hat{\beta}.\)</span></p></li>
 <li><p>Obtener una muestra aleatoria con reemplazo de los residuos <span class="math inline">\(e^*=(e_{1}^*,...,e_{n}^*)\)</span>.</p></li>
 </ol>
 <p>3.Crear una variable respuesta bootstrap con <span class="math inline">\(y_{i}^*=x_{i}^{&#39;}\hat{\beta}+e_{1}^*\)</span> y estimar <span class="math inline">\(\hat{\beta}^*\)</span>.</p>
@@ -818,93 +822,108 @@ independiente <span class="math inline">\(\boldsymbol y=(y_{1},...,y_{n})\)</spa
 el intervalo de confianza para <span class="math inline">\(\beta_{j}\)</span> usando los percentiles*.</li>
 </ol>
 <p><span class="math inline">\(*\)</span>Hay muchas modificaciones y extensiones para calcular los intervalos de confianza.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="modelos-no-lineales.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">310</span>)</span>
-<span id="cb120-2"><a href="modelos-no-lineales.html#cb120-2" aria-hidden="true" tabindex="-1"></a>mod.boot <span class="ot">=</span> <span class="fu">Boot</span>(mod.puromicyn,<span class="at">method=</span><span class="st">&#39;residual&#39;</span>,<span class="at">R=</span><span class="dv">1000</span>)</span></code></pre></div>
+<p>Para los datos de la Puromicina, el bootstrap en R se puede implementar utilizando la función <code>Boot</code> de la librería <code>car</code>:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="modelos-no-lineales.html#cb120-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">310</span>)</span>
+<span id="cb120-2"><a href="modelos-no-lineales.html#cb120-2" tabindex="-1"></a>mod.boot <span class="ot">=</span> <span class="fu">Boot</span>(mod.puromicyn,<span class="at">method=</span><span class="st">&#39;residual&#39;</span>,<span class="at">R=</span><span class="dv">1000</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Number of bootstraps was 999 out of 1000 attempted</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="modelos-no-lineales.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(mod.boot<span class="sc">$</span>t,<span class="at">labels=</span><span class="fu">c</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">1</span>]),<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">2</span>]),<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">3</span>]),</span>
-<span id="cb122-2"><a href="modelos-no-lineales.html#cb122-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">4</span>])))</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="modelos-no-lineales.html#cb122-1" tabindex="-1"></a>mod.boot</span></code></pre></div>
+<pre><code>## 
+## ORDINARY NONPARAMETRIC BOOTSTRAP
+## 
+## 
+## Call:
+## boot::boot(data = data.frame(update(object, model = TRUE)$model), 
+##     statistic = boot.f, R = R, .fn = f, parallel = p_type, ncpus = ncores, 
+##     cl = cl2)
+## 
+## 
+## Bootstrap Statistics :
+##         original        bias    std. error
+## t1* 160.27996768  8.879761e-01 6.341551999
+## t2*   0.04770806 -2.301129e-05 0.007476639
+## t3*  52.40375392  9.728504e-02 8.901228953
+## t4*   0.01641319 -1.930537e-05 0.010523158</code></pre>
+<p>En el objeto <code>mod.boot</code> se pueden observar todas las estimaciones calculadas en los <span class="math inline">\(1000\)</span> remuestreos. Por ejemplo, la relaciones entre las estimaciones se pueden observar a través de un diagrama de dispersión (Figura <a href="modelos-no-lineales.html#fig:bootgraf">5.9</a>). Aquí vemos una correlaciones altas en algunas de las estimaciones.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelos-no-lineales.html#cb124-1" tabindex="-1"></a><span class="fu">pairs</span>(mod.boot<span class="sc">$</span>t,<span class="at">labels=</span><span class="fu">c</span>(<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">1</span>]),<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">2</span>]),<span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">3</span>]),</span>
+<span id="cb124-2"><a href="modelos-no-lineales.html#cb124-2" tabindex="-1"></a>                          <span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">4</span>])))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootgraf"></span>
-<img src="MLG2_files/figure-html/bootgraf-1.png" alt="Metodo Bootstrap datos puromicina. " width="672" />
+<img src="MLG2_files/figure-html/bootgraf-1.png" alt="Datos puromicina. Diagrama de dispersión para las estimaciones de los coeficientes del modelo por bootstrap." width="672" />
 <p class="caption">
-Figure 5.9: Metodo Bootstrap datos puromicina.
+Figure 5.9: Datos puromicina. Diagrama de dispersión para las estimaciones de los coeficientes del modelo por bootstrap.
 </p>
 </div>
-<p><strong>Estimaciones por bootstrap</strong></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="modelos-no-lineales.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
-<span id="cb123-2"><a href="modelos-no-lineales.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">1</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb123-3"><a href="modelos-no-lineales.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">1</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb123-4"><a href="modelos-no-lineales.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-5"><a href="modelos-no-lineales.html#cb123-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-6"><a href="modelos-no-lineales.html#cb123-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-7"><a href="modelos-no-lineales.html#cb123-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">2</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb123-8"><a href="modelos-no-lineales.html#cb123-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">2</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb123-9"><a href="modelos-no-lineales.html#cb123-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-10"><a href="modelos-no-lineales.html#cb123-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-11"><a href="modelos-no-lineales.html#cb123-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-12"><a href="modelos-no-lineales.html#cb123-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(theta[<span class="dv">3</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb123-13"><a href="modelos-no-lineales.html#cb123-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">3</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb123-14"><a href="modelos-no-lineales.html#cb123-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-15"><a href="modelos-no-lineales.html#cb123-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-16"><a href="modelos-no-lineales.html#cb123-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-17"><a href="modelos-no-lineales.html#cb123-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(theta[<span class="dv">4</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb123-18"><a href="modelos-no-lineales.html#cb123-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">4</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb123-19"><a href="modelos-no-lineales.html#cb123-19" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb123-20"><a href="modelos-no-lineales.html#cb123-20" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<p>Igualmente, la distribución muestral de los estimadores de los coeficientes se pueden obtener a partir de histogramas (ver Figura <a href="modelos-no-lineales.html#fig:bootgrafconf">5.10</a>). Estas parecen aproximarse a distribuciones normales, sin embargo, hay leves asimetrías en <span class="math inline">\(\hattheta_1\)</span> y <span class="math inline">\(\hattheta_2\)</span>.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="modelos-no-lineales.html#cb125-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
+<span id="cb125-2"><a href="modelos-no-lineales.html#cb125-2" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">1</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb125-3"><a href="modelos-no-lineales.html#cb125-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">1</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb125-4"><a href="modelos-no-lineales.html#cb125-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb125-5"><a href="modelos-no-lineales.html#cb125-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb125-6"><a href="modelos-no-lineales.html#cb125-6" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="modelos-no-lineales.html#cb125-7" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(theta)[<span class="dv">2</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb125-8"><a href="modelos-no-lineales.html#cb125-8" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">2</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb125-9"><a href="modelos-no-lineales.html#cb125-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb125-10"><a href="modelos-no-lineales.html#cb125-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb125-11"><a href="modelos-no-lineales.html#cb125-11" tabindex="-1"></a></span>
+<span id="cb125-12"><a href="modelos-no-lineales.html#cb125-12" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(theta[<span class="dv">3</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb125-13"><a href="modelos-no-lineales.html#cb125-13" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">3</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb125-14"><a href="modelos-no-lineales.html#cb125-14" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb125-15"><a href="modelos-no-lineales.html#cb125-15" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb125-16"><a href="modelos-no-lineales.html#cb125-16" tabindex="-1"></a></span>
+<span id="cb125-17"><a href="modelos-no-lineales.html#cb125-17" tabindex="-1"></a><span class="fu">hist</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="at">breaks =</span> <span class="dv">20</span>,<span class="at">xlab=</span><span class="fu">expression</span>(theta[<span class="dv">4</span>]),<span class="at">main =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb125-18"><a href="modelos-no-lineales.html#cb125-18" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">coef</span>(mod.puromicyn)[<span class="dv">4</span>],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb125-19"><a href="modelos-no-lineales.html#cb125-19" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>]),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb125-20"><a href="modelos-no-lineales.html#cb125-20" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootgrafconf"></span>
-<img src="MLG2_files/figure-html/bootgrafconf-1.png" alt="Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5" width="672" />
+<img src="MLG2_files/figure-html/bootgrafconf-1.png" alt="Datos puromicina. Histograma de las estimaciones de los coeficientes del modelo por bootstrap. Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5." width="672" />
 <p class="caption">
-Figure 5.10: Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5
+Figure 5.10: Datos puromicina. Histograma de las estimaciones de los coeficientes del modelo por bootstrap. Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5.
 </p>
 </div>
-<p>Intervalos del 95% de confianza usando bootstrap (corrección de
-sesgo):</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="modelos-no-lineales.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
+<p>Finalmente, los intervalos del 95% de confianza usando bootstrap se pueden obtener a partir de los percentiles 2.5% y 97.5% de las distribuciones remuestreadas:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelos-no-lineales.html#cb126-1" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">1</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
 ## 150.2763 175.1425</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="modelos-no-lineales.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="modelos-no-lineales.html#cb128-1" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">2</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
 ## 0.03538444 0.06329289</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="modelos-no-lineales.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelos-no-lineales.html#cb130-1" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">3</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>##    2.5%   97.5% 
 ## 34.8151 70.2094</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelos-no-lineales.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="modelos-no-lineales.html#cb132-1" tabindex="-1"></a><span class="fu">quantile</span>(mod.boot<span class="sc">$</span>t[,<span class="dv">4</span>],<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm =</span> T)</span></code></pre></div>
 <pre><code>##        2.5%       97.5% 
 ## -0.00663091  0.03540431</code></pre>
-<p><strong>Puromicina - bootstrap</strong></p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="modelos-no-lineales.html#cb132-1" aria-hidden="true" tabindex="-1"></a>fit.rate<span class="ot">=</span> <span class="cf">function</span>(theta,x){</span>
-<span id="cb132-2"><a href="modelos-no-lineales.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(theta[<span class="dv">1</span>]<span class="sc">*</span>x<span class="sc">/</span>(theta[<span class="dv">2</span>]<span class="sc">+</span>x),</span>
-<span id="cb132-3"><a href="modelos-no-lineales.html#cb132-3" aria-hidden="true" tabindex="-1"></a>        (theta[<span class="dv">1</span>]<span class="sc">+</span>theta[<span class="dv">3</span>])<span class="sc">*</span>x<span class="sc">/</span>(theta[<span class="dv">2</span>]<span class="sc">+</span>theta[<span class="dv">4</span>]<span class="sc">+</span>x))</span>
-<span id="cb132-4"><a href="modelos-no-lineales.html#cb132-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb132-5"><a href="modelos-no-lineales.html#cb132-5" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">1.1</span>,<span class="at">length.out =</span> <span class="dv">100</span>)</span>
-<span id="cb132-6"><a href="modelos-no-lineales.html#cb132-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb132-7"><a href="modelos-no-lineales.html#cb132-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NULL</span>,<span class="cn">NULL</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.1</span>),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>),<span class="at">xlab=</span><span class="st">&#39;concentración de sustrato (ppm)&#39;</span>,</span>
-<span id="cb132-8"><a href="modelos-no-lineales.html#cb132-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;velocidad de reacción&#39;</span>)</span>
-<span id="cb132-9"><a href="modelos-no-lineales.html#cb132-9" aria-hidden="true" tabindex="-1"></a>Fit <span class="ot">=</span> <span class="fu">mapply</span>(<span class="cf">function</span>(i){</span>
-<span id="cb132-10"><a href="modelos-no-lineales.html#cb132-10" aria-hidden="true" tabindex="-1"></a>  pred <span class="ot">=</span> <span class="fu">fit.rate</span>(mod.boot<span class="sc">$</span>t[i,],x)</span>
-<span id="cb132-11"><a href="modelos-no-lineales.html#cb132-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(x,pred[,<span class="dv">1</span>],<span class="at">col=</span><span class="st">&#39;lightgray&#39;</span>)</span>
-<span id="cb132-12"><a href="modelos-no-lineales.html#cb132-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(x,pred[,<span class="dv">2</span>],<span class="at">col=</span><span class="st">&#39;gray&#39;</span>)</span>
-<span id="cb132-13"><a href="modelos-no-lineales.html#cb132-13" aria-hidden="true" tabindex="-1"></a>},<span class="at">i=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">999</span>)</span>
-<span id="cb132-14"><a href="modelos-no-lineales.html#cb132-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, thP[<span class="dv">1</span>]<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>x),<span class="at">col=</span><span class="dv">2</span>)</span>
-<span id="cb132-15"><a href="modelos-no-lineales.html#cb132-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, (thP[<span class="dv">1</span>]<span class="sc">+</span>thP[<span class="dv">3</span>])<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>thP[<span class="dv">4</span>]<span class="sc">+</span>x))</span>
-<span id="cb132-16"><a href="modelos-no-lineales.html#cb132-16" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state)</span></code></pre></div>
+<p>En la Figura <a href="#bootgrafpred"><strong>??</strong></a> se pueden observar todas las estimaciones de la media obtenidas a partir de los 1000 remuestreos. Se puede observar que en todos los casos, la máxima velocidad de obtuvo para las células tratadas.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="modelos-no-lineales.html#cb134-1" tabindex="-1"></a>fit.rate<span class="ot">=</span> <span class="cf">function</span>(theta,x){</span>
+<span id="cb134-2"><a href="modelos-no-lineales.html#cb134-2" tabindex="-1"></a>  <span class="fu">cbind</span>(theta[<span class="dv">1</span>]<span class="sc">*</span>x<span class="sc">/</span>(theta[<span class="dv">2</span>]<span class="sc">+</span>x),</span>
+<span id="cb134-3"><a href="modelos-no-lineales.html#cb134-3" tabindex="-1"></a>        (theta[<span class="dv">1</span>]<span class="sc">+</span>theta[<span class="dv">3</span>])<span class="sc">*</span>x<span class="sc">/</span>(theta[<span class="dv">2</span>]<span class="sc">+</span>theta[<span class="dv">4</span>]<span class="sc">+</span>x))</span>
+<span id="cb134-4"><a href="modelos-no-lineales.html#cb134-4" tabindex="-1"></a>}</span>
+<span id="cb134-5"><a href="modelos-no-lineales.html#cb134-5" tabindex="-1"></a>x<span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">1.1</span>,<span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb134-6"><a href="modelos-no-lineales.html#cb134-6" tabindex="-1"></a></span>
+<span id="cb134-7"><a href="modelos-no-lineales.html#cb134-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NULL</span>,<span class="cn">NULL</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.1</span>),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">210</span>),<span class="at">xlab=</span><span class="st">&#39;concentración de sustrato (ppm)&#39;</span>,</span>
+<span id="cb134-8"><a href="modelos-no-lineales.html#cb134-8" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&#39;velocidad de reacción&#39;</span>)</span>
+<span id="cb134-9"><a href="modelos-no-lineales.html#cb134-9" tabindex="-1"></a>Fit <span class="ot">=</span> <span class="fu">mapply</span>(<span class="cf">function</span>(i){</span>
+<span id="cb134-10"><a href="modelos-no-lineales.html#cb134-10" tabindex="-1"></a>  pred <span class="ot">=</span> <span class="fu">fit.rate</span>(mod.boot<span class="sc">$</span>t[i,],x)</span>
+<span id="cb134-11"><a href="modelos-no-lineales.html#cb134-11" tabindex="-1"></a>  <span class="fu">lines</span>(x,pred[,<span class="dv">1</span>],<span class="at">col=</span><span class="st">&#39;lightgray&#39;</span>)</span>
+<span id="cb134-12"><a href="modelos-no-lineales.html#cb134-12" tabindex="-1"></a>  <span class="fu">lines</span>(x,pred[,<span class="dv">2</span>],<span class="at">col=</span><span class="st">&#39;gray&#39;</span>)</span>
+<span id="cb134-13"><a href="modelos-no-lineales.html#cb134-13" tabindex="-1"></a>},<span class="at">i=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">999</span>)</span>
+<span id="cb134-14"><a href="modelos-no-lineales.html#cb134-14" tabindex="-1"></a><span class="fu">lines</span>(x, thP[<span class="dv">1</span>]<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>x),<span class="at">col=</span><span class="dv">2</span>)</span>
+<span id="cb134-15"><a href="modelos-no-lineales.html#cb134-15" tabindex="-1"></a><span class="fu">lines</span>(x, (thP[<span class="dv">1</span>]<span class="sc">+</span>thP[<span class="dv">3</span>])<span class="sc">*</span>x<span class="sc">/</span>(thP[<span class="dv">2</span>]<span class="sc">+</span>thP[<span class="dv">4</span>]<span class="sc">+</span>x))</span>
+<span id="cb134-16"><a href="modelos-no-lineales.html#cb134-16" tabindex="-1"></a><span class="fu">points</span>(Puromycin<span class="sc">$</span>conc,Puromycin<span class="sc">$</span>rate,<span class="at">col=</span>Puromycin<span class="sc">$</span>state)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootgrafpred"></span>
-<img src="MLG2_files/figure-html/bootgrafpred-1.png" alt="Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual." width="672" />
+<img src="MLG2_files/figure-html/bootgrafpred-1.png" alt="Datos puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja." width="672" />
 <p class="caption">
-Figure 5.11: Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual.
+Figure 5.11: Datos puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja.
 </p>
 </div>
 </div>
 <div id="algunas-consideraciones" class="section level3 hasAnchor" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Algunas consideraciones<a href="modelos-no-lineales.html#algunas-consideraciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Finalmente, algunas consideraciones que se debe de tener a la hora de estimar un modelo no lineal:</p>
 <ul>
-<li><p>Lo ideal es que el algoritmo llegue a la solución en pocas
-iteraciones (esto pasa si la aproximación lineal es adecuada).</p></li>
-<li><p>Siempre es bueno evaluar la solución con diferentes puntos
-iniciales. Es posible que caigamos en un máximo local.</p></li>
-<li><p>Si el tamaño de muestra no es grande, las propiedades
-asintóticas pueden no ser adecuadas. Por lo tanto, es mas
-conveniente usar bootstrap para hacer inferencias.</p></li>
+<li><p>Lo ideal es que el algoritmo llegue a la solución en pocas iteraciones. Esto pasa si la aproximación lineal es adecuada.</p></li>
+<li><p>Siempre es bueno evaluar la solución con diferentes puntos iniciales. Es posible que caigamos en un máximo local.</p></li>
+<li><p>Si el tamaño de muestra no es grande, las propiedades asintóticas pueden no ser adecuadas. Por lo tanto, es mas conveniente usar bootstrap para hacer inferencias.</p></li>
 </ul>
 
 </div>

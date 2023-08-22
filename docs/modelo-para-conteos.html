@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-06-09" />
+<meta name="date" content="2023-08-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,8 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.1</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Inferencia sobre los parámetros</a></li>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.3</b> Inferencia sobre los parámetros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
 <ul>
@@ -357,7 +358,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.4.1</b> Modelo con pendiente aleatoria</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1"><i class="fa fa-check"></i><b>9.5</b> Modelo lineal mixto</a></li>
-<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-intercepto-aleatorio"><i class="fa fa-check"></i><b>9.6.1</b> Estimación del modelo con intercepto aleatorio</a></li>
+<li class="chapter" data-level="9.6.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.6.2</b> Estimación del modelo con pendiente aleatoria</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -390,11 +395,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="muertes-por-enfermedades-cardiovasculares-en-doctores-del-reino-unido" class="section level3 hasAnchor" number="8.1.2">
 <h3><span class="header-section-number">8.1.2</span> Muertes por enfermedades cardiovasculares en doctores del Reino Unido<a href="modelo-para-conteos.html#muertes-por-enfermedades-cardiovasculares-en-doctores-del-reino-unido" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los datos <code>bs1</code> de la librería <code>ACSW</code> muestran el número de doctores muertos por enfermedades coronarias entre médicos varones <span class="math inline">\(10\)</span> años después de seguimiento por grupos de edad y condición de tabaquismo. De igual forma, la base de datos contiene el número de total de años-personas de observación en el momento de análisis. En la Figura <a href="modelo-para-conteos.html#fig:doctorUK1">8.1</a> podemos observar la tasa de mortalidad, por 100,000 personas, crece por grupo de edad, y es generalmente, mayor para los fumadores.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="modelo-para-conteos.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ACSWR)</span>
-<span id="cb190-2"><a href="modelo-para-conteos.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(bs1)</span>
-<span id="cb190-3"><a href="modelo-para-conteos.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bs1<span class="sc">$</span>Age_Cat, <span class="dv">100000</span><span class="sc">*</span>(bs1<span class="sc">$</span>Deaths<span class="sc">/</span>bs1<span class="sc">$</span>Person_Years),<span class="at">col=</span>bs1<span class="sc">$</span>Smoke_Ind<span class="sc">+</span><span class="dv">1</span>,</span>
-<span id="cb190-4"><a href="modelo-para-conteos.html#cb190-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;grupo de edad&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;muertes por 100,000 personas-año&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>)</span>
-<span id="cb190-5"><a href="modelo-para-conteos.html#cb190-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,bs1<span class="sc">$</span>Age_Group[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="modelo-para-conteos.html#cb192-1" tabindex="-1"></a><span class="fu">library</span>(ACSWR)</span>
+<span id="cb192-2"><a href="modelo-para-conteos.html#cb192-2" tabindex="-1"></a><span class="fu">data</span>(bs1)</span>
+<span id="cb192-3"><a href="modelo-para-conteos.html#cb192-3" tabindex="-1"></a><span class="fu">plot</span>(bs1<span class="sc">$</span>Age_Cat, <span class="dv">100000</span><span class="sc">*</span>(bs1<span class="sc">$</span>Deaths<span class="sc">/</span>bs1<span class="sc">$</span>Person_Years),<span class="at">col=</span>bs1<span class="sc">$</span>Smoke_Ind<span class="sc">+</span><span class="dv">1</span>,</span>
+<span id="cb192-4"><a href="modelo-para-conteos.html#cb192-4" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;grupo de edad&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;muertes por 100,000 personas-año&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>)</span>
+<span id="cb192-5"><a href="modelo-para-conteos.html#cb192-5" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,bs1<span class="sc">$</span>Age_Group[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:doctorUK1"></span>
 <img src="MLG2_files/figure-html/doctorUK1-1.png" alt="Tasa de muertes por enfermedades cardiovasculares en doctores del Reino Unido por grupo de edad. Los puntos rojos corresponden a fumadores y los negros a no fumadores." width="576" />
 <p class="caption">
@@ -405,8 +410,7 @@ Figure 8.1: Tasa de muertes por enfermedades cardiovasculares en doctores del Re
 </div>
 <div id="número-de-cangrejos-satélites" class="section level3 hasAnchor" number="8.1.3">
 <h3><span class="header-section-number">8.1.3</span> Número de cangrejos satélites<a href="modelo-para-conteos.html#número-de-cangrejos-satélites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Los datos <code>crabs</code> de la librería <code>asbio</code> son de un estudio sobre <span class="math inline">\(173\)</span> hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove. Durante el apareamiento, un macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena poner racimos de huevos. Luego, el macho fecunda los huevos de forma externa. Dada la competencia por fecundar los huevos, las hembras suelen llegar a la playa con otros cangrejos machos adheridos a ella. A este grupo de cangrejos se les llama satélites.</p>
-<p>Aquí, nuestra variable de respuesta es el número de satélites que tiene cada hembra. Mientras que las posibles covariables son:</p>
+<p>Los datos <code>crabs</code> de la librería <code>asbio</code> son de un estudio sobre <span class="math inline">\(173\)</span> hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove. Durante el apareamiento, un macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena poner racimos de huevos. Luego, el macho fecunda los huevos de forma externa. Dada la competencia por fecundar los huevos, las hembras suelen llegar a la playa con otros cangrejos machos adheridos a ella. A este grupo de cangrejos se les llama satélites. Aquí, nuestra variable de respuesta es el número de satélites que tiene cada hembra. Mientras que las posibles covariables son:</p>
 <ul>
 <li><p><code>color</code>: color (1, medio-claro; 2, medio; 3, medio-oscuro; 4,oscuro).</p></li>
 <li><p><code>spine</code>: condición de la espina dorsal (1, ambos bien; 2, uno gastado o roto; 3, ambos gastados o rotos).</p></li>
@@ -457,9 +461,9 @@ donde:
 \]</span>
 donde <span class="math inline">\(y_i\)</span> es el número de doctores muertos por enfermedades cardiovasculares en la <span class="math inline">\(i\)</span>-ésima categoría; smoke<span class="math inline">\(_i=1\)</span> si la <span class="math inline">\(i\)</span>-ésima categoría corresponde a fumadores; smoke<span class="math inline">\(_i=0\)</span> si lo contrario; <span class="math inline">\(t_i\)</span> es el número de doctores en riesgo asociados al grupo <span class="math inline">\(i\)</span>, ageCat<span class="math inline">\(j\)</span> corresponde a las variables indicadores asociadas al grupo de edad, con <span class="math inline">\([35,44]\)</span> como referencia.</p>
 <p>El ajuste del modelo es</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="modelo-para-conteos.html#cb191-1" aria-hidden="true" tabindex="-1"></a>poisson.doctor <span class="ot">=</span> <span class="fu">glm</span>(Deaths <span class="sc">~</span> Smoke_Ind <span class="sc">+</span> Age_Group <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(Person_Years)), </span>
-<span id="cb191-2"><a href="modelo-para-conteos.html#cb191-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> bs1)</span>
-<span id="cb191-3"><a href="modelo-para-conteos.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poisson.doctor)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="modelo-para-conteos.html#cb193-1" tabindex="-1"></a>poisson.doctor <span class="ot">=</span> <span class="fu">glm</span>(Deaths <span class="sc">~</span> Smoke_Ind <span class="sc">+</span> Age_Group <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(Person_Years)), </span>
+<span id="cb193-2"><a href="modelo-para-conteos.html#cb193-2" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> bs1)</span>
+<span id="cb193-3"><a href="modelo-para-conteos.html#cb193-3" tabindex="-1"></a><span class="fu">summary</span>(poisson.doctor)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = Deaths ~ Smoke_Ind + Age_Group + offset(log(Person_Years)), 
@@ -495,10 +499,10 @@ donde <span class="math inline">\(y_i\)</span> es el número de doctores muertos
 \log \lambda_i = \beta_0 + \mbox{smoke}_i\beta_1 + \mbox{age}_i\beta_2 + \mbox{age}^2_i\beta_3 + \mbox{smoke}_i\mbox{age}_i\beta_4  + \log(t_i),
 \]</span>
 El efecto de la interacción se incluye para evaluar si la diferencia en la tasa de muertes entre fumadores y no fumadores cambia con el aumento de la edad. El ajuste del modelo es:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="modelo-para-conteos.html#cb193-1" aria-hidden="true" tabindex="-1"></a>bs1<span class="sc">$</span>Age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb193-2"><a href="modelo-para-conteos.html#cb193-2" aria-hidden="true" tabindex="-1"></a>poisson.doctor2 <span class="ot">=</span> <span class="fu">glm</span>(Deaths <span class="sc">~</span> Smoke_Ind<span class="sc">+</span>Age<span class="sc">+</span><span class="fu">I</span>(Age<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>Smoke_Ind<span class="sc">*</span>Age <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(Person_Years)), </span>
-<span id="cb193-3"><a href="modelo-para-conteos.html#cb193-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> bs1)</span>
-<span id="cb193-4"><a href="modelo-para-conteos.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poisson.doctor2)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="modelo-para-conteos.html#cb195-1" tabindex="-1"></a>bs1<span class="sc">$</span>Age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb195-2"><a href="modelo-para-conteos.html#cb195-2" tabindex="-1"></a>poisson.doctor2 <span class="ot">=</span> <span class="fu">glm</span>(Deaths <span class="sc">~</span> Smoke_Ind<span class="sc">+</span>Age<span class="sc">+</span><span class="fu">I</span>(Age<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span>Smoke_Ind<span class="sc">*</span>Age <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(Person_Years)), </span>
+<span id="cb195-3"><a href="modelo-para-conteos.html#cb195-3" tabindex="-1"></a>                    <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">data =</span> bs1)</span>
+<span id="cb195-4"><a href="modelo-para-conteos.html#cb195-4" tabindex="-1"></a><span class="fu">summary</span>(poisson.doctor2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = Deaths ~ Smoke_Ind + Age + I(Age^2) + Smoke_Ind * 
@@ -529,13 +533,13 @@ El efecto de la interacción se incluye para evaluar si la diferencia en la tasa
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>Estos resultados también muestran que, en promedio, los fumadores tienen una tasa de mortalidad <span class="math inline">\(4\)</span> veces más alta que los no fumadores. Sin embargo, esta diferencia se atenua a medida que la edad aumenta (efecto interacción negativo). Esto lo podemos ver forma gráfica en la Figura <a href="modelo-para-conteos.html#fig:doctorUKgraf">8.3</a>.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="modelo-para-conteos.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(bs1<span class="sc">$</span>Age, <span class="dv">100000</span><span class="sc">*</span>(bs1<span class="sc">$</span>Deaths<span class="sc">/</span>bs1<span class="sc">$</span>Person_Years),<span class="at">col=</span>bs1<span class="sc">$</span>Smoke_Ind<span class="sc">+</span><span class="dv">1</span>,</span>
-<span id="cb195-2"><a href="modelo-para-conteos.html#cb195-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;grupo de edad&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;muertes por 100,000 personas-año&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>)</span>
-<span id="cb195-3"><a href="modelo-para-conteos.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,bs1<span class="sc">$</span>Age_Group[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb195-4"><a href="modelo-para-conteos.html#cb195-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-5"><a href="modelo-para-conteos.html#cb195-5" aria-hidden="true" tabindex="-1"></a>pred.tasa <span class="ot">=</span> <span class="dv">100000</span><span class="sc">*</span>poisson.doctor2<span class="sc">$</span>fitted.values<span class="sc">/</span>bs1<span class="sc">$</span>Person_Years</span>
-<span id="cb195-6"><a href="modelo-para-conteos.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,pred.tasa[bs1<span class="sc">$</span>Smoke_Ind<span class="sc">==</span><span class="dv">0</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb195-7"><a href="modelo-para-conteos.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,pred.tasa[bs1<span class="sc">$</span>Smoke_Ind<span class="sc">==</span><span class="dv">1</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="modelo-para-conteos.html#cb197-1" tabindex="-1"></a><span class="fu">plot</span>(bs1<span class="sc">$</span>Age, <span class="dv">100000</span><span class="sc">*</span>(bs1<span class="sc">$</span>Deaths<span class="sc">/</span>bs1<span class="sc">$</span>Person_Years),<span class="at">col=</span>bs1<span class="sc">$</span>Smoke_Ind<span class="sc">+</span><span class="dv">1</span>,</span>
+<span id="cb197-2"><a href="modelo-para-conteos.html#cb197-2" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;grupo de edad&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;muertes por 100,000 personas-año&#39;</span>,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">xaxt=</span><span class="st">&#39;n&#39;</span>)</span>
+<span id="cb197-3"><a href="modelo-para-conteos.html#cb197-3" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,bs1<span class="sc">$</span>Age_Group[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb197-4"><a href="modelo-para-conteos.html#cb197-4" tabindex="-1"></a></span>
+<span id="cb197-5"><a href="modelo-para-conteos.html#cb197-5" tabindex="-1"></a>pred.tasa <span class="ot">=</span> <span class="dv">100000</span><span class="sc">*</span>poisson.doctor2<span class="sc">$</span>fitted.values<span class="sc">/</span>bs1<span class="sc">$</span>Person_Years</span>
+<span id="cb197-6"><a href="modelo-para-conteos.html#cb197-6" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,pred.tasa[bs1<span class="sc">$</span>Smoke_Ind<span class="sc">==</span><span class="dv">0</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb197-7"><a href="modelo-para-conteos.html#cb197-7" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,pred.tasa[bs1<span class="sc">$</span>Smoke_Ind<span class="sc">==</span><span class="dv">1</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:doctorUKgraf"></span>
 <img src="MLG2_files/figure-html/doctorUKgraf-1.png" alt="Estimación de la tasa de muertes de doctores del Reino Unido por grupo de edad para fumadores(línea roja) y no fumadores (línea negra)." width="672" />
 <p class="caption">
@@ -606,10 +610,10 @@ La estimación de los parámetros <span class="math inline">\((\boldsymbol \beta
 y_i \sim \mbox{Poisson}(\lambda_i), \mbox{ donde } \log \lambda_i = \beta_0 + \mbox{treatment}_i\beta_1 + \mbox{base}_i\beta_2,
 \]</span>
 donde <span class="math inline">\(y_i\)</span> es el número de ataques epiléptivos en dos semanas luego de cuatro semanas de tratamiento; treatment<span class="math inline">\(_i=1\)</span> si el <span class="math inline">\(i\)</span>-ésimo paciente recibió el tratamiento progabida y treatment<span class="math inline">\(_i=0\)</span> si lo contrario. Los resultados del ajuste son:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="modelo-para-conteos.html#cb196-1" aria-hidden="true" tabindex="-1"></a>epilepsy4<span class="ot">=</span> HSAUR2<span class="sc">::</span>epilepsy[HSAUR2<span class="sc">::</span>epilepsy<span class="sc">$</span>period<span class="sc">==</span><span class="dv">4</span>,]</span>
-<span id="cb196-2"><a href="modelo-para-conteos.html#cb196-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-3"><a href="modelo-para-conteos.html#cb196-3" aria-hidden="true" tabindex="-1"></a>modPois <span class="ot">=</span> <span class="fu">glm</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4,<span class="at">family=</span>poisson)</span>
-<span id="cb196-4"><a href="modelo-para-conteos.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="modelo-para-conteos.html#cb198-1" tabindex="-1"></a>epilepsy4<span class="ot">=</span> HSAUR2<span class="sc">::</span>epilepsy[HSAUR2<span class="sc">::</span>epilepsy<span class="sc">$</span>period<span class="sc">==</span><span class="dv">4</span>,]</span>
+<span id="cb198-2"><a href="modelo-para-conteos.html#cb198-2" tabindex="-1"></a></span>
+<span id="cb198-3"><a href="modelo-para-conteos.html#cb198-3" tabindex="-1"></a>modPois <span class="ot">=</span> <span class="fu">glm</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4,<span class="at">family=</span>poisson)</span>
+<span id="cb198-4"><a href="modelo-para-conteos.html#cb198-4" tabindex="-1"></a><span class="fu">summary</span>(modPois)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = seizure.rate ~ treatment + base, family = poisson, 
@@ -634,19 +638,18 @@ donde <span class="math inline">\(y_i\)</span> es el número de ataques epilépt
 ## AIC: 343.44
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<p>Los resultados del ajuste del modelo Poisson muestran que el tratamiento es altamente significativo. Por lo que, se puede concluir que la progabida reduce el número de ataques epilépticos.</p>
-<p>Sin embargo, estos datos presenta sobredispersión. Esto se puede verificar por medio de la razón del estadístico <span class="math inline">\(\chi^2\)</span> de Pearson y los grados de libertad:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="modelo-para-conteos.html#cb198-1" aria-hidden="true" tabindex="-1"></a>X2.poisson <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modPois,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb198-2"><a href="modelo-para-conteos.html#cb198-2" aria-hidden="true" tabindex="-1"></a>X2.poisson<span class="sc">/</span>modPois<span class="sc">$</span>df.residual</span></code></pre></div>
+<p>Los resultados del ajuste del modelo Poisson muestran que el tratamiento es altamente significativo. Por lo que, se puede concluir que la progabida reduce el número de ataques epilépticos. Sin embargo, estos datos presenta sobredispersión. Esto se puede verificar por medio de la razón del estadístico <span class="math inline">\(\chi^2\)</span> de Pearson y los grados de libertad:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="modelo-para-conteos.html#cb200-1" tabindex="-1"></a>X2.poisson <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modPois,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb200-2"><a href="modelo-para-conteos.html#cb200-2" tabindex="-1"></a>X2.poisson<span class="sc">/</span>modPois<span class="sc">$</span>df.residual</span></code></pre></div>
 <pre><code>## [1] 2.525656</code></pre>
 <p>Por esta razón se puede estimar el modelo binomial negativo:
 <span class="math display">\[
 y_i \sim \mbox{binomial negativa}(\mu_i,\gamma), \mbox{ donde } \log \mu_i = \beta_0 + \mbox{treat}_i\beta_1 + \mbox{base}_i\beta_2.
 \]</span>
 El ajuste en R se puede hacer utilizando la función <code>glm.nb</code> de la librería <code>MASS</code>:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="modelo-para-conteos.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb200-2"><a href="modelo-para-conteos.html#cb200-2" aria-hidden="true" tabindex="-1"></a>modbinNeg <span class="ot">=</span> <span class="fu">glm.nb</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4)</span>
-<span id="cb200-3"><a href="modelo-para-conteos.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modbinNeg)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="modelo-para-conteos.html#cb202-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb202-2"><a href="modelo-para-conteos.html#cb202-2" tabindex="-1"></a>modbinNeg <span class="ot">=</span> <span class="fu">glm.nb</span>(seizure.rate<span class="sc">~</span>treatment<span class="sc">+</span>base,<span class="at">data=</span>epilepsy4)</span>
+<span id="cb202-3"><a href="modelo-para-conteos.html#cb202-3" tabindex="-1"></a><span class="fu">summary</span>(modbinNeg)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm.nb(formula = seizure.rate ~ treatment + base, data = epilepsy4, 
@@ -689,8 +692,8 @@ El ajuste en R se puede hacer utilizando la función <code>glm.nb</code> de la l
 <div id="inflación-de-ceros" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Inflación de ceros<a href="modelo-para-conteos.html#inflación-de-ceros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En ocaciones, los datos muestran mayor frecuencia de ceros de los que la distribución Poisson y binomial negativa permiten. Por ejemplo, en datos de cangrejos herradura, hay muchas hembras que llegan a la playa sin ningún satélite. La Figura <a href="modelo-para-conteos.html#fig:crabsData">8.2</a> muestra que una distribución bimodal para el número de satélites.</p>
-<p><strong>Distribución con inflación de ceros</strong></p>
-<p>Este tipo de datos se pueden modelar con una mezcla de distribuciones donde <span class="math inline">\(Y=0\)</span> cuando <span class="math inline">\(Z=1\)</span>, y <span class="math inline">\(Y\)</span> sigue una distribución particular cuando <span class="math inline">\(Z=0\)</span> (la cual permite la posibilidad de ceros). Por ejemplo, la distribución Poisson con inflación de ceros (ZIP) se puede representar como:
+<p><strong>Distribución con inflación de ceros</strong>
+Este tipo de datos se pueden modelar con una mezcla de distribuciones donde <span class="math inline">\(Y=0\)</span> cuando <span class="math inline">\(Z=1\)</span>, y <span class="math inline">\(Y\)</span> sigue una distribución particular cuando <span class="math inline">\(Z=0\)</span> (la cual permite la posibilidad de ceros). Por ejemplo, la distribución Poisson con inflación de ceros (ZIP) se puede representar como:
 <span class="math display">\[
 y\sim\begin{cases} 0 \qquad &amp; \text{con probabilidad}\quad \phi, \\ \mbox{Poisson}(\lambda) \quad &amp; \text{con probabilidad}\quad 1-\phi.
 \end{cases}
@@ -757,7 +760,7 @@ y_i \sim \begin{cases} 0 \qquad &amp; \text{con probabilidad } \phi_i, \\ \mbox{
 \]</span></p>
 <p>En presencia de una sobredispersión mayor, el modelo de ceros inflados puede combinarse con una distribución binomial negativa. Esto es:
 <span class="math display">\[
-y_i\sim \begin{cases}  0 &amp; \text{con probabilidad } \phi_i \\  \text{binomial negativa}(\mu_i,\gamma)&amp; \text{con probabilidad } 1-\phi_i \end{cases}
+y_i\sim \begin{cases}  0 &amp; \text{con probabilidad } \phi_i, \\  \text{binomial negativa}(\mu_i,\gamma)&amp; \text{con probabilidad } 1-\phi_i. \end{cases}
 \]</span>
 De igual forma <span class="math inline">\(\mu_i\)</span> y <span class="math inline">\(\phi_i\)</span> se pueden modelar por medio de covariables.</p>
 </div>
@@ -776,27 +779,27 @@ donde la función <span class="math inline">\(f(\cdot;\theta_i)\)</span> puede s
 \mbox{logit } \phi_i=\beta_{10} + \mbox{weight}_i\beta_{11} \quad\text{y}\quad \log\lambda_i=\beta_{20} + \mbox{weight}_i\beta_{21}.
 \]</span>
 En R, se puede utilizar la funcion <code>zeroinfl</code> de la librería <code>pscl</code></p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="modelo-para-conteos.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pscl)</span>
-<span id="cb205-2"><a href="modelo-para-conteos.html#cb205-2" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo ZIP</span></span>
-<span id="cb205-3"><a href="modelo-para-conteos.html#cb205-3" aria-hidden="true" tabindex="-1"></a>ZIP.sat <span class="ot">=</span> <span class="fu">zeroinfl</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;poisson&#39;</span>)</span>
-<span id="cb205-4"><a href="modelo-para-conteos.html#cb205-4" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo ZINB</span></span>
-<span id="cb205-5"><a href="modelo-para-conteos.html#cb205-5" aria-hidden="true" tabindex="-1"></a>ZINB.sat <span class="ot">=</span> <span class="fu">zeroinfl</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="modelo-para-conteos.html#cb207-1" tabindex="-1"></a><span class="fu">library</span>(pscl)</span>
+<span id="cb207-2"><a href="modelo-para-conteos.html#cb207-2" tabindex="-1"></a><span class="co"># modelo ZIP</span></span>
+<span id="cb207-3"><a href="modelo-para-conteos.html#cb207-3" tabindex="-1"></a>ZIP.sat <span class="ot">=</span> <span class="fu">zeroinfl</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;poisson&#39;</span>)</span>
+<span id="cb207-4"><a href="modelo-para-conteos.html#cb207-4" tabindex="-1"></a><span class="co"># modelo ZINB</span></span>
+<span id="cb207-5"><a href="modelo-para-conteos.html#cb207-5" tabindex="-1"></a>ZINB.sat <span class="ot">=</span> <span class="fu">zeroinfl</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span></code></pre></div>
 <p>Mientras que los modelos Hurdle se pueden estimar con la función <code>hurdle</code>:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="modelo-para-conteos.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo HP</span></span>
-<span id="cb206-2"><a href="modelo-para-conteos.html#cb206-2" aria-hidden="true" tabindex="-1"></a>HP.sat <span class="ot">=</span> <span class="fu">hurdle</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;poisson&#39;</span>)</span>
-<span id="cb206-3"><a href="modelo-para-conteos.html#cb206-3" aria-hidden="true" tabindex="-1"></a><span class="co"># modelo HNB</span></span>
-<span id="cb206-4"><a href="modelo-para-conteos.html#cb206-4" aria-hidden="true" tabindex="-1"></a>HNB.sat <span class="ot">=</span> <span class="fu">hurdle</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="modelo-para-conteos.html#cb208-1" tabindex="-1"></a><span class="co"># modelo HP</span></span>
+<span id="cb208-2"><a href="modelo-para-conteos.html#cb208-2" tabindex="-1"></a>HP.sat <span class="ot">=</span> <span class="fu">hurdle</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;poisson&#39;</span>)</span>
+<span id="cb208-3"><a href="modelo-para-conteos.html#cb208-3" tabindex="-1"></a><span class="co"># modelo HNB</span></span>
+<span id="cb208-4"><a href="modelo-para-conteos.html#cb208-4" tabindex="-1"></a>HNB.sat <span class="ot">=</span> <span class="fu">hurdle</span>(satell<span class="sc">~</span>weight <span class="sc">|</span> weight,<span class="at">data=</span>crabs,<span class="at">dist=</span><span class="st">&#39;negbin&#39;</span>)</span></code></pre></div>
 <p>Los ajustes los podemos comparar con criterios de información:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="modelo-para-conteos.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(ZIP.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="modelo-para-conteos.html#cb209-1" tabindex="-1"></a><span class="fu">BIC</span>(ZIP.sat)</span></code></pre></div>
 <pre><code>## [1] 747.8175</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="modelo-para-conteos.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(ZINB.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="modelo-para-conteos.html#cb211-1" tabindex="-1"></a><span class="fu">BIC</span>(ZINB.sat)</span></code></pre></div>
 <pre><code>## [1] 731.2937</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="modelo-para-conteos.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(HP.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="modelo-para-conteos.html#cb213-1" tabindex="-1"></a><span class="fu">BIC</span>(HP.sat)</span></code></pre></div>
 <pre><code>## [1] 747.7903</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="modelo-para-conteos.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BIC</span>(HNB.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="modelo-para-conteos.html#cb215-1" tabindex="-1"></a><span class="fu">BIC</span>(HNB.sat)</span></code></pre></div>
 <pre><code>## [1] 731.0369</code></pre>
 <p>Aquí vemos que los modelos ZINB y HNB proporcionan mejores ajustes. Las estimaciones del modelo ZINB son:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="modelo-para-conteos.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ZINB.sat)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="modelo-para-conteos.html#cb217-1" tabindex="-1"></a><span class="fu">summary</span>(ZINB.sat)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## zeroinfl(formula = satell ~ weight | weight, data = crabs, dist = &quot;negbin&quot;)

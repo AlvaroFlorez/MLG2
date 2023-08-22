@@ -69,6 +69,8 @@ eq:Hdis
 eq:Hvar
 fig:ratpup
 fig:fev
+eq:loglikLMM
+fig:fevEstimacionFig
 variables-indicadoras-o-dummies
 ejemplos
 datos-de-atletas-australianos
@@ -135,6 +137,7 @@ ejemplos-4
 crecimiento-de-pavos
 puromicina
 modelos-no-lineales-1
+modelos-no-lineales-linealizables
 estimación-de-los-parámetros
 inferencia-sobre-los-parámetros
 puromicina-estimación
@@ -216,3 +219,5 @@ modelos-con-intercepto-aleatorios
 modelo-con-pendiente-aleatoria
 modelo-lineal-mixto-1
 estimación-de-los-parámetros-1
+estimación-del-modelo-con-intercepto-aleatorio
+estimación-del-modelo-con-pendiente-aleatoria

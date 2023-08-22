@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-06-09" />
+<meta name="date" content="2023-08-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,8 +242,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.1</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Inferencia sobre los parámetros</a></li>
+<li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.3</b> Inferencia sobre los parámetros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
 <ul>
@@ -357,7 +358,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.4.1</b> Modelo con pendiente aleatoria</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1"><i class="fa fa-check"></i><b>9.5</b> Modelo lineal mixto</a></li>
-<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-intercepto-aleatorio"><i class="fa fa-check"></i><b>9.6.1</b> Estimación del modelo con intercepto aleatorio</a></li>
+<li class="chapter" data-level="9.6.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.6.2</b> Estimación del modelo con pendiente aleatoria</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -385,12 +390,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> Ejemplos<a href="variables-indicadoras-o-dummies.html#ejemplos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="datos-de-atletas-australianos" class="section level3 hasAnchor" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Datos de atletas australianos<a href="variables-indicadoras-o-dummies.html#datos-de-atletas-australianos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Los datos <code>ais</code> de la libreria <code>alr4</code> tiene información sobre 202 atletas de élite de Australia (102 hombres y 100 mujeres). Se quiere evaluar la relación entre la concentración de hemoglobina (<code>Hg</code>, g/dl) y el índice de masa corporal (<code>BMI</code>, kg/m<span class="math inline">\(^2\)</span>).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="variables-indicadoras-o-dummies.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ais)</span>
-<span id="cb1-2"><a href="variables-indicadoras-o-dummies.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb1-3"><a href="variables-indicadoras-o-dummies.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(ais<span class="sc">$</span>Hg[ais<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">0</span>]),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">20</span>),<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">main =</span> <span class="st">&#39;&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Densidad&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>)</span>
-<span id="cb1-4"><a href="variables-indicadoras-o-dummies.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(ais<span class="sc">$</span>Hg[ais<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">1</span>]),<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb1-5"><a href="variables-indicadoras-o-dummies.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span></code></pre></div>
+<p>Los datos <code>ais</code>, de la libreria <code>alr4</code>, tienen información sobre 202 atletas australianos de élite (102 hombres y 100 mujeres). Se quiere evaluar la relación entre la concentración de hemoglobina (<code>Hg</code>, g/dl) y el índice de masa corporal (<code>BMI</code>, kg/m<span class="math inline">\(^2\)</span>).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="variables-indicadoras-o-dummies.html#cb1-1" tabindex="-1"></a><span class="fu">data</span>(ais)</span>
+<span id="cb1-2"><a href="variables-indicadoras-o-dummies.html#cb1-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb1-3"><a href="variables-indicadoras-o-dummies.html#cb1-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(ais<span class="sc">$</span>Hg[ais<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">0</span>]),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">20</span>),<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">main =</span> <span class="st">&#39;&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;Densidad&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>)</span>
+<span id="cb1-4"><a href="variables-indicadoras-o-dummies.html#cb1-4" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(ais<span class="sc">$</span>Hg[ais<span class="sc">$</span>Sex<span class="sc">==</span><span class="dv">1</span>]),<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb1-5"><a href="variables-indicadoras-o-dummies.html#cb1-5" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:AtletesFigure"></span>
 <img src="MLG2_files/figure-html/AtletesFigure-1.png" alt="Datos de atletas. Densidad de la hemoglobina para hombres y mujeres (derecha) y diagrama de dispersión entre la homoglobina y el índice de masa corporal (izquierda). Negro para hombres y rojo para mujeres." width="576" />
 <p class="caption">
@@ -410,8 +415,8 @@ Figure 1.1: Datos de atletas. Densidad de la hemoglobina para hombres y mujeres 
 <li><strong>group</strong>: si el país pertenece a la OCDE (Organización para la Cooperación y el Desarrollo Económicos), África o otros.</li>
 </ul>
 <p>Por ahora consideremos la relación entre la fertilidad y el PNB per cápita, teniendo en cuenta el grupo al que pertenece cada país.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="variables-indicadoras-o-dummies.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(UN11)</span>
-<span id="cb2-2"><a href="variables-indicadoras-o-dummies.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp),<span class="at">data=</span>UN11,<span class="at">col=</span>UN11<span class="sc">$</span>group,<span class="at">xlab=</span><span class="st">&#39;log PNB per cápita (dólares)&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;log # esperado de nacidos vivos por mujer&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="variables-indicadoras-o-dummies.html#cb2-1" tabindex="-1"></a><span class="fu">data</span>(UN11)</span>
+<span id="cb2-2"><a href="variables-indicadoras-o-dummies.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp),<span class="at">data=</span>UN11,<span class="at">col=</span>UN11<span class="sc">$</span>group,<span class="at">xlab=</span><span class="st">&#39;log PNB per cápita (dólares)&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;log # esperado de nacidos vivos por mujer&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:UN11Figure"></span>
 <img src="MLG2_files/figure-html/UN11Figure-1.png" alt="Datos de la ONU. Relación entre la fertilidad y el PNB per cápita para los países de OCDE (puntos negros), países africanos (puntos verdes) y los otros países (rojos)" width="576" />
 <p class="caption">
@@ -426,12 +431,12 @@ Figure 1.2: Datos de la ONU. Relación entre la fertilidad y el PNB per cápita 
 <p>Las covariables categóricas entran en un modelo como variables indicadoras (o también llamadas <em>dummies</em>). En el caso que la covariable <span class="math inline">\((X)\)</span> tenga dos categorías, entonces se crea una variable indicadora. Por ejemplo, para los datos de los atletas, el sexo requiere una indicadora:
 <span class="math display">\[
 u_{i} = \begin{cases}
-1 &amp; \mbox{ si la observación i es hombre}, \\
-0 &amp; \mbox{ si la observación i es mujer}. \\
+1 &amp; \mbox{ si la observación i es de una mujer}, \\
+0 &amp; \mbox{ si la observación i es de un un hombre}. \\
 \end{cases}
 \]</span>
-Aquí mujer es llamada la categoría de referencia.</p>
-<p>En caso que la covariable categórica tenga <span class="math inline">\(k\)</span> categorías, se tienen que crear <span class="math inline">\(k-1\)</span> variables indicadoras. Por ejemplo, para la variable grupo de país en los datos de la ONU se requieren 2 variables indicadoras <span class="math inline">\((u_{j})\)</span> como lo muestra la Tabla <a href="variables-indicadoras-o-dummies.html#tab:dosIndica">1.1</a>.</p>
+Aquí la categoría hombre es llamada la categoría de referencia.</p>
+<p>En caso que la covariable categórica tenga <span class="math inline">\(K\)</span> categorías, se tienen que crear <span class="math inline">\(K-1\)</span> variables indicadoras. Por ejemplo, para la variable grupo de país en los datos de la ONU se requieren 2 variables indicadoras <span class="math inline">\((u_{1} y u_{2})\)</span> como lo muestra la Tabla <a href="variables-indicadoras-o-dummies.html#tab:dosIndica">1.1</a>. En este caso, la categoría de referencia es OECD.</p>
 <table>
 <caption><span id="tab:dosIndica">Table 1.1: </span>Variables indicadoras para la variable <code>group</code> de los datos de la ONU</caption>
 <thead>
@@ -466,8 +471,7 @@ Aquí mujer es llamada la categoría de referencia.</p>
 y_{i}  = \beta_{0} + x_{i}\beta_{1} + z_{i}\beta_{2} + x_{i}z_{i}\beta_{3} + \varepsilon_{i},
 \tag{1.1}
 \end{equation}\]</span>
-donde <span class="math inline">\(\varepsilon_{i} \sim N(0,\sigma^{2})\)</span>.</p>
-<p>Tenemos que, si <span class="math inline">\(z_i=0\)</span>:
+donde <span class="math inline">\(\varepsilon_{i} \sim N(0,\sigma^{2})\)</span>. Tenemos que, si <span class="math inline">\(z_i=0\)</span>:
 <span class="math display">\[
 E(Y | X=x_i, Z=0) = \beta_{0} + x_{i}\beta_{1}.
 \]</span>
@@ -475,13 +479,14 @@ Mientras que, si <span class="math inline">\(z_i=1\)</span>:
 <span class="math display">\[
 E(Y | X=x_i, Z=1) = (\beta_{0}+\beta_{2}) + x_{i}(\beta_{1}+\beta_{3}).
 \]</span>
-Por lo que el modelo <a href="variables-indicadoras-o-dummies.html#eq:modInter">(1.1)</a> genera dos rectas, una para cada categoría. <span class="math inline">\(\beta_2\)</span> indica la diferencia de intercepto entre las dos categorías y <span class="math inline">\(\beta_3\)</span> la diferencia entre pendientes. En la Figura <a href="variables-indicadoras-o-dummies.html#fig:Rectas1">1.3</a>(izquierda) se observan las dos rectas que se obtienen a partir de este modelo. Si se elimina la interacción entre variables, se obtienen dos rectas paralelas (Figura <a href="variables-indicadoras-o-dummies.html#fig:Rectas1">1.3</a>, derecha).</p>
+Por lo que el modelo <a href="variables-indicadoras-o-dummies.html#eq:modInter">(1.1)</a> genera dos rectas, una para cada categoría. <span class="math inline">\(\beta_2\)</span> indica la diferencia de intercepto entre las dos categorías y <span class="math inline">\(\beta_3\)</span> la diferencia entre pendientes. En la Figura <a href="variables-indicadoras-o-dummies.html#fig:Rectas1">1.3</a>(izquierda) se observan las dos rectas que se obtienen a partir de este modelo. Si se elimina la interacción entre variables (es decir, <span class="math inline">\(\beta_3=0\)</span>), se obtienen dos rectas paralelas (Figura <a href="variables-indicadoras-o-dummies.html#fig:Rectas1">1.3</a>, derecha).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:Rectas1"></span>
 <img src="MLG2_files/figure-html/Rectas1-1.png" alt="Efecto de la interacción entre variable continua e indicadora. Modelo general (izquierda) y modelo de líneas paralelas (derecha)." width="864" />
 <p class="caption">
 Figure 1.3: Efecto de la interacción entre variable continua e indicadora. Modelo general (izquierda) y modelo de líneas paralelas (derecha).
 </p>
 </div>
+<p>Hay que tener en cuenta que la asignación de la categoría de referencia no afecta en nada al ajuste del modelo. Sin embargo, la interpretación de los coeficientes cambia.</p>
 </div>
 <div id="modelo-para-los-datos-de-atletas-australianos" class="section level3 hasAnchor" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Modelo para los datos de atletas australianos<a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -499,10 +504,10 @@ donde:
 0 &amp; \mbox{ de otra forma}. \\
 \end{cases}
 \]</span>
-Note que en la base de datos <code>ais</code>, la variable <code>sex</code> ya está codificada de esta forma. Si la variable no está codificada de forma numérica, <code>R</code> eligirá la categoría de referencia de forma automática.</p>
+Note que en la base de datos <code>ais</code>, la variable <code>sex</code> ya está codificada de esta forma. Si la variable no está codificada de forma numérica, <code>R</code> eligirá la categoría de referencia de forma automática. Sin embargo, esta puede modificarse con la función <code>relevel()</code>.</p>
 <p>Para ajustar el modelo utilizamos la función <code>lm</code> (aquí estamos incluyendo los efectos de <code>BMI</code> y <code>Sex</code>, así como la interacción):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="variables-indicadoras-o-dummies.html#cb3-1" aria-hidden="true" tabindex="-1"></a>mod.ais <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>Sex<span class="sc">*</span>BMI, <span class="at">data=</span>ais)</span>
-<span id="cb3-2"><a href="variables-indicadoras-o-dummies.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.ais)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="variables-indicadoras-o-dummies.html#cb3-1" tabindex="-1"></a>mod.ais <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>Sex<span class="sc">*</span>BMI, <span class="at">data=</span>ais)</span>
+<span id="cb3-2"><a href="variables-indicadoras-o-dummies.html#cb3-2" tabindex="-1"></a><span class="fu">summary</span>(mod.ais)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Hg ~ Sex * BMI, data = ais)
@@ -525,9 +530,9 @@ Note que en la base de datos <code>ais</code>, la variable <code>sex</code> ya e
 ## F-statistic: 84.44 on 3 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Tenemos que <span class="math inline">\(\widehat{\beta}_{2} =0.1\)</span>, lo que nos indica que el valor esperado del nivel de hemoglobina aumenta en <span class="math inline">\(0.1\)</span> g/dl por cada aumento unitario en el índice de masa corporal de los hombres. Para las mujeres, el efecto del índice de masa corporal sobre el nivel de hemoglobina también es positivo, pero con una pendiente menor <span class="math inline">\(\widehat{\beta}_{2} +\widehat{\beta}_{3} = 0.1 - 0.05 = 0.05\)</span>.</p>
 <p>La representación gráfica del modelo se puede observar en la Figura <a href="variables-indicadoras-o-dummies.html#fig:AtletesAjuste">1.4</a>. Aquí vemos que la pendiente para las mujeres es un poco menor que para los hombres.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="variables-indicadoras-o-dummies.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span>
-<span id="cb5-2"><a href="variables-indicadoras-o-dummies.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb5-3"><a href="variables-indicadoras-o-dummies.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">4</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="variables-indicadoras-o-dummies.html#cb5-1" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span>
+<span id="cb5-2"><a href="variables-indicadoras-o-dummies.html#cb5-2" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb5-3"><a href="variables-indicadoras-o-dummies.html#cb5-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">4</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:AtletesAjuste"></span>
 <img src="MLG2_files/figure-html/AtletesAjuste-1.png" alt="Datos de atletas. Ajuste del modelo para la homoglobina en función  del índice de masa corporal y sexo. Línea negra para hombres y línea roja para mujeres." width="576" />
 <p class="caption">
@@ -539,9 +544,9 @@ Figure 1.4: Datos de atletas. Ajuste del modelo para la homoglobina en función 
 <span class="math display">\[
 H_{0}: \beta_{1} = \beta_3 = 0.
 \]</span>
-En <code>R</code>, esto lo podemos realizar usando la función <code>anova()</code> (prueba F) comparando el modelo completo contra el modelo reducido sin la variable <code>Sex</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="variables-indicadoras-o-dummies.html#cb6-1" aria-hidden="true" tabindex="-1"></a>mod.ais.red <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>BMI, <span class="at">data=</span>ais)</span>
-<span id="cb6-2"><a href="variables-indicadoras-o-dummies.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod.ais.red,mod.ais)</span></code></pre></div>
+En <code>R</code>, esto lo podemos realizar usando la función <code>anova()</code> (la cuál realiza una prueba F) comparando el modelo completo contra el modelo reducido sin la variable <code>Sex</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="variables-indicadoras-o-dummies.html#cb6-1" tabindex="-1"></a>mod.ais.red <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>BMI, <span class="at">data=</span>ais)</span>
+<span id="cb6-2"><a href="variables-indicadoras-o-dummies.html#cb6-2" tabindex="-1"></a><span class="fu">anova</span>(mod.ais.red,mod.ais)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: Hg ~ BMI
@@ -551,14 +556,13 @@ En <code>R</code>, esto lo podemos realizar usando la función <code>anova()</co
 ## 2    198 163.69  2    154.82 93.637 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>Vemos que se rechaza <span class="math inline">\(H_0\)</span>, es decir que hay diferencias en los niveles de homoglobina entre hombres y mujeres. <span class="math inline">\(\beta_1\)</span> o <span class="math inline">\(\beta_3\)</span> es diferente de cero, pero no ambos (esto por los resultados del modelo completo).</p>
-<p>Eliminando la interacción obtenemos un modelo con lineas paralelas:
+<p>Vemos que se rechaza <span class="math inline">\(H_0\)</span>, es decir que hay diferencias en los niveles de homoglobina entre hombres y mujeres. <span class="math inline">\(\beta_1\)</span> o <span class="math inline">\(\beta_3\)</span> es diferente de cero, pero no ambos (esto por los resultados del modelo completo). Eliminando la interacción obtenemos un modelo con lineas paralelas:
 <span class="math display">\[
 \mbox{Hg}_{i} = \beta_{0} + \mbox{Sex}_{i}\beta_{1} + \mbox{BMI}_{i}\beta_{2} +  \varepsilon_{i},
 \]</span>
 donde <span class="math inline">\(\varepsilon_{i} \sim N(0, \sigma^{2})\)</span>, y se calcula de la siguiente forma:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="variables-indicadoras-o-dummies.html#cb8-1" aria-hidden="true" tabindex="-1"></a>mod.ais.lp <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>Sex<span class="sc">+</span>BMI, <span class="at">data=</span>ais)</span>
-<span id="cb8-2"><a href="variables-indicadoras-o-dummies.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.ais.lp)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="variables-indicadoras-o-dummies.html#cb8-1" tabindex="-1"></a>mod.ais.lp <span class="ot">=</span> <span class="fu">lm</span>(Hg<span class="sc">~</span>Sex<span class="sc">+</span>BMI, <span class="at">data=</span>ais)</span>
+<span id="cb8-2"><a href="variables-indicadoras-o-dummies.html#cb8-2" tabindex="-1"></a><span class="fu">summary</span>(mod.ais.lp)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Hg ~ Sex + BMI, data = ais)
@@ -579,11 +583,11 @@ donde <span class="math inline">\(\varepsilon_{i} \sim N(0, \sigma^{2})\)</span>
 ## Multiple R-squared:  0.5586, Adjusted R-squared:  0.5542 
 ## F-statistic: 125.9 on 2 and 199 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>La estimación del efecto asociado al sexo indica la diferencia media del nivel de hemoglobina entre hombres y mujeres. En la Figura <a href="variables-indicadoras-o-dummies.html#fig:AtletesAjuste2">1.5</a> vemos que el modelo de líneas paralelas tiene casi el mismo ajuste que el modelo general.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="variables-indicadoras-o-dummies.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span>
-<span id="cb10-2"><a href="variables-indicadoras-o-dummies.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb10-3"><a href="variables-indicadoras-o-dummies.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">4</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb10-4"><a href="variables-indicadoras-o-dummies.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb10-5"><a href="variables-indicadoras-o-dummies.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="variables-indicadoras-o-dummies.html#cb10-1" tabindex="-1"></a><span class="fu">plot</span>(Hg<span class="sc">~</span>BMI,<span class="at">data=</span>ais,<span class="at">col=</span>ais<span class="sc">$</span>Sex<span class="sc">+</span><span class="dv">1</span>,<span class="at">ylab=</span><span class="st">&#39;Hg (g/dl)&#39;</span>,<span class="at">xlab=</span><span class="st">&#39;BMI&#39;</span>)</span>
+<span id="cb10-2"><a href="variables-indicadoras-o-dummies.html#cb10-2" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="variables-indicadoras-o-dummies.html#cb10-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">+</span>mod.ais<span class="sc">$</span>coefficients[<span class="dv">4</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb10-4"><a href="variables-indicadoras-o-dummies.html#cb10-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb10-5"><a href="variables-indicadoras-o-dummies.html#cb10-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">2</span>],<span class="at">b=</span>mod.ais.lp<span class="sc">$</span>coefficients[<span class="dv">3</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:AtletesAjuste2"></span>
 <img src="MLG2_files/figure-html/AtletesAjuste2-1.png" alt="Datos de atletas. Ajuste del modelo general (línea solida) y el modelo líneas paralelas (línea discontinua) para la homoglobina en función  del índice de masa corporal y sexo. Líneas negra para hombres y líneas roja para mujeres." width="576" />
 <p class="caption">
@@ -612,10 +616,9 @@ donde:
 0 &amp; \mbox{ de otra forma}. \\
 \end{cases}
 \]</span>
-Por lo tanto, OECD es la categoría de referencia.</p>
-<p>El modelo ajustado es:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="variables-indicadoras-o-dummies.html#cb11-1" aria-hidden="true" tabindex="-1"></a>mod.UN11 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">*</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11)</span>
-<span id="cb11-2"><a href="variables-indicadoras-o-dummies.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.UN11)</span></code></pre></div>
+Por lo tanto, OECD es la categoría de referencia. El modelo ajustado es:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="variables-indicadoras-o-dummies.html#cb11-1" tabindex="-1"></a>mod.UN11 <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">*</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11)</span>
+<span id="cb11-2"><a href="variables-indicadoras-o-dummies.html#cb11-2" tabindex="-1"></a><span class="fu">summary</span>(mod.UN11)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(fertility) ~ group * log(ppgdp), data = UN11)
@@ -651,11 +654,11 @@ Finalmente, para los otros países:
 E(\log\mbox{fertility}) = 2.097  -0.152\log \mbox{ppgdp}.
 \]</span>
 Aquí vemos que para los países que no son de la OCDE, el PNB tiene un efecto negativo significativo sobre la tasa de fertilidad. Mientras que para los países de la OCDE, este efecto es positivo, aunque no es significativo. Esto mismo lo podemos ver gráficamente en la Figura <a href="variables-indicadoras-o-dummies.html#fig:MCOUN11Figure">1.6</a>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="variables-indicadoras-o-dummies.html#cb13-1" aria-hidden="true" tabindex="-1"></a>Beta.UN11 <span class="ot">=</span> mod.UN11<span class="sc">$</span>coefficients</span>
-<span id="cb13-2"><a href="variables-indicadoras-o-dummies.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp),<span class="at">data=</span>UN11,<span class="at">col=</span>UN11<span class="sc">$</span>group,<span class="at">xlab=</span><span class="st">&#39;log PNB per cápita (dólares)&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;log # esperado de nacidos vivos por mujer&#39;</span>)</span>
-<span id="cb13-3"><a href="variables-indicadoras-o-dummies.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>Beta.UN11[<span class="dv">1</span>],<span class="at">b=</span>Beta.UN11[<span class="dv">4</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb13-4"><a href="variables-indicadoras-o-dummies.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>Beta.UN11[<span class="dv">1</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">2</span>],<span class="at">b=</span>Beta.UN11[<span class="dv">4</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">5</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb13-5"><a href="variables-indicadoras-o-dummies.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>Beta.UN11[<span class="dv">1</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">3</span>],<span class="at">b=</span>Beta.UN11[<span class="dv">4</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">6</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="variables-indicadoras-o-dummies.html#cb13-1" tabindex="-1"></a>Beta.UN11 <span class="ot">=</span> mod.UN11<span class="sc">$</span>coefficients</span>
+<span id="cb13-2"><a href="variables-indicadoras-o-dummies.html#cb13-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span><span class="fu">log</span>(ppgdp),<span class="at">data=</span>UN11,<span class="at">col=</span>UN11<span class="sc">$</span>group,<span class="at">xlab=</span><span class="st">&#39;log PNB per cápita (dólares)&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;log # esperado de nacidos vivos por mujer&#39;</span>)</span>
+<span id="cb13-3"><a href="variables-indicadoras-o-dummies.html#cb13-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>Beta.UN11[<span class="dv">1</span>],<span class="at">b=</span>Beta.UN11[<span class="dv">4</span>],<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb13-4"><a href="variables-indicadoras-o-dummies.html#cb13-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>Beta.UN11[<span class="dv">1</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">2</span>],<span class="at">b=</span>Beta.UN11[<span class="dv">4</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">5</span>],<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb13-5"><a href="variables-indicadoras-o-dummies.html#cb13-5" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>Beta.UN11[<span class="dv">1</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">3</span>],<span class="at">b=</span>Beta.UN11[<span class="dv">4</span>]<span class="sc">+</span>Beta.UN11[<span class="dv">6</span>],<span class="at">col=</span><span class="dv">3</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MCOUN11Figure"></span>
 <img src="MLG2_files/figure-html/MCOUN11Figure-1.png" alt="Datos de la ONU. Ajuste del modelo para la fertilidad en función  del PNB y tipo de país. Países de OCDE (línea negra), países africanos (línea verde) y los otros países (línea roja)" width="576" />
 <p class="caption">
@@ -663,18 +666,18 @@ Figure 1.6: Datos de la ONU. Ajuste del modelo para la fertilidad en función de
 </p>
 </div>
 <p>Usando la función <code>relevel()</code> se puede cambiar la categoría de referencia. Por ejemplo, si queremos que la categoría de referencia sea <code>other</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="variables-indicadoras-o-dummies.html#cb14-1" aria-hidden="true" tabindex="-1"></a>UN11.alt <span class="ot">=</span> UN11</span>
-<span id="cb14-2"><a href="variables-indicadoras-o-dummies.html#cb14-2" aria-hidden="true" tabindex="-1"></a>UN11.alt<span class="sc">$</span>group <span class="ot">=</span>  <span class="fu">relevel</span>(UN11.alt<span class="sc">$</span>group,<span class="at">ref =</span><span class="st">&#39;other&#39;</span>)</span>
-<span id="cb14-3"><a href="variables-indicadoras-o-dummies.html#cb14-3" aria-hidden="true" tabindex="-1"></a>mod.UN11.alt <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">*</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11.alt)</span>
-<span id="cb14-4"><a href="variables-indicadoras-o-dummies.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.UN11.alt)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="variables-indicadoras-o-dummies.html#cb14-1" tabindex="-1"></a>UN11.alt <span class="ot">=</span> UN11</span>
+<span id="cb14-2"><a href="variables-indicadoras-o-dummies.html#cb14-2" tabindex="-1"></a>UN11.alt<span class="sc">$</span>group <span class="ot">=</span>  <span class="fu">relevel</span>(UN11.alt<span class="sc">$</span>group,<span class="at">ref =</span><span class="st">&#39;other&#39;</span>)</span>
+<span id="cb14-3"><a href="variables-indicadoras-o-dummies.html#cb14-3" tabindex="-1"></a>mod.UN11.alt <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">*</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11.alt)</span>
+<span id="cb14-4"><a href="variables-indicadoras-o-dummies.html#cb14-4" tabindex="-1"></a><span class="fu">summary</span>(mod.UN11.alt)</span></code></pre></div>
 <p>Note que cambiar la categoría de referencia no altera en nada los resultados del ajuste. Solo cambian la interpretación de los coeficientes.</p>
 <p>Se podría hacer la siguiente pregunta, ¿el efecto del PNB sobre la fertilidad es el mismo para cada tipo de país?. Para resolver esta pregunta, se plantea la siguiente hipótesis:
 <span class="math display">\[
 H_0: \beta_4 = \beta_5 = 0.
 \]</span>
 El estadístico de prueba lo podemos obtener usando la función <code>anova()</code> (prueba F) en R:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="variables-indicadoras-o-dummies.html#cb15-1" aria-hidden="true" tabindex="-1"></a>mod.UN11.red <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">+</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11)</span>
-<span id="cb15-2"><a href="variables-indicadoras-o-dummies.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod.UN11.red,mod.UN11)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="variables-indicadoras-o-dummies.html#cb15-1" tabindex="-1"></a>mod.UN11.red <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(fertility)<span class="sc">~</span>group<span class="sc">+</span><span class="fu">log</span>(ppgdp), <span class="at">data=</span>UN11)</span>
+<span id="cb15-2"><a href="variables-indicadoras-o-dummies.html#cb15-2" tabindex="-1"></a><span class="fu">anova</span>(mod.UN11.red,mod.UN11)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: log(fertility) ~ group + log(ppgdp)
@@ -698,8 +701,8 @@ H_{0}: \boldsymbol L\boldsymbol \beta= \begin{pmatrix}
 \end{pmatrix} = 0
 \]</span>
 Esto, en R es:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="variables-indicadoras-o-dummies.html#cb17-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="dv">1</span>,<span class="dv">6</span>,<span class="at">byrow =</span> T)</span>
-<span id="cb17-2"><a href="variables-indicadoras-o-dummies.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">linearHypothesis</span>(mod.UN11, <span class="at">hypothesis.matrix=</span>L)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="variables-indicadoras-o-dummies.html#cb17-1" tabindex="-1"></a>L <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>),<span class="dv">1</span>,<span class="dv">6</span>,<span class="at">byrow =</span> T)</span>
+<span id="cb17-2"><a href="variables-indicadoras-o-dummies.html#cb17-2" tabindex="-1"></a><span class="fu">linearHypothesis</span>(mod.UN11, <span class="at">hypothesis.matrix=</span>L)</span></code></pre></div>
 <pre><code>## Linear hypothesis test
 ## 
 ## Hypothesis:
@@ -712,12 +715,7 @@ Esto, en R es:</p>
 ## 1    194 14.579                           
 ## 2    193 14.484  1  0.094808 1.2633 0.2624</code></pre>
 <p>Dado que no se rechaza <span class="math inline">\(H_0\)</span>, el efecto del PNB sobre la fertilidad es el mismo para los países Africanos y los de la categoría de otros.</p>
-<p>En resumen, a partir del análisis de regresión:</p>
-<ul>
-<li><p>El efecto del PNB per cápita sobre la fertilidad depende del tipo de país.</p></li>
-<li><p>Para los países miembros de la OECD, no hay un efecto significativo.</p></li>
-<li><p>Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).</p></li>
-</ul>
+<p>En resumen, a partir del análisis de regresión se tiene que: el efecto del PNB per cápita sobre la fertilidad depende del tipo de país. Para los países miembros de la OECD, no hay un efecto significativo. Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).</p>
 
 </div>
 </div>

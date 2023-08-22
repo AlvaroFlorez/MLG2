@@ -401,7 +401,7 @@ $$
 y_i \sim \mbox{binomial}(n_i,\pi_i), \mbox{ donde } \pi_{i}=\frac{\exp(\beta_0+\beta_1\log\ \text{dosis}_i)}{1+\exp(\beta_0+\beta_0\log\ \text{dosis}_i)}.
 $$
 La estimación de los parámetros del GLM por MLE se puede hacer utilizando la función ``glm()``. En este función debemos determinar la distribución de probabilidad asociada a los datos y la función de enlace con el argumento ``family``. Para el modelo logístico, usamos ``family=binomial`` (por defecto la función de enlace es logit):
-```{r escarabajosEstimacion}
+```{r escarabajosEst}
 modBin = glm(cbind(dead,n-dead)~logdose,family=binomial)
 summary(modBin)
 ```
