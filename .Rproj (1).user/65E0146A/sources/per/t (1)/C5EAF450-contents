@@ -1,0 +1,81 @@
+### análisis de datos de pesos de las crías
+library(WWGbook)
+library(nlme)
+data(ratpup)
+
+## ajuste del modelo con intercepto aleatorio
+mod.ratpup = lme(weight~sex+treatment, random=~1|litter,data=ratpup)
+summary(mod.ratpup)
+
+# varianza y covarianza marginal de los pesos de las crías que pertenecen a la misma madre
+Vest = getVarCov(mod.ratpup,type='marginal',individuals=6) # para la camada 6
+cov2cor(as.matrix(Vest$'6'))
+
+## prueba de razón de verosimilitud (efecto de los tratamientos)
+mod.ratpup = lme(weight~sex+treatment, random=~1|litter,data=ratpup,
+                 method='ML')
+
+mod.ratpup0 = lme(weight~sex, random=~1|litter,data=ratpup,
+                 method='ML')
+
+anova(mod.ratpup0,mod.ratpup) # no hay efecto del tratamiento
+
+# estimación de los efectos aleatorios
+re.ratpup = ranef(mod.ratpup)
+plot(re.ratpup)
+
+### estimación de la media marginal
+predict(mod.ratpup,level=0)
+### estimación de la media condicional (teniendo en cuenta el efecto de la camada)
+predict(mod.ratpup,level=1)
+
+###############################
+### análisis de datos de la capacidad pulmonar
+library(ggplot2)
+
+### lectura de datos FEV
+fev = read.table('fev.txt',header = T)
+fev$drug = as.factor(fev$drug)
+levels(fev$drug) = c('A','B','Placebo')
+
+p <- ggplot(data = fev2, aes(x = hour, y = fev, group = patient))
+p + geom_line() + facet_grid(. ~ drug) + ylab('FEV (litros)') + xlab('tiempo (horas)')
+
+# ajuste del modelo lineal mixto (variable respuesta diferencia del fev en el tiempo t y el fev antes de los tratamientos)
+fev$fevdiff = fev$fev - fev$base
+fev$drug=relevel(fev$drug,'Placebo')
+lmm.fev = lme(fevdiff~hour*drug, random=~hour|patient,data=fev)
+
+summary(lmm.fev)
+
+Vest = getVarCov(lmm.fev,type='marginal')
+cov2cor(as.matrix(Vest$'1'))
+
+## pruebas de hipótesis (pendientes de los tratamientos)
+lmm.ML.fev = lme(fevdiff~hour*drug, random=~hour|patient,data=fev,
+                 method='ML')
+lmm.ML.fev0 = lme(fevdiff~hour+drug,random=~hour|patient,data=fev,
+                method='ML')
+# efecto tratamiento
+anova.lme(lmm.ML.fev,lmm.ML.fev0) # si hay un efecto de los tratamientos
+
+# comparación entre tratamientos
+library(aod)
+L = matrix(c(0,0,0,0,1,-1),nrow=1,byrow = T)
+wald.test(vcov(lmm.fev),lmm.fev$coefficients$fixed,L=L) ## las pendientes son iguales
+
+re.fev = ranef(lmm.fev)
+plot(re.fev)
+
+plot(re.fev[,1],re.fev[,2],col=rep(c(2,3,1),each=24),xlab='intercepto aleatorio',
+     ylab='pendiente aleatoria')
+
+### estimación de la media marginal
+mediaGlobal = predict(lmm.fev,level=0)
+### estimación de la media condicional (teniendo en cuenta el efecto de la camada)
+mediaMarginal = predict(lmm.fev,level=1)
+
+
+plot(fev$hour,fev$fevdiff)
+lines(1:8,mediaGlobal[fev$patient==37],col=2,lwd=2) # media de los pacientes que recibieron la droga B
+lines(1:8,mediaMarginal[fev$patient==37],col=3,lwd=2) # estimación de la trayectoria del paciente 37 (es decir, condicionado a los efectos aleatorios)

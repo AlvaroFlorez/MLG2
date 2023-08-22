@@ -1,0 +1,13 @@
+"0","fev$fevdiff = fev$fev - fev$base"
+"0","fev$drug=relevel(fev$drug,'Placebo')"
+"0","lmm.fev = lme(fevdiff~hour*drug, random=~hour|patient,data=fev)"
+"0","summary(lmm.fev)"
+"1","Linear mixed-effects model fit by "
+"1","REML
+"
+"1","  Data:"
+"1"," "
+"1","fev"
+"1"," "
+"1","
+"

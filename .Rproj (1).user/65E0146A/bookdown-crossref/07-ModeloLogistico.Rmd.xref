@@ -16,7 +16,7 @@ fig:ROClbwdata Datos de bajo peso al nacer. Curva ROC para el modelo logístico 
 h2:sobredispersión Sobredispersión
 h3:evalaución-de-sobredispersión Evalaución de sobredispersión
 h2:distribución-beta-binomial Distribución beta-binomial
-fig:betabinomialdensidad Distribución de probabilidad de Binomial(15,0.3) (negro), beta-binomial(15,0.3,$\phi$=0.1) (rojo), beta-binomial(15,0.3,$\phi$=0.4) (verde)
+fig:betabinomialdensidad Distribución de probabilidad de Binomial(15,0.3) (negro), beta-binomial(15,0.3,0.1) (rojo), beta-binomial(15,0.3,0.4) (verde)
 h3:modelo-beta-binomial Modelo beta-binomial
-h4:estudio-de-teratología-1 Estudio de teratología
+h3:estudio-de-teratología-1 Estudio de teratología
 

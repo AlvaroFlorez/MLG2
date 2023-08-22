@@ -30,9 +30,7 @@ A partir de estos datos surgen las siguientes preguntas: ¿La tasa de mortalidad
 
 
 ### Número de cangrejos satélites
-Los datos ```crabs``` de la librería ```asbio``` son de un estudio sobre $173$ hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove. Durante el apareamiento, un macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena poner racimos de huevos. Luego, el macho fecunda los huevos de forma externa. Dada la competencia por fecundar los huevos, las hembras suelen llegar a la playa con otros cangrejos machos adheridos a ella. A este grupo de cangrejos se les llama satélites.
-
-Aquí, nuestra variable de respuesta es el número de satélites que tiene cada hembra. Mientras que las posibles covariables son:
+Los datos ```crabs``` de la librería ```asbio``` son de un estudio sobre $173$ hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove. Durante el apareamiento, un macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena poner racimos de huevos. Luego, el macho fecunda los huevos de forma externa. Dada la competencia por fecundar los huevos, las hembras suelen llegar a la playa con otros cangrejos machos adheridos a ella. A este grupo de cangrejos se les llama satélites. Aquí, nuestra variable de respuesta es el número de satélites que tiene cada hembra. Mientras que las posibles covariables son:
 
 * ```color```: color (1, medio-claro; 2, medio; 3, medio-oscuro; 4,oscuro).
 
@@ -200,9 +198,7 @@ epilepsy4= HSAUR2::epilepsy[HSAUR2::epilepsy$period==4,]
 modPois = glm(seizure.rate~treatment+base,data=epilepsy4,family=poisson)
 summary(modPois)
 ```
-Los resultados del ajuste del modelo Poisson muestran que el tratamiento es altamente significativo. Por lo que, se puede concluir que la progabida reduce el número de ataques epilépticos. 
-
-Sin embargo, estos datos presenta sobredispersión. Esto se puede verificar por medio de la razón del estadístico $\chi^2$ de Pearson y los grados de libertad:
+Los resultados del ajuste del modelo Poisson muestran que el tratamiento es altamente significativo. Por lo que, se puede concluir que la progabida reduce el número de ataques epilépticos. Sin embargo, estos datos presenta sobredispersión. Esto se puede verificar por medio de la razón del estadístico $\chi^2$ de Pearson y los grados de libertad:
 ```{r epiPoissonSobredispersion,include=TRUE}
 X2.poisson = sum(residuals(modPois,type='pearson')^2)
 X2.poisson/modPois$df.residual
@@ -233,7 +229,6 @@ BIC(modPois)
 En ocaciones, los datos muestran mayor frecuencia de ceros de los que la distribución Poisson y binomial negativa permiten. Por ejemplo, en datos de cangrejos herradura, hay muchas hembras que llegan a la playa sin ningún satélite. La Figura \@ref(fig:crabsData) muestra que una distribución bimodal para el número de satélites. 
 
 **Distribución con inflación de ceros**
-
 Este tipo de datos se pueden modelar con una mezcla de distribuciones donde $Y=0$ cuando $Z=1$, y $Y$ sigue una distribución particular cuando $Z=0$ (la cual permite la posibilidad de ceros). Por ejemplo, la distribución Poisson con inflación de ceros (ZIP) se puede representar como:
 $$
 y\sim\begin{cases} 0 \qquad & \text{con probabilidad}\quad \phi, \\ \mbox{Poisson}(\lambda) \quad & \text{con probabilidad}\quad 1-\phi.
@@ -308,7 +303,7 @@ $$
 
 En presencia de una sobredispersión mayor, el modelo de ceros inflados puede combinarse con una distribución binomial negativa. Esto es:
 $$
-y_i\sim \begin{cases}  0 & \text{con probabilidad } \phi_i \\  \text{binomial negativa}(\mu_i,\gamma)& \text{con probabilidad } 1-\phi_i \end{cases}
+y_i\sim \begin{cases}  0 & \text{con probabilidad } \phi_i, \\  \text{binomial negativa}(\mu_i,\gamma)& \text{con probabilidad } 1-\phi_i. \end{cases}
 $$
 De igual forma $\mu_i$ y $\phi_i$ se pueden modelar por medio de covariables.
 

@@ -14,15 +14,7 @@ data(bodyfat)
 ## Ejemplos
 
 ### Cemento
-Los datos `data(cement)` en la librería `MASS` corresponden a un experimento sobre calor emanado en el fraguado de diferentes combinaciones químicas de cemento. Se tiene una muestra de $13$ fraguados de cemento Portland. En cada muestra, se midió con precisión los porcentajes de los cuatro ingredientes químicos principales (covariables). Mientras el cemento fraguaba, también se midió la cantidad de calor desprendido (cals/gm, variable respuesta).
-
-
-Los cuatro ingredientes químicos son:
-
-- **`x1`** aluminato tricálcico (\%).
-- **`x2`** silicato tricálcico (\%).
-- **`x3`** tetra-aluminio ferrita de calcio (\%).
-- **`x4`** silicato dicálcico (\%). 
+Los datos `data(cement)`, de la librería `MASS`, corresponden a un experimento sobre el calor emanado en el fraguado de diferentes combinaciones químicas de cemento. Se tiene una muestra de $13$ fraguados de cemento Portland. En cada muestra, se midió con precisión los porcentajes de los cuatro ingredientes químicos principales (covariables). Mientras el cemento fraguaba, también se midió la cantidad de calor desprendido (cals/gm, variable respuesta). Los cuatro ingredientes químicos son: **`x1`** aluminato tricálcico (\%), **`x2`** silicato tricálcico (\%), **`x3`** tetra-aluminio ferrita de calcio (\%), y **`x4`** silicato dicálcico (\%). 
 
 En la Figura \@ref(fig:CementFigure) podemos observar que hay relaciones lineales positivas entre la variable respuesta, y las covariables aluminato tricálcico y silicato tricálcico. Mientras que la relación con la variable silicato dicálcico es negativa. También podemos notar que hay una relación negativa fuerte en las covariables aluminato tricálcico y tetra-aluminio ferrita de calcio, y entre silicato tricálcico y silicato dicálcico.
 
@@ -39,16 +31,12 @@ Los resultados del ajuste son:
 mod.cement = lm(y ~ x1+x2+x3+x4,data=cement)
 summary(mod.cement)
 ```
-Note que el ajuste es bueno, el $`r round(s.mod.cement$r.squared*100,1)`$\% de la variabilidad de la cantidad de calor desprendido durante la fraguado es explicada por el modelo. Sin embargo, los resultados de las pruebas de hipótesis individuales sobre los coeficientes muestran que no son significantes. 
+Note que el ajuste es muy bueno, el $`r round(s.mod.cement$r.squared*100,1)`$\% de la variabilidad de la cantidad de calor desprendido durante la fraguado es explicada por el modelo. Sin embargo, los resultados de las pruebas de hipótesis individuales sobre los coeficientes muestran valores $p$ muy grandes. Estos resultados parecen contradictorios. 
 
 ### Grasa corporal
-Se tiene una muestra de $20$ mujeres saludables con edades entre $25$ y $34$ años (`data(bodyfat)`  en la librería `isdals`). La medición del porcentaje de grasa corporal es caro y engorroso, por lo tanto se quiere buscar un modelo que proporcione predicciones fiables. Como variables de este modelo se utiliza:
+Se tiene una muestra de $20$ mujeres saludables con edades entre $25$ y $34$ años (`data(bodyfat)`  en la librería `isdals`). La medición del porcentaje de grasa corporal es caro y engorroso, por lo tanto se quiere buscar un modelo que proporcione predicciones fiables. Como variables de este modelo se utiliza: **`Triceps`:** pliegue cutáneo del tríceps (cm),  **`Thigh`:** circunferencia del muslo (cm), y **`Midarm`:** circunferencia del brazo medio (cm).
 
-- **`Triceps`:** pliegue cutáneo del tríceps (cm).
-- **`Thigh`:** circunferencia del muslo (cm).
-- **`Midarm`:** circunferencia del brazo medio (cm).
-
-La Figura \@ref(fig:bodyfatFigure) muestra la relación entre variables. Podemos observar que hay una relación fuerte del \% de masa corporal con las covariables Triceps y Thigh. Además hay una relación lineal fuerte entre esas dos covariables.
+La Figura \@ref(fig:bodyfatFigure) muestra la relación entre variables. Podemos observar que hay una relación fuerte del \% de masa corporal con las covariables Triceps y Thigh. Además, hay una relación lineal fuerte entre esas dos covariables.
 
 ```{r bodyfatFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de grasa corporal. Diagrama de dispersión.",warning=FALSE,message = FALSE}
 library(isdals)
@@ -67,17 +55,19 @@ summary(mod.bodyfat)
 Asi como en el caso anterior, observamos que el modelo explica gran parte de la variabilidad del \% de grasa corporal. Sin embargo, los valores $p$ de las pruebas individuales sobre los coeficientes son altos.
 
 ## Multicolinealidad
-El estimador de $\bbeta$ es $\hatbbeta = (\bX'\bX)^{-1}\bX'\by$. Además, $V(\hatbbeta) = \sigma^{2}(\bX'\bX)^{-1}$. Por lo tanto requiere que $\bX$ sea de rango completo. Es decir, que hayan columnas que sean linealmente dependientes. En algunos casos, las columnas de $\bX$ son casi linealmente dependientes o colineales,lo que lleva a que $\bX'\bX$ se casi singular, lo que provoca problemas a la hora de hacer inferencias. 
+Para el modelo:
+\[
+\by = \bX\bbeta + \bvarepsi,
+\]
+el estimador de $\bbeta$ es $\hatbbeta = (\bX'\bX)^{-1}\bX'\by$. Además, se tiene que $V(\hatbbeta) = \sigma^{2}(\bX'\bX)^{-1}$. Por lo tanto, se requiere que $\bX$ sea de rango completo. Es decir, que no hayan columnas que sean linealmente dependientes. En algunos casos, las columnas de $\bX$ son casi linealmente dependientes o colineales,lo que lleva a que $\bX'\bX$ sea casi singular, lo que puede provocar problemas a la hora de hacer inferencias. 
 
 Sea $\bx_j$ la $j$-ésima columna de la matriz $\bX$, por lo tanto $\bX = (\bONE,\bx_{1},\ldots,\bx_{p-1})$. Los vectores $\bx_{1},\bx_{2},\ldots,\bx_{p-1}$ son linealmente dependientes si hay conjunto de constantes $a_{1},a_{2},\ldots, a_{p-1}$ no todas igual a cero, tal que:
 \[
 \sum_{j=1}^{p-1}a_{j}\bx_{j} = c, \mbox{ donde }c\mbox{ es una constante.}
 \]
-Si esto se cumple para un subconjunto de $\bX$, el rango de la matriz $\bX'\bX$ es menor que $p$, y por lo tanto, $(\bX'\bX)^{-1}$ no existe.
+Si esto se cumple para un subconjunto de $\bX$, el rango de la matriz $\bX'\bX$ es menor que $p$, y por lo tanto, $(\bX'\bX)^{-1}$ no existe. Si la relación es aproximada $(\sum_{j=1}^{p-1}a_{j}\bx_{j} \approx c)$, existe el problema de multicolinealidad.
 
-Si la relación es aproximada $(\sum_{j=1}^{p-1}a_{j}\bx_{j} \approx c)$, existe el problema de multicolinealidad.
-
-Vamos a ilustrar el efecto de la multicolinealidad con un ejemplo sencillo considerando un modelo lineal con dos covariables:
+Vamos a ilustrar el efecto de la multicolinealidad con un ejemplo sencillo. Consideremos un modelo lineal con dos covariables:
 $$
 y_{i}^{*} = z_{i1}\beta_1 +z_{i2}\beta_2 +\varepsilon_i, 
 $$
@@ -97,7 +87,7 @@ $$
 r_{y1} \\ r_{y2}
 \end{pmatrix}.
 $$
-Por lo que el estimador por MCO de $\bb$ es:
+Por lo que el estimador por MCO de $\bb$ está dado por:
 $$
 \hatbb = \begin{pmatrix}
 1 & r_{12} \\ r_{12} & 1
@@ -108,7 +98,7 @@ r_{y1} \\ r_{y2}
 r_{1y} \\ r_{2y}
 \end{pmatrix}.
 $$
-Particularmente, tenemos:
+Particularmente, tenemos que:
 $$
 \hatb_{1} = \frac{r_{1y}-r_{12}r_{2y}}{1-r_{12}^{2}} \mbox{ y } \hatb_{2} = \frac{r_{2y}-r_{12}r_{1y}}{1-r_{12}^{2}}.
 $$
@@ -118,9 +108,9 @@ V(\hatbb) = \sigma^{2} \begin{pmatrix}
 \frac{1}{1-r_{12}^{2}} & \frac{-r_{12}}{1-r_{12}^{2}} \\ \frac{-r_{12}}{1-r_{12}^{2}} & \frac{1}{1-r_{12}^{2}} \end{pmatrix}.
 (\#eq:varbb)
 \end{equation}
-En \@ref(eq:varbb) podemos observar que la varianza de los coeficientes $\hatbb$ tienden a infinito cuando $|r_{12}|\rightarrow 1$. Mientras que se hace mínima cuando las covariables están incorrelacionadas $(r_{12}=0)$. Es decir, una fuerte correlación entre $x_1$ y $x_2$ da como resultado grandes varianzas y covarianzas para $\hatbb$. 
+En \@ref(eq:varbb) podemos observar que la varianza de los coeficientes $\hatbb$ tienden a infinito cuando $|r_{12}|\rightarrow 1$. Mientras que se hace mínima cuando las covariables están incorrelacionadas $(r_{12}=0)$. Es decir, una fuerte correlación entre $x_1$ y $x_2$ da como resultado grandes varianzas y covarianzas para los coeficientes $\hatbb$. 
 
-Por esta razón es preferible tener covariables que sean ortogonales. Puesto que así se garantiza la menor varianza para $\hatbbeta$. Sin embargo, las covariables son díficiles de controlar en estudios observacionales. 
+Por esta razón es preferible tener covariables que sean ortogonales. Puesto que así se garantiza la menor varianza posible para $\hatbbeta$. Sin embargo, las covariables son díficiles de controlar en estudios observacionales. 
 
 Ahora consideremos un modelo con $p-1$ covariables,
 $$
@@ -195,13 +185,13 @@ E(L_{1}^{2}) = \sigma^{2}\sum_{j=1}^{p-1}1/\lambda_{j},
 $$
 donde $\lambda_{j} > 0$, para $j=1,\ldots,p-1$, son los valores propios de $\bR$. Por lo tanto, si $\bR$ está mal condicionada debido a la multicolinealidad, al menos un $\lambda_{j}$ será muy pequeño.
 
-Cabe notar que, la multicolinealidad no viola ningún supuesto sobre los errores. Por lo tanto los estimadores por MCO siguen siendo BLUE. Pero, en presencia de multicolinealidad:
+Cabe notar que, la multicolinealidad no viola ningún supuesto sobre los errores. Por lo tanto, el estimador por MCO siguen siendo BLUE. Pero, en presencia de multicolinealidad:
 
 - Las varianzas de los coeficientes estimados $(\hatbeta_{j})$ se incrementan. Lo que reduce los valores $t$ asociados.
 
 - Los $\hatbeta_{j}$ son sensibles a las especificaciones. Estos pueden cambiar drásticamente cuando se agregan o eliminan covariables.
 
-- El ajuste general del modelo, y por lo tanto los pronósticos y las predicciones, no se verá afectado en gran medida. Pero los intervalos de confianza que se calculen pueden ser muy amplios.
+- Sin embargo, el ajuste general del modelo, y por lo tanto las predicciones, no se verá afectado.
 
 ### Causas de la multicolinealidad
 La multicolinealidad se puede deber a múltiples razones, entre las que están:
@@ -223,13 +213,7 @@ En los datos de grasa corporal, el problema es causado por la alta correlación 
 ## Detección de multicolinealidad
 Dado que la multicolinealidad provoca una inflación de la varianza, un indicio de este problema esta en que aunque el modelo presenta un buen ajuste (un $R^2$ por ejemplo), las estimaciones de coeficientes asociados a covariables releventas tienen valores $t$ pequeños. Además, al eliminar covariables, las estimacioes cambian considerablemente. 
 
-Los métodos mas usados para detectar multicolinealidad son:
-
-- la matriz de correlación de las covariables.
-
-- los factores de inflación de varianza.
-
-- los índices de condiciones de $\bR$ o $\bZ$.
+A manera inicial, la multicolinealidad se puede detectar por medio de la evaluación de la matriz de correlación. Sin embargo, hay indicadores más formales para ello. Estos son los factores de inflación de varianza (VIF), y los índices de condiciones de $\bR$ o $\bZ$.
 
 ### Factores de inflación de varianza
 Dado que $V(\hatbb) = \sigma^2\bR^{-1}$, los elementos de la diagonal de $\bR^{-1}$ son buenos indicadores de multicolinealidad:
@@ -238,14 +222,14 @@ $$
 $$
 donde $R_{j}^{2}$ es el coeficiente de determinación de ajustar un modelo de $x_{j}$ en función de las demás covariables. Si $x_{j}$ es casi ortogonal a las demás covariables, $R^{2}_{j}$ es pequeño, y por lo tanto, $\{\bR^{-1}\}_{jj}$ cercano a $1$. Mientras que, si $x_{j}$ es casi linealmente dependiente a las demás covariables, entonces $R^{2}_{j}$ es cercano a $1$ y $\{\bR^{-1}\}_{jj}$ grande.
 
-Es decir, $\{\bR^{-1}\}_{jj}$ puede ser visto como un factor de cuanto se incrementa $V(\hatb_{j})$ debido a la colinealidad entre las covariables. De aquí el nombre de factor de inflación de varianza (VIF). Generalmente, uno o mas valores grandes de VIF ($5$ o $10$) es un indicador de problemas de multicolinealidad.
+Por lo tanto, $\{\bR^{-1}\}_{jj}$ puede ser visto como un factor de cuanto se incrementa $V(\hatb_{j})$ debido a la colinealidad entre las covariables. De aquí el nombre de factor de inflación de varianza (VIF). Generalmente, uno o mas valores grandes de VIF ($5$ o $10$) es un indicador de problemas de multicolinealidad.
 
 ### Valores propios de $\bZ'\bZ$
-Dado que $\bR = \bZ'\bZ$ es una matriz simétrica y positiva semi-definida, entonces se puede descomponer:
+Dado que $\bR = \bZ'\bZ$ es una matriz simétrica y positiva semi-definida, entonces se puede descomponer de la siguiente forma:
 $$
 \bR = \bT\bLambda\bT',
 $$
-donde $\bT = (\bt_{1},\ldots,\bt_{k})$ es una matriz ortogonal de vectores propios, y $\bLambda$ una matriz diagonal con los valores propios $\lambda_{j}$, para $j=1,\ldots,p-1$, en la diagonal principal. Por lo tanto,
+donde $\bT = (\bt_{1},\ldots,\bt_{k})$ es una matriz ortogonal de vectores propios, y $\bLambda$ una matriz diagonal con los valores propios $\lambda_{j}$, para $j=1,\ldots,p-1$, en la diagonal principal. Por lo tanto:
 $$
 V(\hatbbeta) = \sigma^{2}\bT \bLambda^{-1}\bT'.
 $$
@@ -257,22 +241,18 @@ De la expresión anterior,
 $$
 VIF_{j} = \sum_{j=1}^{p-1}\frac{t_{ij}^{2}}{\lambda_{j}},
 $$
-Por lo tanto, uno o más valores propios pequeños pueden inflar la varianza de $\hatb_{j}$. De aquí salen los indicadores llamados índices de condición y número de condición.
-
-El índice de condición está definido como:
+Por lo tanto, uno o más valores propios pequeños pueden inflar la varianza de $\hatb_{j}$. De aquí salen los indicadores llamados índices de condición y número de condición. Los índices de condición están definidos como:
 $$
 \eta_{j} = \frac{\lambda_{\mbox{max}}}{\lambda_{j}}.
 $$
-El número de condición está definido como el máximo índice de condición. Un número de condición mayor de 100 es un indicador de multicolinealidad.
+El número de condición está definido como el máximo índice de condición. Un número de condición mayor de $100$ es un indicador de multicolinealidad.
 
 ### Valores singulares de $\bZ$
 El número de condición también se puede calcular a partir de la descomposición en valores singulares (SVD) de la matriz de covariables $\bZ$. Esto es:
 $$
 \bZ =\bU\bD\bT',
 $$
-donde $\bU$ y $\bT$ son matrices $n\times (p-1)$ y $(p-1)\times (p-1)$, respectivamente, $\bU\bU = \bI$ y $\bT'\bT = \bI$, y $\bD$ es una matriz diagonal con elementos $\mu_{j}$, $j=1,\ldots,p-1$, llamados valores singulares. 
-
-Hay una relación entre los valoes singulares de $\bZ$ y los valores propios de $\bZ'\bZ$:
+donde $\bU$ y $\bT$ son matrices $n\times (p-1)$ y $(p-1)\times (p-1)$, respectivamente, $\bU\bU = \bI$ y $\bT'\bT = \bI$, y $\bD$ es una matriz diagonal con elementos $\mu_{j}$, $j=1,\ldots,p-1$, llamados valores singulares. Hay una relación entre los valores singulares de $\bZ$ y los valores propios de $\bZ'\bZ$:
 $$
 \bZ'\bZ = (\bU\bD\bT')'\bU\bD\bT' = \bT\bD^2\bT' = \bT\bLambda\bT'.
 $$
@@ -280,7 +260,7 @@ El índice de condición de $\bZ$ está definido como:
 $$
 \kappa_{j} = \frac{\mu_{\mbox{max}}}{\mu_{j}}.
 $$
-El número de condición de $\bZ$ está definido como el máximo $\kappa_{j}$. Un número de condición mayor de 10,15 o 30 es un indicador de problemas de multicolinealidad.
+El número de condición de $\bZ$ está definido como el máximo $\kappa_{j}$. Un número de condición mayor de 10, 15 o 30 es un indicador de problemas de multicolinealidad.
 
 Note que $\kappa_{j} = \sqrt{\eta_{j}}$. Por lo que el punto de corte de $10$ para el número de condición de $\bZ$ es equivalente al número de condición de $100$ para el número de condición de $\bZ'\bZ$.
 
@@ -293,7 +273,7 @@ De aquí salen los indicadores llamados proporciones de descomposición de varia
 $$
 \pi_{ij} = \frac{t_{ij}^2 / \mu_{i}^2 }{VIF_{j}}, j = 1,\ldots, p-1.
 $$
-Si se agrupan los $\pi_{ij}$ en una matriz $(p-1) \times (p-1)$ $\bpi$, la columna $j$ son proporciones de la varianza de $\hatbb$. Valores $\pi_{ij}$ mayores de 0.5 indican problemas de multicolinealidad.  
+Si se agrupan los $\pi_{ij}$ en una matriz $(p-1) \times (p-1)$ $\bpi$, la columna $j$ son proporciones de la varianza de $\hatbb$. Valores $\pi_{ij}$ mayores de $0.5$ indican problemas de multicolinealidad.  
 
 ## Datos de cemento
 Los VIF para el modelo ajustado para los datos de cemento son los siguientes:
@@ -310,7 +290,7 @@ colldiag(mod.cement,scale = TRUE,center = TRUE,add.intercept = FALSE)
 El número de condición $(37.106)$ es muy alto reafirmando el problema de multicolinealidad. Además, también se puede observar que varias de las proporciones de descomposición de varianza son mayores de $0.5$.
 
 ## Datos de grasa corporal
-Para el modelo ajustado a los datos de grasa corporal, los VIFs son:
+Para el modelo ajustado a los datos de grasa corporal, los VIF son:
 ```{r BodyfatVIF, echo=T, warning=FALSE,message = FALSE}
 car::vif(mod.bodyfat)
 ```
@@ -323,9 +303,9 @@ colldiag(mod.bodyfat,scale = TRUE,center = TRUE,add.intercept = FALSE)
 Todos estos indicadores muestran que hay problemas de multicolinealidad.
 
 ## Solución al problema de multicolinealidad
-Una forma sencilla de resolver los problemas de multicolinealidad son:
+Los problemas de multicolinealidad se pueden solucionar de las siguientes formas:
 
-- **recolección de datos adicionales:** si se tiene control sobre las covariables, es posible tomar más observaciones para romper con la casi dependencia en $\bX$. Pero esto en muchas casos es díficl por la naturaleza de las covariables. Por ejemplo, sería imposible buscar personas con circunferencia del muslo grande y pliegue cutáneo del tríceps bajo (o viceversa). 
+- **recolección de datos adicionales:** si se tiene control sobre las covariables, es posible tomar más observaciones para romper con la casi dependencia en $\bX$. Pero esto en muchas casos es díficil por la naturaleza de las covariables. Por ejemplo, sería imposible buscar personas con circunferencia del muslo grande y pliegue cutáneo del tríceps bajo (o viceversa). 
 
 - **re-especificación del modelo:** se pueden eliminar del modelo las covariables que me generan el problema de multicolinealidad y que pueden tener poco aporte explicativo dentro del modelo. 
 
@@ -341,17 +321,9 @@ mod.bodyfat0 = lm(Fat ~ Triceps+Midarm,data=bodyfat)
 car::vif(mod.bodyfat0)
 ```
 
-los VIFs disminuyen considerablemente. Además, no hay una reducción notable del $R^2$. Con las tres covariables temenos que $R^{2}=`r round(mod.bodyfatSummary$r.squared,3)`$. Mientras que al remover ``Thigh``, tenemos que $R^{2} = `r round(mod.bodyfat0Summary$r.squared,3)`$
+los VIF disminuyen considerablemente. Además, no hay una reducción notable del $R^2$. Con las tres covariables temenos que $R^{2}=`r round(mod.bodyfatSummary$r.squared,3)`$. Mientras que al remover ``Thigh``, tenemos que $R^{2} = `r round(mod.bodyfat0Summary$r.squared,3)`$
 
-
-Considerando que el estimador por MCO es el mejor estimador lineal insesgado de $\bbeta$, podemos relajar la condición de insesgamiento y buscar estimadores que aunque sean sesgados tengan menor varianza que los estimadores por MCO. 
-
-
-Dos de estas alternativas son:
-
-- Estimador de ridge.
-
-- Estimadores por componentes principales.
+- **Uso de estimadores sesgados:** Considerando que el estimador por MCO es el mejor estimador lineal insesgado de $\bbeta$, podemos relajar la condición de insesgamiento y buscar estimadores que aunque sean sesgados tengan menor varianza que los estimadores por MCO. Dos de estas alternativas son el estimador de ridge y el estimadores por componentes principales.
 
 
 ## Estimador de ridge
@@ -373,12 +345,9 @@ La solución de las ecuaciones normales lleva al estimador ridge:
 \]
 Note que, incluso si $\bR$ es no es invertible, un $k > 0$ resuelve el problema. Además, la solución depende de $k$ (por cada $k$, hay una estimación diferente). 
 
-$k$ es un parámetro de contracción:
+Se puede considerar a $k$ como un parámetro de contracción. Si $k \rightarrow 0$, tenemos que $\hatbb_{R} \rightarrow \hatbb$. Mientras que, si $k \rightarrow \infty$, encontramos que $\hatbb_{R} \rightarrow \bZERO$ (excepto el intercepto).
 
-- si $k \rightarrow 0$, encontramos que $\hatbb_{R} \rightarrow \hatbb$.
-- si $k \rightarrow \infty$, encontramos que $\hatbb_{R} \rightarrow \bZERO$ (excepto el intercepto).
-
-Ahora veamos las propiedades del estimador de ridge. El estimador de ridge se puede expresar como:
+Ahora veamos las propiedades de $\hatbb_{k}$. Este se puede expresar como:
 \[
 \hatbb_k = (\bR + k \bI)^{-1}\bR\by = (\bI + k \bR^{-1})^{-1}\hatbb = \bC \hatbb.
 \]
@@ -386,9 +355,7 @@ Por lo que, su valor esperado es:
 \[
 E(\hatbb_{k}) =\bC\bb \neq \bb,
 \]
-de aquí vemos que $\hatbb_{k}$ es sesgado, y el sesgo aumenta con $k$ (por lo que este parámetro también es llamado de sesgo). 
-
-La varianza de $\hatbb_k$ está dada por:
+de aquí vemos que $\hatbb_{k}$ es sesgado, y el sesgo aumenta con $k$ (por lo que este parámetro también es llamado de sesgo). La varianza de $\hatbb_k$ está dada por:
 \[
 V(\hatbb_{k}) = \sigma^2 \bC' \bR^{-1} \bC.
 \]
@@ -407,9 +374,9 @@ Finalmente, la suma de cuadrados de los residuos usando $\hatbb_{k}$ es:
 \[
 SS_{res} =(\by - \bZ\hatbb)'(\by - \bZ\hatbb) + (\hatbb_{k}-\hatbb)'\bR(\hatbb_{k}-\hatbb).
 \]
-A partir de estos resultados, vemos que: (1) Si $k$ crece, disminuye la varianza, pero aumenta el sesgo. (2) Si $k$ disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un $R^{2}$ mas pequeño que el estimador por MCO. Sin embargo, la regresión ridge proporciona estimaciones de $\bb$ más estables.
+A partir de estos resultados, vemos que: (1) Si $k$ crece, disminuye la varianza, pero aumenta el sesgo. (2) Si $k$ disminuye, aumenta la varianza, pero disminuye el sesgo. (3) el estimador ridge proporciona un $R^{2}$ mas pequeño que el estimador por MCO. Sin embargo, las estimaciones de $\bb$ son más estables.
 
-La idea de la regresión de ridge es encontrar un valor de $k$ tal que  $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$. En la Figura \@ref(fig:ECMrepresentacion) podemos ver la representación del ECM del estimador de ridge. Aquí vemos que a medida que aumenta $k$, el sesgo incrementa y la varianza disminuye. Además, hay una región de $k$ donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de $k$ que minimiza el ECM, o por lo menos algún valor en la región donde $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$.
+La idea de la regresión de ridge es encontrar un valor de $k$ tal que  $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$. En la Figura \@ref(fig:ECMrepresentacion) podemos ver la representación del ECM del estimador de ridge. A medida que aumenta $k$, el sesgo incrementa y la varianza disminuye. Además, hay una región de $k$ donde se puede obtener un ECM del estimador de ridge menor que el que se obtiene por medio de MCO. La idea es encontrar el valor de $k$ que minimiza el ECM, o por lo menos algún valor en la región donde $\mbox{ECM}(\hatbb_{k}) < V(\hatbb)$.
 
 
 ```{r ECMrepresentacion, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO.",warning=FALSE,message = FALSE}
@@ -429,7 +396,7 @@ axis(1,x[ecm==min(ecm)],'k óptimo')
 ```
 Algunos métodos de selección de $k$ son:
 
-- **Traza de ridge $k$:** el efecto de $k$ sobre las estimaciones de $\hatbb_{k}$ es mas fuerte para valores bajos. De igual forma, si $k$ es muy grande introducimos mucho sesgo. Por lo que se puede hacer es incrementar $k$ hasta que parezca que su influencia sobre $\hatbb_{k}$ se atenúe.
+- **Traza de ridge $k$:** el efecto de $k$ sobre las estimaciones de $\hatbb_{k}$ es mas fuerte para valores bajos. De igual forma, si $k$ es muy grande se introduce mucho sesgo. Por lo que se puede hacer es incrementar $k$ hasta que parezca que su influencia sobre $\hatbb_{k}$ se atenúe.
 
 - **Validación cruzada (CV):** sea $\haty_{(i),k}$ la estimación de $E(y_i)$ por medio del estimador de ridge con el parámetro $k$ y usando una muestra excluyendo la i-ésima observación. La validación cruzada está definida como:
 $$
@@ -465,7 +432,7 @@ Criterios.cement = kest(ridge.cement)
 plot(K,Criterios.cement$CV,type='l',xlab='K',ylab='validación cruzada')
 K[Criterios.cement$CV==min(Criterios.cement$CV)]
 ```
-Aquí podemos ver que el valorde $k$ que minimiza la validación cruzada es $0.009$. El valor óptimo de $k$ por medio de otros criterios son: 
+Aquí podemos ver que el valor de $k$ que minimiza la validación cruzada es $0.009$. El valor óptimo de $k$ por medio de otros criterios son: 
 ```{r cementridge4,echo=T, warning=FALSE,message = FALSE}
 Criterios.cement
 ```
@@ -483,7 +450,7 @@ $$
 $$
 donde $\balpha = \bT'\bb$, $(\bZ\bT)'\bZ\bT=\bLambda$, $\bLambda$ es una matriz diagonal de valores propios $(\lambda_1,\ldots,\lambda_p)$ de $\bZ'\bZ$, y $\bT = (\bt_{1},\ldots,\bt_{p-1})$ es la matriz ortogonal de vectores propios asociados $\bLambda$.
 
-Las columnas de $\bP = \bZ\bT = (\bp_{1},\ldots,\bp_{p-1})$ son un conjunto de regresores ortogonales(llamados componentes principales):
+Las columnas de $\bP = \bZ\bT = (\bp_{1},\ldots,\bp_{p-1})$ son un conjunto de regresores ortogonales (llamados componentes principales):
 $$
 \bp_{k} = \sum_{j=1}^{p-1} t_{kj}\bz_{j}.
 $$
@@ -502,7 +469,7 @@ De aquí podemos ver que valores propios de $\bR$ están asociados con la varian
 
 Note que, para $\hatbb = \bT\hatbalpha$, tenemos:
 \[
-V(\hatbb) = V(\bT\hatbalpha) =\sigma^{2}\bT\bLambda^{-1}\bT' = \sigma^{2} \sum_{j=1}^{p-1}\lambda_{j}^{-1}\bt_{j}\bt_{j}',
+V(\hatbb) = V(\bT\hatbalpha) =\sigma^{2}\bT\bLambda^{-1}\bT' = \sigma^{2} \sum_{j=1}^{p-1}\frac{\bt_{j}\bt_{j}'}{\lambda_{j}},
 \]
 lo que implica que $V(\hatb_{k}) = \sigma^{2} \sum_{j=1}^{p-1}t_{kj}^{2}/\lambda_{j}$, la varianza de $\hatb_j$ es una combinación lineal de los valores propios.
 

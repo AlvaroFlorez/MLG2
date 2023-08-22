@@ -15,7 +15,7 @@ Order.res = order(abs(res.UN11),decreasing = T)
 ## Ejemplos
 
 ### Datos de atletas australianos
-Los datos `ais` de la libreria `alr4` tiene información sobre 202 atletas de élite de Australia (102 hombres y 100 mujeres). Se quiere evaluar la relación entre la concentración de hemoglobina (``Hg``, g/dl) y el índice de masa corporal (``BMI``, kg/m$^2$).
+Los datos `ais`, de la libreria `alr4`, tienen información sobre 202 atletas australianos de élite (102 hombres y 100 mujeres). Se quiere evaluar la relación entre la concentración de hemoglobina (``Hg``, g/dl) y el índice de masa corporal (``BMI``, kg/m$^2$).
 
 ```{r AtletesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de atletas. Densidad de la hemoglobina para hombres y mujeres (derecha) y diagrama de dispersión entre la homoglobina y el índice de masa corporal (izquierda). Negro para hombres y rojo para mujeres.",warning=FALSE,message = FALSE}
 data(ais)
@@ -46,13 +46,13 @@ En la Figura \@ref(fig:UN11Figure) podemos observar que, en general, cuando el P
 Las covariables categóricas entran en un modelo como variables indicadoras (o también llamadas *dummies*). En el caso que la covariable $(X)$ tenga dos categorías, entonces se crea una variable indicadora. Por ejemplo, para los datos de los atletas, el sexo requiere una indicadora:
 \[
 u_{i} = \begin{cases}
-1 & \mbox{ si la observación i es hombre}, \\
-0 & \mbox{ si la observación i es mujer}. \\
+1 & \mbox{ si la observación i es de una mujer}, \\
+0 & \mbox{ si la observación i es de un un hombre}. \\
 \end{cases}
 \]
-Aquí mujer es llamada la categoría de referencia.
+Aquí la categoría hombre es llamada la categoría de referencia.
 
-En caso que la covariable categórica tenga $k$ categorías, se tienen que crear $k-1$ variables indicadoras. Por ejemplo, para la variable grupo de país en los datos de la ONU se requieren 2 variables indicadoras $(u_{j})$ como lo muestra la Tabla \@ref(tab:dosIndica).
+En caso que la covariable categórica tenga $K$ categorías, se tienen que crear $K-1$ variables indicadoras. Por ejemplo, para la variable grupo de país en los datos de la ONU se requieren 2 variables indicadoras $(u_{1} y u_{2})$ como lo muestra la Tabla \@ref(tab:dosIndica). En este caso, la categoría de referencia es OECD.
 
 ```{r dosIndica, echo=F, results='asis'}
 tb1 = data.frame(
@@ -68,9 +68,7 @@ Suponga que se quiere ajustar un modelo para una variable respuesta $Y$ en funci
 y_{i}  = \beta_{0} + x_{i}\beta_{1} + z_{i}\beta_{2} + x_{i}z_{i}\beta_{3} + \varepsilon_{i},
 (\#eq:modInter)
 \end{equation}
-donde $\varepsilon_{i} \sim N(0,\sigma^{2})$.
-
-Tenemos que, si $z_i=0$:
+donde $\varepsilon_{i} \sim N(0,\sigma^{2})$. Tenemos que, si $z_i=0$:
 \[
 E(Y | X=x_i, Z=0) = \beta_{0} + x_{i}\beta_{1}.
 \]
@@ -78,7 +76,7 @@ Mientras que, si $z_i=1$:
 \[
 E(Y | X=x_i, Z=1) = (\beta_{0}+\beta_{2}) + x_{i}(\beta_{1}+\beta_{3}).
 \]
-Por lo que el modelo \@ref(eq:modInter) genera dos rectas, una para cada categoría. $\beta_2$ indica la diferencia de intercepto entre las dos categorías y $\beta_3$ la diferencia entre pendientes. En la Figura \@ref(fig:Rectas1)(izquierda) se observan las dos rectas que se obtienen a partir de este modelo. Si se elimina la interacción entre variables, se obtienen dos rectas paralelas (Figura \@ref(fig:Rectas1), derecha).
+Por lo que el modelo \@ref(eq:modInter) genera dos rectas, una para cada categoría. $\beta_2$ indica la diferencia de intercepto entre las dos categorías y $\beta_3$ la diferencia entre pendientes. En la Figura \@ref(fig:Rectas1)(izquierda) se observan las dos rectas que se obtienen a partir de este modelo. Si se elimina la interacción entre variables (es decir, $\beta_3=0$), se obtienen dos rectas paralelas (Figura \@ref(fig:Rectas1), derecha).
 
 
 ```{r Rectas1,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Efecto de la interacción entre variable continua e indicadora. Modelo general (izquierda) y modelo de líneas paralelas (derecha)."}
@@ -95,6 +93,8 @@ text(0.3,0.8,pos=4,bquote(E(Y)~'='~beta[0]~'+'~beta[1]~X[1]),cex=0.8,col=1)
 text(0.4,0.7,pos=4,bquote(E(Y)~'='~beta[0]~'+'~beta[2]~'+'~beta[1]~X[1]),cex=0.8,col=2)
 ```
 
+Hay que tener en cuenta que la asignación de la categoría de referencia no afecta en nada al ajuste del modelo. Sin embargo, la interpretación de los coeficientes cambia.
+
 ### Modelo para los datos de atletas australianos
 Para los datos de los atletas, se sugiere el siguiente modelo:
 \begin{equation}
@@ -110,7 +110,7 @@ donde:
 0 & \mbox{ de otra forma}. \\
 \end{cases}
 \]
-Note que en la base de datos ``ais``, la variable ``sex`` ya está codificada de esta forma. Si la variable no está codificada de forma numérica, ``R`` eligirá la categoría de referencia de forma automática. 
+Note que en la base de datos ``ais``, la variable ``sex`` ya está codificada de esta forma. Si la variable no está codificada de forma numérica, ``R`` eligirá la categoría de referencia de forma automática. Sin embargo, esta puede modificarse con la función ``relevel()``.
 
 Para ajustar el modelo utilizamos la función ``lm`` (aquí estamos incluyendo los efectos de ``BMI`` y ``Sex``, así como la interacción):
 ```{r MCOatletas}
@@ -132,14 +132,12 @@ Si queremos evaluar si los niveles de hemoglobina son iguales para hombres y muj
 \[
 H_{0}: \beta_{1} = \beta_3 = 0.
 \]
-En ``R``, esto lo podemos realizar usando la función ``anova()`` (prueba F) comparando el modelo completo contra el modelo reducido sin la variable ``Sex``:
+En ``R``, esto lo podemos realizar usando la función ``anova()`` (la cuál realiza una prueba F) comparando el modelo completo contra el modelo reducido sin la variable ``Sex``:
 ```{r ANOVAatletas}
 mod.ais.red = lm(Hg~BMI, data=ais)
 anova(mod.ais.red,mod.ais)
 ```
-Vemos que se rechaza $H_0$, es decir que hay diferencias en los niveles de homoglobina entre hombres y mujeres. $\beta_1$ o $\beta_3$ es diferente de cero, pero no ambos (esto por los resultados del modelo completo).
-
-Eliminando la interacción obtenemos un modelo con lineas paralelas:
+Vemos que se rechaza $H_0$, es decir que hay diferencias en los niveles de homoglobina entre hombres y mujeres. $\beta_1$ o $\beta_3$ es diferente de cero, pero no ambos (esto por los resultados del modelo completo). Eliminando la interacción obtenemos un modelo con lineas paralelas:
 \[
 \mbox{Hg}_{i} = \beta_{0} + \mbox{Sex}_{i}\beta_{1} + \mbox{BMI}_{i}\beta_{2} +  \varepsilon_{i},
 \]
@@ -178,9 +176,7 @@ donde:
 0 & \mbox{ de otra forma}. \\
 \end{cases}
 \]
-Por lo tanto, OECD es la categoría de referencia.
-
-El modelo ajustado es:
+Por lo tanto, OECD es la categoría de referencia. El modelo ajustado es:
 ```{r MCOUN11}
 mod.UN11 = lm(log(fertility)~group*log(ppgdp), data=UN11)
 summary(mod.UN11)
@@ -247,10 +243,4 @@ linearHypothesis(mod.UN11, hypothesis.matrix=L)
 ```
 Dado que no se rechaza $H_0$, el efecto del PNB sobre la fertilidad es el mismo para los países Africanos y los de la categoría de otros.
 
-En resumen, a partir del análisis de regresión:
-
-- El efecto del PNB per cápita sobre la fertilidad depende del tipo de país.
-
-- Para los países miembros de la OECD, no hay un efecto significativo.
-
-- Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).
+En resumen, a partir del análisis de regresión se tiene que: el efecto del PNB per cápita sobre la fertilidad depende del tipo de país. Para los países miembros de la OECD, no hay un efecto significativo. Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).

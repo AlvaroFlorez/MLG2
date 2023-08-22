@@ -64,9 +64,7 @@ summary(mod.surgical.completo)
 
 
 ### Grasa corporal
-La medición de la grasa corporal es un proceso complejo. Dado que los músculos y los huesos son más densos, el calculo de \% de grasa corporal se basa, entre otros aspectos, en la medición de la densidad corporal la cuál requiere sumergir a las personas en el agua.
-
-Por esta razón se quiere buscar un método más sencillo para determinar el \% de grasa corporal. Para esto, se registraron la edad, el peso, la altura y $10$ medidas de la circunferencia corporal de $252$ hombres. De igual forma, a cada uno de estos hombres se les midió el \% de grasa corporal de forma precisa (usando la ecuación de Brozek, medición a partir de la densidad).
+La medición de la grasa corporal es un proceso complejo. Dado que los músculos y los huesos son más densos, el calculo de \% de grasa corporal se basa, entre otros aspectos, en la medición de la densidad corporal la cuál requiere sumergir a las personas en el agua. Por esta razón, se quiere buscar un método más sencillo para determinarlo. Para esto, se registraron la edad, el peso, la altura y $10$ medidas de la circunferencia corporal de $252$ hombres. De igual forma, a cada uno de estos hombres se les midió el \% de grasa corporal de forma precisa (usando la ecuación de Brozek, medición a partir de la densidad).
 
 Cómo variable respuesta se utiliza la medición por el método de Brozek, y las posibles covariables son:
 
@@ -122,7 +120,7 @@ y_{i} &= \beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
 \end{split}
 (\#eq:modelogral)
 \end{equation}
-donde $\bx_{1i} = (1,x_{1i},x_{2i},\ldots,x_{ri})$, $\bx_{2i} = (x_{r+1,i},x_{r+2,i},\ldots,x_{p-1,i})$, $\bbeta_1 = (\beta_0,\beta_1,\beta_2,\ldots,\beta_r)'$, $\bbeta_2 = (\beta_{r+1},\beta_{r+2},\ldots,\beta_{p-1})'$, y $\varepsilon_i \sim N(0,\sigma^{2})$. Es decir, se hace una partición de las covariables y los coeficientes de regressión en dos componentes. 
+donde $\bx_{1i} = (1,x_{1i},x_{2i},\ldots,x_{ri})$, $\bx_{2i} = (x_{r+1,i},x_{r+2,i},\ldots,x_{p-1,i})$, $\bbeta_1 = (\beta_0,\beta_1,\beta_2,\ldots,\beta_r)'$, $\bbeta_2 = (\beta_{r+1},\beta_{r+2},\ldots,\beta_{p-1})'$, y $\varepsilon_i \sim N(0,\sigma^{2})$. Es decir, se hace una partición de las covariables y los coeficientes de regresión en dos componentes. 
 
 En forma matricial, el modelo es:
 \[
@@ -135,9 +133,7 @@ Ahora, considere que el modelo de regresión real es \@ref(eq:modelogral), pero 
 $$
 y_{i} = \bx_{1i}'\bbeta_1 + \varepsilon_i.
 $$
-Por lo tanto, estamos omitiendo las covariables $\bx_{2i}$ del modelo (puesto que $\bbeta_2 \neq 0$).
-
-El estimador por MCO de $\bbeta_1$ es: 
+Por lo tanto, estamos omitiendo las covariables $\bx_{2i}$ del modelo (puesto que $\bbeta_2 \neq 0$). El estimador por MCO de $\bbeta_1$ es: 
 $$
 \hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by.
 $$
@@ -203,11 +199,6 @@ E(\haty_{0}) = E(\bx_{0}'\hatbbeta) = (\bx_{01}' \ \bx_{02}')\begin{pmatrix}
 \bbeta_{1} \\ \bZERO
 \end{pmatrix} = \bx_{01}'\bbeta_{1}.
 $$
-Pero su varianza también se infla debido a incluir las covariables irrelevantes:
-$$
-V(\haty_{0}) = \sigma^{2} \bx_{0}'(\bX'\bX)^{-1}\bx_{0}.
-$$
-
 En conclusión:
 
 - Cuando omitimos covariables relevantes, obtenemos sesgos en las estimaciones.
@@ -218,21 +209,14 @@ En conclusión:
 ## Métodos para la selección de variables
 Si tenemos $(p-1)$ covariables, entonces tenemos $(p-1)^2$ potenciales modelos. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
 
-Existen varios criterios para determinar que modelo es "mejor" que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos críterios son:
-
-- Coeficiente de determinación ($R^{2}$ y $R^{2}_{adj}$).
-- Estadístico $C_{p}$ de Mallows.
-- Estadístico PRESS y el $R^{2}$ de predicción.
-- Criterios de información (AIC y BIC).
+Existen varios criterios para determinar que modelo es "mejor" que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos criterios son el coeficiente de determinación ($R^{2}$ y $R^{2}_{adj}$), el estadístico $C_{p}$ de Mallows, el estadístico PRESS y el $R^{2}$ de predicción, los criterios de información (AIC y BIC).
 
 ### Coeficiente de determinación
 Esté indicador está definido como:
 $$
 R^{2} = \frac{\Sreg}{\Stotal} = 1 - \frac{\Sres}{\Stotal}.
 $$
-El $R^{2}$ cuantifica la cantidad de variabilidad de la variable respuesta que es explicada por el modelo. Se tiene que $0 \leq R^{2} \leq 1$. Valores más cercanos a $1$ implican que el modelo explica gran parte de la variabilidad de $y$. 
-
-Hay que tener en cuenta que el $R^{2}$ siempre crece a medida que se adicionan más covariables al modelo. Por lo tanto, se puede puede agregar regresores hasta el punto en que una covariable adicional no propociona un aumento considerable en el $R^{2}$.
+El $R^{2}$ cuantifica la cantidad de variabilidad de la variable respuesta que es explicada por el modelo. Se tiene que $0 \leq R^{2} \leq 1$. Valores más cercanos a $1$ implican que el modelo explica gran parte de la variabilidad de $y$. Hay que tener en cuenta que el $R^{2}$ siempre crece a medida que se adicionan más covariables al modelo. Por lo tanto, se puede puede agregar regresores hasta el punto en que una covariable adicional no propociona un aumento considerable en el $R^{2}$.
 
 ### Coeficiente de determinación ajustado
 Para evitar el incoviente del $R^{2}$, se puede utlizar el el coeficiente de determinación ajustado definido como:
@@ -273,9 +257,7 @@ El estadístico PRESS (prediction error sum of squares) está definido como:
 $$
 \mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \haty_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{e_{i}}{1-h_{ii}} \right)^{2}.
 $$
-Para comparar modelos, menor valor del PRESS indica que el modelo es mejor para hacer predicciones.
-
-A partir del PRESS se puede calcular el $R^{2}$ de predicción:
+Para comparar modelos, menor valor del PRESS indica que el modelo es mejor para hacer predicciones. A partir del PRESS se puede calcular el $R^{2}$ de predicción:
 $$
 R^{2}_{pred} = 1 - \frac{PRESS}{SST}.
 $$
@@ -290,7 +272,7 @@ El criterio de información bayesiano (o de Schwarz - SBC):
 $$
 \mbox{BIC} = -2\log (L) + p\log n.
 $$
-Es preferible modelos con valores menores de AIC o BIC. Dado que la penalización del BIC es mayor (si $n > 7$), este indicador tiende a preferir modelos con menor número de covariables.
+Es preferible modelos con valores menores de AIC o BIC. Dado que la penalización del BIC es mayor (si $n > 7$), este indicador prefiere modelos con menor número de covariables.
 
 Recordemos que la log-verosimilitud es:
 $$
@@ -426,7 +408,7 @@ Note que este método sigue los mismos pasos que la selección hacia delante has
 Dado que los algoritmos hacen la busqueda del modelo "óptimo" evaluando diferentes subconjuntos de covariables, se obtuvieron diferentes ajustes. Si observamos el AIC de las tres opciones, el modelo obtenido con el algoritmo stepwise presenta el mejor resultado.
 
 ## Regresión de LASSO
-Otra alternativa para encontrar las variables relevantes es a través del estimador de LASSO (Least Absolute Selection and Shrinkage Operator). Este es un método de regularización que se implementa se tiene cientos de covariables disponibles y se cree que pocas tienen un aporte relevante (*sparsity principle*). Por ejemplo, en estudios de genetica se tienen miles de genes disponibles pero solo unos pocos son activos para una mutación de interés.
+Otra alternativa para encontrar las variables relevantes es a través del estimador de LASSO (Least Absolute Selection and Shrinkage Operator). Este es un método de regularización que se implementa se tiene cientos de covariables disponibles y se cree que pocas tienen un aporte relevante (*sparsity principle*). Por ejemplo, en estudios de genética se tienen miles de genes disponibles pero solo unos pocos son activos para una mutación de interés.
 
 Aquí se asume el modelo de regresión usual, donde:
 \[
@@ -493,7 +475,7 @@ text(a,0,label='t',cex=0.7,pos=4)
 ```
 
 
-Dado que \@ref(eq:SSLASSO) es una función no lineal en $y$, no hay solución análitica para  $\hatbbeta_{LASSO}$. Sin embargo, pero hay algoritmos eficientes para su estimación. De igual forma, se recomienda escalar las variables para remover el efecto de las unidades de medida. 
+Dado que \@ref(eq:SSLASSO) es una función no lineal en $y$, no hay solución analítica para  $\hatbbeta_{LASSO}$. Sin embargo, pero hay algoritmos eficientes para su estimación. De igual forma, se recomienda escalar las variables para remover el efecto de las unidades de medida. 
 
 En R, la estimación del modelo por medio del estimador de LASSO se hace por medio de la función `glmnet` de la librería `glmnet`. 
 
@@ -512,12 +494,12 @@ La pregunta sería que valor de $lambda$ se debe seleccionar para determinar los
 ### Validación cruzada
 La validación cruzada (CV) es un método general para evaluar que tan bueno es un modelo para predecir observaciones futuras de la población objetivo del estudio. La idea es dividir la muestra en dos grupos:
 
-- **Entrenamiento:** se usa para ajusta el modelo.
-- **Validación:** se utiliza para validar el modelo ajustado.
+- **(1) Entrenamiento:** se usa para ajusta el modelo.
+- **(2) Validación:** se utiliza para validar el modelo ajustado.
 
-Para no perder información, en la CV se realiza en $K$ interaciones dividiendo los datos en $K$ subconjuntos. En cada iteración, uno de los subconjutos es utilizado como datos de validación y el resto de subgrupos $(K-1)$ como datos de entrenamiento. 
+Para no perder información, en la CV se realiza en $K$ iteraciones dividiendo los datos en $K$ subconjuntos. En cada iteración, uno de los subconjutos es utilizado como datos de validación y el resto de subgrupos $(K-1)$ como datos de entrenamiento. 
 
-Para cada división,$k = 1, . . . , K$ , y para cada valor de $\lambda$, se estima el modelo basado en la **muestra de entrenamiento**. Mientras que con cada **muestra de validación**, y para cada valor de $\lambda$, se utiliza para calcular el error cuadrático medio:
+Para cada división,$k = 1, . . . , K$, y para cada valor de $\lambda$, se estima el modelo basado en la **muestra de entrenamiento**. Mientras que con cada **muestra de validación**, y para cada valor de $\lambda$, se utiliza para calcular el error cuadrático medio:
 
 \[
 EMC_{k}(\lambda) = \sum_{i=1}^{n_k} \frac{[y_{i}^{(k)}-\bx_{i}^{(k)}\hatbbeta_{lasso}^{(k)}(\lambda)]^2}{n}           

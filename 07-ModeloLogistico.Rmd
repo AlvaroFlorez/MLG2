@@ -33,12 +33,13 @@ La variable de respuesta es ```low``` (1 si peso $<$ 2.5 kgs, 0 si peso $\geq$ 2
 
 Para este caso, se puede ajustar modelo logístico. Sea $y_i=1$ si el $i$-ésimo bebé nace con bajo peso, $y_i=0$ si lo contrario. Por lo que la densidad de $y_i$ está definida como:
 $$
-f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{(1-y_i)}.
+f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{(1-y_i)},
 $$
-La función de enlace es:
+donde $\pi_i$ es la probabilidad de que el $i$-ésimo bebé nazca con bajo peso. La función de enlace es:
 $$
-log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}_i+\beta_2\text{lwt}_i+\beta_3\text{smoke}_i+\beta_4\text{ptl}_i.
+\log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}_i+\beta_2\text{lwt}_i+\beta_3\text{smoke}_i+\beta_4\text{ptl}_i.
 $$
+Sin embargo, se puede considerar alguna función de enlace diferente, como veremos adelante.
 ### Estudio de teratología
 Los datos \texttt{lirat} de la librería \texttt{VGAM} son de un estudio para investigar los efectos de unos régimenes alimenticio  en el desarrollo fetal de ratas. En este experimento, 58 ratas hembras con dietas deficientes en hierro se dividieron en cuatro grupos.  Tres grupos recibieron inyecciones semanales de suplementos de hierro, a diferentes dosis, para normalizar sus niveles de hierro. Mientras que, el grupo restante no recibieron ningún suplemento (placebo). Luego, las ratas se preñaron, se sacrificaron 3 semanas después, y se contó el número de fetos muertos en cada camada.
 
@@ -66,9 +67,9 @@ y_i = \sum_{j=1}^{n_i} y_{ij} \sim \mbox{binomial}(n_i, \pi_i),
 \]
 donde $n_i$ es el tamaño de la camada y $\pi_i$ es la probabilidad de que el feto muera. Dado que $\pi_i$ depende del tratamiento y de los niveles de hemoglobina de la rata hembra, se propone que:
 \[
-log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp}_{i1}+\beta_2\text{grp}_{i2}+\beta_3\text{grp}_{i3}+\beta_4\text{hb}_i,
+\log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{grp1}_{i}+\beta_2\text{grp2}_{i}+\beta_3\text{grp3}_{i}+\beta_4\text{hb}_i,
 \]
-donde: ```grp_2```: tratamiento (1: placebo, 2-4: diferentes concentraciones de inyecciones de suplementos de hierro) ```hb```: nivel de hemoglobina.
+donde: $\text{grp1}_{i}=1$ si la $i$-ésima hembra pertenece al grupo 1, $\text{grp1}_{i}=0$ si lo contrario; $\text{grp2}_{i}=1$ si la $i$-ésima hembra pertenece al grupo 2, $\text{grp2}_{i}=0$ si lo contrario; $\text{grp3}_{i}=1$ si la $i$-ésima hembra pertenece al grupo 3, $\text{grp3}_{i}=0$ si lo contrario; y ``hb_i`` es el nivel de hemoglobina de la hembra $i$.
 
 ## Datos agrupados o datos no agrupados
 Los datos binarios tienen dos tipos de formatos:
@@ -91,7 +92,7 @@ Las distribuciones límite para $D$ y $X^2$  no aplican para datos no agrupados.
 En los modelos anteriores hemos propuesto funciones de enlace logit: $log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\bx_i\bbeta$.Lo que implica que:
 
 $$
-\pi_i=g^{-1}(\bx_i,\bbeta)=\frac{exp(\bx_i'\bbeta)}{1+exp(\bx_i'\bbeta)}=\frac{1}{1+exp(-\bx_i'\bbeta)} 
+\pi_i=g^{-1}(\bx_i,\bbeta)=\frac{\exp(\bx_i'\bbeta)}{1+\exp(\bx_i'\bbeta)}=\frac{1}{1+\exp(-\bx_i'\bbeta)} 
 $$
 Sin embargo, podemos utilizar otras funciones de enlace. Por ejemplo, la función **Probit:**
 $$
@@ -99,10 +100,9 @@ $$
 $$
 donde $\Phi(\cdot)$ es función acumulativa de la distribución normal estándar. La función **Log-log complementaria:**
 $$
-\pi_i=1-exp[-exp(\bx'_i\bbeta)] \quad log[-log(1-\pi_i)]=\bx'_i\bbeta.
+\pi_i=1-\exp[-\exp(\bx'_i\bbeta)] \quad \log[-\log(1-\pi_i)]=\bx'_i\bbeta.
 $$
 En la Figura \@ref(fig:linkEsc) podemos observar la estimación de la probabilidad de que el escarabajo muera utilizando diferentes funciones de enlace (logit, probit, log-log complementaria). Graficamente, la función log-log complementaria parece mostrar mejores estimaciones que la probit y la logit.
-
 
 ```{r linkEsc,echo=FALSE, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
 
@@ -121,6 +121,7 @@ lines(pred.x$logdose,pred.logit,lwd=2)
 lines(pred.x$logdose,pred.probit,col=2,lwd=2)
 lines(pred.x$logdose,pred.cloglog,col=3,lwd=2)
 ```
+
 Este resultado se puede comprobar utilizando criterios de información:
 ```{r linkEscAIC,echo=T}
 AIC(modEsc.logit)
@@ -232,7 +233,7 @@ La sensibilidad es la tasa de verdaderos positivos (tvp), mientras que, el compl
 plot(1-sens.espc[2,],sens.espc[1,],lwd=2,xlab='1 - especificidad',
      ylab='sensibilidad')
 ```
-Si el modelo realiza buenas predicciones, para un valor de especificidad dado, se espera que la sensibilidad sea también alta. Por lo tanto, el poder predictivo del modelo se puede medir a través del área bajo la curva del gráfico ROC. Esta medida es llamada índice de concordancia.
+Si el modelo realiza buenas predicciones, para un valor de especificidad dado, se espera que la sensibilidad también sea alta. Por lo tanto, el poder predictivo del modelo se puede medir a través del área bajo la curva del gráfico ROC. Esta medida es llamada índice de concordancia.
 
 
 En R, las curvas ROC se puede graficar con la función `roc` de la librería `pROC` de la siguiente forma:
@@ -272,7 +273,7 @@ Dependiendo del valor de $\phi$, la varianza de $y_i$ puede ser mayor o menor a 
 En el caso del modelo binomial, el estadístico de $\chi^2$ de Pearson está definido como:
 
 $$
-X^2=\sum_{i=1}^n\frac{(y_i-\hat{\pi}_i)^2}{\pi_i(1-\pi_1)/n_i}.
+X^2=\sum_{i=1}^n\frac{(y_i-\widehat{\pi}_i)^2}{\widehat{\pi}_i(1-\widehat{\pi}_1)/n_i}.
 $$
 Si el modelo binomial proporciona buen ajuste, $X^2$ sigue (asintóticamente) una distribución $\chi^2$ con $n-p$ grados de libertad. Por lo tanto, un indicador de posible inflación de varianza es:
 $$

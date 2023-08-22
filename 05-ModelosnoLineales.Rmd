@@ -75,7 +75,7 @@ E(rate_{i}|state=0)=\frac{conc_{i}\theta_{1}}{\theta_{2}+conc_{i}}.
 \[
 E(rate_{i}|state=1)=\frac{conc_{i}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+conc_{i}}.
 \]
-Por lo que, $\theta_3$ determina la velocidad máxima entre las celulas tratadas y no las no tratadas. De igual forma, $\theta_{4}$ indica la diferencia en la concentración en la cual se obtiene la mitad de la máxima velocidad.
+Por lo que, $\theta_3$ determina la velocidad máxima entre las células tratadas y no las no tratadas. De igual forma, $\theta_{4}$ indica la diferencia en la concentración en la cual se obtiene la mitad de la velocidad máxima.
 
 ## Modelos no lineales
 De forma general, en los modelos de regresión asumimos que:
@@ -97,7 +97,8 @@ o
 \[
 y_{i}=m(x_{i},\theta)+\epsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\epsilon_{i},
 \]
-son ejemos de modelos no lineales. Es decir, no son combinación lineal de los parámetros.
+son ejemplos de modelos no lineales. Es decir, no son combinación lineal de los parámetros.
+
 ### Modelos no-lineales linealizables
 Dentro de los modelos no lineales se encuentran algunos que pueden ser linealizables a través de transformaciones sobre las variables. Por ejemplo, el modelo de regresión exponencial:
 \[
@@ -125,14 +126,11 @@ Las técnicas iterativas de estimación de los parámetros están basadas en exp
 $$
 f(\theta)=\sum_{n=0}^\infty \frac{1}{n!}(\theta-\theta^*)^n \frac{\partial^nf(\theta^*)}{\partial\theta^n}.
 $$
-Una aproximación de la función $f(\theta)$ en los valores alrededor del punto $\theta^*$ se puede hacer usando la series de Taylor usando las dos primeras
-derivadas:
+Una aproximación de la función $f(\theta)$ en los valores alrededor del punto $\theta^*$ se puede hacer usando series de Taylor de orden dos:
 $$
 f(\theta)\approx f(\theta^*)+(\theta-\theta^*) \frac{\partial f(\theta^*)}{\partial\theta}+\frac{1}{2}(\theta-\theta^*)^2\frac{\partial^2 f(\theta^*)}{\partial\theta^2}.
 $$
-En este caso, se llama una aproximación por series de Taylor de orden 2.
-
-En caso de que $\btheta$ (vector de parámetros), la aproximación por series de Taylor de orden 2 es:
+En caso de que $\btheta$ (vector de parámetros), la aproximación por series de Taylor de orden dos es:
 $$
 f(\btheta)\approx f(\btheta^*)+(\btheta-\btheta^*)^{'}u(\btheta^*)+\frac{1}{2}(\btheta-\btheta^*)^{'}H(\btheta^*)(\btheta-\btheta^*),
 $$
@@ -159,12 +157,13 @@ es la matriz Hessiana.
 
 Algunos métodos iterativos de estimación son: Gauss-Newton (approx. series de Taylor a la función de la media) y Newton-Raphson (approx. series de Taylor a la función score). En este caso vamos a optar por el primero.
 
-La idea es aproximar $m(x_{i},\btheta^*)$ usando series de Taylor de orden 1 alrededor de $\btheta^*$, esto es:
+La idea es aproximar $m(x_{i},\btheta^*)$ usando series de Taylor de orden uno alrededor de $\btheta^*$, esto es:
 
 \begin{equation}
 m(x_{i},\btheta)\approx m(x_{i},\btheta^*)+(\btheta-\btheta^*)^{'}u_{i}(\btheta^*).
 (\#eq:modeloFat)
 \end{equation}
+
 Note que \@ref(eq:modeloFat) tiene la forma de un modelo lineal, donde $u_{i}(\btheta^*)$ juega el papel de vector de covariables. La diferencia radica en que $u_{i}(\btheta^*)$ puede depender de los parámetros.
 
 La aproximación de la suma de cuadrados de los residuos es:
@@ -221,7 +220,7 @@ En el caso del peso de los pavos, se pueden utilizar los siguientes valores inic
 
 - $\theta_{3}^0$ se puede obtener resolviendo la siguiente ecuación $E(y) = \theta_1^{0}+\theta_2^{0}[1-exp(-\theta_{3} A)]$ para un posible punto. Por ejemplo, si $A=0.16$, un valor posible para $E(y)$ es 750. Por lo que:
 $$
-750=620+180[1-exp(-\theta_{3}^00.16)].
+750=620+180[1-\exp(-\theta_{3}^00.16)].
 $$
 Resolviendo la ecuación $\theta_{3}^0\approx8$.
 
@@ -235,7 +234,7 @@ mod.turk
 ```
 Por lo que la estimación de la media del peso ganado por corral es:
 $$
-E(Gain|A)=622.958 + 178.252 [1 - exp(-7.122A)]    
+E(\mbox{Gain}|A)=622.958 + 178.252 [1 - \exp(-7.122A)]    
 $$
 La figura \@ref(fig:plotpavoscrec) muestra el ajuste de forma gráfica. 
 ```{r plotpavoscrec, echo=T, include=T,fig.height = 4, fig.width = 6,fig.align = "center", fig.cap = "Datos crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina.",warning=FALSE,message = FALSE}
@@ -276,17 +275,17 @@ $$
 $$
 o intervalos de confianza del del $(1-\alpha)$% para $E(Y|x_{0})$.Con la función ``confint`` de R se pueden obtener los IC de los coeficientes a través de los perfiles de verosimilitud.
 
-Hay que hacer énfasis que estas son propiedades para muestras grandes, para muestras pequeñas, estas propiedades pueden ser inadecuadas y se puede recurrir a otras alternativas, como **bootstrap**.
+Hay que hacer énfasis que estas son propiedades para muestras grandes, para muestras pequeñas, estas propiedades pueden ser inadecuadas y se puede recurrir a otras alternativas, como el **bootstrap**.
 
 Para el modelo de crecimiento de los pavos, tenemos que:
 ```{r tablapavos,include=TRUE}
 summary(mod.turk)
 ```
-A partir de este ajuste se puede concluir que el peso medio obtenido sin suplemento es de $622$. Mientras que la ganancia máxmima que se obtiene con el suplemento es de $178$ (significativemente mayor de cero). Los intervalos de confianza para $\btheta$ se obtienen de la siguiente forma:
+A partir de este ajuste se puede concluir que el peso medio obtenido sin suplemento es de $622$. Mientras que la ganancia máxima que se obtiene con el suplemento es de $178$ (significativemente mayor de cero). Los intervalos de confianza para $\btheta$ se obtienen de la siguiente forma:
 ```{r Confintpavos,include=TRUE}
 confint(mod.turk)
 ```
-Aquí podemos ver que, por ejemplo, la ganancia máxima que se puede obtener con el suplemento está entre 156 y 204 gramos con un nivel de confianza del 95\%. 
+Aquí podemos ver que, por ejemplo, la ganancia máxima que se puede obtener con el suplemento está entre $156$ y $204$ gramos con un nivel de confianza del 95\%. 
 
 Para calcular los intervalos de confianza para la media podemos utilizar la función ``predFit`` de la librería ``investr``. La Figura \@ref(fig:Confintpavos2) muestra el intervalo del 95\% del peso ganado medio en función del \% de metionina en la dieta.
 ```{r Confintpavos2,include=TRUE,fig.height = 4, fig.width = 10,fig.align = "center", fig.cap='Datos pavos. Intervalo del 95% de confianza para la media del peso ganado en función de la dieta.'}
@@ -308,12 +307,12 @@ Es posible considerar otros modelos de crecimiento para este conjunto de datos. 
 - Modelo logístico:
 
 $$
-y_{i}=\frac{\theta_{1}}{1+\theta_{2}exp(-\theta_{3}x_{i})}+\varepsilon_{i},
+y_{i}=\frac{\theta_{1}}{1+\theta_{2}\exp(-\theta_{3}x_{i})}+\varepsilon_{i},
 $$
 - Modelo Weibull:
 
 $$
-y_{i}=\theta_{1}+\theta_{2}[1-exp(-\theta_{3}x_{i}^{\theta_{4}})]+\varepsilon_{i}.
+y_{i}=\theta_{1}+\theta_{2}[1-\exp(-\theta_{3}x_{i}^{\theta_{4}})]+\varepsilon_{i}.
 $$
 Para compararlos, podemos ajustarlos y verificar cuál de los tres proporciona mejor ajuste usando criterios de información (AIC o BIC). En la Figura \@ref{fig:tresmodelospavos}, y a través del BIC, podemos ver que los tres modelos proporcionan casi el mismo ajuste. Así que, cualquiera puede ser usado para hacer inferencias y sacar conclusiones.
 
@@ -359,9 +358,9 @@ plot(1/Puromycin$conc,1/Puromycin$rate,col=Puromycin$state, xlab='inversa de la 
 A través del ajuste por MCO para:
 
 $$
-1/y_{i}=\beta_{0}+1/conc_{i}\beta_{1}+\varepsilon_{i},
+1/y_{i}=\beta_{0}+1/\mbox{conc}_{i}\beta_{1}+\varepsilon_{i},
 $$
-Se puede obtener valores iniciales. Luego de ajustar el modelo se obtiene que:
+se puede obtener valores iniciales. Luego de ajustar el modelo se obtiene que:
 
 $$
 \theta_{1}^{(0)}=\frac{1}{\hat{\beta}_{0}}=167.408 \qquad \theta_{2}^{(0)}=\frac{\hat{\beta}_{1}}{\hat{\beta}_{0}}=0.039
@@ -397,9 +396,7 @@ lines(c(thP[2]+thP[4],thP[2]+thP[4]), c(0,(thP[1]+thP[3])/2),lty=2)
 ## Método de Bootstrap
 Los métodos de inferencia que se muestran anteriormente se basan en la distribución asintótica de los estimadores. Por lo que pueden ser inexactas y/o engañosas si tenemos muestras pequeñas. En esos casos, una alternativa preferible es usar ténicas de remuestreo (**bootstrap**).
 
-El bootstrap es una técnica que se puede usar para calcular intervalos de confianza and pruebas de hipótesis cuando el cumplimiento de los supuestos asumidos en el modelo están en duda.
-
-Por ejemplo, si se quiere calcular un intervalo de confianza para la mediana (o cualquier otro parámetro) de $Y$. Para esto tomamos una muestra
+El bootstrap es una técnica que se puede usar para calcular intervalos de confianza and pruebas de hipótesis cuando el cumplimiento de los supuestos asumidos en el modelo están en duda. Por ejemplo, si se quiere calcular un intervalo de confianza para la mediana (o cualquier otro parámetro) de $Y$. Para esto tomamos una muestra
 independiente $\by=(y_{1},...,y_{n})$.
 
 Pasos del boostrap:
@@ -410,10 +407,9 @@ Pasos del boostrap:
 4. un intervalo de confianza del 95% basado en percentiles muestrales 2.5% y 97.5 %.
 
 ### Bootstrap en regresión
+Para un modelo de regresión, el remuestreo se hace sobre los observaciones, considerando la respuesta y las covariables, $(y_i,\bx_i)$, o sobre los residuos del ajuste por MCO. El segundo método es llamado residual resampling y se realiza de las siguiente forma:
 
-Método residual resampling:
-
-1. Con la muestra dada: $(x_{i},y_{i}),i=1,...,n$ ajustar el modelo y obtener los resifuos: $e_{i}=y_{i}-x_{i}^{'}\hat{\beta}.$
+1. Con la muestra dada: $(x_{i},y_{i}),i=1,...,n$ ajustar el modelo y obtener los residuos: $e_{i}=y_{i}-x_{i}^{'}\hat{\beta}.$
 
 2. Obtener una muestra aleatoria con reemplazo de los residuos $e^*=(e_{1}^*,...,e_{n}^*)$.
 
@@ -424,20 +420,24 @@ el intervalo de confianza para $\beta_{j}$ usando los percentiles*.
 
 $*$Hay muchas modificaciones y extensiones para calcular los intervalos de confianza.
 
+
+Para los datos de la Puromicina, el bootstrap en R se puede implementar utilizando la función `Boot` de la librería `car`:
+
 ```{r bootpuro}
 set.seed(310)
 mod.boot = Boot(mod.puromicyn,method='residual',R=1000)
-
+mod.boot
 ```
-```{r bootgraf, include=TRUE, fig.align='center', fig.cap="Metodo Bootstrap datos puromicina. "}
+En el objeto `mod.boot` se pueden observar todas las estimaciones calculadas en los $1000$ remuestreos. Por ejemplo, la relaciones entre las estimaciones se pueden observar a través de un diagrama de dispersión (Figura \@ref(fig:bootgraf)). Aquí vemos una correlaciones altas en algunas de las estimaciones.
+
+```{r bootgraf, include=TRUE, fig.align='center', fig.cap="Datos puromicina. Diagrama de dispersión para las estimaciones de los coeficientes del modelo por bootstrap."}
 pairs(mod.boot$t,labels=c(expression(hat(theta)[1]),expression(hat(theta)[2]),expression(hat(theta)[3]),
                           expression(hat(theta)[4])))
 ```
-**Estimaciones por bootstrap** 
-
+Igualmente, la distribución muestral de los estimadores de los coeficientes se pueden obtener a partir de histogramas (ver Figura \@ref(fig:bootgrafconf)). Estas parecen aproximarse a distribuciones normales, sin embargo, hay leves asimetrías en $\hattheta_1$ y $\hattheta_2$.
  
 
-```{r bootgrafconf, include=TRUE, fig.align='center', fig.cap="Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5"}
+```{r bootgrafconf, include=TRUE, fig.align='center', fig.cap="Datos puromicina. Histograma de las estimaciones de los coeficientes del modelo por bootstrap. Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5."}
 par(mfrow=c(1,4))
 hist(mod.boot$t[,1],breaks = 20,xlab=expression(hat(theta)[1]),main = '')
 abline(v=coef(mod.puromicyn)[1],lty=2,lwd=2)
@@ -460,9 +460,7 @@ abline(v=mean(mod.boot$t[,4]),lty=2,lwd=2,col=2)
 abline(v=quantile(mod.boot$t[,4],c(0.025,0.975),na.rm = T),lty=2,lwd=2,col=2)
 
 ```
-
-Intervalos del 95% de confianza usando bootstrap (corrección de
-sesgo):
+Finalmente, los intervalos del 95% de confianza usando bootstrap se pueden obtener a partir de los percentiles 2.5\% y 97.5\% de las distribuciones remuestreadas:
 ```{r bootgrafintC, include=TRUE}
 quantile(mod.boot$t[,1],c(0.025,0.975),na.rm = T)
 quantile(mod.boot$t[,2],c(0.025,0.975),na.rm = T)
@@ -470,11 +468,9 @@ quantile(mod.boot$t[,3],c(0.025,0.975),na.rm = T)
 quantile(mod.boot$t[,4],c(0.025,0.975),na.rm = T)
 ```
 
+En la Figura \@ref(bootgrafpred) se pueden observar todas las estimaciones de la media obtenidas a partir de los 1000 remuestreos. Se puede observar que en todos los casos, la máxima velocidad de obtuvo para las células tratadas.
 
-**Puromicina - bootstrap**
-
-
-```{r bootgrafpred, include=TRUE, fig.align='center', fig.cap="Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual."}
+```{r bootgrafpred, include=TRUE, fig.align='center', fig.cap="Datos puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja."}
 fit.rate= function(theta,x){
   cbind(theta[1]*x/(theta[2]+x),
         (theta[1]+theta[3])*x/(theta[2]+theta[4]+x))
@@ -495,16 +491,13 @@ points(Puromycin$conc,Puromycin$rate,col=Puromycin$state)
 ```
 
 ### Algunas consideraciones
+Finalmente, algunas consideraciones que se debe de tener a la hora de estimar un modelo no lineal:
 
-* Lo ideal es que el algoritmo llegue a la solución en pocas
-iteraciones (esto pasa si la aproximación lineal es adecuada).
+* Lo ideal es que el algoritmo llegue a la solución en pocas iteraciones. Esto pasa si la aproximación lineal es adecuada.
 
-* Siempre es bueno evaluar la solución con diferentes puntos
-iniciales. Es posible que caigamos en un máximo local.
+* Siempre es bueno evaluar la solución con diferentes puntos iniciales. Es posible que caigamos en un máximo local.
 
-* Si el tamaño de muestra no es grande, las propiedades
-asintóticas pueden no ser adecuadas. Por lo tanto, es mas
-conveniente usar bootstrap para hacer inferencias.
+* Si el tamaño de muestra no es grande, las propiedades asintóticas pueden no ser adecuadas. Por lo tanto, es mas conveniente usar bootstrap para hacer inferencias.
 
 
 

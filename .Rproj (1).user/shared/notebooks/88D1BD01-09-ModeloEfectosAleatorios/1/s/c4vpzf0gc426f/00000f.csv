@@ -1,0 +1,17 @@
+"0","library(WWGbook)"
+"2","Warning messages:
+"
+"2","1: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on 'G:/Mi unidad/Material de clase/Bookdown/MLG2/index.Rmd'
+"
+"2","2: "
+"2","In readLines(index, encoding = encoding) :"
+"2","
+ "
+"2"," incomplete final line found on 'G:/Mi unidad/Material de clase/Bookdown/MLG2/index.Rmd'
+"
+"0","data(ratpup)"
+"0","plot(ratpup$litter,ratpup$weight,col=as.double(ratpup$sex),pch=19,xlab='camada', ylab='peso al nacer (gramos)')"

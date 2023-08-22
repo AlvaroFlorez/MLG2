@@ -32,9 +32,7 @@ data(Boston)
 ## Ejemplos
 
 ### Pasteles
-Con los datos `cakes` de la libreria `alr4` se tienen dos objetivos. Primero, evaluar el efecto de la temperatura y tiempo de horneado sobre la palatabilidad de mazclas de pasteles para hornear. Segundo, encontrar la combinación de estos factores que maximizan la palatabilidad.
-
-Como variable respuesta (`Y`) se tiene el promedio de calificación de la palatabilidad de cuatro pasteles horneados. Mientras que las covariables son: el tiempo de horneado (`X1`, en minutos) y la temperatura (`X2`, en grados Fahrenheit)
+Con los datos `cakes` de la libreria `alr4` se tienen dos objetivos. Primero, evaluar el efecto de la temperatura y tiempo de horneado sobre la palatabilidad de mazclas de pasteles para hornear. Segundo, encontrar la combinación de estos factores que maximizan la palatabilidad. Como variable respuesta (`Y`) se tiene el promedio de calificación de la palatabilidad de cuatro pasteles horneados. Mientras que las covariables son: el tiempo de horneado (`X1`, en minutos) y la temperatura (`X2`, en grados Fahrenheit)
 
 ```{r CakesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Diagrama de dispersión.",warning=FALSE,message = FALSE}
 library(alr4)
@@ -53,16 +51,15 @@ plot(nox~dis,data=Boston,ylab='NOx',xlab='distancia a centros de empleo')
 ```
 
 ## Modelos polinomiales
-El modelo:
+Considere el modelo:
 $$
 y_{i} = \beta_{0} + \beta_{1}x_{i} + \varepsilon_i,
 $$
-
-describe la relación lineal entre $y$ y $x_1$. Si las relación entre las variables presentan curvaturas, se puede considerar un modelo polinómico de la forma:
+donde $\varepsilon_i \sim N(0,\sigma^2)$ y $cov(\varepsilon_i,\varepsilon_j)=0$ para todo $i\neq j$. Este describe la relación lineal entre $y$ y $x_1$. Si las relación entre las variables presentan curvaturas, se puede considerar un modelo polinómico de la forma:
 $$
-y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}x_{i}^{2} + \ldots + + \beta_{k}x_{i}^{k} + \varepsilon_i.
+y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}x_{i}^{2} + \ldots + \beta_{r}x_{i}^{r} + \varepsilon_i.
 $$
-Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros $\bbeta$. En la Figura \@ref(fig:Polinomios)  se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3). Aquí vemos que este tipo de modelos son muy versatiles. Cualquier función suave se puede ajustar meidante un polinomio de grado suficientemente alto. Por esta razón, los modelos polinomicos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.
+Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros (es una función lineal de $\bbeta$). En la Figura \@ref(fig:Polinomios)  se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3). Aquí vemos que este tipo de modelos son muy versatiles. Cualquier función suave se puede ajustar meidante un polinomio de grado suficientemente alto. Por esta razón, los modelos polinomicos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.
 
 
 ```{r Polinomios,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (linea verde)."}
@@ -266,10 +263,7 @@ Para determinar en que combinación de tiempo (X1) y temperatura de horneado (X2
 \[
 \frac{\partial E(Y)}{\partial \bx}  = \frac{\partial}{\partial \bx} \left( \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \beta_{3}x_{1}^2 + \beta_{4}x_{2}^{2} + \beta_{5}x_{1}x_{2} \right) = \bZERO,
 \]
-verificando que se obtiene un máximo.
-
-Resolviendo la ecuación anterior, el máximo valor esperado de palatabilidad $(`r maxY`)$ se obtiene en un tiempo de horneado de `r maxX1` minutos y a una temperatura de \ang{`r maxX2`}F. El intervalo del 95\% de confianza en este punto es: $(`r IC95[2]`, `r IC95[3]`)$.
-
+verificando que se obtiene un máximo. Resolviendo la ecuación anterior, el máximo valor esperado de palatabilidad $(`r maxY`)$ se obtiene en un tiempo de horneado de `r maxX1` minutos y a una temperatura de \ang{`r maxX2`}F. El intervalo del 95\% de confianza en este punto es: $(`r IC95[2]`, `r IC95[3]`)$.
 
 ### Datos de Boston
 ```{r BostonFit0, echo=F, warning=FALSE,message = FALSE}
@@ -291,7 +285,7 @@ Boston$disc = Boston$dis - mean(Boston$dis)
 mod3.Boston = lm(I(nox)^(-1)~disc+I(disc^2)+I(disc^3),data=Boston)
 summary(mod3.Boston)
 ```
-La Figura \@ref(fig:figPredBoston) muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del $`r R2.3*100`$\% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de $`r R2.2`$. Sin embargo, se puede observar que este ajuste es un poco deficiente cuando las distancias son muy grandes (mayores a 11).
+La Figura \@ref(fig:figPredBoston) muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del $`r R2.3*100`$\% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de $`r R2.2`$. Sin embargo, se puede observar que este ajuste presenta deficiencias cuando las distancias son muy grandes (mayores a 11).
 
 ```{r figPredBoston,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)."}
 x = seq(1,13,length.out=100)
@@ -321,7 +315,7 @@ $$
 $$
 Por lo tanto, si $x_{i} \leq t$, $E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}$. Mientras que, si $x_{i} > t$, tenemos que $E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{1}t) + (\beta_{1} + \beta_{3})x_{i}$. 
 
-Este modelo está representado graficamente en la Figura \@ref(fig:RegSegmentos). Cuando $\beta_2 \neq 0$, el modelo presenta una discontinuidad en $t$. Mientras que, cuando $\beta_2 = 0$, el modelo presenta un cambio de pendiente en el punto $t$. Además, $\beta_3$ indica el cambio de pendiente. 
+Este modelo está representado graficamente en la Figura \@ref(fig:RegSegmentos). Cuando $\beta_2 \neq 0$, el modelo presenta una discontinuidad en $t$. Mientras que, cuando se fija $\beta_2 = 0$, el modelo presenta un cambio de pendiente en el punto $t$. Además, $\beta_3$ indica el cambio de pendiente. 
 
 ```{r RegSegmentos,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Modelo de regresión por segmentos. Modelo con discontinuidad en $t$ (izquierda). Modelo con cambio de pendiente en $t$ (derecha)."}
 par(mfrow=c(1,2))

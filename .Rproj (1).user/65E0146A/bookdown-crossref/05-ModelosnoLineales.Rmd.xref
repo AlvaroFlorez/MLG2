@@ -10,14 +10,15 @@ h3:modelos-no-lineales-linealizables Modelos no-lineales linealizables
 h3:estimación-de-los-parámetros Estimación de los parámetros
 fig:plotpavoscrec Datos crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina.
 h3:inferencia-sobre-los-parámetros Inferencia sobre los parámetros
+fig:Confintpavos2 Datos pavos. Intervalo del 95% de confianza para la media del peso ganado en función de la dieta.
 fig:tresmodelospavos Datos crecimiento de pavos. Ajuste del modelo de crecimiento propuesto (rojo), modelo logístico (verde) y Modelo Weibull (azul).
 h4:puromicina-estimación Puromicina-Estimación
 fig:linealpuromicina Datos puromicina. Diagrama de dispersión. Datos linealizados(derecha).
 fig:puromicinaplotl Datos puromicina. Enzimas tratadas(negro), enzimas no tratadas(rojo). 
 h2:método-de-bootstrap Método de Bootstrap
 h3:bootstrap-en-regresión Bootstrap en regresión
-fig:bootgraf Metodo Bootstrap datos puromicina. 
-fig:bootgrafconf Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5
-fig:bootgrafpred Todas las curvas estimadas por bootstrap. Linea roja: estimación puntual.
+fig:bootgraf Datos puromicina. Diagrama de dispersión para las estimaciones de los coeficientes del modelo por bootstrap.
+fig:bootgrafconf Datos puromicina. Histograma de las estimaciones de los coeficientes del modelo por bootstrap. Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5.
+fig:bootgrafpred Datos puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja.
 h3:algunas-consideraciones Algunas consideraciones
 

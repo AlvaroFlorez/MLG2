@@ -1,0 +1,7 @@
+"0","library(ggplot2)"
+"0","fev = read.table('fev.txt',header = T)"
+"0","fev$drug = as.factor(fev$drug)"
+"0","levels(fev$drug) = c('A','B','Placebo')"
+"0",""
+"0","p <- ggplot(data = fev, aes(x = hour, y = fev, group = patient))"
+"0","p + geom_line() + facet_grid(. ~ drug) + ylab('Volumen espiratorio forzado (litros por segundo)') + xlab('tiempo (horas)')"
