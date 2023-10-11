@@ -61,7 +61,7 @@ knitr::include_graphics(here::here("figs", "Michaelis.jpg"))
 Dado que se tienen células tratadas y no tratadas, se propone el siguiente modelo:
 \[
 rate_{i}=\frac{conc_{i}\theta_{1}+state_{i}conc_{i}\theta_{3}}
-{\theta_{2}+state_{i}\theta_{3}+conc_{i}}+\epsilon_{i}.
+{\theta_{2}+state_{i}\theta_{3}+conc_{i}}+\varepsilon_{i}.
 \]
 Por lo que se tiene una curva diferente para las enzimas tratadas y no tratadas:
 
@@ -91,23 +91,23 @@ donde $x_j^{*}$ representa cualquier transformación de las covariables original
 
 Modelos de la forma:
 \[
-y_{i}=m(x_{i},\theta)+\epsilon_{i}=\theta_{1}+\theta_{1}[1+exp(-\theta_{3}x_{i})]+\epsilon_{i},
+y_{i}=m(x_{i},\theta)+\varepsilon_{i}=\theta_{1}+\theta_{1}[1+exp(-\theta_{3}x_{i})]+\varepsilon_{i},
 \]
 o
 \[
-y_{i}=m(x_{i},\theta)+\epsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\epsilon_{i},
+y_{i}=m(x_{i},\theta)+\varepsilon_{i}=\frac{x_{i}\theta_{i}}{\theta_{2}+x_{i}}+\varepsilon_{i},
 \]
 son ejemplos de modelos no lineales. Es decir, no son combinación lineal de los parámetros.
 
 ### Modelos no-lineales linealizables
 Dentro de los modelos no lineales se encuentran algunos que pueden ser linealizables a través de transformaciones sobre las variables. Por ejemplo, el modelo de regresión exponencial:
 \[
-E(y)=\theta_{0}+\theta_{1}exp(\theta_{2}+x_{i}\theta_{3}),
+E(y)=\theta_{0}+\theta_{1}\exp(\theta_{2}+x_{i}\theta_{3}),
 \]
 
 Si $\theta_{0}=0$, es linealizable:
 \[
-log y_{i}=(log\theta_{1}+\theta_{2})+x_{i}\theta_{3}+\varepsilon_{i}^* = \beta_0+x_{i}\beta_1+\varepsilon_{i}^*
+\log y_{i}=(\log\theta_{1}+\theta_{2})+x_{i}\theta_{3}+\varepsilon_{i}^* = \beta_0+x_{i}\beta_1+\varepsilon_{i}^*
 \]
 
 ### Estimación de los parámetros
@@ -205,7 +205,7 @@ Si $j$ es muy grande (muchas iteraciones), se dice que hay divergencia.
 La estimación de $\sigma^2$ es:
 
 $$
-\widehat{\sigma}^2=\frac{1}{n-p}\sum_{i=1}^n[y_{i}-m(x_{i},\hatbtheta)]^2,
+\widehat{\sigma}^2=\frac{1}{n-p}\sum_{i=1}^n[y_{i}-m(\bx_{i},\hatbtheta)]^2,
 $$
 
 donde $p$ es la dimensión de $\btheta$.
@@ -245,7 +245,7 @@ lines(x, th.turk[1]+th.turk[2]*(1-exp(-th.turk[3]*x)),col=2, lwd = 2)
 ```
 
 ### Inferencia sobre los parámetros
-Las propiedades del $\hatbtheta$ se basan en teoría asintótica, es decir que son válidas si se tiene muestras grandes. Si $\epsilon \sim N(\bZERO,\sigma^2 \bI)$, tenemos que asintóticamente $(n \to \infty)$:
+Las propiedades del $\hatbtheta$ se basan en teoría asintótica, es decir que son válidas si se tiene muestras grandes. Si $\varepsilon \sim N(\bZERO,\sigma^2 \bI)$, tenemos que asintóticamente $(n \to \infty)$:
 
 $$
 \hatbtheta\sim N\left(\btheta,\sigma^2\left[U(\btheta^*)U(\btheta^*)'\right]^{-1}\right).
@@ -468,7 +468,7 @@ quantile(mod.boot$t[,3],c(0.025,0.975),na.rm = T)
 quantile(mod.boot$t[,4],c(0.025,0.975),na.rm = T)
 ```
 
-En la Figura \@ref(bootgrafpred) se pueden observar todas las estimaciones de la media obtenidas a partir de los 1000 remuestreos. Se puede observar que en todos los casos, la máxima velocidad de obtuvo para las células tratadas.
+En la Figura \@ref(fig:bootgrafpred) se pueden observar todas las estimaciones de la media obtenidas a partir de los 1000 remuestreos. Se puede observar que en todos los casos, la máxima velocidad de obtuvo para las células tratadas.
 
 ```{r bootgrafpred, include=TRUE, fig.align='center', fig.cap="Datos puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja."}
 fit.rate= function(theta,x){

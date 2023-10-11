@@ -82,7 +82,7 @@ Antes de introducir los GLM, vamos a recordar algunos conceptos sobre distribuci
 ### Familia exponencial
 La distribución de probabilidad de una variable aleatoria $Y$ pertenece a la **familia exponencial** si la función de densidad (o masa) de $Y$ se puede expresar de la siguiente forma:
 $$
-f(y;\theta,\phi)=\exp\{[y\theta-b(\theta)]/a(\phi)+c(y,\phi)\}
+f(y;\theta,\phi)=\exp\{[y\theta-b(\theta)]/a(\phi)+c(y,\phi)\},
 $$
 
 donde $\theta$ es llamado parámetro natural, y $\phi>0$ es un parámetro de dispersión. Además se tiene que:
@@ -236,7 +236,7 @@ $$
 
 donde $x_{ij}$ es la $j$-ésima covariable asociada al individuo $i$. El predictor lineal está definido como:
 $$
-\eta_{i}=\beta_{0}+\sum_{j=1}^{p-1}\beta_{j}x_{ij}=\bx_{i}^{'}\bbeta
+\eta_{i}=\beta_{0}+\sum_{j=1}^{p-1}\beta_{j}x_{ij}=\bx_{i}^{'}\bbeta.
 $$
 
 ### Función de enlace
@@ -571,7 +571,7 @@ $$
 Entonces un intervalo de confianza para $\eta_0$ es:
 
 $$
-\widehat{\eta}_0\pm z_{\alpha/2}\sqrt{\bx_0'I(\hatbbeta)^{-1}\bx_0}
+\widehat{\eta}_0\pm z_{\alpha/2}\sqrt{\bx_0'I(\hatbbeta)^{-1}\bx_0}.
 $$
 
 Para encontrar el intervalo de confianza para $\mu_i$, se hace la transformación $g^{-1}$ a los límites de confianza.
@@ -628,8 +628,10 @@ lines(predx2$base,upr2,lty=2,col=2)
 Considere un GLM con observaciones $\by_i=(y_1,...,y_n)$. Sea $\cl(\hatbmu)$ la log-verosimilitud (expresada en función de $\bmu$) evaluada en el MLE. La máxima verosimilitud que se puede alcanzar corresponde a $\cl(\by)$ (un modelo con ajuste perfecto $y_i=\mu_i$). A este último se le conoce como el **modelo saturado.** La Devianza compara el modelo propuesto contra el modelo saturado de la siguiente manera:
 
 \begin{equation}
+\begin{split}
 D &=- 2 \log \left[ \frac{L(\hatbmu)}{L(\by)} \right] = -2[\ell(\hat{\bmu})-\ell(\by)] \\
 &=  2\sum_{i=1}^n[y_i\tildetheta_i-b(\tildetheta_i)]/a(\phi) - \sum_{i=1}^n[y_i\widehat{\theta_i}-b(\widehat{\theta_i})]/a(\phi),
+\end{split}
 \end{equation}
 donde $\tildetheta_i$ corresponde a la estimación de $\theta_i$ en el modelo saturado $(\tildemu_i=y_i)$. Dado que, $\ell(\by) \geq \ell(\hat{\bmu})$, entonces $D \geq 0$. Por lo que, si el ajuste propuesto es pobre, se espera que $D$ sea grande.
 
@@ -697,6 +699,6 @@ $$
 $$
 donde $\ell_M$ es la verosimilitud alcanzada con el modelo propuesto y $p$ el número de parámetros. El segundo indicador como:
 $$
-\text{BIC}=-2\ell_M+plog(n).
+\text{BIC}=-2\ell_M+p\log(n).
 $$
 En ambos casos, entre mas pequeños sean estos indicadores mejor es el modelo.

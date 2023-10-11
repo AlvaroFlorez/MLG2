@@ -63,10 +63,12 @@ header-includes:
   - \newcommand{\hatbbeta}{\widehat{\bbeta}}
   - \newcommand{\bgamma}{\boldsymbol \gamma}
   - \newcommand{\hatmu}{\widehat{\mu}}
+  - \newcommand{\hatbmu}{\widehat{\bmu}}
   - \newcommand{\hatsigma}{\widehat{\sigma}}
   - \newcommand{\hatlambda}{\widehat{\lambda}}
   - \newcommand{\hatbLambda}{\widehat{\bLambda}}
   - \newcommand{\btheta}{\boldsymbol \theta}
+  - \newcommand{\hatbtheta}{\widehat{\btheta}}
   - \newcommand{\bLambda}{\boldsymbol \Lambda}
   - \newcommand{\bvarepsi}{\boldsymbol \varepsilon}
   - \newcommand{\bpi}{\boldsymbol \pi}
