@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-10-11" />
+<meta name="date" content="2023-10-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1016,19 +1016,19 @@ Figure 4.5: Datos de grasa corporal. Valiación cruzada (puntos rojos) para dife
 <span id="cb92-2"><a href="selección-de-variables.html#cb92-2" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
 <pre><code>## 13 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                  s0
-## age      0.03109358
+## age      0.03985469
 ## weight   .         
-## height  -0.14026654
+## height  -0.14618180
 ## neck     .         
 ## chest    .         
-## abdom    0.57022182
+## abdom    0.59592233
 ## hip      .         
 ## thigh    .         
 ## knee     .         
 ## ankle    .         
 ## biceps   .         
 ## forearm  .         
-## wrist   -0.60977822</code></pre>
+## wrist   -0.93314549</code></pre>
 <p>La selección de variables por medio del estimador LASSO son <code>age</code>, <code>height</code>,<code>abdom</code> y <code>wrist</code>. Ahora ajustamos el modelo con estas variables por medio de MCO:</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="selección-de-variables.html#cb94-1" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
 <span id="cb94-2"><a href="selección-de-variables.html#cb94-2" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>

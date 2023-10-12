@@ -290,14 +290,14 @@ La Figura \@ref(fig:figPredBoston) muestra el ajuste del modelo cúbico. Para ha
 ```{r figPredBoston,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)."}
 x = seq(1,13,length.out=100)
 
-pred1 = predict(mod1.Boston,list(disc=x-mean(Boston$dis)))
-pred2 = predict(mod2.Boston,list(disc=x-mean(Boston$dis)))
-pred3 = predict(mod3.Boston,list(disc=x-mean(Boston$dis)))
+pred1.Boston = predict(mod1.Boston,list(disc=x-mean(Boston$dis)))
+pred2.Boston = predict(mod2.Boston,list(disc=x-mean(Boston$dis)))
+pred3.Boston = predict(mod3.Boston,list(disc=x-mean(Boston$dis)))
 
 plot(I(nox)^-1.5~dis,data=Boston,ylab='NOx',xlab='distancia a centros de empleo')
-lines(x,pred1,lwd=2)
-lines(x,pred2,col=2,lwd=2)
-lines(x,pred3,col=3,lwd=2)
+lines(x,pred1.Boston,lwd=2)
+lines(x,pred2.Boston,col=2,lwd=2)
+lines(x,pred3.Boston,col=3,lwd=2)
 ```
 
 ## Regresión por segmentos
@@ -334,6 +334,7 @@ plot(NULL,NULL,xlim=c(-0.08,1),ylim=c(0,1),ylab = 'respuesta',
 lines(x0,y0,lwd=2)
 lines(x1,y1,lwd=2)
 abline(v=0.5,lty=2)
+abline(h=0,lty=2)
 brackets(0.5, y0[2], 0.5, y1[1],h=0.05,ticks=0.5,type=1,xpd=T)
 text(0.5-0.08,mean(c(y0[2],y1[1])),expression(beta[2]))
 
@@ -368,7 +369,7 @@ plot(NULL,NULL,xlim=c(-0.08,1),ylim=c(0,1),ylab = 'respuesta',
 lines(x0,y0,lwd=2)
 lines(x1,y1,lwd=2)
 abline(v=0.5,lty=2)
-
+abline(h=0,lty=2)
 brackets(0, 0, 0, b0,h=0.05,ticks=0.5,type=1,xpd=T)
 text(0-0.08,b0/2,expression(beta[0]))
 
