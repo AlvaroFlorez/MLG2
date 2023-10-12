@@ -282,7 +282,7 @@ Para los datos de contaminación se puede proponer el siguiente modelo:
 La potencia en la variable respuesta se seleccionó usando el método de Box-Cox. El ajuste del modelo es el siguiente:
 ```{r BostonFit, echo=T, warning=FALSE,message = FALSE}
 Boston$disc = Boston$dis - mean(Boston$dis)
-mod3.Boston = lm(I(nox)^(-1)~disc+I(disc^2)+I(disc^3),data=Boston)
+mod3.Boston = lm(I(nox)^(-1.5)~disc+I(disc^2)+I(disc^3),data=Boston)
 summary(mod3.Boston)
 ```
 La Figura \@ref(fig:figPredBoston) muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del $`r R2.3*100`$\% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de $`r R2.2`$. Sin embargo, se puede observar que este ajuste presenta deficiencias cuando las distancias son muy grandes (mayores a 11).

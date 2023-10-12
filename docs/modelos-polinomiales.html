@@ -599,28 +599,28 @@ verificando que se obtiene un máximo. Resolviendo la ecuación anterior, el má
 \]</span>
 La potencia en la variable respuesta se seleccionó usando el método de Box-Cox. El ajuste del modelo es el siguiente:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="modelos-polinomiales.html#cb30-1" tabindex="-1"></a>Boston<span class="sc">$</span>disc <span class="ot">=</span> Boston<span class="sc">$</span>dis <span class="sc">-</span> <span class="fu">mean</span>(Boston<span class="sc">$</span>dis)</span>
-<span id="cb30-2"><a href="modelos-polinomiales.html#cb30-2" tabindex="-1"></a>mod3.Boston <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">I</span>(nox)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">~</span>disc<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">3</span>),<span class="at">data=</span>Boston)</span>
+<span id="cb30-2"><a href="modelos-polinomiales.html#cb30-2" tabindex="-1"></a>mod3.Boston <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">I</span>(nox)<span class="sc">^</span>(<span class="sc">-</span><span class="fl">1.5</span>)<span class="sc">~</span>disc<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">I</span>(disc<span class="sc">^</span><span class="dv">3</span>),<span class="at">data=</span>Boston)</span>
 <span id="cb30-3"><a href="modelos-polinomiales.html#cb30-3" tabindex="-1"></a><span class="fu">summary</span>(mod3.Boston)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = I(nox)^(-1) ~ disc + I(disc^2) + I(disc^3), data = Boston)
+## lm(formula = I(nox)^(-1.5) ~ disc + I(disc^2) + I(disc^3), data = Boston)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.45677 -0.10233  0.00922  0.13091  0.32643 
+## -0.86825 -0.21380  0.00826  0.26905  0.68913 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  1.9785763  0.0121059 163.440  &lt; 2e-16 ***
-## disc         0.1788433  0.0051507  34.722  &lt; 2e-16 ***
-## I(disc^2)   -0.0257929  0.0029431  -8.764  &lt; 2e-16 ***
-## I(disc^3)    0.0013534  0.0004814   2.811  0.00513 ** 
+## (Intercept)  2.7939644  0.0244485 114.279  &lt; 2e-16 ***
+## disc         0.3675414  0.0104022  35.333  &lt; 2e-16 ***
+## I(disc^2)   -0.0461689  0.0059438  -7.768 4.54e-14 ***
+## I(disc^3)    0.0020017  0.0009723   2.059     0.04 *  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.173 on 502 degrees of freedom
-## Multiple R-squared:  0.7765, Adjusted R-squared:  0.7752 
-## F-statistic: 581.5 on 3 and 502 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.3494 on 502 degrees of freedom
+## Multiple R-squared:  0.7826, Adjusted R-squared:  0.7813 
+## F-statistic: 602.4 on 3 and 502 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>La Figura <a href="modelos-polinomiales.html#fig:figPredBoston">2.10</a> muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del <span class="math inline">\(78.3\)</span>% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de <span class="math inline">\(0.781\)</span>. Sin embargo, se puede observar que este ajuste presenta deficiencias cuando las distancias son muy grandes (mayores a 11).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:figPredBoston"></span>
 <img src="MLG2_files/figure-html/figPredBoston-1.png" alt="Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)." width="576" />
