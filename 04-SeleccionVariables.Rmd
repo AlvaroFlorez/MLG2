@@ -315,7 +315,7 @@ as.data.frame(surgical.all.mods)[AIC.order[1:5],c(2:8,10)]
 ```
 Con este críterio se escoge el mismo modelo que con el $R^{2}_{adj}$. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad. 
 
-En la Figura \@ref(fig:surgicalAll) muestra los $R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,C$_p$, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o $R^{2}_{pred}$.
+En la Figura 4.2 muestra los $R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,C$_p$, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o $R^{2}_{pred}$.
 
 ```{r surgicalAll, echo=T, fig.height = 5, fig.width = 7,fig.align = "center",fig.cap = "Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.",warning=FALSE,message = FALSE}
 par(mfrow=c(1,2))
@@ -439,7 +439,7 @@ Mientras que, en la regresión de ridge minimiza:
 
 La Figura \@ref(fig:LASSOrest) muestra como intervienen las restricciones del estimador de LASSO (izquierda) y ridge (derecha) en un modelo con dos covariables. Los contornos muestras la suma de cuadrado de los errores, mientras que, las restricciones están dadas por el diamante $(|\beta_1|+|\beta_2| \leq t)$ y la circunferencia $(\beta_1^2+\beta_2^2 \leq t)$ rojas para el estimador LASSO y ridge, respectivamente. La solución de ambos estimadores se encuentra en el punto donde el contorno elíptico intercepta la región de la restricción. Para la regresión LASSO, si la solución ocurre en una esquina, entonces la estimación del parámetro es igual a cero.
 
-```{r LASSOrest, echo=T, fig.height = 5, fig.width = 9,fig.align = "center",fig.cap = "Estimación del estimador de LASSO (izquierda) y ridge (derecha). Las elipses rojas son los contornos de la suma de cuadrados de los errores. Mientras que, la región roja son las restricciones para cada estimador)."} 
+```{r LASSOrest, echo=F, fig.height = 5, fig.width = 9,fig.align = "center",fig.cap = "Estimación del estimador de LASSO (izquierda) y ridge (derecha). Las elipses rojas son los contornos de la suma de cuadrados de los errores. Mientras que, la región roja son las restricciones para cada estimador)."} 
 library(mnormt)
 x = seq(-2,4,length.out=200)
 y = seq(-2,5,length.out=200)
