@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-10-17" />
+<meta name="date" content="2023-10-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -942,7 +942,7 @@ Figure 4.3: Estimación del estimador de LASSO (izquierda) y ridge (derecha). La
 Figure 4.4: Datos de grasa corporal. Estimación de los coeficientes de regresión vs el logaritmo de <span class="math inline">\(\lambda\)</span>
 </p>
 </div>
-<p>La pregunta sería que valor de <span class="math inline">\(lambda\)</span> se debe seleccionar para determinar los coeficientes que son diferentes de cero. Una alternativa que tenemos para ello es por medio de validación cruzada.</p>
+<p>La pregunta sería que valor de <span class="math inline">\(\lambda\)</span> se debe seleccionar para determinar los coeficientes que son diferentes de cero. Una alternativa que tenemos para ello es por medio de validación cruzada.</p>
 </div>
 <div id="validación-cruzada" class="section level3 hasAnchor" number="4.5.2">
 <h3><span class="header-section-number">4.5.2</span> Validación cruzada<a href="selección-de-variables.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -990,44 +990,45 @@ Figure 4.5: Datos de grasa corporal. Valiación cruzada (puntos rojos) para dife
 <span id="cb91-2"><a href="selección-de-variables.html#cb91-2" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
 <pre><code>## 13 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                  s0
-## age      0.04428910
+## age      0.03428862
 ## weight   .         
-## height  -0.14861287
-## neck    -0.01394232
+## height  -0.14240926
+## neck     .         
 ## chest    .         
-## abdom    0.61111812
+## abdom    0.57961316
 ## hip      .         
 ## thigh    .         
 ## knee     .         
 ## ankle    .         
 ## biceps   .         
 ## forearm  .         
-## wrist   -1.08873009</code></pre>
-<p>La selección de variables por medio del estimador LASSO son <code>age</code>, <code>height</code>,<code>abdom</code> y <code>wrist</code>. Ahora ajustamos el modelo con estas variables por medio de MCO:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="selección-de-variables.html#cb93-1" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
+## wrist   -0.72786945</code></pre>
+<p>La selección de variables por medio del estimador LASSO son <code>age</code>, <code>height</code>, <code>neck</code>,<code>abdom</code> y <code>wrist</code>. Ahora ajustamos el modelo con estas variables por medio de MCO:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="selección-de-variables.html#cb93-1" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>neck<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
 <span id="cb93-2"><a href="selección-de-variables.html#cb93-2" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = brozek ~ age + height + abdom + wrist, data = fat)
+## lm(formula = brozek ~ age + height + neck + abdom + wrist, data = fat)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -16.2571  -2.8824  -0.2919   3.0419   9.3464 
+## -14.9618  -2.9130  -0.1425   2.9188  10.1956 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  0.24853    6.27849   0.040   0.9685    
-## age          0.06707    0.02196   3.055   0.0025 ** 
-## height      -0.16461    0.07821  -2.105   0.0363 *  
-## abdom        0.67569    0.03120  21.654  &lt; 2e-16 ***
-## wrist       -1.93709    0.38343  -5.052 8.51e-07 ***
+## (Intercept)  2.23156    6.31879   0.353  0.72427    
+## age          0.06064    0.02206   2.749  0.00642 ** 
+## height      -0.15037    0.07806  -1.926  0.05520 .  
+## neck        -0.39169    0.19570  -2.002  0.04644 *  
+## abdom        0.71970    0.03802  18.931  &lt; 2e-16 ***
+## wrist       -1.49192    0.44127  -3.381  0.00084 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 4.118 on 247 degrees of freedom
-## Multiple R-squared:  0.7223, Adjusted R-squared:  0.7178 
-## F-statistic: 160.6 on 4 and 247 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Las covariables seleciondas en este modelo son todas significativas. Además, <span class="math inline">\(R^2=0.7223\)</span> y <span class="math inline">\(R^2_{adj}=0.7178\)</span>. Comparado con el modelo completeo, estás cantidades han disminuido ligeramente.</p>
+## Residual standard error: 4.093 on 246 degrees of freedom
+## Multiple R-squared:  0.7267, Adjusted R-squared:  0.7212 
+## F-statistic: 130.8 on 5 and 246 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Las covariables selecciondas en este modelo son todas significativas, a excepción de la circunferencia del cuello. Además, <span class="math inline">\(R^2=0.7267\)</span> y <span class="math inline">\(R^2_{adj}=0.7178\)</span>. Comparado con el modelo completo, estás cantidades han disminuido ligeramente.</p>
 <p>La Tabla <a href="selección-de-variables.html#tab:tablaEstFat1">4.1</a> muestra las estimaciones de los modelos ajustados utilizando diferentes métodos de selección de variables. En los tres modelos coinciden con la inclusión de la circunferencia del abdomen y de la muñeca. Las variables peso y estatura se encuentran en algunos de estos modelos, pero no de forma simultanea. Esto sugiere que proporcionan la misma información y no es necesario incluirlas juntas. Finalmente, se puede observar en la Tabla <a href="selección-de-variables.html#tab:tablaEstFat2">4.2</a> que los tres modelos proporcionan similar ajuste.</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
@@ -1113,16 +1114,16 @@ int.
 6.7089
 </td>
 <td style="text-align:left;">
-0
+0.0000
 </td>
 <td style="text-align:left;">
-0.249
+2.234
 </td>
 <td style="text-align:left;">
-6.2785
+6.3188
 </td>
 <td style="text-align:left;">
-0.9685
+0.7243
 </td>
 </tr>
 <tr>
@@ -1145,13 +1146,13 @@ age
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-0.067
+0.061
 </td>
 <td style="text-align:left;">
-0.022
+0.0221
 </td>
 <td style="text-align:left;">
-0.0025
+0.0064
 </td>
 </tr>
 <tr>
@@ -1174,7 +1175,7 @@ weight
 0.0229
 </td>
 <td style="text-align:left;">
-0
+0.0000
 </td>
 <td style="text-align:left;">
 </td>
@@ -1200,13 +1201,13 @@ height
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
--0.165
+-0.15
 </td>
 <td style="text-align:left;">
-0.0782
+0.0781
 </td>
 <td style="text-align:left;">
-0.0363
+0.0552
 </td>
 </tr>
 <tr>
@@ -1229,10 +1230,13 @@ neck
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+-0.392
 </td>
 <td style="text-align:left;">
+0.1957
 </td>
 <td style="text-align:left;">
+0.0464
 </td>
 </tr>
 <tr>
@@ -1246,7 +1250,7 @@ abdom
 0.0666
 </td>
 <td style="text-align:left;">
-0
+0.0000
 </td>
 <td style="text-align:left;">
 0.921
@@ -1255,16 +1259,16 @@ abdom
 0.0519
 </td>
 <td style="text-align:left;">
-0
+0.0000
 </td>
 <td style="text-align:left;">
-0.676
+0.72
 </td>
 <td style="text-align:left;">
-0.0312
+0.038
 </td>
 <td style="text-align:left;">
-0
+0.0000
 </td>
 </tr>
 <tr>
@@ -1371,13 +1375,13 @@ wrist
 8e-04
 </td>
 <td style="text-align:left;">
--1.937
+-1.492
 </td>
 <td style="text-align:left;">
-0.3834
+0.4413
 </td>
 <td style="text-align:left;">
-0
+0.0000
 </td>
 </tr>
 </tbody>
@@ -1445,16 +1449,16 @@ BIC
 LASSO
 </td>
 <td style="text-align:right;">
-0.7223
+0.7267
 </td>
 <td style="text-align:right;">
-4447.052
+4416.440
 </td>
 <td style="text-align:right;">
-1435.389
+1433.318
 </td>
 <td style="text-align:right;">
-1456.566
+1458.024
 </td>
 </tr>
 </tbody>

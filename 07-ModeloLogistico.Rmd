@@ -15,7 +15,7 @@ Vamos a trabajar con los datos del estudio sobre los escarabajos:
 logdose <- c(1.6907, 1.7242, 1.7552, 1.7842, 1.8113, 1.8369, 1.8610, 1.8839)
 dead <- c(6, 13, 18, 28, 52, 53, 61, 60) 
 n <- c(59, 60, 62, 56, 63, 59, 62, 60) 
-Datos=data.frame(logdose,n,dead)
+Datos.esc=data.frame(logdose,n,dead)
 ```
 
 ### Bajo peso al nacer
@@ -104,7 +104,7 @@ $$
 $$
 En la Figura \@ref(fig:linkEsc) podemos observar la estimación de la probabilidad de que el escarabajo muera utilizando diferentes funciones de enlace (logit, probit, log-log complementaria). Graficamente, la función log-log complementaria parece mostrar mejores estimaciones que la probit y la logit.
 
-```{r linkEsc,echo=FALSE, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
+```{r linkEsc,echo=FALSE, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Datos de mortalidad de escarabajos. Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
 
 pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))
 
@@ -248,6 +248,18 @@ plot(ROCbw.logit)
 lines(ROCbw.probit,col=2)
 ```
 En la Figura \@ref(fig:ROClbwdata) se puede observar que ambas funciones de enlace proporcionan el mismo poder predictivo. El índice de concordancia es de $AUC= 0,6884$ para el modelo logístico y $AUC= 0,6866$ para el modelo probit.    
+
+Para datos agrupados, la base de datos se debe desagrupar para obtener la curva ROC. Por ejemplo para los datos de escarabajos:
+
+```{r ROCescarabajos,eval=T,fig.cap="Datos de mortalidad de escarabajos. Curva ROC para el modelo logístico",fig.height = 4, fig.width = 6}
+obs.morir = unlist(apply(Datos.esc,1,function(x){rep(c(1,0),c(x[3],x[2]-x[3]))}))
+prob.morir =rep(modEsc.logit$fitted.values,Datos.esc$n)
+ROCesc = roc(obs.morir~prob.morir)
+plot(ROCesc,print.auc=T)
+```
+
+
+Datos.esc
 
 ## Sobredispersión
 En un experimento Bernoulli se asume que los $n_i$ ensayos para la observación $i,\quad (y_{i1},...y_{in_i})$, son independientes. Por lo tanto, para $y_i = \sum_{j=1}^{n_i}y_{ij}/n_i$,tenemos que:

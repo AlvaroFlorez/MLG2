@@ -1,4 +1,5 @@
 # Selección de variables
+
 ```{r preamble4, include=FALSE}
 library(glmnet)
 library(olsrr)
@@ -9,19 +10,18 @@ mathy.df <- data.frame(b0=c("int.","age","weight","height","neck",
      "abdom","hip","thigh","forearm","wrist"), 
 b1=c(-20.062,0.059,-0.084,"",-0.432,0.877,-0.186,0.286,0.4825,-1.4049),
 b2=c(10.8465,0.0285,0.0370,"",0.2080,0.0666,0.1282,0.1195,0.1725,0.4717),
-b3=c(0.0656, 0.0388,0.0237,"", 0.0389, 0.0000, 0.1473, 0.1473, 0.0056, 0.0032),
+b3=c(0.0656, 0.0388,0.0237,"", 0.0389, '0.0000', 0.1473, 0.1473, 0.0056, 0.0032),
+
 b4=c(-31.297,"",0.126,"","",0.921,"","",0.446,-1.392),
 b5=c( 6.7089,"",0.0229,"","",0.0519,"","",0.1682,0.4099),
-b6=c(0.0000,"",0.0000,"","",0.0000,"","",0.0085,0.0008),
-b7=c(0.249,0.067,"",-0.165,"",0.676,"","","",-1.937),
-b8=c(6.2785, 0.0220,"", 0.0782,"",0.0312,"","","",0.3834),
-b9=c( 0.9685,0.0025,"",0.0363,"",0.0000,"","","",0.0000)
+b6=c('0.0000',"",'0.0000',"","",'0.0000',"","",0.0085,0.0008),
+
+b7=c(2.234,0.061,"",-0.150,-0.392,0.720,"","","",-1.492),
+b8=c(6.3188, 0.0221,"", 0.0781,0.1957,0.0380,"","","",0.4413),
+b9=c( 0.7243,0.0064,"",0.0552,0.0464,'0.0000',"","","",'0.0000')
 )
 colnames(mathy.df)<-c("","Est"," er. std.","valor-p","Est"," er. std.","valor-p","Est"," er. std.","valor-p")
-
-
 ```
-
 ## Ejemplos
 ### Unidad quirúrgica
 Una unidad quirúrgica de un hospital está interesada en predecir la supervivencia de los pacientes sometidos a un tipo particular de operación hepática. Se dispuso de una selección aleatoria de $108$ pacientes para el análisis. De cada registro del paciente, se extrajo la siguiente información de la evaluación preoperatoria:
@@ -489,7 +489,7 @@ lasso.mod <- glmnet(X, fat$brozek, alpha = 1,nlambda = 100)
 plot(lasso.mod,xvar='lambda',label=T,lwd=2,ylab='coeficientes de regresión')
 abline(h=0,lty=2)
 ```
-La pregunta sería que valor de $lambda$ se debe seleccionar para determinar los coeficientes que son diferentes de cero. Una alternativa que tenemos para ello es por medio de validación cruzada.
+La pregunta sería que valor de $\lambda$ se debe seleccionar para determinar los coeficientes que son diferentes de cero. Una alternativa que tenemos para ello es por medio de validación cruzada.
 
 ### Validación cruzada
 La validación cruzada (CV) es un método general para evaluar que tan bueno es un modelo para predecir observaciones futuras de la población objetivo del estudio. La idea es dividir la muestra en dos grupos:
@@ -536,15 +536,16 @@ est = glmnet(X, fat$brozek, alpha = 1,lambda = lasso.cv$lambda.1se)
 est$beta
 ```
 
-La selección de variables por medio del estimador LASSO son `age`, `height`,`abdom` y `wrist`. Ahora ajustamos el modelo con estas variables por medio de MCO:
+La selección de variables por medio del estimador LASSO son `age`, `height`, `neck`,`abdom` y `wrist`. Ahora ajustamos el modelo con estas variables por medio de MCO:
 
 ````{r}
-mod.lasso = lm(brozek ~ age+height+abdom+wrist,data=fat)
+mod.lasso = lm(brozek ~ age+height+neck+abdom+wrist,data=fat)
 summary(mod.lasso)
 ```` 
-Las covariables seleciondas en este modelo son todas significativas. Además, $R^2=0.7223$ y $R^2_{adj}=0.7178$. Comparado con el modelo completeo, estás cantidades han disminuido ligeramente.
+Las covariables selecciondas en este modelo son todas significativas, a excepción de la circunferencia del cuello. Además, $R^2=0.7267$ y $R^2_{adj}=0.7178$. Comparado con el modelo completo, estás cantidades han disminuido ligeramente.
 
 La Tabla \@ref(tab:tablaEstFat1) muestra las estimaciones de los modelos ajustados utilizando diferentes métodos de selección de variables. En los tres modelos coinciden con la inclusión de la circunferencia del abdomen y de la muñeca. Las variables peso y estatura se encuentran en algunos de estos modelos, pero no de forma simultanea. Esto sugiere que proporcionan la misma información y no es necesario incluirlas juntas. Finalmente, se puede observar en la Tabla \@ref(tab:tablaEstFat2) que los tres modelos proporcionan similar ajuste.
+
 
 
 ```{r tablaEstFat1, echo=FALSE, include=TRUE, results="asis"}
@@ -557,10 +558,10 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T,
 
 ```{r tablaEstFat2, echo=FALSE, include=TRUE, results="asis"}
 mathy.df <- data.frame(b0=c("AIC y PRESS","BIC","LASSO"),
-                       b1=c( 0.7467, 0.7351, 0.7223),
-                       b2=c( 4139.682, 4209.14, 4447.052),
-                       b3=c(1420.225,1423.471,1435.389),
-                       b4=c(1455.52,1444.647,1456.566)
+                       b1=c( 0.7467, 0.7351, 0.7267),
+                       b2=c( 4139.682, 4209.14, 4416.44),
+                       b3=c(1420.225,1423.471,1433.318),
+                       b4=c(1455.52,1444.647,1458.024)
                        )
 
 colnames(mathy.df)<-c("Modelo","$R^2$","PRESS","AIC","BIC")

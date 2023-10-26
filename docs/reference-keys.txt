@@ -60,6 +60,7 @@ fig:linkEsc
 fig:sensespc
 fig:sensespc2
 fig:ROClbwdata
+fig:ROCescarabajos
 fig:betabinomialdensidad
 fig:doctorUK1
 fig:crabsData
