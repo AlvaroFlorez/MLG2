@@ -977,8 +977,9 @@ El segundo método es preferible dado que tiene en cuenta la variabilidad debida
 <div id="ejemplo-grasa-corporal" class="section level3 hasAnchor" number="4.5.3">
 <h3><span class="header-section-number">4.5.3</span> Ejemplo grasa corporal<a href="selección-de-variables.html#ejemplo-grasa-corporal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La estimación de <span class="math inline">\(\lambda\)</span> por medio de CV se puede hacer con la función <code>cv.glmnet</code> determinando del número de subconjuntos con el argumento <code>nfolds</code>. Por ejemplo, si consideramos <span class="math inline">\(K=10\)</span>, se obtienen los siguientes resultados:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="selección-de-variables.html#cb90-1" tabindex="-1"></a>lasso.cv <span class="ot">&lt;-</span><span class="fu">cv.glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">nfolds =</span> <span class="dv">10</span>, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
-<span id="cb90-2"><a href="selección-de-variables.html#cb90-2" tabindex="-1"></a><span class="fu">plot</span>(lasso.cv)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="selección-de-variables.html#cb90-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb90-2"><a href="selección-de-variables.html#cb90-2" tabindex="-1"></a>lasso.cv <span class="ot">&lt;-</span><span class="fu">cv.glmnet</span>(X, fat<span class="sc">$</span>brozek, <span class="at">nfolds =</span> <span class="dv">10</span>, <span class="at">alpha =</span> <span class="dv">1</span>,<span class="at">nlambda =</span> <span class="dv">100</span>)</span>
+<span id="cb90-3"><a href="selección-de-variables.html#cb90-3" tabindex="-1"></a><span class="fu">plot</span>(lasso.cv)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:kgrasa"></span>
 <img src="MLG2_files/figure-html/kgrasa-1.png" alt="Datos de grasa corporal. Valiación cruzada (puntos rojos) para diferentes valores de $\lambda$. Las lineas cortadas verticales representan los valores seleccionados para $\lambda$ por mínimo valores de CV y la regla de una desviación estándar." width="672" />
 <p class="caption">
@@ -990,19 +991,19 @@ Figure 4.5: Datos de grasa corporal. Valiación cruzada (puntos rojos) para dife
 <span id="cb91-2"><a href="selección-de-variables.html#cb91-2" tabindex="-1"></a>est<span class="sc">$</span>beta</span></code></pre></div>
 <pre><code>## 13 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                  s0
-## age      0.03428862
+## age      0.04428910
 ## weight   .         
-## height  -0.14240926
-## neck     .         
+## height  -0.14861287
+## neck    -0.01394232
 ## chest    .         
-## abdom    0.57961316
+## abdom    0.61111812
 ## hip      .         
 ## thigh    .         
 ## knee     .         
 ## ankle    .         
 ## biceps   .         
 ## forearm  .         
-## wrist   -0.72786945</code></pre>
+## wrist   -1.08873009</code></pre>
 <p>La selección de variables por medio del estimador LASSO son <code>age</code>, <code>height</code>, <code>neck</code>,<code>abdom</code> y <code>wrist</code>. Ahora ajustamos el modelo con estas variables por medio de MCO:</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="selección-de-variables.html#cb93-1" tabindex="-1"></a>mod.lasso <span class="ot">=</span> <span class="fu">lm</span>(brozek <span class="sc">~</span> age<span class="sc">+</span>height<span class="sc">+</span>neck<span class="sc">+</span>abdom<span class="sc">+</span>wrist,<span class="at">data=</span>fat)</span>
 <span id="cb93-2"><a href="selección-de-variables.html#cb93-2" tabindex="-1"></a><span class="fu">summary</span>(mod.lasso)</span></code></pre></div>

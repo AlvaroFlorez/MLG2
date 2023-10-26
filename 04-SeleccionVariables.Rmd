@@ -527,6 +527,7 @@ El segundo método es preferible dado que tiene en cuenta la variabilidad debida
 ### Ejemplo grasa corporal
 La estimación de $\lambda$ por medio de CV se puede hacer con la función `cv.glmnet` determinando del número de subconjuntos con el argumento `nfolds`. Por ejemplo, si consideramos $K=10$, se obtienen los siguientes resultados:
 ```{r kgrasa, echo=T, warning=FALSE,message = FALSE, fig.align = "center", fig.cap="Datos de grasa corporal. Valiación cruzada (puntos rojos) para diferentes valores de $\\lambda$. Las lineas cortadas verticales representan los valores seleccionados para $\\lambda$ por mínimo valores de CV y la regla de una desviación estándar."}
+set.seed(123)
 lasso.cv <-cv.glmnet(X, fat$brozek, nfolds = 10, alpha = 1,nlambda = 100)
 plot(lasso.cv)
 ```
