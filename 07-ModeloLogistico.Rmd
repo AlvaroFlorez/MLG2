@@ -132,14 +132,14 @@ AIC(modEsc.probit)
 AIC(modEsc.cloglog)
 ```
 ## Curva característica operativa del receptor(ROC)
-Para evaluar el poder predictivo del modelo se puede construir una tabla de contingencia (ver Tabla \@ref(tab:tabcont)) comparando $y_i$ con la predicción $\haty_i$ a través del modelo. Para datos no agrupados, la predicción $\haty_i$ se define como:
+Para evaluar el poder predictivo del modelo se puede construir una tabla de contingencia  comparando $y_i$ con la predicción $\haty_i$ a través del modelo. Para datos no agrupados, la predicción $\haty_i$ se define como:
 \[
 \haty_i = \begin{cases}
 1 & \mbox{si } \hatpi_i > \pi_0, \\
 0 & \mbox{si } \hatpi_i \leq \pi_0, \\
 \end{cases}
 \]
-para un punto de corte $\pi_0$ definido por el investigador, por ejemplo $\pi_0 = 0.5$.
+para un punto de corte $\pi_0$ definido por el investigador, por ejemplo $\pi_0 = 0.5$. Con esto podemos contruir la siguiente tabla:
 
 ```{r tabcont, echo=FALSE, include=TRUE, caption = 'Tabla de contingencia.'}
 mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
@@ -152,12 +152,13 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
   kable_styling(bootstrap_options = "striped",
                 full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
 ```
+donde $a$ y $b$ corresponde al conteo de predicciones negativas $(\haty = 0)$ correctas (cuando $y=0$) e incorrectas (cuando $y=1$), respectivamente. Mientras que $c$ y $d$ son los contenos de predicciones positivas $(\haty = 1)$ incorrectas (cuando $y=0$) y correctas (cuando $y=1$), respectivamente.
 
-El recuento de casillas en esta tabla permite estimar la sensibilidad, definida como la probabilidad de identificar correctamente un caso positivo $(Y=1)$, esto es: 
+El recuento de casillas en esta tabla permite estimar la sensibilidad, definida como la probabilidad de identificar correctamente un caso positivo, esto es: 
 \[
 P(\haty=1|y=1) = \frac{d}{b+d},
 \]
-y la especificidad, definida como la probabilidad de identificar correctamente un caso negativo $(Y=0)$,
+y la especificidad, definida como la probabilidad de identificar correctamente un caso negativo,
 \[
 P(\haty=0|y=0) = \frac{a}{a+c}.
 \]

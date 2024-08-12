@@ -25,6 +25,7 @@ Sin embargo, hay situaciones en donde estas propiedades no son factibles, inclus
 ## Casos de estudio
 
 ### Mortalidad de escarabajos
+
 En un estudio de toxicología, se está interesado en la tasa de mortalidad de escarabajos expuestos a disulfuro de carbono gaseoso. La Tabla \@ref(tab:TmortEsc) muestra el número de escarabajos muertos después de cinco horas de exposición de este tóxico a diferentes concentraciones del químico. Podemos ver que a medida que aumenta la dosis, la mortalidad de escarabajos va aumentando.
 
 ```{r TmortEsc, echo=FALSE}
@@ -48,6 +49,7 @@ plot(logdose,dead/n,xlab='logaritmo de la dosis de disulfuro de carbono gaseoso'
 Una alternativa es utilizar una transformación que describa la relación de forma adecuada y que garantice que la respuesta se encuentre dentro del espacio del parámetro. Es decir, que la estimación de la proporción de escarabajos muertos esté entre $0$ y $1$.
 
 ### ataques de epilepsia
+
 Los datos ```data(epilepsy)``` de la librería ```HSAUR2``` corresponden a un ensayo clínico para evaluar el efecto del fármaco Progabida sobre los ataques epilépticos. Al inicio del estudio, los $59$ pacientes epilépticos fueron observados durante 8 semanas, y se registró el número de convulsiones. Luego, fueron aleatorizados al tratamiento con el fármaco Progabide ($31$ pacientes) o al grupo de placebo ($28$ pacientes). A los pacientes de ambos grupos se les observo durante cuatro períodos de dos semanas y se registró el número de convulsiones.
 
 Estos datos son de naturaleza longitudinal (cada paciente cuenta con 4 observaciones tomadas en el tiempo), lo que requiere metodologías que tengan en cuenta la correlación que hay en los datos. En es caso, no consideraremos las observaciones intermedias de cada paciente, sino solamente las mediciones tomadas luego de las cuatro semanas de observación.
@@ -161,6 +163,7 @@ $$
 evaluada en $\btheta=\widehat{\btheta}$, es negativa-definida.
 
 #### Propiedades asintóticas de los MLEs
+
 Las propiedades de los MLEs están basadas en teoría asintótica. Es decir, se cumplen cuando el tamaño de muestra es grande $(n\to \infty)$. $\widehat{\btheta}$ es asintóticamente insesgado. Esto es, $E(\widehat{\btheta})=\btheta$ cuando $n\to \infty$. La varianza asintótica de $\widehat{\btheta}$ se calcula como la inversa de **la matriz de información**:
 $$
 V(\widehat{\btheta})=I(\btheta)^{-1},\quad \text{donde} \quad I(\btheta)=-E[H(\btheta)].
@@ -198,11 +201,13 @@ Un GLM está definido por tres componentes:
 * **Función de enlace:** una función $g$ que conecta la media de la variable respuesta, $E(Y)$, con el predictor lineal, $\eta$, $g[E(Y|\bx)]=\bx'\bbeta$.
 
 ### Componente aleatorio
+
 Se asume que se cuenta con $n$ observaciones independientes $(y_{i},...,y_{n})$ de una variable aleatoria $Y$ cuya distribución de probabilidad pertenece a la **familia exponencial.** Restringir un GLM a esta familia permite tener expresiones generales para la función de verosimilitud y funciones score, la distribución asintótica de los estimadores de los parámetros del modelo, y el algoritmo para ajustar el modelo.
 
 Por ejemplo, para los datos de los escarabajos podemos asumir que el número de escarabajos que mueren, para cada dosis del químico, sigue una distribución binomial. Mientras que en el caso del ensayo clínico en epilepsia, se podría asumir que el número de ataques epilépticos, condicionado a las covariables, sigue una distribución Poisson.
 
 ### Predictor lineal
+
 Para cada observación $i$, tenemos un conjunto de covariables observadas,
 
 $$
@@ -215,6 +220,7 @@ $$
 $$
 
 ### Función de enlace
+
 En algunas distribuciones,$E(Y|\bx)$ está acotada en un intervalo. Por ejemplo, en la distribución binomial, $0\leq \pi_{i}\leq 1$, o en la Poisson, $\lambda_{i}>0$. Esto hace que no siempre sea razonable asumir una relación lineal entre $E(Y | \bx)$ y $\bx$. Por lo que la función de enlace conecta $E(Y|\bx)$ con el predictor lineal $\eta$ a través de una función $g()$:
 
 $$
@@ -223,6 +229,7 @@ $$
 donde, la función $g(\cdot)$ es monótona y diferenciable. Generalmente, $g(\cdot)$ está determinada por la distribución que se asume para $Y$.
 
 ### Ejemplos de GLM
+
 #### modelo logístico para la mortalidad de escarabajos
 Sea:
 \[
@@ -279,6 +286,7 @@ Otros ejemplos de distribuciones que se pueden utilizar son:
 
 
 ## Ajuste de un GLM
+
 Al igual que en los modelos lineales, los pasos para ajustar un GLM incluyen:
 
 * **Especificación del modelo**.Definición del componente aleatorio, predictor lineal y función de enlace.
@@ -303,6 +311,7 @@ El **predictor lineal** $\eta_{i}=\bx'_{i}\bbeta$ se relaciona con $\mu_{i}$ a t
 La función de enlace $g(\cdot)$  que transforma $\mu_{i}$ en el parámetro natural $\theta_{i}$ es llamada **función de enlace canónica.** Por ejemplo para la distribución normal, $\eta_{i}=\mu_{i}$ (identidad), por lo tanto $\mu_{i}=\eta_{i}$. Para la distribución Poisson, $\eta_{i}=\log\mu_{i}$, por lo tanto $\mu_{i}=\exp(\eta_{i})$. Para la distribución binomial, $\eta_{i}=\log\left(\frac{\pi_{i}}{1-\pi_{i}}\right)$, por lo tanto  $\pi_{i}=\frac{\exp(\eta_{i})}{1+\exp(\eta_{i})}$.
 
 ### Estimador por máxima verosimilitud para $\bbeta$
+
 dado que asumimos que la distribución de probabilidad asociada a la variable resputa pertenece a la familia exponencial, la función de log-verosimilitud está definida como:
 $$
 \ell(\bbeta)=\sum_{i=1}^{n}\ell_{i}(\bbeta)=\sum_{i=1}^{n}\log f(y_{i};\theta_{i},\phi)=\sum_{i=1}^{n}\left[\frac{y_{i}\theta_{i}-b(\theta_{i})}{a(\phi)}+c(y_{i},\phi)\right].
@@ -345,7 +354,8 @@ La distribución asintótica del MLE de $\bbeta$ es:
 $$
 \widehat{\bbeta}\sim N\left[\bbeta,(\bX'\bW\bX)^{-1}\right].
 $$
-### ajuste e interpretación de parámetros del modelo logístico
+#### ajuste e interpretación de parámetros del modelo logístico
+
 Para los datos de mortalidad de escarabajos, tenemos el siguiente modelo:
 
 $$
@@ -393,7 +403,7 @@ $$
 $$
 Es decir, si el log de la concentración de aumenta en $0.02$, entonces la probabilidad de que el escarabajo muera aumenta casi el doble.
 
-### ajuste e interpretación de parámetros del modelo Poisson
+#### ajuste e interpretación de parámetros del modelo Poisson
 
 Para el ensayo clínico en epilepsia, el modelo propuesto es:
 $$
@@ -431,6 +441,7 @@ Por lo tanto, $\exp(\delta\beta_1)=\frac{E(Y|x=a+\delta)}{E(Y|x=a)}$. Es decir q
 Por ejemplo, si el número de ataques epilépticos pre-tratamiento aumenta $20$ casos, entonces el valor esperado de ataques epilépticos post-tramiento aumenta un 52\% $(\exp(20 \times0.021)=1.522)$. Además, el tramiento con Progabida reduce en un poco más del 40\% el número de episodios de epilepsia $(\exp(-0.3635857) = 0.695)$. Finalmente, el efecto de los casos pre-tramiento es el mismo para los pacientes en el grupo tratamiento y el control ($\exp(0.0009) \approx 1$).
 
 ## Pruebas de hipótesis
+
 Al igual que en los modelos lineales, uno puede estar interesado en realizar pruebas hipótesis sobre los coeficientes del modelo. Por ejemplo, en el estudio sobre epilépsia estamos interesados en evaluar si hay un efecto significativo del tratamiento sobre los ataques epilépticos. Esto es:
 $$
 \qquad H_0:\beta_1=\beta_3=0.

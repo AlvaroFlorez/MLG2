@@ -69,12 +69,13 @@ Por lo tanto, el predictor lineal queda de la forma:
 $$
 \log\left(\frac{\lambda_i}{t_i}\right)=\bx'_i\bbeta,
 $$
-donde el término $\logt_i$ es llamado **offset**. Por lo que $\log\lambda_i=\bx_i'\bbeta+\log t_i$. Entonces, el valor esperado de $y_i$ es:
+donde el término $\log t_i$ es llamado **offset**. Por lo que $\log\lambda_i=\bx_i'\bbeta+\log t_i$. Entonces, el valor esperado de $y_i$ es:
 
 $$
 \lambda_i=t_i \exp(\bx_i'\bbeta).
 $$
 #### Muertes por enfermedades cardiovasculares en doctores del Reino Unido
+
 Dado que los tamaños de la población por grupo de edad son diferentes (hay menos personas en los grupos de edad mayores), debemos considerar esto en el modelo por medio del offset. En este caso el modelo propuesto para el número de doctores muertos por enfermedades cardiovasculares en la $i$-ésima categoría $(y_i)$ puede ser:
 $$
 y_i \sim \mbox{Poisson}(\lambda_i),
