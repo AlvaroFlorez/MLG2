@@ -67,9 +67,11 @@ header-includes:
   - \newcommand{\hatsigma}{\widehat{\sigma}}
   - \newcommand{\hatlambda}{\widehat{\lambda}}
   - \newcommand{\hatbLambda}{\widehat{\bLambda}}
+  - \newcommand{\hattheta}{\widehat{\theta}}
   - \newcommand{\btheta}{\boldsymbol \theta}
   - \newcommand{\hatbtheta}{\widehat{\btheta}}
   - \newcommand{\bLambda}{\boldsymbol \Lambda}
+  - \newcommand{\bSigma}{\boldsymbol \Sigma}
   - \newcommand{\bvarepsi}{\boldsymbol \varepsilon}
   - \newcommand{\bpi}{\boldsymbol \pi}
   

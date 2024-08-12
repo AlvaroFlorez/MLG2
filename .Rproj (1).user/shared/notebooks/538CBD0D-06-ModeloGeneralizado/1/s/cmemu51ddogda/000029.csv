@@ -1,1 +1,0 @@
-"0","lines(x,predpois[order(y$treatment, y$base)[1:50]], lwd = 2)"

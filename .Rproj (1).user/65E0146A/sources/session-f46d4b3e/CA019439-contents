@@ -1,0 +1,109 @@
+--- 
+title: "Notas de clase: Modelo lineal general II"
+author: "Alvaro J. Flórez"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+        bookdown::pdf_document2
+bibliography: [ModeloLineal.bib]
+biblio-style: apalike
+link-citations: yes
+
+header-includes:
+  - \newcommand{\bepsilon}{\boldsymbol \epsilon}
+  - \newcommand{\bpsi}{\boldsymbol \psi}
+  - \newcommand{\bmu}{\boldsymbol \mu}
+  - \newcommand{\cl}{ℓ}
+  - \newcommand{\bx}{\boldsymbol x}
+  - \newcommand{\bX}{\boldsymbol X}
+  - \newcommand{\bZERO}{\boldsymbol 0}
+  - \newcommand{\bONE}{\boldsymbol 1}
+  - \newcommand{\tr}{\mbox{tr}}
+  - \newcommand{\bb}{\boldsymbol b}
+  - \newcommand{\hatbb}{\widehat{\bb}}
+  - \newcommand{\hatb}{\widehat{b}}
+  - \newcommand{\bc}{\boldsymbol c}
+  - \newcommand{\bC}{\boldsymbol C}
+  - \newcommand{\bD}{\boldsymbol D}
+  - \newcommand{\be}{\boldsymbol e}
+  - \newcommand{\bH}{\boldsymbol H}
+  - \newcommand{\bI}{\boldsymbol I}
+  - \newcommand{\bl}{\boldsymbol l}
+  - \newcommand{\bL}{\boldsymbol L}
+  - \newcommand{\bM}{\boldsymbol M}
+  - \newcommand{\bp}{\boldsymbol p}
+  - \newcommand{\bP}{\boldsymbol P}
+  - \newcommand{\br}{\boldsymbol r}
+  - \newcommand{\bR}{\boldsymbol R}
+  - \newcommand{\bt}{\boldsymbol t}
+  - \newcommand{\bT}{\boldsymbol T}
+  - \newcommand{\bu}{\boldsymbol u}
+  - \newcommand{\bU}{\boldsymbol U}
+  - \newcommand{\by}{\boldsymbol y}
+  - \newcommand{\bY}{\boldsymbol Y}
+  - \newcommand{\bZ}{\boldsymbol Z}
+  - \newcommand{\bV}{\boldsymbol V}
+  - \newcommand{\bW}{\boldsymbol W}
+  - \newcommand{\bz}{\boldsymbol z}
+  - \newcommand{\tildey}{\widetilde{y}}
+  - \newcommand{\tildeby}{\widetilde{\by}}
+  - \newcommand{\tildetheta}{\widetilde{\theta}}
+  - \newcommand{\tildemu}{\widetilde{\mu}}
+  
+  - \newcommand{\haty}{\widehat{y}}
+  - \newcommand{\hatby}{\widehat{\by}}
+  
+  - \newcommand{\hatalpha}{\widehat{\alpha}}
+  - \newcommand{\balpha}{\boldsymbol \alpha}
+  - \newcommand{\hatbalpha}{\widehat{\balpha}}
+    
+  - \newcommand{\bbeta}{\boldsymbol \beta}
+  - \newcommand{\hatbeta}{\widehat{\beta}}
+  - \newcommand{\hatpi}{\widehat{\pi}}
+  - \newcommand{\hatbbeta}{\widehat{\bbeta}}
+  - \newcommand{\bgamma}{\boldsymbol \gamma}
+  - \newcommand{\hatmu}{\widehat{\mu}}
+  - \newcommand{\hatbmu}{\widehat{\bmu}}
+  - \newcommand{\hatsigma}{\widehat{\sigma}}
+  - \newcommand{\hatlambda}{\widehat{\lambda}}
+  - \newcommand{\hatbLambda}{\widehat{\bLambda}}
+  - \newcommand{\hattheta}{\widehat{\theta}}
+  - \newcommand{\btheta}{\boldsymbol \theta}
+  - \newcommand{\hatbtheta}{\widehat{\btheta}}
+  - \newcommand{\bLambda}{\boldsymbol \Lambda}
+  - \newcommand{\bvarepsi}{\boldsymbol \varepsilon}
+  - \newcommand{\bpi}{\boldsymbol \pi}
+  
+  - \newcommand{\Sres}{SS_{\mbox{res}}}
+  - \newcommand{\Sreg}{SS_{\mbox{reg}}}
+  - \newcommand{\Stotal}{SS_{\mbox{T}}}
+
+  - \newcommand{\MSres}{MS_{\mbox{res}}}
+  - \newcommand{\MSreg}{MS_{\mbox{reg}}}
+  
+  - \renewcommand{\figurename}{Figura}
+  - \renewcommand{\tablename}{Tabla}
+---
+
+# Introducción {-}
+Estas son las notas de clase del curso Modelo Lineal General II. Los temas que se tratan son:
+
+1. Variables indicadoras.
+2. Modelos polinomiales.
+3. Multicolinealidad.
+4. Selección de variables.
+5. Introducción a modelos no lineales.
+6. Introducción al modelo lineal generalizado (modelo logístico - modelo Poisson).
+7. Introducción al modelo lineal mixto
+
+Tenga en cuenta que el propósito de estas notas de clase no es reemplazar los textos guías. Para el estudio más detallado de los temas revisados, se recomiendan las siguientes lecturas:
+
+- *Introduction to Linear Regression Analysis*, Fifth Ed., 2012, by Montgomery, D. C., Peck, E. A. and Vining, G. G. **(Texto guía)**
+- *Applied Regression Analysis*, Third Ed., 1998, by Draper, N. R. and Smith, H., Wiley.
+- *Theory and Applications of the Linear Models*, 2000, by Graybill, F. A., Duxbury.
+- *Applied Linear Statistical Models*, Fifth Ed., 2005, by Kutner, M. H, Nachtsheim, C. J., Neter, J. and Li, W., McGraw-Hill.
+- *Análisis de Regresión. Introducción Teórica y Práctica basada en R*, 2011, by F. Tusell.
+- *Applied Linear Regression*, Fourth Ed.,  2014, by S. Weisberg.
+- *Applied Regression Analysis \& Generalized Linear Models*, 2016, by J. Fox.
+
+Agradecimientos especiales a John Sebastian Manjarres por la ayuda en la elaboración de estas notas.

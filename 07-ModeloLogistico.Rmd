@@ -10,7 +10,8 @@ data(birthwt)
 ## Casos de estudio
 
 ### Mortalidad de escarabajos
-Vamos a trabajar con los datos del estudio sobre los escarabajos:
+Vamos a continuar con los datos del estudio sobre los escarabajos del capítulo anterior.
+
 ```{r datosEscarabajos}
 logdose <- c(1.6907, 1.7242, 1.7552, 1.7842, 1.8113, 1.8369, 1.8610, 1.8839)
 dead <- c(6, 13, 18, 28, 52, 53, 61, 60) 
@@ -21,31 +22,33 @@ Datos.esc=data.frame(logdose,n,dead)
 ### Bajo peso al nacer
 Con los datos \texttt{birthwt} de la librería \texttt{MASS}, se quiere indentificar factores de riesgo asociados con el nacimiento de niños con bajo peso (es decir, un peso al nacer menor de $2.5$kgs). Se tiene información de 189 recién nacidos y sus madres atendidos en una hospital (Baystate Medical Center, Springfield, Mass en 1986). Los posibles factores que pueden afectar el bajo al peso son:
 
-* ```age```: edad de la madre (años).
+* ```age```: edad de la madre (años),
 
-* ```lwt```: peso de la madre antes del embarazo (libras).
+* ```lwt```: peso de la madre antes del embarazo (libras),
 
-* ```smoke```: estado de tabaquismo durante el embarazo (0 no, 1 si).
+* ```smoke```: estado de tabaquismo durante el embarazo (0 no, 1 si),
 
 * ```ptl```: historia de parto prematuro (número de casos).
 
-La variable de respuesta es ```low``` (1 si peso $<$ 2.5 kgs, 0 si peso $\geq$ 2.5 kgs).
+La variable de respuesta es si el bebé nace con bajo peso (1 si peso $<$ 2.5 kgs, 0 si peso $\geq$ 2.5 kgs, ```low```).
 
 Para este caso, se puede ajustar modelo logístico. Sea $y_i=1$ si el $i$-ésimo bebé nace con bajo peso, $y_i=0$ si lo contrario. Por lo que la densidad de $y_i$ está definida como:
 $$
 f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{(1-y_i)},
 $$
-donde $\pi_i$ es la probabilidad de que el $i$-ésimo bebé nazca con bajo peso. La función de enlace es:
+donde $\pi_i$ es la probabilidad de que el $i$-ésimo bebé nazca con bajo peso. La función de enlace puede definirse como:
 $$
 \log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\beta_0+\beta_1\text{age}_i+\beta_2\text{lwt}_i+\beta_3\text{smoke}_i+\beta_4\text{ptl}_i.
 $$
 Sin embargo, se puede considerar alguna función de enlace diferente, como veremos adelante.
+
 ### Estudio de teratología
-Los datos \texttt{lirat} de la librería \texttt{VGAM} son de un estudio para investigar los efectos de unos régimenes alimenticio  en el desarrollo fetal de ratas. En este experimento, 58 ratas hembras con dietas deficientes en hierro se dividieron en cuatro grupos.  Tres grupos recibieron inyecciones semanales de suplementos de hierro, a diferentes dosis, para normalizar sus niveles de hierro. Mientras que, el grupo restante no recibieron ningún suplemento (placebo). Luego, las ratas se preñaron, se sacrificaron 3 semanas después, y se contó el número de fetos muertos en cada camada.
+
+Los datos \texttt{lirat} de la librería \texttt{VGAM} son de un estudio para investigar los efectos de unos régimenes alimenticio  en el desarrollo fetal de ratas. En este experimento, 58 ratas hembras con dietas deficientes en hierro se dividieron en cuatro grupos.  Tres grupos recibieron inyecciones semanales de suplementos de hierro, a diferentes dosis, para normalizar sus niveles de hierro. Mientras que, el grupo restante no recibieron ningún suplemento (placebo). Luego, las ratas fueron preñadas, sacrificadas luego de 3 semanas, y se contó el número de fetos muertos en cada camada.
 
 En la Figura \@ref(fig:liratFig) se puede observar la relación entre el número de fetos muertos por tratamiento, y también, la relación con los niveles de hemoglobina de las ratas hembras.
 
-```{r liratFig,  fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Datos teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) "}
+```{r liratFig,  fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Datos de teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) "}
 data(lirat,package = 'VGAM')
 par(mfrow=c(1,2))
 #Proporcion de fetos muestos vs tratamiento
@@ -89,10 +92,10 @@ Si $H_0$ es cierta (y $\sum_{i=1}^nn_i\to\infty$), entonces $D$ y $X^2$ siguen u
 Las distribuciones límite para $D$ y $X^2$  no aplican para datos no agrupados. Tampoco para datos agrupados con $N$ grande y algunos $n_i$ muy pequeños. Se puede aproximar $D$ y $X^2$ agrupando $(\bx_i,\hat{\by})$ por particiones del espacio de covariables o por particiones de $\hat{\pi}$. En estos casos, es preferible evaluar la falta de ajuste comparando el modelo propuesto contra modelos más generales.
 
 ## Funciones de enlace
-En los modelos anteriores hemos propuesto funciones de enlace logit: $log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\bx_i\bbeta$.Lo que implica que:
+En los modelos anteriores hemos propuesto funciones de enlace logit: $log\begin{pmatrix} \frac{\pi_i}{1-\pi_i} \end{pmatrix}=\bx_i'\bbeta$.Lo que implica que:
 
 $$
-\pi_i=g^{-1}(\bx_i,\bbeta)=\frac{\exp(\bx_i'\bbeta)}{1+\exp(\bx_i'\bbeta)}=\frac{1}{1+\exp(-\bx_i'\bbeta)} 
+\pi_i=g^{-1}(\bx_i'\bbeta)=\frac{\exp(\bx_i'\bbeta)}{1+\exp(\bx_i'\bbeta)}=\frac{1}{1+\exp(-\bx_i'\bbeta)} 
 $$
 Sin embargo, podemos utilizar otras funciones de enlace. Por ejemplo, la función **Probit:**
 $$
@@ -102,9 +105,9 @@ donde $\Phi(\cdot)$ es función acumulativa de la distribución normal estándar
 $$
 \pi_i=1-\exp[-\exp(\bx'_i\bbeta)] \quad \log[-\log(1-\pi_i)]=\bx'_i\bbeta.
 $$
-En la Figura \@ref(fig:linkEsc) podemos observar la estimación de la probabilidad de que el escarabajo muera utilizando diferentes funciones de enlace (logit, probit, log-log complementaria). Graficamente, la función log-log complementaria parece mostrar mejores estimaciones que la probit y la logit.
+En la Figura \@ref(fig:linkEsc) podemos observar la estimación de la probabilidad de que el escarabajo muera utilizando diferentes funciones de enlace (logit, probit, log-log complementaria). Graficamente, la función log-log complementaria parece mostrar mejores estimaciones que las otras.
 
-```{r linkEsc,echo=FALSE, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Datos de mortalidad de escarabajos. Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
+```{r linkEsc,echo=FALSE, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Datos de mortalidad de escarabajos. Estimaciones de la probabilidad de que el escarabajo muera en función del logaritmo de la dosis de disulfuro de carbono gaseoso utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde)."}
 
 pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))
 
@@ -138,7 +141,7 @@ Para evaluar el poder predictivo del modelo se puede construir una tabla de cont
 \]
 para un punto de corte $\pi_0$ definido por el investigador, por ejemplo $\pi_0 = 0.5$.
 
-```{r tabcont, echo=FALSE, include=TRUE, results="asis"}
+```{r tabcont, echo=FALSE, include=TRUE, caption = 'Tabla de contingencia.'}
 mathy.df <- data.frame(b0=c("$y=0$","$y=1$"), 
                        b1=c('a','b'),
                        b2=c('c','d'))
@@ -150,21 +153,21 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
                 full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
 ```
 
-El recuento de casillas en estas tablas permite estimar la sensibilidad, 
+El recuento de casillas en esta tabla permite estimar la sensibilidad, definida como la probabilidad de identificar correctamente un caso positivo $(Y=1)$, esto es: 
 \[
 P(\haty=1|y=1) = \frac{d}{b+d},
 \]
-y la especificidad, $P(\haty=0|y=0)$.
+y la especificidad, definida como la probabilidad de identificar correctamente un caso negativo $(Y=0)$,
 \[
 P(\haty=0|y=0) = \frac{a}{a+c}.
 \]
-Sin embargo, estos valores dependen de $\pi_0$.
+Si el objetivo del modelo es realizar predicciones es preferible obtener valores altos para estas métricas. Sin embargo, estos valores dependen de $\pi_0$.
 
-Ahora consideremos los datos de peso al nacer. Se propone el siguiente modelo:
+Consideremos los datos de peso al nacer. Se propone el siguiente modelo para la probabilidad de nacer con bajo peso:
 \[
 \mbox{logit } \pi_i = \beta_0+  \mbox{age}_i\beta_1+  \mbox{lwt}_i\beta_2 +  \mbox{smoke}_i\beta_3 + \mbox{ptl}_i\beta_4,
 \]
-donde $\pi_i$ es la probabilidad de que el recién nacido nazca con bajo peso. El ajuste del modelo es:
+El ajuste del modelo es:
 
 ```{r lbwfit, echo=FALSE, include=TRUE}
 mod.lbw = glm(low ~ age + lwt + smoke + ptl, data= birthwt,family=binomial)
@@ -172,7 +175,7 @@ summary(mod.lbw)
 ```
 Estos resultados muestran que el estado de tabaquismo y el historial de partos prematuros son factores de riesgo para el bajo peso al nacer. Sin embargo, el primero no tiene un aporte significativo dentro del modelo.
 
-Ahora vamos a evaluar el poder predictivo del modelo. Si definimos $\pi_0=0.5$, tenemos:
+Ahora vamos a evaluar el poder predictivo del modelo. Si definimos $\pi_0=0.5$, tenemos los siguientes resultados:
 
 ```{r roc1, echo=FALSE, include=TRUE, results="asis"}
 obs = birthwt$low
@@ -190,7 +193,7 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
                 full_width = F) %>%add_header_above(c("","$\\hat{y}=0$","$\\hat{y}=1$"))
 
 ```
-Por lo tanto, la sensibilidad es $10/59 = 0,169$ y la especificidad es $123/130 = 0.946$. Con este punto de corte, el modelo tiene una predictividad alta para los recién nacidos con peso adecuado (alta especificidad). Sin embargo, la probabilidad de falsos positivos es alta (baja sensibilidad). Ahora, si $\pi_0= 0,3$:
+Por lo tanto, la sensibilidad es $10/59 = 0,169$ y la especificidad es $123/130 = 0.946$. Con este punto de corte, el modelo tiene una predictividad alta para los recién nacidos con peso adecuado (alta especificidad). Sin embargo, la probabilidad de falsos positivos es alta (baja sensibilidad). Ahora, si definimos $\pi_0= 0,3$ obtenemos lo siguiente:
 
 ```{r, echo=FALSE, include=TRUE, results="asis"}
 obs = birthwt$low
@@ -211,7 +214,7 @@ kable(mathy.df, escape=FALSE,format = "html", booktabs = T) %>%
 
 En este caso la sensibilidad aumentó $(40/59 = 0,678)$, pero la especificidad disminuye $(79/130 = 0,607)$. 
 
-Dado que la sensibilidad y especificidad tiene una alta dependencia del punto de corte, lo preferible es calcular estas cantidades para muchos valores de $\pi_0$. En la Figura \@ref(fig:sensespc) podemos observar que a medida que aumenta $\pi_0$ la sensibilidad disminuye y la especificidad aumenta.
+Dado que la sensibilidad y especificidad tiene una alta dependencia del punto de corte, lo preferible es calcular estas cantidades para muchos valores de $\pi_0$ y buscar un valor 'óptimo'. En la Figura \@ref(fig:sensespc) podemos observar que a medida que aumenta $\pi_0$ la sensibilidad disminuye y la especificidad aumenta.
 
 ```{r sensespc, fig.align = 'center', fig.height = 4, fig.width = 6,echo=FALSE, fig.cap="Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte."}
 tab.fun = function(obs,fit,pi0){
@@ -236,15 +239,15 @@ plot(1-sens.espc[2,],sens.espc[1,],lwd=2,xlab='1 - especificidad',
 Si el modelo realiza buenas predicciones, para un valor de especificidad dado, se espera que la sensibilidad también sea alta. Por lo tanto, el poder predictivo del modelo se puede medir a través del área bajo la curva del gráfico ROC. Esta medida es llamada índice de concordancia.
 
 
-En R, las curvas ROC se puede graficar con la función `roc` de la librería `pROC` de la siguiente forma:
-```{r ROClbwdata,eval=T,fig.cap="Datos de bajo peso al nacer. Curva ROC para el modelo logístico (negro) y probit (rojo)",fig.height = 4, fig.width = 6}
+En R, las curvas ROC se puede realizar por medio de la función `roc` de la librería `pROC` de la siguiente forma:
+```{r ROClbwdata,eval=T,fig.cap="Datos de bajo peso al nacer. Curva ROC para predecir bajo peso al nacer usando el modelo logístico (negro) y el probit (rojo)",fig.height = 4, fig.width = 6}
 library(pROC)
 modbw.logit = glm(low~age+lwt+ptl+smoke,family=binomial(logit),data=birthwt)
 modbw.probit = glm(low~age+lwt+smoke+ptl,family=binomial(probit),data=birthwt)
 
 ROCbw.logit = roc(birthwt$low~modbw.logit$fitted.values)
 ROCbw.probit = roc(birthwt$low~modbw.probit$fitted.values)
-plot(ROCbw.logit)
+plot(ROCbw.logit,xlab='especificidad',ylab='sensibilidad')
 lines(ROCbw.probit,col=2)
 ```
 En la Figura \@ref(fig:ROClbwdata) se puede observar que ambas funciones de enlace proporcionan el mismo poder predictivo. El índice de concordancia es de $AUC= 0,6884$ para el modelo logístico y $AUC= 0,6866$ para el modelo probit.    
@@ -259,7 +262,6 @@ plot(ROCesc,print.auc=T)
 ```
 
 
-Datos.esc
 
 ## Sobredispersión
 En un experimento Bernoulli se asume que los $n_i$ ensayos para la observación $i,\quad (y_{i1},...y_{in_i})$, son independientes. Por lo tanto, para $y_i = \sum_{j=1}^{n_i}y_{ij}/n_i$,tenemos que:
@@ -268,20 +270,20 @@ $$
 E(y_i)=\pi_i \quad \text{y} \quad V(y_i)=\pi_i(1-\pi_i)\frac{1}{n_i}.
 $$
 
-Pero, hay casos donde las observaciones $(y_{i1},...y_{in_i})$ están correlacionadas, es decir $cor(y_{is},y_{it}) \ne 0$. Esto hace que $V(y_{i}) \neq V(y_i)=\pi_i(1-\pi_i)\frac{1}{n_i}$. Si asumimos que $cor(y_{is},y_{it})=\phi$, para todo $s\ne t$ (exchangeability property). Entonces:
+Pero, hay casos donde las observaciones $(y_{i1},...y_{in_i})$ están correlacionadas, lo que hace que $V(y_{i}) \neq V(y_i)=\pi_i(1-\pi_i)\frac{1}{n_i}$. Si asumimos que $cor(y_{is},y_{it})=\phi$, para todo $s\ne t$, tenemos que:
 
 $$
-V(y_{it})=\pi_i(1-\pi_i)\quad \text{y} \quad cor(y_{it},y_{is})=\phi\pi_i(1-\pi_i).
+V(y_{it})=\pi_i(1-\pi_i)\quad \text{y} \quad cov(y_{it},y_{is})=\phi\pi_i(1-\pi_i).
 $$
 
-En este caso, tenemos que:
+En este caso, la varianza de $y_i$ es:
 
 $$
 V(y_i)=V\begin{pmatrix} \sum_{j=1}^{n_i}\frac{y_{ij}}{n_i}\end{pmatrix}=\frac{1}{n_i^2} \left[ \sum_{j=1}^{n_i}V(y_{it})+2\sum\sum_{s<t}cov(y_{is},y_{it}) \right]=[1+\phi(n_i-1)]\frac{\pi_i(1-\pi_i)}{n_i}.
 $$
 Dependiendo del valor de $\phi$, la varianza de $y_i$ puede ser mayor o menor a la esperada bajo una distribución binomial. Si $\phi_i > 0$, tenemos un problema de sobredispersión (los datos tienen una varianza superior a la que se asume bajo un modelo binomial). Mientras que, si $-(n_i-1)^{-1}<\phi<0$, hay presencia de subdispersión. El segunda caso es menos frecuenta en datos reales.
 
-### Evalaución de sobredispersión
+### Evaluación de sobredispersión
 En el caso del modelo binomial, el estadístico de $\chi^2$ de Pearson está definido como:
 
 $$
@@ -353,7 +355,7 @@ La estimación de los parámetros $(\beta,\phi)$ se hace por máxima verosimilit
 ### Estudio de teratología
 Para los datos del estudio de teratología se puede proponer un modelo binomial en un principio:
 \[
-n_i y_i \sim \mbox{binomial} (n_i, \pi_i),
+y_i^* = n_i y_i \sim \mbox{binomial} (n_i, \pi_i),
 \]
 donde $n_i$ y $y_i$ es el tamaño y la proporción de fetos muertos de la camada $i$. Además, se tiene que:
 \[
@@ -370,9 +372,9 @@ La evaluación de sobredispersión la podemos hacer usando la razón entre el es
 X2 = sum(residuals(modlirat.binom,type='pearson')^2)
 X2/53
 ```
-Dado que está razón es aproximadamente $3$, los datos presentan sobredispersión. Por esta razón es mas conveniente proponer un modelo beta-binomial:
+Dado que esta razón es aproximadamente $3$, los datos presentan sobredispersión. Por lo tanto es mas conveniente proponer un modelo beta-binomial:
 $$
-y_i^{*}|\pi_i\sim \mbox{binomial}(n_i,\pi_i), \mbox{ donde } \pi_i\sim \mbox{beta}(\mu_i,\phi),
+y_i^{*}\sim \mbox{beta-binomial}(n_i,\pi_i,\phi),
 $$
 con 
 \[

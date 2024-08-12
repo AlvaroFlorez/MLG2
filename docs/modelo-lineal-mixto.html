@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 9 Modelo lineal mixto | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 9 Modelo lineal mixto | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 9 Modelo lineal mixto | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2023-10-26" />
+<meta name="date" content="2024-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -278,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.5.1</b> Especificación del modelo</a></li>
 <li class="chapter" data-level="6.5.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-por-máxima-verosimilitud-para-boldsymbol-beta"><i class="fa fa-check"></i><b>6.5.2</b> Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
-<li class="chapter" data-level="6.5.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#interpretación-de-parámetros---modelo-logístico"><i class="fa fa-check"></i><b>6.5.3</b> interpretación de parámetros - modelo logístico</a></li>
+<li class="chapter" data-level="6.5.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-e-interpretación-de-parámetros-del-modelo-poisson"><i class="fa fa-check"></i><b>6.5.3</b> ajuste e interpretación de parámetros del modelo Poisson</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.6</b> Pruebas de hipótesis</a>
 <ul>
@@ -302,6 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
 <li class="chapter" data-level="7.1.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
 <ul>
@@ -312,12 +317,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a></li>
 <li class="chapter" data-level="7.5" data-path="modelo-logístico.html"><a href="modelo-logístico.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#evalaución-de-sobredispersión"><i class="fa fa-check"></i><b>7.5.1</b> Evalaución de sobredispersión</a></li>
+<li class="chapter" data-level="7.5.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#evaluación-de-sobredispersión"><i class="fa fa-check"></i><b>7.5.1</b> Evaluación de sobredispersión</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="modelo-logístico.html"><a href="modelo-logístico.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
 <ul>
 <li class="chapter" data-level="7.6.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
-<li class="chapter" data-level="7.6.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.6.2</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="7.6.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología-1"><i class="fa fa-check"></i><b>7.6.2</b> Estudio de teratología</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html"><i class="fa fa-check"></i><b>8</b> Modelo para conteos</a>
@@ -335,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#sobredispersión-1"><i class="fa fa-check"></i><b>8.3</b> Sobredispersión</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#distribución-binomial-negativa"><i class="fa fa-check"></i><b>8.3.1</b> Distribución binomial negativa</a></li>
-<li class="chapter" data-level="8.3.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-binomial-negativo-poisson-gamma"><i class="fa fa-check"></i><b>8.3.2</b> Modelo binomial negativo (Poisson-gamma)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-binomial-negativo"><i class="fa fa-check"></i><b>8.3.2</b> Modelo binomial negativo</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#inflación-de-ceros"><i class="fa fa-check"></i><b>8.4</b> Inflación de ceros</a>
 <ul>
@@ -391,40 +396,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="peso-al-nacer-de-ratas" class="section level3 hasAnchor" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Peso al nacer de ratas<a href="modelo-lineal-mixto.html#peso-al-nacer-de-ratas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los datos <code>ratpup</code> de la librería <code>WWGbook</code> corresponden a un estudio donde se asignaron aleatoriamente 30 ratas hembra para recibir una de tres dosis (Alta, Baja o Control) de un compuesto experimental. El objetivo es determinar como este compuesto afecta el peso al nacer de las crías.</p>
-<p>En la Figura <a href="modelo-lineal-mixto.html#fig:ratpup">9.1</a> se puede observar que el peso de los machos tiende a ser un poco mayor que el de las hembras. En término de los tratamientos, las crías que pertenecen a las madres que recibieron las dosis del compuesto experimental tienen pesos levemente inferiores. Además, vemos que las medidas del peso de las crías que pertenecen a la misma madre son más parecidas entre ellas que las observaciones entre madres. Esto puede ser un indicio de que las observaciones dentro de la misma madre estén correlacionadas, sin embargo, se podría asumir que las observaciones entre madres sean independientes.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="modelo-lineal-mixto.html#cb208-1" tabindex="-1"></a><span class="fu">library</span>(WWGbook)</span>
-<span id="cb208-2"><a href="modelo-lineal-mixto.html#cb208-2" tabindex="-1"></a><span class="fu">data</span>(ratpup)</span>
-<span id="cb208-3"><a href="modelo-lineal-mixto.html#cb208-3" tabindex="-1"></a><span class="fu">plot</span>(ratpup<span class="sc">$</span>litter,ratpup<span class="sc">$</span>weight,<span class="at">col=</span><span class="fu">as.double</span>(ratpup<span class="sc">$</span>sex),<span class="at">pch=</span><span class="dv">19</span>,<span class="at">xlab=</span><span class="st">&#39;camada&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;peso al nacer (gramos)&#39;</span>)</span>
-<span id="cb208-4"><a href="modelo-lineal-mixto.html#cb208-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">c</span>(<span class="fl">10.5</span>,<span class="fl">20.5</span>),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<p>En la Figura <a href="modelo-lineal-mixto.html#fig:ratpup">9.1</a> se puede observar que el peso de los machos tiende a ser un poco mayor que el de las hembras. En término de los tratamientos, las crías que pertenecen a las madres que recibieron las dosis del compuesto experimental tienen pesos levemente inferiores. Además, vemos que las medidas del peso de las crías que pertenecen a la misma camada son más parecidas entre ellas que las observaciones entre camadas. Esto puede ser un indicio de que las observaciones dentro de la misma camada estén correlacionadas, sin embargo, se podría asumir que las observaciones entre camadas sean independientes.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="modelo-lineal-mixto.html#cb216-1" tabindex="-1"></a><span class="fu">library</span>(WWGbook)</span>
+<span id="cb216-2"><a href="modelo-lineal-mixto.html#cb216-2" tabindex="-1"></a><span class="fu">data</span>(ratpup)</span>
+<span id="cb216-3"><a href="modelo-lineal-mixto.html#cb216-3" tabindex="-1"></a><span class="fu">plot</span>(ratpup<span class="sc">$</span>litter,ratpup<span class="sc">$</span>weight,<span class="at">col=</span><span class="fu">as.double</span>(ratpup<span class="sc">$</span>sex),<span class="at">pch=</span><span class="dv">19</span>,<span class="at">xlab=</span><span class="st">&#39;camada&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;peso al nacer (gramos)&#39;</span>)</span>
+<span id="cb216-4"><a href="modelo-lineal-mixto.html#cb216-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">c</span>(<span class="fl">10.5</span>,<span class="fl">20.5</span>),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:ratpup"></span>
-<img src="MLG2_files/figure-html/ratpup-1.png" alt="Peso de las ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta." width="576" />
+<img src="MLG2_files/figure-html/ratpup-1.png" alt="Datos del peso al nacer de ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta." width="576" />
 <p class="caption">
-Figure 9.1: Peso de las ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta.
+Figure 9.1: Datos del peso al nacer de ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta.
 </p>
 </div>
 </div>
 <div id="capacidad-respiratoria" class="section level3 hasAnchor" number="9.1.2">
 <h3><span class="header-section-number">9.1.2</span> Capacidad respiratoria<a href="modelo-lineal-mixto.html#capacidad-respiratoria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El volumen espiratorio forzado (FEV) es la cantidad de aire que una personal puede exhalar (en litros por segundo) durante una respiración forzada . Los datos datos <code>fev.txt</code> (Disponible <a href="https://https://raw.githubusercontent.com/AlvaroFlorez/MLG2/master/fev.txt" target="_blank">aquí</a>) pertenece a un estudio que tiene como objetivo determinar como dos tratamientos experimentales afecta la capacidad respiratoria de los pacientes. Para esto, se asignó de forma aleatoria <span class="math inline">\(72\)</span> pacientes hombres en tres grupos, droga A, droga B y control. A cada paciente, el FEV fue medido antes administrar los tratamientos (baseline) y luego cada hora durante 8 horas consecutivas.</p>
-<p>La Figura <a href="modelo-lineal-mixto.html#fig:fev">9.2</a> muestra las trayectorias individuales de cada individuo. Se puede observar una tendencia negativa del FEV en el tiempo para los pacientes que se encuentran en los grupos tratamiento. Mientras que, para los pacientes del grupo placebo se observa que el FEV es constante en el tiempo. Además, se observa que hay poca variabilidad en las mediciones que pertenecen al mismo individuo. Por el contrario, hay mucha variabilidad entre individuos.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="modelo-lineal-mixto.html#cb209-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb209-2"><a href="modelo-lineal-mixto.html#cb209-2" tabindex="-1"></a>fev <span class="ot">=</span> <span class="fu">read.table</span>(<span class="st">&#39;fev.txt&#39;</span>,<span class="at">header =</span> T)</span>
-<span id="cb209-3"><a href="modelo-lineal-mixto.html#cb209-3" tabindex="-1"></a>fev<span class="sc">$</span>drug <span class="ot">=</span> <span class="fu">as.factor</span>(fev<span class="sc">$</span>drug)</span>
-<span id="cb209-4"><a href="modelo-lineal-mixto.html#cb209-4" tabindex="-1"></a><span class="fu">levels</span>(fev<span class="sc">$</span>drug) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;Placebo&#39;</span>)</span>
-<span id="cb209-5"><a href="modelo-lineal-mixto.html#cb209-5" tabindex="-1"></a></span>
-<span id="cb209-6"><a href="modelo-lineal-mixto.html#cb209-6" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> fev, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> fev, <span class="at">group =</span> patient))</span>
-<span id="cb209-7"><a href="modelo-lineal-mixto.html#cb209-7" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> drug) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;Volumen espiratorio forzado (litros por segundo)&#39;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&#39;tiempo (horas)&#39;</span>)</span></code></pre></div>
+<p>El volumen espiratorio forzado (FEV) es la cantidad de aire que una personal puede exhalar (en litros por segundo) durante una respiración forzada . Los datos <code>fev.txt</code> (Disponible <a href="https://https://raw.githubusercontent.com/AlvaroFlorez/MLG2/master/fev.txt" target="_blank">aquí</a>) pertenece a un estudio que tiene como objetivo determinar como dos medicamentos experimentales afecta la capacidad respiratoria de los pacientes, la cual se cree es un efecto secundario a corto plazo del tratamiento. Para esto, se asignó de forma aleatoria <span class="math inline">\(72\)</span> pacientes hombres en tres grupos, droga A, droga B y control (placebo). A cada paciente, el FEV fue medido antes administrar los tratamientos (baseline) y luego cada hora durante 8 horas consecutivas.</p>
+<p>La Figura <a href="modelo-lineal-mixto.html#fig:fev">9.2</a> muestra las trayectorias individuales de cada individuo. Se puede observar una tendencia negativa del FEV en el tiempo para los pacientes que se encuentran en los tratamientos. Mientras que, para los pacientes del grupo placebo se observa que el FEV es constante en el tiempo. Además, se observa que hay poca variabilidad en las mediciones que pertenecen al mismo individuo. Por el contrario, hay mucha variabilidad entre individuos.</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="modelo-lineal-mixto.html#cb217-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb217-2"><a href="modelo-lineal-mixto.html#cb217-2" tabindex="-1"></a>fev <span class="ot">=</span> <span class="fu">read.table</span>(<span class="st">&#39;fev.txt&#39;</span>,<span class="at">header =</span> T)</span>
+<span id="cb217-3"><a href="modelo-lineal-mixto.html#cb217-3" tabindex="-1"></a>fev<span class="sc">$</span>drug <span class="ot">=</span> <span class="fu">as.factor</span>(fev<span class="sc">$</span>drug)</span>
+<span id="cb217-4"><a href="modelo-lineal-mixto.html#cb217-4" tabindex="-1"></a><span class="fu">levels</span>(fev<span class="sc">$</span>drug) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>,<span class="st">&#39;Placebo&#39;</span>)</span>
+<span id="cb217-5"><a href="modelo-lineal-mixto.html#cb217-5" tabindex="-1"></a></span>
+<span id="cb217-6"><a href="modelo-lineal-mixto.html#cb217-6" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> fev, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> fev, <span class="at">group =</span> patient))</span>
+<span id="cb217-7"><a href="modelo-lineal-mixto.html#cb217-7" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> drug) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;Volumen espiratorio forzado (litros por segundo)&#39;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&#39;tiempo (horas)&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:fev"></span>
-<img src="MLG2_files/figure-html/fev-1.png" alt="Datos de capacidad respiratoria. Mediciones del FEV por hora para los pacientes en cada uno de los grupos." width="768" />
+<img src="MLG2_files/figure-html/fev-1.png" alt="Datos de capacidad respiratoria. Mediciones del volumen espiratorio forzado por hora de los pacientes en cada uno de los grupos." width="768" />
 <p class="caption">
-Figure 9.2: Datos de capacidad respiratoria. Mediciones del FEV por hora para los pacientes en cada uno de los grupos.
+Figure 9.2: Datos de capacidad respiratoria. Mediciones del volumen espiratorio forzado por hora de los pacientes en cada uno de los grupos.
 </p>
 </div>
 </div>
 </div>
 <div id="datos-por-cluster-correlacionados" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Datos por cluster (correlacionados)<a href="modelo-lineal-mixto.html#datos-por-cluster-correlacionados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En ambos estudios se tienen datos que pueden estar potencialmente correlacionados. Este tipo de datos son llamados por cluster (jerárquicos o multinivel) dado que pueden ordenarse jerárquicamente. Por ejemplo:</p>
+<p>En ambos estudios se tienen datos que pueden estar correlacionados. Este tipo de datos son llamados por cluster (jerárquicos o multinivel) dado que pueden ordenarse jerárquicamente. Por ejemplo:</p>
 <ul>
 <li><p>En el estudio del peso de las ratas, se espera que las crías que pertenecen a la misma camada (madre) estén correlacionados. Por lo que el cluster está definido por la camada.</p></li>
 <li><p>En el estudio sobre capacidad pulmonar, las mediciones que pertenecen al mismo individuo pueden estar correlacionadas. Por lo que el paciente define el cluster.</p></li>
@@ -437,18 +442,18 @@ Figure 9.2: Datos de capacidad respiratoria. Mediciones del FEV por hora para lo
 </div>
 <div id="modelos-con-intercepto-aleatorios" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> Modelos con intercepto aleatorios<a href="modelo-lineal-mixto.html#modelos-con-intercepto-aleatorios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Definimos a <span class="math inline">\(y_{ij}\)</span> como el peso de la <span class="math inline">\(j\)</span>-ésima cría de la camada <span class="math inline">\(i\)</span>. Por lo que, <span class="math inline">\(\boldsymbol y_i\)</span> corresponde al vector de pesos de las crías de la madre <span class="math inline">\(i\)</span>. Para inducir correlación entre las observaciones (pesos de las crías) del mismo cluster (madre) se puede incluir un efecto aleatorio en el modelo:
+<p>Definimos a <span class="math inline">\(y_{ij}\)</span> como el peso de la <span class="math inline">\(j\)</span>-ésima cría de la camada <span class="math inline">\(i\)</span>. Por lo que, <span class="math inline">\(\boldsymbol y_i\)</span> corresponde al vector de pesos de las crías de la madre <span class="math inline">\(i\)</span>. Para inducir correlación entre las observaciones (pesos de las crías) del mismo cluster (madre) se puede incluir un efecto aleatorio en el modelo lineal:
 <span class="math display">\[
 y_{ij} = \beta_0 + b_i + \mbox{sex}_{ij}\beta_1+ \mbox{treat1}_{i}\beta_2 + \mbox{treat2}_{i}\beta_3 + \varepsilon_{ij},
 \]</span>
-donde sex<span class="math inline">\(_{ij}=1\)</span> si la <span class="math inline">\(j\)</span>-ésima cría de la camada <span class="math inline">\(i\)</span> es macho, sex<span class="math inline">\(_{ij}=1\)</span> si lo contrario; treat1<span class="math inline">\(_{i}=1\)</span> si la madre <span class="math inline">\(i\)</span> recibió la dosis baja, treat1<span class="math inline">\(_{i}=0\)</span> si lo contrario; treat2<span class="math inline">\(_{i}=1\)</span> si la madre <span class="math inline">\(i\)</span> recibió la dosis alta, treat2<span class="math inline">\(_{i}=0\)</span> si lo contrario. Además, i.i.d. <span class="math inline">\(b_i \sim N(0,d)\)</span> y <span class="math inline">\(\varepsilon_{ij} \sim N(0,\sigma^2)\)</span>.</p>
+donde sex<span class="math inline">\(_{ij}=1\)</span> si la <span class="math inline">\(j\)</span>-ésima cría de la camada <span class="math inline">\(i\)</span> es macho, sex<span class="math inline">\(_{ij}=1\)</span> si lo contrario; treat1<span class="math inline">\(_{i}=1\)</span> si la madre <span class="math inline">\(i\)</span> recibió la dosis baja, treat1<span class="math inline">\(_{i}=0\)</span> si lo contrario; treat2<span class="math inline">\(_{i}=1\)</span> si la madre <span class="math inline">\(i\)</span> recibió la dosis alta, treat2<span class="math inline">\(_{i}=0\)</span> si lo contrario. Además, asumimos que <span class="math inline">\(b_i\)</span> y <span class="math inline">\(\varepsilon_{ij}\)</span> son independientes y <span class="math inline">\(b_i \sim N(0,d)\)</span> y <span class="math inline">\(\varepsilon_{ij} \sim N(0,\sigma^2)\)</span>.</p>
 <p>Por lo que condicionalmente a <span class="math inline">\(b_i\)</span>, se tiene que:
 <span class="math display">\[
 E(y_{ij} | b_i)= \beta_0 + b_i + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3 \mbox{ y } v(y_{ij} | b_i)= \sigma^{2}.
 \]</span>
 Mientras que, marginalmente:
 <span class="math display">\[
-E(y_{ij}) = E\left[ E(y_{ij} | b_i) \right] = \beta_0 + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3.
+E(y_{ij}) = E\left[ E(y_{ij} | b_i) \right] = \beta_0 + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3,
 \]</span>
 y
 <span class="math display">\[
@@ -458,7 +463,7 @@ Además,
 <span class="math display">\[
 cov(y_{ij},y_{ik}) = d \mbox{ y } cov(y_{i^{*}j},y_{ik}) = 0.
 \]</span>
-Esto quiere decir que los pesos de las crías que pertenecen a la misma camada están correlacionados, con <span class="math inline">\(cor(y_{ij},y_{ik}) = d/(\sigma^2+d)\)</span>. La matriz de covarianza y correlación de <span class="math inline">\(y_{ij}\)</span> son:
+Esto quiere decir que los pesos de las crías que pertenecen a la misma camada están correlacionadas, con <span class="math inline">\(cor(y_{ij},y_{ik}) = d/(\sigma^2+d)\)</span>. La matriz de covarianza y correlación de <span class="math inline">\(y_{ij}\)</span> son:
 <span class="math display">\[
 \boldsymbol V_{i} = \begin{pmatrix}
 \sigma^{2} + d &amp; d  &amp; d &amp; \ldots &amp; d \\
@@ -475,7 +480,7 @@ d &amp; d &amp; d &amp;  \ldots &amp; \sigma^{2} + d \\
 \frac{d}{\sigma^{2} + d} &amp; \frac{d}{\sigma^{2} + d} &amp; \frac{d}{\sigma^{2} + d} &amp;  \ldots &amp; 1 \\
 \end{pmatrix}.
 \]</span>
-Mientras que se asume que hay incorrelación entre los pesos de crías de diferente madre.</p>
+Mientras que se asume que hay incorrelación entre los pesos de crías de diferente camada.</p>
 <div id="modelo-con-pendiente-aleatoria" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> Modelo con pendiente aleatoria<a href="modelo-lineal-mixto.html#modelo-con-pendiente-aleatoria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sea <span class="math inline">\(y_{ij}\)</span> la diferencia del FEV del <span class="math inline">\(j\)</span>-ésimo paciente antes de iniciar el tratamiento y en la hora <span class="math inline">\(t_{j}\)</span>, para <span class="math inline">\(t_{j}= \{1,2,\ldots,8\}\)</span>. Por lo tanto, <span class="math inline">\(\boldsymbol y_i\)</span> corresponde al vector de mediciones del FEV del paciente <span class="math inline">\(i\)</span> a lo largo del tiempo.</p>
@@ -483,7 +488,7 @@ Mientras que se asume que hay incorrelación entre los pesos de crías de difere
 <span class="math display">\[
 y_{ij} = \beta_{0} + b_{0i} +   \mbox{drugA}_{i}\beta_{2} + \mbox{drugB}_{i}\beta_{3} + t_j \beta_4 + t_jb_{1i} + \mbox{drugA}_{i}t_j\beta_{5} + \mbox{drugB}_{i}t_j\beta_{6}  + \varepsilon_{ij},
 \]</span>
-donde drugA<span class="math inline">\(_{i}=1\)</span> si el paciente <span class="math inline">\(i\)</span> recibió la droga A, drugA<span class="math inline">\(_{i}=0\)</span> si lo contrario; donde drugB<span class="math inline">\(_{i}=1\)</span> si el paciente <span class="math inline">\(i\)</span> recibió la droga B, drugB<span class="math inline">\(_{i}=0\)</span> si lo contrario. Además, i.i.d. <span class="math inline">\(\boldsymbol b_i = (b_{0i},b_{1i}) \sim N(\boldsymbol 0,\  bD)\)</span> y <span class="math inline">\(\varepsilon_{ij} \sim N(0,\sigma^2)\)</span>.</p>
+donde drugA<span class="math inline">\(_{i}=1\)</span> si el paciente <span class="math inline">\(i\)</span> recibió la droga A, drugA<span class="math inline">\(_{i}=0\)</span> si lo contrario; donde drugB<span class="math inline">\(_{i}=1\)</span> si el paciente <span class="math inline">\(i\)</span> recibió la droga B, drugB<span class="math inline">\(_{i}=0\)</span> si lo contrario; <span class="math inline">\(\boldsymbol b_i = (b_{0i},b_{1i}) \sim N(\boldsymbol 0,\boldsymbol D)\)</span> y <span class="math inline">\(\varepsilon_{ij} \sim N(0,\sigma^2)\)</span>. Además, asumimos que <span class="math inline">\(\boldsymbol b_i\)</span> y <span class="math inline">\(\varepsilon_{ij}\)</span> son independientes.</p>
 <p>En este caso, se tiene que el valor esperado marginal es:
 <span class="math display">\[
 E(y_{ij}) = \beta_{0} +  \mbox{drugA}_{i}\beta_{2} + \mbox{drugB}_{i}\beta_{3} + t_j \beta_4 + \mbox{drugA}_{i}t_j\beta_{5} + \mbox{drugB}_{i}t_j\beta_{6}.
@@ -496,29 +501,29 @@ Finalmente, la covarianza es:
 <span class="math display">\[
 Cov(y_{ij},y_{ik}) = Cov(b_{0i} + t_{j}b_{1i} + \varepsilon_{ij},b_{0i} + t_{j}b_{1i} + \varepsilon_{ik}) = d_{11}t_{j}t_{k} + d_{01}(t_{j}+t_{k}) + d_{00}.
 \]</span>
-Aquí vemos que al incluir una pendiente aleatoria, el modelo permite heterogeneidad de varianza, y además, la correlación depende de los tiempos en que se tomaron las mediciones.</p>
+Aquí vemos que al incluir una pendiente aleatoria, el modelo permite heterogeneidad de varianza y la correlación depende de los tiempos en que se tomaron las mediciones.</p>
 </div>
 </div>
 <div id="modelo-lineal-mixto-1" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> Modelo lineal mixto<a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>De forma general, el modelo lineal mixto se puede expresar de la siguiente forma
+<p>De forma general, el modelo lineal mixto se puede expresar de la siguiente forma:
 <span class="math display">\[
 \boldsymbol y_{i} = \boldsymbol X_{i}\boldsymbol \beta+ \boldsymbol Z_{i}\boldsymbol b_{i} + \boldsymbol \varepsilon_i.
 \]</span>
 donde <span class="math inline">\(\boldsymbol X_i\)</span> y <span class="math inline">\(\boldsymbol Z_i\)</span> son matrices de dimensión <span class="math inline">\(n \times p\)</span> y <span class="math inline">\(n \times q\)</span>, <span class="math inline">\(\boldsymbol b_i\)</span> es el vector <span class="math inline">\(q\)</span>-dimensional de efectos aleatorios, y <span class="math inline">\(\boldsymbol \varepsilon_i\)</span> es el vector <span class="math inline">\(n\)</span>-dimensional de errores asociados al <span class="math inline">\(i\)</span>-ésimo cluster. Además, se asume que:
 <span class="math display">\[
-\boldsymbol b_{i}\sim N(\boldsymbol 0,\boldsymbol D) \mbox{ y }\boldsymbol \varepsilon_{i} \sim N(\boldsymbol 0,\sigma^{2}\boldsymbol I)
+\boldsymbol b_{i}\sim N(\boldsymbol 0,\boldsymbol D) \mbox{ y }\boldsymbol \varepsilon_{i} \sim N(\boldsymbol 0,\sigma^{2}\boldsymbol I),
 \]</span>
-Por lo tanto, marginalmente tenemos que:
+y que <span class="math inline">\(\boldsymbol b_{i}\)</span> y <span class="math inline">\(\boldsymbol \varepsilon_{i}\)</span> son independientes. Por lo tanto, marginalmente tenemos que:
 <span class="math display">\[
 E(\boldsymbol y_{i}) = \boldsymbol X_{i}\boldsymbol \beta\mbox{ y } V(\boldsymbol y_{i}) = \boldsymbol V_{i} = \boldsymbol Z_{i}\boldsymbol D\boldsymbol Z_{i}&#39; + \sigma^{2}\boldsymbol I.
 \]</span>
 Aquí estamos asumiendo independencia condicional. Esto es, <span class="math inline">\(V(\boldsymbol \varepsilon_{i}) = \sigma^{2}\boldsymbol I\)</span>. Sin embargo, se puede agregar una estructura a la componente de
-varianza del error, <span class="math inline">\(V(\boldsymbol \varepsilon_{i}) =\bSigma_i\)</span>.</p>
+varianza del error, <span class="math inline">\(V(\boldsymbol \varepsilon_{i}) =\boldsymbol \Sigma_i\)</span>.</p>
 </div>
 <div id="estimación-de-los-parámetros-1" class="section level2 hasAnchor" number="9.6">
 <h2><span class="header-section-number">9.6</span> Estimación de los parámetros<a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La estimación de los parámetros se hace a través de máxima verosimilitud. Sea <span class="math inline">\(\boldsymbol \theta= (\boldsymbol \beta&#39;,\boldsymbol \alpha)&#39;\)</span>, donde <span class="math inline">\(\boldsymbol \alpha\)</span> son los parámetros asociados a <span class="math inline">\(\boldsymbol D\)</span> y <span class="math inline">\(\bSigma_i\)</span>. La función de log-verosimilitud está defina como:
+<p>La estimación de los parámetros se hace a través de máxima verosimilitud. Sea <span class="math inline">\(\boldsymbol \theta= (\boldsymbol \beta&#39;,\boldsymbol \alpha)&#39;\)</span>, donde <span class="math inline">\(\boldsymbol \alpha\)</span> son los parámetros asociados a <span class="math inline">\(\boldsymbol D\)</span> y <span class="math inline">\(\boldsymbol \Sigma_i\)</span>. La función de log-verosimilitud está defina como:
 <span class="math display" id="eq:loglikLMM">\[\begin{equation}
 \ell(\boldsymbol \theta) \propto \sum_{i=1}^{N} \left[ -\frac{1}{2}\log |\boldsymbol V_i(\boldsymbol \alpha)| - \frac{1}{2}(\boldsymbol y_{i} - \boldsymbol X_{i}\boldsymbol \beta)&#39;\boldsymbol V_i(\boldsymbol \alpha)^{-1}(\boldsymbol y_{i} - \boldsymbol X_{i}\boldsymbol \beta) \right].
 \tag{9.1}
@@ -528,9 +533,9 @@ Se define <span class="math inline">\(\boldsymbol V_i=\boldsymbol V_i(\boldsymbo
 <div id="estimación-del-modelo-con-intercepto-aleatorio" class="section level3 hasAnchor" number="9.6.1">
 <h3><span class="header-section-number">9.6.1</span> Estimación del modelo con intercepto aleatorio<a href="modelo-lineal-mixto.html#estimación-del-modelo-con-intercepto-aleatorio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para los datos del peso de las ratas, el ajuste del modelo por REML lo podemos hacer de la siguiente forma:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="modelo-lineal-mixto.html#cb210-1" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
-<span id="cb210-2"><a href="modelo-lineal-mixto.html#cb210-2" tabindex="-1"></a>mod.ratpup <span class="ot">=</span> <span class="fu">lme</span>(weight<span class="sc">~</span>sex<span class="sc">+</span>treatment, <span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>litter,<span class="at">data=</span>ratpup)</span>
-<span id="cb210-3"><a href="modelo-lineal-mixto.html#cb210-3" tabindex="-1"></a><span class="fu">summary</span>(mod.ratpup)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="modelo-lineal-mixto.html#cb218-1" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb218-2"><a href="modelo-lineal-mixto.html#cb218-2" tabindex="-1"></a>mod.ratpup <span class="ot">=</span> <span class="fu">lme</span>(weight<span class="sc">~</span>sex<span class="sc">+</span>treatment, <span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>litter,<span class="at">data=</span>ratpup)</span>
+<span id="cb218-3"><a href="modelo-lineal-mixto.html#cb218-3" tabindex="-1"></a><span class="fu">summary</span>(mod.ratpup)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##   Data: ratpup 
 ##        AIC    BIC    logLik
@@ -569,9 +574,9 @@ Ahora, los resultado de los efectos fijos muestran que el peso de las crías mac
 H_0: \beta_2 = \beta_3 = 0.
 \]</span>
 La prueba de hipótesis la podemos realizar a través de la prueba de razón de verosimilud de la siguiente forma:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="modelo-lineal-mixto.html#cb212-1" tabindex="-1"></a>mod.ratpup0 <span class="ot">=</span> <span class="fu">lme</span>(weight<span class="sc">~</span>sex, <span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>litter,<span class="at">data=</span>ratpup,<span class="at">method=</span><span class="st">&#39;ML&#39;</span>)</span>
-<span id="cb212-2"><a href="modelo-lineal-mixto.html#cb212-2" tabindex="-1"></a>mod.ratpup1 <span class="ot">=</span> <span class="fu">lme</span>(weight<span class="sc">~</span>sex<span class="sc">+</span>treatment, <span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>litter,<span class="at">data=</span>ratpup,<span class="at">method=</span><span class="st">&#39;ML&#39;</span>)</span>
-<span id="cb212-3"><a href="modelo-lineal-mixto.html#cb212-3" tabindex="-1"></a><span class="fu">anova</span>(mod.ratpup0,mod.ratpup1)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="modelo-lineal-mixto.html#cb220-1" tabindex="-1"></a>mod.ratpup0 <span class="ot">=</span> <span class="fu">lme</span>(weight<span class="sc">~</span>sex, <span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>litter,<span class="at">data=</span>ratpup,<span class="at">method=</span><span class="st">&#39;ML&#39;</span>)</span>
+<span id="cb220-2"><a href="modelo-lineal-mixto.html#cb220-2" tabindex="-1"></a>mod.ratpup1 <span class="ot">=</span> <span class="fu">lme</span>(weight<span class="sc">~</span>sex<span class="sc">+</span>treatment, <span class="at">random=</span><span class="sc">~</span><span class="dv">1</span><span class="sc">|</span>litter,<span class="at">data=</span>ratpup,<span class="at">method=</span><span class="st">&#39;ML&#39;</span>)</span>
+<span id="cb220-3"><a href="modelo-lineal-mixto.html#cb220-3" tabindex="-1"></a><span class="fu">anova</span>(mod.ratpup0,mod.ratpup1)</span></code></pre></div>
 <pre><code>##             Model df      AIC      BIC    logLik   Test  L.Ratio p-value
 ## mod.ratpup0     1  4 421.6434 436.7416 -206.8217                        
 ## mod.ratpup1     2  6 422.9754 445.6227 -205.4877 1 vs 2 2.667947  0.2634</code></pre>
@@ -580,10 +585,10 @@ La prueba de hipótesis la podemos realizar a través de la prueba de razón de 
 <div id="estimación-del-modelo-con-pendiente-aleatoria" class="section level3 hasAnchor" number="9.6.2">
 <h3><span class="header-section-number">9.6.2</span> Estimación del modelo con pendiente aleatoria<a href="modelo-lineal-mixto.html#estimación-del-modelo-con-pendiente-aleatoria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ahora, podemos estimar el modelo de pendiente aleatoria para los datos de la capacidad respiratoria de la siguiente forma:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="modelo-lineal-mixto.html#cb214-1" tabindex="-1"></a>fev<span class="sc">$</span>fevdiff <span class="ot">=</span> fev<span class="sc">$</span>fev <span class="sc">-</span> fev<span class="sc">$</span>base</span>
-<span id="cb214-2"><a href="modelo-lineal-mixto.html#cb214-2" tabindex="-1"></a>fev<span class="sc">$</span>drug<span class="ot">=</span><span class="fu">relevel</span>(fev<span class="sc">$</span>drug,<span class="st">&#39;Placebo&#39;</span>)</span>
-<span id="cb214-3"><a href="modelo-lineal-mixto.html#cb214-3" tabindex="-1"></a>lmm.fev <span class="ot">=</span> <span class="fu">lme</span>(fevdiff<span class="sc">~</span>hour<span class="sc">*</span>drug, <span class="at">random=</span><span class="sc">~</span>hour<span class="sc">|</span>patient,<span class="at">data=</span>fev)</span>
-<span id="cb214-4"><a href="modelo-lineal-mixto.html#cb214-4" tabindex="-1"></a><span class="fu">summary</span>(lmm.fev)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="modelo-lineal-mixto.html#cb222-1" tabindex="-1"></a>fev<span class="sc">$</span>fevdiff <span class="ot">=</span> fev<span class="sc">$</span>fev <span class="sc">-</span> fev<span class="sc">$</span>base</span>
+<span id="cb222-2"><a href="modelo-lineal-mixto.html#cb222-2" tabindex="-1"></a>fev<span class="sc">$</span>drug<span class="ot">=</span><span class="fu">relevel</span>(fev<span class="sc">$</span>drug,<span class="st">&#39;Placebo&#39;</span>)</span>
+<span id="cb222-3"><a href="modelo-lineal-mixto.html#cb222-3" tabindex="-1"></a>lmm.fev <span class="ot">=</span> <span class="fu">lme</span>(fevdiff<span class="sc">~</span>hour<span class="sc">*</span>drug, <span class="at">random=</span><span class="sc">~</span>hour<span class="sc">|</span>patient,<span class="at">data=</span>fev)</span>
+<span id="cb222-4"><a href="modelo-lineal-mixto.html#cb222-4" tabindex="-1"></a><span class="fu">summary</span>(lmm.fev)</span></code></pre></div>
 <pre><code>## Linear mixed-effects model fit by REML
 ##   Data: fev 
 ##        AIC      BIC    logLik
@@ -620,13 +625,13 @@ La prueba de hipótesis la podemos realizar a través de la prueba de razón de 
 ## Number of Observations: 576
 ## Number of Groups: 72</code></pre>
 <p>Estos resultados muestran que, para los pacientes del grupo control, el FEV no cambia con el tiempo. Esto es esperado dado que estos pacientes no recibieron ningún medicamento que pudiera modificar su capacidad espiratoria. Mientras que, los tratamientos tienen un efecto negativo significativo sobre la capacidad espiratoria. Esto se puede observar de forma gráfica en la Figura <a href="modelo-lineal-mixto.html#fig:fevEstimacionFig">9.3</a>.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="modelo-lineal-mixto.html#cb216-1" tabindex="-1"></a>betaEst <span class="ot">=</span> lmm.fev<span class="sc">$</span>coefficients<span class="sc">$</span>fixed</span>
-<span id="cb216-2"><a href="modelo-lineal-mixto.html#cb216-2" tabindex="-1"></a>mean.line <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="fu">c</span>(betaEst[<span class="dv">1</span>],betaEst[<span class="dv">1</span>] <span class="sc">+</span> betaEst[<span class="dv">3</span>], betaEst[<span class="dv">1</span>] <span class="sc">+</span> betaEst[<span class="dv">4</span>]),</span>
-<span id="cb216-3"><a href="modelo-lineal-mixto.html#cb216-3" tabindex="-1"></a>                       <span class="at">b=</span> <span class="fu">c</span>(betaEst[<span class="dv">2</span>],betaEst[<span class="dv">2</span>] <span class="sc">+</span> betaEst[<span class="dv">5</span>], betaEst[<span class="dv">2</span>] <span class="sc">+</span> betaEst[<span class="dv">5</span>]),</span>
-<span id="cb216-4"><a href="modelo-lineal-mixto.html#cb216-4" tabindex="-1"></a>                       <span class="at">drug =</span> <span class="fu">c</span>(<span class="st">&#39;Placebo&#39;</span>,<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>))</span>
-<span id="cb216-5"><a href="modelo-lineal-mixto.html#cb216-5" tabindex="-1"></a></span>
-<span id="cb216-6"><a href="modelo-lineal-mixto.html#cb216-6" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> fev, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> fevdiff, <span class="at">group =</span> patient))</span>
-<span id="cb216-7"><a href="modelo-lineal-mixto.html#cb216-7" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> drug) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;diferencia del FEV (litros por segundo)&#39;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&#39;tiempo (horas)&#39;</span>) <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">data=</span>mean.line,<span class="fu">aes</span>(<span class="at">intercept =</span> a, <span class="at">slope =</span> b),<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="modelo-lineal-mixto.html#cb224-1" tabindex="-1"></a>betaEst <span class="ot">=</span> lmm.fev<span class="sc">$</span>coefficients<span class="sc">$</span>fixed</span>
+<span id="cb224-2"><a href="modelo-lineal-mixto.html#cb224-2" tabindex="-1"></a>mean.line <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="fu">c</span>(betaEst[<span class="dv">1</span>],betaEst[<span class="dv">1</span>] <span class="sc">+</span> betaEst[<span class="dv">3</span>], betaEst[<span class="dv">1</span>] <span class="sc">+</span> betaEst[<span class="dv">4</span>]),</span>
+<span id="cb224-3"><a href="modelo-lineal-mixto.html#cb224-3" tabindex="-1"></a>                       <span class="at">b=</span> <span class="fu">c</span>(betaEst[<span class="dv">2</span>],betaEst[<span class="dv">2</span>] <span class="sc">+</span> betaEst[<span class="dv">5</span>], betaEst[<span class="dv">2</span>] <span class="sc">+</span> betaEst[<span class="dv">5</span>]),</span>
+<span id="cb224-4"><a href="modelo-lineal-mixto.html#cb224-4" tabindex="-1"></a>                       <span class="at">drug =</span> <span class="fu">c</span>(<span class="st">&#39;Placebo&#39;</span>,<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>))</span>
+<span id="cb224-5"><a href="modelo-lineal-mixto.html#cb224-5" tabindex="-1"></a></span>
+<span id="cb224-6"><a href="modelo-lineal-mixto.html#cb224-6" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> fev, <span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> fevdiff, <span class="at">group =</span> patient))</span>
+<span id="cb224-7"><a href="modelo-lineal-mixto.html#cb224-7" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(. <span class="sc">~</span> drug) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;diferencia del FEV (litros por segundo)&#39;</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&#39;tiempo (horas)&#39;</span>) <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">data=</span>mean.line,<span class="fu">aes</span>(<span class="at">intercept =</span> a, <span class="at">slope =</span> b),<span class="at">col=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:fevEstimacionFig"></span>
 <img src="MLG2_files/figure-html/fevEstimacionFig-1.png" alt="Datos de capacidad respiratoria. Estimación de la media de la diferencia del Volumen espiratorio forzado por hora (línea roja) para los pacientes en cada uno de los grupos." width="768" />
 <p class="caption">
@@ -634,8 +639,8 @@ Figure 9.3: Datos de capacidad respiratoria. Estimación de la media de la difer
 </p>
 </div>
 <p>La estimación de la varianza y correlacion marginal se puede obtener a través de la función <code>getVarCov</code>. Por ejemplo, la estimación de la matriz de varianza y correlación marginal para el individuo uno es:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="modelo-lineal-mixto.html#cb217-1" tabindex="-1"></a>Vest <span class="ot">=</span> <span class="fu">getVarCov</span>(lmm.fev,<span class="at">type=</span><span class="st">&#39;marginal&#39;</span>)</span>
-<span id="cb217-2"><a href="modelo-lineal-mixto.html#cb217-2" tabindex="-1"></a>Vest</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="modelo-lineal-mixto.html#cb225-1" tabindex="-1"></a>Vest <span class="ot">=</span> <span class="fu">getVarCov</span>(lmm.fev,<span class="at">type=</span><span class="st">&#39;marginal&#39;</span>)</span>
+<span id="cb225-2"><a href="modelo-lineal-mixto.html#cb225-2" tabindex="-1"></a>Vest</span></code></pre></div>
 <pre><code>## patient 1 
 ## Marginal variance covariance matrix
 ##         1       2       3       4       5       6       7       8
@@ -648,7 +653,7 @@ Figure 9.3: Datos de capacidad respiratoria. Estimación de la media de la difer
 ## 7 0.17429 0.18563 0.19697 0.20831 0.21965 0.23099 0.28518 0.25367
 ## 8 0.16374 0.17873 0.19372 0.20870 0.22369 0.23868 0.25367 0.31151
 ##   Standard Deviations: 0.52958 0.51283 0.50283 0.49998 0.5044 0.5159 0.53402 0.55813</code></pre>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="modelo-lineal-mixto.html#cb219-1" tabindex="-1"></a><span class="fu">cov2cor</span>(<span class="fu">as.matrix</span>(Vest<span class="sc">$</span><span class="st">&#39;1&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="modelo-lineal-mixto.html#cb227-1" tabindex="-1"></a><span class="fu">cov2cor</span>(<span class="fu">as.matrix</span>(Vest<span class="sc">$</span><span class="st">&#39;1&#39;</span>))</span></code></pre></div>
 <pre><code>##           1         2         3         4         5         6         7         8
 ## 1 1.0000000 0.8360136 0.8130169 0.7778053 0.7314927 0.6765661 0.6162925 0.5539758
 ## 2 0.8360136 1.0000000 0.8269414 0.8047373 0.7710037 0.7277256 0.6778195 0.6244266

@@ -1,8 +1,0 @@
-"0","y = data.frame(base=seq(min(epilepsy$base),max(epilepsy$base),length.out=100),"
-"0","               treatment = factor(1:2, levels = 1:2, labels = levels(epilepsy$treatment)))"
-"0","predpois = predict(modPois,y,type='response')"
-"0","x=seq(min(epilepsy$base),max(epilepsy$base),length.out=50)"
-"0",""
-"0","plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,"
-"0","     xlab=""número de ataques epiléptico(pre tratamiento)"","
-"0","     ylab = ""número deataques epiléptico(4ta semana de tratamiento)"")"

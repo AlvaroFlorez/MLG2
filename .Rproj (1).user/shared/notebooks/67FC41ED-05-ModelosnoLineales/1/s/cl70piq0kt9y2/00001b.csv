@@ -1,1 +1,0 @@
-"0","lines(x, th2[1]/(1+th2[2]*exp(-th2[3]*x)),col=3, lwd = 2)"

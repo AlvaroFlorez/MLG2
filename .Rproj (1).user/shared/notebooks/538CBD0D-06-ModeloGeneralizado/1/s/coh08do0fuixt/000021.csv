@@ -1,3 +1,0 @@
-"0","plot(seizure.rate~base, col=treatment, pch=16,data=epilepsy,"
-"0","     xlab=""número de ataques epiléptico pre-tratamiento (ataques x cuatro semanas)"","
-"0","     ylab = ""número de ataques epiléptico luego de cuatro semanas (ataques x dos semanas)"")"

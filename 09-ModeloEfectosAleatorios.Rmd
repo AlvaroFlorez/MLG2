@@ -5,21 +5,21 @@
 ### Peso al nacer de ratas
 Los datos ``ratpup`` de la librería ``WWGbook`` corresponden a un estudio donde se asignaron aleatoriamente 30 ratas hembra para recibir una de tres dosis (Alta, Baja o Control) de un compuesto experimental. El objetivo es determinar como este compuesto afecta el peso al nacer de las crías.
 
-En la Figura \@ref(fig:ratpup) se puede observar que el peso de los machos tiende a ser un poco mayor que el de las hembras. En término de los tratamientos, las crías que pertenecen a las madres que recibieron las dosis del compuesto experimental tienen pesos levemente inferiores. Además, vemos que las medidas del peso de las crías que pertenecen a la misma madre son más parecidas entre ellas que las observaciones entre madres. Esto puede ser un indicio de que las observaciones dentro de la misma madre estén correlacionadas, sin embargo, se podría asumir que las observaciones entre madres sean independientes.
+En la Figura \@ref(fig:ratpup) se puede observar que el peso de los machos tiende a ser un poco mayor que el de las hembras. En término de los tratamientos, las crías que pertenecen a las madres que recibieron las dosis del compuesto experimental tienen pesos levemente inferiores. Además, vemos que las medidas del peso de las crías que pertenecen a la misma camada son más parecidas entre ellas que las observaciones entre camadas. Esto puede ser un indicio de que las observaciones dentro de la misma camada estén correlacionadas, sin embargo, se podría asumir que las observaciones entre camadas sean independientes.
 
-```{r ratpup,fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Peso de las ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta."}
+```{r ratpup,fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Datos del peso al nacer de ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta."}
 library(WWGbook)
 data(ratpup)
 plot(ratpup$litter,ratpup$weight,col=as.double(ratpup$sex),pch=19,xlab='camada', ylab='peso al nacer (gramos)')
 abline(v=c(10.5,20.5),lty=2)
 ```
 ### Capacidad respiratoria
-El volumen espiratorio forzado (FEV) es la cantidad de aire que una personal puede exhalar (en litros por segundo) durante una respiración forzada . Los datos datos `fev.txt` (Disponible [aquí](https://https://raw.githubusercontent.com/AlvaroFlorez/MLG2/master/fev.txt){target="_blank"}) pertenece a un estudio que tiene como objetivo determinar como dos tratamientos experimentales afecta la capacidad respiratoria de los pacientes. Para esto, se asignó de forma aleatoria $72$ pacientes hombres en tres grupos, droga A, droga B y control. A cada paciente, el FEV fue medido antes administrar los tratamientos (baseline) y luego cada hora durante 8 horas consecutivas. 
+El volumen espiratorio forzado (FEV) es la cantidad de aire que una personal puede exhalar (en litros por segundo) durante una respiración forzada . Los datos  `fev.txt` (Disponible [aquí](https://https://raw.githubusercontent.com/AlvaroFlorez/MLG2/master/fev.txt){target="_blank"}) pertenece a un estudio que tiene como objetivo determinar como dos medicamentos experimentales afecta la capacidad respiratoria de los pacientes, la cual se cree es un efecto secundario a corto plazo del tratamiento. Para esto, se asignó de forma aleatoria $72$ pacientes hombres en tres grupos, droga A, droga B y control (placebo). A cada paciente, el FEV fue medido antes administrar los tratamientos (baseline) y luego cada hora durante 8 horas consecutivas. 
 
-La Figura \@ref(fig:fev) muestra las trayectorias individuales de cada individuo. Se puede observar una tendencia negativa del FEV en el tiempo para los pacientes que se encuentran en los grupos tratamiento. Mientras que, para los pacientes del grupo placebo se observa que el FEV es constante en el tiempo. Además, se observa que hay poca variabilidad en las mediciones que pertenecen al mismo individuo. Por el contrario, hay mucha variabilidad entre individuos.
+La Figura \@ref(fig:fev) muestra las trayectorias individuales de cada individuo. Se puede observar una tendencia negativa del FEV en el tiempo para los pacientes que se encuentran en los tratamientos. Mientras que, para los pacientes del grupo placebo se observa que el FEV es constante en el tiempo. Además, se observa que hay poca variabilidad en las mediciones que pertenecen al mismo individuo. Por el contrario, hay mucha variabilidad entre individuos.
 
 
-```{r fev,fig.height = 4, fig.width = 8, fig.align='center',fig.cap="Datos de capacidad respiratoria. Mediciones del FEV por hora para los pacientes en cada uno de los grupos."}
+```{r fev,fig.height = 4, fig.width = 8, fig.align='center',fig.cap="Datos de capacidad respiratoria. Mediciones del volumen espiratorio forzado por hora de los pacientes en cada uno de los grupos."}
 library(ggplot2)
 fev = read.table('fev.txt',header = T)
 fev$drug = as.factor(fev$drug)
@@ -30,7 +30,7 @@ p + geom_line() + facet_grid(. ~ drug) + ylab('Volumen espiratorio forzado (litr
 ```
 
 ## Datos por cluster (correlacionados)
-En ambos estudios se tienen datos que pueden estar potencialmente correlacionados. Este tipo de datos son llamados por cluster (jerárquicos o multinivel) dado que pueden ordenarse jerárquicamente. Por ejemplo:
+En ambos estudios se tienen datos que pueden estar correlacionados. Este tipo de datos son llamados por cluster (jerárquicos o multinivel) dado que pueden ordenarse jerárquicamente. Por ejemplo:
 
 - En el estudio del peso de las ratas, se espera que las crías que pertenecen a la misma camada (madre) estén correlacionados. Por lo que el cluster está definido por la camada.
 
@@ -43,11 +43,11 @@ Para el cluster $i$, se tienen $n_i$ observaciones. Por lo que ahora tenemos un 
 
 
 ## Modelos con intercepto aleatorios
-Definimos a $y_{ij}$ como el peso de la $j$-ésima cría de la camada $i$. Por lo que, $\by_i$ corresponde al vector de pesos de las crías de la madre $i$. Para inducir correlación entre las observaciones (pesos de las crías) del mismo cluster (madre) se puede incluir un efecto aleatorio en el modelo:
+Definimos a $y_{ij}$ como el peso de la $j$-ésima cría de la camada $i$. Por lo que, $\by_i$ corresponde al vector de pesos de las crías de la madre $i$. Para inducir correlación entre las observaciones (pesos de las crías) del mismo cluster (madre) se puede incluir un efecto aleatorio en el modelo lineal:
 \[
 y_{ij} = \beta_0 + b_i + \mbox{sex}_{ij}\beta_1+ \mbox{treat1}_{i}\beta_2 + \mbox{treat2}_{i}\beta_3 + \varepsilon_{ij},
 \]
-donde sex$_{ij}=1$ si la $j$-ésima cría de la camada $i$ es macho, sex$_{ij}=1$ si lo contrario; treat1$_{i}=1$ si la madre $i$ recibió la dosis baja, treat1$_{i}=0$ si lo contrario; treat2$_{i}=1$ si la madre $i$ recibió la dosis alta,  treat2$_{i}=0$ si lo contrario. Además, i.i.d. $b_i \sim N(0,d)$ y $\varepsilon_{ij} \sim N(0,\sigma^2)$.
+donde sex$_{ij}=1$ si la $j$-ésima cría de la camada $i$ es macho, sex$_{ij}=1$ si lo contrario; treat1$_{i}=1$ si la madre $i$ recibió la dosis baja, treat1$_{i}=0$ si lo contrario; treat2$_{i}=1$ si la madre $i$ recibió la dosis alta,  treat2$_{i}=0$ si lo contrario. Además, asumimos que $b_i$ y $\varepsilon_{ij}$ son independientes y $b_i \sim N(0,d)$ y $\varepsilon_{ij} \sim N(0,\sigma^2)$.
 
 Por lo que condicionalmente a $b_i$, se tiene que:
 \[
@@ -55,7 +55,7 @@ E(y_{ij} | b_i)= \beta_0 + b_i + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_
 \]
 Mientras que, marginalmente:
 \[
-E(y_{ij}) = E\left[ E(y_{ij} | b_i) \right] = \beta_0 + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3.
+E(y_{ij}) = E\left[ E(y_{ij} | b_i) \right] = \beta_0 + \mbox{sex}_{ij}\beta_1+ \mbox{treat}_{1i}\beta_2 + \mbox{treat}_{2i}\beta_3,
 \]
 y
 \[
@@ -65,7 +65,7 @@ Además,
 \[
 cov(y_{ij},y_{ik}) = d \mbox{ y } cov(y_{i^{*}j},y_{ik}) = 0.
 \]
-Esto quiere decir que los pesos de las crías que pertenecen a la misma camada están correlacionados, con $cor(y_{ij},y_{ik}) = d/(\sigma^2+d)$. La matriz de covarianza y correlación de $y_{ij}$ son:
+Esto quiere decir que los pesos de las crías que pertenecen a la misma camada están correlacionadas, con $cor(y_{ij},y_{ik}) = d/(\sigma^2+d)$. La matriz de covarianza y correlación de $y_{ij}$ son:
 \[
 \bV_{i} = \begin{pmatrix}
 \sigma^{2} + d & d  & d & \ldots & d \\
@@ -82,7 +82,7 @@ d & d & d &  \ldots & \sigma^{2} + d \\
 \frac{d}{\sigma^{2} + d} & \frac{d}{\sigma^{2} + d} & \frac{d}{\sigma^{2} + d} &  \ldots & 1 \\
 \end{pmatrix}.
 \]
-Mientras que se asume que hay incorrelación entre los pesos de crías de diferente madre.
+Mientras que se asume que hay incorrelación entre los pesos de crías de diferente camada.
 
 ### Modelo con pendiente aleatoria
 Sea $y_{ij}$ la diferencia del FEV del $j$-ésimo paciente antes de iniciar el tratamiento y en la hora $t_{j}$, para $t_{j}= \{1,2,\ldots,8\}$. Por lo tanto, $\by_i$ corresponde al vector de mediciones del FEV del paciente $i$ a lo largo del tiempo. 
@@ -91,7 +91,7 @@ En este caso el modelo de intercepto aleatorio no es conveniente, puesto que est
 \[
 y_{ij} = \beta_{0} + b_{0i} +   \mbox{drugA}_{i}\beta_{2} + \mbox{drugB}_{i}\beta_{3} + t_j \beta_4 + t_jb_{1i} + \mbox{drugA}_{i}t_j\beta_{5} + \mbox{drugB}_{i}t_j\beta_{6}  + \varepsilon_{ij},
 \]
-donde drugA$_{i}=1$ si el paciente $i$ recibió la droga A, drugA$_{i}=0$ si lo contrario; donde drugB$_{i}=1$ si el paciente $i$ recibió la droga B, drugB$_{i}=0$ si lo contrario. Además, i.i.d. $\bb_i = (b_{0i},b_{1i}) \sim N(\bZERO,\   bD)$ y $\varepsilon_{ij} \sim N(0,\sigma^2)$.
+donde drugA$_{i}=1$ si el paciente $i$ recibió la droga A, drugA$_{i}=0$ si lo contrario; donde drugB$_{i}=1$ si el paciente $i$ recibió la droga B, drugB$_{i}=0$ si lo contrario; $\bb_i = (b_{0i},b_{1i}) \sim N(\bZERO,\bD)$ y $\varepsilon_{ij} \sim N(0,\sigma^2)$. Además, asumimos que $\bb_i$ y $\varepsilon_{ij}$ son independientes.
 
 En este caso, se tiene que el valor esperado marginal es:
 \[
@@ -105,18 +105,18 @@ Finalmente, la covarianza es:
 \[
 Cov(y_{ij},y_{ik}) = Cov(b_{0i} + t_{j}b_{1i} + \varepsilon_{ij},b_{0i} + t_{j}b_{1i} + \varepsilon_{ik}) = d_{11}t_{j}t_{k} + d_{01}(t_{j}+t_{k}) + d_{00}.
 \]
-Aquí vemos que al incluir una pendiente aleatoria, el modelo permite heterogeneidad de varianza, y además, la correlación depende de los tiempos en que se tomaron las mediciones.
+Aquí vemos que al incluir una pendiente aleatoria, el modelo permite heterogeneidad de varianza y la correlación depende de los tiempos en que se tomaron las mediciones.
 
 ## Modelo lineal mixto
-De forma general, el modelo lineal mixto se puede expresar de la siguiente forma
+De forma general, el modelo lineal mixto se puede expresar de la siguiente forma:
 \[
 \by_{i} = \bX_{i}\bbeta  + \bZ_{i}\bb_{i} + \bvarepsi_i.
 \]
 donde $\bX_i$ y $\bZ_i$ son matrices de dimensión $n \times p$ y $n \times q$, $\bb_i$ es el vector $q$-dimensional de efectos aleatorios, y $\bvarepsi_i$ es el vector $n$-dimensional de errores asociados al $i$-ésimo cluster. Además, se asume que:
 \[
-\bb_{i}\sim N(\bZERO,\bD) \mbox{ y }\bvarepsi_{i} \sim N(\bZERO,\sigma^{2}\bI)
+\bb_{i}\sim N(\bZERO,\bD) \mbox{ y }\bvarepsi_{i} \sim N(\bZERO,\sigma^{2}\bI),
 \]
-Por lo tanto, marginalmente tenemos que:
+y que $\bb_{i}$ y $\bvarepsi_{i}$ son independientes. Por lo tanto, marginalmente tenemos que:
 \[
 E(\by_{i}) = \bX_{i}\bbeta \mbox{ y } V(\by_{i}) = \bV_{i} = \bZ_{i}\bD\bZ_{i}' + \sigma^{2}\bI.
 \]

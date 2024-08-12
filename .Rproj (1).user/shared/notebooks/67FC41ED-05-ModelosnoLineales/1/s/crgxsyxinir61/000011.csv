@@ -1,2 +1,0 @@
-"0",""
-"0","plot(1/Puromycin$conc,1/Puromycin$rate,col=Puromycin$state, xlab='inversa de la concentración de sustrato (ppm)', ylab='inversa de la velocidad de reacción')"

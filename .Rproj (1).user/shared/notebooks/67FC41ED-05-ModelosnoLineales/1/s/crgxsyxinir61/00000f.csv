@@ -1,2 +1,0 @@
-"0","par(mfrow=c(1,2))"
-"0","plot(Puromycin$conc,Puromycin$rate,col=Puromycin$state, xlab='concentración de sustrato (ppm)', ylab='velocidad de reacción')"

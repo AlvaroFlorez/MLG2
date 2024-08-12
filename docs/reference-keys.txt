@@ -22,6 +22,7 @@ fig:LotesFigure2
 fig:CementFigure
 fig:bodyfatFigure
 eq:varbb
+eq:modz
 fig:ECMrepresentacion
 fig:CementTrazaRidge
 fig:cementridge3
@@ -167,8 +168,7 @@ otros-ejemplos
 ajuste-de-un-glm
 especificación-del-modelo
 estimador-por-máxima-verosimilitud-para-boldsymbol-beta
-interpretación-de-parámetros---modelo-logístico
-interpretación-de-parámetros---modelo-poisson
+ajuste-e-interpretación-de-parámetros-del-modelo-poisson
 pruebas-de-hipótesis
 método-de-razón-de-verosimilitud
 método-de-wald
@@ -185,16 +185,17 @@ modelo-logístico
 casos-de-estudio-1
 mortalidad-de-escarabajos-1
 bajo-peso-al-nacer
+estudio-de-teratología
 datos-agrupados-o-datos-no-agrupados
 datos-agrupados
 datos-no-agrupados
 funciones-de-enlace
 curva-característica-operativa-del-receptorroc
 sobredispersión
-evalaución-de-sobredispersión
+evaluación-de-sobredispersión
 distribución-beta-binomial
 modelo-beta-binomial
-estudio-de-teratología
+estudio-de-teratología-1
 modelo-para-conteos
 casos-de-estudio-2
 ataques-de-epilepsia-1
@@ -204,7 +205,7 @@ modelo-poisson
 modelo-de-conteo-con-offset
 sobredispersión-1
 distribución-binomial-negativa
-modelo-binomial-negativo-poisson-gamma
+modelo-binomial-negativo
 ataques-epilépticos-1
 inflación-de-ceros
 modelo-de-inflación-de-ceros

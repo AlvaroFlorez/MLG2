@@ -58,7 +58,8 @@ El ajuste del modelo es:
 ```{r surgicalFit, echo=T, warning=FALSE,message = FALSE}
 library(olsrr)
 data(surgical)
-mod.surgical.completo = lm(log(y)~.,data=surgical)
+surgical$log.y = log(surgical$y)
+mod.surgical.completo = lm(log.y~bcs+pindex+enzyme_test+liver_test+age+gender+alc_mod+alc_heavy,data=surgical)
 summary(mod.surgical.completo)
 ```
 
@@ -129,11 +130,11 @@ En forma matricial, el modelo es:
 donde $\bX_{1}$ es una matriz $n \times r$ con la $i$-ésima fila igual a $\bx_{1i}$ y $\bX_{2}$ es una matriz $n \times (p-r-1)$ con la $i$-ésima fila igual a $\bx_{2i}$.
 
 ### ¿Qué pasa si ignoramos covariables importantes?
-Ahora, considere que el modelo de regresión real es \@ref(eq:modelogral), pero decidimos estimar:
+Ahora, considere que el modelo generador de datos es \@ref(eq:modelogral), pero decidimos estimar:
 $$
 y_{i} = \bx_{1i}'\bbeta_1 + \varepsilon_i.
 $$
-Por lo tanto, estamos omitiendo las covariables $\bx_{2i}$ del modelo (puesto que $\bbeta_2 \neq 0$). El estimador por MCO de $\bbeta_1$ es: 
+Es decir, estamos omitiendo $\bx_{2i}$ del modelo (puesto que $\bbeta_2 \neq 0$, estas covariables son relevantes). El estimador por MCO de $\bbeta_1$ es: 
 $$
 \hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by.
 $$
@@ -191,7 +192,7 @@ donde $\bL= (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}$ y $\bM = \bX_{2}'(\bI - \bH_{
 $$
 V(\hatbbeta_{1}) = \sigma^{2} \left[ (\bX_{1}'\bX_{1})^{-1} + \bL\bM\bL \right].
 $$
-Dado que $\bM$ (y por lo tanto $\bL\bM\bL$) es positiva-definida, la varianza de $\hatbbeta_{1}$ se infla al incluir las covariables irrelevantes al modelo. La única excepción es cuando $\bX_{1}$ y $\bX_{2}$ son ortogonales ($\bX_{1}'\bX_{2} = \bZERO$).
+Dado que $\bM$ (y por lo tanto $\bL\bM\bL$) es positiva-definida, la varianza de $\hatbbeta_{1}$ se infla al incluir las covariables irrelevantes al modelo. La única excepción es cuando las columnas de $\bX_{1}$ y $\bX_{2}$ son ortogonales.
 
 De igual forma, las predicciones en el punto $\bx_{0}' = (\bx_{01}' \ \bx_{02}')$ son insesgadas:
 $$
@@ -203,11 +204,11 @@ En conclusión:
 
 - Cuando omitimos covariables relevantes, obtenemos sesgos en las estimaciones.
 
-- Cuando incluimos covariables irrelevantes, se inflan las varianzas de las estimaciones. Adicionalmente, incluir más covariables puede llevar a problemas de multicolinealidad.
+- Cuando incluimos covariables irrelevantes, se inflan las varianzas de las estimaciones.
 
 
 ## Métodos para la selección de variables
-Si tenemos $(p-1)$ covariables, entonces tenemos $(p-1)^2$ potenciales modelos. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
+Si tenemos $(p-1)$ covariables, entonces hay $(p-1)^2$ modelos posibles. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
 
 Existen varios criterios para determinar que modelo es "mejor" que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos criterios son el coeficiente de determinación ($R^{2}$ y $R^{2}_{adj}$), el estadístico $C_{p}$ de Mallows, el estadístico PRESS y el $R^{2}$ de predicción, los criterios de información (AIC y BIC).
 
@@ -303,15 +304,15 @@ Además de ajustar los modelos, se calculan varios criterios ($R^{2}$,$R^{2}_{ad
 Puesto que son muchos modelos, podemos organizar los resultados de tal forma que obtengamos los mejores modelos basándonos en cada uno de los criterios. Por ejemplo, los 5 mejores ajustes según el $R^{2}_{adj}$ son:
 
 ```{r surgicalFitAll2, echo=T, warning=FALSE,message = FALSE}
-R2adj.order = order(surgical.all.mods$adjr,decreasing = T)
-as.data.frame(surgical.all.mods)[R2adj.order[1:5],c(2:8,10)]
+R2adj.order = order(surgical.all.mods$result$adjr,decreasing = T)
+as.data.frame(surgical.all.mods$result)[R2adj.order[1:5],c(2:8,10)]
 ```
 Basándonos en este criterio el mejor ajuste se obtiene considerando las covariables ``bcs``, ``pindex``, ``enzyme_test``, ``age``, ``gender``, y ``alc_heavy``. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables ``gender`` obtenemos un modelo con un $R^{2}_{pred}$ más alto.
 
 Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son: 
 ```{r surgicalFitAll3, echo=T, warning=FALSE,message = FALSE}
-AIC.order = order(surgical.all.mods$aic,decreasing = F)
-as.data.frame(surgical.all.mods)[AIC.order[1:5],c(2:8,10)]
+AIC.order = order(surgical.all.mods$result$aic,decreasing = F)
+as.data.frame(surgical.all.mods$result)[AIC.order[1:5],c(2:8,10)]
 ```
 Con este críterio se escoge el mismo modelo que con el $R^{2}_{adj}$. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad. 
 
@@ -363,7 +364,7 @@ En este caso tenemos $2^{23}=8'388,608$ posibles modelos. Lo que hace que sea di
 **Selección hacia delante**. Podemos utilizar la función ``ols_step_forward_aic`` de la librería ``olsrr``:
 
 ```{r surgicalForward, echo=T, warning=FALSE,message = FALSE}
-mod.surgical.completo2 = lm(log(y)~bcs*gender+pindex*gender+enzyme_test*gender+liver_test*gender+age*gender+ bcs*alc_mod+pindex*alc_mod+enzyme_test*alc_mod+liver_test*alc_mod+age*alc_mod+bcs*alc_heavy+pindex*alc_heavy+enzyme_test*alc_heavy+liver_test*alc_heavy+age*alc_heavy,data=surgical)
+mod.surgical.completo2 = lm(log.y~bcs*gender+pindex*gender+enzyme_test*gender+liver_test*gender+age*gender+ bcs*alc_mod+pindex*alc_mod+enzyme_test*alc_mod+liver_test*alc_mod+age*alc_mod+bcs*alc_heavy+pindex*alc_heavy+enzyme_test*alc_heavy+liver_test*alc_heavy+age*alc_heavy,data=surgical)
 ols_step_forward_aic(mod.surgical.completo2,details = F)
 ```
 Con el argumento ``details = T`` se puede ver la selección con más detalle. Usando este algoritmo el modelo óptimo es:

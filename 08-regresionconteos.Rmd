@@ -18,7 +18,7 @@ Vamos a considerar de nuevo los datos del ensayo clínico sobre epilepsia (``dat
 Los datos ``bs1`` de la librería ``ACSW`` muestran el número de doctores muertos por enfermedades coronarias entre médicos varones $10$ años después de seguimiento por grupos de edad y condición de tabaquismo. De igual forma, la base de datos contiene el número de total de años-personas de observación en el momento de análisis. En la Figura \@ref(fig:doctorUK1) podemos observar la tasa de mortalidad, por 100,000 personas, crece por grupo de edad, y es generalmente, mayor para los fumadores.
 
 
-```{r doctorUK1, echo=T, fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Tasa de muertes por enfermedades cardiovasculares en doctores del Reino Unido por grupo de edad. Los puntos rojos corresponden a fumadores y los negros a no fumadores."}
+```{r doctorUK1, echo=T, fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Datos de muertes cardiovasculares. Tasa de muertes por enfermedades cardiovasculares en doctores del Reino Unido por grupo de edad. Los puntos rojos corresponden a fumadores y los negros a no fumadores."}
 library(ACSWR)
 data(bs1)
 plot(bs1$Age_Cat, 100000*(bs1$Deaths/bs1$Person_Years),col=bs1$Smoke_Ind+1,
@@ -30,7 +30,7 @@ A partir de estos datos surgen las siguientes preguntas: ¿La tasa de mortalidad
 
 
 ### Número de cangrejos satélites
-Los datos ```crabs``` de la librería ```asbio``` son de un estudio sobre $173$ hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove. Durante el apareamiento, un macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena poner racimos de huevos. Luego, el macho fecunda los huevos de forma externa. Dada la competencia por fecundar los huevos, las hembras suelen llegar a la playa con otros cangrejos machos adheridos a ella. A este grupo de cangrejos se les llama satélites. Aquí, nuestra variable de respuesta es el número de satélites que tiene cada hembra. Mientras que las posibles covariables son:
+Los datos ```crabs``` de la librería ```asbio``` son de un estudio sobre $173$ hembras de cangrejos herradura en una isla en el Golfo de México. Durante el periodo de desove, el macho se adhiere a las hembras cuando estas van a la playa a excavar un agujero en la arena para poner racimos de huevos. Esto con el fin de que puedan fecundar los huevos (fecundación externa). Dada la competencia, las hembras suelen llegar a la playa con varios machos adheridos a ella. A este grupo de cangrejos se les llama satélites. Aquí, nuestra variable de respuesta es el número de satélites que tiene cada hembra. Mientras que las posibles covariables son:
 
 * ```color```: color (1, medio-claro; 2, medio; 3, medio-oscuro; 4,oscuro).
 
@@ -41,14 +41,14 @@ Los datos ```crabs``` de la librería ```asbio``` son de un estudio sobre $173$ 
 * ```weight```: peso (kg)
 
 En la Figura \@ref(fig:crabsData) podemos observar que hay una alta presencia de hembras que llegan a la playa sin ningún satélite. Además, vemos que hay una relación positiva entre el número de satélites y el tamaño de la hembra.
-```{r crabsData, echo=F, fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Histograma(izquierda), número de satélites vs peso (derecha)"}
+```{r crabsData, echo=F, fig.height = 4, fig.width = 6, fig.align='center',fig.cap="Datos de cangrejos satélites. Histograma del número de satélites por hembra (izquierda) y diagrama de dispersión del número de satélites en función del peso de la hembra (derecha)"}
 par(mfrow=c(1,2))
 hist(crabs$satell,breaks = 20,main='',xlab='número de satálites',ylab='frecuencia')
 plot(crabs$satell~weight,data=crabs,xlab='peso (kg)',ylab='número de satálites')
 ```
 
 ## Modelo Poisson
-La distribución Poisson es comúnmente usada para modelar el número de eventos aleatorios que ocurren en un intervalo de tiempo o espacio. Esta distribución también se aplica como una aproximación de la binomial cuando $n$ es grande y $\pi$ es pequeño. En este caso, la binomial$(n_i, \pi_i)$ converge hacia una Poisson$(\mu=n\pi)$.
+La distribución Poisson es comúnmente usada para modelar el número de eventos aleatorios que ocurren en un intervalo de tiempo o espacio determinado. Esta distribución también se aplica como una aproximación de la binomial cuando $n$ es grande y $\pi$ es pequeño. En este caso, la binomial$(n_i, \pi_i)$ converge hacia una Poisson$(\mu=n\pi)$.
 
   
 El modelo Poisson se expresa como:
@@ -62,21 +62,20 @@ E(y_i|\bx_i)=V(y_i|\bx_i)=\lambda_i.
 Es decir, la media es igual a la varianza.
 
 ### Modelo de conteo con offset
-En algunos casos los conteos $y_i$ son proporcionales a un índice $t_i$ (intervalo de tiempo, área de espacio, tamaño de población). Cuando $t_i$ no es fijo, se debe incluir un término llamado **offset**. En este caso, es preferible modelar la tasa $y_i/t_i$ con valor esperado $\lambda_i/t_i$.
+En algunos casos los conteos $y_i$ son proporcionales a un índice $t_i$ (intervalo de tiempo, área de espacio, tamaño de población). Cuando $t_i$ no es fijo, se debe incluir un término llamado **offset**. En este caso, es preferible modelar la tasa $y_i/t_i$ con valor esperado igual a $\lambda_i/t_i$.
 
 Por lo tanto, el predictor lineal queda de la forma:
 
 $$
-\log\left(\frac{\lambda_i}{t_i}\right)=\bx'_i\bbeta. \mbox{ Por lo que ,}
-\log\lambda_i=\bx_i'\bbeta+\log t_i,
+\log\left(\frac{\lambda_i}{t_i}\right)=\bx'_i\bbeta,
 $$
-donde el término $\logt_i$ es llamado **offset**. Entonces, el valor esperado de $y_i$ es:
+donde el término $\logt_i$ es llamado **offset**. Por lo que $\log\lambda_i=\bx_i'\bbeta+\log t_i$. Entonces, el valor esperado de $y_i$ es:
 
 $$
-\lambda_i=t_i \exp(x_i'\beta).
+\lambda_i=t_i \exp(\bx_i'\bbeta).
 $$
 #### Muertes por enfermedades cardiovasculares en doctores del Reino Unido
-Dado que los tamaños de la población por grupo de edad son diferentes (hay menos personas en los grupos de edad mayores), debemos considerar esto en el modelo por medio del offset. En este caso el modelo propuesto puede ser:
+Dado que los tamaños de la población por grupo de edad son diferentes (hay menos personas en los grupos de edad mayores), debemos considerar esto en el modelo por medio del offset. En este caso el modelo propuesto para el número de doctores muertos por enfermedades cardiovasculares en la $i$-ésima categoría $(y_i)$ puede ser:
 $$
 y_i \sim \mbox{Poisson}(\lambda_i),
 $$
@@ -84,7 +83,7 @@ donde:
 $$
 \log \lambda_i = \beta_0 + \mbox{smoke}_i\beta_1 + \mbox{ageCat1}_i\beta_2 + \mbox{ageCat2}_i\beta_3 + \mbox{ageCat3}_i\beta_4 + \mbox{ageCat4}_i\beta_5 + \log(t_i),
 $$
-donde $y_i$ es el número de doctores muertos por enfermedades cardiovasculares en la $i$-ésima categoría; smoke$_i=1$ si la $i$-ésima categoría corresponde a fumadores; smoke$_i=0$ si lo contrario; $t_i$ es el número de doctores en riesgo asociados al grupo $i$, ageCat$j$ corresponde a las variables indicadores asociadas al grupo de edad, con $[35,44]$ como referencia. 
+smoke$_i=1$ si la $i$-ésima categoría corresponde a fumadores; smoke$_i=0$ si lo contrario; $t_i$ es el número de doctores en riesgo asociados al grupo $i$, ageCat$j$ corresponde a las variables indicadores asociadas al grupo de edad, con $[35,44]$ como referencia. 
 
 El ajuste del modelo es
 ```{r doctorMod1, include=TRUE}
@@ -94,7 +93,7 @@ summary(poisson.doctor)
 ```
 Estos datos sugieren que, luego de tener en cuenta el efecto de la edad, los fumadores tienen una tasa de mortalidad $\exp(\widehat{\beta}_1)=1.42$ mayor que los no fumadores.
 
-Para simplificar el modelo, y evaluar efectos de interacción, uno podría tomar la categoría de edad de forma numérica:  age$=1,2,\ldots,5$ para las categorías $35-44,45-54,\ldots,75-84$. Así podemos proponer un modelo de la forma:
+Para simplificar el modelo, y evaluar efectos de interacción, uno podría tomar la categoría de edad de forma numérica de la siguiente forma:  ***age**$=1,2,\ldots,5$ para las categorías $35-44,45-54,\ldots,75-84$. Así podemos proponer un modelo de la forma:
 $$
 \log \lambda_i = \beta_0 + \mbox{smoke}_i\beta_1 + \mbox{age}_i\beta_2 + \mbox{age}^2_i\beta_3 + \mbox{smoke}_i\mbox{age}_i\beta_4  + \log(t_i),
 $$
@@ -105,10 +104,10 @@ poisson.doctor2 = glm(Deaths ~ Smoke_Ind+Age+I(Age^2)+Smoke_Ind*Age + offset(log
                     family = poisson(link = "log"), data = bs1)
 summary(poisson.doctor2)
 ```
-Estos resultados también muestran que, en promedio, los fumadores tienen una tasa de mortalidad $4$ veces más alta que los no fumadores. Sin embargo, esta diferencia se atenua a medida que la edad aumenta (efecto interacción negativo). Esto lo podemos ver forma gráfica en la Figura \@ref(fig:doctorUKgraf).
+Estos resultados también muestran que, en promedio, los fumadores tienen una tasa de mortalidad $4$ veces más alta que los no fumadores. Sin embargo, esta diferencia se atenúa a medida que la edad aumenta (efecto interacción negativo). Esto lo podemos ver forma gráfica en la Figura \@ref(fig:doctorUKgraf).
 
 
-```{r doctorUKgraf, echo=TRUE, fig.align='center',fig.cap="Estimación de la tasa de muertes de doctores del Reino Unido por grupo de edad para fumadores(línea roja) y no fumadores (línea negra)."}
+```{r doctorUKgraf, echo=TRUE, fig.align='center',fig.cap="Datos de muertes cardiovasculares. Estimación de la tasa de muertes de doctores del Reino Unido por grupo de edad para fumadores(línea roja) y no fumadores (línea negra)."}
 plot(bs1$Age, 100000*(bs1$Deaths/bs1$Person_Years),col=bs1$Smoke_Ind+1,
      xlab='grupo de edad',ylab='muertes por 100,000 personas-año',pch=20,xaxt='n')
 axis(1,1:5,bs1$Age_Group[1:5])
@@ -120,7 +119,7 @@ lines(1:5,pred.tasa[bs1$Smoke_Ind==1],col=2,lwd=2)
 
 
 ## Sobredispersión
-El modelo Poisson asume que $V(y) = E(y)$. Sin embargo, es común encontrar datos en que la varianza crece más rápido que la media, provocando sobredispersión. En este caso, el estimador por máxima verosimilitud del modelo Poisson sigue proporcionan estimaciones consistentes para la media. Sin embargo, los errores estándar estarán mal calculados (por lo general son más pequeños).
+El modelo Poisson asume que $V(y) = E(y)$. Sin embargo, es común encontrar datos en que la varianza crece más rápido que la media, provocando sobredispersión. En este caso, el estimador por máxima verosimilitud del modelo Poisson sigue proporcionando estimaciones consistentes para la media (estimaciones insesgadas). Sin embargo, los errores estándar estarán mal calculados (generalmente más pequeños).
 
 Para modelar datos de tipo conteo en presencia de sobredispersión se puede asumir una distribución binomial negativa. Esta incluye un parámetro adicional que cuantifica la sobredispersión.
 
@@ -132,19 +131,19 @@ y | \lambda \sim \mbox{Poisson}(\lambda), \mbox{ donde } \lambda\sim \mbox{gamma
 La función de densidad de $\lambda$ es:
 
 $$
-f(\lambda;k,\mu)=\frac{(k/\mu)^k}{\Gamma(k)}\exp\left(-\frac{k\lambda}{\mu}\right)\lambda^{k-1},
+f(\lambda;k,\mu)=\frac{(k/\mu)^k}{\Gamma(k)}\exp\left(-\frac{k\lambda}{\mu}\right)\lambda^{k-1}.
 $$
 
 Entonces tenemos:
 $$
 E(\lambda)=\mu \mbox{ y } V(\lambda)=\mu^2/k.
 $$
-La distribución binomial negativa (Poisson-gamma) se obtiene al marginalizar $y$. Esto es:
+La distribución binomial negativa (también llamada Poisson-gamma) se obtiene al marginalizar $y$. Esto es:
 $$
 f(y;\mu,k)=\int f(y|\lambda)f(\lambda)d\lambda.
 $$
 
-La función de densidad de la binomial negativa es:
+La función de densidad de la binomial negativa queda definida como:
 
 $$
 f(y;\mu,k)=\frac{\Gamma(y+k)}{\Gamma(k)\Gamma(y+1)}\left( \frac{\mu}{\mu+k}\right)^y \left( \frac{k}{\mu+k} \right)^k
@@ -156,7 +155,7 @@ E(y)=\mu \mbox{ y }  V(y)=\mu(1+\gamma\mu),
 $$
 para $\gamma>0$ (llamado parámetro de sobredispersión). La distribución de probabilidad de la distribución binomial negativa se puede observar en la Figura \@ref(fig:disNegBin). Aquí vemos que a medida que aumenta $\gamma$, la probabilidad de valores extremos es más alta.
 
-```{r disNegBin, echo=FALSE,fig.align='center', fig.cap="Distribución de probabilidad de Poisson(3) (negro), binomial negativa (3,0.5) (rojo), binomial negativa (3,1.5) (verde).", fig.height = 4, fig.width = 6}
+```{r disNegBin, echo=FALSE,fig.align='center', fig.cap="Función de probabilidad de Poisson(3) (negro), binomial negativa (3,0.5) (rojo), binomial negativa (3,1.5) (verde).", fig.height = 4, fig.width = 6}
 x = 0:20
 y0 = dpois(x,3)
 y1 = dnbinom(x,mu=3,size=2)
@@ -168,11 +167,10 @@ lines(x,y2,col=3,lwd=2)
 
 Dado que $\gamma>0$, el modelo binomial negativo no puede modelar datos con subdispersión.
 
-### Modelo binomial negativo (Poisson-gamma)    
+### Modelo binomial negativo    
 El modelo binomial negativo se expresa de la siguiente forma:
 $$
-y_i|\lambda_i\sim \mbox{Poisson}(\lambda_i), \qquad
-\lambda_i\sim \mbox{gamma}(\mu_i,\gamma),
+y_i|\lambda_i\sim \mbox{binomial negativa}(\mu_i,\gamma),
 $$
 
 donde
@@ -261,7 +259,8 @@ Mientras que el valor esperado y varianza son:
 $$
 E(y)= (1-\phi)\mu \mbox{ y } V(y) = (1-\phi) \mu \left[1+\mu(\gamma+\phi)\right].
 $$
-Otra alternativa para modelar exceso de ceros es a través del mdelo Hurdle. Este asume que hay un proceso Bernoulli que determina si el conteo es igual a cero o positivo. Si ocurre lo segundo, una distribución truncada determina la probabilidad del conteo. La distribución se puede expresar como:
+
+Otra alternativa para modelar exceso de ceros es a través del mdelo Hurdle. Este asume que hay un proceso Bernoulli que determina si el conteo es igual a cero o es positivo. Si ocurre lo segundo, una distribución truncada determina la probabilidad del conteo. La distribución se puede expresar como:
 \begin{equation}
 P(y = j)=\begin{cases} \pi & j=0, \\ 
 (1-\pi)\frac{f(y|\theta)}{1-f(0|\theta)} & j >0.
@@ -315,7 +314,7 @@ $$
 donde la función $f(\cdot;\theta_i)$ puede ser una Poisson o binomial negativa. Al igual que el modelo ZI, $\pi_i$ se puede modelar usando un modelo logístico y un modelo log-lineal para $\lambda_i$ (Poisson) o $\mu_i$ (binomial negativo).
 
 ### Número de cangrejos satélites
-Para los datos de los cangrejos satélites podemo estimar un modelo con inflación de ceros con:
+Para los datos de los cangrejos satélites podemos estimar un modelo con inflación de ceros con:
 $$
 \mbox{logit } \phi_i=\beta_{10} + \mbox{weight}_i\beta_{11} \quad\text{y}\quad \log\lambda_i=\beta_{20} + \mbox{weight}_i\beta_{21}.
 $$
