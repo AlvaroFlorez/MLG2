@@ -2,10 +2,10 @@ h1:modelo-lineal-generalizado Modelo lineal generalizado
 h2:introducción Introducción
 h2:casos-de-estudio Casos de estudio
 h3:mortalidad-de-escarabajos Mortalidad de escarabajos
-tab:TmortEsc Número de escarabajos expuestos y muertos a diferentes dosis (escala logarítmica)
-fig:grafMortEsc Datos escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos.
+tab:TmortEsc Número de escarabajos expuestos y muertos a diferentes dosis (escala logarítmica) de disulfuro de carbono gaseoso.
+fig:grafMortEsc Datos de mortalidad de escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos.
 h3:ataques-de-epilepsia ataques de epilepsia
-fig:seizurePlot Datos epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos y tratamiento.
+fig:seizurePlot Datos de epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos (izquierda) y el tratamiento (derecha).
 h2:preambulo Preambulo
 h3:familia-exponencial Familia exponencial
 h3:relación-media-varianza Relación media-varianza:
@@ -24,10 +24,10 @@ h4:otros-ejemplos Otros ejemplos
 h2:ajuste-de-un-glm Ajuste de un GLM
 h3:especificación-del-modelo Especificación del modelo
 h3:estimador-por-máxima-verosimilitud-para-bbeta Estimador por máxima verosimilitud para 
-fig:escarabajosEstFig Datos de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis
-h3:interpretación-de-parámetros---modelo-logístico interpretación de parámetros - modelo logístico
-fig:ajusteSeizureFig Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa el placebo, mientras que, la linea roja al tratamiento con Progabide.
-h4:interpretación-de-parámetros---modelo-poisson Interpretación de parámetros - modelo Poisson
+h4:ajuste-e-interpretación-de-parámetros-del-modelo-logístico ajuste e interpretación de parámetros del modelo logístico
+fig:escarabajosEstFig Datos de mortalidad de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis de disulfuro de carbono gaseoso.
+h4:ajuste-e-interpretación-de-parámetros-del-modelo-poisson ajuste e interpretación de parámetros del modelo Poisson
+fig:ajusteSeizureFig Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa la media de ataques para el grupo placebo, mientras que, la linea roja la media de ataques para el tratamiento con Progabide.
 h2:pruebas-de-hipótesis Pruebas de hipótesis
 h3:método-de-razón-de-verosimilitud Método de razón de verosimilitud
 h3:método-de-wald Método de Wald
@@ -37,7 +37,7 @@ h3:intervalo-de-confianza-para-la-media Intervalo de confianza para la media
 h4:ejemplo-mortalidad-de-escarabajos Ejemplo mortalidad de escarabajos
 fig:grafICesc Datos de mortalidad de escarabajos. Intervalo del 95% de confianza para la probabilidad de que el escarabajo muera.
 h4:ataques-epilépticos Ataques epilépticos
-fig:grafICepilep Datos de epilépsia. Estimación de la media de ataques epilépticos por 2 semanas en el grupo placebo(negro) y el grupo tratamiento(rojo).
+fig:grafICepilep Datos de epilépsia. Estimación de la media de ataques epilépticos por dos semanas en el grupo placebo (línea negra) y el grupo tratamiento (línea roja).
 h2:devianza Devianza
 h3:el-estadístico-chi-cuadrado-de-pearson El estadístico chi-cuadrado de Pearson
 h2:bondad-de-ajuste Bondad de ajuste

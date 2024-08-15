@@ -1,0 +1,4 @@
+"0","x= seq(0,9,length.out=100)"
+"0","y = 2 + 2*x - 0.25*x^2"
+"0",""
+"0","plot(x,y,type='l',ylim=c(0,8),xaxt='n',yaxt='n',lwd=2,xlab='covariable',ylab='respuesta')"

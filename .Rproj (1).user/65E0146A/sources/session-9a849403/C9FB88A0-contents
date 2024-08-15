@@ -1,0 +1,52 @@
+library(MASS)
+
+gen.data = function(n,alp,var.c) {
+  x1 = rnorm(n)
+  x2 = rnorm(n)
+  x3 = alp[1] * x1 + alp[2] * x2 + rnorm(n,0,sqrt(var.c))
+  y = 3 + x1 + x2 + x3 + rnorm(n)
+  data.frame(y, x1, x2, x3)
+}
+
+data = gen.data(20,c(0,0),0.5)
+mod = lm(y~.,data)
+car::vif(mod)
+
+
+#### simulación con datos independientes
+EST.IND = mapply(function(x){
+  data = gen.data(100,c(0,0),1)
+  mod = lm(y~.,data)
+  mod$coefficients
+},x=1:1000)
+
+EST.DEP1 = mapply(function(x){
+  data = gen.data(100,c(0.5,0.5),0.5)
+  mod = lm(y~.,data)
+  mod$coefficients
+},x=1:1000)
+
+EST.DEP2 = mapply(function(x){
+  data = gen.data(100,c(3/4,0.5),3/16)
+  mod = lm(y~.,data)
+  mod$coefficients
+},x=1:1000)
+
+EST.DEP3 = mapply(function(x){
+  data = gen.data(100,c(5/6,0.5),1/18)
+  mod = lm(y~.,data)
+  mod$coefficients
+},x=1:1000)
+
+par(mfrow=c(1,3))
+boxplot(EST.IND[2,],EST.DEP1[2,],EST.DEP2[2,],EST.DEP3[2,],ylab=expression(hat(beta)[1]),xlab='Caso')
+abline(h=1,lty=2)
+axis(1,c(1,2,3,4))
+boxplot(EST.IND[3,],EST.DEP1[3,],EST.DEP2[3,],EST.DEP3[3,],ylab=expression(hat(beta)[2]),xlab='Caso')
+abline(h=1,lty=2)
+axis(1,c(1,2,3,4))
+boxplot(EST.IND[4,],EST.DEP1[4,],EST.DEP2[4,],EST.DEP3[4,],ylab=expression(hat(beta)[3]),xlab='Caso')
+abline(h=1,lty=2)
+axis(1,c(1,2,3,4))
+
+

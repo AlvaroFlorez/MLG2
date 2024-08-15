@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2024-08-12" />
+<meta name="date" content="2024-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -702,34 +702,34 @@ Hay varias adaptaciones de estos criterios de información definiendo diferentes
 <p>Puesto que son muchos modelos, podemos organizar los resultados de tal forma que obtengamos los mejores modelos basándonos en cada uno de los criterios. Por ejemplo, los 5 mejores ajustes según el <span class="math inline">\(R^{2}_{adj}\)</span> son:</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="selección-de-variables.html#cb75-1" tabindex="-1"></a>R2adj.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>result<span class="sc">$</span>adjr,<span class="at">decreasing =</span> T)</span>
 <span id="cb75-2"><a href="selección-de-variables.html#cb75-2" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods<span class="sc">$</span>result)[R2adj.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                             predictors   rsquare      adjr      rmse   predrsq
-## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.1926586 0.7836037
-## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.1910872 0.7806940
-## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.1963187 0.7827597
-## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412 0.8198474 0.1925510 0.7749807
-## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.1972887 0.7862369
-##           cp      sbic
-## 226 5.772458 -159.4064
-## 251 7.028837 -157.6344
-## 171 5.528174 -160.2288
-## 248 7.721367 -157.0871
-## 169 5.998959 -159.8244</code></pre>
+<pre><code>##     n                                             predictors   rsquare
+## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664
+## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095
+## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622
+## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412
+## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522
+##          adjr      rmse   predrsq       cp      sbic
+## 226 0.8234834 0.1926586 0.7836037 5.772458 -159.4064
+## 251 0.8225761 0.1910872 0.7806940 7.028837 -157.6344
+## 171 0.8205312 0.1963187 0.7827597 5.528174 -160.2288
+## 248 0.8198474 0.1925510 0.7749807 7.721367 -157.0871
+## 169 0.8187535 0.1972887 0.7862369 5.998959 -159.8244</code></pre>
 <p>Basándonos en este criterio el mejor ajuste se obtiene considerando las covariables <code>bcs</code>, <code>pindex</code>, <code>enzyme_test</code>, <code>age</code>, <code>gender</code>, y <code>alc_heavy</code>. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables <code>gender</code> obtenemos un modelo con un <span class="math inline">\(R^{2}_{pred}\)</span> más alto.</p>
 <p>Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son:</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="selección-de-variables.html#cb77-1" tabindex="-1"></a>AIC.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>result<span class="sc">$</span>aic,<span class="at">decreasing =</span> F)</span>
 <span id="cb77-2"><a href="selección-de-variables.html#cb77-2" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods<span class="sc">$</span>result)[AIC.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                          predictors   rsquare      adjr      rmse   predrsq
-## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.1926586 0.7836037
-## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.1963187 0.7827597
-## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345 0.2008227 0.7862922
-## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.1972887 0.7862369
-## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.1910872 0.7806940
-##           cp      sbic
-## 226 5.772458 -159.4064
-## 171 5.528174 -160.2288
-## 97  5.733992 -160.5329
-## 169 5.998959 -159.8244
-## 251 7.028837 -157.6344</code></pre>
+<pre><code>##     n                                          predictors   rsquare      adjr
+## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834
+## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312
+## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345
+## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535
+## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761
+##          rmse   predrsq       cp      sbic
+## 226 0.1926586 0.7836037 5.772458 -159.4064
+## 171 0.1963187 0.7827597 5.528174 -160.2288
+## 97  0.2008227 0.7862922 5.733992 -160.5329
+## 169 0.1972887 0.7862369 5.998959 -159.8244
+## 251 0.1910872 0.7806940 7.028837 -157.6344</code></pre>
 <p>Con este críterio se escoge el mismo modelo que con el <span class="math inline">\(R^{2}_{adj}\)</span>. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad.</p>
 <p>En la Figura 4.2 muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^{2}_{pred}\)</span>.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="selección-de-variables.html#cb79-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>

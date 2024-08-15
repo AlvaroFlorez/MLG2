@@ -1,0 +1,3 @@
+"0","library(MASS)"
+"0","data(Boston)"
+"0","plot(nox~dis,data=Boston,ylab='NOx',xlab='distancia a centros de empleo')"

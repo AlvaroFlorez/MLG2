@@ -3,18 +3,19 @@ h2:casos-de-estudio Casos de estudio
 h3:mortalidad-de-escarabajos Mortalidad de escarabajos
 h3:bajo-peso-al-nacer Bajo peso al nacer
 h3:estudio-de-teratología Estudio de teratología
-fig:liratFig Datos teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) 
+fig:liratFig Datos de teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) 
 h2:datos-agrupados-o-datos-no-agrupados Datos agrupados o datos no agrupados
 h3:datos-agrupados Datos agrupados
 h3:datos-no-agrupados Datos no agrupados
 h2:funciones-de-enlace Funciones de enlace
-fig:linkEsc Estimaciones de la probabilidad de que el escarabajo muera en función de la dosis utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
+fig:linkEsc Datos de mortalidad de escarabajos. Estimaciones de la probabilidad de que el escarabajo muera en función del logaritmo de la dosis de disulfuro de carbono gaseoso utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
 h2:curva-característica-operativa-del-receptorroc Curva característica operativa del receptor(ROC)
 fig:sensespc Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte.
 fig:sensespc2 Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte.
-fig:ROClbwdata Datos de bajo peso al nacer. Curva ROC para el modelo logístico (negro) y probit (rojo)
+fig:ROClbwdata Datos de bajo peso al nacer. Curva ROC para predecir bajo peso al nacer usando el modelo logístico (negro) y el probit (rojo)
+fig:ROCescarabajos Datos de mortalidad de escarabajos. Curva ROC para el modelo logístico
 h2:sobredispersión Sobredispersión
-h3:evalaución-de-sobredispersión Evalaución de sobredispersión
+h3:evaluación-de-sobredispersión Evaluación de sobredispersión
 h2:distribución-beta-binomial Distribución beta-binomial
 fig:betabinomialdensidad Distribución de probabilidad de Binomial(15,0.3) (negro), beta-binomial(15,0.3,0.1) (rojo), beta-binomial(15,0.3,0.4) (verde)
 h3:modelo-beta-binomial Modelo beta-binomial

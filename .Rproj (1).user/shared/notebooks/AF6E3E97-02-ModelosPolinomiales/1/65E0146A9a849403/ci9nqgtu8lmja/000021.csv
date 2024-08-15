@@ -1,0 +1,2 @@
+"0","plot(X02.1$X2c+mean(cakes$X2),predX2.2,type='l',lwd=2,ylab='palatabilidad',"
+"0","     xlab='temperatura de horneado (Fahrenheit)')"

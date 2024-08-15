@@ -1,9 +1,9 @@
 h1:multicolinealidad Multicolinealidad
 h2:ejemplos Ejemplos
 h3:cemento Cemento
-fig:CementFigure Datos de cemento. Diagrama de dispersión.
+fig:CementFigure Datos de cemento. Diagrama de dispersión de las variables.
 h3:grasa-corporal Grasa corporal
-fig:bodyfatFigure Datos de grasa corporal. Diagrama de dispersión.
+fig:bodyfatFigure Datos de grasa corporal. Diagrama de dispersión de las variables.
 h2:multicolinealidad-1 Multicolinealidad
 h3:causas-de-la-multicolinealidad Causas de la multicolinealidad
 h2:detección-de-multicolinealidad Detección de multicolinealidad

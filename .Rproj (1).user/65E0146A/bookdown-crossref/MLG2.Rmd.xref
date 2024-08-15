@@ -1,0 +1,218 @@
+h1:introducción Introducción
+h1:variables-indicadoras-o-dummies Variables indicadoras (o dummies)
+h2:ejemplos Ejemplos
+h3:datos-de-atletas-australianos Datos de atletas australianos
+fig:AtletesFigure Datos de atletas. Densidad de la hemoglobina para hombres y mujeres (derecha) y diagrama de dispersión entre la homoglobina y el índice de masa corporal (izquierda). Negro para hombres y rojo para mujeres.
+h3:datos-de-la-onu Datos de la ONU
+fig:UN11Figure Datos de la ONU. Relación entre la fertilidad y el PNB per cápita para los países de OCDE (puntos negros), países africanos (puntos verdes) y los otros países (rojos)
+h2:variables-indicadoras Variables indicadoras
+tab:dosIndica Variables indicadoras para la variable ``group`` de los datos de la ONU
+h3:modelos-con-covariables-categóricas Modelos con covariables categóricas
+fig:Rectas1 Efecto de la interacción entre variable continua e indicadora. Modelo general (izquierda) y modelo de líneas paralelas (derecha).
+h3:modelo-para-los-datos-de-atletas-australianos Modelo para los datos de atletas australianos
+fig:AtletesAjuste Datos de atletas. Ajuste del modelo para la homoglobina en función  del índice de masa corporal y sexo. Línea negra para hombres y línea roja para mujeres.
+fig:AtletesAjuste2 Datos de atletas. Ajuste del modelo general (línea solida) y el modelo líneas paralelas (línea discontinua) para la homoglobina en función  del índice de masa corporal y sexo. Líneas negra para hombres y líneas roja para mujeres.
+h3:modelo-para-los-datos-de-la-onu Modelo para los datos de la ONU
+fig:MCOUN11Figure Datos de la ONU. Ajuste del modelo para la fertilidad en función  del PNB y tipo de país. Países de OCDE (línea negra), países africanos (línea verde) y los otros países (línea roja)
+h1:modelos-polinomiales Modelos polinomiales
+h2:ejemplos-1 Ejemplos
+h3:pasteles Pasteles
+fig:CakesFigure Datos de pasteles. Diagrama de dispersión.
+h3:datos-de-boston Datos de Boston
+fig:BostonFigure Datos de Boston. Relación entre el óxido de nitrógeno y la distancia a centros de empleo.
+h2:modelos-polinomiales-1 Modelos polinomiales
+fig:Polinomios Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (linea verde).
+fig:modPoli1 Valor esperado de $Y$ en un modelo lineal (izquierda) y gráfico de contorno (derecha).
+fig:modPoli2 Valor esperado de $Y$ en un modelo cuadrático (izquierda) y gráfico de contorno (derecha).
+fig:modPoli3 Valor esperado de $Y$ en un modelo lineal con interacción (izquierda) y gráfico de contorno (derecha).
+fig:extrapolacion Problema de extrapolación.
+h3:interpretación-de-los-coeficientes Interpretación de los coeficientes
+h3:pasteles-1 Pasteles
+fig:PredCakes Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. 
+fig:predCakes2 Datos de pasteles. Gráfica de contornos.
+h3:datos-de-boston-1 Datos de Boston
+fig:figPredBoston Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde).
+h2:regresión-por-segmentos Regresión por segmentos
+fig:RegSegmentos Modelo de regresión por segmentos. Modelo con discontinuidad en $t$ (izquierda). Modelo con cambio de pendiente en $t$ (derecha).
+h3:ejemplo Ejemplo
+fig:LotesFigure Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).
+fig:LotesFigure2 Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).
+h1:multicolinealidad Multicolinealidad
+h2:ejemplos-2 Ejemplos
+h3:cemento Cemento
+fig:CementFigure Datos de cemento. Diagrama de dispersión de las variables.
+h3:grasa-corporal Grasa corporal
+fig:bodyfatFigure Datos de grasa corporal. Diagrama de dispersión de las variables.
+h2:multicolinealidad-1 Multicolinealidad
+h3:causas-de-la-multicolinealidad Causas de la multicolinealidad
+h2:detección-de-multicolinealidad Detección de multicolinealidad
+h3:factores-de-inflación-de-varianza Factores de inflación de varianza
+h3:valores-propios-de-boldsymbol-zboldsymbol-z Valores propios de 
+h3:valores-singulares-de-boldsymbol-z Valores singulares de 
+h3:proporciones-de-descomposición-de-varianza Proporciones de descomposición de varianza
+h2:datos-de-cemento Datos de cemento
+h2:datos-de-grasa-corporal Datos de grasa corporal
+h2:solución-al-problema-de-multicolinealidad Solución al problema de multicolinealidad
+h2:estimador-de-ridge Estimador de ridge
+fig:ECMrepresentacion Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO.
+h3:datos-de-cemento-1 Datos de cemento
+fig:CementTrazaRidge Datos de cemento. Traza de ridge. Coeficiente asociado a ``X1`` (negro), coeficiente asociado a ``X2`` (rojo), coeficiente asociado a ``X3`` (verde) y coeficiente asociado a ``X4`` (azul)
+fig:cementridge3 \\label{fig:CementCVridge} Datos de cemento. Validación cruzada.
+h2:estimador-por-componentes-principales Estimador por componentes principales
+h3:datos-de-cemento-2 Datos de cemento
+h1:selección-de-variables Selección de variables
+h2:ejemplos-3 Ejemplos
+h3:unidad-quirúrgica Unidad quirúrgica
+h3:grasa-corporal-1 Grasa corporal
+h2:problema-de-selección-de-variables Problema de selección de variables
+h3:qué-pasa-si-ignoramos-covariables-importantes ¿Qué pasa si ignoramos covariables importantes?
+h3:que-pasa-si-incluimos-covariables-irrelevantes ¿Que pasa si incluimos covariables irrelevantes?
+h2:métodos-para-la-selección-de-variables Métodos para la selección de variables
+h3:coeficiente-de-determinación Coeficiente de determinación
+h3:coeficiente-de-determinación-ajustado Coeficiente de determinación ajustado
+h3:c_p-de-mallows C de Mallows
+h3:estadístico-press Estadístico PRESS
+h3:criterios-de-información Criterios de información
+h2:comparación-de-los-modelos Comparación de los modelos
+h3:todos-los-posibles-modelos Todos los posibles modelos
+h4:datos-de-unidad-quirúrgica Datos de unidad quirúrgica
+fig:surgicalAll Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.
+h3:algorítmos-de-selección Algorítmos de selección
+h4:selección-hacia-delante-forward-selection Selección hacia delante (forward selection)
+h4:selección-hacia-atrás-backward-selection Selección hacia atrás (backward selection)
+h4:selección-por-segmentos-stepwise-selection Selección por segmentos (stepwise selection)
+h4:unidad-quirúrgica-1 Unidad quirúrgica
+h2:regresión-de-lasso Regresión de LASSO
+fig:LASSOrest Estimación del estimador de LASSO (izquierda) y ridge (derecha). Las elipses rojas son los contornos de la suma de cuadrados de los errores. Mientras que, la región roja son las restricciones para cada estimador).
+h3:datos-de-grasa-corporal-1 Datos de grasa corporal
+fig:Vgrasalasso Datos de grasa corporal. Estimación de los coeficientes de regresión vs el logaritmo de $\\lambda$
+h3:validación-cruzada Validación cruzada
+h3:ejemplo-grasa-corporal Ejemplo grasa corporal
+fig:kgrasa Datos de grasa corporal. Valiación cruzada (puntos rojos) para diferentes valores de $\\lambda$. Las lineas cortadas verticales representan los valores seleccionados para $\\lambda$ por mínimo valores de CV y la regla de una desviación estándar.
+tab:tablaEstFat1 datos de grasa corporal. Estimación de coeficientes de los modelos seleccionados
+tab:tablaEstFat2 datos de grasa corporal. Valores de los criterios de selección para los modelos seleccionados.
+h1:modelos-no-lineales Modelos no lineales
+h2:ejemplos-4 Ejemplos
+h3:crecimiento-de-pavos Crecimiento de pavos
+fig:plotpavos Datos de crecimiento de pavos. Relación entre el peso ganado por corral y el % de metionina en la dieta.
+h3:puromicina Puromicina
+fig:plotpurom Datos de Puromicina. Diagrama de dispersión: Relación entre la velocidad de reacción y la concentración de sustrato. Encimas tratadas(puntos negros), Encimas no tratadas(puntos rojos)
+fig:modMichMen Modelo Michaelis-Menten
+h2:modelos-no-lineales-1 Modelos no lineales
+h3:modelos-no-lineales-linealizables Modelos no-lineales linealizables
+h3:estimación-de-los-parámetros Estimación de los parámetros
+fig:plotpavoscrec Datos de crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina.
+h3:inferencia-sobre-los-parámetros Inferencia sobre los parámetros
+fig:Confintpavos2 Datos pavos. Intervalo del 95% de confianza para la media del peso ganado en función de la dieta.
+fig:tresmodelospavos Datos de crecimiento de pavos. Ajuste del modelo de crecimiento propuesto (rojo), modelo logístico (verde) y Modelo Weibull (azul).
+h4:puromicina-estimación Puromicina-Estimación
+fig:linealpuromicina Datos de puromicina. Diagrama de dispersión. Datos linealizados(derecha).
+fig:puromicinaplotl Datos de puromicina. Estimación de la velocidad media de reacción para enzimas tratadas(línea negra) y enzimas no tratadas(línea roja).
+h2:método-de-bootstrap Método de Bootstrap
+h3:bootstrap-en-regresión Bootstrap en regresión
+fig:bootgraf Datos de puromicina. Diagrama de dispersión para las estimaciones bootstrap de los coeficientes del modelo.
+fig:bootgrafconf Datos de puromicina. Histograma de las estimaciones de los coeficientes del modelo por bootstrap. la linea negra indica la estimación por mínimos cuadrados.La lineas rojas representa los percentiles 2.5 y 97.5 de los remuestreos.
+fig:bootgrafpred Datos de puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja.
+h3:algunas-consideraciones Algunas consideraciones
+h1:modelo-lineal-generalizado Modelo lineal generalizado
+h2:introducción-1 Introducción
+h2:casos-de-estudio Casos de estudio
+h3:mortalidad-de-escarabajos Mortalidad de escarabajos
+tab:TmortEsc Número de escarabajos expuestos y muertos a diferentes dosis (escala logarítmica) de disulfuro de carbono gaseoso.
+fig:grafMortEsc Datos de mortalidad de escarabajos. Relación entre la concentración de disulfuro de carbono gaseoso (en escala logarítmica) y la proporción de muertes (muertos/expuestos) de los escarabajos.
+h3:ataques-de-epilepsia ataques de epilepsia
+fig:seizurePlot Datos de epilepsia. Relación entre el número de ataques epilépticos con la edad, ataques previos (izquierda) y el tratamiento (derecha).
+h2:preambulo Preambulo
+h3:familia-exponencial Familia exponencial
+h3:relación-media-varianza Relación media-varianza:
+h3:estimador-de-máxima-verosimilitud Estimador de máxima verosimilitud
+h4:propiedades-asintóticas-de-los-mles Propiedades asintóticas de los MLEs
+h3:métodos-iterativos-de-maximización Métodos iterativos de maximización
+h2:modelo-lineal-generalizado-glm Modelo lineal generalizado (GLM)
+h3:componente-aleatorio Componente aleatorio
+h3:predictor-lineal Predictor lineal
+h3:función-de-enlace Función de enlace
+h3:ejemplos-de-glm Ejemplos de GLM
+h4:modelo-logístico-para-la-mortalidad-de-escarabajos modelo logístico para la mortalidad de escarabajos
+fig:logfun Función logística
+h4:modelo-poisson-para-el-número-de-ataque-epilépticos modelo Poisson para el número de ataque epilépticos
+h4:otros-ejemplos Otros ejemplos
+h2:ajuste-de-un-glm Ajuste de un GLM
+h3:especificación-del-modelo Especificación del modelo
+h3:estimador-por-máxima-verosimilitud-para-boldsymbol-beta Estimador por máxima verosimilitud para 
+h4:ajuste-e-interpretación-de-parámetros-del-modelo-logístico ajuste e interpretación de parámetros del modelo logístico
+fig:escarabajosEstFig Datos de mortalidad de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis de disulfuro de carbono gaseoso.
+h4:ajuste-e-interpretación-de-parámetros-del-modelo-poisson ajuste e interpretación de parámetros del modelo Poisson
+fig:ajusteSeizureFig Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa la media de ataques para el grupo placebo, mientras que, la linea roja la media de ataques para el tratamiento con Progabide.
+h2:pruebas-de-hipótesis Pruebas de hipótesis
+h3:método-de-razón-de-verosimilitud Método de razón de verosimilitud
+h3:método-de-wald Método de Wald
+h4:ejemplo-ataques-epilépticos Ejemplo ataques epilépticos
+h2:intervalos-de-confianza intervalos de confianza
+h3:intervalo-de-confianza-para-la-media Intervalo de confianza para la media
+h4:ejemplo-mortalidad-de-escarabajos Ejemplo mortalidad de escarabajos
+fig:grafICesc Datos de mortalidad de escarabajos. Intervalo del 95% de confianza para la probabilidad de que el escarabajo muera.
+h4:ataques-epilépticos Ataques epilépticos
+fig:grafICepilep Datos de epilépsia. Estimación de la media de ataques epilépticos por dos semanas en el grupo placebo (línea negra) y el grupo tratamiento (línea roja).
+h2:devianza Devianza
+h3:el-estadístico-chi-cuadrado-de-pearson El estadístico chi-cuadrado de Pearson
+h2:bondad-de-ajuste Bondad de ajuste
+h2:selección-de-variables-1 Selección de variables
+h1:modelo-logístico Modelo logístico
+h2:casos-de-estudio-1 Casos de estudio
+h3:mortalidad-de-escarabajos-1 Mortalidad de escarabajos
+h3:bajo-peso-al-nacer Bajo peso al nacer
+h3:estudio-de-teratología Estudio de teratología
+fig:liratFig Datos de teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) 
+h2:datos-agrupados-o-datos-no-agrupados Datos agrupados o datos no agrupados
+h3:datos-agrupados Datos agrupados
+h3:datos-no-agrupados Datos no agrupados
+h2:funciones-de-enlace Funciones de enlace
+fig:linkEsc Datos de mortalidad de escarabajos. Estimaciones de la probabilidad de que el escarabajo muera en función del logaritmo de la dosis de disulfuro de carbono gaseoso utilizando diferentes funciones de enlace: logit(negro), probit(rojo) y cloglog(verde).
+h2:curva-característica-operativa-del-receptorroc Curva característica operativa del receptor(ROC)
+fig:sensespc Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte.
+fig:sensespc2 Datos de bajo peso al nacer. Sensibilidad (linea negra) y especificidad (linea roja) para diferentes puntos de corte.
+fig:ROClbwdata Datos de bajo peso al nacer. Curva ROC para predecir bajo peso al nacer usando el modelo logístico (negro) y el probit (rojo)
+fig:ROCescarabajos Datos de mortalidad de escarabajos. Curva ROC para el modelo logístico
+h2:sobredispersión Sobredispersión
+h3:evaluación-de-sobredispersión Evaluación de sobredispersión
+h2:distribución-beta-binomial Distribución beta-binomial
+fig:betabinomialdensidad Distribución de probabilidad de Binomial(15,0.3) (negro), beta-binomial(15,0.3,0.1) (rojo), beta-binomial(15,0.3,0.4) (verde)
+h3:modelo-beta-binomial Modelo beta-binomial
+h3:estudio-de-teratología-1 Estudio de teratología
+h1:modelo-para-conteos Modelo para conteos
+h2:casos-de-estudio-2 Casos de estudio
+h3:ataques-de-epilepsia-1 Ataques de epilepsia
+h3:muertes-por-enfermedades-cardiovasculares-en-doctores-del-reino-unido Muertes por enfermedades cardiovasculares en doctores del Reino Unido
+fig:doctorUK1 Datos de muertes cardiovasculares. Tasa de muertes por enfermedades cardiovasculares en doctores del Reino Unido por grupo de edad. Los puntos rojos corresponden a fumadores y los negros a no fumadores.
+h3:número-de-cangrejos-satélites Número de cangrejos satélites
+fig:crabsData Datos de cangrejos satélites. Histograma del número de satélites por hembra (izquierda) y diagrama de dispersión del número de satélites en función del peso de la hembra (derecha)
+h2:modelo-poisson Modelo Poisson
+h3:modelo-de-conteo-con-offset Modelo de conteo con offset
+h4:muertes-por-enfermedades-cardiovasculares-en-doctores-del-reino-unido-1 Muertes por enfermedades cardiovasculares en doctores del Reino Unido
+fig:doctorUKgraf Datos de muertes cardiovasculares. Estimación de la tasa de muertes de doctores del Reino Unido por grupo de edad para fumadores(línea roja) y no fumadores (línea negra).
+h2:sobredispersión-1 Sobredispersión
+h3:distribución-binomial-negativa Distribución binomial negativa
+fig:disNegBin Función de probabilidad de Poisson(3) (negro), binomial negativa (3,0.5) (rojo), binomial negativa (3,1.5) (verde).
+h3:modelo-binomial-negativo Modelo binomial negativo
+h4:ataques-epilépticos-1 Ataques epilépticos
+h2:inflación-de-ceros Inflación de ceros
+h3:modelo-de-inflación-de-ceros Modelo de inflación de ceros
+h3:modelo-hurdle Modelo Hurdle
+h3:número-de-cangrejos-satélites-1 Número de cangrejos satélites
+h1:modelo-lineal-mixto Modelo lineal mixto
+h2:casos-de-estudio-3 Casos de estudio
+h3:peso-al-nacer-de-ratas Peso al nacer de ratas
+fig:ratpup Datos del peso al nacer de ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta.
+h3:capacidad-respiratoria Capacidad respiratoria
+fig:fev Datos de capacidad respiratoria. Mediciones del volumen espiratorio forzado por hora de los pacientes en cada uno de los grupos.
+h2:datos-por-cluster-correlacionados Datos por cluster (correlacionados)
+h2:notación Notación
+h2:modelos-con-intercepto-aleatorios Modelos con intercepto aleatorios
+h3:modelo-con-pendiente-aleatoria Modelo con pendiente aleatoria
+h2:modelo-lineal-mixto-1 Modelo lineal mixto
+h2:estimación-de-los-parámetros-1 Estimación de los parámetros
+h3:estimación-del-modelo-con-intercepto-aleatorio Estimación del modelo con intercepto aleatorio
+h3:estimación-del-modelo-con-pendiente-aleatoria Estimación del modelo con pendiente aleatoria
+fig:fevEstimacionFig Datos de capacidad respiratoria. Estimación de la media de la diferencia del Volumen espiratorio forzado por hora (línea roja) para los pacientes en cada uno de los grupos.
+

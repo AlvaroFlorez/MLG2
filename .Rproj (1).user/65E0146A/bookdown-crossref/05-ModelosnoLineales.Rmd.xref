@@ -1,24 +1,24 @@
 h1:modelos-no-lineales Modelos no lineales
 h2:ejemplos Ejemplos
 h3:crecimiento-de-pavos Crecimiento de pavos
-fig:plotpavos Datos pavos. Relación entre el peso ganado por corral y el % de metionina en la dieta.
+fig:plotpavos Datos de crecimiento de pavos. Relación entre el peso ganado por corral y el % de metionina en la dieta.
 h3:puromicina Puromicina
-fig:plotpurom Daros Puromicina. Diagrama de dispersión: Relación entre la velocidad de reacción y la concentración de sustrato. Encimas tratadas(puntos negros), Encimas no tratadas(puntos rojos)
+fig:plotpurom Datos de Puromicina. Diagrama de dispersión: Relación entre la velocidad de reacción y la concentración de sustrato. Encimas tratadas(puntos negros), Encimas no tratadas(puntos rojos)
 fig:modMichMen Modelo Michaelis-Menten
 h2:modelos-no-lineales-1 Modelos no lineales
 h3:modelos-no-lineales-linealizables Modelos no-lineales linealizables
 h3:estimación-de-los-parámetros Estimación de los parámetros
-fig:plotpavoscrec Datos crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina.
+fig:plotpavoscrec Datos de crecimiento de pavos. Ajuste del modelo para el peso medio ganado por corral en función de la cantidad de suplemento de metionina.
 h3:inferencia-sobre-los-parámetros Inferencia sobre los parámetros
 fig:Confintpavos2 Datos pavos. Intervalo del 95% de confianza para la media del peso ganado en función de la dieta.
-fig:tresmodelospavos Datos crecimiento de pavos. Ajuste del modelo de crecimiento propuesto (rojo), modelo logístico (verde) y Modelo Weibull (azul).
+fig:tresmodelospavos Datos de crecimiento de pavos. Ajuste del modelo de crecimiento propuesto (rojo), modelo logístico (verde) y Modelo Weibull (azul).
 h4:puromicina-estimación Puromicina-Estimación
-fig:linealpuromicina Datos puromicina. Diagrama de dispersión. Datos linealizados(derecha).
-fig:puromicinaplotl Datos puromicina. Enzimas tratadas(negro), enzimas no tratadas(rojo). 
+fig:linealpuromicina Datos de puromicina. Diagrama de dispersión. Datos linealizados(derecha).
+fig:puromicinaplotl Datos de puromicina. Estimación de la velocidad media de reacción para enzimas tratadas(línea negra) y enzimas no tratadas(línea roja).
 h2:método-de-bootstrap Método de Bootstrap
 h3:bootstrap-en-regresión Bootstrap en regresión
-fig:bootgraf Datos puromicina. Diagrama de dispersión para las estimaciones de los coeficientes del modelo por bootstrap.
-fig:bootgrafconf Datos puromicina. Histograma de las estimaciones de los coeficientes del modelo por bootstrap. Linea negra: estimación por mínimos cuadrados.Lineas rojas: percentil 2.5, media y percentil 97.5.
-fig:bootgrafpred Datos puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja.
+fig:bootgraf Datos de puromicina. Diagrama de dispersión para las estimaciones bootstrap de los coeficientes del modelo.
+fig:bootgrafconf Datos de puromicina. Histograma de las estimaciones de los coeficientes del modelo por bootstrap. la linea negra indica la estimación por mínimos cuadrados.La lineas rojas representa los percentiles 2.5 y 97.5 de los remuestreos.
+fig:bootgrafpred Datos de puromicina. Curvas medias estimadas por bootstrap. La estimación puntual de la media para las enzimas tratadas es la línea negro y para las enzimas no tratadas es la línea roja.
 h3:algunas-consideraciones Algunas consideraciones
 

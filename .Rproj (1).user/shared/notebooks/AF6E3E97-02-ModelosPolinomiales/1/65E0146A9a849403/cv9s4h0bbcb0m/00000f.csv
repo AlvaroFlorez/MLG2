@@ -1,0 +1,6 @@
+"0","par(mfrow=c(1,2))"
+"0","x <- seq(-10, 10, length= 30)"
+"0","y <- x"
+"0","z <- outer(x, y, linearfun)"
+"0","persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = ""lightblue"","
+"0","      xlab='covariable 1',ylab='covariable 2',zlab='respuesta')"
