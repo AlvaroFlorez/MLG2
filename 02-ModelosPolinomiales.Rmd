@@ -203,7 +203,7 @@ En este caso, los VIF decrecieron considerablemente con respecto al modelo con l
 
 En la figura \@ref(fig:PredCakes) podemos observar el valor esperado estimado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado.
 
-```{r PredCakes,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. "}
+```{r PredCakes,echo=T, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. "}
 par(mfrow=c(1,2))
 X01.1 = data.frame(X1c = seq(32,38,length.out = 100)-mean(cakes$X1),
                    X2c = 360 - mean(cakes$X2))

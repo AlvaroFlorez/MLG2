@@ -8,7 +8,7 @@ n= nrow(UN11)
 Names = rownames(UN11)
 mod.UN11 = lm(log(fertility)~log(ppgdp)+pctUrban,data=UN11)
 p=3
-res.UN11 = studres(mod.UN11)
+res.UN11 = stdres(mod.UN11)
 Order.res = order(abs(res.UN11),decreasing = T)
 ```
 
