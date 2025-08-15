@@ -199,7 +199,7 @@ En este caso, los VIF decrecieron considerablemente con respecto al modelo con l
 
 En la figura \@ref(fig:PredCakes) podemos observar el valor esperado estimado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado.
 
-```{r PredCakes,echo=T, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. "}
+```{r PredCakes,echo=T, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado."}
 par(mfrow=c(1,2))
 X01.1 = data.frame(X1c = seq(32,38,length.out = 100)-mean(cakes$X1),
                    X2c = 360 - mean(cakes$X2))
@@ -226,7 +226,7 @@ lines(X02.2$X2c+mean(cakes$X2),predX2.1,col=2,lwd=2)
 legend('bottomright',c('X1=35','X1=33'),col=1:2,lty=1)
 ```
 
-En la Figura \@ref(fig:PredCakes) (izquierda) vemos que, cuando la temperatura es de 350 grados Fahrenheit, el máximo de palatabilidad que se obtiene en un tiempo entre 36 y 37 minutos. Sin embargo, cuando la temperatura se incrementa a 360, la máxima palatibilidad que se puede lograr es menor. Además, se obtiene en un tiempo también menor. El efecto de la interacción también se puede observar en la Figura \@ref(fig:predCakes2) (derecha), pero ahora fijando el tiempo de horneado y variando la temperatura. El gráfico de contornos (Figura \@ref(fig:predCakes2)) muestra que la máxima palatabilidad se observa cuando la temperatura está alrededor de 355 y el tiempo de horneado está entre 35 y 36 minutos.
+En la Figura \@ref(fig:PredCakes) (izquierda) vemos que, cuando la temperatura es de 350 grados Fahrenheit, el máximo de palatabilidad que se obtiene en un tiempo entre 36 y 37 minutos. Sin embargo, cuando la temperatura se incrementa a 360, la máxima palatibilidad que se puede lograr es menor. Además, se obtiene en un tiempo también menor. El efecto de la interacción también se puede observar en la Figura \@ref(fig:PredCakes) (derecha), pero ahora fijando el tiempo de horneado y variando la temperatura. El gráfico de contornos (Figura \@ref(fig:predCakesContour) muestra que la máxima palatabilidad se observa cuando la temperatura está alrededor de 355 y el tiempo de horneado está entre 35 y 36 minutos.
 
 ```{r CakesMax, echo=FALSE,warning=FALSE,message = FALSE}
 MaxY = optim(c(35,350),function(x){
@@ -243,7 +243,7 @@ IC95 = round(predict(modc.cakes,data.frame(X1c=maxX1 - mean(cakes$X1),
 
 ```
 
-```{r predCakes2,echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Gráfica de contornos. El punto rojo representa la máxima palatabilidad."}
+```{r predCakesContour,echo=F, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Gráfica de contornos. El punto rojo representa la máxima palatabilidad."}
 X1 = seq(32, 38, length.out = 50)
 X2 = seq(335, 365, length= 50)
 

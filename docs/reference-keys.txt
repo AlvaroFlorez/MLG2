@@ -14,7 +14,7 @@ fig:modPoli2
 fig:modPoli3
 fig:extrapolacion
 fig:PredCakes
-fig:predCakes2
+fig:predCakesContour
 fig:figPredBoston
 fig:RegSegmentos
 fig:LotesFigure
