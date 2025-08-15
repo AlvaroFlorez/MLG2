@@ -326,7 +326,7 @@ donde $\eta_{i}=\bx_{i}'\bbeta=g(\mu_{i})$. Dado que las funciones score son no-
 
 En forma matricial, tenemos que la función score es:
 $$
-\b(\bbeta)=\bX'\bD\bV^{-1}(\by-\bmu),
+\bu(\bbeta)=\bX'\bD\bV^{-1}(\by-\bmu),
 $$
 la función hessiana es: 
 $$
@@ -398,7 +398,7 @@ Por lo tanto, por cada cambio unitario en $x$, los odds de morir incrementan por
 Para los datos de los escarabajos un cambio unitario en el log dosis es muy grande, por lo que podríamos interpetra $\beta_1$ usando un aumento en la log dosis mas pequeño, por ejemplo de $\delta=0.02$:
 
 $$
-\exp ( 0.01\times  34.270) = 1.984.
+\exp ( 0.02\times  34.270) = 1.984.
 5.
 $$
 Es decir, si el log de la concentración de aumenta en $0.02$, entonces la probabilidad de que el escarabajo muera aumenta casi el doble.
@@ -551,7 +551,7 @@ Los intervalos del 95\% de confianza para los parámetros del modelo son:
 ```{r epilepsyic, warning=F, message=F}
 confint(modPois)
 ```
-Aquí vemos que el efecto del tratamiento está entre $-0.4$ y $-0.09$. Es decir, que la reducción del número de ataques epilépticos está entre el 10\% y el 49\%. Mientras que, como ya se mencionó antes, el efecto interacción no tiene un aporte significativo.
+Aquí vemos que el efecto del tratamiento está entre $-0.7$ y $-0.04$. Es decir, que la reducción del número de ataques epilépticos está a una tasa entre el 0.51 y 0.95. Mientras que, como ya se mencionó antes, el efecto interacción no tiene un aporte significativo.
 
 La media del número de ataques epiléptico por dos semanas se puede observar en la Figura \@ref(fig:grafICepilep). Se puede observar que las estimaciones de la media para el grupo tratamiento es inferior que para el grupo control.
 

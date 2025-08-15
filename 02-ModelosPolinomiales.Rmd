@@ -32,22 +32,20 @@ data(Boston)
 ## Ejemplos
 
 ### Pasteles
-Con los datos `cakes` de la libreria `alr4` se tienen dos objetivos. Primero, evaluar el efecto de la temperatura y tiempo de horneado sobre la palatabilidad de mazclas de pasteles para hornear. Segundo, encontrar la combinación de estos factores que maximizan la palatabilidad. Como variable respuesta (`Y`) se tiene el promedio de calificación de la palatabilidad de cuatro pasteles horneados. Mientras que las covariables son: el tiempo de horneado (`X1`, en minutos) y la temperatura (`X2`, en grados Fahrenheit)
+Con los datos `cakes` de la libreria `alr4` se tienen dos objetivos. Primero, evaluar el efecto de la temperatura y tiempo de horneado sobre la palatabilidad de mazclas de pasteles para hornear. Segundo, encontrar la combinación de estos factores que maximizan la palatabilidad. Como variable respuesta (`Y`) se tiene el promedio de calificación de la palatabilidad de cuatro pasteles horneados. Mientras que las covariables son: el tiempo de horneado (`X1`, en minutos) y la temperatura (`X2`, en grados Fahrenheit). La Figura \@ref(fig:CakesFigure) muestra la relación entre las variables.
 
 ```{r CakesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Diagrama de dispersión.",warning=FALSE,message = FALSE}
 library(alr4)
 data(cakes)
-plot(cakes[,-1])
+plot(cakes[,c(4,2,3)])
 ```
-
-
 ### Datos de Boston
-La base de datos `Boston` de la libreria `MASS` contiene información sobre 506 suburbios del area metropolitana de Boston. El objetivo del estudio es evaluar la relación del precio de las viviendas y la concentración de contaminación ambiental. En esta sección evaluaremos la relación entre la concentración anual de óxido de nitrógeno ($y$, en partes por diez millones) y la distancia a cinco centros de empleo.
+La base de datos `Boston` de la libreria `MASS` contiene información sobre 506 suburbios del area metropolitana de Boston. El objetivo del estudio es evaluar la relación del precio de las viviendas y la concentración de contaminación ambiental. En esta sección evaluaremos la relación entre la concentración anual de óxido de nitrógeno ($y$, en partes por diez millones) y una medidad ponderada de la distancia a cinco centros de empleo. En la Figura \@ref(fig:BostonFigure) podemos ver que hay una relación negativa entre las variables, sin embargo, esta no es lineal.
 
 ```{r BostonFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de Boston. Relación entre el óxido de nitrógeno y la distancia a centros de empleo.",warning=FALSE,message = FALSE}
 library(MASS)
 data(Boston)
-plot(nox~dis,data=Boston,ylab='NOx',xlab='distancia a centros de empleo')
+plot(nox~dis,data=Boston,ylab='NOx (partes por diez millones)',xlab='distancia a centros de empleo')
 ```
 
 ## Modelos polinomiales
@@ -59,8 +57,7 @@ donde $\varepsilon_i \sim N(0,\sigma^2)$ y $cov(\varepsilon_i,\varepsilon_j)=0$ 
 $$
 y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}x_{i}^{2} + \ldots + \beta_{r}x_{i}^{r} + \varepsilon_i.
 $$
-Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros (es una función lineal de $\bbeta$). En la Figura \@ref(fig:Polinomios)  se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3). Aquí vemos que este tipo de modelos son muy versatiles. Cualquier función suave se puede ajustar meidante un polinomio de grado suficientemente alto. Por esta razón, los modelos polinomicos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.
-
+Este modelo se sigue considerando como un modelo lineal, dado que es lineal en los parámetros (es una función lineal de $\bbeta$). En la Figura \@ref(fig:Polinomios)  se puede observar diferentes curvas para modelos lineales (orden 1), cuadráticos (orden 2) y cúbicos (orden 3). Aquí vemos que este tipo de modelos son muy versátiles. Cualquier función suave se puede ajustar mediante un polinomio de grado suficientemente alto. Por esta razón, estos modelos son usados en casos donde las relaciones entre las variables son no-lineales y se pueden aproximar por un polinomio.
 
 ```{r Polinomios,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (linea verde)."}
 
@@ -80,7 +77,7 @@ En el caso que se tengan dos covariables, un modelo de orden 2 se expresa de la 
 $$
 y_{i} = \beta_{0} + \beta_{1}x_{1i} + \beta_{2}x_{2i} + \beta_{3}x_{1i}^2 + \beta_{4}x_{2i}^2 + \beta_{5}x_{1i}x_{2i} + \varepsilon_i.
 $$
-En las Figuras \@ref(fig:modPoli1)-\@ref(fig:modPoli3) muestran el valor esperado de $Y$ en un modelo lineal (asumiendo $\beta_3=\beta_4=\beta_5=0$), con interacción ($\beta_3=\beta_4=0$) y cuadrático.
+En las Figuras \@ref(fig:modPoli1)-\@ref(fig:modPoli3) muestran el valor esperado de $Y$ en un modelo lineal (asumiendo $\beta_3=\beta_4=\beta_5=0$), con interacción ($\beta_3=\beta_4=0$) y cuadrático, respectivamente.
 
 ```{r modPoli1,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Valor esperado de $Y$ en un modelo lineal (izquierda) y gráfico de contorno (derecha)."}
 par(mfrow=c(1,2))
@@ -92,8 +89,8 @@ persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue",
 contour(x, y, z,xlab='covariable 1',ylab='covariable 2')
 ```
 
-El número de parámetros incrementa rápidamente con el número de covariables. Con $k$ covariables, tenemos: un intercepto, $k$ términos lineales, $k$
-términos cuadráticos, y $k(k - 1)/2$ interacciones. Por esta razón, en muchos casos, no se toman en cuentas las interacción cuando el número de covariables es grande.
+El número de parámetros de los modelos polinómicos se incrementa rápidamente con el número de covariables. Con $k$ covariables, tenemos: un intercepto, $k$ términos lineales, $k$
+términos cuadráticos, y $k(k - 1)/2$ interacciones. Por esta razón, en muchos casos, no se toman en cuentas las interacción cuando el número de covariables es grande, a menos que esta sea de interés en el estudio.
 
 ```{r modPoli2,echo=FALSE, fig.height = 4, fig.width = 9,fig.align = "center",fig.cap = "Valor esperado de $Y$ en un modelo cuadrático (izquierda) y gráfico de contorno (derecha)."}
 par(mfrow=c(1,2))
@@ -116,14 +113,13 @@ contour(x, y, z)
 
 Hay aspectos que se deben tener en la práctica cuando se implementa un modelo polinomial: 
 
-- **Selección del orden:** La idea es mantener el orden del polinomio bajo. Si embargo, si es muy bajo no logra capturar la curvatura presente en los datos. En caso que el orden sea grande, el modelo es innecesariamente más complejo y puede haber problemas de multicolinealidad.
+**Selección del orden:** La idea es mantener el orden del polinomio bajo. Si embargo, si es muy bajo no logra capturar la curvatura presente en los datos. En caso que el orden sea grande, el modelo es innecesariamente más complejo y puede haber problemas de multicolinealidad.
 
 Si los datos exige un modelo de orden alto $(k > 3)$, se pueden hacer transformación sobre las variables, y así, poder ajustar un modelo polinomial de orden bajo (por ejemplo cuadrático).
 
-
 La selección del orden puede hacerse de dos formas. (1) **Hacia delante**: empezar con un modelo de orden $1$ e incrementar el orden uno a uno hasta que un término mayor ya no sea significativo. **Hacia atrás:** empezar con el modelo más complejo y eliminar los términos mayores uno a uno hasta que todos sean significativos.
 
-- **Extrapolación**: La extrapolación con modelos polinomiales puede ser muy peligrosa. Por ejemplo en la Figura \@ref(fig:extrapolacion) podemos ajustar un modelo de orden dos a los datos (linea negra). Si hacemos una predicción fuera del rango de los datos, el valor esperado predicho sigue el comportamiento cuadrático propuesto. Sin embargo, el valor esperado de $Y$ puede seguir un comportamiento diferente (linea roja discontinua). Lo que lleva a tener una predicción sesgada. 
+**Extrapolación**: La extrapolación con modelos polinomiales puede ser muy peligrosa. Por ejemplo en la Figura \@ref(fig:extrapolacion) podemos ajustar un modelo de orden dos a los datos (linea negra). Si hacemos una predicción fuera del rango de los datos, el valor esperado predicho sigue el comportamiento cuadrático propuesto. Sin embargo, el valor esperado de $Y$ puede seguir un comportamiento diferente (linea roja discontinua). Lo que lleva a tener una predicción sesgada. 
 
 ```{r extrapolacion,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Problema de extrapolación."}
 x= seq(0,9,length.out=100)
@@ -152,7 +148,7 @@ brackets(x0+0.1, y11, x0+0.1, y21,h=0.2,ticks=0.5,type=1,xpd=F)
 text(x0+0.2,mean(c(y11,y21)),'sesgo',pos =4)
 ```
 
-- **Multicolinealidad**:  Al aumentar el polinomio, la matriz $\bX'\bX$ se vuelve mal acondicionada. Es decir, las estimaciones pueden ser inestables y los errores estándar se inflan. Este problema se puede solucionar centrando las covariables. Por ejemplo en un modelo de orden 2:
+**Multicolinealidad**:  Al aumentar el polinomio, la matriz $\bX'\bX$ se vuelve mal acondicionada. Es decir, las estimaciones pueden ser inestables y los errores estándar se inflan. Este problema se puede solucionar centrando las covariables. Por ejemplo en un modelo de orden 2:
 $$
 E(Y | X=x) = \beta_{0} + \beta_{1}(x-\bar{x}) + \beta_{2}(x-\bar{x})^{2}.
 $$
@@ -177,9 +173,9 @@ Note que el efecto del cambio $\delta$ en $X_1$ depende de ambas covariables y d
 ### Pasteles
 Para los datos de los pasteles, se propone el siguiente modelo:
 $$
-y_{i} = \beta_{0} + \beta_{1}x_{1i} + \beta_{2}x_{2i} + \beta_{3}x_{1i}^2 + \beta_{4}x_{2i}^{2} + \beta_{5}x_{1i}x_{2i} + \varepsilon_{i}.
+y_{i} = \beta_{0} + \beta_{1}x_{1i} + \beta_{2}x_{2i} + \beta_{3}x_{1i}^2 + \beta_{4}x_{2i}^{2} + \beta_{5}x_{1i}x_{2i} + \varepsilon_{i},
 $$
-El ajuste del modelo es:
+donde $\varepsilon_i \sim N(0,\sigma^2)$ y $cov(\varepsilon_i,\varepsilon_j)=0$ para todo $i\neq j$. El ajuste del modelo es:
 ```{r CakesFit, echo=T, warning=FALSE,message = FALSE}
 mod.cakes = lm(Y ~ X1*X2 + I(X1^2)+I(X2^2),data=cakes)
 summary(mod.cakes)
@@ -232,18 +228,6 @@ legend('bottomright',c('X1=35','X1=33'),col=1:2,lty=1)
 
 En la Figura \@ref(fig:PredCakes) (izquierda) vemos que, cuando la temperatura es de 350 grados Fahrenheit, el máximo de palatabilidad que se obtiene en un tiempo entre 36 y 37 minutos. Sin embargo, cuando la temperatura se incrementa a 360, la máxima palatibilidad que se puede lograr es menor. Además, se obtiene en un tiempo también menor. El efecto de la interacción también se puede observar en la Figura \@ref(fig:predCakes2) (derecha), pero ahora fijando el tiempo de horneado y variando la temperatura. El gráfico de contornos (Figura \@ref(fig:predCakes2)) muestra que la máxima palatabilidad se observa cuando la temperatura está alrededor de 355 y el tiempo de horneado está entre 35 y 36 minutos.
 
-```{r predCakes2,echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Gráfica de contornos."}
-X1 = seq(32, 38, length.out = 50)
-X2 = seq(335, 365, length= 50)
-
-y <- outer(X= X1, Y = X2, FUN = function(x, y) {
-    predict(modc.cakes, newdata = data.frame(X1c = x-mean(cakes$X1), X2c = y-mean(cakes$X2)))
-})
-
-contour(X1, X2, y,xlab='tiempo de horneado (minutos)',
-        ylab='temperatura de horneado (Fahrenheit)')
-```
-
 ```{r CakesMax, echo=FALSE,warning=FALSE,message = FALSE}
 MaxY = optim(c(35,350),function(x){
   x1 = x[1] - mean(cakes$X1)
@@ -257,6 +241,19 @@ maxX2 = round(MaxY$par[2],1)
 IC95 = round(predict(modc.cakes,data.frame(X1c=maxX1 - mean(cakes$X1),
                               X2c=maxX2 - mean(cakes$X2)),interval = 'confidence'),1)
 
+```
+
+```{r predCakes2,echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de pasteles. Gráfica de contornos. El punto rojo representa la máxima palatabilidad."}
+X1 = seq(32, 38, length.out = 50)
+X2 = seq(335, 365, length= 50)
+
+y <- outer(X= X1, Y = X2, FUN = function(x, y) {
+    predict(modc.cakes, newdata = data.frame(X1c = x-mean(cakes$X1), X2c = y-mean(cakes$X2)))
+})
+
+contour(X1, X2, y,xlab='tiempo de horneado (minutos)',
+        ylab='temperatura de horneado (Fahrenheit)')
+points(maxX1,maxX2, col=2,pch=20)
 ```
 
 Para determinar en que combinación de tiempo (X1) y temperatura de horneado (X2) se obtiene la máxima palatabilidad, debemos resolver la siguiente ecuación:
@@ -277,9 +274,9 @@ R2.2 = round(summary(mod2.Boston)$r.squared,3)
 ```
 Para los datos de contaminación se puede proponer el siguiente modelo:
 \[
-\mbox{NOx}_{i}^{-1.5} = \beta_{0} + \beta_{1}\mbox{dis}_{i} + \beta_{2}\mbox{dis}_{i}^{2} + \beta_{3}\mbox{dis}_{i}^{3} + \varepsilon_{i}.
+\mbox{NOx}_{i}^{-1.5} = \beta_{0} + \beta_{1}\mbox{dis}_{i} + \beta_{2}\mbox{dis}_{i}^{2} + \beta_{3}\mbox{dis}_{i}^{3} + \varepsilon_{i},
 \]
-La potencia en la variable respuesta se seleccionó usando el método de Box-Cox. El ajuste del modelo es el siguiente:
+donde $\varepsilon_i \sim N(0,\sigma^2)$ y $cov(\varepsilon_i,\varepsilon_j)=0$ para todo $i\neq j$. La potencia en la variable respuesta se seleccionó usando el método de Box-Cox. El ajuste del modelo es el siguiente:
 ```{r BostonFit, echo=T, warning=FALSE,message = FALSE}
 Boston$disc = Boston$dis - mean(Boston$dis)
 mod3.Boston = lm(I(nox)^(-1.5)~disc+I(disc^2)+I(disc^3),data=Boston)
@@ -287,23 +284,23 @@ summary(mod3.Boston)
 ```
 La Figura \@ref(fig:figPredBoston) muestra el ajuste del modelo cúbico. Para hacer comparaciones, se muestra también el ajuste lineal y cuadrático. Se observa que el modelo cúbico presenta un buen ajuste. El modelo explica alrededor del $`r R2.3*100`$\% de la variabilidad de la concentración anual de óxido de nitrógeno. Con el modelo cuadrático, el coeficiente de determinación es de $`r R2.2`$. Sin embargo, se puede observar que este ajuste presenta deficiencias cuando las distancias son muy grandes (mayores a 11).
 
-```{r figPredBoston,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)."}
+```{r figPredBoston,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde)."}
 x = seq(1,13,length.out=100)
 
 pred1.Boston = predict(mod1.Boston,list(disc=x-mean(Boston$dis)))
 pred2.Boston = predict(mod2.Boston,list(disc=x-mean(Boston$dis)))
 pred3.Boston = predict(mod3.Boston,list(disc=x-mean(Boston$dis)))
 
-plot(I(nox)^-1.5~dis,data=Boston,ylab='NOx',xlab='distancia a centros de empleo')
+plot(I(nox)^-1.5~dis,data=Boston,ylab='NOx (en partes por diez millones)',xlab='distancia a centros de empleo')
 lines(x,pred1.Boston,lwd=2)
 lines(x,pred2.Boston,col=2,lwd=2)
 lines(x,pred3.Boston,col=3,lwd=2)
 ```
 
 ## Regresión por segmentos
-El modelo por segmentos se puede expresar como:
+En algunos casos la relación entre $Y$ y $X$ puede ser lineal. Sin embargo, despúes de cierto valor de $X$ puede observarse un cambio en la pendiente. En estos casos, es posible ajustar n modelo por segmentos. Este se puede expresar como:
 $$
-y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}(x_{i}-t)^{0}_{+} +  \beta_{3}(x_{i}-t)^{1}_{+} + \varepsilon_{i}.
+y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}(x_{i}-t)^{0}_{+} +  \beta_{3}(x_{i}-t)^{1}_{+} + \varepsilon_{i},
 $$
 donde:
 $$
@@ -388,13 +385,13 @@ text(x11[2],mean(y11),expression(beta[1]+beta[3]),pos=4)
 Aquí asumimos que $t$ es conocido. Si este valor se asume como desconocido, debe estimarse a partir de los datos como un parámetro adicional. Sin embargo, se tendría que recurrir a un método de estimación para modelos no-lineales.
 
 ### Ejemplo
-
+Considere la base de datos `p7.11` de la librería `MPV`. Aquí se quiere modelar la relación entre el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades). Este relación se puede observar en la Figura \@ref(fig:LotesFigure).
 ```{r LotesFigure, echo=T, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).",warning=FALSE,message = FALSE}
 library(MPV)
 data(p7.11)
 plot(p7.11,ylab='costo de producción por unidad (USD)',xlab='Unidades por lote')
 ```
-Considere la base de datos `p7.11` de la librería `MPV`. Aquí se quiere modelar la relación entre el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades). Este relación se puede observar en la Figura \@ref(fig:LotesFigure). Se puede observar que la relación entre las variables es lineal. Sin embargo, se aprecia un posible cambio de pendiente en el punto $x=200$. Por esta razón se propone el siguiente modelo:
+Se puede observar que la relación entre las variables es lineal. Sin embargo, se aprecia un posible cambio de pendiente en el punto $x=200$. Por esta razón se propone el siguiente modelo:
 $$
 y_{i} = \beta_{0} + \beta_{1}x_{i} + \beta_{2}(x_{i}-200)_{+}^{1} + \varepsilon_{i}.
 $$

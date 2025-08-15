@@ -1,0 +1,24 @@
+h1:modelos-polinomiales Modelos polinomiales
+h2:ejemplos Ejemplos
+h3:pasteles Pasteles
+fig:CakesFigure Datos de pasteles. Diagrama de dispersión.
+h3:datos-de-boston Datos de Boston
+fig:BostonFigure Datos de Boston. Relación entre el óxido de nitrógeno y la distancia a centros de empleo.
+h2:modelos-polinomiales-1 Modelos polinomiales
+fig:Polinomios Polinomio de grado 1 (linea negra), grado 2 (linea roja) y grado 3 (linea verde).
+fig:modPoli1 Valor esperado de $Y$ en un modelo lineal (izquierda) y gráfico de contorno (derecha).
+fig:modPoli2 Valor esperado de $Y$ en un modelo cuadrático (izquierda) y gráfico de contorno (derecha).
+fig:modPoli3 Valor esperado de $Y$ en un modelo lineal con interacción (izquierda) y gráfico de contorno (derecha).
+fig:extrapolacion Problema de extrapolación.
+h3:interpretación-de-los-coeficientes Interpretación de los coeficientes
+h3:pasteles-1 Pasteles
+fig:PredCakes Datos de pasteles. Valor esperado de la palatabilidad para diferentes valores de tiempo y temperatura de horneado. 
+fig:predCakes2 Datos de pasteles. Gráfica de contornos.
+h3:datos-de-boston-1 Datos de Boston
+fig:figPredBoston Datos de Boston. Valor esperado de la concentración anual de óxido de nitrógeno (en partes por diez millones) en función de las distancias a cinco centros de empleo (media ponderada). Modelo lineal (negro), cuadrático (rojo) y cúbico (verde).
+h2:regresión-por-segmentos Regresión por segmentos
+fig:RegSegmentos Modelo de regresión por segmentos. Modelo con discontinuidad en $t$ (izquierda). Modelo con cambio de pendiente en $t$ (derecha).
+h3:ejemplo Ejemplo
+fig:LotesFigure Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).
+fig:LotesFigure2 Datos de costos por lote. Diagram de dispersión de el costo de producción promedio por unidad (USD) y el tamaño del lote (unidades).
+

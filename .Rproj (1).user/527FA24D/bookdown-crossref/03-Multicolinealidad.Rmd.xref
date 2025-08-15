@@ -1,0 +1,24 @@
+h1:multicolinealidad Multicolinealidad
+h2:ejemplos Ejemplos
+h3:cemento Cemento
+fig:CementFigure Datos de cemento. Diagrama de dispersión de las variables.
+h3:grasa-corporal Grasa corporal
+fig:bodyfatFigure Datos de grasa corporal. Diagrama de dispersión de las variables.
+h2:multicolinealidad-1 Multicolinealidad
+h3:causas-de-la-multicolinealidad Causas de la multicolinealidad
+h2:detección-de-multicolinealidad Detección de multicolinealidad
+h3:factores-de-inflación-de-varianza Factores de inflación de varianza
+h3:valores-propios-de-bzbz Valores propios de 
+h3:valores-singulares-de-bz Valores singulares de 
+h3:proporciones-de-descomposición-de-varianza Proporciones de descomposición de varianza
+h2:datos-de-cemento Datos de cemento
+h2:datos-de-grasa-corporal Datos de grasa corporal
+h2:solución-al-problema-de-multicolinealidad Solución al problema de multicolinealidad
+h2:estimador-de-ridge Estimador de ridge
+fig:ECMrepresentacion Representación del sesgo al cuadrado (linea cortada), varianza (linea punteada) y error cuadrático medio (linea solida) del estimador de ridge. La linea roja representa el error cuadrático medio del estimador por MCO.
+h3:datos-de-cemento-1 Datos de cemento
+fig:CementTrazaRidge Datos de cemento. Traza de ridge. Coeficiente asociado a ``X1`` (negro), coeficiente asociado a ``X2`` (rojo), coeficiente asociado a ``X3`` (verde) y coeficiente asociado a ``X4`` (azul)
+fig:cementridge3 \\label{fig:CementCVridge} Datos de cemento. Validación cruzada.
+h2:estimador-por-componentes-principales Estimador por componentes principales
+h3:datos-de-cemento-2 Datos de cemento
+

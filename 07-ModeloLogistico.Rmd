@@ -170,7 +170,7 @@ Consideremos los datos de peso al nacer. Se propone el siguiente modelo para la 
 \]
 El ajuste del modelo es:
 
-```{r lbwfit, echo=FALSE, include=TRUE}
+```{r lbwfit, echo=TRUE, include=TRUE}
 mod.lbw = glm(low ~ age + lwt + smoke + ptl, data= birthwt,family=binomial)
 summary(mod.lbw)
 ```

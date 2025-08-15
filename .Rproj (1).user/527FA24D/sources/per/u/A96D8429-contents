@@ -1,0 +1,12 @@
+library(WWGbook)
+data(ratpup)
+plot(ratpup$litter,ratpup$weight,col=as.double(ratpup$sex),pch=19,xlab='camada', ylab='peso al nacer (gramos)')
+abline(v=c(10.5,20.5),lty=2)
+
+library(ggplot2)
+fev = read.table('fev.txt',header = T)
+fev$drug = as.factor(fev$drug)
+levels(fev$drug) = c('A','B','Placebo')
+
+p <- ggplot(data = fev, aes(x = hour, y = fev, group = patient))
+p + geom_line() + facet_grid(. ~ drug) + ylab('Volumen espiratorio forzado (litros por segundo)') + xlab('tiempo (horas)')

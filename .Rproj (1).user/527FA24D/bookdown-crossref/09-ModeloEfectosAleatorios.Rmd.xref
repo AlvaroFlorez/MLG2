@@ -1,0 +1,16 @@
+h1:modelo-lineal-mixto Modelo lineal mixto
+h2:casos-de-estudio Casos de estudio
+h3:peso-al-nacer-de-ratas Peso al nacer de ratas
+fig:ratpup Datos del peso al nacer de ratas. Diagrama de dispersión de peso de la cría por camada. Los puntos negros corresponden a las hembras y los rojos a los machos. Las primeras diez camadas corresponden al control, las siguientes diez a la dosis baja y las últimas diez a la dosis alta.
+h3:capacidad-respiratoria Capacidad respiratoria
+fig:fev Datos de capacidad respiratoria. Mediciones del volumen espiratorio forzado por hora de los pacientes en cada uno de los grupos.
+h2:datos-por-cluster-correlacionados Datos por cluster (correlacionados)
+h2:notación Notación
+h2:modelos-con-intercepto-aleatorios Modelos con intercepto aleatorios
+h3:modelo-con-pendiente-aleatoria Modelo con pendiente aleatoria
+h2:modelo-lineal-mixto-1 Modelo lineal mixto
+h2:estimación-de-los-parámetros Estimación de los parámetros
+h3:estimación-del-modelo-con-intercepto-aleatorio Estimación del modelo con intercepto aleatorio
+h3:estimación-del-modelo-con-pendiente-aleatoria Estimación del modelo con pendiente aleatoria
+fig:fevEstimacionFig Datos de capacidad respiratoria. Estimación de la media de la diferencia del Volumen espiratorio forzado por hora (línea roja) para los pacientes en cada uno de los grupos.
+

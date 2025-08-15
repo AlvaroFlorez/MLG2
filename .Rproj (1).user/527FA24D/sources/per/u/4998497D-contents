@@ -1,0 +1,7 @@
+library(asbio)
+data(crabs)
+library(pscl)
+# modelo ZIP
+ZIP.sat = zeroinfl(satell~weight | weight,data=crabs,dist='poisson')
+# modelo ZINB
+ZINB.sat = zeroinfl(satell~weight | weight,data=crabs,dist='negbin')

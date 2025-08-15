@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 7 Modelo logístico | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2024-10-31" />
+<meta name="date" content="2025-08-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -395,10 +395,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mortalidad-de-escarabajos-1" class="section level3 hasAnchor" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Mortalidad de escarabajos<a href="modelo-logístico.html#mortalidad-de-escarabajos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vamos a continuar con los datos del estudio sobre los escarabajos del capítulo anterior.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="modelo-logístico.html#cb142-1" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
-<span id="cb142-2"><a href="modelo-logístico.html#cb142-2" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) </span>
-<span id="cb142-3"><a href="modelo-logístico.html#cb142-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) </span>
-<span id="cb142-4"><a href="modelo-logístico.html#cb142-4" tabindex="-1"></a>Datos.esc<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelo-logístico.html#cb143-1" tabindex="-1"></a>logdose <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.6907</span>, <span class="fl">1.7242</span>, <span class="fl">1.7552</span>, <span class="fl">1.7842</span>, <span class="fl">1.8113</span>, <span class="fl">1.8369</span>, <span class="fl">1.8610</span>, <span class="fl">1.8839</span>)</span>
+<span id="cb143-2"><a href="modelo-logístico.html#cb143-2" tabindex="-1"></a>dead <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>, <span class="dv">18</span>, <span class="dv">28</span>, <span class="dv">52</span>, <span class="dv">53</span>, <span class="dv">61</span>, <span class="dv">60</span>) </span>
+<span id="cb143-3"><a href="modelo-logístico.html#cb143-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">59</span>, <span class="dv">60</span>, <span class="dv">62</span>, <span class="dv">56</span>, <span class="dv">63</span>, <span class="dv">59</span>, <span class="dv">62</span>, <span class="dv">60</span>) </span>
+<span id="cb143-4"><a href="modelo-logístico.html#cb143-4" tabindex="-1"></a>Datos.esc<span class="ot">=</span><span class="fu">data.frame</span>(logdose,n,dead)</span></code></pre></div>
 </div>
 <div id="bajo-peso-al-nacer" class="section level3 hasAnchor" number="7.1.2">
 <h3><span class="header-section-number">7.1.2</span> Bajo peso al nacer<a href="modelo-logístico.html#bajo-peso-al-nacer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -424,12 +424,12 @@ Sin embargo, se puede considerar alguna función de enlace diferente, como verem
 <h3><span class="header-section-number">7.1.3</span> Estudio de teratología<a href="modelo-logístico.html#estudio-de-teratología" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los datos de la librería son de un estudio para investigar los efectos de unos régimenes alimenticio en el desarrollo fetal de ratas. En este experimento, 58 ratas hembras con dietas deficientes en hierro se dividieron en cuatro grupos. Tres grupos recibieron inyecciones semanales de suplementos de hierro, a diferentes dosis, para normalizar sus niveles de hierro. Mientras que, el grupo restante no recibieron ningún suplemento (placebo). Luego, las ratas fueron preñadas, sacrificadas luego de 3 semanas, y se contó el número de fetos muertos en cada camada.</p>
 <p>En la Figura <a href="modelo-logístico.html#fig:liratFig">7.1</a> se puede observar la relación entre el número de fetos muertos por tratamiento, y también, la relación con los niveles de hemoglobina de las ratas hembras.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="modelo-logístico.html#cb143-1" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
-<span id="cb143-2"><a href="modelo-logístico.html#cb143-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb143-3"><a href="modelo-logístico.html#cb143-3" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
-<span id="cb143-4"><a href="modelo-logístico.html#cb143-4" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
-<span id="cb143-5"><a href="modelo-logístico.html#cb143-5" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
-<span id="cb143-6"><a href="modelo-logístico.html#cb143-6" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="modelo-logístico.html#cb144-1" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb144-2"><a href="modelo-logístico.html#cb144-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb144-3"><a href="modelo-logístico.html#cb144-3" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs tratamiento</span></span>
+<span id="cb144-4"><a href="modelo-logístico.html#cb144-4" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>grp,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Tratamiento&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span>
+<span id="cb144-5"><a href="modelo-logístico.html#cb144-5" tabindex="-1"></a><span class="co">#Proporcion de fetos muestos vs Hemoglobina</span></span>
+<span id="cb144-6"><a href="modelo-logístico.html#cb144-6" tabindex="-1"></a><span class="fu">plot</span>(lirat<span class="sc">$</span>hb,lirat<span class="sc">$</span>R<span class="sc">/</span>lirat<span class="sc">$</span>N,<span class="at">xlab=</span><span class="st">&quot;Hemoglobina&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Proporción de fetos muertos&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:liratFig"></span>
 <img src="MLG2_files/figure-html/liratFig-1.png" alt="Datos de teratoligía. Relación entre la proporción de fetos muertos por camada con los tratamientos (izquierda) y los niveles de hemoglobina de la madra (derecha) " width="576" />
 <p class="caption">
@@ -492,11 +492,11 @@ Figure 7.2: Datos de mortalidad de escarabajos. Estimaciones de la probabilidad 
 </p>
 </div>
 <p>Este resultado se puede comprobar utilizando criterios de información:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="modelo-logístico.html#cb144-1" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.logit)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="modelo-logístico.html#cb145-1" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.logit)</span></code></pre></div>
 <pre><code>## [1] 41.43027</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="modelo-logístico.html#cb146-1" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.probit)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="modelo-logístico.html#cb147-1" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.probit)</span></code></pre></div>
 <pre><code>## [1] 40.3178</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="modelo-logístico.html#cb148-1" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.cloglog)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="modelo-logístico.html#cb149-1" tabindex="-1"></a><span class="fu">AIC</span>(modEsc.cloglog)</span></code></pre></div>
 <pre><code>## [1] 33.64448</code></pre>
 </div>
 <div id="curva-característica-operativa-del-receptorroc" class="section level2 hasAnchor" number="7.4">
@@ -566,6 +566,8 @@ Si el objetivo del modelo es realizar predicciones es preferible obtener valores
 \mbox{logit } \pi_i = \beta_0+  \mbox{age}_i\beta_1+  \mbox{lwt}_i\beta_2 +  \mbox{smoke}_i\beta_3 + \mbox{ptl}_i\beta_4,
 \]</span>
 El ajuste del modelo es:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-logístico.html#cb151-1" tabindex="-1"></a>mod.lbw <span class="ot">=</span> <span class="fu">glm</span>(low <span class="sc">~</span> age <span class="sc">+</span> lwt <span class="sc">+</span> smoke <span class="sc">+</span> ptl, <span class="at">data=</span> birthwt,<span class="at">family=</span>binomial)</span>
+<span id="cb151-2"><a href="modelo-logístico.html#cb151-2" tabindex="-1"></a><span class="fu">summary</span>(mod.lbw)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = low ~ age + lwt + smoke + ptl, family = binomial, 
@@ -692,18 +694,18 @@ Figure 7.4: Datos de bajo peso al nacer. Sensibilidad (linea negra) y especifici
 </div>
 <p>Si el modelo realiza buenas predicciones, para un valor de especificidad dado, se espera que la sensibilidad también sea alta. Por lo tanto, el poder predictivo del modelo se puede medir a través del área bajo la curva del gráfico ROC. Esta medida es llamada índice de concordancia.</p>
 <p>En R, las curvas ROC se puede realizar por medio de la función <code>roc</code> de la librería <code>pROC</code> de la siguiente forma:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="modelo-logístico.html#cb151-1" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
-<span id="cb151-2"><a href="modelo-logístico.html#cb151-2" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
-<span id="cb151-3"><a href="modelo-logístico.html#cb151-3" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
-<span id="cb151-4"><a href="modelo-logístico.html#cb151-4" tabindex="-1"></a></span>
-<span id="cb151-5"><a href="modelo-logístico.html#cb151-5" tabindex="-1"></a>ROCbw.logit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.logit<span class="sc">$</span>fitted.values)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="modelo-logístico.html#cb153-1" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
+<span id="cb153-2"><a href="modelo-logístico.html#cb153-2" tabindex="-1"></a>modbw.logit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>ptl<span class="sc">+</span>smoke,<span class="at">family=</span><span class="fu">binomial</span>(logit),<span class="at">data=</span>birthwt)</span>
+<span id="cb153-3"><a href="modelo-logístico.html#cb153-3" tabindex="-1"></a>modbw.probit <span class="ot">=</span> <span class="fu">glm</span>(low<span class="sc">~</span>age<span class="sc">+</span>lwt<span class="sc">+</span>smoke<span class="sc">+</span>ptl,<span class="at">family=</span><span class="fu">binomial</span>(probit),<span class="at">data=</span>birthwt)</span>
+<span id="cb153-4"><a href="modelo-logístico.html#cb153-4" tabindex="-1"></a></span>
+<span id="cb153-5"><a href="modelo-logístico.html#cb153-5" tabindex="-1"></a>ROCbw.logit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.logit<span class="sc">$</span>fitted.values)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="modelo-logístico.html#cb154-1" tabindex="-1"></a>ROCbw.probit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.probit<span class="sc">$</span>fitted.values)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelo-logístico.html#cb156-1" tabindex="-1"></a>ROCbw.probit <span class="ot">=</span> <span class="fu">roc</span>(birthwt<span class="sc">$</span>low<span class="sc">~</span>modbw.probit<span class="sc">$</span>fitted.values)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1
 ## Setting direction: controls &lt; cases</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="modelo-logístico.html#cb156-1" tabindex="-1"></a><span class="fu">plot</span>(ROCbw.logit,<span class="at">xlab=</span><span class="st">&#39;especificidad&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;sensibilidad&#39;</span>)</span>
-<span id="cb156-2"><a href="modelo-logístico.html#cb156-2" tabindex="-1"></a><span class="fu">lines</span>(ROCbw.probit,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="modelo-logístico.html#cb158-1" tabindex="-1"></a><span class="fu">plot</span>(ROCbw.logit,<span class="at">xlab=</span><span class="st">&#39;especificidad&#39;</span>,<span class="at">ylab=</span><span class="st">&#39;sensibilidad&#39;</span>)</span>
+<span id="cb158-2"><a href="modelo-logístico.html#cb158-2" tabindex="-1"></a><span class="fu">lines</span>(ROCbw.probit,<span class="at">col=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ROClbwdata"></span>
 <img src="MLG2_files/figure-html/ROClbwdata-1.png" alt="Datos de bajo peso al nacer. Curva ROC para predecir bajo peso al nacer usando el modelo logístico (negro) y el probit (rojo)" width="576" />
 <p class="caption">
@@ -712,12 +714,12 @@ Figure 7.5: Datos de bajo peso al nacer. Curva ROC para predecir bajo peso al na
 </div>
 <p>En la Figura <a href="modelo-logístico.html#fig:ROClbwdata">7.5</a> se puede observar que ambas funciones de enlace proporcionan el mismo poder predictivo. El índice de concordancia es de <span class="math inline">\(AUC= 0,6884\)</span> para el modelo logístico y <span class="math inline">\(AUC= 0,6866\)</span> para el modelo probit.</p>
 <p>Para datos agrupados, la base de datos se debe desagrupar para obtener la curva ROC. Por ejemplo para los datos de escarabajos:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="modelo-logístico.html#cb157-1" tabindex="-1"></a>obs.morir <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">apply</span>(Datos.esc,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(x[<span class="dv">3</span>],x[<span class="dv">2</span>]<span class="sc">-</span>x[<span class="dv">3</span>]))}))</span>
-<span id="cb157-2"><a href="modelo-logístico.html#cb157-2" tabindex="-1"></a>prob.morir <span class="ot">=</span><span class="fu">rep</span>(modEsc.logit<span class="sc">$</span>fitted.values,Datos.esc<span class="sc">$</span>n)</span>
-<span id="cb157-3"><a href="modelo-logístico.html#cb157-3" tabindex="-1"></a>ROCesc <span class="ot">=</span> <span class="fu">roc</span>(obs.morir<span class="sc">~</span>prob.morir)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="modelo-logístico.html#cb159-1" tabindex="-1"></a>obs.morir <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">apply</span>(Datos.esc,<span class="dv">1</span>,<span class="cf">function</span>(x){<span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>),<span class="fu">c</span>(x[<span class="dv">3</span>],x[<span class="dv">2</span>]<span class="sc">-</span>x[<span class="dv">3</span>]))}))</span>
+<span id="cb159-2"><a href="modelo-logístico.html#cb159-2" tabindex="-1"></a>prob.morir <span class="ot">=</span><span class="fu">rep</span>(modEsc.logit<span class="sc">$</span>fitted.values,Datos.esc<span class="sc">$</span>n)</span>
+<span id="cb159-3"><a href="modelo-logístico.html#cb159-3" tabindex="-1"></a>ROCesc <span class="ot">=</span> <span class="fu">roc</span>(obs.morir<span class="sc">~</span>prob.morir)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="modelo-logístico.html#cb160-1" tabindex="-1"></a><span class="fu">plot</span>(ROCesc,<span class="at">print.auc=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="modelo-logístico.html#cb162-1" tabindex="-1"></a><span class="fu">plot</span>(ROCesc,<span class="at">print.auc=</span>T)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:ROCescarabajos"></span>
 <img src="MLG2_files/figure-html/ROCescarabajos-1.png" alt="Datos de mortalidad de escarabajos. Curva ROC para el modelo logístico" width="576" />
 <p class="caption">
@@ -809,9 +811,9 @@ donde <span class="math inline">\(n_i\)</span> y <span class="math inline">\(y_i
 \mbox{logit }\pi_i = \beta_0 + \mbox{hb}_i \beta_1 + \mbox{treat}_{2i} \beta_2 + \mbox{treat}_{3i}\beta_3 + \mbox{treat}_{4i} \beta_4.
 \]</span>
 El ajuste del modelo es:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="modelo-logístico.html#cb161-1" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
-<span id="cb161-2"><a href="modelo-logístico.html#cb161-2" tabindex="-1"></a>modlirat.binom <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">family=</span>binomial,<span class="at">data=</span>lirat)</span>
-<span id="cb161-3"><a href="modelo-logístico.html#cb161-3" tabindex="-1"></a><span class="fu">summary</span>(modlirat.binom)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="modelo-logístico.html#cb163-1" tabindex="-1"></a><span class="fu">data</span>(lirat,<span class="at">package =</span> <span class="st">&#39;VGAM&#39;</span>)</span>
+<span id="cb163-2"><a href="modelo-logístico.html#cb163-2" tabindex="-1"></a>modlirat.binom <span class="ot">=</span> <span class="fu">glm</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">family=</span>binomial,<span class="at">data=</span>lirat)</span>
+<span id="cb163-3"><a href="modelo-logístico.html#cb163-3" tabindex="-1"></a><span class="fu">summary</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = cbind(R, N - R) ~ hb + as.factor(grp), family = binomial, 
@@ -835,8 +837,8 @@ El ajuste del modelo es:</p>
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
 <p>La evaluación de sobredispersión la podemos hacer usando la razón entre el estadístico <span class="math inline">\(\chi^2\)</span> de Pearson y los grados de libertad:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="modelo-logístico.html#cb163-1" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modlirat.binom,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb163-2"><a href="modelo-logístico.html#cb163-2" tabindex="-1"></a>X2<span class="sc">/</span><span class="dv">53</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="modelo-logístico.html#cb165-1" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modlirat.binom,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb165-2"><a href="modelo-logístico.html#cb165-2" tabindex="-1"></a>X2<span class="sc">/</span><span class="dv">53</span></span></code></pre></div>
 <pre><code>## [1] 2.93993</code></pre>
 <p>Dado que esta razón es aproximadamente <span class="math inline">\(3\)</span>, los datos presentan sobredispersión. Por lo tanto es mas conveniente proponer un modelo beta-binomial:
 <span class="math display">\[
@@ -847,9 +849,9 @@ con
 \mbox{logit }\pi_i = \beta_0 + \mbox{hb}_i \beta_1 + \mbox{treat}_{2i} \beta_2 + \mbox{treat}_{3i}\beta_3 + \mbox{treat}_{4i} \beta_4.
 \]</span>
 En R el modelo beta-binomial se puede estimar utilizando la función <code>betabin</code> de la librería <code>aod</code>:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="modelo-logístico.html#cb165-1" tabindex="-1"></a><span class="fu">library</span>(aod)</span>
-<span id="cb165-2"><a href="modelo-logístico.html#cb165-2" tabindex="-1"></a>modlirat.betabinom <span class="ot">=</span><span class="fu">betabin</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">data=</span>lirat,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb165-3"><a href="modelo-logístico.html#cb165-3" tabindex="-1"></a>modlirat.betabinom</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="modelo-logístico.html#cb167-1" tabindex="-1"></a><span class="fu">library</span>(aod)</span>
+<span id="cb167-2"><a href="modelo-logístico.html#cb167-2" tabindex="-1"></a>modlirat.betabinom <span class="ot">=</span><span class="fu">betabin</span>(<span class="fu">cbind</span>(R,N<span class="sc">-</span>R)<span class="sc">~</span>hb<span class="sc">+</span><span class="fu">as.factor</span>(grp),<span class="at">data=</span>lirat,<span class="at">random=</span><span class="sc">~</span><span class="dv">1</span>)</span>
+<span id="cb167-3"><a href="modelo-logístico.html#cb167-3" tabindex="-1"></a>modlirat.betabinom</span></code></pre></div>
 <pre><code>## Beta-binomial model
 ## -------------------
 ## betabin(formula = cbind(R, N - R) ~ hb + as.factor(grp), random = ~1, 
@@ -874,15 +876,14 @@ En R el modelo beta-binomial se puede estimar utilizando la función <code>betab
 ## -9.302e+01          6         52  1.146e+02   1.98e+02  1.997e+02</code></pre>
 <p>Las estimaciones de los coeficientes del modelo beta-binomial son similares a los del modelo binomial. Sin embargo, los errores estándar son mas grandes. Esto último es debido al efecto de la sobredispersión (<span class="math inline">\(\widehat{\phi}=0.236\)</span> indica una correlación positiva entre los fetos que pertenecen a la misma camada). Además, el efecto del tratamiento #4 no es significativamente diferente al placebo.</p>
 <p>Podemos evaluar sobredispersión de nuevo:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="modelo-logístico.html#cb167-1" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modlirat.betabinom,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## Warning in model.matrix.default(mt, mfb, contrasts): non-list contrasts
-## argument ignored</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="modelo-logístico.html#cb169-1" tabindex="-1"></a>X2<span class="sc">/</span><span class="dv">52</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="modelo-logístico.html#cb169-1" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modlirat.betabinom,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## Warning in model.matrix.default(mt, mfb, contrasts): non-list contrasts argument ignored</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="modelo-logístico.html#cb171-1" tabindex="-1"></a>X2<span class="sc">/</span><span class="dv">52</span></span></code></pre></div>
 <pre><code>## [1] 0.9287516</code></pre>
 <p>La razón está cercana a <span class="math inline">\(1\)</span> por lo que la varianza está mejor modelada por la distribución beta-binomial. La comparación de los ajustes se puede hacer a través de criterios de información:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="modelo-logístico.html#cb171-1" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.binom)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="modelo-logístico.html#cb173-1" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.binom)</span></code></pre></div>
 <pre><code>## [1] 250.3777</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="modelo-logístico.html#cb173-1" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.betabinom)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="modelo-logístico.html#cb175-1" tabindex="-1"></a><span class="fu">AIC</span>(modlirat.betabinom)</span></code></pre></div>
 <pre><code>##                    df      AIC     AICc
 ## modlirat.betabinom  6 198.0319 199.6789</code></pre>
 <p>Observando los valores del AIC podemos determinar que el modelo beta-binomial presenta mejor ajuste.</p>
@@ -910,42 +911,42 @@ En R el modelo beta-binomial se puede estimar utilizando la función <code>betab
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/AlvaroFlorez/MLG2/edit/master/07-ModeloLogistico.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/AlvaroFlorez/MLG2/blob/master/07-ModeloLogistico.Rmd",
-"text": null
-},
-"download": ["MLG2.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/AlvaroFlorez/MLG2/edit/master/07-ModeloLogistico.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/AlvaroFlorez/MLG2/blob/master/07-ModeloLogistico.Rmd",
+    "text": null
+  },
+  "download": ["MLG2.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
