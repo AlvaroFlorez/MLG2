@@ -4,6 +4,7 @@
 library(glmnet)
 library(olsrr)
 library(kableExtra)
+library(webshot)
 library("plotrix") 
 
 mathy.df <- data.frame(b0=c("int.","age","weight","height","neck",

@@ -310,7 +310,7 @@ $$
 \end{cases}
 \nonumber
 $$
-Por lo tanto, si $x_{i} \leq t$, $E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}$. Mientras que, si $x_{i} > t$, tenemos que $E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{1}t) + (\beta_{1} + \beta_{3})x_{i}$. 
+Por lo tanto, si $x_{i} \leq t$, $E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}$. Mientras que, si $x_{i} > t$, tenemos que $E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{3}t) + (\beta_{1} + \beta_{3})x_{i}$. 
 
 Este modelo está representado graficamente en la Figura \@ref(fig:RegSegmentos). Cuando $\beta_2 \neq 0$, el modelo presenta una discontinuidad en $t$. Mientras que, cuando se fija $\beta_2 = 0$, el modelo presenta un cambio de pendiente en el punto $t$. Además, $\beta_3$ indica el cambio de pendiente. 
 
