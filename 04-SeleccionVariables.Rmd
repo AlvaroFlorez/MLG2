@@ -209,7 +209,7 @@ En conclusión:
 
 
 ## Métodos para la selección de variables
-Si tenemos $(p-1)$ covariables, entonces hay $(p-1)^2$ modelos posibles. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
+Si tenemos $(p-1)$ covariables, entonces hay $2^{(p-1)}$ modelos posibles. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
 
 Existen varios criterios para determinar que modelo es "mejor" que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos criterios son el coeficiente de determinación ($R^{2}$ y $R^{2}_{adj}$), el estadístico $C_{p}$ de Mallows, el estadístico PRESS y el $R^{2}$ de predicción, los criterios de información (AIC y BIC).
 

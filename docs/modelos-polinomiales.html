@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2025-08-15" />
+<meta name="date" content="2025-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -657,7 +657,7 @@ donde:
 \end{cases}
 \nonumber
 \]</span>
-Por lo tanto, si <span class="math inline">\(x_{i} \leq t\)</span>, <span class="math inline">\(E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}\)</span>. Mientras que, si <span class="math inline">\(x_{i} &gt; t\)</span>, tenemos que <span class="math inline">\(E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{1}t) + (\beta_{1} + \beta_{3})x_{i}\)</span>.</p>
+Por lo tanto, si <span class="math inline">\(x_{i} \leq t\)</span>, <span class="math inline">\(E(y_{i}| x_{i}) = \beta_{0} + \beta_{1}x_{i}\)</span>. Mientras que, si <span class="math inline">\(x_{i} &gt; t\)</span>, tenemos que <span class="math inline">\(E(y_{i}| x_{i}) = (\beta_{0} + \beta_{2} - \beta_{3}t) + (\beta_{1} + \beta_{3})x_{i}\)</span>.</p>
 <p>Este modelo está representado graficamente en la Figura <a href="modelos-polinomiales.html#fig:RegSegmentos">2.11</a>. Cuando <span class="math inline">\(\beta_2 \neq 0\)</span>, el modelo presenta una discontinuidad en <span class="math inline">\(t\)</span>. Mientras que, cuando se fija <span class="math inline">\(\beta_2 = 0\)</span>, el modelo presenta un cambio de pendiente en el punto <span class="math inline">\(t\)</span>. Además, <span class="math inline">\(\beta_3\)</span> indica el cambio de pendiente.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:RegSegmentos"></span>
 <img src="MLG2_files/figure-html/RegSegmentos-1.png" alt="Modelo de regresión por segmentos. Modelo con discontinuidad en $t$ (izquierda). Modelo con cambio de pendiente en $t$ (derecha)." width="864" />

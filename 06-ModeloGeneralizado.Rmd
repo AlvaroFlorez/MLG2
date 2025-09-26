@@ -54,6 +54,10 @@ Los datos ```data(epilepsy)``` de la librería ```HSAUR2``` corresponden a un en
 
 Estos datos son de naturaleza longitudinal (cada paciente cuenta con 4 observaciones tomadas en el tiempo), lo que requiere metodologías que tengan en cuenta la correlación que hay en los datos. En es caso, no consideraremos las observaciones intermedias de cada paciente, sino solamente las mediciones tomadas luego de las cuatro semanas de observación.
 
+```{r seizureData, echo=FALSE}
+epilepsy4= HSAUR2::epilepsy[HSAUR2::epilepsy$period==4,]
+```
+
 Las variables que se tendrán en cuenta son las siguientes:
 * ```age```: edad del paciente,
 
@@ -366,7 +370,7 @@ La estimación de los parámetros del GLM por MLE se puede hacer utilizando la f
 modBin = glm(cbind(dead,n-dead)~logdose,family=binomial)
 summary(modBin)
 ```
-Aquí vemos que el efecto del logarítmo de la dosis es positivo y significativo. Es decir que, un incremento en la dosis significa un aumento en la probabidad de que el escarabajo muera. La relación la podemos ver de forma gráfica en la figura \@ref(fig:escarabajosEstFig).
+Aquí vemos que el efecto del logarítmo de la dosis es positivo y significativo. Es decir que, un incremento en la dosis significa un aumento en la probabilidad de que el escarabajo muera. La relación la podemos ver de forma gráfica en la figura \@ref(fig:escarabajosEstFig).
 
 ```{r escarabajosEstFig, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de mortalidad de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis de disulfuro de carbono gaseoso."}
 pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))
@@ -387,7 +391,7 @@ $$
 \text{odd}(x)=\frac{P(Y=1|x)}{P(Y=0|x)}= \frac{\frac{\exp(\beta_0+x\beta_1)}{1+\exp(\beta_0+x\beta_1)}}{1-\frac{\exp(\beta_0+x\beta_1)}{1+\exp(\beta_0+x\beta_1)}} = \exp(\beta_0+x\beta_1).
 $$
 
-Ahora, los **odds ratio** están definido como $\text{OR}=\frac{\text{odd}(x=a+1)}{\text{odd}(x=a)}$. Para el caso del modelo logístico simple temos que el OR es:
+Ahora, los **odds ratio** están definido como $\text{OR}=\frac{\text{odd}(x=a+1)}{\text{odd}(x=a)}$. Para el caso del modelo logístico simple tenemos que el OR es:
 
 $$
 \mbox{OR}(x)=\frac{\text{odd}(x=a+1)}{\text{odd}(x=a)}=\frac{\exp\left[\beta_{0}+(a+1)\beta_{1}\right]}{\exp(\beta_0+a\beta_1)}=\exp(\beta_1).
@@ -438,7 +442,7 @@ $$
 
 Por lo tanto, $\exp(\delta\beta_1)=\frac{E(Y|x=a+\delta)}{E(Y|x=a)}$. Es decir que, $\exp(\delta\beta_1)$ es una tasa de crecimiento del valor esperado de $Y$ por un aumento en $x$ de $\delta$ unidades.
 
-Por ejemplo, si el número de ataques epilépticos pre-tratamiento aumenta $20$ casos, entonces el valor esperado de ataques epilépticos post-tramiento aumenta un 52\% $(\exp(20 \times0.021)=1.522)$. Además, el tramiento con Progabida reduce en un poco más del 40\% el número de episodios de epilepsia $(\exp(-0.3635857) = 0.695)$. Finalmente, el efecto de los casos pre-tramiento es el mismo para los pacientes en el grupo tratamiento y el control ($\exp(0.0009) \approx 1$).
+Por ejemplo, una diferencia de 10 ataques epilépticos pre-tratamiento entre pacientes se asocia con un incremento en la media de ataques post-tratamiento de aproximadamente del 23\% ($\exp(0.0209\times10)$) para el grupo control.Mientras que para el grupo tratamiento este incremento es del 24\% ($\exp[(0.0209+0.0009)\times10)$)). Note que $\beta_3$ no es significativo, por lo que esta diferencia no es significativa. Finalmente, el tramiento con Progabida reduce en un poco más del 40\% el número de episodios de epilepsia $(\exp(-0.3635857) = 0.695)$.
 
 ## Pruebas de hipótesis
 
