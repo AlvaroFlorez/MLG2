@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2025-09-26" />
+<meta name="date" content="2025-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -463,7 +463,7 @@ Mientras que, para las segundas la media está dada por:
 <span class="math display">\[
 E(\mbox{rate}|\mbox{conc},\mbox{state}=1)=\frac{\mbox{conc}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+\mbox{conc}}.
 \]</span>
-De aquí, <span class="math inline">\(\theta_3\)</span> determina la velocidad máxima entre las células tratadas y no las no tratadas. De igual forma, <span class="math inline">\(\theta_{4}\)</span> indica la diferencia en la concentración en la cual se obtiene la mitad de la velocidad máxima.</p>
+De aquí, <span class="math inline">\(\theta_3\)</span> determina la diferencia en la velocidad máxima alcanzada entre las células tratadas y no las no tratadas. De igual forma, <span class="math inline">\(\theta_{4}\)</span> indica la diferencia en la concentración en la cual se obtiene la mitad de la velocidad máxima.</p>
 </div>
 </div>
 <div id="modelos-no-lineales-1" class="section level2 hasAnchor" number="5.2">
@@ -474,7 +474,7 @@ y_{i}=m(\boldsymbol x_{i},\boldsymbol \theta)+\varepsilon_{i},
 \]</span>
 donde <span class="math inline">\(\varepsilon_{i} \sim N(0, \sigma^2)\)</span> y <span class="math inline">\(cov(\varepsilon_{i},\varepsilon_{j}) = 0\)</span>, para todo <span class="math inline">\(i \neq j\)</span>. Particularmente, en el caso de modelos lineales, se asume que:
 <span class="math display">\[
-m(x_{i},\theta)=\boldsymbol x_i^{*&#39;}\boldsymbol \beta= \beta_{0}+x_{1i}^{*}\beta_{1}+x_{2i}^{*}\beta_{2}+\ldots +x_{p-1,i}^{*}\beta_{p-1},
+m(x_{i},\theta)=\boldsymbol x_i^{*&#39;}\boldsymbol \beta= \beta_{0}+x_    {1i}^{*}\beta_{1}+x_{2i}^{*}\beta_{2}+\ldots +x_{p-1,i}^{*}\beta_{p-1},
 \]</span>
 donde <span class="math inline">\(x_j^{*}\)</span> representa cualquier transformación de las covariables originales, por ejemplo, <span class="math inline">\(x_j^{*}= \log x_j\)</span> o <span class="math inline">\(x_j^{*}= x_j^{2}\)</span>. Estos modelos se consideran lineales porque son combinaciones lineales de los parámetros <span class="math inline">\(\boldsymbol \beta\)</span>.</p>
 <p>Modelos de la forma:
@@ -744,7 +744,7 @@ se puede obtener valores iniciales. Luego de ajustar el modelo se obtiene que:</
 <p><span class="math display">\[
 \theta_{1}^{(0)}=\frac{1}{\hat{\beta}_{0}}=167.408 \mbox{ y } \theta_{2}^{(0)}=\frac{\hat{\beta}_{1}}{\hat{\beta}_{0}}=0.039.
 \]</span>
-Inicialmente, se podríamos asumir que <span class="math inline">\(\beta_{3}^{(0)}=\beta_{4}^{(0)}=0\)</span> (es decir, no hay diferencias entre las células tratadas y no tratadas). Usando la función ´nls()´ de R obtenemos los siguientes resultados:</p>
+Inicialmente, se podríamos asumir que <span class="math inline">\(\theta_{3}^{(0)}=\theta_{4}^{(0)}=0\)</span> (es decir, no hay diferencias entre las células tratadas y no tratadas). Usando la función ´nls()´ de R obtenemos los siguientes resultados:</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="modelos-no-lineales.html#cb113-1" tabindex="-1"></a>Puromycin<span class="sc">$</span>state2 <span class="ot">=</span> <span class="fu">as.double</span>(Puromycin<span class="sc">$</span>state <span class="sc">==</span> <span class="st">&#39;treated&#39;</span>)</span>
 <span id="cb113-2"><a href="modelos-no-lineales.html#cb113-2" tabindex="-1"></a>mod.puromicyn <span class="ot">=</span> <span class="fu">nls</span>(rate <span class="sc">~</span> (th1<span class="sc">*</span>conc <span class="sc">+</span> th3<span class="sc">*</span>conc<span class="sc">*</span>state2)<span class="sc">/</span>(th2<span class="sc">+</span>th4<span class="sc">*</span>state2<span class="sc">+</span>conc),<span class="at">data =</span> Puromycin,</span>
 <span id="cb113-3"><a href="modelos-no-lineales.html#cb113-3" tabindex="-1"></a>          <span class="at">start =</span> <span class="fu">list</span>(<span class="at">th1=</span><span class="dv">168</span>,<span class="at">th2=</span><span class="fl">0.4</span>,<span class="at">th3=</span><span class="dv">0</span>,<span class="at">th4=</span><span class="dv">0</span>),<span class="at">trace=</span>F )</span>

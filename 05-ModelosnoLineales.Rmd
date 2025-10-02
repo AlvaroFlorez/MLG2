@@ -71,7 +71,7 @@ Mientras que, para las segundas la media está dada por:
 \[
 E(\mbox{rate}|\mbox{conc},\mbox{state}=1)=\frac{\mbox{conc}(\theta_{1}+\theta_{3})}{(\theta_{2}+\theta_{4})+\mbox{conc}}.
 \]
-De aquí, $\theta_3$ determina la velocidad máxima entre las células tratadas y no las no tratadas. De igual forma, $\theta_{4}$ indica la diferencia en la concentración en la cual se obtiene la mitad de la velocidad máxima.
+De aquí, $\theta_3$ determina la diferencia en la velocidad máxima alcanzada entre las células tratadas y no las no tratadas. De igual forma, $\theta_{4}$ indica la diferencia en la concentración en la cual se obtiene la mitad de la velocidad máxima.
 
 ## Modelos no lineales
 De forma general, en los modelos de regresión asumimos que:
@@ -81,7 +81,7 @@ y_{i}=m(\bx_{i},\btheta)+\varepsilon_{i},
 \]
 donde $\varepsilon_{i} \sim N(0, \sigma^2)$ y $cov(\varepsilon_{i},\varepsilon_{j}) = 0$, para todo $i \neq j$. Particularmente, en el caso de modelos lineales, se asume que:
 \[
-m(x_{i},\theta)=\bx_i^{*'}\bbeta = \beta_{0}+x_{1i}^{*}\beta_{1}+x_{2i}^{*}\beta_{2}+\ldots +x_{p-1,i}^{*}\beta_{p-1},
+m(x_{i},\theta)=\bx_i^{*'}\bbeta = \beta_{0}+x_    {1i}^{*}\beta_{1}+x_{2i}^{*}\beta_{2}+\ldots +x_{p-1,i}^{*}\beta_{p-1},
 \]
 donde $x_j^{*}$ representa cualquier transformación de las covariables originales, por ejemplo, $x_j^{*}= \log x_j$ o $x_j^{*}= x_j^{2}$. Estos modelos se consideran lineales porque son combinaciones lineales de los parámetros $\bbeta$.
 
@@ -355,7 +355,7 @@ se puede obtener valores iniciales. Luego de ajustar el modelo se obtiene que:
 $$
 \theta_{1}^{(0)}=\frac{1}{\hat{\beta}_{0}}=167.408 \mbox{ y } \theta_{2}^{(0)}=\frac{\hat{\beta}_{1}}{\hat{\beta}_{0}}=0.039.
 $$
-Inicialmente, se podríamos asumir que $\beta_{3}^{(0)}=\beta_{4}^{(0)}=0$ (es decir, no hay diferencias entre las células tratadas y no tratadas). Usando la función ´nls()´ de R obtenemos los siguientes resultados:
+Inicialmente, se podríamos asumir que $\theta_{3}^{(0)}=\theta_{4}^{(0)}=0$ (es decir, no hay diferencias entre las células tratadas y no tratadas). Usando la función ´nls()´ de R obtenemos los siguientes resultados:
 ```{r tablapuromicina, include=TRUE}
 
 Puromycin$state2 = as.double(Puromycin$state == 'treated')

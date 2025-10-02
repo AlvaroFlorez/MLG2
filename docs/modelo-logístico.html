@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2025-09-26" />
+<meta name="date" content="2025-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -894,7 +894,8 @@ En R el modelo beta-binomial se puede estimar utilizando la función <code>betab
 <p>Las estimaciones de los coeficientes del modelo beta-binomial son similares a los del modelo binomial. Sin embargo, los errores estándar son mas grandes. Esto último es debido al efecto de la sobredispersión (<span class="math inline">\(\widehat{\phi}=0.236\)</span> indica una correlación positiva entre los fetos que pertenecen a la misma camada). Además, el efecto del tratamiento #4 no es significativamente diferente al placebo.</p>
 <p>Podemos evaluar sobredispersión de nuevo:</p>
 <div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="modelo-logístico.html#cb183-1" tabindex="-1"></a>X2 <span class="ot">=</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modlirat.betabinom,<span class="at">type=</span><span class="st">&#39;pearson&#39;</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## Warning in model.matrix.default(mt, mfb, contrasts): non-list contrasts argument ignored</code></pre>
+<pre><code>## Warning in model.matrix.default(mt, mfb, contrasts): non-list contrasts
+## argument ignored</code></pre>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="modelo-logístico.html#cb185-1" tabindex="-1"></a>X2<span class="sc">/</span><span class="dv">52</span></span></code></pre></div>
 <pre><code>## [1] 0.9287516</code></pre>
 <p>La razón está cercana a <span class="math inline">\(1\)</span> por lo que la varianza está mejor modelada por la distribución beta-binomial. La comparación de los ajustes se puede hacer a través de criterios de información:</p>
