@@ -277,7 +277,7 @@ $$
 Por lo que, $g(\lambda_{i})=\log\lambda_{i}$. Este modelo puede ser una opción para estimar el número medio de ataques epiléticos de los pacientes del ensayo clínico en epilepsia. 
 
 #### Otros ejemplos
-Un modelo lineal es un caso particular del GLM. Aquí asumimos que $y_i \sim N(\mu_i, \sigma^2)$, con $\mu_i = \bx_i'\bbeta$. Es decir, la función de enlace es la identidad. 
+Un modelo lineal es un caso particular del GLM. Aquí asumimos que $y_i \sim N(\mu_i, \sigma^2)$, con $\mu_i = \bx_i'\bbeta$. Esto es, la función de enlace es la identidad. 
 
 Otros ejemplos de distribuciones que se pueden utilizar son:
 
@@ -370,7 +370,7 @@ La estimación de los parámetros del GLM por MLE se puede hacer utilizando la f
 modBin = glm(cbind(dead,n-dead)~logdose,family=binomial)
 summary(modBin)
 ```
-Aquí vemos que el efecto del logarítmo de la dosis es positivo y significativo. Es decir que, un incremento en la dosis significa un aumento en la probabilidad de que el escarabajo muera. La relación la podemos ver de forma gráfica en la figura \@ref(fig:escarabajosEstFig).
+Aquí vemos que el efecto del logaritmo de la dosis es positivo y significativo. Un incremento en la dosis significa un aumento en la probabilidad de que el escarabajo muera. La relación la podemos ver de forma gráfica en la figura \@ref(fig:escarabajosEstFig).
 
 ```{r escarabajosEstFig, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Datos de mortalidad de escarabajos. Estimación de la probabilidad de que el escarabajo muera en función del logarítmo de la dosis de disulfuro de carbono gaseoso."}
 pred.x = data.frame(logdose = seq(min(logdose),max(logdose),length.out = 50))
@@ -405,7 +405,7 @@ $$
 \exp ( 0.02\times  34.270) = 1.984.
 5.
 $$
-Es decir, si el log de la concentración de aumenta en $0.02$, entonces la probabilidad de que el escarabajo muera aumenta casi el doble.
+Por lo que, si el log de la concentración de aumenta en $0.02$, entonces la probabilidad de que el escarabajo muera aumenta casi el doble.
 
 #### ajuste e interpretación de parámetros del modelo Poisson
 
@@ -419,7 +419,7 @@ modPois=glm(seizure.rate~treatment+base+base:treatment,family=poisson,
             data =epilepsy4)
 summary(modPois)
 ```
-Los resultados del ajuste muestran que el número de ataques pre-tratamiento tiene un efecto positivo sobre la media del número de ataques epilépticos. Es decir, esta aumenta entre más ataques previos tenga el paciente. Mientras que, el tratamiento parece tener un efecto negativo. Es decir, el prograbide reduce la media del número de ataques epilépticos con respecto al placebo. Finalmente, el efecto interacción es muy pequeño sugiriendo que el efecto del tratamiento no se ve afectado por la frecuencia de los ataques epilépticos que tiene el paciente. La estimación de la media se puede observa de forma gráfica en la Figura \@ref(fig:ajusteSeizureFig).
+Los resultados del ajuste muestran que el número de ataques pre-tratamiento tiene un efecto positivo sobre la media del número de ataques epilépticos. Esto significa que esta es mayor para pacientes con más ataques previos. Mientras que, el tratamiento parece tener un efecto negativo. Es decir, los pacientes que tomaron prograbide tienen una media de ataques epilépticos menor con respecto a los que tomaron el placebo. Finalmente, el efecto interacción es muy pequeño sugiriendo que el efecto del tratamiento no se ve afectado por la frecuencia de los ataques epilépticos que tiene el paciente. La estimación de la media se puede observa de forma gráfica en la Figura \@ref(fig:ajusteSeizureFig).
 
 ```{r ajusteSeizureFig,fig.height = 4, fig.width = 6,fig.align = "center",fig.cap="Datos de epilepsia. Estimación de la media de ataques epilépticos (por dos semanas) luego de cuatro semanas de tratamiento. La línea negra representa la media de ataques para el grupo placebo, mientras que, la linea roja la media de ataques para el tratamiento con Progabide."}
 y = data.frame(base=seq(min(epilepsy4$base),max(epilepsy4$base),length.out=100),
@@ -463,7 +463,7 @@ $$
 Para estimadores basados en verosimilitud, podemos utilizar tres métodos diferentes: la prueba de razón de verosimilitud, la prueba del score o la prueba de Wald.
 
 ### Método de razón de verosimilitud
-La idea de este método es comparar la verosimilitud bajo dos condiciones: ($L_0$) la máxima alcanzada bajo $H_0$ (es decir, asumiendo que $\bbeta_2=\bZERO$) y ($L_1$) la evaluada en la estimación maximo verosimil, es decir $L(\hatbbeta)$. El estadístico de prueba usado es:
+La idea de este método es comparar la verosimilitud bajo dos condiciones: ($L_0$) la máxima alcanzada bajo $H_0$ (es decir, asumiendo que $\bbeta_2=\bZERO$) y ($L_1$) la evaluada en la estimación máximo verosimil (es decir, $L(\hatbbeta)$). El estadístico de prueba usado es:
 $$
 LR = 2\log \left( \frac{L(\hatbbeta)}{L(\hatbbeta_0)} \right) = 2 (\ell_1 - \ell_0).
 $$
@@ -486,7 +486,7 @@ En este caso, podríamos plantear el siguiente sistema de hipótesis:
 $$
 \qquad H_0:\beta_1=\beta_3=0 \qquad H_1: \beta_1=0 \mbox{ o } \beta_3=0.
 $$
-Es decir, $H_0$ indica que no hay ningún efecto del tratamiento para la epilépsia (no es estadísticamente diferente al placebo). La prueba de razón de verosimilitud se puede implementar de las siguiente forma:
+Aquí, $H_0$ indica que no hay ningún efecto del tratamiento para la epilépsia (no es estadísticamente diferente al placebo). La prueba de razón de verosimilitud se puede implementar de las siguiente forma:
 
 ```{r ajusteSeizureLRT,echo=TRUE}
 modPois0=glm(seizure.rate~base,family=poisson,
@@ -557,7 +557,7 @@ confint(modPois)
 ```
 Aquí vemos que el efecto del tratamiento está entre $-0.7$ y $-0.04$. Es decir, que la reducción del número de ataques epilépticos está a una tasa entre el 0.51 y 0.95. Mientras que, como ya se mencionó antes, el efecto interacción no tiene un aporte significativo.
 
-La media del número de ataques epiléptico por dos semanas se puede observar en la Figura \@ref(fig:grafICepilep). Se puede observar que las estimaciones de la media para el grupo tratamiento es inferior que para el grupo control.
+La media del número de ataques epiléptico por dos semanas se puede observar en la Figura \@ref(fig:grafICepilep). Se puede ver que las estimaciones de la media para el grupo tratamiento es inferior que para el grupo control.
 
 ```{r grafICepilep, fig.height = 4, fig.width = 6,fig.align='center',fig.cap="Datos de epilépsia. Estimación de la media de ataques epilépticos por dos semanas en el grupo placebo (línea negra) y el grupo tratamiento (línea roja)."}
 predx1 = data.frame(base=seq(6,151,length.out = 100),treatment='placebo')

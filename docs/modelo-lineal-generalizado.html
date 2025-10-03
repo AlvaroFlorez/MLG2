@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2025-10-02" />
+<meta name="date" content="2025-10-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -666,7 +666,7 @@ donde <span class="math inline">\(\eta_i = \beta_{0}+\beta_{1}\text{treat}_{i}+\
 </div>
 <div id="otros-ejemplos" class="section level4 hasAnchor" number="6.4.4.3">
 <h4><span class="header-section-number">6.4.4.3</span> Otros ejemplos<a href="modelo-lineal-generalizado.html#otros-ejemplos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Un modelo lineal es un caso particular del GLM. Aquí asumimos que <span class="math inline">\(y_i \sim N(\mu_i, \sigma^2)\)</span>, con <span class="math inline">\(\mu_i = \boldsymbol x_i&#39;\boldsymbol \beta\)</span>. Es decir, la función de enlace es la identidad.</p>
+<p>Un modelo lineal es un caso particular del GLM. Aquí asumimos que <span class="math inline">\(y_i \sim N(\mu_i, \sigma^2)\)</span>, con <span class="math inline">\(\mu_i = \boldsymbol x_i&#39;\boldsymbol \beta\)</span>. Esto es, la función de enlace es la identidad.</p>
 <p>Otros ejemplos de distribuciones que se pueden utilizar son:</p>
 <ul>
 <li><strong>Modelo binomial-negativo</strong> para conteo con sobredispersión.</li>
@@ -760,7 +760,7 @@ La estimación de los parámetros del GLM por MLE se puede hacer utilizando la f
 ## AIC: 41.43
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<p>Aquí vemos que el efecto del logarítmo de la dosis es positivo y significativo. Es decir que, un incremento en la dosis significa un aumento en la probabilidad de que el escarabajo muera. La relación la podemos ver de forma gráfica en la figura <a href="modelo-lineal-generalizado.html#fig:escarabajosEstFig">6.4</a>.</p>
+<p>Aquí vemos que el efecto del logaritmo de la dosis es positivo y significativo. Un incremento en la dosis significa un aumento en la probabilidad de que el escarabajo muera. La relación la podemos ver de forma gráfica en la figura <a href="modelo-lineal-generalizado.html#fig:escarabajosEstFig">6.4</a>.</p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="modelo-lineal-generalizado.html#cb130-1" tabindex="-1"></a>pred.x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">logdose =</span> <span class="fu">seq</span>(<span class="fu">min</span>(logdose),<span class="fu">max</span>(logdose),<span class="at">length.out =</span> <span class="dv">50</span>))</span>
 <span id="cb130-2"><a href="modelo-lineal-generalizado.html#cb130-2" tabindex="-1"></a>pred <span class="ot">=</span> <span class="fu">predict</span>(modBin,pred.x,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
 <span id="cb130-3"><a href="modelo-lineal-generalizado.html#cb130-3" tabindex="-1"></a></span>
@@ -790,7 +790,7 @@ Es decir, es una razón entre la probabilidad de éxito sobre la probabilidad de
 \exp ( 0.02\times  34.270) = 1.984.
 5.
 \]</span>
-Es decir, si el log de la concentración de aumenta en <span class="math inline">\(0.02\)</span>, entonces la probabilidad de que el escarabajo muera aumenta casi el doble.</p>
+Por lo que, si el log de la concentración de aumenta en <span class="math inline">\(0.02\)</span>, entonces la probabilidad de que el escarabajo muera aumenta casi el doble.</p>
 <div id="ajuste-e-interpretación-de-parámetros-del-modelo-poisson" class="section level4 hasAnchor" number="6.5.2.1">
 <h4><span class="header-section-number">6.5.2.1</span> ajuste e interpretación de parámetros del modelo Poisson<a href="modelo-lineal-generalizado.html#ajuste-e-interpretación-de-parámetros-del-modelo-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Para el ensayo clínico en epilepsia, el modelo propuesto es:
@@ -822,7 +822,7 @@ Para el ajuste del modelo usamos la función <code>glm()</code> con el argumento
 ## AIC: 345.3
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<p>Los resultados del ajuste muestran que el número de ataques pre-tratamiento tiene un efecto positivo sobre la media del número de ataques epilépticos. Es decir, esta aumenta entre más ataques previos tenga el paciente. Mientras que, el tratamiento parece tener un efecto negativo. Es decir, el prograbide reduce la media del número de ataques epilépticos con respecto al placebo. Finalmente, el efecto interacción es muy pequeño sugiriendo que el efecto del tratamiento no se ve afectado por la frecuencia de los ataques epilépticos que tiene el paciente. La estimación de la media se puede observa de forma gráfica en la Figura <a href="modelo-lineal-generalizado.html#fig:ajusteSeizureFig">6.5</a>.</p>
+<p>Los resultados del ajuste muestran que el número de ataques pre-tratamiento tiene un efecto positivo sobre la media del número de ataques epilépticos. Esto significa que esta es mayor para pacientes con más ataques previos. Mientras que, el tratamiento parece tener un efecto negativo. Es decir, los pacientes que tomaron prograbide tienen una media de ataques epilépticos menor con respecto a los que tomaron el placebo. Finalmente, el efecto interacción es muy pequeño sugiriendo que el efecto del tratamiento no se ve afectado por la frecuencia de los ataques epilépticos que tiene el paciente. La estimación de la media se puede observa de forma gráfica en la Figura <a href="modelo-lineal-generalizado.html#fig:ajusteSeizureFig">6.5</a>.</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="modelo-lineal-generalizado.html#cb133-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">base=</span><span class="fu">seq</span>(<span class="fu">min</span>(epilepsy4<span class="sc">$</span>base),<span class="fu">max</span>(epilepsy4<span class="sc">$</span>base),<span class="at">length.out=</span><span class="dv">100</span>),</span>
 <span id="cb133-2"><a href="modelo-lineal-generalizado.html#cb133-2" tabindex="-1"></a>               <span class="at">treatment =</span> <span class="fu">factor</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">levels</span>(epilepsy4<span class="sc">$</span>treatment)))</span>
 <span id="cb133-3"><a href="modelo-lineal-generalizado.html#cb133-3" tabindex="-1"></a>predpois <span class="ot">=</span> <span class="fu">predict</span>(modPois,y,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
@@ -866,7 +866,7 @@ donde <span class="math inline">\(\boldsymbol x_{1 }= (1,x_{11},\ldots,x_{1,q-1}
 Para estimadores basados en verosimilitud, podemos utilizar tres métodos diferentes: la prueba de razón de verosimilitud, la prueba del score o la prueba de Wald.</p>
 <div id="método-de-razón-de-verosimilitud" class="section level3 hasAnchor" number="6.6.1">
 <h3><span class="header-section-number">6.6.1</span> Método de razón de verosimilitud<a href="modelo-lineal-generalizado.html#método-de-razón-de-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La idea de este método es comparar la verosimilitud bajo dos condiciones: (<span class="math inline">\(L_0\)</span>) la máxima alcanzada bajo <span class="math inline">\(H_0\)</span> (es decir, asumiendo que <span class="math inline">\(\boldsymbol \beta_2=\boldsymbol 0\)</span>) y (<span class="math inline">\(L_1\)</span>) la evaluada en la estimación maximo verosimil, es decir <span class="math inline">\(L(\widehat{\boldsymbol \beta})\)</span>. El estadístico de prueba usado es:
+<p>La idea de este método es comparar la verosimilitud bajo dos condiciones: (<span class="math inline">\(L_0\)</span>) la máxima alcanzada bajo <span class="math inline">\(H_0\)</span> (es decir, asumiendo que <span class="math inline">\(\boldsymbol \beta_2=\boldsymbol 0\)</span>) y (<span class="math inline">\(L_1\)</span>) la evaluada en la estimación máximo verosimil (es decir, <span class="math inline">\(L(\widehat{\boldsymbol \beta})\)</span>). El estadístico de prueba usado es:
 <span class="math display">\[
 LR = 2\log \left( \frac{L(\widehat{\boldsymbol \beta})}{L(\widehat{\boldsymbol \beta}_0)} \right) = 2 (\ell_1 - \ell_0).
 \]</span>
@@ -889,7 +889,7 @@ Si <span class="math inline">\(H_0\)</span> es cierta, entonces <span class="mat
 <span class="math display">\[
 \qquad H_0:\beta_1=\beta_3=0 \qquad H_1: \beta_1=0 \mbox{ o } \beta_3=0.
 \]</span>
-Es decir, <span class="math inline">\(H_0\)</span> indica que no hay ningún efecto del tratamiento para la epilépsia (no es estadísticamente diferente al placebo). La prueba de razón de verosimilitud se puede implementar de las siguiente forma:</p>
+Aquí, <span class="math inline">\(H_0\)</span> indica que no hay ningún efecto del tratamiento para la epilépsia (no es estadísticamente diferente al placebo). La prueba de razón de verosimilitud se puede implementar de las siguiente forma:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="modelo-lineal-generalizado.html#cb134-1" tabindex="-1"></a>modPois0<span class="ot">=</span><span class="fu">glm</span>(seizure.rate<span class="sc">~</span>base,<span class="at">family=</span>poisson,</span>
 <span id="cb134-2"><a href="modelo-lineal-generalizado.html#cb134-2" tabindex="-1"></a>            <span class="at">data =</span>epilepsy4)</span>
 <span id="cb134-3"><a href="modelo-lineal-generalizado.html#cb134-3" tabindex="-1"></a><span class="fu">anova</span>(modPois0,modPois,<span class="at">test=</span><span class="st">&#39;LRT&#39;</span>)</span></code></pre></div>
@@ -973,7 +973,7 @@ Figure 6.6: Datos de mortalidad de escarabajos. Intervalo del 95% de confianza p
 ## base                     0.017137251  0.024649428
 ## treatmentProgabide:base -0.003594654  0.005341111</code></pre>
 <p>Aquí vemos que el efecto del tratamiento está entre <span class="math inline">\(-0.7\)</span> y <span class="math inline">\(-0.04\)</span>. Es decir, que la reducción del número de ataques epilépticos está a una tasa entre el 0.51 y 0.95. Mientras que, como ya se mencionó antes, el efecto interacción no tiene un aporte significativo.</p>
-<p>La media del número de ataques epiléptico por dos semanas se puede observar en la Figura <a href="modelo-lineal-generalizado.html#fig:grafICepilep">6.7</a>. Se puede observar que las estimaciones de la media para el grupo tratamiento es inferior que para el grupo control.</p>
+<p>La media del número de ataques epiléptico por dos semanas se puede observar en la Figura <a href="modelo-lineal-generalizado.html#fig:grafICepilep">6.7</a>. Se puede ver que las estimaciones de la media para el grupo tratamiento es inferior que para el grupo control.</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="modelo-lineal-generalizado.html#cb144-1" tabindex="-1"></a>predx1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">base=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">151</span>,<span class="at">length.out =</span> <span class="dv">100</span>),<span class="at">treatment=</span><span class="st">&#39;placebo&#39;</span>)</span>
 <span id="cb144-2"><a href="modelo-lineal-generalizado.html#cb144-2" tabindex="-1"></a>predx2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">base=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">151</span>,<span class="at">length.out =</span> <span class="dv">100</span>),<span class="at">treatment=</span><span class="st">&#39;Progabide&#39;</span>)</span>
 <span id="cb144-3"><a href="modelo-lineal-generalizado.html#cb144-3" tabindex="-1"></a>predy1 <span class="ot">=</span> <span class="fu">predict</span>(modPois,<span class="at">newdata =</span> predx1,<span class="at">type=</span><span class="st">&#39;response&#39;</span>)</span>
