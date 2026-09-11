@@ -121,7 +121,7 @@ La selección del orden puede hacerse de dos formas. (1) **Hacia delante**: empe
 
 **Extrapolación**: La extrapolación con modelos polinomiales puede ser muy peligrosa. Por ejemplo en la Figura \@ref(fig:extrapolacion) podemos ajustar un modelo de orden dos a los datos (linea negra). Si hacemos una predicción fuera del rango de los datos, el valor esperado predicho sigue el comportamiento cuadrático propuesto. Sin embargo, el valor esperado de $Y$ puede seguir un comportamiento diferente (linea roja discontinua). Lo que lleva a tener una predicción sesgada. 
 
-```{r extrapolacion,echo=FALSE, fig.height = 4, fig.width = 6,fig.align = "center",fig.cap = "Problema de extrapolación al estimar un modelo polinomial."}
+```{r extrapolacion,echo=FALSE, fig.height = 5, fig.width = 6,fig.align = "center",fig.cap = "Problema de extrapolación al estimar un modelo polinomial."}
 x= seq(0,9,length.out=100)
 y = 2 + 2*x - 0.25*x^2
 
