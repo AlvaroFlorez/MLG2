@@ -155,7 +155,7 @@ abline(a=mod.ais$coefficients[1]+mod.ais$coefficients[2],b=mod.ais$coefficients[
 abline(a=mod.ais.lp$coefficients[1],b=mod.ais.lp$coefficients[3],lwd=2,lty=2)
 abline(a=mod.ais.lp$coefficients[1]+mod.ais.lp$coefficients[2],b=mod.ais.lp$coefficients[3],col=2,lwd=2,lty=2)
 ```
-En conclusión, hay diferencia en los niveles de hemoglobina entre hombres y mujeres. Sin embargo, el efecto del índice de masa corporal es el mismo para ambos sexos.
+En conclusión, podemos decir que los niveles de hemoglobina son, en promedio, mayores para hombres que para mujeres. Sin embargo, el efecto que tiene el índice de masa corporal es el mismo para ambos sexos.
 
 ### Modelo para los datos de la ONU
 El modelo propuesto es el siguiente:
@@ -169,11 +169,11 @@ donde $\varepsilon_{i} \sim N(0,\sigma^{2})$ y $cov(\varepsilon_{i},\varepsilon_
 \[
 \mbox{u}_{1i} = \begin{cases}
 1 & \mbox{ si el país i pertenece a la categoría otro}, \\
-0 & \mbox{ de otra forma}, \\
+0 & \mbox{ si lo contrario}, \\
 \end{cases}  \mbox{ y } 
 \mbox{u}_{2i} = \begin{cases}
 1 & \mbox{ si el país i pertenece a África}, \\
-0 & \mbox{ de otra forma}. \\
+0 & \mbox{ si lo contrario}. \\
 \end{cases}
 \]
 Por lo tanto, OECD es la categoría de referencia. El modelo ajustado es:
@@ -243,4 +243,4 @@ linearHypothesis(mod.UN11, hypothesis.matrix=L)
 ```
 Dado que no se rechaza $H_0$, el efecto del PNB sobre la fertilidad es el mismo para los países Africanos y los de la categoría de otros.
 
-En resumen, a partir del análisis de regresión se tiene que: el efecto del PNB per cápita sobre la fertilidad depende del tipo de país. Para los países miembros de la OECD, no hay un efecto significativo. Sin embaro, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).
+En resumen, a partir del análisis de regresión se tiene que el efecto del PNB per cápita sobre la fertilidad depende del tipo de país. Para los países miembros de la OECD, no hay un efecto significativo. Sin embargo, para los demás países, el efecto es negativo (y no es significativamente diferente para las categorías de África y otros).

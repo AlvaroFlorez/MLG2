@@ -317,7 +317,7 @@ as.data.frame(surgical.all.mods$result)[AIC.order[1:5],c(2:8,10)]
 ```
 Con este críterio se escoge el mismo modelo que con el $R^{2}_{adj}$. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad. 
 
-En la Figura 4.2 muestra los $R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,C$_p$, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o $R^{2}_{pred}$.
+En las Figura 4.1 y 4.2 muestra los $R^{2}$,$R^{2}_{adj}$, $R^{2}_{pred}$,C$_p$, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o $R^{2}_{pred}$.
 
 ```{r surgicalAll, echo=T, fig.height = 5, fig.width = 7,fig.align = "center",fig.cap = "Valores de los criterios de selección calculados para cada uno de todos los posibles modelos.",warning=FALSE,message = FALSE}
 par(mfrow=c(1,2))

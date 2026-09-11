@@ -523,20 +523,28 @@ T.mat = eigen(t(Z)%*%Z)$vectors
 lambda = eigen(t(Z)%*%Z)$values
 lambda
 ```
-Aquí podemos observar que un valor propio es cercano a cero, por lo que lo podemos eliminarlo para remediar el problema de multicolinealidad:
+Aquí podemos observar que un valor propio es cercano a cero, por lo que lo podemos eliminarlo para remediar el problema de multicolinealidad. Ahora ajustamos un modelo para la variable respuesta en función de los tres primeros componentes principales:
 ```{r cementRCP3,echo=T, warning=FALSE,message = FALSE}
 P = Z%*%T.mat
 PCR.cement = lm(y.e~P[,-4]-1)
 summary(PCR.cement)
 ```
-Las estimaciones de los coeficientes $(\bb)$ para las variables escaladas:
+Esto resultados muestran los efectos de los tres componentes principales. Además, estos explican alrededor del 98\% de la variabilidad de la respuesta. Ahora, las estimaciones de los coeficientes $(\bb)$ para las covariables escaladas son:
 ```{r cementRCP4,echo=T, warning=FALSE,message = FALSE}
 beta.CP =T.mat%*%c(PCR.cement$coefficients,0)
 beta.CP
 ```
-La matriz de varianza de $\bb_{r}$ es:
+Aquí podemos ver que las covariables $X_1$ y $X_2$ tienen un efecto positivo sobre la cantidad de calor desprendido por durante el fraguado del cemento. Mientras, que $X_3$ y $X_4$ tienen efectos negativos. Para realizar inferencias sobre los coeficientes debemos calcular la matriz de varianza de $\bb_{r}$. Esta es:
 ```{r cementRCP5,echo=T, warning=FALSE,message = FALSE}
 sigma2.pc = sum(PCR.cement$residuals^2)/(13-4)
 Var.b = sigma2.pc*T.mat%*%diag(c(1/lambda[1:3],0))%*%t(T.mat)
 Var.b
 ```
+Recordemos que podemos expresar las estimaciones de los coeficientes de regresión asociados a las covariables en su escala original $(\bbeta)$ de la siguiente forma:
+\[
+\hatbeta_{j} = \widehat{b}_{j}\left(\frac{\Stotal}{S_{jj}} \right)^{1/2}, j=1,2,\ldots,p-1,
+\]
+y
+\[
+\hatbeta_{0} = \bar{y} - \sum_{j=1}^{p-1} \hatbeta_{j}\bar{x}_{j}.
+\]

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II</title>
   <meta name="description" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 4 Selección de variables | Notas de clase: Modelo lineal general II" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Alvaro J. Flórez" />
 
 
-<meta name="date" content="2025-10-03" />
+<meta name="date" content="2026-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,6 +57,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -152,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#variables-indicadoras"><i class="fa fa-check"></i><b>1.2</b> Variables indicadoras</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categóricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
+<li class="chapter" data-level="1.2.1" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelos-con-covariables-categ%C3%B3ricas"><i class="fa fa-check"></i><b>1.2.1</b> Modelos con covariables categóricas</a></li>
 <li class="chapter" data-level="1.2.2" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-atletas-australianos"><i class="fa fa-check"></i><b>1.2.2</b> Modelo para los datos de atletas australianos</a></li>
 <li class="chapter" data-level="1.2.3" data-path="variables-indicadoras-o-dummies.html"><a href="variables-indicadoras-o-dummies.html#modelo-para-los-datos-de-la-onu"><i class="fa fa-check"></i><b>1.2.3</b> Modelo para los datos de la ONU</a></li>
 </ul></li>
@@ -166,11 +167,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#modelos-polinomiales-1"><i class="fa fa-check"></i><b>2.2</b> Modelos polinomiales</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>2.2.1</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="2.2.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#interpretaci%C3%B3n-de-los-coeficientes"><i class="fa fa-check"></i><b>2.2.1</b> Interpretación de los coeficientes</a></li>
 <li class="chapter" data-level="2.2.2" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#pasteles-1"><i class="fa fa-check"></i><b>2.2.2</b> Pasteles</a></li>
 <li class="chapter" data-level="2.2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#datos-de-boston-1"><i class="fa fa-check"></i><b>2.2.3</b> Datos de Boston</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#regresión-por-segmentos"><i class="fa fa-check"></i><b>2.3</b> Regresión por segmentos</a>
+<li class="chapter" data-level="2.3" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#regresi%C3%B3n-por-segmentos"><i class="fa fa-check"></i><b>2.3</b> Regresión por segmentos</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="modelos-polinomiales.html"><a href="modelos-polinomiales.html#ejemplo"><i class="fa fa-check"></i><b>2.3.1</b> Ejemplo</a></li>
 </ul></li>
@@ -186,16 +187,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#causas-de-la-multicolinealidad"><i class="fa fa-check"></i><b>3.2.1</b> Causas de la multicolinealidad</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#detección-de-multicolinealidad"><i class="fa fa-check"></i><b>3.3</b> Detección de multicolinealidad</a>
+<li class="chapter" data-level="3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#detecci%C3%B3n-de-multicolinealidad"><i class="fa fa-check"></i><b>3.3</b> Detección de multicolinealidad</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#factores-de-inflación-de-varianza"><i class="fa fa-check"></i><b>3.3.1</b> Factores de inflación de varianza</a></li>
+<li class="chapter" data-level="3.3.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#factores-de-inflaci%C3%B3n-de-varianza"><i class="fa fa-check"></i><b>3.3.1</b> Factores de inflación de varianza</a></li>
 <li class="chapter" data-level="3.3.2" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-propios-de-boldsymbol-zboldsymbol-z"><i class="fa fa-check"></i><b>3.3.2</b> Valores propios de <span class="math inline">\(\boldsymbol Z&#39;\boldsymbol Z\)</span></a></li>
 <li class="chapter" data-level="3.3.3" data-path="multicolinealidad.html"><a href="multicolinealidad.html#valores-singulares-de-boldsymbol-z"><i class="fa fa-check"></i><b>3.3.3</b> Valores singulares de <span class="math inline">\(\boldsymbol Z\)</span></a></li>
-<li class="chapter" data-level="3.3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#proporciones-de-descomposición-de-varianza"><i class="fa fa-check"></i><b>3.3.4</b> Proporciones de descomposición de varianza</a></li>
+<li class="chapter" data-level="3.3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#proporciones-de-descomposici%C3%B3n-de-varianza"><i class="fa fa-check"></i><b>3.3.4</b> Proporciones de descomposición de varianza</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento"><i class="fa fa-check"></i><b>3.4</b> Datos de cemento</a></li>
 <li class="chapter" data-level="3.5" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-grasa-corporal"><i class="fa fa-check"></i><b>3.5</b> Datos de grasa corporal</a></li>
-<li class="chapter" data-level="3.6" data-path="multicolinealidad.html"><a href="multicolinealidad.html#solución-al-problema-de-multicolinealidad"><i class="fa fa-check"></i><b>3.6</b> Solución al problema de multicolinealidad</a></li>
+<li class="chapter" data-level="3.6" data-path="multicolinealidad.html"><a href="multicolinealidad.html#soluci%C3%B3n-al-problema-de-multicolinealidad"><i class="fa fa-check"></i><b>3.6</b> Solución al problema de multicolinealidad</a></li>
 <li class="chapter" data-level="3.7" data-path="multicolinealidad.html"><a href="multicolinealidad.html#estimador-de-ridge"><i class="fa fa-check"></i><b>3.7</b> Estimador de ridge</a>
 <ul>
 <li class="chapter" data-level="3.7.1" data-path="multicolinealidad.html"><a href="multicolinealidad.html#datos-de-cemento-1"><i class="fa fa-check"></i><b>3.7.1</b> Datos de cemento</a></li>
@@ -209,31 +210,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplos-3"><i class="fa fa-check"></i><b>4.1</b> Ejemplos</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#unidad-quirúrgica"><i class="fa fa-check"></i><b>4.1.1</b> Unidad quirúrgica</a></li>
+<li class="chapter" data-level="4.1.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#unidad-quir%C3%BArgica"><i class="fa fa-check"></i><b>4.1.1</b> Unidad quirúrgica</a></li>
 <li class="chapter" data-level="4.1.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#grasa-corporal-1"><i class="fa fa-check"></i><b>4.1.2</b> Grasa corporal</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#problema-de-selección-de-variables"><i class="fa fa-check"></i><b>4.2</b> Problema de selección de variables</a>
+<li class="chapter" data-level="4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#problema-de-selecci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>4.2</b> Problema de selección de variables</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#qué-pasa-si-ignoramos-covariables-importantes"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué pasa si ignoramos covariables importantes?</a></li>
+<li class="chapter" data-level="4.2.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#qu%C3%A9-pasa-si-ignoramos-covariables-importantes"><i class="fa fa-check"></i><b>4.2.1</b> ¿Qué pasa si ignoramos covariables importantes?</a></li>
 <li class="chapter" data-level="4.2.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#que-pasa-si-incluimos-covariables-irrelevantes"><i class="fa fa-check"></i><b>4.2.2</b> ¿Que pasa si incluimos covariables irrelevantes?</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#métodos-para-la-selección-de-variables"><i class="fa fa-check"></i><b>4.3</b> Métodos para la selección de variables</a>
+<li class="chapter" data-level="4.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#m%C3%A9todos-para-la-selecci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>4.3</b> Métodos para la selección de variables</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinación"><i class="fa fa-check"></i><b>4.3.1</b> Coeficiente de determinación</a></li>
-<li class="chapter" data-level="4.3.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinación-ajustado"><i class="fa fa-check"></i><b>4.3.2</b> Coeficiente de determinación ajustado</a></li>
+<li class="chapter" data-level="4.3.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinaci%C3%B3n"><i class="fa fa-check"></i><b>4.3.1</b> Coeficiente de determinación</a></li>
+<li class="chapter" data-level="4.3.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#coeficiente-de-determinaci%C3%B3n-ajustado"><i class="fa fa-check"></i><b>4.3.2</b> Coeficiente de determinación ajustado</a></li>
 <li class="chapter" data-level="4.3.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#c_p-de-mallows"><i class="fa fa-check"></i><b>4.3.3</b> C<span class="math inline">\(_p\)</span> de Mallows</a></li>
-<li class="chapter" data-level="4.3.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#estadístico-press"><i class="fa fa-check"></i><b>4.3.4</b> Estadístico PRESS</a></li>
-<li class="chapter" data-level="4.3.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#criterios-de-información"><i class="fa fa-check"></i><b>4.3.5</b> Criterios de información</a></li>
+<li class="chapter" data-level="4.3.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#estad%C3%ADstico-press"><i class="fa fa-check"></i><b>4.3.4</b> Estadístico PRESS</a></li>
+<li class="chapter" data-level="4.3.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#criterios-de-informaci%C3%B3n"><i class="fa fa-check"></i><b>4.3.5</b> Criterios de información</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#comparación-de-los-modelos"><i class="fa fa-check"></i><b>4.4</b> Comparación de los modelos</a>
+<li class="chapter" data-level="4.4" data-path="selección-de-variables.html"><a href="selección-de-variables.html#comparaci%C3%B3n-de-los-modelos"><i class="fa fa-check"></i><b>4.4</b> Comparación de los modelos</a>
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#todos-los-posibles-modelos"><i class="fa fa-check"></i><b>4.4.1</b> Todos los posibles modelos</a></li>
-<li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algorítmos-de-selección"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
+<li class="chapter" data-level="4.4.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#algor%C3%ADtmos-de-selecci%C3%B3n"><i class="fa fa-check"></i><b>4.4.2</b> Algorítmos de selección</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresión-de-lasso"><i class="fa fa-check"></i><b>4.5</b> Regresión de LASSO</a>
+<li class="chapter" data-level="4.5" data-path="selección-de-variables.html"><a href="selección-de-variables.html#regresi%C3%B3n-de-lasso"><i class="fa fa-check"></i><b>4.5</b> Regresión de LASSO</a>
 <ul>
 <li class="chapter" data-level="4.5.1" data-path="selección-de-variables.html"><a href="selección-de-variables.html#datos-de-grasa-corporal-1"><i class="fa fa-check"></i><b>4.5.1</b> Datos de grasa corporal</a></li>
-<li class="chapter" data-level="4.5.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#validación-cruzada"><i class="fa fa-check"></i><b>4.5.2</b> Validación cruzada</a></li>
+<li class="chapter" data-level="4.5.2" data-path="selección-de-variables.html"><a href="selección-de-variables.html#validaci%C3%B3n-cruzada"><i class="fa fa-check"></i><b>4.5.2</b> Validación cruzada</a></li>
 <li class="chapter" data-level="4.5.3" data-path="selección-de-variables.html"><a href="selección-de-variables.html#ejemplo-grasa-corporal"><i class="fa fa-check"></i><b>4.5.3</b> Ejemplo grasa corporal</a></li>
 </ul></li>
 </ul></li>
@@ -247,18 +248,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-1"><i class="fa fa-check"></i><b>5.2</b> Modelos no lineales</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#modelos-no-lineales-linealizables"><i class="fa fa-check"></i><b>5.2.1</b> Modelos no-lineales linealizables</a></li>
-<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimación-de-los-parámetros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
-<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-parámetros"><i class="fa fa-check"></i><b>5.2.3</b> Inferencia sobre los parámetros</a></li>
+<li class="chapter" data-level="5.2.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#estimaci%C3%B3n-de-los-par%C3%A1metros"><i class="fa fa-check"></i><b>5.2.2</b> Estimación de los parámetros</a></li>
+<li class="chapter" data-level="5.2.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#inferencia-sobre-los-par%C3%A1metros"><i class="fa fa-check"></i><b>5.2.3</b> Inferencia sobre los parámetros</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#método-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
+<li class="chapter" data-level="5.3" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#m%C3%A9todo-de-bootstrap"><i class="fa fa-check"></i><b>5.3</b> Método de Bootstrap</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#bootstrap-en-regresión"><i class="fa fa-check"></i><b>5.3.1</b> Bootstrap en regresión</a></li>
+<li class="chapter" data-level="5.3.1" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#bootstrap-en-regresi%C3%B3n"><i class="fa fa-check"></i><b>5.3.1</b> Bootstrap en regresión</a></li>
 <li class="chapter" data-level="5.3.2" data-path="modelos-no-lineales.html"><a href="modelos-no-lineales.html#algunas-consideraciones"><i class="fa fa-check"></i><b>5.3.2</b> Algunas consideraciones</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html"><i class="fa fa-check"></i><b>6</b> Modelo lineal generalizado</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducción-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#introducci%C3%B3n-1"><i class="fa fa-check"></i><b>6.1</b> Introducción</a></li>
 <li class="chapter" data-level="6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#casos-de-estudio"><i class="fa fa-check"></i><b>6.2</b> Casos de estudio</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#mortalidad-de-escarabajos"><i class="fa fa-check"></i><b>6.2.1</b> Mortalidad de escarabajos</a></li>
@@ -267,26 +268,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#preambulo"><i class="fa fa-check"></i><b>6.3</b> Preambulo</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#familia-exponencial"><i class="fa fa-check"></i><b>6.3.1</b> Familia exponencial</a></li>
-<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relación-media-varianza"><i class="fa fa-check"></i><b>6.3.2</b> Relación media-varianza:</a></li>
-<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-máxima-verosimilitud"><i class="fa fa-check"></i><b>6.3.3</b> Estimador de máxima verosimilitud</a></li>
-<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#métodos-iterativos-de-maximización"><i class="fa fa-check"></i><b>6.3.4</b> Métodos iterativos de maximización</a></li>
+<li class="chapter" data-level="6.3.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#relaci%C3%B3n-media-varianza"><i class="fa fa-check"></i><b>6.3.2</b> Relación media-varianza:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-de-m%C3%A1xima-verosimilitud"><i class="fa fa-check"></i><b>6.3.3</b> Estimador de máxima verosimilitud</a></li>
+<li class="chapter" data-level="6.3.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#m%C3%A9todos-iterativos-de-maximizaci%C3%B3n"><i class="fa fa-check"></i><b>6.3.4</b> Métodos iterativos de maximización</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#modelo-lineal-generalizado-glm"><i class="fa fa-check"></i><b>6.4</b> Modelo lineal generalizado (GLM)</a>
 <ul>
 <li class="chapter" data-level="6.4.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#componente-aleatorio"><i class="fa fa-check"></i><b>6.4.1</b> Componente aleatorio</a></li>
 <li class="chapter" data-level="6.4.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#predictor-lineal"><i class="fa fa-check"></i><b>6.4.2</b> Predictor lineal</a></li>
-<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#función-de-enlace"><i class="fa fa-check"></i><b>6.4.3</b> Función de enlace</a></li>
+<li class="chapter" data-level="6.4.3" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#funci%C3%B3n-de-enlace"><i class="fa fa-check"></i><b>6.4.3</b> Función de enlace</a></li>
 <li class="chapter" data-level="6.4.4" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ejemplos-de-glm"><i class="fa fa-check"></i><b>6.4.4</b> Ejemplos de GLM</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#ajuste-de-un-glm"><i class="fa fa-check"></i><b>6.5</b> Ajuste de un GLM</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificación-del-modelo"><i class="fa fa-check"></i><b>6.5.1</b> Especificación del modelo</a></li>
-<li class="chapter" data-level="6.5.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-por-máxima-verosimilitud-para-boldsymbol-beta"><i class="fa fa-check"></i><b>6.5.2</b> Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
+<li class="chapter" data-level="6.5.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#especificaci%C3%B3n-del-modelo"><i class="fa fa-check"></i><b>6.5.1</b> Especificación del modelo</a></li>
+<li class="chapter" data-level="6.5.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#estimador-por-m%C3%A1xima-verosimilitud-para-boldsymbol-beta"><i class="fa fa-check"></i><b>6.5.2</b> Estimador por máxima verosimilitud para <span class="math inline">\(\boldsymbol \beta\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hipótesis"><i class="fa fa-check"></i><b>6.6</b> Pruebas de hipótesis</a>
+<li class="chapter" data-level="6.6" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#pruebas-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>6.6</b> Pruebas de hipótesis</a>
 <ul>
-<li class="chapter" data-level="6.6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-razón-de-verosimilitud"><i class="fa fa-check"></i><b>6.6.1</b> Método de razón de verosimilitud</a></li>
-<li class="chapter" data-level="6.6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#método-de-wald"><i class="fa fa-check"></i><b>6.6.2</b> Método de Wald</a></li>
+<li class="chapter" data-level="6.6.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#m%C3%A9todo-de-raz%C3%B3n-de-verosimilitud"><i class="fa fa-check"></i><b>6.6.1</b> Método de razón de verosimilitud</a></li>
+<li class="chapter" data-level="6.6.2" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#m%C3%A9todo-de-wald"><i class="fa fa-check"></i><b>6.6.2</b> Método de Wald</a></li>
 </ul></li>
 <li class="chapter" data-level="6.7" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#intervalos-de-confianza"><i class="fa fa-check"></i><b>6.7</b> intervalos de confianza</a>
 <ul>
@@ -294,10 +295,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.8" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#devianza"><i class="fa fa-check"></i><b>6.8</b> Devianza</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estadístico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.8.1</b> El estadístico chi-cuadrado de Pearson</a></li>
+<li class="chapter" data-level="6.8.1" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#el-estad%C3%ADstico-chi-cuadrado-de-pearson"><i class="fa fa-check"></i><b>6.8.1</b> El estadístico chi-cuadrado de Pearson</a></li>
 </ul></li>
 <li class="chapter" data-level="6.9" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#bondad-de-ajuste"><i class="fa fa-check"></i><b>6.9</b> Bondad de ajuste</a></li>
-<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selección-de-variables-1"><i class="fa fa-check"></i><b>6.10</b> Selección de variables</a></li>
+<li class="chapter" data-level="6.10" data-path="modelo-lineal-generalizado.html"><a href="modelo-lineal-generalizado.html#selecci%C3%B3n-de-variables-1"><i class="fa fa-check"></i><b>6.10</b> Selección de variables</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="modelo-logístico.html"><a href="modelo-logístico.html"><i class="fa fa-check"></i><b>7</b> Modelo logístico</a>
 <ul>
@@ -305,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#mortalidad-de-escarabajos-1"><i class="fa fa-check"></i><b>7.1.1</b> Mortalidad de escarabajos</a></li>
 <li class="chapter" data-level="7.1.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#bajo-peso-al-nacer"><i class="fa fa-check"></i><b>7.1.2</b> Bajo peso al nacer</a></li>
-<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="7.1.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratolog%C3%ADa"><i class="fa fa-check"></i><b>7.1.3</b> Estudio de teratología</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-agrupados-o-datos-no-agrupados"><i class="fa fa-check"></i><b>7.2</b> Datos agrupados o datos no agrupados</a>
 <ul>
@@ -313,15 +314,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#datos-no-agrupados"><i class="fa fa-check"></i><b>7.2.2</b> Datos no agrupados</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="modelo-logístico.html"><a href="modelo-logístico.html#funciones-de-enlace"><i class="fa fa-check"></i><b>7.3</b> Funciones de enlace</a></li>
-<li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-característica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a></li>
-<li class="chapter" data-level="7.5" data-path="modelo-logístico.html"><a href="modelo-logístico.html#sobredispersión"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a>
+<li class="chapter" data-level="7.4" data-path="modelo-logístico.html"><a href="modelo-logístico.html#curva-caracter%C3%ADstica-operativa-del-receptorroc"><i class="fa fa-check"></i><b>7.4</b> Curva característica operativa del receptor(ROC)</a></li>
+<li class="chapter" data-level="7.5" data-path="modelo-logístico.html"><a href="modelo-logístico.html#sobredispersi%C3%B3n"><i class="fa fa-check"></i><b>7.5</b> Sobredispersión</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#evaluación-de-sobredispersión"><i class="fa fa-check"></i><b>7.5.1</b> Evaluación de sobredispersión</a></li>
+<li class="chapter" data-level="7.5.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#evaluaci%C3%B3n-de-sobredispersi%C3%B3n"><i class="fa fa-check"></i><b>7.5.1</b> Evaluación de sobredispersión</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="modelo-logístico.html"><a href="modelo-logístico.html#distribución-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
+<li class="chapter" data-level="7.6" data-path="modelo-logístico.html"><a href="modelo-logístico.html#distribuci%C3%B3n-beta-binomial"><i class="fa fa-check"></i><b>7.6</b> Distribución beta-binomial</a>
 <ul>
 <li class="chapter" data-level="7.6.1" data-path="modelo-logístico.html"><a href="modelo-logístico.html#modelo-beta-binomial"><i class="fa fa-check"></i><b>7.6.1</b> Modelo beta-binomial</a></li>
-<li class="chapter" data-level="7.6.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratología-1"><i class="fa fa-check"></i><b>7.6.2</b> Estudio de teratología</a></li>
+<li class="chapter" data-level="7.6.2" data-path="modelo-logístico.html"><a href="modelo-logístico.html#estudio-de-teratolog%C3%ADa-1"><i class="fa fa-check"></i><b>7.6.2</b> Estudio de teratología</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html"><i class="fa fa-check"></i><b>8</b> Modelo para conteos</a>
@@ -330,22 +331,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#ataques-de-epilepsia-1"><i class="fa fa-check"></i><b>8.1.1</b> Ataques de epilepsia</a></li>
 <li class="chapter" data-level="8.1.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#muertes-por-enfermedades-cardiovasculares-en-doctores-del-reino-unido"><i class="fa fa-check"></i><b>8.1.2</b> Muertes por enfermedades cardiovasculares en doctores del Reino Unido</a></li>
-<li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
+<li class="chapter" data-level="8.1.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#n%C3%BAmero-de-cangrejos-sat%C3%A9lites"><i class="fa fa-check"></i><b>8.1.3</b> Número de cangrejos satélites</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-poisson"><i class="fa fa-check"></i><b>8.2</b> Modelo Poisson</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-conteo-con-offset"><i class="fa fa-check"></i><b>8.2.1</b> Modelo de conteo con offset</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#sobredispersión-1"><i class="fa fa-check"></i><b>8.3</b> Sobredispersión</a>
+<li class="chapter" data-level="8.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#sobredispersi%C3%B3n-1"><i class="fa fa-check"></i><b>8.3</b> Sobredispersión</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#distribución-binomial-negativa"><i class="fa fa-check"></i><b>8.3.1</b> Distribución binomial negativa</a></li>
+<li class="chapter" data-level="8.3.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#distribuci%C3%B3n-binomial-negativa"><i class="fa fa-check"></i><b>8.3.1</b> Distribución binomial negativa</a></li>
 <li class="chapter" data-level="8.3.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-binomial-negativo"><i class="fa fa-check"></i><b>8.3.2</b> Modelo binomial negativo</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#inflación-de-ceros"><i class="fa fa-check"></i><b>8.4</b> Inflación de ceros</a>
+<li class="chapter" data-level="8.4" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#inflaci%C3%B3n-de-ceros"><i class="fa fa-check"></i><b>8.4</b> Inflación de ceros</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-inflación-de-ceros"><i class="fa fa-check"></i><b>8.4.1</b> Modelo de inflación de ceros</a></li>
+<li class="chapter" data-level="8.4.1" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-de-inflaci%C3%B3n-de-ceros"><i class="fa fa-check"></i><b>8.4.1</b> Modelo de inflación de ceros</a></li>
 <li class="chapter" data-level="8.4.2" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#modelo-hurdle"><i class="fa fa-check"></i><b>8.4.2</b> Modelo Hurdle</a></li>
-<li class="chapter" data-level="8.4.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#número-de-cangrejos-satélites-1"><i class="fa fa-check"></i><b>8.4.3</b> Número de cangrejos satélites</a></li>
+<li class="chapter" data-level="8.4.3" data-path="modelo-para-conteos.html"><a href="modelo-para-conteos.html#n%C3%BAmero-de-cangrejos-sat%C3%A9lites-1"><i class="fa fa-check"></i><b>8.4.3</b> Número de cangrejos satélites</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html"><i class="fa fa-check"></i><b>9</b> Modelo lineal mixto</a>
@@ -356,16 +357,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#capacidad-respiratoria"><i class="fa fa-check"></i><b>9.1.2</b> Capacidad respiratoria</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#datos-por-cluster-correlacionados"><i class="fa fa-check"></i><b>9.2</b> Datos por cluster (correlacionados)</a></li>
-<li class="chapter" data-level="9.3" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#notación"><i class="fa fa-check"></i><b>9.3</b> Notación</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#notaci%C3%B3n"><i class="fa fa-check"></i><b>9.3</b> Notación</a></li>
 <li class="chapter" data-level="9.4" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelos-con-intercepto-aleatorios"><i class="fa fa-check"></i><b>9.4</b> Modelos con intercepto aleatorios</a>
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.4.1</b> Modelo con pendiente aleatoria</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#modelo-lineal-mixto-1"><i class="fa fa-check"></i><b>9.5</b> Modelo lineal mixto</a></li>
-<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-de-los-parámetros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a>
+<li class="chapter" data-level="9.6" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimaci%C3%B3n-de-los-par%C3%A1metros-1"><i class="fa fa-check"></i><b>9.6</b> Estimación de los parámetros</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-intercepto-aleatorio"><i class="fa fa-check"></i><b>9.6.1</b> Estimación del modelo con intercepto aleatorio</a></li>
-<li class="chapter" data-level="9.6.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimación-del-modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.6.2</b> Estimación del modelo con pendiente aleatoria</a></li>
+<li class="chapter" data-level="9.6.1" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimaci%C3%B3n-del-modelo-con-intercepto-aleatorio"><i class="fa fa-check"></i><b>9.6.1</b> Estimación del modelo con intercepto aleatorio</a></li>
+<li class="chapter" data-level="9.6.2" data-path="modelo-lineal-mixto.html"><a href="modelo-lineal-mixto.html#estimaci%C3%B3n-del-modelo-con-pendiente-aleatoria"><i class="fa fa-check"></i><b>9.6.2</b> Estimación del modelo con pendiente aleatoria</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -389,11 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="selección-de-variables" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Capítulo 4</span> Selección de variables<a href="selección-de-variables.html#selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Capítulo 4</span> Selección de variables<a href="selección-de-variables.html#selecci%C3%B3n-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="ejemplos-3" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Ejemplos<a href="selección-de-variables.html#ejemplos-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="unidad-quirúrgica" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Unidad quirúrgica<a href="selección-de-variables.html#unidad-quirúrgica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.1.1</span> Unidad quirúrgica<a href="selección-de-variables.html#unidad-quir%C3%BArgica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una unidad quirúrgica de un hospital está interesada en predecir la supervivencia de los pacientes sometidos a un tipo particular de operación hepática. Se dispuso de una selección aleatoria de <span class="math inline">\(108\)</span> pacientes para el análisis. De cada registro del paciente, se extrajo la siguiente información de la evaluación preoperatoria:</p>
 <ul>
 <li><p><code>bcs</code>: coagulación sanguínea.</p></li>
@@ -512,7 +513,7 @@ El ajuste del modelo es:</p>
 </div>
 </div>
 <div id="problema-de-selección-de-variables" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Problema de selección de variables<a href="selección-de-variables.html#problema-de-selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.2</span> Problema de selección de variables<a href="selección-de-variables.html#problema-de-selecci%C3%B3n-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En problemas de regresión se tiene un conjunto grande de potenciales covariables. Si ajustamos un modelo considerandolas todas podemos estar incluyendo covariables que son irrelevante. Por el otro lado, si no las incluimos todas es posible que estemos omitiendo covariables importantes. En ambos casos hay consecuencias negativas.</p>
 <p>Para illustrar esto, considere el siguiente modelo:
 <span class="math display" id="eq:modelogral">\[\begin{equation}
@@ -530,7 +531,7 @@ donde <span class="math inline">\(\boldsymbol x_{1i} = (1,x_{1i},x_{2i},\ldots,x
 \]</span>
 donde <span class="math inline">\(\boldsymbol X_{1}\)</span> es una matriz <span class="math inline">\(n \times r\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{1i}\)</span> y <span class="math inline">\(\boldsymbol X_{2}\)</span> es una matriz <span class="math inline">\(n \times (p-r-1)\)</span> con la <span class="math inline">\(i\)</span>-ésima fila igual a <span class="math inline">\(\boldsymbol x_{2i}\)</span>.</p>
 <div id="qué-pasa-si-ignoramos-covariables-importantes" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> ¿Qué pasa si ignoramos covariables importantes?<a href="selección-de-variables.html#qué-pasa-si-ignoramos-covariables-importantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.2.1</span> ¿Qué pasa si ignoramos covariables importantes?<a href="selección-de-variables.html#qu%C3%A9-pasa-si-ignoramos-covariables-importantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ahora, considere que el modelo generador de datos es <a href="selección-de-variables.html#eq:modelogral">(4.2)</a>, pero decidimos estimar:
 <span class="math display">\[
 y_{i} = \boldsymbol x_{1i}&#39;\boldsymbol \beta_1 + \varepsilon_i.
@@ -606,11 +607,11 @@ En conclusión:</p>
 </div>
 </div>
 <div id="métodos-para-la-selección-de-variables" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Métodos para la selección de variables<a href="selección-de-variables.html#métodos-para-la-selección-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.3</span> Métodos para la selección de variables<a href="selección-de-variables.html#m%C3%A9todos-para-la-selecci%C3%B3n-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Si tenemos <span class="math inline">\((p-1)\)</span> covariables, entonces hay <span class="math inline">\(2^{(p-1)}\)</span> modelos posibles. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.</p>
 <p>Existen varios criterios para determinar que modelo es “mejor” que otro y este debe escogerse teniendo en cuenta cuál es el objetivo que se tiene al ajustar el modelo (descripción de la relación, predicción, control, etc.). Algunos de estos criterios son el coeficiente de determinación (<span class="math inline">\(R^{2}\)</span> y <span class="math inline">\(R^{2}_{adj}\)</span>), el estadístico <span class="math inline">\(C_{p}\)</span> de Mallows, el estadístico PRESS y el <span class="math inline">\(R^{2}\)</span> de predicción, los criterios de información (AIC y BIC).</p>
 <div id="coeficiente-de-determinación" class="section level3 hasAnchor" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Coeficiente de determinación<a href="selección-de-variables.html#coeficiente-de-determinación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.3.1</span> Coeficiente de determinación<a href="selección-de-variables.html#coeficiente-de-determinaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Esté indicador está definido como:
 <span class="math display">\[
 R^{2} = \frac{SS_{\mbox{reg}}}{SS_{\mbox{T}}} = 1 - \frac{SS_{\mbox{res}}}{SS_{\mbox{T}}}.
@@ -618,7 +619,7 @@ R^{2} = \frac{SS_{\mbox{reg}}}{SS_{\mbox{T}}} = 1 - \frac{SS_{\mbox{res}}}{SS_{\
 El <span class="math inline">\(R^{2}\)</span> cuantifica la cantidad de variabilidad de la variable respuesta que es explicada por el modelo. Se tiene que <span class="math inline">\(0 \leq R^{2} \leq 1\)</span>. Valores más cercanos a <span class="math inline">\(1\)</span> implican que el modelo explica gran parte de la variabilidad de <span class="math inline">\(y\)</span>. Hay que tener en cuenta que el <span class="math inline">\(R^{2}\)</span> siempre crece a medida que se adicionan más covariables al modelo. Por lo tanto, se puede puede agregar regresores hasta el punto en que una covariable adicional no propociona un aumento considerable en el <span class="math inline">\(R^{2}\)</span>.</p>
 </div>
 <div id="coeficiente-de-determinación-ajustado" class="section level3 hasAnchor" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Coeficiente de determinación ajustado<a href="selección-de-variables.html#coeficiente-de-determinación-ajustado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.3.2</span> Coeficiente de determinación ajustado<a href="selección-de-variables.html#coeficiente-de-determinaci%C3%B3n-ajustado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para evitar el incoviente del <span class="math inline">\(R^{2}\)</span>, se puede utlizar el el coeficiente de determinación ajustado definido como:
 <span class="math display">\[
 R^{2}_{adj} = 1 - \frac{n-1}{n-p}\frac{SS_{\mbox{res}}}{SS_{\mbox{T}}} = 1- \frac{MS_{\mbox{res}}}{SS_{\mbox{T}}/(n-1)} = 1- \frac{n-1}{n-p}(1-R^{2}).
@@ -652,7 +653,7 @@ E[C_{p}| \mbox{Sesgo}=0] = \frac{(n-p)\sigma^{2}}{\sigma^{2}} - n +2p = p.
 Si el modelo propuesto es insesgado se espera que el <span class="math inline">\(C_p\)</span> esté cercano a <span class="math inline">\(p\)</span>. Aunque se espera que el <span class="math inline">\(C_p=p\)</span>, es deseable que <span class="math inline">\(C_p &lt; p\)</span>. Por lo tanto, modelos con valores pequeños de <span class="math inline">\(C_p\)</span> son mejores.</p>
 </div>
 <div id="estadístico-press" class="section level3 hasAnchor" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Estadístico PRESS<a href="selección-de-variables.html#estadístico-press" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.3.4</span> Estadístico PRESS<a href="selección-de-variables.html#estad%C3%ADstico-press" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El estadístico PRESS (prediction error sum of squares) está definido como:
 <span class="math display">\[
 \mbox{PRESS} = \sum_{i=1}^{n} (y_{i} - \widehat{y}_{(i)})^{2} = \sum_{i=1}^{n} \left( \frac{e_{i}}{1-h_{ii}} \right)^{2}.
@@ -664,7 +665,7 @@ R^{2}_{pred} = 1 - \frac{PRESS}{SST}.
 Basado en este criterio, mayor es el valor de <span class="math inline">\(R^{2}_{pred}\)</span> mejor es el modelo para hacer predicciones. La ventaja del PRESS y <span class="math inline">\(R_{pred}^{2}\)</span> es que evitan el sobreajuste dado que se calculan utilizando observaciones no incluidas en la estimación del modelo.</p>
 </div>
 <div id="criterios-de-información" class="section level3 hasAnchor" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Criterios de información<a href="selección-de-variables.html#criterios-de-información" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.3.5</span> Criterios de información<a href="selección-de-variables.html#criterios-de-informaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La idea es comparar modelos estimados teniendo en cuenta la bondad de ajuste del modelo (verosimilitud, <span class="math inline">\(L\)</span>) y su complejidad (número de parámetros). El criterio de información de Akaike está definido como:
 <span class="math display">\[
 \mbox{AIC} = -2\log (L) + 2p.
@@ -690,48 +691,48 @@ Hay varias adaptaciones de estos criterios de información definiendo diferentes
 </div>
 </div>
 <div id="comparación-de-los-modelos" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Comparación de los modelos<a href="selección-de-variables.html#comparación-de-los-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.4</span> Comparación de los modelos<a href="selección-de-variables.html#comparaci%C3%B3n-de-los-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="todos-los-posibles-modelos" class="section level3 hasAnchor" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> Todos los posibles modelos<a href="selección-de-variables.html#todos-los-posibles-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con la función <code>ols_step_all_possible()</code> de la librería <code>olsrr</code> es posible ajustar todos posibles modelos y determinar el mejor bajo diferentes criterios. Otra alternativa es la función <code>regsubsets()</code> de la librería <code>leaps</code>. Está función es más rápida (se basa en un algoritmo más eficiente), pero no es user-friendly.</p>
 <div id="datos-de-unidad-quirúrgica" class="section level4 hasAnchor" number="4.4.1.1">
-<h4><span class="header-section-number">4.4.1.1</span> Datos de unidad quirúrgica<a href="selección-de-variables.html#datos-de-unidad-quirúrgica" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.4.1.1</span> Datos de unidad quirúrgica<a href="selección-de-variables.html#datos-de-unidad-quir%C3%BArgica" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A través de la función <code>ols_step_all_possible</code> podemos ajustar los <span class="math inline">\(255\)</span> modelos que se pueden ajustar usando las ocho posibles covariables:</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="selección-de-variables.html#cb75-1" tabindex="-1"></a>surgical.all.mods<span class="ot">=</span><span class="fu">ols_step_all_possible</span>(mod.surgical.completo)</span></code></pre></div>
 <p>Además de ajustar los modelos, se calculan varios criterios (<span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,AIC,BIC,…) para cada uno de ellos.</p>
 <p>Puesto que son muchos modelos, podemos organizar los resultados de tal forma que obtengamos los mejores modelos basándonos en cada uno de los criterios. Por ejemplo, los 5 mejores ajustes según el <span class="math inline">\(R^{2}_{adj}\)</span> son:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="selección-de-variables.html#cb76-1" tabindex="-1"></a>R2adj.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>result<span class="sc">$</span>adjr,<span class="at">decreasing =</span> T)</span>
 <span id="cb76-2"><a href="selección-de-variables.html#cb76-2" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods<span class="sc">$</span>result)[R2adj.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                             predictors   rsquare
-## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664
-## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095
-## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622
-## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412
-## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522
-##          adjr      rmse   predrsq       cp      sbic
-## 226 0.8234834 0.1926586 0.7836037 5.772458 -159.4064
-## 251 0.8225761 0.1910872 0.7806940 7.028837 -157.6344
-## 171 0.8205312 0.1963187 0.7827597 5.528174 -160.2288
-## 248 0.8198474 0.1925510 0.7749807 7.721367 -157.0871
-## 169 0.8187535 0.1972887 0.7862369 5.998959 -159.8244</code></pre>
+<pre><code>##     n                                             predictors   rsquare      adjr      rmse   predrsq       cp
+## 226 6            bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.1926586 0.7836037 5.772458
+## 251 7    bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.1910872 0.7806940 7.028837
+## 171 5                bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.1963187 0.7827597 5.528174
+## 248 7 bcs pindex enzyme_test liver_test age gender alc_heavy 0.8436412 0.8198474 0.1925510 0.7749807 7.721367
+## 169 5                   bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.1972887 0.7862369 5.998959
+##          sbic
+## 226 -159.4064
+## 251 -157.6344
+## 171 -160.2288
+## 248 -157.0871
+## 169 -159.8244</code></pre>
 <p>Basándonos en este criterio el mejor ajuste se obtiene considerando las covariables <code>bcs</code>, <code>pindex</code>, <code>enzyme_test</code>, <code>age</code>, <code>gender</code>, y <code>alc_heavy</code>. Es decir, eliminando las covariables función hepática y consumo de alcohol moderado. Note que no todos los demás críterios sugieren el mismo modelo. Si eliminamos las covariables <code>gender</code> obtenemos un modelo con un <span class="math inline">\(R^{2}_{pred}\)</span> más alto.</p>
 <p>Ahora, si nos apoyamos en el AIC, los mejores 5 ajustes son:</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="selección-de-variables.html#cb78-1" tabindex="-1"></a>AIC.order <span class="ot">=</span> <span class="fu">order</span>(surgical.all.mods<span class="sc">$</span>result<span class="sc">$</span>aic,<span class="at">decreasing =</span> F)</span>
 <span id="cb78-2"><a href="selección-de-variables.html#cb78-2" tabindex="-1"></a><span class="fu">as.data.frame</span>(surgical.all.mods<span class="sc">$</span>result)[AIC.order[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">10</span>)]</span></code></pre></div>
-<pre><code>##     n                                          predictors   rsquare      adjr
-## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834
-## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312
-## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345
-## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535
-## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761
-##          rmse   predrsq       cp      sbic
-## 226 0.1926586 0.7836037 5.772458 -159.4064
-## 171 0.1963187 0.7827597 5.528174 -160.2288
-## 97  0.2008227 0.7862922 5.733992 -160.5329
-## 169 0.1972887 0.7862369 5.998959 -159.8244
-## 251 0.1910872 0.7806940 7.028837 -157.6344</code></pre>
+<pre><code>##     n                                          predictors   rsquare      adjr      rmse   predrsq       cp
+## 226 6         bcs pindex enzyme_test age gender alc_heavy 0.8434664 0.8234834 0.1926586 0.7836037 5.772458
+## 171 5             bcs pindex enzyme_test gender alc_heavy 0.8374622 0.8205312 0.1963187 0.7827597 5.528174
+## 97  4                    bcs pindex enzyme_test alc_heavy 0.8299187 0.8160345 0.2008227 0.7862922 5.733992
+## 169 5                bcs pindex enzyme_test age alc_heavy 0.8358522 0.8187535 0.1972887 0.7862369 5.998959
+## 251 7 bcs pindex enzyme_test age gender alc_mod alc_heavy 0.8460095 0.8225761 0.1910872 0.7806940 7.028837
+##          sbic
+## 226 -159.4064
+## 171 -160.2288
+## 97  -160.5329
+## 169 -159.8244
+## 251 -157.6344</code></pre>
 <p>Con este críterio se escoge el mismo modelo que con el <span class="math inline">\(R^{2}_{adj}\)</span>. Sin embargo, podemos observar que el BIC sugiere eliminar la covariable asociada a la edad.</p>
-<p>En la Figura 4.2 muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^{2}_{pred}\)</span>.</p>
+<p>En las Figura 4.1 y 4.2 muestra los <span class="math inline">\(R^{2}\)</span>,<span class="math inline">\(R^{2}_{adj}\)</span>, <span class="math inline">\(R^{2}_{pred}\)</span>,C<span class="math inline">\(_p\)</span>, AIC y BIC (SBC) para todos los posibles ajustes. Note que, dentro de cada subgrupo de modelos (determinado por el número de covariables), los criterios eligen los modelos en el mismo orden. La diferencia está en el número de covariables a elegir. Generalmente, el BIC prefiere modelos más parsimoniosos. Esto no ocurre con criterios de validación cruzada, como el PRESS o <span class="math inline">\(R^{2}_{pred}\)</span>.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="selección-de-variables.html#cb80-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb80-2"><a href="selección-de-variables.html#cb80-2" tabindex="-1"></a><span class="fu">plot</span>(surgical.all.mods)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:surgicalAll-1"></span>
@@ -787,25 +788,25 @@ Figure 4.2: Valores de los criterios de selección calculados para cada uno de t
 </div>
 </div>
 <div id="algorítmos-de-selección" class="section level3 hasAnchor" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Algorítmos de selección<a href="selección-de-variables.html#algorítmos-de-selección" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.4.2</span> Algorítmos de selección<a href="selección-de-variables.html#algor%C3%ADtmos-de-selecci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para el proceso de selección, la mejor opción es evaluar todos los posibles modelos. Sin embargo, en la presencia de muchas posibles covariables este proceso puede requerir una carga computacional muy alta. Por esta razón, se han desarrollado varios algoritmos para evaluar solo un subconjunto de modelos agregando o eliminando covariables una a la vez.</p>
 <div id="selección-hacia-delante-forward-selection" class="section level4 hasAnchor" number="4.4.2.1">
-<h4><span class="header-section-number">4.4.2.1</span> Selección hacia delante (forward selection)<a href="selección-de-variables.html#selección-hacia-delante-forward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.4.2.1</span> Selección hacia delante (forward selection)<a href="selección-de-variables.html#selecci%C3%B3n-hacia-delante-forward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Este algoritmo parte del modelo sin ninguna covariable (es decir, solo el intercepto) y el ajuste ``óptimo’’ se encuentra ingresando covariables una a la vez basándose en algún criterio (por ejemplo AIC).</p>
 <p>La primera covariable se escoge luego de ajustar los <span class="math inline">\((p-1)\)</span> modelos simples con cada uno de los regresores. Por ejemplo, seleccionado la covariable que proporciona el mejor AIC.</p>
 <p>Luego se ajustan los modelos combinando la covariable previamente seleccionada con cada una de los restantes <span class="math inline">\((p-2)\)</span> regresores. Si el mejor ajuste con dos covariables proporcina un menor AIC que en el paso anterior, continuamos seleccionando la tercer covariable de la misma forma.</p>
 <p>El algoritmo continua seleccionando covariables hasta que se satisface un criterio de parada (por ejemplo, hasta que el AIC aumente).</p>
 </div>
 <div id="selección-hacia-atrás-backward-selection" class="section level4 hasAnchor" number="4.4.2.2">
-<h4><span class="header-section-number">4.4.2.2</span> Selección hacia atrás (backward selection)<a href="selección-de-variables.html#selección-hacia-atrás-backward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.4.2.2</span> Selección hacia atrás (backward selection)<a href="selección-de-variables.html#selecci%C3%B3n-hacia-atr%C3%A1s-backward-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Aquí se empieza evaluando el modelo con todas las covariables candidatas y se van eliminando covariables una a una hasta que un criterio de parada se satisface (por ejemplo, hasta que el AIC aumenta).</p>
 </div>
 <div id="selección-por-segmentos-stepwise-selection" class="section level4 hasAnchor" number="4.4.2.3">
-<h4><span class="header-section-number">4.4.2.3</span> Selección por segmentos (stepwise selection)<a href="selección-de-variables.html#selección-por-segmentos-stepwise-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.4.2.3</span> Selección por segmentos (stepwise selection)<a href="selección-de-variables.html#selecci%C3%B3n-por-segmentos-stepwise-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Aquí se siguen los mismos pasos que la selección hacia delante. Pero en cada paso se evalúan de nuevo los candidatos que ya habían ingresado en el modelo. Por lo tanto, una covariable que ya esté en el modelo puede ser eliminada en algún paso posterior.</p>
 </div>
 <div id="unidad-quirúrgica-1" class="section level4 hasAnchor" number="4.4.2.4">
-<h4><span class="header-section-number">4.4.2.4</span> Unidad quirúrgica<a href="selección-de-variables.html#unidad-quirúrgica-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.4.2.4</span> Unidad quirúrgica<a href="selección-de-variables.html#unidad-quir%C3%BArgica-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Consideremos el modelo anterior adicionando las interacciones de las covariables continuas con las categóricas:
 <span class="math display">\[\begin{equation}
 \begin{split}
@@ -1032,7 +1033,7 @@ Con este algoritmo no se considera la edad del paciente pero si la función hep�
 </div>
 </div>
 <div id="regresión-de-lasso" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Regresión de LASSO<a href="selección-de-variables.html#regresión-de-lasso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">4.5</span> Regresión de LASSO<a href="selección-de-variables.html#regresi%C3%B3n-de-lasso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Otra alternativa para encontrar las variables relevantes es a través del estimador de LASSO (Least Absolute Selection and Shrinkage Operator). Este es un método de regularización que se implementa se tiene cientos de covariables disponibles y se cree que pocas tienen un aporte relevante (<em>sparsity principle</em>). Por ejemplo, en estudios de genética se tienen miles de genes disponibles pero solo unos pocos son activos para una mutación de interés.</p>
 <p>Aquí se asume el modelo de regresión usual, donde:
 <span class="math display">\[
@@ -1080,7 +1081,7 @@ Figure 4.4: Datos de grasa corporal. Estimación de los coeficientes de regresi�
 <p>La pregunta sería que valor de <span class="math inline">\(\lambda\)</span> se debe seleccionar para determinar los coeficientes que son diferentes de cero. Una alternativa que tenemos para ello es por medio de validación cruzada.</p>
 </div>
 <div id="validación-cruzada" class="section level3 hasAnchor" number="4.5.2">
-<h3><span class="header-section-number">4.5.2</span> Validación cruzada<a href="selección-de-variables.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.5.2</span> Validación cruzada<a href="selección-de-variables.html#validaci%C3%B3n-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La validación cruzada (CV) es un método general para evaluar que tan bueno es un modelo para predecir observaciones futuras de la población objetivo del estudio. La idea es dividir la muestra en dos grupos:</p>
 <ul>
 <li><strong>(1) Entrenamiento:</strong> se usa para ajusta el modelo.</li>
