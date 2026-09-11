@@ -468,9 +468,9 @@ Figure 2.6: Valor esperado de <span class="math inline">\(Y\)</span> en un model
 <p>La selección del orden puede hacerse de dos formas. (1) <strong>Hacia delante</strong>: empezar con un modelo de orden <span class="math inline">\(1\)</span> e incrementar el orden uno a uno hasta que un término mayor ya no sea significativo. <strong>Hacia atrás:</strong> empezar con el modelo más complejo y eliminar los términos mayores uno a uno hasta que todos sean significativos.</p>
 <p><strong>Extrapolación</strong>: La extrapolación con modelos polinomiales puede ser muy peligrosa. Por ejemplo en la Figura <a href="modelos-polinomiales.html#fig:extrapolacion">2.7</a> podemos ajustar un modelo de orden dos a los datos (linea negra). Si hacemos una predicción fuera del rango de los datos, el valor esperado predicho sigue el comportamiento cuadrático propuesto. Sin embargo, el valor esperado de <span class="math inline">\(Y\)</span> puede seguir un comportamiento diferente (linea roja discontinua). Lo que lleva a tener una predicción sesgada.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:extrapolacion"></span>
-<img src="MLG2_files/figure-html/extrapolacion-1.png" alt="Problema de extrapolación." width="576" />
+<img src="MLG2_files/figure-html/extrapolacion-1.png" alt="Problema de extrapolación al estimar un modelo polinomial." width="576" />
 <p class="caption">
-Figure 2.7: Problema de extrapolación.
+Figure 2.7: Problema de extrapolación al estimar un modelo polinomial.
 </p>
 </div>
 <p><strong>Multicolinealidad</strong>: Al aumentar el polinomio, la matriz <span class="math inline">\(\boldsymbol X&#39;\boldsymbol X\)</span> se vuelve mal acondicionada. Es decir, las estimaciones pueden ser inestables y los errores estándar se inflan. Este problema se puede solucionar centrando las covariables. Por ejemplo en un modelo de orden 2:
