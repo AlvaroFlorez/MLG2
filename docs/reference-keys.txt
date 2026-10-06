@@ -28,6 +28,8 @@ fig:CementTrazaRidge
 fig:cementridge3
 eq:modeloFat
 eq:modelogral
+eq:PE1
+eq:PE2
 fig:surgicalAll-1
 fig:surgicalAll-2
 eq:SSLASSO
@@ -114,7 +116,9 @@ ejemplos-3
 unidad-quirúrgica
 grasa-corporal-1
 problema-de-selección-de-variables
+error-de-predicción
 qué-pasa-si-ignoramos-covariables-importantes
+qué-pasa-si-ignoramos-covariables-importantes-1
 que-pasa-si-incluimos-covariables-irrelevantes
 métodos-para-la-selección-de-variables
 coeficiente-de-determinación

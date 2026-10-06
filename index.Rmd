@@ -26,6 +26,7 @@ header-includes:
   - \newcommand{\bC}{\boldsymbol C}
   - \newcommand{\bD}{\boldsymbol D}
   - \newcommand{\be}{\boldsymbol e}
+  - \newcommand{\bh}{\boldsymbol h}
   - \newcommand{\bH}{\boldsymbol H}
   - \newcommand{\bI}{\boldsymbol I}
   - \newcommand{\bl}{\boldsymbol l}

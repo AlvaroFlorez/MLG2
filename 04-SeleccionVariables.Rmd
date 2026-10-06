@@ -111,9 +111,59 @@ summary(mod.fat)
 ```
 
 ## Problema de selección de variables
-En problemas de regresión se tiene un conjunto grande de potenciales covariables. Si ajustamos un modelo considerandolas todas podemos estar incluyendo covariables que son irrelevante. Por el otro lado, si no las incluimos todas es posible que estemos omitiendo covariables importantes. En ambos casos hay consecuencias negativas.
+En problemas de regresión se tiene un conjunto grande de potenciales covariables. Si ajustamos un modelo considerando a todas podemos estar incluyendo covariables que son irrelevante. Por el otro lado, si no las incluimos todas es posible que estemos omitiendo covariables importantes. En ambos casos hay consecuencias negativas.
 
-Para illustrar esto, considere el siguiente modelo:
+### Error de predicción
+Sea $\bY \sim N(\bmu,\sigma^2)$ la variable respuesta. Se toma una muestra $(Y_1,\bx_1'), \ldots, (Y_n,\bx_n')$ para ajustar el siguiente modelo:
+\[
+y_i = \bx'\bbeta + \varepsilon_i,
+\]
+donde $\bvarepsi = (\varepsilon_1, \ldots,\varepsilon_n)' \sim N(\bZERO, \sigma^{2}\bI)$. Por lo que $\hatbbeta = (\bX'\bX)^{-1}\bX'\by$.
+
+Ahora, se quiere hacer predicciones en los puntos: $(Y_{01},\bx_{01}'), \ldots, (Y_{0m},\bx_{0m}')$. Entonces, la estimación puntual es $\haty_{0i} = \bx_{0i}'\hatbbeta$.
+
+La suma de cuadrados de las predicciones es:
+\begin{equation}
+\begin{split}
+\sum_{i=1}^{m}\left(\bY_{0i} - \bx_{0i}'\hatbbeta\right)^{2} &= (\bY_0 - \bX_0\hatbbeta)'(\bY_0 - \bX_0\hatbbeta) = || \bY_0 - \bX_0\hatbbeta ||^{2}
+= || \bY_0 - \bmu_0 + \bmu_0 - \bX_0\hatbbeta ||^{2} \\  &= || \bY_0 - \bmu_0 ||^2 + || \bmu_0 - \bX_0\hatbbeta ||^2 +  2(\bY_0 - \bmu_0)'(\bmu_0 - \bX_0\hatbbeta).
+\end{split}
+\nonumber
+\end{equation}
+El valor esperado de la expresión anterior es llamado el error de predicción (PE):
+\begin{equation}
+\begin{split}
+PE =& E_{\bY_0} \left[|| \bY_0 -  \bX_0\hatbbeta ||^{2} \right] = E_{\bY_0} \left[|| \bY_0 - \bmu_0 ||^{2} \right] + || \bmu_0 - \bX_0\hatbbeta ||^2 = m\sigma^2 + || \bmu_0 - \bX_0\hatbbeta ||^2 \\ =& m\sigma^2 + ME,
+\end{split}
+\nonumber
+\end{equation}
+donde ME es llamado error del modelo. Note que el valor esperado del producto cruzado es igual a cero:
+$$
+E_{\bY_0}[(\bY_0 - \bmu_0)'(\bmu_0 - \bX_0\hatbbeta)] = [E_{\bY_0}(\bY_0) - \bmu_0]'(\bmu_0 - \bX_0\hatbbeta) = (\bmu_0 - \bmu_0)'(\bmu_0 - \bX_0\hatbbeta)  = 0.
+$$
+Ahora, asumamos queremos hacer las estimaciones en los mismos puntos donde se observaron los datos, esto es $\bX_0 = \bX$. Lo que implica que, $\bmu_0 = \bmu$ y $m=n$. Además:
+\begin{equation}
+\begin{split}
+ME =& || \bmu - \bX\hatbbeta ||^{2} = || \bmu - \bH\bY ||^{2} =  || \bmu - \bH(\bmu + \bvarepsi) ||^{2} = 
+|| (\bI - \bH)\bmu - \bH\bvarepsi ||^{2}  \\
+=& || (\bI - \bH)\bmu ||^{2} + || \bH\bvarepsi ||^{2} - 2 \bmu'(\bI-\bH)\bH \bvarepsi = 
+    \bmu'(\bI - \bH)\bmu + \bvarepsi'\bH\bvarepsi.
+\end{split}
+\nonumber
+\end{equation}
+Ahora su valor esperado es:
+\[
+E(ME) = \bmu'(\bI - \bH)\bmu + E( \bvarepsi'\bH\bvarepsi) = \bmu'(\bI - \bH)\bmu +  \sigma^2 \tr \bH = \bmu'(\bI - \bH)\bmu + \sigma^2 p.
+\]
+El primer término se llama el sesgo total y el segundo la varianza total. Además, el error de predicción cuando $\bX_0 = \bX$ es:
+$$
+E(PE) = \bmu'(\bI - \bH)\bmu + (n+p)\sigma^2.
+$$
+Aquí podemos observar que, si el modelo está bien especificado $(\bmu = \bX\bbeta)$ entonces el sesgo total es igual cero. También que la varianza total aumenta con el número de covariables que tiene el modelo.
+
+
+#### ¿Qué pasa si ignoramos covariables importantes?
+Para ilustrar esto, considere el siguiente modelo:
 \begin{equation}
 \begin{split}
 y_{i} &= \beta_{0} + \sum_{j=1}^{p-1}\beta_{j}x_{ij} + \varepsilon_{i} \\
@@ -130,8 +180,8 @@ En forma matricial, el modelo es:
 \]
 donde $\bX_{1}$ es una matriz $n \times r$ con la $i$-ésima fila igual a $\bx_{1i}$ y $\bX_{2}$ es una matriz $n \times (p-r-1)$ con la $i$-ésima fila igual a $\bx_{2i}$.
 
-### ¿Qué pasa si ignoramos covariables importantes?
-Ahora, considere que el modelo generador de datos es \@ref(eq:modelogral), pero decidimos estimar:
+#### ¿Qué pasa si ignoramos covariables importantes?
+Ahora, considere que el modelo real de la variable respuesta es \@ref(eq:modelogral), pero decidimos estimar:
 $$
 y_{i} = \bx_{1i}'\bbeta_1 + \varepsilon_i.
 $$
@@ -139,7 +189,18 @@ Es decir, estamos omitiendo $\bx_{2i}$ del modelo (puesto que $\bbeta_2 \neq 0$,
 $$
 \hatbbeta_{1} = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by.
 $$
-De aquí tenemos que $E(\hatbbeta_{1}) = \bbeta_{1} + (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2}$. Es decir que $\hatbbeta_{1}$ es un estimador sesgado, a menos que  $\bX_{1}'\bX_{2} = \bZERO$ (las columnas de $X_{1}$ son ortogonales a las columnas de $X_{2}$). 
+De aquí tenemos que 
+\begin{equation}
+\begin{split}
+E(\hatbbeta_{1}) &= E[(\bX_{1}'\bX_{1})^{-1}\bX_{1}'\by] = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'E(\by) = (\bX_{1}'\bX_{1})^{-1}\bX_{1}'(\bX_1\bbeta_1 + \bX_2\bbeta_2) \\ &=
+\bbeta_{1} + (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2} = \bbeta_1 + \bL\bbeta_2.
+\end{split}
+\nonumber
+\end{equation}
+
+Es decir que $\hatbbeta_{1}$ es un estimador sesgado, a menos que  $\bX_{1}'\bX_{2} = \bZERO$ (las columnas de $\bX_{1}$ son ortogonales a las columnas de $\bX_{2}$).
+
+$E(\hatbbeta_{1}) = \bbeta_{1} + (\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_{2}\bbeta_{2}$. Es decir que $\hatbbeta_{1}$ es un estimador sesgado, a menos que  $\bX_{1}'\bX_{2} = \bZERO$ (las columnas de $X_{1}$ son ortogonales a las columnas de $X_{2}$). 
 
 De igual forma, las predicciones también serán sesgadas. La predicción en el punto $\bx_{01}$ es:
 $$
@@ -151,7 +212,23 @@ E(\haty_{0}) = \bx_{01}'\bbeta_{1} + \bx_{01}'(\bX_{1}'\bX_{1})^{-1}\bX_{1}'\bX_
 $$
 Por lo tanto, si omitimos variables relevantes obtenemos sesgo en las estimaciones.
 
-### ¿Que pasa si incluimos covariables irrelevantes?
+Ahora veamos el efecto sobre el valor esperado del PE. Si $m=1$ (predicción en el punto $\bx' = (\bx_1',\bx_2')$) tenemos que:
+$$
+E(PE) = \sigma^2 + E[ (\bx_1'\hatbbeta_1  - \bx'\bbeta)^2 ] = \sigma^2 + V(\bx_1'\hatbbeta_1) + [\bx_1' E(\hatbbeta_1) - \bx'\bbeta ]^2.
+$$
+Ahora, dado que $\hatbbeta_1 = \bbeta_1 + \bL\bbeta_2$:
+$$
+\bx_1' E(\hatbbeta_1) - \bx'\bbeta =  \bx_1' (\bbeta_1 + \bL\bbeta_2)  - \bx_1'\bbeta_1 - \bx_2'\bbeta_2  = \bx_1'\bL\bbeta_2   - \bx_2'\bbeta_2  =(\bx_1'\bL  - \bx_2')\bbeta_2.
+$$
+Por lo que:
+\begin{equation}
+E(PE) =  \sigma^2 + \sigma^2\bx_1'(\bX_1'\bX_1)^{-1}\bx_1 + [ (\bL'\bx_1 + \bx_2)'\bbeta_2 ]^2 = \sigma^2(1 + \bx_1'(\bX_1'\bX_1)^{-1}\bx_1) + [ \bh'\bbeta_2 ]^2 ,
+(\#eq:PE1)
+\end{equation}
+
+donde $\bh = \bL'\bx_1 + \bx_2$.
+
+#### ¿Que pasa si incluimos covariables irrelevantes?
 Ahora, consideremos el caso en que $\bbeta_2=0$, es decir, las covariables $\bx_{2}$ no tienen un aporte significativo en el modelo. Pero decidimos estimar el modelo completo.
 
 En este caso, el estimador de $\bbeta$ es:
@@ -201,12 +278,37 @@ E(\haty_{0}) = E(\bx_{0}'\hatbbeta) = (\bx_{01}' \ \bx_{02}')\begin{pmatrix}
 \bbeta_{1} \\ \bZERO
 \end{pmatrix} = \bx_{01}'\bbeta_{1}.
 $$
-En conclusión:
 
-- Cuando omitimos covariables relevantes, obtenemos sesgos en las estimaciones.
+Ahora veamos el efecto sobre el valor esperado del PE. Si $m=1$ (predicción en el punto $\bx' = (\bx_1',\bx_2')$) tenemos que:
+\begin{equation}
+\begin{split}
+E(PE) &= \sigma^2 + E\left[(\bx'\hatbbeta - \bx'\bbeta)^2 \right] = \sigma^2 + V(\bx'\hatbbeta) = \sigma^2 + \bx'V(\hatbbeta)\bx \\ &=  \sigma^2 + \sigma^2(\bx_1' , \bx_2') \begin{pmatrix}
+(\bX_{1}'\bX_{1})^{-1} + \bL\bM\bL' & - \bL\bM \\
+-\bM\bL' & \bM
+\end{pmatrix} \begin{pmatrix}
+\bx_1 \\ \bx_2
+\end{pmatrix}.
+\end{split}
+\nonumber
+\end{equation}
+Veamos el segundo término:
+\begin{equation}
+\begin{split}
+\bx'(\bX'\bX)^{-1}\bx &= \bx_1' \left[ (\bX_1'\bX_1)^{-1} + \bL \bM\bL' \right]\bx_1 + \bx_2'\bM\bx_2 - 2 \bx_1'\bL\bM'x_2 \\ &= \bx_1' (\bX_1'\bX_1)^{-1} \bx_1 + \bx_1'\bL\bM\bL'\bx_1 +\bx_2'\bM\bx_2 - 2 \bx_1'\bL\bM\bx_2 \\ &= \bx_1'  (\bX_1'\bX_1)^{-1} \bx_1 + (\bL'\bx_1 - \bx_2)'\bM(\bL'\bx_1 - \bx_2).
+\end{split}
+\nonumber
+\end{equation}
+Por lo que:
+\begin{equation}
+E(PE) = \sigma^2 \left[ 1 + \bx_1' (\bX_1'\bX_1)^{-1}\bx_1 \right] + \bh'\bM\bh.
+(\#eq:PE2)
+\end{equation}
 
-- Cuando incluimos covariables irrelevantes, se inflan las varianzas de las estimaciones.
-
+Comparando \@ref(eq:PE1) y \@ref(eq:PE2),  si:
+\[ 
+(\bh'\bbeta_2)^2  < \sigma^2\bh'\bM\bh,
+\]
+el estimador sesgado (omitiendo covariables relevantes) tendría menor valor esperado de PE que el estimador insesgado (incluyendo covariables irrelevantes).
 
 ## Métodos para la selección de variables
 Si tenemos $(p-1)$ covariables, entonces hay $2^{(p-1)}$ modelos posibles. Por lo que podemos ajustar todos los posibles modelos y hacer una comparación entre ellos usando algunos criterios de decisión.
